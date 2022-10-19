@@ -11,9 +11,90 @@
         Y: =15
         ZIndex: =1
 
-    Label1 As label:
+    Greeting As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =122
+        Size: =30
         Text: ="Hello, John"
-        X: =608
-        Y: =90
+        Width: =456
+        X: =455
+        Y: =58
         ZIndex: =2
+
+    "'Search Knowledgebase' As text":
+        BorderColor: =RGBA(140, 140, 140, 1)
+        BorderThickness: =5
+        Color: =RGBA(204, 204, 204, 1)
+        Default: ="Search Knowledgebase"
+        Font: =Font.'Segoe UI'
+        Height: =58
+        Width: =628
+        X: =369
+        Y: =180
+        ZIndex: =3
+
+    Button1 As button:
+        BorderColor: =ColorFade(Self.Fill, 15%)
+        BorderThickness: =10
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =200
+        Text: ="Button"
+        Width: =200
+        X: =149
+        Y: =279
+        ZIndex: =4
+
+    Button2 As button:
+        BorderColor: =ColorFade(Self.Fill, 15%)
+        BorderThickness: =10
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =200
+        Text: ="Button"
+        Width: =200
+        X: =443
+        Y: =279
+        ZIndex: =5
+
+    Button3 As button:
+        BorderColor: =ColorFade(Self.Fill, 15%)
+        BorderThickness: =10
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =200
+        Text: ="Button"
+        Width: =200
+        X: =721
+        Y: =279
+        ZIndex: =6
+
+    Button4 As button:
+        BorderColor: =ColorFade(Self.Fill, 15%)
+        BorderThickness: =10
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =200
+        Text: ="Button"
+        Width: =200
+        X: =1015
+        Y: =279
+        ZIndex: =7
+
+    "'Forward Scroll' As icon.NextArrow":
+        Color: =RGBA(99, 139, 44, 1)
+        Icon: =Icon.NextArrow
+        X: =1258
+        Y: =347
+        ZIndex: =8
+
+    "'Back Scroll' As icon.BackArrow":
+        Color: =RGBA(232, 244, 217, 1)
+        Icon: =Icon.BackArrow
+        X: =44
+        Y: =347
+        ZIndex: =9
+
+    "'profile pic' As icon.Person":
+        Icon: =Icon.Person
+        X: =40
+        Y: =40
+        ZIndex: =10
 
