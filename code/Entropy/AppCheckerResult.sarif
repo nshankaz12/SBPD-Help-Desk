@@ -14,6 +14,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'basic layout'.'Search Knowledgebase'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'basic layout'.'Search Knowledgebase'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "basic layout",
+                "type": "'basic layout'.'Search Knowledgebase'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Notification/Alerts'.SidebarContainer1.Gallery1.AccessibleLabel"
                 }
               ],
@@ -74,19 +104,49 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'basic layout'.'Search Knowledgebase'.AccessibleLabel"
+                  "fullyQualifiedName": "'Ticket Page'.Gallery4.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'basic layout'.'Search Knowledgebase'.AccessibleLabel",
+                  "fullyQualifiedName": "'Ticket Page'.Gallery4.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Ticket Page",
+                "type": "'Ticket Page'.Gallery4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Page'.Gallery4.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Page'.Gallery4.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "basic layout",
-                "type": "'basic layout'.'Search Knowledgebase'"
+                "module": "Ticket Page",
+                "type": "'Ticket Page'.Gallery4"
               }
             }
           ],
