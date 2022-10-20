@@ -1,48 +1,29 @@
 "'Ticket Page' As screen":
 
-    Ticket_Title As label:
-        Align: =Align.Center
-        Height: =122
-        Size: =30
-        Text: ="Ticket Catalog"
-        Width: =456
-        X: =455
-        Y: =58
-        ZIndex: =2
-
-    "Gallery4 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+    "Gallery6 As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver4.0'":
         Items: =CustomGallerySample
         Layout: =Layout.Vertical
         TemplatePadding: =0
-        TemplateSize: =Min(160, Self.Height - 60)
+        TemplateSize: =Min(104, Self.Height - 60)
         Width: =1366
         Y: =193
-        ZIndex: =3
+        ZIndex: =1
 
-        Image4 As image:
-            Height: =128
-            OnSelect: =Select(Parent)
-            Width: =128
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =1
-
-        Title4 As label:
+        Title9 As label:
             Height: =Self.Size * 1.8
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
-            Text: |-
-                ="Ticket#1"
+            Text: =ThisItem.SampleHeading
             VerticalAlign: =VerticalAlign.Top
-            Width: =Parent.TemplateWidth - Image4.Width - 104
-            X: =Image4.X + Image4.Width + 24
-            Y: =44
-            ZIndex: =2
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =16
+            ZIndex: =1
 
-        Subtitle4 As label:
+        Subtitle9 As label:
             Height: =Self.Size * 1.8
             OnSelect: =Select(Parent)
             PaddingBottom: =0
@@ -51,12 +32,12 @@
             PaddingTop: =0
             Text: =ThisItem.SampleText
             VerticalAlign: =VerticalAlign.Top
-            Width: =Title4.Width
-            X: =Title4.X
-            Y: =Title4.Y + Title4.Height + 4
-            ZIndex: =3
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =Title9.Y + Title9.Height + 4
+            ZIndex: =2
 
-        NextArrow3 As icon.ChevronRight:
+        NextArrow8 As icon.ChevronRight:
             AccessibleLabel: =Self.Tooltip
             Height: =60
             Icon: =Icon.ChevronRight
@@ -71,12 +52,22 @@
             Width: =60
             X: =Parent.TemplateWidth - Self.Width - 5
             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =4
+            ZIndex: =3
 
-        Separator3 As rectangle:
+        Separator8 As rectangle:
             Height: =1
             OnSelect: =Select(Parent)
             Width: =Parent.TemplateWidth
             Y: =Parent.TemplateHeight - 1
-            ZIndex: =5
+            ZIndex: =4
+
+    Ticket_Title As label:
+        Align: =Align.Center
+        Height: =122
+        Size: =30
+        Text: ="Ticket Catalog"
+        Width: =456
+        X: =455
+        Y: =58
+        ZIndex: =2
 
