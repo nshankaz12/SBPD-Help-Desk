@@ -11,6 +11,68 @@
         Y: =58
         ZIndex: =1
 
+    "Gallery7 As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver4.0'":
+        Height: =344
+        Items: =CustomGallerySample
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(104, Self.Height - 60)
+        Width: =550
+        X: =816
+        Y: =423
+        ZIndex: =1
+
+        Title11 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.SampleHeading
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =16
+            ZIndex: =1
+
+        Subtitle11 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.SampleText
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =Title11.Y + Title11.Height + 4
+            ZIndex: =2
+
+        NextArrow10 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =3
+
+        Separator10 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =4
+
     Label1 As label:
         Text: |-
             ="Ticket created: 6/19/2022"
@@ -18,4 +80,14 @@
         X: =70
         Y: =180
         ZIndex: =2
+
+    Label2 As label:
+        Align: =Align.Center
+        Height: =86
+        Size: =25
+        Text: ="Recorded History"
+        Width: =550
+        X: =816
+        Y: =337
+        ZIndex: =3
 
