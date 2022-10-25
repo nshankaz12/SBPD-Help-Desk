@@ -32,46 +32,46 @@
         Y: =180
         ZIndex: =3
 
-    Button1 As button:
+    Tickets As button:
         BorderColor: =ColorFade(Self.Fill, 15%)
         BorderThickness: =10
         Fill: =RGBA(232, 244, 217, 1)
         Height: =200
         OnSelect: =Navigate('Ticket Page')
-        Text: ="Button"
+        Text: ="Tickets"
         Width: =200
         X: =149
         Y: =279
         ZIndex: =4
 
-    Button2 As button:
+    name2 As button:
         BorderColor: =ColorFade(Self.Fill, 15%)
         BorderThickness: =10
         Fill: =RGBA(232, 244, 217, 1)
         Height: =200
-        Text: ="Button"
+        Text: ="name2"
         Width: =200
         X: =443
         Y: =279
         ZIndex: =5
 
-    Button3 As button:
+    name3 As button:
         BorderColor: =ColorFade(Self.Fill, 15%)
         BorderThickness: =10
         Fill: =RGBA(232, 244, 217, 1)
         Height: =200
-        Text: ="Button"
+        Text: ="name3"
         Width: =200
         X: =721
         Y: =279
         ZIndex: =6
 
-    Button4 As button:
+    name4 As button:
         BorderColor: =ColorFade(Self.Fill, 15%)
         BorderThickness: =10
         Fill: =RGBA(232, 244, 217, 1)
         Height: =200
-        Text: ="Button"
+        Text: ="name4"
         Width: =200
         X: =1015
         Y: =279
@@ -97,8 +97,8 @@
         Height: =40
         Icon: =Icon.Person
         Width: =40
-        X: =1218
-        Y: =17
+        X: =140
+        Y: =18
         ZIndex: =10
 
     "'new notification in dropdown' As circle":
@@ -106,15 +106,15 @@
         Fill: =RGBA(168, 0, 0, 1)
         Height: =15
         Width: =15
-        X: =1230
-        Y: =9
-        ZIndex: =12
+        X: =140
+        Y: =18
+        ZIndex: =11
 
     "'Popular Articles' As label":
         Text: ="Popular Articles"
         X: =108
         Y: =536
-        ZIndex: =13
+        ZIndex: =12
 
     line As rectangle:
         BorderColor: =RGBA(0, 0, 0, 1)
@@ -123,22 +123,136 @@
         Width: =1150
         X: =108
         Y: =573
+        ZIndex: =13
+
+    "'nav-Ticket' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="Tickets"
+        Width: =174
+        X: =181
+        Y: =18
         ZIndex: =14
 
-    Icon1 As icon.Bell:
-        Height: =40
-        Icon: =Icon.Bell
-        Width: =40
-        X: =1153
-        Y: =17
+    "'nav-name2' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="name2"
+        Width: =174
+        X: =355
+        Y: =18
         ZIndex: =15
 
-    "'new notification in dropdown_1' As circle":
-        BorderColor: =RGBA(168, 0, 0, 1)
-        Fill: =RGBA(168, 0, 0, 1)
-        Height: =15
-        Width: =15
-        X: =1165
-        Y: =9
+    "'nav-name3' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="name3"
+        Width: =174
+        X: =529
+        Y: =18
         ZIndex: =16
+
+    "'nav-name4' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="name4"
+        Width: =174
+        X: =703
+        Y: =18
+        ZIndex: =17
+
+    "'nav-name5' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="name4"
+        Width: =174
+        X: =877
+        Y: =18
+        ZIndex: =18
+
+    "'nav-name6' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="name5"
+        Width: =174
+        X: =1051
+        Y: =18
+        ZIndex: =19
+
+    Icon1 As icon.ChevronDown:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =14
+        Icon: =Icon.ChevronDown
+        Width: =23
+        X: =175
+        Y: =38
+        ZIndex: =20
+
+    Image4 As image:
+        Height: =142
+        Image: ='image (3)'
+        Width: =270
+        X: =79
+        Y: =52
+        ZIndex: =21
+
+    Label6 As label:
+        Font: =Font.'Open Sans Condensed'
+        Height: =20
+        Size: =7
+        Text: ="Profile"
+        Width: =84
+        X: =193
+        Y: =59
+        ZIndex: =22
+
+    Icon3 As icon.Person:
+        Color: =RGBA(0, 0, 0, 1)
+        FocusedBorderThickness: =1
+        Height: =14
+        Icon: =Icon.Person
+        Width: =14
+        X: =179
+        Y: =62
+        ZIndex: =23
+
+    Icon4 As icon.Bell:
+        Color: =RGBA(0, 0, 0, 1)
+        Height: =15
+        Icon: =Icon.Bell
+        Width: =18
+        X: =177
+        Y: =84
+        ZIndex: =24
+
+    Label6_1 As label:
+        Font: =Font.'Open Sans Condensed'
+        Height: =20
+        Size: =7
+        Text: ="Notifications"
+        Width: =84
+        X: =193
+        Y: =81
+        ZIndex: =25
+
+    Circle2 As circle:
+        BorderColor: =RGBA(220, 153, 153, 1)
+        BorderThickness: =1
+        Fill: =RGBA(255, 235, 235, 1)
+        Height: =9
+        Width: =9
+        X: =239
+        Y: =86
+        ZIndex: =26
+
+    Label7 As label:
+        Align: =Align.Right
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Height: =9
+        Size: =4
+        Text: ="2"
+        Width: =9
+        X: =237
+        Y: =85
+        ZIndex: =27
 
