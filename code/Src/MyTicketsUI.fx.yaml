@@ -1,0 +1,24 @@
+MyTicketsUI As screen:
+
+    Container3 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height
+        Width: =Parent.Width
+        ZIndex: =1
+
+        Image13_2 As image:
+            Height: =Parent.Height
+            Image: ='image (2)'
+            Width: =Parent.Width
+            ZIndex: =1
+
+        Header As groupContainer.manualLayoutContainer:
+            Height: =Parent.Height/4
+            Width: =Parent.Width
+            ZIndex: =2
+
+            Label4 As label:
+                Text: ="Text"
+                Width: =Parent.Width
+                Y: =40
+                ZIndex: =1
+
