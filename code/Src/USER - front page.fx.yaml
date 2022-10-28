@@ -1,0 +1,307 @@
+"'USER - front page' As screen":
+    BackgroundImage: =
+    ImagePosition: =ImagePosition.Stretch
+
+    Image13_3 As image:
+        Height: =734
+        Image: ='image (2)'
+        Width: =1331
+        X: =17
+        ZIndex: =1
+
+    Greeting_2 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =122
+        Size: =30
+        Text: ="Hello, John!"
+        Width: =456
+        X: =455
+        Y: =58
+        ZIndex: =2
+
+    "'Search Knowledgebase_1' As text":
+        BorderColor: =RGBA(140, 140, 140, 1)
+        BorderThickness: =5
+        Color: =RGBA(204, 204, 204, 1)
+        Default: ="Search Knowledgebase"
+        Font: =Font.'Segoe UI'
+        Height: =58
+        Width: =628
+        X: =369
+        Y: =180
+        ZIndex: =3
+
+    "'Create Ticket' As button":
+        BorderColor: =ColorFade(Self.Fill, 15%)
+        BorderThickness: =10
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =200
+        OnSelect: =Navigate('Ticket Page')
+        Text: =""
+        Width: =200
+        X: =149
+        Y: =279
+        ZIndex: =4
+
+    "'My Tickets' As button":
+        BorderColor: =ColorFade(Self.Fill, 15%)
+        BorderThickness: =10
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =200
+        Text: =""
+        Width: =200
+        X: =443
+        Y: =279
+        ZIndex: =5
+
+    Tutorials As button:
+        BorderColor: =ColorFade(Self.Fill, 15%)
+        BorderThickness: =10
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =200
+        Text: =""
+        Width: =200
+        X: =721
+        Y: =279
+        ZIndex: =6
+
+    FAQ As button:
+        BorderColor: =ColorFade(Self.Fill, 15%)
+        BorderThickness: =10
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =200
+        Text: =""
+        Width: =200
+        X: =1015
+        Y: =279
+        ZIndex: =7
+
+    "'Forward Scroll_1' As icon.NextArrow":
+        Color: =RGBA(99, 139, 44, 1)
+        Icon: =Icon.NextArrow
+        X: =1258
+        Y: =347
+        ZIndex: =8
+
+    "'Back Scroll_2' As icon.BackArrow":
+        Color: =RGBA(232, 244, 217, 1)
+        Icon: =Icon.BackArrow
+        X: =44
+        Y: =347
+        ZIndex: =9
+
+    "'profile pic + drop down_1' As icon.Person":
+        BorderColor: =RGBA(0, 0, 0, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        Height: =40
+        Icon: =Icon.Person
+        Width: =40
+        X: =140
+        Y: =18
+        ZIndex: =10
+
+    "'new notification in dropdown_1' As circle":
+        BorderColor: =RGBA(168, 0, 0, 1)
+        Fill: =RGBA(168, 0, 0, 1)
+        Height: =15
+        Width: =15
+        X: =140
+        Y: =18
+        ZIndex: =11
+
+    "'Popular Articles_1' As label":
+        Text: ="Popular Articles"
+        X: =108
+        Y: =536
+        ZIndex: =12
+
+    line_1 As rectangle:
+        BorderColor: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 1)
+        Height: =2
+        Width: =1150
+        X: =108
+        Y: =573
+        ZIndex: =13
+
+    "'nav-Ticket_1' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="Create Ticket"
+        Width: =174
+        X: =181
+        Y: =18
+        ZIndex: =14
+
+    "'nav-name2_1' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="My Tickets"
+        Width: =174
+        X: =355
+        Y: =18
+        ZIndex: =15
+
+    "'nav-name3_1' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="Tutorials"
+        Width: =174
+        X: =529
+        Y: =18
+        ZIndex: =16
+
+    "'nav-name4_1' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="FAQ"
+        Width: =174
+        X: =703
+        Y: =18
+        ZIndex: =17
+
+    "'nav-name5_1' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="Articles"
+        Width: =174
+        X: =877
+        Y: =18
+        ZIndex: =18
+
+    Image3 As image:
+        Height: =84
+        Image: ='image (4)'
+        Width: =79
+        X: =164
+        Y: =44
+        ZIndex: =20
+
+    Icon1_1 As icon.ChevronDown:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =14
+        Icon: =Icon.ChevronDown
+        Width: =23
+        X: =175
+        Y: =38
+        ZIndex: =21
+
+    Label6_2 As label:
+        Font: =Font.'Open Sans Condensed'
+        Height: =20
+        Size: =7
+        Text: ="Profile"
+        Width: =84
+        X: =184
+        Y: =64
+        ZIndex: =22
+
+    Icon3_1 As icon.Person:
+        Color: =RGBA(0, 0, 0, 1)
+        FocusedBorderThickness: =1
+        Height: =14
+        Icon: =Icon.Person
+        Width: =14
+        X: =170
+        Y: =67
+        ZIndex: =23
+
+    Icon4_1 As icon.Bell:
+        Color: =RGBA(0, 0, 0, 1)
+        Height: =15
+        Icon: =Icon.Bell
+        Width: =18
+        X: =168
+        Y: =89
+        ZIndex: =24
+
+    Label6_3 As label:
+        Font: =Font.'Open Sans Condensed'
+        Height: =20
+        Size: =7
+        Text: ="Notifications"
+        Width: =84
+        X: =184
+        Y: =86
+        ZIndex: =25
+
+    Circle2_1 As circle:
+        BorderColor: =RGBA(220, 153, 153, 1)
+        BorderThickness: =1
+        Fill: =RGBA(255, 235, 235, 1)
+        Height: =9
+        Width: =9
+        X: =230
+        Y: =91
+        ZIndex: =26
+
+    Label7_1 As label:
+        Align: =Align.Right
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Height: =9
+        Size: =4
+        Text: ="2"
+        Width: =9
+        X: =228
+        Y: =90
+        ZIndex: =27
+
+    Image2 As image:
+        Image: =Untitled_Artwork
+        X: =199
+        Y: =308
+        ZIndex: =28
+
+    Label8 As label:
+        Align: =Align.Center
+        Text: ="CREATE TICKET"
+        X: =174
+        Y: =411
+        ZIndex: =29
+
+    Label9 As label:
+        Align: =Align.Center
+        Text: ="MY TICKETS"
+        X: =468
+        Y: =411
+        ZIndex: =30
+
+    Label11 As label:
+        Align: =Align.Center
+        Text: ="TUTORIALS"
+        X: =746
+        Y: =411
+        ZIndex: =31
+
+    Label11_1 As label:
+        Align: =Align.Center
+        Text: ="FAQ"
+        X: =1040
+        Y: =408
+        ZIndex: =32
+
+    Image5 As image:
+        Height: =159
+        Image: ='my tickets'
+        Width: =177
+        X: =455
+        Y: =287
+        ZIndex: =33
+
+    Image12 As image:
+        Height: =159
+        Image: =tutorials
+        Width: =163
+        X: =739
+        Y: =271
+        ZIndex: =35
+
+    Image14 As image:
+        Height: =147
+        Image: =faq
+        Width: =147
+        X: =1043
+        Y: =283
+        ZIndex: =36
+
