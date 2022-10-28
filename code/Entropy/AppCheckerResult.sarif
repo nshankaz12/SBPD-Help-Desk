@@ -248,6 +248,66 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MyTicketsUI.'Container-MyTicketsUI'.'Tickets-MyTicketsUI'.'TicketList-MyTicketsUI'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "MyTicketsUI.'Container-MyTicketsUI'.'Tickets-MyTicketsUI'.'TicketList-MyTicketsUI'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "MyTicketsUI",
+                "type": "MyTicketsUI.'Container-MyTicketsUI'.'Tickets-MyTicketsUI'.'TicketList-MyTicketsUI'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MyTicketsUI.'Container-MyTicketsUI'.'Tickets-MyTicketsUI'.'TicketList-MyTicketsUI'.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "MyTicketsUI.'Container-MyTicketsUI'.'Tickets-MyTicketsUI'.'TicketList-MyTicketsUI'.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "MyTicketsUI",
+                "type": "MyTicketsUI.'Container-MyTicketsUI'.'Tickets-MyTicketsUI'.'TicketList-MyTicketsUI'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
         }
       ],
       "tool": {
