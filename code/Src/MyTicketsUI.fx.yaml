@@ -1,119 +1,225 @@
 MyTicketsUI As screen:
+    ImagePosition: =ImagePosition.Stretch
 
     "'Container-MyTicketsUI' As groupContainer.manualLayoutContainer":
         Height: =Parent.Height
         Width: =Parent.Width
         ZIndex: =1
 
-        Image13_2 As image:
-            Height: =Parent.Height
-            Image: ='image (2)'
-            Width: =Parent.Width
-            ZIndex: =1
+        "'Container-MyTickets' As groupContainer.manualLayoutContainer":
+            Height: =Parent.Height - 10
+            Width: =Parent.Width - 40
+            X: =20
+            Y: =5
+            ZIndex: =5
 
-        "'Header-MyTicketsUI' As groupContainer.manualLayoutContainer":
-            Height: =Parent.Height/5
-            Width: =Parent.Width
-            Y: =15
-            ZIndex: =2
-
-            Container4 As groupContainer.verticalAutoLayoutContainer:
+            Image13_2 As image:
                 Height: =Parent.Height
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutMode: =LayoutMode.Auto
-                Width: =Parent.Width
-                ZIndex: =2
-
-                Label4 As label:
-                    Align: =Align.Center
-                    Color: =RGBA(255, 255, 255, 1)
-                    FillPortions: =2
-                    Size: =28
-                    Text: ="My Tickets"
-                    ZIndex: =1
-
-                Label5 As label:
-                    Color: =RGBA(255, 255, 255, 1)
-                    FillPortions: =1
-                    Size: =18
-                    Text: ="Welcome, John"
-                    ZIndex: =2
-
-        "'SearchFilterBar-MyTicketsUI' As groupContainer.manualLayoutContainer":
-            Height: =Parent.Height/8
-            Width: =Parent.Width
-            Y: ='Header-MyTicketsUI'.Y + 'Header-MyTicketsUI'.Height
-            ZIndex: =3
-
-        "'Tickets-MyTicketsUI' As groupContainer.manualLayoutContainer":
-            Height: =Parent.Height - ('SearchFilterBar-MyTicketsUI'.Height + 'Header-MyTicketsUI'.Height) - 15
-            Width: =Parent.Width
-            Y: ='SearchFilterBar-MyTicketsUI'.Y + 'SearchFilterBar-MyTicketsUI'.Height
-            ZIndex: =4
-
-            "'TicketList-MyTicketsUI' As gallery.galleryVertical":
-                Height: =Parent.Height
-                Items: =CustomGallerySample
-                Layout: =Layout.Vertical
-                ShowScrollbar: =false
-                TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
+                Image: ='image (2)'
+                ImagePosition: =ImagePosition.Stretch
                 Width: =Parent.Width
                 ZIndex: =1
 
-                "'Title-MyTicketsUI' As label":
-                    Height: =Parent.TemplateHeight/5
-                    OnSelect: =Select(Parent)
-                    Text: |-
-                        ="Title: "
-                    Width: =Parent.TemplateWidth - 'StatusColor-MyTicketsUI'.Width
-                    X: ='StatusColor-MyTicketsUI'.X + 'StatusColor-MyTicketsUI'.Width
+            "'Tickets-MyTicketsUI' As groupContainer.manualLayoutContainer":
+                Height: =Parent.Height - ('SearchFilterBar-MyTicketsUI'.Height + 'Header-MyTicketsUI'.Height) - 15
+                Width: =Parent.Width
+                Y: ='SearchFilterBar-MyTicketsUI'.Y + 'SearchFilterBar-MyTicketsUI'.Height
+                ZIndex: =2
+
+                "'TicketList-MyTicketsUI' As gallery.galleryVertical":
+                    Height: =Parent.Height
+                    Items: =CustomGallerySample
+                    Layout: =Layout.Vertical
+                    ShowScrollbar: =false
+                    TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
+                    Width: =Parent.Width
                     ZIndex: =1
 
-                "'StatusColor-MyTicketsUI' As rectangle":
-                    Height: =Parent.TemplateHeight - 2
-                    OnSelect: =Select(Parent)
-                    Width: =Parent.TemplateWidth/16
-                    X: =1
-                    Y: =1
+                    "'Title-MyTicketsUI' As label":
+                        Height: =Parent.TemplateHeight/5
+                        OnSelect: =Select(Parent)
+                        Text: |-
+                            ="Title: "
+                        Width: =Parent.TemplateWidth - 'StatusColor-MyTicketsUI'.Width
+                        X: =82.25
+                        ZIndex: =1
+
+                    "'StatusColor-MyTicketsUI' As rectangle":
+                        Height: =Parent.TemplateHeight - 2
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth/16
+                        X: =1
+                        Y: =1
+                        ZIndex: =2
+
+                    "'Separator1-MyTicketsUI' As rectangle":
+                        Fill: =RGBA(0, 0, 0, 1)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight - 1
+                        ZIndex: =3
+
+                    "'Separator2-MyTicketsUI' As rectangle":
+                        Fill: =RGBA(0, 0, 0, 1)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        ZIndex: =4
+
+                    "'Separator3-MyTicketsUI' As rectangle":
+                        Fill: =RGBA(0, 0, 0, 1)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Width: =1
+                        X: =1315
+                        ZIndex: =5
+
+                    "'Separator4-MyTicketsUI' As rectangle":
+                        Fill: =RGBA(0, 0, 0, 1)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Width: =1
+                        ZIndex: =6
+
+                    "'Status-MyTicketsUI' As label":
+                        Height: =Parent.TemplateHeight/5
+                        OnSelect: =Select(Parent)
+                        Text: |-
+                            ="Status:"
+                        Width: =Parent.TemplateWidth - 'StatusColor-MyTicketsUI'.Width
+                        X: =82.25
+                        Y: ='Title-MyTicketsUI'.Y + 'Title-MyTicketsUI'.Height
+                        ZIndex: =7
+
+            "'Header-MyTicketsUI' As groupContainer.manualLayoutContainer":
+                Height: =Parent.Height/3.6
+                Width: =Parent.Width
+                ZIndex: =4
+
+                "'NavBar-MyTicketsUI' As groupContainer.horizontalAutoLayoutContainer":
+                    Height: =Parent.Height/4
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width - 80
+                    X: =40
+                    ZIndex: =1
+
+                    "'profile pic + drop down_2' As icon.Person":
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        Height: =40
+                        Icon: =Icon.Person
+                        Width: =40
+                        ZIndex: =1
+
+                    "'CreateTicketTab-MyTickets' As button":
+                        AlignInContainer: =AlignInContainer.Center
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        Text: ="Create Ticket"
+                        Width: =174
+                        X: =181
+                        Y: =18
+                        ZIndex: =2
+
+                    "'MyTicketsTab-MyTickets' As button":
+                        AlignInContainer: =AlignInContainer.Center
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        Text: ="MyTickets"
+                        Width: =174
+                        X: =181
+                        Y: =18
+                        ZIndex: =3
+
+                    "'TutorialsTab-MyTickets' As button":
+                        AlignInContainer: =AlignInContainer.Center
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        Text: ="Tutorials"
+                        Width: =174
+                        X: =181
+                        Y: =18
+                        ZIndex: =4
+
+                    "'FAQTab-MyTickets' As button":
+                        AlignInContainer: =AlignInContainer.Center
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        Text: ="FAQ"
+                        Width: =174
+                        X: =181
+                        Y: =18
+                        ZIndex: =5
+
+                    "'ArticleTab-MyTickets' As button":
+                        AlignInContainer: =AlignInContainer.Center
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        Text: ="Articles"
+                        Width: =174
+                        X: =181
+                        Y: =18
+                        ZIndex: =6
+
+                "'MainHeader-MyTickets' As groupContainer.horizontalAutoLayoutContainer":
+                    Height: =Parent.Height - 'NavBar-MyTicketsUI'.Height
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =20
+                    PaddingRight: =20
+                    Width: =Parent.Width
+                    Y: ='NavBar-MyTicketsUI'.Y + 'NavBar-MyTicketsUI'.Height
                     ZIndex: =2
 
-                "'Separator1-MyTicketsUI' As rectangle":
-                    Fill: =RGBA(0, 0, 0, 1)
-                    Height: =1
-                    OnSelect: =Select(Parent)
-                    Width: =Parent.TemplateWidth
-                    Y: =Parent.TemplateHeight - 1
-                    ZIndex: =3
+                    "'ReturnArrow-MyTickets' As icon.BackArrow":
+                        Color: =RGBA(255, 255, 255, 1)
+                        Icon: =Icon.BackArrow
+                        ZIndex: =1
 
-                "'Separator2-MyTicketsUI' As rectangle":
-                    Fill: =RGBA(0, 0, 0, 1)
-                    Height: =1
-                    OnSelect: =Select(Parent)
-                    Width: =Parent.TemplateWidth
-                    ZIndex: =4
+                    "'Greetings-MyTickets' As label":
+                        Align: =Align.Center
+                        Color: =RGBA(255, 255, 255, 1)
+                        FillPortions: =1
+                        Size: =30
+                        Text: ="Hello, John!"
+                        ZIndex: =2
 
-                "'Separator3-MyTicketsUI' As rectangle":
-                    Fill: =RGBA(0, 0, 0, 1)
-                    Height: =Parent.TemplateHeight
-                    OnSelect: =Select(Parent)
-                    Width: =1
-                    X: =Parent.TemplateWidth
-                    ZIndex: =5
+                    "'NewTicket-MyTickets' As button":
+                        Fill: =RGBA(187, 221, 140, 1)
+                        Text: ="New Ticket"
+                        Width: =174
+                        X: =248
+                        Y: =18
+                        ZIndex: =3
 
-                "'Separator4-MyTicketsUI' As rectangle":
-                    Fill: =RGBA(0, 0, 0, 1)
-                    Height: =Parent.TemplateHeight
-                    OnSelect: =Select(Parent)
-                    Width: =1
-                    ZIndex: =6
+            "'SearchFilterBar-MyTicketsUI' As groupContainer.horizontalAutoLayoutContainer":
+                Height: =Parent.Height/10
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.End
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: ='Header-MyTicketsUI'.Y + 'Header-MyTicketsUI'.Height + 5
+                ZIndex: =6
 
-                "'Status-MyTicketsUI' As label":
-                    Height: =Parent.TemplateHeight/5
-                    OnSelect: =Select(Parent)
-                    Text: |-
-                        ="Status:"
-                    Width: =Parent.TemplateWidth - 'StatusColor-MyTicketsUI'.Width
-                    X: ='StatusColor-MyTicketsUI'.X + 'StatusColor-MyTicketsUI'.Width
-                    Y: ='Title-MyTicketsUI'.Y + 'Title-MyTicketsUI'.Height
-                    ZIndex: =7
+                "'FilterDropDown-MyTickets' As dropdown":
+                    BorderColor: =RGBA(153, 153, 153, 1)
+                    ChevronBackground: =RGBA(204, 204, 204, 1)
+                    Default: ="All Tickets"
+                    Items: =DropDownSample
+                    ZIndex: =1
+
+                TextInput2 As text:
+                    BorderColor: =RGBA(153, 153, 153, 1)
+                    Default: =""
+                    HintText: ="Search tickets"
+                    ZIndex: =2
 
