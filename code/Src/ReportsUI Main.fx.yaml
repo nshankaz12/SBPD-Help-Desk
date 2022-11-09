@@ -1,0 +1,374 @@
+"'ReportsUI Main' As screen":
+    BackgroundImage: =
+    ImagePosition: =ImagePosition.Stretch
+
+    "'Screen Container' As groupContainer.manualLayoutContainer":
+        Height: =768
+        Width: =1366
+        ZIndex: =31
+
+        Image As image:
+            Height: =768
+            Image: ='image (2)'
+            Width: =1366
+            ZIndex: =27
+
+        "'Header Container' As groupContainer.manualLayoutContainer":
+            Height: =228
+            Width: =1366
+            ZIndex: =28
+
+            Header As group:
+                Height: =5
+                Width: =5
+                X: =40
+                Y: =40
+                ZIndex: =17
+
+                "'My Tickets nav Label' As button":
+                    Color: =RGBA(0, 0, 0, 1)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Text: ="My Tickets"
+                    Width: =174
+                    X: =231
+                    Y: =27
+                    ZIndex: =1
+
+                "'Ticket Log nav Label' As button":
+                    Color: =RGBA(0, 0, 0, 1)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Text: ="Ticket Log"
+                    Width: =174
+                    X: =385
+                    Y: =27
+                    ZIndex: =2
+
+                "'Ticket Metrics nav Label' As button":
+                    Color: =RGBA(0, 0, 0, 1)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Text: ="Ticket Metrics"
+                    Width: =174
+                    X: =559
+                    Y: =27
+                    ZIndex: =3
+
+                Image4_1 As image:
+                    Height: =142
+                    Image: ='image (3)'
+                    Width: =270
+                    X: =57
+                    Y: =60
+                    ZIndex: =5
+
+                Label6_4 As label:
+                    Font: =Font.'Open Sans Condensed'
+                    Height: =20
+                    Size: =7
+                    Text: ="Profile"
+                    Width: =84
+                    X: =176
+                    Y: =68
+                    ZIndex: =6
+
+                Icon3_2 As icon.Person:
+                    Color: =RGBA(0, 0, 0, 1)
+                    FocusedBorderThickness: =1
+                    Height: =14
+                    Icon: =Icon.Person
+                    Width: =14
+                    X: =162
+                    Y: =71
+                    ZIndex: =7
+
+                Icon4_2 As icon.Bell:
+                    Color: =RGBA(0, 0, 0, 1)
+                    Height: =15
+                    Icon: =Icon.Bell
+                    Width: =18
+                    X: =160
+                    Y: =93
+                    ZIndex: =8
+
+                Label6_5 As label:
+                    Font: =Font.'Open Sans Condensed'
+                    Height: =20
+                    Size: =7
+                    Text: ="Notifications"
+                    Width: =84
+                    X: =176
+                    Y: =90
+                    ZIndex: =9
+
+                Circle2_2 As circle:
+                    BorderColor: =RGBA(220, 153, 153, 1)
+                    BorderThickness: =1
+                    Fill: =RGBA(255, 235, 235, 1)
+                    Height: =9
+                    Width: =9
+                    X: =222
+                    Y: =95
+                    ZIndex: =10
+
+                Label7_2 As label:
+                    Align: =Align.Right
+                    BorderColor: =RGBA(0, 0, 0, 0)
+                    Height: =9
+                    Size: =4
+                    Text: ="2"
+                    Width: =9
+                    X: =220
+                    Y: =94
+                    ZIndex: =11
+
+                "'Search Knowledgebase_2' As text":
+                    BorderColor: =RGBA(140, 140, 140, 1)
+                    BorderThickness: =5
+                    Color: =RGBA(204, 204, 204, 1)
+                    Default: ="Search Knowledgebase"
+                    Font: =Font.'Segoe UI'
+                    Height: =58
+                    Width: =628
+                    X: =309
+                    Y: =170
+                    ZIndex: =12
+
+                "'profile pic + drop down_2' As icon.Person":
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    Height: =40
+                    Icon: =Icon.Person
+                    Width: =44
+                    X: =113
+                    Y: =21
+                    ZIndex: =13
+
+                "'new notification in dropdown_2' As circle":
+                    BorderColor: =RGBA(168, 0, 0, 1)
+                    Fill: =RGBA(168, 0, 0, 1)
+                    Height: =11
+                    Width: =11
+                    X: =111
+                    Y: =27
+                    ZIndex: =14
+
+                Icon1_2 As icon.ChevronDown:
+                    Color: =RGBA(255, 255, 255, 1)
+                    Height: =14
+                    Icon: =Icon.ChevronDown
+                    Width: =23
+                    X: =153
+                    Y: =46
+                    ZIndex: =15
+
+                Greeting_1 As label:
+                    Align: =Align.Center
+                    Color: =RGBA(255, 255, 255, 1)
+                    Height: =122
+                    Size: =30
+                    Text: ="Reports"
+                    Width: =456
+                    X: =395
+                    Y: =61
+                    ZIndex: =16
+
+        "'My Tickets Button' As group":
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =29
+
+            "'Tickets Button' As button":
+                BorderColor: =ColorFade(Self.Fill, 15%)
+                BorderThickness: =10
+                Fill: =RGBA(232, 244, 217, 1)
+                Height: =200
+                OnSelect: |
+                    =false
+                Text: =""
+                Width: =200
+                X: =143
+                Y: =313
+                ZIndex: =3
+
+            Icon2 As icon.Person:
+                Icon: =Icon.Person
+                X: =174
+                Y: =352
+                ZIndex: =24
+
+            Icon5 As icon.DocumentwithContent:
+                Icon: =Icon.DocumentWithContent
+                X: =236
+                Y: =352
+                ZIndex: =25
+
+            "'My Tickets Button Label' As label":
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Text: ="My Tickets"
+                X: =162
+                Y: =419
+                ZIndex: =26
+
+        "'Ticket Log Button Group' As group":
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =32
+
+            "'Ticket Log Button' As button":
+                BorderColor: =ColorFade(Self.Fill, 15%)
+                BorderThickness: =10
+                Fill: =RGBA(232, 244, 217, 1)
+                Height: =200
+                Text: =""
+                Width: =200
+                X: =583
+                Y: =313
+                ZIndex: =4
+
+            Icon7 As icon.ListScrollWatchlist:
+                Icon: =Icon.ListScrollWatchlist
+                X: =651
+                Y: =352
+                ZIndex: =30
+
+            "'Sub_Ticket Log label' As label":
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Text: ="Ticket Log"
+                X: =608
+                Y: =419
+                ZIndex: =31
+
+        "'Ticket Metrics Group' As group":
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =34
+
+            "'Ticket Metrics Button' As button":
+                BorderColor: =ColorFade(Self.Fill, 15%)
+                BorderThickness: =10
+                Fill: =RGBA(232, 244, 217, 1)
+                Height: =200
+                Text: ="name3"
+                Width: =200
+                X: =1014
+                Y: =313
+                ZIndex: =5
+
+            Icon8 As icon.Trending:
+                Icon: =Icon.Trending
+                X: =1082
+                Y: =352
+                ZIndex: =32
+
+            Label13 As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Text: ="Ticket Metrics"
+                X: =1039
+                Y: =419
+                ZIndex: =33
+
+        Group10 As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =35
+
+            "Gallery1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
+                Height: =208
+                Items: =Table1
+                Layout: =Layout.Vertical
+                TemplatePadding: =0
+                TemplateSize: =Min(168, Self.Height - 60)
+                Width: =1366
+                Y: =558
+                ZIndex: =1
+
+                Title5 As label:
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =ThisItem.title
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.TemplateWidth - 104
+                    X: =24
+                    Y: =16
+                    ZIndex: =1
+
+                Subtitle4 As label:
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =ThisItem.status
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.TemplateWidth - 104
+                    X: =32
+                    Y: =Title5.Y + Title5.Height + 2
+                    ZIndex: =2
+
+                Body1 As label:
+                    Height: =Self.Size * 4
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =ThisItem.tags
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.TemplateWidth - 104
+                    X: =32
+                    Y: =84
+                    ZIndex: =3
+
+                NextArrow4 As icon.ChevronRight:
+                    AccessibleLabel: =Self.Tooltip
+                    Height: =60
+                    Icon: =Icon.ChevronRight
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =10
+                    PaddingLeft: =10
+                    PaddingRight: =10
+                    PaddingTop: =10
+                    TabIndex: =0
+                    Tooltip: ="View item details"
+                    Width: =60
+                    X: =Parent.TemplateWidth - Self.Width - 5
+                    Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                    ZIndex: =4
+
+                Separator4 As rectangle:
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - 1
+                    ZIndex: =5
+
+            "'Recent Ticket Activity Label' As label":
+                Height: =28
+                Text: ="Recent Ticket Activity"
+                Width: =231
+                Y: =533
+                ZIndex: =11
+
+            line_2 As rectangle:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =1366
+                Y: =559
+                ZIndex: =12
+
