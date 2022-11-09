@@ -1,0 +1,105 @@
+"'MyTickets(Ui)' As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
+    ImagePosition: =ImagePosition.Center
+
+    Title1 As label:
+        Align: =Align.Center
+        Height: =64
+        PaddingRight: =10
+        Text: ="My Tickets"
+        Width: =914
+        X: =452
+        ZIndex: =2
+
+    "TemplateGalleryList1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Height: =544
+        Items: =CustomGallerySample
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        Width: =Parent.Width
+        Y: =224
+        ZIndex: =3
+
+        Image1 As image:
+            Height: =128
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.SampleHeading
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image1.Width - 104
+            X: =Image1.X + Image1.Width + 24
+            Y: =44
+            ZIndex: =2
+
+        Subtitle1 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.SampleText
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title2.Width
+            X: =Title2.X
+            Y: =Title2.Y + Title2.Height + 4
+            ZIndex: =3
+
+        NextArrow1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator1 As rectangle:
+            Height: =0
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+    Image13_5 As image:
+        Height: =739
+        Image: ='image (2)'
+        Width: =Parent.Width
+        ZIndex: =4
+
+    Label12 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =209
+        Size: =28
+        Text: ="My Tickets"
+        Width: =779
+        Y: =15
+        ZIndex: =5
+
+    Statusfilter As combobox:
+        Items: =ComboBoxSample
+        SearchItems: =Search(ComboBoxSample,Statusfilter.SearchText,"Value1")
+        Width: =725
+        X: =250
+        Y: =170
+        ZIndex: =6
+
