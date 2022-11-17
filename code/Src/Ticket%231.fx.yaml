@@ -1,7 +1,14 @@
 "'Ticket#1' As screen":
 
+    Image13_6 As image:
+        Height: =739
+        Image: ='image (2)'
+        Width: =Parent.Width
+        ZIndex: =1
+
     Ticket_Title_1 As label:
         Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
         Height: =122
         Size: =30
         Text: |-
@@ -9,69 +16,7 @@
         Width: =456
         X: =465
         Y: =58
-        ZIndex: =1
-
-    "Gallery7 As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver4.0'":
-        Height: =431
-        Items: =CustomGallerySample
-        Layout: =Layout.Vertical
-        TemplatePadding: =0
-        TemplateSize: =Min(104, Self.Height - 60)
-        Width: =550
-        X: =754
-        Y: =257
-        ZIndex: =1
-
-        Title11 As label:
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Text: =ThisItem.SampleHeading
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Parent.TemplateWidth - 104
-            X: =32
-            Y: =16
-            ZIndex: =1
-
-        Subtitle11 As label:
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Text: =ThisItem.SampleText
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Parent.TemplateWidth - 104
-            X: =32
-            Y: =Title11.Y + Title11.Height + 4
-            ZIndex: =2
-
-        NextArrow10 As icon.ChevronRight:
-            AccessibleLabel: =Self.Tooltip
-            Height: =60
-            Icon: =Icon.ChevronRight
-            OnSelect: =Select(Parent)
-            PaddingBottom: =10
-            PaddingLeft: =10
-            PaddingRight: =10
-            PaddingTop: =10
-            TabIndex: =0
-            Tooltip: ="View item details"
-            Width: =60
-            X: =Parent.TemplateWidth - Self.Width - 5
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =3
-
-        Separator10 As rectangle:
-            Height: =1
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =Parent.TemplateHeight - 1
-            ZIndex: =4
+        ZIndex: =3
 
     Label1 As label:
         Height: =60
@@ -80,18 +25,18 @@
             ="Ticket created: 6/19/2022"
         Width: =320
         X: =70
-        Y: =180
-        ZIndex: =2
+        Y: =197
+        ZIndex: =4
 
     Label2 As label:
         Align: =Align.Center
-        Height: =86
-        Size: =25
+        Height: =44
+        Size: =20
         Text: ="Activity History"
-        Width: =550
-        X: =754
-        Y: =171
-        ZIndex: =3
+        Width: =302
+        X: =860
+        Y: =212
+        ZIndex: =5
 
     TextInput1 As text:
         Default: =
@@ -99,6 +44,30 @@
         Mode: =TextMode.MultiLine
         Width: =536
         X: =70
+        Y: =256
+        ZIndex: =6
+
+    Gallery2 As gallery.variableTemplateHeightGallery:
+        Fill: =RGBA(230, 230, 230, 1)
+        Height: =342
+        Layout: =Layout.Vertical
+        TemplateSize: =280
+        Width: =708
+        X: =634
         Y: =257
-        ZIndex: =4
+        ZIndex: =7
+
+    TextInput2 As text:
+        Default: ="Text input"
+        Height: =72
+        Width: =708
+        X: =634
+        Y: =599
+        ZIndex: =8
+
+    Button1 As button:
+        Text: ="Add"
+        X: =908
+        Y: =687
+        ZIndex: =9
 
