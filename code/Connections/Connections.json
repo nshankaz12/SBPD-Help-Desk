@@ -1,1 +1,30 @@
-{}
+{
+  "6473c741-1f4a-4775-89a7-71303b3885d0": {
+    "connectionParameters": {
+      "database": "cs4961stu01",
+      "server": "cs3.calstatela.edu"
+    },
+    "connectionRef": {
+      "authenticationType": "sqlAuthentication",
+      "displayName": "SQL Server",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/juanq/release/1609-sql-greyhound/1.0.1609.3089/sql/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sql",
+      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_sql/connections/3c0c373bea6845e6b9206dc244882f41"
+    },
+    "datasets": {
+      "cs3.calstatela.edu,cs4961stu01": {
+        "dataSources": {
+          "Tickets_1": {
+            "tableName": "[dbo].[Tickets]"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Tickets_1"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "6473c741-1f4a-4775-89a7-71303b3885d0"
+  }
+}

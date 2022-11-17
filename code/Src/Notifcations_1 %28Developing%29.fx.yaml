@@ -1,0 +1,145 @@
+"'Notifcations_1 (Developing)' As screen":
+    BackgroundImage: =
+    ImagePosition: =ImagePosition.Stretch
+
+    Image13_7 As image:
+        Height: =734
+        Image: ='image (2)'
+        Width: =1331
+        X: =17
+        ZIndex: =1
+
+    Greeting_5 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =122
+        Size: =30
+        Text: ="Hello, John!"
+        Width: =456
+        X: =455
+        Y: =58
+        ZIndex: =2
+
+    ReturnToHome_1 As icon.BackArrow:
+        Color: =RGBA(255, 0, 0, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate('USER - front page');
+        X: =64
+        Y: =87
+        ZIndex: =9
+
+    CreateTicketTab_1 As button:
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="Create Ticket"
+        Width: =174
+        X: =248
+        Y: =18
+        ZIndex: =14
+
+    MyTicketsTab_1 As button:
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="My Tickets"
+        Width: =174
+        X: =422
+        Y: =18
+        ZIndex: =15
+
+    TutorialsTab_1 As button:
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="Tutorials"
+        Width: =174
+        X: =596
+        Y: =18
+        ZIndex: =16
+
+    FAQTab_1 As button:
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="FAQ"
+        Width: =174
+        X: =770
+        Y: =18
+        ZIndex: =17
+
+    ArticleTab_1 As button:
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Text: ="Articles"
+        Width: =174
+        X: =944
+        Y: =18
+        ZIndex: =18
+
+    "NotificationList_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Height: =548
+        Items: =Tickets_1
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        Width: =1331
+        X: =17
+        Y: =220
+        ZIndex: =28
+
+        Image1_2 As image:
+            Height: =128
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title1_2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: ="Notifications"
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image1_2.Width - 104
+            X: =Image1_2.X + Image1_2.Width + 24
+            Y: =44
+            ZIndex: =2
+
+        Subtitle1_2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: ="Description of Notification"
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title1_2.Width
+            X: =Title1_2.X
+            Y: =Title1_2.Y + Title1_2.Height + 4
+            ZIndex: =3
+
+        NextArrow1_2 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator1_2 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
