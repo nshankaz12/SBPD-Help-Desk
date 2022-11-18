@@ -33,10 +33,14 @@ MyTicketsUI As screen:
                     ZIndex: =1
 
                 Label5 As label:
+                    Align: =Align.Justify
+                    AlignInContainer: =AlignInContainer.Stretch
                     Color: =RGBA(255, 255, 255, 1)
                     FillPortions: =1
-                    Size: =18
-                    Text: ="Welcome, John"
+                    LayoutMinWidth: =1000
+                    PaddingLeft: =250
+                    Size: =28
+                    Text: =Concatenate("Welcome", ", ", User().FullName)
                     ZIndex: =2
 
         "'SearchFilterBar-MyTicketsUI' As groupContainer.manualLayoutContainer":
