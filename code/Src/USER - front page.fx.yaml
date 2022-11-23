@@ -211,6 +211,8 @@
         Color: =RGBA(0, 0, 0, 1)
         Height: =15
         Icon: =Icon.Bell
+        OnSelect: |
+            =Navigate(Notifcations, ScreenTransition.Cover);
         Width: =18
         X: =168
         Y: =89
@@ -219,7 +221,7 @@
     Label6_3 As label:
         Font: =Font.'Open Sans Condensed'
         Height: =20
-        OnSelect: =Navigate(Notifcations);
+        OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
         Size: =7
         Text: ="Notifications"
         Width: =84
@@ -241,6 +243,7 @@
         Align: =Align.Right
         BorderColor: =RGBA(0, 0, 0, 0)
         Height: =9
+        OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
         Size: =4
         Text: ="2"
         Width: =9

@@ -1,0 +1,47 @@
+NotificationDetails As screen:
+
+    Image13_7 As image:
+        Height: =739
+        Image: ='image (2)'
+        Width: =Parent.Width
+        ZIndex: =1
+
+    Ticket_Title_2 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =122
+        Size: =30
+        Text: ="Notification-Type"
+        Width: =456
+        X: =465
+        Y: =58
+        ZIndex: =3
+
+    Label1_1 As label:
+        Height: =60
+        Size: =15
+        Text: |-
+            ="Alert Sent: Date and Time Stamp"
+        Width: =320
+        X: =546
+        Y: =197
+        ZIndex: =4
+
+    Gallery2_1 As gallery.variableTemplateHeightGallery:
+        Fill: =RGBA(230, 230, 230, 1)
+        Height: =414
+        Items: =Filter(Tickets_1,Tickets_1.Value=DataTable1.Selected.title)
+        Layout: =Layout.Vertical
+        TemplateSize: =405
+        Width: =1310
+        X: =31
+        Y: =257
+        ZIndex: =7
+
+    Button1_1 As button:
+        OnSelect: =Back(ScreenTransition.Fade);
+        Text: ="Close"
+        X: =614
+        Y: =687
+        ZIndex: =9
+
