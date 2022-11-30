@@ -1,4 +1,4 @@
-"'ReportsUI Main' As screen":
+"'Reports- Admin Tech' As screen":
     BackgroundImage: =
     ImagePosition: =ImagePosition.Stretch
 
@@ -11,12 +11,12 @@
             Height: =768
             Image: ='image (2)'
             Width: =1366
-            ZIndex: =27
+            ZIndex: =9
 
         "'Header Container' As groupContainer.manualLayoutContainer":
             Height: =228
             Width: =1366
-            ZIndex: =28
+            ZIndex: =10
 
             Header As group:
                 Height: =5
@@ -28,6 +28,7 @@
                 "'My Tickets nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
+                    OnSelect: =Navigate('MyTickets(Ui)')
                     Text: ="My Tickets"
                     Width: =174
                     X: =231
@@ -37,6 +38,7 @@
                 "'Ticket Log nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
+                    OnSelect: =Navigate('Ticket Log - Admin Tech')
                     Text: ="Ticket Log"
                     Width: =174
                     X: =385
@@ -174,78 +176,6 @@
                     Y: =61
                     ZIndex: =16
 
-        "'My Tickets Button' As group":
-            Height: =5
-            Width: =5
-            X: =40
-            Y: =40
-            ZIndex: =29
-
-            "'Tickets Button' As button":
-                BorderColor: =ColorFade(Self.Fill, 15%)
-                BorderThickness: =10
-                Fill: =RGBA(232, 244, 217, 1)
-                Height: =200
-                OnSelect: |
-                    =false
-                Text: =""
-                Width: =200
-                X: =143
-                Y: =313
-                ZIndex: =3
-
-            Icon2 As icon.Person:
-                Icon: =Icon.Person
-                X: =174
-                Y: =352
-                ZIndex: =24
-
-            Icon5 As icon.DocumentwithContent:
-                Icon: =Icon.DocumentWithContent
-                X: =236
-                Y: =352
-                ZIndex: =25
-
-            "'My Tickets Button Label' As label":
-                Align: =Align.Center
-                FontWeight: =FontWeight.Bold
-                Text: ="My Tickets"
-                X: =162
-                Y: =419
-                ZIndex: =26
-
-        "'Ticket Log Button Group' As group":
-            Height: =5
-            Width: =5
-            X: =40
-            Y: =40
-            ZIndex: =32
-
-            "'Ticket Log Button' As button":
-                BorderColor: =ColorFade(Self.Fill, 15%)
-                BorderThickness: =10
-                Fill: =RGBA(232, 244, 217, 1)
-                Height: =200
-                Text: =""
-                Width: =200
-                X: =583
-                Y: =313
-                ZIndex: =4
-
-            Icon7 As icon.ListScrollWatchlist:
-                Icon: =Icon.ListScrollWatchlist
-                X: =651
-                Y: =352
-                ZIndex: =30
-
-            "'Sub_Ticket Log label' As label":
-                Align: =Align.Center
-                FontWeight: =FontWeight.Bold
-                Text: ="Ticket Log"
-                X: =608
-                Y: =419
-                ZIndex: =31
-
         "'Ticket Metrics Group' As group":
             Height: =5
             Width: =5
@@ -262,13 +192,13 @@
                 Width: =200
                 X: =1014
                 Y: =313
-                ZIndex: =5
+                ZIndex: =3
 
             Icon8 As icon.Trending:
                 Icon: =Icon.Trending
                 X: =1082
                 Y: =352
-                ZIndex: =32
+                ZIndex: =13
 
             Label13 As label:
                 Align: =Align.Center
@@ -276,14 +206,86 @@
                 Text: ="Ticket Metrics"
                 X: =1039
                 Y: =419
-                ZIndex: =33
+                ZIndex: =14
 
-        Group10 As group:
+        "'MyTickets Group' As group":
             Height: =5
             Width: =5
             X: =40
             Y: =40
             ZIndex: =35
+
+            "'Tickets Button' As button":
+                BorderColor: =ColorFade(Self.Fill, 15%)
+                BorderThickness: =10
+                Fill: =RGBA(232, 244, 217, 1)
+                Height: =200
+                OnSelect: =Navigate('MyTickets(Ui)')
+                Text: =""
+                Width: =200
+                X: =143
+                Y: =313
+                ZIndex: =1
+
+            Icon2 As icon.Person:
+                Icon: =Icon.Person
+                OnSelect: =Navigate('MyTickets(Ui)')
+                X: =174
+                Y: =352
+                ZIndex: =6
+
+            Icon5 As icon.DocumentwithContent:
+                Icon: =Icon.DocumentWithContent
+                OnSelect: =Navigate('MyTickets(Ui)')
+                X: =236
+                Y: =352
+                ZIndex: =7
+
+            "'My Tickets Button Label' As label":
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                OnSelect: =Navigate('MyTickets(Ui)')
+                Text: ="My Tickets"
+                X: =162
+                Y: =419
+                ZIndex: =8
+
+            "'Tickets Button_1' As button":
+                BorderColor: =ColorFade(Self.Fill, 0%)
+                BorderThickness: =0
+                Color: =RGBA(0, 0, 0, 0)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =200
+                HoverColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
+                OnSelect: =Navigate('MyTickets(Ui)')
+                Text: =""
+                Width: =200
+                X: =143
+                Y: =313
+                ZIndex: =15
+
+        "'Recent Activity Group' As group":
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =35
+
+            "'Recent Ticket Activity Label' As label":
+                Height: =28
+                Text: ="Recent Ticket Activity"
+                Width: =231
+                Y: =533
+                ZIndex: =4
+
+            line_2 As rectangle:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =1366
+                Y: =559
+                ZIndex: =5
 
             "Gallery1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
                 Height: =208
@@ -293,7 +295,7 @@
                 TemplateSize: =Min(168, Self.Height - 60)
                 Width: =1366
                 Y: =558
-                ZIndex: =1
+                ZIndex: =17
 
                 Title5 As label:
                     Height: =Self.Size * 1.8
@@ -316,7 +318,7 @@
                     PaddingLeft: =0
                     PaddingRight: =0
                     PaddingTop: =0
-                    Text: =ThisItem.status
+                    Text: =ThisItem.updatedBy
                     VerticalAlign: =VerticalAlign.Top
                     Width: =Parent.TemplateWidth - 104
                     X: =32
@@ -330,7 +332,7 @@
                     PaddingLeft: =0
                     PaddingRight: =0
                     PaddingTop: =0
-                    Text: =ThisItem.tags
+                    Text: =ThisItem.lastUpdated
                     VerticalAlign: =VerticalAlign.Top
                     Width: =Parent.TemplateWidth - 104
                     X: =32
@@ -360,18 +362,52 @@
                     Y: =Parent.TemplateHeight - 1
                     ZIndex: =5
 
-            "'Recent Ticket Activity Label' As label":
-                Height: =28
-                Text: ="Recent Ticket Activity"
-                Width: =231
-                Y: =533
+        "'TicketLog Group' As group":
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =36
+
+            "'Ticket Log Button' As button":
+                BorderColor: =ColorFade(Self.Fill, 15%)
+                BorderThickness: =10
+                Fill: =RGBA(232, 244, 217, 1)
+                Height: =200
+                Text: =""
+                Width: =200
+                X: =583
+                Y: =313
+                ZIndex: =2
+
+            Icon7 As icon.ListScrollWatchlist:
+                Icon: =Icon.ListScrollWatchlist
+                X: =651
+                Y: =352
                 ZIndex: =11
 
-            line_2 As rectangle:
-                BorderColor: =RGBA(0, 0, 0, 1)
-                Fill: =RGBA(0, 0, 0, 1)
-                Height: =2
-                Width: =1366
-                Y: =559
+            "'Sub_Ticket Log label' As label":
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Text: ="Ticket Log"
+                X: =608
+                Y: =419
                 ZIndex: =12
+
+            "'Ticket Log Button_1' As button":
+                BorderColor: =ColorFade(Self.Fill, 15%)
+                BorderThickness: =10
+                Color: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =200
+                HoverColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
+                OnSelect: =Navigate('Ticket Log - Admin Tech')
+                PressedFill: =RGBA(0,0,0,0)
+                Text: =""
+                Width: =200
+                X: =583
+                Y: =313
+                ZIndex: =16
 
