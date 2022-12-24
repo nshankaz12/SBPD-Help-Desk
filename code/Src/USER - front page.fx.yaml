@@ -39,6 +39,7 @@
         Height: =200
         OnSelect: =Navigate('Ticket Page')
         Text: =""
+        Visible: =is_admin
         Width: =200
         X: =149
         Y: =279
@@ -253,6 +254,7 @@
 
     Image2 As image:
         Image: =Untitled_Artwork
+        Visible: =is_admin
         X: =199
         Y: =308
         ZIndex: =28
@@ -260,6 +262,7 @@
     Label8 As label:
         Align: =Align.Center
         Text: ="CREATE TICKET"
+        Visible: =is_admin
         X: =174
         Y: =411
         ZIndex: =29
