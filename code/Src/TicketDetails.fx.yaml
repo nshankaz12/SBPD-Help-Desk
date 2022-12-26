@@ -1,51 +1,77 @@
-NotificationDetails As screen:
+TicketDetails As screen:
 
-    Image13_7 As image:
+    Image13_6 As image:
         Height: =739
         Image: ='image (2)'
         Width: =Parent.Width
         ZIndex: =1
 
-    Ticket_Title_2 As label:
+    Ticket_Title_1 As label:
         Align: =Align.Center
         Color: =RGBA(255, 255, 255, 1)
         Height: =122
         Size: =30
-        Text: ="Notification-Type"
+        Text: ="Ticket Details"
         Width: =456
         X: =465
         Y: =58
         ZIndex: =3
 
-    Label1_1 As label:
+    Label1 As label:
         Height: =60
         Size: =15
         Text: |-
-            ="Alert Sent: Date and Time Stamp"
+            ="Ticket created: 6/19/2022"
         Width: =320
-        X: =546
+        X: =70
         Y: =197
         ZIndex: =4
 
-    Gallery2_1 As gallery.variableTemplateHeightGallery:
+    Label2 As label:
+        Align: =Align.Center
+        Height: =44
+        Size: =20
+        Text: ="Activity History"
+        Width: =302
+        X: =860
+        Y: =212
+        ZIndex: =5
+
+    TextInput1 As text:
+        Default: =
+        Height: =431
+        Mode: =TextMode.MultiLine
+        Width: =536
+        X: =70
+        Y: =256
+        ZIndex: =6
+
+    Gallery2 As gallery.variableTemplateHeightGallery:
         Fill: =RGBA(230, 230, 230, 1)
-        Height: =414
+        Height: =342
         Items: =Filter(Tickets_1,Tickets_1.Value=DataTable1.Selected.title)
         Layout: =Layout.Vertical
-        TemplateSize: =405
-        Width: =1310
-        X: =31
+        TemplateSize: =280
+        Width: =708
+        X: =634
         Y: =257
         ZIndex: =7
 
-    Button1_1 As button:
-        OnSelect: =Back(ScreenTransition.Fade);
-        Text: ="Close"
-        X: =614
+    TextInput2 As text:
+        Default: ="Text input"
+        Height: =72
+        Width: =708
+        X: =634
+        Y: =599
+        ZIndex: =8
+
+    Button1 As button:
+        Text: ="Add"
+        X: =908
         Y: =687
         ZIndex: =9
 
-    "'profile pic + drop down_5' As icon.Person":
+    "'profile pic + drop down_4' As icon.Person":
         BorderColor: =RGBA(0, 0, 0, 1)
         Color: =RGBA(0, 0, 0, 1)
         Height: =40
@@ -55,7 +81,7 @@ NotificationDetails As screen:
         Y: =18
         ZIndex: =10
 
-    "'nav-Ticket_3' As button":
+    "'nav-Ticket_2' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         Text: ="Create Ticket"
@@ -64,7 +90,7 @@ NotificationDetails As screen:
         Y: =18
         ZIndex: =11
 
-    "'nav-name2_3' As button":
+    "'nav-name2_2' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         Text: ="My Tickets"
@@ -73,7 +99,7 @@ NotificationDetails As screen:
         Y: =18
         ZIndex: =12
 
-    "'nav-name3_3' As button":
+    "'nav-name3_2' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         Text: ="Tutorials"
@@ -82,7 +108,7 @@ NotificationDetails As screen:
         Y: =18
         ZIndex: =13
 
-    "'nav-name4_3' As button":
+    "'nav-name4_2' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         Text: ="FAQ"
@@ -91,7 +117,7 @@ NotificationDetails As screen:
         Y: =18
         ZIndex: =14
 
-    "'nav-name5_3' As button":
+    "'nav-name5_2' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         Text: ="Articles"
@@ -100,7 +126,7 @@ NotificationDetails As screen:
         Y: =18
         ZIndex: =15
 
-    "'new notification in dropdown_5' As circle":
+    "'new notification in dropdown_4' As circle":
         BorderColor: =RGBA(168, 0, 0, 1)
         Fill: =RGBA(168, 0, 0, 1)
         Height: =15
