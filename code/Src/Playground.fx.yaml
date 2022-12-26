@@ -1,0 +1,70 @@
+Playground As screen:
+
+    Label10 As label:
+        BorderThickness: =1
+        Text: |-
+            ="First Name: "
+        Width: =111
+        X: =112
+        Y: =100
+        ZIndex: =1
+
+    Label14 As label:
+        BorderThickness: =1
+        Text: =LookUp(Users, email = User().Email, firstName)
+        Width: =220
+        X: =223
+        Y: =100
+        ZIndex: =2
+
+    Label10_1 As label:
+        BorderThickness: =1
+        Text: |-
+            ="Last Name: "
+        Width: =111
+        X: =112
+        Y: =140
+        ZIndex: =3
+
+    Label14_1 As label:
+        BorderThickness: =1
+        Text: =LookUp(Users, email = User().Email, lastName)
+        Width: =220
+        X: =223
+        Y: =140
+        ZIndex: =4
+
+    Label10_2 As label:
+        BorderThickness: =1
+        Text: |-
+            ="Email:"
+        Width: =111
+        X: =112
+        Y: =180
+        ZIndex: =5
+
+    Label14_2 As label:
+        BorderThickness: =1
+        Text: =LookUp(Users, email = User().Email, email)
+        Width: =220
+        X: =223
+        Y: =180
+        ZIndex: =6
+
+    Label10_3 As label:
+        BorderThickness: =1
+        Text: |-
+            ="Role:"
+        Width: =111
+        X: =112
+        Y: =220
+        ZIndex: =7
+
+    Label14_3 As label:
+        BorderThickness: =1
+        Text: =LookUp(Users, email = User().Email, userRole)
+        Width: =220
+        X: =223
+        Y: =220
+        ZIndex: =8
+

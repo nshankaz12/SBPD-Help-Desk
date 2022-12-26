@@ -14,14 +14,30 @@
     "datasets": {
       "cs3.calstatela.edu,cs4961stu01": {
         "dataSources": {
+          "Alerts": {
+            "tableName": "[dbo].[Alerts]"
+          },
+          "Comments": {
+            "tableName": "[dbo].[Comments]"
+          },
+          "Media": {
+            "tableName": "[dbo].[Media]"
+          },
           "Tickets_1": {
             "tableName": "[dbo].[Tickets]"
+          },
+          "Users": {
+            "tableName": "[dbo].[Users]"
           }
         }
       }
     },
     "dataSources": [
-      "Tickets_1"
+      "Tickets_1",
+      "Alerts",
+      "Comments",
+      "Media",
+      "Users"
     ],
     "dependencies": {},
     "dependents": [],
