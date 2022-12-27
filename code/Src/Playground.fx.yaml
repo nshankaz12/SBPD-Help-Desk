@@ -1,4 +1,8 @@
 Playground As screen:
+    OnVisible: |-
+        =Set(userData,
+              LookUp(Users, email = User().Email,lastName)
+        )
 
     Label10 As label:
         BorderThickness: =1
@@ -28,7 +32,7 @@ Playground As screen:
 
     Label14_1 As label:
         BorderThickness: =1
-        Text: =LookUp(Users, email = User().Email, lastName)
+        Text: =userData
         Width: =220
         X: =223
         Y: =140
@@ -67,4 +71,90 @@ Playground As screen:
         X: =223
         Y: =220
         ZIndex: =8
+
+    "Gallery3 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Items: =Tickets_1
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        X: =648
+        Y: =12
+        ZIndex: =9
+
+        Image9 As image:
+            Height: =128
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title4 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.category
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image9.Width - 104
+            X: =Image9.X + Image9.Width + 24
+            Y: =44
+            ZIndex: =2
+
+        Subtitle3 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.description
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title4.Width
+            X: =Title4.X
+            Y: =Title4.Y + Title4.Height + 4
+            ZIndex: =3
+
+        NextArrow3 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator3 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+    Label10_4 As label:
+        BorderThickness: =1
+        Text: |-
+            ="ID:
+            "
+        Width: =111
+        X: =112
+        Y: =260
+        ZIndex: =10
+
+    Label14_4 As label:
+        BorderThickness: =1
+        Text: =LookUp(Users, email = User().Email, id)
+        Width: =220
+        X: =223
+        Y: =260
+        ZIndex: =11
 
