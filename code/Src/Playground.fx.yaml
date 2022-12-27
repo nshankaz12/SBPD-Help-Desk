@@ -1,8 +1,31 @@
 Playground As screen:
-    OnVisible: |-
-        =Set(userData,
-              LookUp(Users, email = User().Email,lastName)
-        )
+    OnVisible: |
+        =Set(
+            userData,
+            {
+                firstName: LookUp(
+                    Users,
+                    email = User().Email,
+                    firstName
+                ),
+                lastName: LookUp(
+                    Users,
+                    email = User().Email,
+                    lastName
+                ),
+                email: User().Email,
+                role: LookUp(
+                    Users,
+                    email = User().Email,
+                    userRole
+                ),
+                id: LookUp(
+                    Users,
+                    email = User().Email,
+                    id
+                )
+            }
+        );
 
     Label10 As label:
         BorderThickness: =1
@@ -32,7 +55,7 @@ Playground As screen:
 
     Label14_1 As label:
         BorderThickness: =1
-        Text: =userData
+        Text: =userData.lastName
         Width: =220
         X: =223
         Y: =140
