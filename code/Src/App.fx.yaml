@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =false
-    OnStart: |+
+    OnStart: |-
         =If(
             !IsBlank(
                 LookUp(
@@ -17,5 +17,4 @@ App As appinfo:
                 false
             )
         )
-        
 
