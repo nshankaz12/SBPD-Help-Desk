@@ -2,12 +2,11 @@ App As appinfo:
     BackEnabled: =false
     OnStart: |-
         =If(
-            !IsBlank(
-                LookUp(
-                    Administrators,
-                    Title = User().Email
-                )
-            ),
+            LookUp(
+                Users,
+                email = User().Email,
+                userRole
+            ) = "admin",
             Set(
                 is_admin,
                 true
