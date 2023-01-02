@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =false
-    OnStart: |
+    OnStart: |-
         =If(
             LookUp(
                 Users,
@@ -43,4 +43,7 @@ App As appinfo:
                 )
             }
         );
+        //Enable for non timer based navigation for Splash Screen
+        //Set(splashNavigate,true)
+    StartScreen: ='Splash Screen'
 
