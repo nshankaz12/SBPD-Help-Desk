@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =false
-    OnStart: |-
+    OnStart: |
         =If(
             LookUp(
                 Users,
@@ -15,5 +15,32 @@ App As appinfo:
                 is_admin,
                 false
             )
-        )
+        );
+        
+        Set(
+            userData,
+            {
+                firstName: LookUp(
+                    Users,
+                    email = User().Email,
+                    firstName
+                ),
+                lastName: LookUp(
+                    Users,
+                    email = User().Email,
+                    lastName
+                ),
+                email: User().Email,
+                role: LookUp(
+                    Users,
+                    email = User().Email,
+                    userRole
+                ),
+                id: LookUp(
+                    Users,
+                    email = User().Email,
+                    id
+                )
+            }
+        );
 
