@@ -1,6 +1,7 @@
 AssignRole As screen:
 
     Dropdown2 As dropdown:
+        Default: =""
         Height: =59
         Items: =Users
         Width: =340
@@ -19,9 +20,10 @@ AssignRole As screen:
         Y: =220
         ZIndex: =2
 
-    Dropdown2_1 As dropdown:
+    Dropdown3 As dropdown:
+        Default: =""
         Height: =59
-        Items: =["Admin", "Tech", "User"]
+        Items: =Distinct(Users, userRole)
         Width: =340
         X: =770
         Y: =324
@@ -46,4 +48,10 @@ AssignRole As screen:
         X: =550
         Y: =504
         ZIndex: =5
+
+    Label18 As label:
+        Text: =Dropdown2.Selected.id
+        X: =597
+        Y: =191
+        ZIndex: =6
 
