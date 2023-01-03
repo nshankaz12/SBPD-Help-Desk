@@ -1,0 +1,49 @@
+AssignRole As screen:
+
+    Dropdown2 As dropdown:
+        Height: =59
+        Items: =Users
+        Width: =340
+        X: =234
+        Y: =324
+        ZIndex: =1
+
+    Label17 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Height: =91
+        Size: =25
+        Text: ="User"
+        Width: =328
+        X: =234
+        Y: =220
+        ZIndex: =2
+
+    Dropdown2_1 As dropdown:
+        Height: =59
+        Items: =["Admin", "Tech", "User"]
+        Width: =340
+        X: =770
+        Y: =324
+        ZIndex: =3
+
+    Label17_3 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Height: =91
+        Size: =25
+        Text: ="Role"
+        Width: =328
+        X: =770
+        Y: =220
+        ZIndex: =4
+
+    Button2 As button:
+        Fill: =RGBA(184, 0, 0, 1)
+        Height: =72
+        Text: ="Assign Role"
+        Width: =240
+        X: =550
+        Y: =504
+        ZIndex: =5
+
