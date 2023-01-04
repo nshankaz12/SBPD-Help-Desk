@@ -1,5 +1,5 @@
 Playground As screen:
-    OnVisible: |+
+    OnVisible: |
         =Set(
             userData,
             {
@@ -27,6 +27,7 @@ Playground As screen:
             }
         );
         
+        ClearCollect(userInfo,GetUserDetails.Run(User().Email));
 
     Label10 As label:
         BorderThickness: =1
@@ -56,7 +57,7 @@ Playground As screen:
 
     Label14_1 As label:
         BorderThickness: =1
-        Text: =userData.lastName
+        Text: =
         Width: =220
         X: =171
         Y: =68
@@ -186,6 +187,7 @@ Playground As screen:
 
     Gallery6 As gallery.variableTemplateHeightGallery:
         Height: =500
+        Items: =userInfo
         Layout: =Layout.Vertical
         TemplateSize: =280
         Width: =801
@@ -194,11 +196,7 @@ Playground As screen:
         ZIndex: =12
 
     Button3 As button:
-        OnSelect: |-
-            =Set(
-                userInfo,
-                'PowerApp->Executestoredprocedure(V2)-2'.Run(User().Email)
-            );
+        OnSelect: =
         Text: ="Refresh"
         X: =595
         Y: =45

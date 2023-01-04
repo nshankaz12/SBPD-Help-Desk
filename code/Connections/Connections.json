@@ -1,44 +1,4 @@
 {
-  "5806a66b-b792-4d98-986e-7bd68f692050": {
-    "connectionParameters": {
-      "workFlowCallbackUri": "https://prod-10.westus.logic.azure.com:443/workflows/ae345b35584147e8984a27b78f5a7b90/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PyU6-czpEjqZgrWOcA9sQ2UTse06oqwMHt-MqVjcc6o",
-      "workflowEndpoint": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-dc6fe5feed444142be5b9cf05c06cb66/providers/Microsoft.Logic/workflows/8f5ce157-090b-45f3-9fc9-f5780e5ddc76",
-      "workflowName": "8f5ce157-090b-45f3-9fc9-f5780e5ddc76",
-      "workflowPath": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-dc6fe5feed444142be5b9cf05c06cb66/providers/Microsoft.Logic/workflows/8f5ce157-090b-45f3-9fc9-f5780e5ddc76"
-    },
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1534/1.0.1534.2605/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "6473c741-1f4a-4775-89a7-71303b3885d0": {
-          "value": "shared_sql"
-        },
-        "workflowEntityId": {},
-        "workflowName": {
-          "value": "8f5ce157-090b-45f3-9fc9-f5780e5ddc76"
-        }
-      },
-      "parameterHintsV2": {
-        "shared_sql": {
-          "value": "6473c741-1f4a-4775-89a7-71303b3885d0"
-        },
-        "workflowEntityId": {},
-        "workflowName": {
-          "value": "8f5ce157-090b-45f3-9fc9-f5780e5ddc76"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "PowerApp->Executestoredprocedure(V2)-2"
-    ],
-    "dependencies": {
-      "shared_sql": "6473c741-1f4a-4775-89a7-71303b3885d0"
-    },
-    "dependents": [],
-    "id": "5806a66b-b792-4d98-986e-7bd68f692050"
-  },
   "6473c741-1f4a-4775-89a7-71303b3885d0": {
     "connectionParameters": {
       "database": "cs4961stu01",
@@ -85,9 +45,49 @@
     ],
     "dependencies": {},
     "dependents": [
-      "5806a66b-b792-4d98-986e-7bd68f692050"
+      "af8ec331-fc51-4a1a-b109-34ceccc033dc"
     ],
     "id": "6473c741-1f4a-4775-89a7-71303b3885d0"
+  },
+  "af8ec331-fc51-4a1a-b109-34ceccc033dc": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-118.westus.logic.azure.com:443/workflows/bbb6980783f0411eb83a3ab02b7a6552/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=HCRjf1WkAbuu8vdRaaXRW15Tf6T8X8uXJTDryehRjWE",
+      "workflowEndpoint": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-dc6fe5feed444142be5b9cf05c06cb66/providers/Microsoft.Logic/workflows/9a0fd438-7377-45ae-99dd-3b051170fa9c",
+      "workflowName": "9a0fd438-7377-45ae-99dd-3b051170fa9c",
+      "workflowPath": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-dc6fe5feed444142be5b9cf05c06cb66/providers/Microsoft.Logic/workflows/9a0fd438-7377-45ae-99dd-3b051170fa9c"
+    },
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1534/1.0.1534.2605/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "6473c741-1f4a-4775-89a7-71303b3885d0": {
+          "value": "shared_sql"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "9a0fd438-7377-45ae-99dd-3b051170fa9c"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sql": {
+          "value": "6473c741-1f4a-4775-89a7-71303b3885d0"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "9a0fd438-7377-45ae-99dd-3b051170fa9c"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "GetUserDetails"
+    ],
+    "dependencies": {
+      "shared_sql": "6473c741-1f4a-4775-89a7-71303b3885d0"
+    },
+    "dependents": [],
+    "id": "af8ec331-fc51-4a1a-b109-34ceccc033dc"
   },
   "f7aef8e6-faea-42d9-be4a-90b317bfa5b1": {
     "connectionParameters": {

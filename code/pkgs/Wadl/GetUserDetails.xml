@@ -1,11 +1,25 @@
-<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:service="https://msmanaged-na.azure-apim.net/apim/logicflows" xmlns:siena="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11" siena:serviceId="PowerApp-&gt;Executestoredprocedure(V2)-2" xmlns="http://wadl.dev.java.net/2009/02">
-  <doc title="PowerApp -&gt; Execute stored procedure (V2) - 2" />
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:service="https://msmanaged-na.azure-apim.net/apim/logicflows" xmlns:siena="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11" siena:serviceId="GetUserDetails" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="GetUserDetails" />
   <grammars>
     <jsonTypes targetNamespace="https://msmanaged-na.azure-apim.net/apim/logicflows" xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
       <string name="ManualTriggerInput_Executestoredprocedure_ux28_V2_ux29__paramEmail_def" />
       <object name="ManualTriggerInput">
         <property name="Executestoredprocedure(V2)_paramEmail" type="string" />
       </object>
+      <integer name="ResponseActionOutput_items_def_id_def" />
+      <string name="ResponseActionOutput_items_def_firstName_def" />
+      <string name="ResponseActionOutput_items_def_lastName_def" />
+      <string name="ResponseActionOutput_items_def_userRole_def" />
+      <string name="ResponseActionOutput_items_def_email_def" />
+      <object name="ResponseActionOutput_items_def">
+        <property name="id" type="integer" />
+        <property name="firstName" type="string" />
+        <property name="lastName" type="string" />
+        <property name="userRole" type="string" />
+        <property name="email" type="string" />
+      </object>
+      <array typeRef="ResponseActionOutput_items_def" name="ResponseActionOutput" />
+      <object name="Run_responses_default_def" />
     </jsonTypes>
   </grammars>
   <resources siena:authenticationProviderHref="#PowerAppAuth" base="https://msmanaged-na.azure-apim.net/apim/logicflows">
@@ -21,6 +35,9 @@
             <param style="plain" name="Executestoredprocedure(V2)_paramEmail" path="/Executestoredprocedure(V2)_paramEmail" type="xs:string" required="true" />
           </representation>
         </request>
+        <response>
+          <representation mediaType="application/json" element="service:ResponseActionOutput" />
+        </response>
       </method>
     </resource>
   </resources>
