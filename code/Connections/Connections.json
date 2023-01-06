@@ -26,6 +26,9 @@
           "Tickets_1": {
             "tableName": "[dbo].[Tickets]"
           },
+          "Tickets_2": {
+            "tableName": "[dbo].[Tickets]"
+          },
           "Users": {
             "tableName": "[dbo].[Users]"
           }
@@ -37,11 +40,54 @@
       "Alerts",
       "Comments",
       "Media",
-      "Users"
+      "Users",
+      "Tickets_2"
     ],
     "dependencies": {},
-    "dependents": [],
+    "dependents": [
+      "af8ec331-fc51-4a1a-b109-34ceccc033dc"
+    ],
     "id": "6473c741-1f4a-4775-89a7-71303b3885d0"
+  },
+  "af8ec331-fc51-4a1a-b109-34ceccc033dc": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-118.westus.logic.azure.com:443/workflows/bbb6980783f0411eb83a3ab02b7a6552/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=HCRjf1WkAbuu8vdRaaXRW15Tf6T8X8uXJTDryehRjWE",
+      "workflowEndpoint": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-dc6fe5feed444142be5b9cf05c06cb66/providers/Microsoft.Logic/workflows/9a0fd438-7377-45ae-99dd-3b051170fa9c",
+      "workflowName": "9a0fd438-7377-45ae-99dd-3b051170fa9c",
+      "workflowPath": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-dc6fe5feed444142be5b9cf05c06cb66/providers/Microsoft.Logic/workflows/9a0fd438-7377-45ae-99dd-3b051170fa9c"
+    },
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1534/1.0.1534.2605/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "6473c741-1f4a-4775-89a7-71303b3885d0": {
+          "value": "shared_sql"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "9a0fd438-7377-45ae-99dd-3b051170fa9c"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sql": {
+          "value": "6473c741-1f4a-4775-89a7-71303b3885d0"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "9a0fd438-7377-45ae-99dd-3b051170fa9c"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "GetUserDetails"
+    ],
+    "dependencies": {
+      "shared_sql": "6473c741-1f4a-4775-89a7-71303b3885d0"
+    },
+    "dependents": [],
+    "id": "af8ec331-fc51-4a1a-b109-34ceccc033dc"
   },
   "f7aef8e6-faea-42d9-be4a-90b317bfa5b1": {
     "connectionParameters": {

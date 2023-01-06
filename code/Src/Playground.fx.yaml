@@ -26,22 +26,24 @@ Playground As screen:
                 )
             }
         );
+        
+        ClearCollect(userInfo,GetUserDetails.Run(User().Email));
 
     Label10 As label:
         BorderThickness: =1
         Text: |-
             ="First Name: "
         Width: =111
-        X: =112
-        Y: =100
+        X: =60
+        Y: =28
         ZIndex: =1
 
     Label14 As label:
         BorderThickness: =1
         Text: =LookUp(Users, email = User().Email, firstName)
         Width: =220
-        X: =223
-        Y: =100
+        X: =171
+        Y: =28
         ZIndex: =2
 
     Label10_1 As label:
@@ -49,16 +51,16 @@ Playground As screen:
         Text: |-
             ="Last Name: "
         Width: =111
-        X: =112
-        Y: =140
+        X: =60
+        Y: =68
         ZIndex: =3
 
     Label14_1 As label:
         BorderThickness: =1
-        Text: =userData.lastName
+        Text: =
         Width: =220
-        X: =223
-        Y: =140
+        X: =171
+        Y: =68
         ZIndex: =4
 
     Label10_2 As label:
@@ -66,16 +68,16 @@ Playground As screen:
         Text: |-
             ="Email:"
         Width: =111
-        X: =112
-        Y: =180
+        X: =60
+        Y: =108
         ZIndex: =5
 
     Label14_2 As label:
         BorderThickness: =1
         Text: =LookUp(Users, email = User().Email, email)
         Width: =220
-        X: =223
-        Y: =180
+        X: =171
+        Y: =108
         ZIndex: =6
 
     Label10_3 As label:
@@ -83,25 +85,27 @@ Playground As screen:
         Text: |-
             ="Role:"
         Width: =111
-        X: =112
-        Y: =220
+        X: =60
+        Y: =148
         ZIndex: =7
 
     Label14_3 As label:
         BorderThickness: =1
         Text: =LookUp(Users, email = User().Email, userRole)
         Width: =220
-        X: =223
-        Y: =220
+        X: =171
+        Y: =148
         ZIndex: =8
 
     "Gallery3 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Height: =517
         Items: =Tickets_1
         Layout: =Layout.Vertical
         TemplatePadding: =0
         TemplateSize: =Min(160, Self.Height - 60)
-        X: =648
-        Y: =12
+        Width: =473
+        X: =884
+        Y: =16
         ZIndex: =9
 
         Image9 As image:
@@ -169,15 +173,106 @@ Playground As screen:
             ="ID:
             "
         Width: =111
-        X: =112
-        Y: =260
+        X: =60
+        Y: =188
         ZIndex: =10
 
     Label14_4 As label:
         BorderThickness: =1
         Text: =LookUp(Users, email = User().Email, id)
         Width: =220
-        X: =223
-        Y: =260
+        X: =171
+        Y: =188
         ZIndex: =11
+
+    Button3 As button:
+        OnSelect: =
+        Text: ="Refresh"
+        X: =595
+        Y: =45
+        ZIndex: =13
+
+    DataTable2 As dataTable.datatable:
+        BorderStyle: =BorderStyle.Solid
+        DisplayMode: =DisplayMode.Edit
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =500
+        Items: =userInfo
+        Width: =800
+        X: =36
+        Y: =249
+        ZIndex: =25
+
+        email_Column1 As dataTableColumn.textualColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="email"
+            FieldName: ="email"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =1
+            Text: =ThisItem.email
+            Width: =216
+            X: =15
+            Y: =0
+            ZIndex: =6
+
+        firstName_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="firstName"
+            FieldName: ="firstName"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =2
+            Text: =ThisItem.firstName
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =7
+
+        lastName_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="lastName"
+            FieldName: ="lastName"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =3
+            Text: =ThisItem.lastName
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =8
+
+        id_Column3 As dataTableColumn.textualColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="id"
+            FieldName: ="id"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =4
+            Text: =ThisItem.id
+            Width: =95
+            X: =553
+            Y: =0
+            ZIndex: =9
+
+        userRole_Column1 As dataTableColumn.textualColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="userRole"
+            FieldName: ="userRole"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =5
+            Text: =ThisItem.userRole
+            Width: =141
+            X: =0
+            Y: =0
+            ZIndex: =10
 
