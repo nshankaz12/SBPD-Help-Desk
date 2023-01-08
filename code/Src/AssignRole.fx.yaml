@@ -43,15 +43,12 @@ AssignRole As screen:
     Button2 As button:
         Fill: =RGBA(184, 0, 0, 1)
         Height: =72
+        OnSelect: |-
+            =UpdateUserRole.Run(Dropdown2.Selected.id, Dropdown3.Selected.Result);
+            Navigate(AssignRole);
         Text: ="Assign Role"
         Width: =240
         X: =550
         Y: =504
         ZIndex: =5
-
-    Label18 As label:
-        Text: =Dropdown2.Selected.id
-        X: =597
-        Y: =191
-        ZIndex: =6
 
