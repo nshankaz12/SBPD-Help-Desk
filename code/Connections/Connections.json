@@ -45,7 +45,8 @@
     ],
     "dependencies": {},
     "dependents": [
-      "af8ec331-fc51-4a1a-b109-34ceccc033dc"
+      "af8ec331-fc51-4a1a-b109-34ceccc033dc",
+      "d44fdecc-b956-477f-8a4e-509378bf62df"
     ],
     "id": "6473c741-1f4a-4775-89a7-71303b3885d0"
   },
@@ -88,6 +89,46 @@
     },
     "dependents": [],
     "id": "af8ec331-fc51-4a1a-b109-34ceccc033dc"
+  },
+  "d44fdecc-b956-477f-8a4e-509378bf62df": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-158.westus.logic.azure.com:443/workflows/2bcb2d2f25a140e1810cd356c52ff5c5/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=q3_n2UKJVbYX74eco_xB5MvMI0QhBHN-saWZIY12d7I",
+      "workflowEndpoint": "/subscriptions/3a3c8f3a-b051-4389-add3-35f0cadf681c/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-99a8c69526d04263b50511ba63eececb/providers/Microsoft.Logic/workflows/c56d16a7-b752-4b74-89a1-0ae1c01ad57f",
+      "workflowName": "c56d16a7-b752-4b74-89a1-0ae1c01ad57f",
+      "workflowPath": "/subscriptions/3a3c8f3a-b051-4389-add3-35f0cadf681c/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-99a8c69526d04263b50511ba63eececb/providers/Microsoft.Logic/workflows/c56d16a7-b752-4b74-89a1-0ae1c01ad57f"
+    },
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1534/1.0.1534.2605/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "6473c741-1f4a-4775-89a7-71303b3885d0": {
+          "value": "shared_sql"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "c56d16a7-b752-4b74-89a1-0ae1c01ad57f"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sql": {
+          "value": "6473c741-1f4a-4775-89a7-71303b3885d0"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "c56d16a7-b752-4b74-89a1-0ae1c01ad57f"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "UpdateUserRole"
+    ],
+    "dependencies": {
+      "shared_sql": "6473c741-1f4a-4775-89a7-71303b3885d0"
+    },
+    "dependents": [],
+    "id": "d44fdecc-b956-477f-8a4e-509378bf62df"
   },
   "f7aef8e6-faea-42d9-be4a-90b317bfa5b1": {
     "connectionParameters": {
