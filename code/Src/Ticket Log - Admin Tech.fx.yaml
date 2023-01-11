@@ -25,11 +25,11 @@
                 Y: =40
                 ZIndex: =18
 
-                "'My Tickets nav Label_1' As button":
+                "'My Activity nav Label_1' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
                     OnSelect: =Navigate('MyTickets(Ui)')
-                    Text: ="My Tickets"
+                    Text: ="My Activity"
                     Width: =174
                     X: =231
                     Y: =27
@@ -48,6 +48,7 @@
                 "'Ticket Metrics nav Label_1' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
+                    OnSelect: =Navigate('Metrics- Admin Tech')
                     Text: ="Ticket Metrics"
                     Width: =174
                     X: =559
@@ -167,7 +168,7 @@
                 BackButton As icon.BackArrow:
                     Color: =RGBA(237, 255, 194, 1)
                     Icon: =Icon.BackArrow
-                    OnSelect: =Navigate('Reports- Admin Tech')
+                    OnSelect: =Back(ScreenTransition.Fade)
                     X: =47
                     Y: =93
                     ZIndex: =17
@@ -178,7 +179,7 @@
         Fill: =RGBA(0, 0, 0, 0)
         HeadingFill: =RGBA(118, 173, 149, 1)
         Height: =543
-        Items: =Table1
+        Items: =Tickets_1
         Width: =1366
         X: =0
         Y: =225

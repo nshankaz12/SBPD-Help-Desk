@@ -25,11 +25,11 @@
                 Y: =40
                 ZIndex: =17
 
-                "'My Tickets nav Label' As button":
+                "'My Activity nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
                     OnSelect: =Navigate('MyTickets(Ui)')
-                    Text: ="My Tickets"
+                    Text: ="My Activity"
                     Width: =174
                     X: =231
                     Y: =27
@@ -48,6 +48,7 @@
                 "'Ticket Metrics nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
+                    OnSelect: =Navigate('Metrics- Admin Tech')
                     Text: ="Ticket Metrics"
                     Width: =174
                     X: =559
@@ -125,18 +126,6 @@
                     Y: =94
                     ZIndex: =11
 
-                "'Search Knowledgebase_2' As text":
-                    BorderColor: =RGBA(140, 140, 140, 1)
-                    BorderThickness: =5
-                    Color: =RGBA(204, 204, 204, 1)
-                    Default: ="Search Knowledgebase"
-                    Font: =Font.'Segoe UI'
-                    Height: =58
-                    Width: =628
-                    X: =309
-                    Y: =170
-                    ZIndex: =12
-
                 "'profile pic + drop down_2' As icon.Person":
                     BorderColor: =RGBA(0, 0, 0, 1)
                     Color: =RGBA(0, 0, 0, 1)
@@ -176,6 +165,25 @@
                     Y: =61
                     ZIndex: =16
 
+        Icon10 As icon.BackArrow:
+            Color: =RGBA(232, 244, 217, 1)
+            Icon: =Icon.BackArrow
+            OnSelect: =Back(Fade)
+            X: =37
+            Y: =82
+            ZIndex: =18
+
+        Button5 As button:
+            Color: =RGBA(0, 0, 0, 0)
+            Height: =200
+            OnSelect: =Navigate('Metrics- Admin Tech')
+            Text: ="Button"
+            Visible: =false
+            Width: =200
+            X: =1014
+            Y: =313
+            ZIndex: =19
+
         "'Ticket Metrics Group' As group":
             Height: =5
             Width: =5
@@ -188,6 +196,7 @@
                 BorderThickness: =10
                 Fill: =RGBA(232, 244, 217, 1)
                 Height: =200
+                OnSelect: =Navigate('Metrics- Admin Tech')
                 Text: ="name3"
                 Width: =200
                 X: =1014
@@ -196,6 +205,7 @@
 
             Icon8 As icon.Trending:
                 Icon: =Icon.Trending
+                OnSelect: =Navigate('Metrics- Admin Tech')
                 X: =1082
                 Y: =352
                 ZIndex: =13
@@ -203,6 +213,7 @@
             Label13 As label:
                 Align: =Align.Center
                 FontWeight: =FontWeight.Bold
+                OnSelect: =Navigate('Metrics- Admin Tech')
                 Text: ="Ticket Metrics"
                 X: =1039
                 Y: =419
@@ -245,7 +256,7 @@
                 Align: =Align.Center
                 FontWeight: =FontWeight.Bold
                 OnSelect: =Navigate('MyTickets(Ui)')
-                Text: ="My Tickets"
+                Text: ="My Activity"
                 X: =162
                 Y: =419
                 ZIndex: =8
@@ -289,7 +300,7 @@
 
             "Gallery1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
                 Height: =208
-                Items: =Table1
+                Items: =Tickets_1
                 Layout: =Layout.Vertical
                 TemplatePadding: =0
                 TemplateSize: =Min(168, Self.Height - 60)
