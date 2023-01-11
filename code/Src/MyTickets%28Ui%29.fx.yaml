@@ -1,63 +1,11 @@
 "'MyTickets(Ui)' As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
     ImagePosition: =ImagePosition.Center
 
-    TemplateGalleryList1 As gallery.galleryVertical:
-        Height: =558
-        Items: =Tickets_1
-        Layout: =Layout.Vertical
-        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
-        Width: =1366
-        WrapCount: =3
-        Y: =210
-        ZIndex: =1
-
-        Label20 As label:
-            FontWeight: =FontWeight.Bold
-            Height: =41
-            OnSelect: =Select(Parent)
-            Size: =15
-            Text: =ThisItem.title
-            Width: =Parent.TemplateWidth
-            Y: =60
-            ZIndex: =1
-
-        Label20_1 As label:
-            Height: =59
-            OnSelect: =Select(Parent)
-            Text: =ThisItem.description
-            Width: =Parent.TemplateWidth
-            Y: =94
-            ZIndex: =2
-
-        Rectangle2 As rectangle:
-            Height: =47
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            ZIndex: =3
-
-        Label22 As label:
-            Align: =Align.Center
-            Color: =RGBA(255, 255, 255, 1)
-            Height: =47
-            OnSelect: =Select(Parent)
-            Text: =ThisItem.id
-            Width: =Parent.TemplateWidth
-            ZIndex: =4
-
-    Title1 As label:
-        Align: =Align.Center
-        Height: =64
-        PaddingRight: =10
-        Text: ="My Tickets"
-        Width: =914
-        X: =452
-        ZIndex: =2
-
     Image13_5 As image:
-        Height: =739
+        Height: =768
         Image: ='image (2)'
         Width: =Parent.Width
-        ZIndex: =4
+        ZIndex: =1
 
     Label12 As label:
         Align: =Align.Center
@@ -65,17 +13,17 @@
         Height: =209
         Size: =28
         Text: ="My Tickets"
-        Width: =779
+        Width: =Parent.Width
         Y: =15
-        ZIndex: =5
+        ZIndex: =2
 
     Statusfilter As combobox:
         Items: =ComboBoxSample
         SearchItems: =Search(ComboBoxSample,Statusfilter.SearchText,"Value1")
         Width: =725
-        X: =250
-        Y: =170
-        ZIndex: =6
+        X: =320
+        Y: =184
+        ZIndex: =3
 
     "'profile pic + drop down_6' As icon.Person":
         BorderColor: =RGBA(0, 0, 0, 1)
@@ -85,7 +33,7 @@
         Width: =40
         X: =140
         Y: =18
-        ZIndex: =7
+        ZIndex: =4
 
     "'nav-Ticket_4' As button":
         Color: =RGBA(0, 0, 0, 1)
@@ -94,7 +42,7 @@
         Width: =174
         X: =181
         Y: =18
-        ZIndex: =8
+        ZIndex: =5
 
     "'nav-name2_4' As button":
         Color: =RGBA(0, 0, 0, 1)
@@ -103,7 +51,7 @@
         Width: =174
         X: =355
         Y: =18
-        ZIndex: =9
+        ZIndex: =6
 
     "'nav-name3_4' As button":
         Color: =RGBA(0, 0, 0, 1)
@@ -112,7 +60,7 @@
         Width: =174
         X: =529
         Y: =18
-        ZIndex: =10
+        ZIndex: =7
 
     "'nav-name4_4' As button":
         Color: =RGBA(0, 0, 0, 1)
@@ -121,7 +69,7 @@
         Width: =174
         X: =703
         Y: =18
-        ZIndex: =11
+        ZIndex: =8
 
     "'nav-name5_4' As button":
         Color: =RGBA(0, 0, 0, 1)
@@ -130,7 +78,7 @@
         Width: =174
         X: =877
         Y: =18
-        ZIndex: =12
+        ZIndex: =9
 
     "'new notification in dropdown_6' As circle":
         BorderColor: =RGBA(168, 0, 0, 1)
@@ -139,5 +87,128 @@
         Width: =15
         X: =140
         Y: =18
+        ZIndex: =10
+
+    "'Back Scroll_5' As icon.BackArrow":
+        Color: =RGBA(232, 244, 217, 1)
+        Icon: =Icon.BackArrow
+        X: =59
+        Y: =87
+        ZIndex: =11
+
+    Button4 As button:
+        Fill: =RGBA(118, 173, 149, 1)
+        Text: ="New Ticket"
+        X: =1150
+        Y: =99
+        ZIndex: =12
+
+    TemplateGalleryList1 As gallery.galleryVertical:
+        Height: =544
+        Items: =Tickets_1
+        Layout: =Layout.Vertical
+        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(265, Self.Height - 60))
+        Transition: =Transition.Push
+        Width: =1366
+        WrapCount: =3
+        Y: =224
         ZIndex: =13
+
+        btnBkg As button:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.TemplateHeight
+            HoverFill: =Self.Fill
+            OnSelect: =Select(Parent)
+            PressedFill: =Self.Fill
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: =""
+            Width: =Parent.TemplateWidth
+            ZIndex: =1
+
+        btnStatus As button:
+            Fill: |-
+                =Switch(
+                    ThisItem.status,
+                    "open", RGBA(0, 127, 187, 1),
+                    "close", RGBA(127, 178, 57, 1),
+                    RGBA(221, 79, 14, 1)
+                )
+            HoverFill: =Self.Fill
+            OnSelect: =Select(Parent)
+            PressedFill: =Self.Fill
+            Text: =ThisItem.status
+            Width: =140
+            X: =298
+            Y: =173
+            ZIndex: =2
+
+        Label20 As label:
+            FontWeight: =FontWeight.Bold
+            Height: =41
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.title
+            Width: =Parent.TemplateWidth
+            Y: =60
+            ZIndex: =3
+
+        Label20_1 As label:
+            Height: =79
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.description
+            Width: =Parent.TemplateWidth
+            Y: =94
+            ZIndex: =4
+
+        Rectangle2 As rectangle:
+            Height: =47
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            ZIndex: =5
+
+        Label22 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =47
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.id
+            Width: =Parent.TemplateWidth
+            ZIndex: =6
+
+        "'Label-datecreated' As label":
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.dateCreated
+            Width: =200
+            Y: =173
+            ZIndex: =7
+
+        Image7_3 As image:
+            Height: =40
+            Image: =User().Image
+            Width: =40
+            X: =5
+            Y: =213
+            ZIndex: =8
+
+        "'Label-assignee' As label":
+            OnSelect: =Select(Parent)
+            Text: ="Assignee"
+            Width: =200
+            X: =45
+            Y: =213
+            ZIndex: =9
+
+        btnTemplate As button:
+            BorderThickness: =0
+            Fill: =Transparent
+            Height: =Parent.TemplateHeight
+            HoverFill: =Self.Fill
+            OnSelect: =Select(Parent)
+            PressedFill: =Self.Fill
+            Text: =""
+            Width: =Parent.TemplateWidth
+            ZIndex: =10
 

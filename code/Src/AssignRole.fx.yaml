@@ -45,10 +45,33 @@ AssignRole As screen:
         Height: =72
         OnSelect: |-
             =UpdateUserRole.Run(Dropdown2.Selected.id, Dropdown3.Selected.Result);
+            Refresh(Users);
+            If(
+                LookUp(
+                    Users,
+                    email = User().Email,
+                    userRole
+                ) = "admin",
+                Set(
+                    is_admin,
+                    true
+                ),
+                Set(
+                    is_admin,
+                    false
+                )
+            );
             Navigate(AssignRole);
         Text: ="Assign Role"
         Width: =240
         X: =550
         Y: =504
         ZIndex: =5
+
+    Icon9 As icon.BackArrow:
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate('USER - front page')
+        X: =40
+        Y: =40
+        ZIndex: =6
 
