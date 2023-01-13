@@ -23,7 +23,7 @@
     "'Back Scroll_4' As icon.BackArrow":
         Color: =RGBA(232, 244, 217, 1)
         Icon: =Icon.BackArrow
-        OnSelect: =Navigate('USER - front page')
+        OnSelect: =Navigate('USER - front page', ScreenTransition.Fade)
         X: =59
         Y: =87
         ZIndex: =9
@@ -31,6 +31,7 @@
     "'nav-Ticket_6' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade)
         Text: ="Create Ticket"
         Width: =174
         X: =181
@@ -40,6 +41,7 @@
     "'nav-name2_6' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade)
         Text: ="My Tickets"
         Width: =174
         X: =355

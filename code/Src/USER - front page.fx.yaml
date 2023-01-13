@@ -130,7 +130,7 @@
     "'nav-Ticket_1' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create ticket')
+        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade)
         Text: ="Create Ticket"
         Width: =174
         X: =181
@@ -140,7 +140,7 @@
     "'nav-name2_1' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('MyTickets(Ui)')
+        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade)
         Text: ="My Tickets"
         Width: =174
         X: =355

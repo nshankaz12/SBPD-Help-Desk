@@ -23,6 +23,7 @@
     "'Back Scroll_3' As icon.BackArrow":
         Color: =RGBA(232, 244, 217, 1)
         Icon: =Icon.BackArrow
+        OnSelect: =Navigate('USER - front page', ScreenTransition.Fade)
         X: =59
         Y: =87
         ZIndex: =9
@@ -30,6 +31,7 @@
     "'nav-Ticket_5' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade)
         Text: ="Create Ticket"
         Width: =174
         X: =181
@@ -39,6 +41,7 @@
     "'nav-name2_5' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade)
         Text: ="My Tickets"
         Width: =174
         X: =355
@@ -117,8 +120,7 @@
     Label15 As label:
         Align: =Align.Center
         Height: =35
-        Text: |-
-            ="Email: "
+        Text: =User().Email
         Width: =471
         X: =447
         Y: =256
@@ -127,16 +129,16 @@
     Label15_1 As label:
         Align: =Align.Center
         Height: =35
-        Text: |-
-            ="Role: User"
+        Text: =LookUp(Users, email = User().Email, userRole)
         Width: =471
         X: =447
         Y: =317
         ZIndex: =43
 
     Label15_2 As label:
+        Align: =Align.Center
         Height: =35
-        Text: ="Text"
+        Text: =LookUp(Users, email = User().Email, id)
         Width: =471
         X: =447
         Y: =379
