@@ -18,7 +18,7 @@
             Width: =1366
             ZIndex: =28
 
-            "'TicketLog Header_1' As group":
+            "'Ticket Metrics Header' As group":
                 Height: =5
                 Width: =5
                 X: =40
@@ -28,7 +28,7 @@
                 "'My Activity nav Label_2' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('MyTickets(Ui)')
+                    OnSelect: =Navigate('MyTickets(Ui)',Fade)
                     Text: ="My Activity"
                     Width: =174
                     X: =231
@@ -38,7 +38,7 @@
                 "'Reports nav Label_1' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Reports- Admin Tech')
+                    OnSelect: =Navigate('Reports- Admin Tech',Fade)
                     Text: ="Reports"
                     Width: =174
                     X: =385

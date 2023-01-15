@@ -28,7 +28,7 @@
                 "'My Activity nav Label_1' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('MyTickets(Ui)')
+                    OnSelect: =Navigate('MyTickets(Ui)',Fade)
                     Text: ="My Activity"
                     Width: =174
                     X: =231
@@ -38,7 +38,7 @@
                 "'Reports nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Reports- Admin Tech')
+                    OnSelect: =Navigate('Reports- Admin Tech',Fade)
                     Text: ="Reports"
                     Width: =174
                     X: =385
@@ -48,7 +48,7 @@
                 "'Ticket Metrics nav Label_1' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Metrics- Admin Tech')
+                    OnSelect: =Navigate('Metrics- Admin Tech',Fade)
                     Text: ="Ticket Metrics"
                     Width: =174
                     X: =559

@@ -11,12 +11,12 @@
             Height: =768
             Image: ='image (2)'
             Width: =1366
-            ZIndex: =9
+            ZIndex: =11
 
         "'Header Container' As groupContainer.manualLayoutContainer":
             Height: =228
             Width: =1366
-            ZIndex: =10
+            ZIndex: =12
 
             Header As group:
                 Height: =5
@@ -28,7 +28,7 @@
                 "'My Activity nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('MyTickets(Ui)')
+                    OnSelect: =Navigate('MyTickets(Ui)',Fade)
                     Text: ="My Activity"
                     Width: =174
                     X: =231
@@ -38,7 +38,7 @@
                 "'Ticket Log nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Ticket Log - Admin Tech')
+                    OnSelect: =Navigate('Ticket Log - Admin Tech',Fade)
                     Text: ="Ticket Log"
                     Width: =174
                     X: =385
@@ -48,7 +48,7 @@
                 "'Ticket Metrics nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Metrics- Admin Tech')
+                    OnSelect: =Navigate('Metrics- Admin Tech',Fade)
                     Text: ="Ticket Metrics"
                     Width: =174
                     X: =559
@@ -171,17 +171,6 @@
             OnSelect: =Back(Fade)
             X: =37
             Y: =82
-            ZIndex: =18
-
-        Button5 As button:
-            Color: =RGBA(0, 0, 0, 0)
-            Height: =200
-            OnSelect: =Navigate('Metrics- Admin Tech')
-            Text: ="Button"
-            Visible: =false
-            Width: =200
-            X: =1014
-            Y: =313
             ZIndex: =19
 
         "'Ticket Metrics Group' As group":
@@ -189,7 +178,7 @@
             Width: =5
             X: =40
             Y: =40
-            ZIndex: =34
+            ZIndex: =20
 
             "'Ticket Metrics Button' As button":
                 BorderColor: =ColorFade(Self.Fill, 15%)
@@ -197,18 +186,18 @@
                 Fill: =RGBA(232, 244, 217, 1)
                 Height: =200
                 OnSelect: =Navigate('Metrics- Admin Tech')
-                Text: ="name3"
+                Text: ="0"
                 Width: =200
                 X: =1014
                 Y: =313
-                ZIndex: =3
+                ZIndex: =1
 
             Icon8 As icon.Trending:
                 Icon: =Icon.Trending
                 OnSelect: =Navigate('Metrics- Admin Tech')
                 X: =1082
                 Y: =352
-                ZIndex: =13
+                ZIndex: =9
 
             Label13 As label:
                 Align: =Align.Center
@@ -217,7 +206,20 @@
                 Text: ="Ticket Metrics"
                 X: =1039
                 Y: =419
-                ZIndex: =14
+                ZIndex: =10
+
+            Button5 As button:
+                Color: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =200
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 0), -20%)
+                OnSelect: =Navigate('Metrics- Admin Tech',Fade)
+                Text: ="0"
+                Width: =200
+                X: =1014
+                Y: =313
+                ZIndex: =15
 
         "'MyTickets Group' As group":
             Height: =5
@@ -236,7 +238,7 @@
                 Width: =200
                 X: =143
                 Y: =313
-                ZIndex: =1
+                ZIndex: =2
 
             Icon2 As icon.Person:
                 Icon: =Icon.Person
@@ -269,12 +271,12 @@
                 Height: =200
                 HoverColor: =RGBA(0, 0, 0, 0)
                 HoverFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
-                OnSelect: =Navigate('MyTickets(Ui)')
+                OnSelect: =Navigate('MyTickets(Ui)',Fade)
                 Text: =""
                 Width: =200
                 X: =143
                 Y: =313
-                ZIndex: =15
+                ZIndex: =16
 
         "'Recent Activity Group' As group":
             Height: =5
@@ -306,7 +308,7 @@
                 TemplateSize: =Min(168, Self.Height - 60)
                 Width: =1366
                 Y: =558
-                ZIndex: =17
+                ZIndex: =18
 
                 Title5 As label:
                     Height: =Self.Size * 1.8
@@ -389,13 +391,13 @@
                 Width: =200
                 X: =583
                 Y: =313
-                ZIndex: =2
+                ZIndex: =3
 
             Icon7 As icon.ListScrollWatchlist:
                 Icon: =Icon.ListScrollWatchlist
                 X: =651
                 Y: =352
-                ZIndex: =11
+                ZIndex: =13
 
             "'Sub_Ticket Log label' As label":
                 Align: =Align.Center
@@ -403,7 +405,7 @@
                 Text: ="Ticket Log"
                 X: =608
                 Y: =419
-                ZIndex: =12
+                ZIndex: =14
 
             "'Ticket Log Button_1' As button":
                 BorderColor: =ColorFade(Self.Fill, 15%)
@@ -414,11 +416,11 @@
                 Height: =200
                 HoverColor: =RGBA(0, 0, 0, 0)
                 HoverFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
-                OnSelect: =Navigate('Ticket Log - Admin Tech')
+                OnSelect: =Navigate('Ticket Log - Admin Tech',Fade)
                 PressedFill: =RGBA(0,0,0,0)
                 Text: =""
                 Width: =200
                 X: =583
                 Y: =313
-                ZIndex: =16
+                ZIndex: =17
 
