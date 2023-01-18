@@ -31,7 +31,7 @@
     "'nav-Ticket_5' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade)
+        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade);
         Text: ="Create Ticket"
         Width: =174
         X: =181
@@ -41,7 +41,7 @@
     "'nav-name2_5' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade)
+        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade);
         Text: ="My Tickets"
         Width: =174
         X: =355
@@ -51,7 +51,8 @@
     "'nav-name3_5' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        Text: ="Tutorials"
+        OnSelect: =Navigate('Ticket Log - Admin Tech', ScreenTransition.Fade);
+        Text: ="Ticket Log"
         Width: =174
         X: =529
         Y: =18
@@ -60,7 +61,8 @@
     "'nav-name4_5' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        Text: ="FAQ"
+        OnSelect: =Navigate('Metrics- Admin Tech', ScreenTransition.Fade);
+        Text: ="Ticket Metrics"
         Width: =174
         X: =703
         Y: =18
@@ -69,7 +71,8 @@
     "'nav-name5_5' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        Text: ="Articles"
+        OnSelect: =Navigate(AssignRole, ScreenTransition.Fade);
+        Text: ="Assign Role"
         Width: =174
         X: =877
         Y: =18

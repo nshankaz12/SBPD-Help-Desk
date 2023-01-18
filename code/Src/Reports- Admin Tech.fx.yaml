@@ -28,7 +28,7 @@
                 "'My Activity nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('MyTickets(Ui)',Fade)
+                    OnSelect: =
                     Text: ="My Activity"
                     Width: =174
                     X: =231
@@ -38,7 +38,7 @@
                 "'Ticket Log nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Ticket Log - Admin Tech',Fade)
+                    OnSelect: =Navigate('Ticket Log - Admin Tech', ScreenTransition.Fade);
                     Text: ="Ticket Log"
                     Width: =174
                     X: =385
@@ -48,7 +48,7 @@
                 "'Ticket Metrics nav Label' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Metrics- Admin Tech',Fade)
+                    OnSelect: =Navigate('Metrics- Admin Tech', ScreenTransition.Fade);
                     Text: ="Ticket Metrics"
                     Width: =174
                     X: =559
@@ -58,6 +58,7 @@
                 Image4_1 As image:
                     Height: =142
                     Image: ='image (3)'
+                    OnSelect: =
                     Width: =270
                     X: =57
                     Y: =60
@@ -66,6 +67,7 @@
                 Label6_4 As label:
                     Font: =Font.'Open Sans Condensed'
                     Height: =20
+                    OnSelect: =
                     Size: =7
                     Text: ="Profile"
                     Width: =84
@@ -78,6 +80,7 @@
                     FocusedBorderThickness: =1
                     Height: =14
                     Icon: =Icon.Person
+                    OnSelect: =
                     Width: =14
                     X: =162
                     Y: =71
@@ -87,7 +90,7 @@
                     Color: =RGBA(0, 0, 0, 1)
                     Height: =15
                     Icon: =Icon.Bell
-                    OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
+                    OnSelect: =
                     Width: =18
                     X: =160
                     Y: =93
@@ -96,7 +99,7 @@
                 Label6_5 As label:
                     Font: =Font.'Open Sans Condensed'
                     Height: =20
-                    OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
+                    OnSelect: =Navigate(Notifcations, ScreenTransition.Fade);
                     Size: =7
                     Text: ="Notifications"
                     Width: =84
@@ -109,6 +112,7 @@
                     BorderThickness: =1
                     Fill: =RGBA(255, 235, 235, 1)
                     Height: =9
+                    OnSelect: =
                     Width: =9
                     X: =222
                     Y: =95
@@ -118,7 +122,7 @@
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 0, 0, 0)
                     Height: =9
-                    OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
+                    OnSelect: =
                     Size: =4
                     Text: ="2"
                     Width: =9
@@ -131,6 +135,7 @@
                     Color: =RGBA(0, 0, 0, 1)
                     Height: =40
                     Icon: =Icon.Person
+                    OnSelect: =
                     Width: =44
                     X: =113
                     Y: =21
@@ -140,6 +145,7 @@
                     BorderColor: =RGBA(168, 0, 0, 1)
                     Fill: =RGBA(168, 0, 0, 1)
                     Height: =11
+                    OnSelect: =
                     Width: =11
                     X: =111
                     Y: =27
@@ -149,6 +155,7 @@
                     Color: =RGBA(255, 255, 255, 1)
                     Height: =14
                     Icon: =Icon.ChevronDown
+                    OnSelect: =
                     Width: =23
                     X: =153
                     Y: =46
@@ -158,6 +165,7 @@
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
                     Height: =122
+                    OnSelect: =
                     Size: =30
                     Text: ="Reports"
                     Width: =456

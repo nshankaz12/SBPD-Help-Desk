@@ -31,6 +31,7 @@ Notifcations As screen:
     CreateTicketTab As button:
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade);
         Text: ="Create Ticket"
         Width: =174
         X: =248
@@ -40,6 +41,7 @@ Notifcations As screen:
     MyTicketsTab As button:
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade);
         Text: ="My Tickets"
         Width: =174
         X: =422
@@ -49,7 +51,8 @@ Notifcations As screen:
     TutorialsTab As button:
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        Text: ="Tutorials"
+        OnSelect: =Navigate('Ticket Log - Admin Tech', ScreenTransition.Fade);
+        Text: ="Ticket Log"
         Width: =174
         X: =596
         Y: =18
@@ -58,7 +61,8 @@ Notifcations As screen:
     FAQTab As button:
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        Text: ="FAQ"
+        OnSelect: =Navigate('Metrics- Admin Tech', ScreenTransition.Fade);
+        Text: ="Ticket Metrics"
         Width: =174
         X: =770
         Y: =18
@@ -67,7 +71,8 @@ Notifcations As screen:
     ArticleTab As button:
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        Text: ="Articles"
+        OnSelect: =Navigate(AssignRole, ScreenTransition.Fade);
+        Text: ="Assign Role"
         Width: =174
         X: =944
         Y: =18
