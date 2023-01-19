@@ -1,4 +1,44 @@
 {
+  "410fd47b-6bd5-49fb-9709-4a364053c654": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-155.westus.logic.azure.com:443/workflows/4b7633e06f1f431fafb6938155cd32be/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=kR4YUzPgOt5Bo1BkiYZ6oQ-G0DLFM6NMr7Z96WJfVGc",
+      "workflowEndpoint": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-a012b83bdd9145169ba0303d02ed154e/providers/Microsoft.Logic/workflows/1b941df2-f91d-4ad4-920f-645a15d2bb80",
+      "workflowName": "1b941df2-f91d-4ad4-920f-645a15d2bb80",
+      "workflowPath": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-a012b83bdd9145169ba0303d02ed154e/providers/Microsoft.Logic/workflows/1b941df2-f91d-4ad4-920f-645a15d2bb80"
+    },
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1534/1.0.1534.2605/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "6473c741-1f4a-4775-89a7-71303b3885d0": {
+          "value": "shared_sql"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "1b941df2-f91d-4ad4-920f-645a15d2bb80"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sql": {
+          "value": "6473c741-1f4a-4775-89a7-71303b3885d0"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "1b941df2-f91d-4ad4-920f-645a15d2bb80"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "GetCurrentTickets"
+    ],
+    "dependencies": {
+      "shared_sql": "6473c741-1f4a-4775-89a7-71303b3885d0"
+    },
+    "dependents": [],
+    "id": "410fd47b-6bd5-49fb-9709-4a364053c654"
+  },
   "6473c741-1f4a-4775-89a7-71303b3885d0": {
     "connectionParameters": {
       "database": "cs4961stu01",
@@ -46,7 +86,8 @@
     "dependencies": {},
     "dependents": [
       "af8ec331-fc51-4a1a-b109-34ceccc033dc",
-      "d44fdecc-b956-477f-8a4e-509378bf62df"
+      "d44fdecc-b956-477f-8a4e-509378bf62df",
+      "410fd47b-6bd5-49fb-9709-4a364053c654"
     ],
     "id": "6473c741-1f4a-4775-89a7-71303b3885d0"
   },
