@@ -1,5 +1,15 @@
 "'MyTickets(Ui)' As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
     ImagePosition: =ImagePosition.Center
+    OnVisible: |-
+        =// Set dropdown and gallery to default when view this screen
+        Reset(filterStatus);
+        //Reset(TemplateGalleryList1);
+        
+        //Use for testing because current user may not have any tickets and user 4 and 5 have tickets
+        Set(CurrentTicketInfo,GetCurrentTickets.Run(4));
+        
+        //get tickets for the current user
+        //Set(CurrentTicketInfo,GetCurrentTickets.Run(LookUp(Users, email = User().Email, id)))
 
     Image13_5 As image:
         Height: =768
@@ -97,6 +107,7 @@
     "'Back Scroll_5' As icon.BackArrow":
         Color: =RGBA(232, 244, 217, 1)
         Icon: =Icon.BackArrow
+        OnSelect: =Back(Fade)
         X: =59
         Y: =87
         ZIndex: =11
@@ -111,10 +122,14 @@
 
     TemplateGalleryList1 As gallery.galleryVertical:
         Height: =544
-        Items: =Tickets_1
+        Items: =If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result))
         Layout: =Layout.Vertical
         TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(265, Self.Height - 60))
         Transition: =Transition.Push
+        Visible: |-
+            =!IsEmpty(CurrentTicketInfo)
+            And 
+            !IsEmpty(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)))
         Width: =1366
         WrapCount: =3
         Y: =224
@@ -145,7 +160,7 @@
             HoverFill: =Self.Fill
             OnSelect: =Select(Parent)
             PressedFill: =Self.Fill
-            Text: =ThisItem.status
+            Text: =If (IsBlank(ThisItem.status), "Not Started", ThisItem.status)
             Width: =140
             X: =298
             Y: =173
@@ -186,7 +201,7 @@
 
         "'Label-datecreated' As label":
             OnSelect: =Select(Parent)
-            Text: =ThisItem.dateCreated
+            Text: =DateValue(ThisItem.dateCreated)
             Width: =200
             Y: =173
             ZIndex: =7
@@ -212,9 +227,53 @@
             Fill: =Transparent
             Height: =Parent.TemplateHeight
             HoverFill: =Self.Fill
-            OnSelect: =Select(Parent)
+            OnSelect: =Navigate(TicketDetails, Fade)
             PressedFill: =Self.Fill
             Text: =""
             Width: =Parent.TemplateWidth
             ZIndex: =10
+
+    EmptyState As groupContainer.verticalAutoLayoutContainer:
+        Height: =544
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =10
+        LayoutJustifyContent: =LayoutJustifyContent.Center
+        LayoutMode: =LayoutMode.Auto
+        Visible: |-
+            =!IsBlank(filterStatus.Selected.Result)
+            And IsEmpty(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)))
+        Width: =1366
+        Y: =224
+        ZIndex: =14
+
+        Label16 As label:
+            Align: =Align.Center
+            AlignInContainer: =AlignInContainer.Stretch
+            Size: =32
+            Text: |-
+                =Switch(
+                    filterStatus.Selected.Result,
+                    "All", "Add New Ticket",
+                    "open", "Add New Ticket",
+                    "No Tickets Found"
+                )
+            ZIndex: =1
+
+        Button4_1 As button:
+            Fill: =RGBA(118, 173, 149, 1)
+            OnSelect: =Navigate('Create ticket', ScreenTransition.Fade);
+            Text: ="New Ticket"
+            Visible: =filterStatus.Selected.Result = "All" || filterStatus.Selected.Result = "open"
+            X: =1150
+            Y: =99
+            ZIndex: =2
+
+    filterStatus As dropdown:
+        Default: ="open"
+        Items: =colStatus
+        Width: =226
+        X: =1117
+        Y: =184
+        ZIndex: =15
 
