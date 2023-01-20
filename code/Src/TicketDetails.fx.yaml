@@ -49,9 +49,9 @@ TicketDetails As screen:
     Gallery2 As gallery.variableTemplateHeightGallery:
         Fill: =RGBA(230, 230, 230, 1)
         Height: =342
-        Items: =Filter(Tickets_1,Tickets_1.Value=DataTable1.Selected.title)
+        Items: =Filter(Administrators, DataTable1)
         Layout: =Layout.Vertical
-        TemplateSize: =280
+        TemplateSize: =88
         Width: =708
         X: =634
         Y: =257
@@ -139,4 +139,22 @@ TicketDetails As screen:
         X: =140
         Y: =18
         ZIndex: =16
+
+    Label18 As label:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =46
+        Text: ="Text"
+        Width: =708
+        X: =634
+        Y: =269
+        ZIndex: =17
+
+    Label19 As label:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =46
+        Text: =ThisItem.Created
+        Width: =708
+        X: =634
+        Y: =315
+        ZIndex: =18
 
