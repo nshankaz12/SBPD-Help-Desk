@@ -39,6 +39,46 @@
     "dependents": [],
     "id": "410fd47b-6bd5-49fb-9709-4a364053c654"
   },
+  "4e8d8a85-54c9-4fdc-822d-e468edd6cb2c": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-67.westus.logic.azure.com:443/workflows/fe12455ef5aa49e6b45c292d5f5ba807/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BGXIZJ3YibHQcY62uaioiAcj2lOLuJT2SPKVlL3JOy8",
+      "workflowEndpoint": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-a012b83bdd9145169ba0303d02ed154e/providers/Microsoft.Logic/workflows/0857807a-35e6-4bcc-a2b0-52e181f24f9d",
+      "workflowName": "0857807a-35e6-4bcc-a2b0-52e181f24f9d",
+      "workflowPath": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-a012b83bdd9145169ba0303d02ed154e/providers/Microsoft.Logic/workflows/0857807a-35e6-4bcc-a2b0-52e181f24f9d"
+    },
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1534/1.0.1534.2605/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "6473c741-1f4a-4775-89a7-71303b3885d0": {
+          "value": "shared_sql"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "0857807a-35e6-4bcc-a2b0-52e181f24f9d"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sql": {
+          "value": "6473c741-1f4a-4775-89a7-71303b3885d0"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "0857807a-35e6-4bcc-a2b0-52e181f24f9d"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "GetLiveAlerts"
+    ],
+    "dependencies": {
+      "shared_sql": "6473c741-1f4a-4775-89a7-71303b3885d0"
+    },
+    "dependents": [],
+    "id": "4e8d8a85-54c9-4fdc-822d-e468edd6cb2c"
+  },
   "6473c741-1f4a-4775-89a7-71303b3885d0": {
     "connectionParameters": {
       "database": "cs4961stu01",
@@ -87,7 +127,8 @@
     "dependents": [
       "af8ec331-fc51-4a1a-b109-34ceccc033dc",
       "d44fdecc-b956-477f-8a4e-509378bf62df",
-      "410fd47b-6bd5-49fb-9709-4a364053c654"
+      "410fd47b-6bd5-49fb-9709-4a364053c654",
+      "4e8d8a85-54c9-4fdc-822d-e468edd6cb2c"
     ],
     "id": "6473c741-1f4a-4775-89a7-71303b3885d0"
   },
