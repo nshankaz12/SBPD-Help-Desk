@@ -1,0 +1,150 @@
+"'Alert UI' As screen":
+
+    Image13_12 As image:
+        Height: =734
+        Image: ='image (2)'
+        Width: =1331
+        X: =17
+        ZIndex: =1
+
+    "'nav-name5_9' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate(AssignRole, ScreenTransition.Fade);
+        Text: ="Assign Role"
+        Width: =174
+        X: =877
+        Y: =18
+        ZIndex: =2
+
+    "'nav-name4_9' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Metrics- Admin Tech', ScreenTransition.Fade);
+        Text: ="Ticket Metrics"
+        Width: =174
+        X: =723
+        Y: =18
+        ZIndex: =3
+
+    "'nav-name3_9' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Ticket Log - Admin Tech', ScreenTransition.Fade);
+        Text: ="Ticket Log"
+        Width: =174
+        X: =549
+        Y: =18
+        ZIndex: =4
+
+    "'nav-name2_9' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade);
+        Text: ="My Tickets"
+        Width: =174
+        X: =375
+        Y: =18
+        ZIndex: =5
+
+    "'nav-Ticket_9' As button":
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade);
+        Text: ="Create Ticket"
+        Tooltip: =
+        Width: =174
+        X: =201
+        Y: =18
+        ZIndex: =6
+
+    "'Back Scroll_7' As icon.BackArrow":
+        Color: =RGBA(232, 244, 217, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.Fade)
+        X: =59
+        Y: =87
+        ZIndex: =7
+
+    alert As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =122
+        Size: =30
+        Text: ="Alerts"
+        Width: =456
+        X: =454
+        Y: =58
+        ZIndex: =8
+
+    "Gallery8 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Height: =559
+        Items: =CustomGallerySample
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        Width: =1342
+        X: =11
+        Y: =209
+        ZIndex: =9
+
+        Image17 As image:
+            Height: =128
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title12 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: ="Alert Message"
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image17.Width - 104
+            X: =168
+            Y: =44
+            ZIndex: =2
+
+        Subtitle9 As label:
+            Font: =Font.Georgia
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: ="Descripition of the alert message"
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title12.Width
+            X: =Title12.X
+            Y: =Title12.Y + Title12.Height + 4
+            ZIndex: =3
+
+        NextArrow8 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator8 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
