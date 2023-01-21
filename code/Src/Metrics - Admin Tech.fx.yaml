@@ -1,4 +1,4 @@
-"'Metrics- Admin Tech' As screen":
+"'Metrics - Admin Tech' As screen":
     BackgroundImage: =
     ImagePosition: =ImagePosition.Stretch
 
@@ -28,7 +28,7 @@
                 "'My Activity nav Label_2' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('MyTickets(Ui)',Fade)
+                    OnSelect: =Navigate(MyTickets,Fade)
                     Text: ="My Activity"
                     Width: =174
                     X: =231
@@ -38,7 +38,7 @@
                 "'Reports nav Label_1' As button":
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Reports- Admin Tech',Fade)
+                    OnSelect: =Navigate('Reports - Admin Tech',Fade)
                     Text: ="Reports"
                     Width: =174
                     X: =385

@@ -1,4 +1,4 @@
-"'USER - front page' As screen":
+Home As screen:
     BackgroundImage: =
     ImagePosition: =ImagePosition.Stretch
 
@@ -26,7 +26,7 @@
         BorderThickness: =10
         Fill: =RGBA(232, 244, 217, 1)
         Height: =200
-        OnSelect: =Navigate('Create ticket')
+        OnSelect: =Navigate('Create A Ticket')
         Text: =""
         Visible: =is_admin
         Width: =200
@@ -39,7 +39,7 @@
         BorderThickness: =10
         Fill: =RGBA(232, 244, 217, 1)
         Height: =200
-        OnSelect: =Navigate('MyTickets(Ui)')
+        OnSelect: =Navigate(MyTickets)
         Text: =""
         Width: =200
         X: =443
@@ -119,7 +119,7 @@
     "'nav-Ticket_1' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade);
+        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
         Text: ="Create Ticket"
         Width: =174
         X: =181
@@ -129,7 +129,7 @@
     "'nav-name2_1' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade);
+        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
         Text: ="My Tickets"
         Width: =174
         X: =355
@@ -139,7 +139,7 @@
     "'nav-name3_1' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Ticket Log - Admin Tech', ScreenTransition.Fade);
+        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
         Text: ="Ticket Log"
         Width: =174
         X: =529
@@ -149,7 +149,7 @@
     "'nav-name4_1' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics- Admin Tech', ScreenTransition.Fade);
+        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
         Text: ="Ticket Metrics"
         Width: =174
         X: =703
@@ -159,7 +159,7 @@
     "'nav-name5_1' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(AssignRole, ScreenTransition.Fade);
+        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
         Text: ="Assign Role"
         Width: =174
         X: =877

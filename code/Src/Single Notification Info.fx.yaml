@@ -1,4 +1,4 @@
-NotificationDetails As screen:
+"'Single Notification Info' As screen":
 
     Image13_7 As image:
         Height: =739
@@ -58,7 +58,7 @@ NotificationDetails As screen:
     "'nav-Ticket_3' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade);
+        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
         Text: ="Create Ticket"
         Width: =174
         X: =181
@@ -68,7 +68,7 @@ NotificationDetails As screen:
     "'nav-name2_3' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade);
+        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
         Text: ="My Tickets"
         Width: =174
         X: =355
@@ -78,7 +78,7 @@ NotificationDetails As screen:
     "'nav-name3_3' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Ticket Log - Admin Tech', ScreenTransition.Fade);
+        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
         Text: ="Ticket Log"
         Width: =174
         X: =529
@@ -88,7 +88,7 @@ NotificationDetails As screen:
     "'nav-name4_3' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics- Admin Tech', ScreenTransition.Fade);
+        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
         Text: ="Ticket Metrics"
         Width: =174
         X: =703
@@ -98,7 +98,7 @@ NotificationDetails As screen:
     "'nav-name5_3' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(AssignRole, ScreenTransition.Fade);
+        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
         Text: ="Assign Role"
         Width: =174
         X: =877

@@ -1,4 +1,4 @@
-AssignRole As screen:
+"'Assign Role - Admin' As screen":
 
     Dropdown2 As dropdown:
         Default: =""
@@ -61,7 +61,7 @@ AssignRole As screen:
                     false
                 )
             );
-            Navigate(AssignRole);
+            Navigate('Assign Role - Admin');
         Text: ="Assign Role"
         Width: =240
         X: =550
@@ -78,7 +78,7 @@ AssignRole As screen:
     "'nav-name2_7' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade);
+        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
         Text: ="My Tickets"
         Width: =174
         X: =355
@@ -88,7 +88,7 @@ AssignRole As screen:
     "'nav-name3_7' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Ticket Log - Admin Tech', ScreenTransition.Fade);
+        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
         Text: ="Ticket Log"
         Width: =174
         X: =529
@@ -98,7 +98,7 @@ AssignRole As screen:
     "'nav-name4_7' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics- Admin Tech', ScreenTransition.Fade);
+        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
         Text: ="Ticket Metrics"
         Width: =174
         X: =703
@@ -108,7 +108,7 @@ AssignRole As screen:
     "'nav-name5_7' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(AssignRole, ScreenTransition.Fade);
+        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
         Text: ="Assign Role"
         Width: =174
         X: =877
@@ -118,7 +118,7 @@ AssignRole As screen:
     "'nav-Ticket_7' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade);
+        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
         Text: ="Create Ticket"
         Width: =174
         X: =181
@@ -138,7 +138,7 @@ AssignRole As screen:
 
     Icon9 As icon.BackArrow:
         Icon: =Icon.BackArrow
-        OnSelect: =Navigate('USER - front page',Fade)
+        OnSelect: =Navigate(Home,Fade)
         X: =61
         Y: =58
         ZIndex: =13

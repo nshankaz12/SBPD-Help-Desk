@@ -1,4 +1,4 @@
-"'MyTickets(Ui)' As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
+"MyTickets As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
     ImagePosition: =ImagePosition.Center
     OnVisible: |-
         =// Set dropdown and gallery to default when view this screen
@@ -48,7 +48,7 @@
     "'nav-Ticket_4' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade);
+        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
         Text: ="Create Ticket"
         Width: =174
         X: =181
@@ -58,7 +58,7 @@
     "'nav-name2_4' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('MyTickets(Ui)', ScreenTransition.Fade);
+        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
         Text: ="My Tickets"
         Width: =174
         X: =355
@@ -68,7 +68,7 @@
     "'nav-name3_4' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Ticket Log - Admin Tech', ScreenTransition.Fade);
+        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
         Text: ="Ticket Log"
         Width: =174
         X: =529
@@ -78,7 +78,7 @@
     "'nav-name4_4' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics- Admin Tech', ScreenTransition.Fade);
+        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
         Text: ="Ticket Metrics"
         Width: =174
         X: =703
@@ -88,7 +88,7 @@
     "'nav-name5_4' As button":
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(AssignRole, ScreenTransition.Fade);
+        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
         Text: ="Assign Role"
         Width: =174
         X: =877
@@ -114,7 +114,7 @@
 
     Button4 As button:
         Fill: =RGBA(118, 173, 149, 1)
-        OnSelect: =Navigate('Create ticket', ScreenTransition.Fade);
+        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
         Text: ="New Ticket"
         X: =1150
         Y: =99
@@ -227,7 +227,7 @@
             Fill: =Transparent
             Height: =Parent.TemplateHeight
             HoverFill: =Self.Fill
-            OnSelect: =Navigate(TicketDetails, Fade)
+            OnSelect: =Navigate('Single Ticket Info', Fade)
             PressedFill: =Self.Fill
             Text: =""
             Width: =Parent.TemplateWidth
@@ -262,7 +262,7 @@
 
         Button4_1 As button:
             Fill: =RGBA(118, 173, 149, 1)
-            OnSelect: =Navigate('Create ticket', ScreenTransition.Fade);
+            OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
             Text: ="New Ticket"
             Visible: =filterStatus.Selected.Result = "All" || filterStatus.Selected.Result = "open"
             X: =1150

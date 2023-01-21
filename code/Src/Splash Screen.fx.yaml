@@ -48,7 +48,7 @@
             ZIndex: =3
 
         SplashNavigate As button:
-            OnSelect: =Navigate('USER - front page')
+            OnSelect: =Navigate(Home)
             Text: ="Button"
             Visible: =false
             ZIndex: =4
@@ -57,7 +57,7 @@
         AutoPause: =false
         AutoStart: =true
         Duration: =5000
-        OnTimerEnd: =Navigate('USER - front page',ScreenTransition.Fade)
+        OnTimerEnd: =Navigate(Home,ScreenTransition.Fade)
         Visible: |
             =false
         X: =40
