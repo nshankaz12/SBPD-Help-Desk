@@ -1,10 +1,19 @@
 "'Single Ticket Info' As screen":
 
+    TextInput1 As text:
+        Default: =
+        Height: =431
+        Mode: =TextMode.MultiLine
+        Width: =536
+        X: =70
+        Y: =256
+        ZIndex: =1
+
     Image13_6 As image:
         Height: =739
         Image: ='image (2)'
         Width: =Parent.Width
-        ZIndex: =1
+        ZIndex: =2
 
     Ticket_Title_1 As label:
         Align: =Align.Center
@@ -17,16 +26,6 @@
         Y: =58
         ZIndex: =3
 
-    Label1 As label:
-        Height: =60
-        Size: =15
-        Text: |-
-            ="Ticket created: 6/19/2022"
-        Width: =320
-        X: =70
-        Y: =197
-        ZIndex: =4
-
     Label2 As label:
         Align: =Align.Center
         Height: =44
@@ -37,15 +36,6 @@
         Y: =212
         ZIndex: =5
 
-    TextInput1 As text:
-        Default: =
-        Height: =431
-        Mode: =TextMode.MultiLine
-        Width: =536
-        X: =70
-        Y: =256
-        ZIndex: =6
-
     Gallery2 As gallery.variableTemplateHeightGallery:
         Fill: =RGBA(230, 230, 230, 1)
         Height: =342
@@ -55,7 +45,7 @@
         Width: =708
         X: =634
         Y: =257
-        ZIndex: =7
+        ZIndex: =6
 
     TextInput2 As text:
         Default: ="Text input"
@@ -63,13 +53,13 @@
         Width: =708
         X: =634
         Y: =599
-        ZIndex: =8
+        ZIndex: =7
 
     Button1 As button:
         Text: ="Add"
         X: =908
         Y: =687
-        ZIndex: =9
+        ZIndex: =8
 
     "'profile pic + drop down_4' As icon.Person":
         BorderColor: =RGBA(0, 0, 0, 1)
@@ -79,7 +69,7 @@
         Width: =40
         X: =140
         Y: =18
-        ZIndex: =10
+        ZIndex: =9
 
     "'nav-Ticket_2' As button":
         Color: =RGBA(0, 0, 0, 1)
@@ -89,7 +79,7 @@
         Width: =174
         X: =181
         Y: =18
-        ZIndex: =11
+        ZIndex: =10
 
     "'nav-name2_2' As button":
         Color: =RGBA(0, 0, 0, 1)
@@ -99,7 +89,7 @@
         Width: =174
         X: =355
         Y: =18
-        ZIndex: =12
+        ZIndex: =11
 
     "'nav-name3_2' As button":
         Color: =RGBA(0, 0, 0, 1)
@@ -109,7 +99,7 @@
         Width: =174
         X: =529
         Y: =18
-        ZIndex: =13
+        ZIndex: =12
 
     "'nav-name4_2' As button":
         Color: =RGBA(0, 0, 0, 1)
@@ -119,7 +109,7 @@
         Width: =174
         X: =703
         Y: =18
-        ZIndex: =14
+        ZIndex: =13
 
     "'nav-name5_2' As button":
         Color: =RGBA(0, 0, 0, 1)
@@ -129,7 +119,7 @@
         Width: =174
         X: =877
         Y: =18
-        ZIndex: =15
+        ZIndex: =14
 
     "'new notification in dropdown_4' As circle":
         BorderColor: =RGBA(168, 0, 0, 1)
@@ -138,23 +128,125 @@
         Width: =15
         X: =140
         Y: =18
-        ZIndex: =16
+        ZIndex: =15
 
-    Label18 As label:
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =46
-        Text: ="Text"
-        Width: =708
-        X: =634
-        Y: =269
-        ZIndex: =17
-
-    Label19 As label:
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =46
-        Text: =ThisItem.Created
-        Width: =708
-        X: =634
-        Y: =315
+    Label4 As label:
+        Text: =""
+        X: =70
+        Y: =256
         ZIndex: =18
+
+    Label1_2 As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Ticket created:"
+        Width: =248
+        X: =70
+        Y: =257
+        ZIndex: =19
+
+    Label1_3 As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Status:"
+        Width: =248
+        X: =70
+        Y: =315
+        ZIndex: =20
+
+    Label1_4 As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Category:"
+        Width: =248
+        X: =70
+        Y: =373
+        ZIndex: =21
+
+    Label1_5 As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Tags:"
+        Width: =248
+        X: =70
+        Y: =431
+        ZIndex: =22
+
+    Label1_6 As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Reporting Person:"
+        Width: =248
+        X: =70
+        Y: =489
+        ZIndex: =23
+
+    Label1_7 As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Assigned to:"
+        Width: =248
+        X: =70
+        Y: =547
+        ZIndex: =24
+
+    Label5 As label:
+        Height: =58
+        Size: =15
+        Text: ="*12/25/2025*"
+        Width: =248
+        X: =318
+        Y: =257
+        ZIndex: =25
+
+    Label5_1 As label:
+        Height: =58
+        Size: =15
+        Text: ="*In Progress*"
+        Width: =248
+        X: =318
+        Y: =315
+        ZIndex: =26
+
+    Label5_2 As label:
+        Height: =58
+        Size: =15
+        Text: ="*Hardware*"
+        Width: =248
+        X: =318
+        Y: =373
+        ZIndex: =27
+
+    Label5_3 As label:
+        Height: =58
+        Size: =15
+        Text: ="*Important*"
+        Width: =248
+        X: =318
+        Y: =431
+        ZIndex: =28
+
+    Label5_4 As label:
+        Height: =58
+        Size: =15
+        Text: ="*Jane Doe*"
+        Width: =248
+        X: =318
+        Y: =489
+        ZIndex: =29
+
+    Label5_5 As label:
+        Height: =58
+        Size: =15
+        Text: ="*John Doe*"
+        Width: =248
+        X: =318
+        Y: =547
+        ZIndex: =30
 
