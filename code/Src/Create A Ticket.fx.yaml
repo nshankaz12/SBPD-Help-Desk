@@ -92,7 +92,7 @@
         DataSource: =Tickets_1
         DefaultMode: =FormMode.New
         Height: =528
-        NumberOfColumns: =2
+        NumberOfColumns: =1
         OnSuccess: =Navigate(LblSuccessMsg1,Fade)
         Width: =1253
         X: =40
@@ -110,7 +110,7 @@
             MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "title")
             Required: =false
             Update: =DataCardValue6.Text
-            Width: =626
+            Width: =500
             X: =0
             Y: =0
             ZIndex: =1
@@ -119,10 +119,10 @@
                 AutoHeight: =true
                 Height: =34
                 Text: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.4
+                Width: =Parent.Width - 60
                 Wrap: =false
                 X: =30
-                Y: =10 + (DataCardValue6.Height / 2) - (Self.Height / 2)
+                Y: =10
                 ZIndex: =1
 
             DataCardValue6 As text:
@@ -137,9 +137,9 @@
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
                 Tooltip: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.6
-                X: =DataCardKey7.X + DataCardKey7.Width
-                Y: =10
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey7.Y + DataCardKey7.Height + 5
                 ZIndex: =2
 
             ErrorMessage7 As label:
@@ -167,6 +167,68 @@
                 Y: =DataCardKey7.Y
                 ZIndex: =4
 
+        category_DataCard1 As typedDataCard.allowedValuesStringEditCard:
+            AllowedValues: =DataSourceInfo([@Tickets_1], DataSourceInfo.AllowedValues, "category")
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="category"
+            Default: =ThisItem.category
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"category")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =0
+            Required: =false
+            Update: =DataCardValue1.Selected.Value
+            Width: =500
+            X: =99
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey1 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue1 As dropdown:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                Items: =Parent.AllowedValues
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey1.Y + DataCardKey1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue1.Y + DataCardValue1.Height
+                ZIndex: =3
+
+            StarVisible1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey1.Y
+                ZIndex: =4
+
         description_DataCard2 As typedDataCard.textualMultiLineEditCard:
             BorderStyle: =BorderStyle.Solid
             DataField: ="description"
@@ -177,19 +239,19 @@
             Height: =50
             Required: =false
             Update: =DataCardValue4.Text
-            Width: =626
-            X: =1
-            Y: =0
+            Width: =1253
+            X: =0
+            Y: =2
             ZIndex: =1
 
             DataCardKey5 As label:
                 AutoHeight: =true
                 Height: =34
                 Text: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.4
+                Width: =Parent.Width - 60
                 Wrap: =false
                 X: =30
-                Y: =10 + (DataCardValue4.Height / 2) - (Self.Height / 2)
+                Y: =10
                 ZIndex: =1
 
             DataCardValue4 As text:
@@ -205,9 +267,9 @@
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
                 Tooltip: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.6
-                X: =DataCardKey5.X + DataCardKey5.Width
-                Y: =10
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey5.Y + DataCardKey5.Height + 5
                 ZIndex: =2
 
             ErrorMessage5 As label:
@@ -235,142 +297,6 @@
                 Y: =DataCardKey5.Y
                 ZIndex: =4
 
-        category_DataCard3 As typedDataCard.textualEditCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="category"
-            Default: =ThisItem.category
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"category")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "category")
-            Required: =false
-            Update: =DataCardValue7.Text
-            Width: =626
-            X: =0
-            Y: =1
-            ZIndex: =1
-
-            DataCardKey8 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.4
-                Wrap: =false
-                X: =30
-                Y: =10 + (DataCardValue7.Height / 2) - (Self.Height / 2)
-                ZIndex: =1
-
-            DataCardValue7 As text:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                Default: =Parent.Default
-                DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
-                MaxLength: =Parent.MaxLength
-                PaddingLeft: =5
-                RadiusBottomLeft: =0
-                RadiusBottomRight: =0
-                RadiusTopLeft: =0
-                RadiusTopRight: =0
-                Tooltip: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.6
-                X: =DataCardKey8.X + DataCardKey8.Width
-                Y: =10
-                ZIndex: =2
-
-            ErrorMessage8 As label:
-                AutoHeight: =true
-                Height: =10
-                Live: =Live.Assertive
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Error
-                Visible: =Parent.DisplayMode=DisplayMode.Edit
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardValue7.Y + DataCardValue7.Height
-                ZIndex: =3
-
-            StarVisible8 As label:
-                Align: =Align.Center
-                Height: =DataCardKey8.Height
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                Wrap: =false
-                Y: =DataCardKey8.Y
-                ZIndex: =4
-
-        tags_DataCard1 As typedDataCard.textualEditCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="tags"
-            Default: =ThisItem.tags
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"tags")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "tags")
-            Required: =false
-            Update: =DataCardValue5.Text
-            Width: =626
-            X: =1
-            Y: =1
-            ZIndex: =1
-
-            DataCardKey6 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.4
-                Wrap: =false
-                X: =30
-                Y: =10 + (DataCardValue5.Height / 2) - (Self.Height / 2)
-                ZIndex: =1
-
-            DataCardValue5 As text:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                Default: =Parent.Default
-                DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
-                MaxLength: =Parent.MaxLength
-                PaddingLeft: =5
-                RadiusBottomLeft: =0
-                RadiusBottomRight: =0
-                RadiusTopLeft: =0
-                RadiusTopRight: =0
-                Tooltip: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.6
-                X: =DataCardKey6.X + DataCardKey6.Width
-                Y: =10
-                ZIndex: =2
-
-            ErrorMessage6 As label:
-                AutoHeight: =true
-                Height: =10
-                Live: =Live.Assertive
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Error
-                Visible: =Parent.DisplayMode=DisplayMode.Edit
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardValue5.Y + DataCardValue5.Height
-                ZIndex: =3
-
-            StarVisible6 As label:
-                Align: =Align.Center
-                Height: =DataCardKey6.Height
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                Wrap: =false
-                Y: =DataCardKey6.Y
-                ZIndex: =4
-
         creatorId_DataCard1 As typedDataCard.numberEditCard:
             BorderStyle: =BorderStyle.Solid
             DataField: ="creatorId"
@@ -381,19 +307,19 @@
             Height: =50
             Required: =true
             Update: =Value(DataCardValue8.Text)
-            Width: =626
+            Width: =1253
             X: =0
-            Y: =2
+            Y: =3
             ZIndex: =1
 
             DataCardKey9 As label:
                 AutoHeight: =true
                 Height: =34
                 Text: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.4
+                Width: =Parent.Width - 60
                 Wrap: =false
                 X: =30
-                Y: =10 + (DataCardValue8.Height / 2) - (Self.Height / 2)
+                Y: =10
                 ZIndex: =1
 
             DataCardValue8 As text:
@@ -408,9 +334,9 @@
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
                 Tooltip: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.6
-                X: =DataCardKey9.X + DataCardKey9.Width
-                Y: =10
+                Width: =Parent.Width - 60
+                X: =35
+                Y: =50
                 ZIndex: =2
 
             ErrorMessage9 As label:
