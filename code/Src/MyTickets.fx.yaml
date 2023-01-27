@@ -46,9 +46,13 @@
         ZIndex: =4
 
     "'nav-Ticket_4' As button":
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =
+        PressedFill: =RGBA(0, 0, 0, 0)
         Text: ="Create Ticket"
         Width: =174
         X: =181
@@ -56,9 +60,13 @@
         ZIndex: =5
 
     "'nav-name2_4' As button":
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =
+        PressedFill: =RGBA(0, 0, 0, 0)
         Text: ="My Tickets"
         Width: =174
         X: =355
@@ -66,9 +74,13 @@
         ZIndex: =6
 
     "'nav-name3_4' As button":
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =
+        PressedFill: =RGBA(0, 0, 0, 0)
         Text: ="Ticket Log"
         Width: =174
         X: =529
@@ -76,9 +88,13 @@
         ZIndex: =7
 
     "'nav-name4_4' As button":
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =
+        PressedFill: =RGBA(0, 0, 0, 0)
         Text: ="Ticket Metrics"
         Width: =174
         X: =703
@@ -86,9 +102,13 @@
         ZIndex: =8
 
     "'nav-name5_4' As button":
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =
+        PressedFill: =RGBA(0, 0, 0, 0)
         Text: ="Assign Role"
         Width: =174
         X: =877
@@ -113,8 +133,12 @@
         ZIndex: =11
 
     Button4 As button:
+        AutoDisableOnSelect: =false
         Fill: =RGBA(118, 173, 149, 1)
         OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =
+        PressedFill: =RGBA(0, 0, 0, 0)
         Text: ="New Ticket"
         X: =1150
         Y: =99

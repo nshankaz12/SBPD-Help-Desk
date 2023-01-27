@@ -26,9 +26,12 @@
                 ZIndex: =18
 
                 "'My Activity nav Label_2' As button":
+                    AutoDisableOnSelect: =false
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
                     OnSelect: =Navigate(MyTickets,Fade)
+                    PressedColor: =RGBA(0, 0, 0, 1)
+                    PressedFill: =
                     Text: ="My Activity"
                     Width: =174
                     X: =231
@@ -36,9 +39,12 @@
                     ZIndex: =1
 
                 "'Reports nav Label_1' As button":
+                    AutoDisableOnSelect: =false
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
                     OnSelect: =Navigate('Reports - Admin Tech',Fade)
+                    PressedColor: =RGBA(0, 0, 0, 1)
+                    PressedFill: =
                     Text: ="Reports"
                     Width: =174
                     X: =385

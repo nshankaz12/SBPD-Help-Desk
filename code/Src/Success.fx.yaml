@@ -55,9 +55,12 @@
         ZIndex: =6
 
     "'nav-Ticket_8' As button":
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
         Text: ="Create Ticket"
         Tooltip: =
         Width: =174
@@ -66,9 +69,12 @@
         ZIndex: =7
 
     "'nav-name2_8' As button":
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
         Text: ="My Tickets"
         Width: =174
         X: =355
@@ -76,9 +82,12 @@
         ZIndex: =8
 
     "'nav-name3_8' As button":
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
         Text: ="Ticket Log"
         Width: =174
         X: =529
@@ -86,9 +95,12 @@
         ZIndex: =9
 
     "'nav-name4_8' As button":
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
         Text: ="Ticket Metrics"
         Width: =174
         X: =703
@@ -96,9 +108,12 @@
         ZIndex: =10
 
     "'nav-name5_8' As button":
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
         Text: ="Assign Role"
         Width: =174
         X: =877

@@ -29,9 +29,12 @@ Notifcations As screen:
         ZIndex: =9
 
     CreateTicketTab As button:
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
         Text: ="Create Ticket"
         Width: =174
         X: =248
@@ -39,9 +42,12 @@ Notifcations As screen:
         ZIndex: =14
 
     MyTicketsTab As button:
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
         Text: ="My Tickets"
         Width: =174
         X: =422
@@ -49,9 +55,12 @@ Notifcations As screen:
         ZIndex: =15
 
     TutorialsTab As button:
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
         Text: ="Ticket Log"
         Width: =174
         X: =596
@@ -59,9 +68,12 @@ Notifcations As screen:
         ZIndex: =16
 
     FAQTab As button:
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
         Text: ="Ticket Metrics"
         Width: =174
         X: =770
@@ -69,9 +81,12 @@ Notifcations As screen:
         ZIndex: =17
 
     ArticleTab As button:
+        AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
         Text: ="Assign Role"
         Width: =174
         X: =944

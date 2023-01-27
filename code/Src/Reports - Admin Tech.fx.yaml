@@ -26,9 +26,12 @@
                 ZIndex: =17
 
                 "'My Activity nav Label' As button":
+                    AutoDisableOnSelect: =false
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
                     OnSelect: =
+                    PressedColor: =RGBA(0, 0, 0, 1)
+                    PressedFill: =
                     Text: ="My Activity"
                     Width: =174
                     X: =231
@@ -36,9 +39,12 @@
                     ZIndex: =1
 
                 "'Ticket Log nav Label' As button":
+                    AutoDisableOnSelect: =false
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
                     OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
+                    PressedColor: =RGBA(0, 0, 0, 1)
+                    PressedFill: =
                     Text: ="Ticket Log"
                     Width: =174
                     X: =385
@@ -46,9 +52,12 @@
                     ZIndex: =2
 
                 "'Ticket Metrics nav Label' As button":
+                    AutoDisableOnSelect: =false
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
                     OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
+                    PressedColor: =RGBA(0, 0, 0, 1)
+                    PressedFill: =
                     Text: ="Ticket Metrics"
                     Width: =174
                     X: =559
