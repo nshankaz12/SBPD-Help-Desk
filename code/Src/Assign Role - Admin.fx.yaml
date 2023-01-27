@@ -1,14 +1,5 @@
 "'Assign Role - Admin' As screen":
 
-    Dropdown2 As dropdown:
-        Default: =""
-        Height: =59
-        Items: =Users
-        Width: =340
-        X: =234
-        Y: =324
-        ZIndex: =1
-
     Label17 As label:
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
@@ -18,16 +9,7 @@
         Width: =328
         X: =234
         Y: =220
-        ZIndex: =2
-
-    Dropdown3 As dropdown:
-        Default: =""
-        Height: =59
-        Items: =Distinct(Users, userRole)
-        Width: =340
-        X: =770
-        Y: =324
-        ZIndex: =3
+        ZIndex: =1
 
     Label17_3 As label:
         Align: =Align.Center
@@ -38,7 +20,120 @@
         Width: =328
         X: =770
         Y: =220
+        ZIndex: =2
+
+    Image13_10 As image:
+        Height: =734
+        Image: ='image (2)'
+        Width: =1331
+        X: =17
+        ZIndex: =3
+
+    "'nav-name2_7' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
+        PressedBorderColor: =
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="My Tickets"
+        Width: =174
+        X: =355
+        Y: =18
         ZIndex: =4
+
+    "'nav-name3_7' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
+        PressedBorderColor: =
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Ticket Log"
+        Width: =174
+        X: =529
+        Y: =18
+        ZIndex: =5
+
+    "'nav-name4_7' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
+        PressedBorderColor: =
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Ticket Metrics"
+        Width: =174
+        X: =703
+        Y: =18
+        ZIndex: =6
+
+    "'nav-name5_7' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
+        PressedBorderColor: =
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Assign Role"
+        Width: =174
+        X: =877
+        Y: =18
+        ZIndex: =7
+
+    "'nav-Ticket_7' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        PressedBorderColor: =
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Create Ticket"
+        Width: =174
+        X: =181
+        Y: =18
+        ZIndex: =8
+
+    Greeting_2 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =122
+        Size: =30
+        Text: ="Assign A Role"
+        Width: =456
+        X: =442
+        Y: =58
+        ZIndex: =9
+
+    Icon9 As icon.BackArrow:
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate(Home,Fade)
+        X: =61
+        Y: =58
+        ZIndex: =10
+
+    Dropdown3 As dropdown:
+        Default: =""
+        Height: =59
+        Items: =Distinct(Users, userRole)
+        Width: =340
+        X: =770
+        Y: =324
+        ZIndex: =11
+
+    Dropdown2 As dropdown:
+        Default: =""
+        Height: =59
+        Items: =Users
+        Width: =340
+        X: =234
+        Y: =324
+        ZIndex: =12
 
     Button2 As button:
         Fill: =RGBA(184, 0, 0, 1)
@@ -66,100 +161,5 @@
         Width: =240
         X: =550
         Y: =504
-        ZIndex: =5
-
-    Image13_10 As image:
-        Height: =734
-        Image: ='image (2)'
-        Width: =1331
-        X: =17
-        ZIndex: =6
-
-    "'nav-name2_7' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-        PressedBorderColor: =
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="My Tickets"
-        Width: =174
-        X: =355
-        Y: =18
-        ZIndex: =7
-
-    "'nav-name3_7' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
-        PressedBorderColor: =
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Log"
-        Width: =174
-        X: =529
-        Y: =18
-        ZIndex: =8
-
-    "'nav-name4_7' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-        PressedBorderColor: =
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Metrics"
-        Width: =174
-        X: =703
-        Y: =18
-        ZIndex: =9
-
-    "'nav-name5_7' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-        PressedBorderColor: =
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Assign Role"
-        Width: =174
-        X: =877
-        Y: =18
-        ZIndex: =10
-
-    "'nav-Ticket_7' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-        PressedBorderColor: =
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Create Ticket"
-        Width: =174
-        X: =181
-        Y: =18
-        ZIndex: =11
-
-    Greeting_2 As label:
-        Align: =Align.Center
-        Color: =RGBA(255, 255, 255, 1)
-        Height: =122
-        Size: =30
-        Text: ="Assign A Role"
-        Width: =456
-        X: =442
-        Y: =58
-        ZIndex: =12
-
-    Icon9 As icon.BackArrow:
-        Icon: =Icon.BackArrow
-        OnSelect: =Navigate(Home,Fade)
-        X: =61
-        Y: =58
         ZIndex: =13
 
