@@ -92,7 +92,7 @@
         DataSource: =Tickets_1
         DefaultMode: =FormMode.New
         Height: =528
-        NumberOfColumns: =1
+        NumberOfColumns: =2
         OnSuccess: =Navigate(LblSuccessMsg1,Fade)
         Width: =1253
         X: =40
@@ -110,7 +110,7 @@
             MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "title")
             Required: =false
             Update: =DataCardValue6.Text
-            Width: =500
+            Width: =626
             X: =0
             Y: =0
             ZIndex: =1
@@ -178,9 +178,9 @@
             Height: =0
             Required: =false
             Update: =DataCardValue1.Selected.Value
-            Width: =500
-            X: =99
-            Y: =1
+            Width: =626
+            X: =1
+            Y: =0
             ZIndex: =1
 
             DataCardKey1 As label:
@@ -236,12 +236,12 @@
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"description")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
+            Height: =305
             Required: =false
             Update: =DataCardValue4.Text
-            Width: =1253
+            Width: =626
             X: =0
-            Y: =2
+            Y: =1
             ZIndex: =1
 
             DataCardKey5 As label:
@@ -259,7 +259,7 @@
                 Default: =Parent.Default
                 DelayOutput: =true
                 DisplayMode: =Parent.DisplayMode
-                Height: =80
+                Height: =229
                 Mode: =TextMode.MultiLine
                 PaddingLeft: =5
                 RadiusBottomLeft: =0
@@ -307,9 +307,10 @@
             Height: =50
             Required: =true
             Update: =Value(DataCardValue8.Text)
-            Width: =1253
-            X: =0
-            Y: =3
+            Visible: =false
+            Width: =626
+            X: =1
+            Y: =1
             ZIndex: =1
 
             DataCardKey9 As label:
