@@ -7,6 +7,7 @@
         Image: ='image (2)'
         Width: =1331
         X: =17
+        Y: =18
         ZIndex: =1
 
     Greeting_5 As label:
@@ -147,7 +148,7 @@
     Label15_1 As label:
         Align: =Align.Center
         Height: =35
-        Text: =LookUp(Users, email = User().Email, userRole)
+        Text: =LookUp(userInfo, email = User().Email, userRole)
         Width: =471
         X: =447
         Y: =317

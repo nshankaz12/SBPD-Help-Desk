@@ -34,18 +34,7 @@
         Width: =302
         X: =860
         Y: =212
-        ZIndex: =5
-
-    Gallery2 As gallery.variableTemplateHeightGallery:
-        Fill: =RGBA(230, 230, 230, 1)
-        Height: =342
-        Items: =Filter(Administrators, DataTable1)
-        Layout: =Layout.Vertical
-        TemplateSize: =88
-        Width: =708
-        X: =634
-        Y: =257
-        ZIndex: =6
+        ZIndex: =4
 
     TextInput2 As text:
         Default: ="Text input"
@@ -53,13 +42,13 @@
         Width: =708
         X: =634
         Y: =599
-        ZIndex: =7
+        ZIndex: =5
 
     Button1 As button:
         Text: ="Add"
         X: =908
         Y: =687
-        ZIndex: =8
+        ZIndex: =6
 
     "'profile pic + drop down_4' As icon.Person":
         BorderColor: =RGBA(0, 0, 0, 1)
@@ -69,7 +58,7 @@
         Width: =40
         X: =140
         Y: =18
-        ZIndex: =9
+        ZIndex: =7
 
     "'nav-Ticket_2' As button":
         AutoDisableOnSelect: =false
@@ -82,7 +71,7 @@
         Width: =174
         X: =181
         Y: =18
-        ZIndex: =10
+        ZIndex: =8
 
     "'nav-name2_2' As button":
         AutoDisableOnSelect: =false
@@ -95,7 +84,7 @@
         Width: =174
         X: =355
         Y: =18
-        ZIndex: =11
+        ZIndex: =9
 
     "'nav-name3_2' As button":
         AutoDisableOnSelect: =false
@@ -108,7 +97,7 @@
         Width: =174
         X: =529
         Y: =18
-        ZIndex: =12
+        ZIndex: =10
 
     "'nav-name4_2' As button":
         AutoDisableOnSelect: =false
@@ -121,7 +110,7 @@
         Width: =174
         X: =703
         Y: =18
-        ZIndex: =13
+        ZIndex: =11
 
     "'nav-name5_2' As button":
         AutoDisableOnSelect: =false
@@ -134,7 +123,7 @@
         Width: =174
         X: =877
         Y: =18
-        ZIndex: =14
+        ZIndex: =12
 
     "'new notification in dropdown_4' As circle":
         BorderColor: =RGBA(168, 0, 0, 1)
@@ -143,13 +132,13 @@
         Width: =15
         X: =140
         Y: =18
-        ZIndex: =15
+        ZIndex: =13
 
     Label4 As label:
         Text: =""
         X: =70
         Y: =256
-        ZIndex: =18
+        ZIndex: =14
 
     Label1_2 As label:
         Height: =58
@@ -159,7 +148,7 @@
         Width: =248
         X: =70
         Y: =257
-        ZIndex: =19
+        ZIndex: =15
 
     Label1_3 As label:
         Height: =58
@@ -169,7 +158,7 @@
         Width: =248
         X: =70
         Y: =315
-        ZIndex: =20
+        ZIndex: =16
 
     Label1_4 As label:
         Height: =58
@@ -179,7 +168,7 @@
         Width: =248
         X: =70
         Y: =373
-        ZIndex: =21
+        ZIndex: =17
 
     Label1_5 As label:
         Height: =58
@@ -189,7 +178,7 @@
         Width: =248
         X: =70
         Y: =431
-        ZIndex: =22
+        ZIndex: =18
 
     Label1_6 As label:
         Height: =58
@@ -199,7 +188,7 @@
         Width: =248
         X: =70
         Y: =489
-        ZIndex: =23
+        ZIndex: =19
 
     Label1_7 As label:
         Height: =58
@@ -209,7 +198,7 @@
         Width: =248
         X: =70
         Y: =547
-        ZIndex: =24
+        ZIndex: =20
 
     Label5 As label:
         Height: =58
@@ -218,7 +207,7 @@
         Width: =248
         X: =318
         Y: =257
-        ZIndex: =25
+        ZIndex: =21
 
     Label5_1 As label:
         Height: =58
@@ -227,7 +216,7 @@
         Width: =248
         X: =318
         Y: =315
-        ZIndex: =26
+        ZIndex: =22
 
     Label5_2 As label:
         Height: =58
@@ -236,7 +225,7 @@
         Width: =248
         X: =318
         Y: =373
-        ZIndex: =27
+        ZIndex: =23
 
     Label5_3 As label:
         Height: =58
@@ -245,7 +234,7 @@
         Width: =248
         X: =318
         Y: =431
-        ZIndex: =28
+        ZIndex: =24
 
     Label5_4 As label:
         Height: =58
@@ -254,7 +243,7 @@
         Width: =248
         X: =318
         Y: =489
-        ZIndex: =29
+        ZIndex: =25
 
     Label5_5 As label:
         Height: =58
@@ -263,5 +252,16 @@
         Width: =248
         X: =318
         Y: =547
-        ZIndex: =30
+        ZIndex: =26
+
+    Gallery2 As gallery.variableTemplateHeightGallery:
+        Fill: =RGBA(230, 230, 230, 1)
+        Height: =342
+        Items: =Users
+        Layout: =Layout.Vertical
+        TemplateSize: =88
+        Width: =708
+        X: =634
+        Y: =257
+        ZIndex: =27
 

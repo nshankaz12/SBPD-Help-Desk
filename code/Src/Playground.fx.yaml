@@ -29,74 +29,6 @@ Playground As screen:
         
         ClearCollect(userInfo,GetUserDetails.Run(User().Email));
 
-    Label10 As label:
-        BorderThickness: =1
-        Text: |-
-            ="First Name: "
-        Width: =111
-        X: =60
-        Y: =28
-        ZIndex: =1
-
-    Label14 As label:
-        BorderThickness: =1
-        Text: =LookUp(Users, email = User().Email, firstName)
-        Width: =220
-        X: =171
-        Y: =28
-        ZIndex: =2
-
-    Label10_1 As label:
-        BorderThickness: =1
-        Text: |-
-            ="Last Name: "
-        Width: =111
-        X: =60
-        Y: =68
-        ZIndex: =3
-
-    Label14_1 As label:
-        BorderThickness: =1
-        Text: =
-        Width: =220
-        X: =171
-        Y: =68
-        ZIndex: =4
-
-    Label10_2 As label:
-        BorderThickness: =1
-        Text: |-
-            ="Email:"
-        Width: =111
-        X: =60
-        Y: =108
-        ZIndex: =5
-
-    Label14_2 As label:
-        BorderThickness: =1
-        Text: =LookUp(Users, email = User().Email, email)
-        Width: =220
-        X: =171
-        Y: =108
-        ZIndex: =6
-
-    Label10_3 As label:
-        BorderThickness: =1
-        Text: |-
-            ="Role:"
-        Width: =111
-        X: =60
-        Y: =148
-        ZIndex: =7
-
-    Label14_3 As label:
-        BorderThickness: =1
-        Text: =LookUp(Users, email = User().Email, userRole)
-        Width: =220
-        X: =171
-        Y: =148
-        ZIndex: =8
-
     "Gallery3 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
         Height: =517
         Items: =Tickets_1
@@ -166,24 +98,6 @@ Playground As screen:
             Width: =Parent.TemplateWidth
             Y: =Parent.TemplateHeight - 1
             ZIndex: =5
-
-    Label10_4 As label:
-        BorderThickness: =1
-        Text: |-
-            ="ID:
-            "
-        Width: =111
-        X: =60
-        Y: =188
-        ZIndex: =10
-
-    Label14_4 As label:
-        BorderThickness: =1
-        Text: =LookUp(Users, email = User().Email, id)
-        Width: =220
-        X: =171
-        Y: =188
-        ZIndex: =11
 
     Button3 As button:
         OnSelect: =

@@ -140,7 +140,6 @@
         Height: =72
         OnSelect: |-
             =UpdateUserRole.Run(Dropdown2.Selected.id, Dropdown3.Selected.Result);
-            Refresh(Users);
             If(
                 LookUp(
                     Users,
@@ -157,6 +156,7 @@
                 )
             );
             Navigate('Assign Role - Admin');
+            Refresh(Users)
         Text: ="Assign Role"
         Width: =240
         X: =550
