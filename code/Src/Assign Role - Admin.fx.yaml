@@ -1,4 +1,5 @@
 "'Assign Role - Admin' As screen":
+    Fill: =
 
     Label17 As label:
         Align: =Align.Center
@@ -155,7 +156,7 @@
                     false
                 )
             );
-            Refresh(Users)
+            ClearCollect(userInfo,GetUserDetails.Run(User().Email));
         Text: ="Assign Role"
         Width: =240
         X: =550

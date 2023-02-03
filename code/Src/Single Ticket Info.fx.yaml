@@ -45,9 +45,9 @@
         ZIndex: =5
 
     Button1 As button:
-        Text: ="Add"
-        X: =908
-        Y: =687
+        Text: ="Add Comment"
+        X: =785
+        Y: =694
         ZIndex: =6
 
     "'profile pic + drop down_4' As icon.Person":
@@ -254,14 +254,94 @@
         Y: =547
         ZIndex: =26
 
-    Gallery2 As gallery.variableTemplateHeightGallery:
-        Fill: =RGBA(230, 230, 230, 1)
-        Height: =342
-        Items: =Users
+    Button1_2 As button:
+        Text: ="Close Ticket"
+        X: =1052
+        Y: =694
+        ZIndex: =27
+
+    "Gallery2 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
+        Height: =348
+        Items: =Comments
         Layout: =Layout.Vertical
-        TemplateSize: =88
+        TemplatePadding: =0
+        TemplateSize: =Min(168, Self.Height - 60)
         Width: =708
         X: =634
         Y: =257
-        ZIndex: =27
+        ZIndex: =28
+
+        Image6 As image:
+            Height: =128
+            Image: =Untitled_Artwork
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title3 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.creatorId
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image6.Width - 104
+            X: =Image6.X + Image6.Width + 16
+            Y: =16
+            ZIndex: =2
+
+        Subtitle2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.message
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title3.Width
+            X: =Title3.X
+            Y: =Title3.Y + Title3.Height + 2
+            ZIndex: =3
+
+        Body2 As label:
+            Height: =Self.Size * 4
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.message
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Subtitle2.Width
+            X: =Subtitle2.X
+            Y: =Subtitle2.Y + Subtitle2.Height + 4
+            ZIndex: =4
+
+        NextArrow5 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =5
+
+        Separator5 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =6
 
