@@ -449,3 +449,29 @@
         Y: =660
         ZIndex: =40
 
+    Group1 As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =45
+
+        AddMediaButton1 As addMedia:
+            ChangePictureText: |
+                =
+            Height: =139
+            OnSelect: =AddMediaButton1
+            Size: =25
+            Text: ="Attach File"
+            Width: =270
+            X: =924
+            Y: =595
+            ZIndex: =43
+
+        Icon6 As icon.Attachment:
+            Icon: =Icon.PaperClip
+            OnSelect: =AddMediaButton1
+            X: =910
+            Y: =633
+            ZIndex: =44
+
