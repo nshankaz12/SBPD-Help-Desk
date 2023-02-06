@@ -46,7 +46,8 @@ App As appinfo:
         //Enable for non timer based navigation for Splash Screen
         //Set(splashNavigate,true)
         
-        ClearCollect(colStatus,{Result:"All"}, {Result:"close"});
-        Collect(colStatus,Distinct(Tickets_1,status))
+        ClearCollect(colStatus,{Result:"All"}, {Result:"open"}, {Result:"closed"});
+        Collect(colStatus,Distinct(Tickets_1,status));
+        ClearCollect(colStatus, ForAll(Distinct(colStatus, ThisRecord), Result));
     StartScreen: ='Splash Screen'
 

@@ -2,8 +2,7 @@
     ImagePosition: =ImagePosition.Center
     OnVisible: |-
         =// Set dropdown and gallery to default when view this screen
-        Reset(filterStatus);
-        //Reset(TemplateGalleryList1);
+        //Set(searchTicketQuery, ""); Reset(filterStatus); Reset(searchBox); Reset(TemplateGalleryList1);
         
         //Use for testing because current user may not have any tickets and user 4 and 5 have tickets
         Set(CurrentTicketInfo,GetCurrentTickets.Run(4));
@@ -26,14 +25,6 @@
         Width: =Parent.Width
         Y: =15
         ZIndex: =2
-
-    Statusfilter As combobox:
-        Items: =ComboBoxSample
-        SearchItems: =Search(ComboBoxSample,Statusfilter.SearchText,"Value1")
-        Width: =725
-        X: =320
-        Y: =184
-        ZIndex: =3
 
     "'profile pic + drop down_6' As icon.Person":
         BorderColor: =RGBA(0, 0, 0, 1)
@@ -146,14 +137,14 @@
 
     TemplateGalleryList1 As gallery.galleryVertical:
         Height: =544
-        Items: =If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result))
+        Items: =Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
         Layout: =Layout.Vertical
         TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(265, Self.Height - 60))
         Transition: =Transition.Push
         Visible: |-
             =!IsEmpty(CurrentTicketInfo)
             And 
-            !IsEmpty(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)))
+            !IsEmpty(Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description"))
         Width: =1366
         WrapCount: =3
         Y: =224
@@ -172,23 +163,6 @@
             Text: =""
             Width: =Parent.TemplateWidth
             ZIndex: =1
-
-        btnStatus As button:
-            Fill: |-
-                =Switch(
-                    ThisItem.status,
-                    "open", RGBA(0, 127, 187, 1),
-                    "close", RGBA(127, 178, 57, 1),
-                    RGBA(221, 79, 14, 1)
-                )
-            HoverFill: =Self.Fill
-            OnSelect: =Select(Parent)
-            PressedFill: =Self.Fill
-            Text: =If (IsBlank(ThisItem.status), "Not Started", ThisItem.status)
-            Width: =140
-            X: =298
-            Y: =173
-            ZIndex: =2
 
         Label20 As label:
             FontWeight: =FontWeight.Bold
@@ -233,6 +207,10 @@
         Image7_3 As image:
             Height: =40
             Image: =User().Image
+            RadiusBottomLeft: =128
+            RadiusBottomRight: =128
+            RadiusTopLeft: =128
+            RadiusTopRight: =128
             Width: =40
             X: =5
             Y: =213
@@ -240,11 +218,47 @@
 
         "'Label-assignee' As label":
             OnSelect: =Select(Parent)
-            Text: ="Assignee"
+            Text: =If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
             Width: =200
             X: =45
             Y: =213
             ZIndex: =9
+
+        statusColor As rectangle:
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =Switch(
+                    ThisItem.status,
+                    "open", RGBA(0, 127, 187, 1),
+                    "close", RGBA(127, 178, 57, 1),
+                    RGBA(221, 79, 14, 1)
+                )
+            Height: =40
+            OnSelect: =Select(Parent)
+            Width: =10
+            X: =288
+            Y: =173
+            ZIndex: =10
+
+        lblStatus As label:
+            Align: =Align.Center
+            Color: |-
+                =Switch(
+                    ThisItem.status,
+                    "open", RGBA(0, 127, 187, 1),
+                    "close", RGBA(127, 178, 57, 1),
+                    RGBA(221, 79, 14, 1)
+                )
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(241, 244, 249, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.status
+            Width: =140
+            X: =298
+            Y: =173
+            ZIndex: =11
 
         btnTemplate As button:
             BorderThickness: =0
@@ -255,7 +269,7 @@
             PressedFill: =Self.Fill
             Text: =""
             Width: =Parent.TemplateWidth
-            ZIndex: =10
+            ZIndex: =12
 
     EmptyState As groupContainer.verticalAutoLayoutContainer:
         Height: =544
@@ -266,7 +280,7 @@
         LayoutMode: =LayoutMode.Auto
         Visible: |-
             =!IsBlank(filterStatus.Selected.Result)
-            And IsEmpty(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)))
+            And IsEmpty(Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description"))
         Width: =1366
         Y: =224
         ZIndex: =14
@@ -275,13 +289,7 @@
             Align: =Align.Center
             AlignInContainer: =AlignInContainer.Stretch
             Size: =32
-            Text: |-
-                =Switch(
-                    filterStatus.Selected.Result,
-                    "All", "Add New Ticket",
-                    "open", "Add New Ticket",
-                    "No Tickets Found"
-                )
+            Text: ="No Tickets Found"
             ZIndex: =1
 
         Button4_1 As button:
@@ -300,4 +308,54 @@
         X: =1117
         Y: =184
         ZIndex: =15
+
+    searchTicketBar As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =20
+
+        searchBox As text:
+            Default: =
+            DelayOutput: =true
+            HintText: ="Search by title or description"
+            OnChange: =Set(searchTicketQuery, searchBox.Text); Reset(TemplateGalleryList1)
+            PaddingRight: =40
+            Width: =685
+            X: =320
+            Y: =184
+            ZIndex: =16
+
+        bgSearchIcon As rectangle:
+            BorderThickness: =2
+            Height: =40
+            OnSelect: =Set(searchTicketQuery, searchBox.Text); Reset(TemplateGalleryList1)
+            Width: =40
+            X: =1006
+            Y: =184
+            ZIndex: =17
+
+        searchIcon As icon.Search:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =39
+            Icon: =Icon.Search
+            OnSelect: =Set(searchTicketQuery, searchBox.Text); Reset(TemplateGalleryList1)
+            Tooltip: ="Search"
+            Width: =39
+            X: =1007
+            Y: =185
+            ZIndex: =18
+
+        cancelIcon As icon.Cancel:
+            Color: =RGBA(116, 116, 116, 1)
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: =Set(searchTicketQuery, ""); Reset(searchBox); Reset(TemplateGalleryList1)
+            Tooltip: ="Cancel"
+            Visible: =!IsBlank(searchBox.Text)
+            Width: =40
+            X: =965
+            Y: =184
+            ZIndex: =19
 
