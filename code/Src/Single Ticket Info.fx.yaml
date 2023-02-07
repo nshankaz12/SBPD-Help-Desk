@@ -2,7 +2,7 @@
 
     TextInput1 As text:
         Default: =Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
-        Height: =431
+        Height: =505
         Mode: =TextMode.MultiLine
         Width: =536
         X: =70
@@ -134,130 +134,129 @@
         Y: =18
         ZIndex: =13
 
-    Label4 As label:
+    title_label As label:
         Text: =""
         X: =70
         Y: =256
         ZIndex: =14
 
-    Label1_2 As label:
-        Height: =58
-        Size: =15
-        Text: |-
-            ="Ticket created:"
-        Width: =248
-        X: =70
-        Y: =257
-        ZIndex: =15
-
-    Label1_3 As label:
+    Status_label As label:
         Height: =58
         Size: =15
         Text: |-
             ="Status:"
         Width: =248
         X: =70
-        Y: =315
-        ZIndex: =16
+        Y: =373
+        ZIndex: =15
 
-    Label1_4 As label:
+    Category_label As label:
         Height: =58
         Size: =15
         Text: |-
             ="Category:"
         Width: =248
         X: =70
-        Y: =373
-        ZIndex: =17
+        Y: =431
+        ZIndex: =16
 
-    Label1_5 As label:
+    Tags_label As label:
         Height: =58
         Size: =15
         Text: |-
             ="Tags:"
         Width: =248
         X: =70
-        Y: =431
-        ZIndex: =18
+        Y: =489
+        ZIndex: =17
 
-    Label1_6 As label:
+    Reporting_person_label As label:
         Height: =58
         Size: =15
         Text: |-
             ="Reporting Person:"
         Width: =248
         X: =70
-        Y: =489
+        Y: =547
+        ZIndex: =18
+
+    Ticket_Created_value As label:
+        Height: =58
+        Size: =15
+        Text: =dateCreated
+        Width: =248
+        X: =318
+        Y: =316
         ZIndex: =19
 
-    Label1_7 As label:
+    Status_value As label:
+        Height: =58
+        Size: =15
+        Text: =status
+        Width: =248
+        X: =317
+        Y: =374
+        ZIndex: =20
+
+    Category_value As label:
+        Height: =58
+        Size: =15
+        Text: =category
+        Width: =248
+        X: =318
+        Y: =432
+        ZIndex: =21
+
+    Tags_value As label:
+        Height: =58
+        Size: =15
+        Text: =tags
+        Width: =248
+        X: =318
+        Y: =490
+        ZIndex: =22
+
+    Reporting_person_value As label:
+        Height: =58
+        Size: =15
+        Text: =reporting_person
+        Width: =248
+        X: =318
+        Y: =548
+        ZIndex: =23
+
+    Close_Ticket_Button As button:
+        Text: ="Close Ticket"
+        X: =1052
+        Y: =694
+        ZIndex: =24
+
+    Label1_8 As label:
         Height: =58
         Size: =15
         Text: |-
             ="Assigned to:"
         Width: =248
         X: =70
-        Y: =547
-        ZIndex: =20
-
-    Label5 As label:
-        Height: =58
-        Size: =15
-        Text: ="*12/25/2025*"
-        Width: =248
-        X: =318
-        Y: =257
-        ZIndex: =21
-
-    Label5_1 As label:
-        Height: =58
-        Size: =15
-        Text: ="*In Progress*"
-        Width: =248
-        X: =318
-        Y: =315
-        ZIndex: =22
-
-    Label5_2 As label:
-        Height: =58
-        Size: =15
-        Text: ="*Hardware*"
-        Width: =248
-        X: =318
-        Y: =373
-        ZIndex: =23
-
-    Label5_3 As label:
-        Height: =58
-        Size: =15
-        Text: ="*Important*"
-        Width: =248
-        X: =318
-        Y: =431
-        ZIndex: =24
-
-    Label5_4 As label:
-        Height: =58
-        Size: =15
-        Text: ="*Jane Doe*"
-        Width: =248
-        X: =318
-        Y: =489
+        Y: =606
         ZIndex: =25
 
-    Label5_5 As label:
+    Assigned_to_value As label:
         Height: =58
         Size: =15
-        Text: ="*John Doe*"
+        Text: =assigned_person
         Width: =248
         X: =318
-        Y: =547
+        Y: =605
         ZIndex: =26
 
-    Button1_2 As button:
-        Text: ="Close Ticket"
-        X: =1052
-        Y: =694
+    Title_value As label:
+        Height: =58
+        Size: =15
+        Text: =title
+        Width: =248
+        X: =318
+        Y: =258
         ZIndex: =27
 
     "Gallery2 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
@@ -345,278 +344,42 @@
             Y: =Parent.TemplateHeight - 1
             ZIndex: =6
 
-    "'Ticket info' As formViewer":
-        DataSource: =Tickets_1
-        Height: =427
-        NumberOfColumns: =1
-        Width: =536
-        X: =202
-        Y: =261
+    Ticket_Created_label As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Ticket created:"
+        Width: =248
+        X: =70
+        Y: =315
         ZIndex: =29
 
-        title_DataCard2 As typedDataCard.textualViewCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="title"
-            Default: =ThisItem.title
-            DisplayMode: =DisplayMode.View
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"title")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =40
-            Required: =false
-            Width: =536
-            X: =0
-            Y: =0
-            ZIndex: =1
-
-            DataCardKey16 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue16 As label:
-                AutoHeight: =true
-                DisplayMode: =Parent.DisplayMode
-                Height: =27
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Default
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey16.Y + DataCardKey16.Height + 5
-                ZIndex: =2
-
-        dateCreated_DataCard1 As typedDataCard.textualViewCard:
-            BorderStyle: =BorderStyle.Solid
-            ContentLanguage: =""
-            DataField: ="dateCreated"
-            Default: =ThisItem.dateCreated
-            DisplayMode: =DisplayMode.View
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"dateCreated")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =40
-            Required: =false
-            Width: =536
-            X: =0
-            Y: =1
-            ZIndex: =1
-
-            DataCardKey10 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue10 As label:
-                AutoHeight: =true
-                DisplayMode: =Parent.DisplayMode
-                Height: =27
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Default
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey10.Y + DataCardKey10.Height + 5
-                ZIndex: =2
-
-        status_DataCard1 As typedDataCard.textualViewCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="status"
-            Default: =ThisItem.status
-            DisplayMode: =DisplayMode.View
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"status")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =40
-            Required: =false
-            Width: =536
-            X: =0
-            Y: =2
-            ZIndex: =1
-
-            DataCardKey13 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue13 As label:
-                AutoHeight: =true
-                DisplayMode: =Parent.DisplayMode
-                Height: =27
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Default
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey13.Y + DataCardKey13.Height + 5
-                ZIndex: =2
-
-        categoryId_DataCard1 As typedDataCard.textualViewCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="categoryId"
-            Default: =ThisItem.categoryId
-            DisplayMode: =DisplayMode.View
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"categoryId")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =40
-            Required: =false
-            Width: =536
-            X: =0
-            Y: =3
-            ZIndex: =1
-
-            DataCardKey18 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue18 As label:
-                AutoHeight: =true
-                DisplayMode: =Parent.DisplayMode
-                Height: =27
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Default
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey18.Y + DataCardKey18.Height + 5
-                ZIndex: =2
-
-        tags_DataCard1 As typedDataCard.textualViewCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="tags"
-            Default: =ThisItem.tags
-            DisplayMode: =DisplayMode.View
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"tags")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =40
-            Required: =false
-            Width: =536
-            X: =0
-            Y: =4
-            ZIndex: =1
-
-            DataCardKey15 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue15 As label:
-                AutoHeight: =true
-                DisplayMode: =Parent.DisplayMode
-                Height: =27
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Default
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey15.Y + DataCardKey15.Height + 5
-                ZIndex: =2
-
-        subCategoryId_DataCard1 As typedDataCard.textualViewCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="subCategoryId"
-            Default: =ThisItem.subCategoryId
-            DisplayMode: =DisplayMode.View
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"subCategoryId")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =40
-            Required: =false
-            Width: =536
-            X: =0
-            Y: =5
-            ZIndex: =1
-
-            DataCardKey14 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue14 As label:
-                AutoHeight: =true
-                DisplayMode: =Parent.DisplayMode
-                Height: =27
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Default
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey14.Y + DataCardKey14.Height + 5
-                ZIndex: =2
-
-        assignedTo_DataCard1 As typedDataCard.textualViewCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="assignedTo"
-            Default: =ThisItem.assignedTo
-            DisplayMode: =DisplayMode.View
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"assignedTo")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =40
-            Required: =false
-            Width: =536
-            X: =0
-            Y: =6
-            ZIndex: =1
-
-            DataCardKey17 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue17 As label:
-                AutoHeight: =true
-                DisplayMode: =Parent.DisplayMode
-                Height: =27
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Default
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey17.Y + DataCardKey17.Height + 5
-                ZIndex: =2
-
-    Label10 As label:
-        Text: ="Text"
+    Title_label As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Title:"
+        Width: =248
         X: =70
-        Y: =202
+        Y: =257
+        ZIndex: =30
+
+    Label1_9 As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Description: "
+        Width: =248
+        X: =70
+        Y: =664
         ZIndex: =31
+
+    Assigned_to_value_1 As label:
+        Height: =90
+        Size: =15
+        Text: =description
+        Width: =411
+        X: =195
+        Y: =671
+        ZIndex: =32
 

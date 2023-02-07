@@ -265,7 +265,8 @@
             Fill: =Transparent
             Height: =Parent.TemplateHeight
             HoverFill: =Self.Fill
-            OnSelect: =Navigate('Single Ticket Info', Fade)
+            OnSelect: |-
+                =Navigate('Single Ticket Info', Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.category, tags:ThisItem.tags, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description})
             PressedFill: =Self.Fill
             Text: =""
             Width: =Parent.TemplateWidth
