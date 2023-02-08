@@ -49,5 +49,38 @@ App As appinfo:
         ClearCollect(colStatus,{Result:"All"}, {Result:"open"}, {Result:"closed"});
         Collect(colStatus,Distinct(Tickets_1,status));
         ClearCollect(colStatus, ForAll(Distinct(colStatus, ThisRecord), Result));
+        ClearCollect(
+            navCol,
+            {
+                ID: 1,
+                NavName: "Create Ticket",
+                NavIcon: Icon.AddDocument,
+                NavScreen: "Create A Ticket"
+            },
+            {
+                ID: 2,
+                NavName: "My Tickets",
+                NavIcon: Icon.Folder,
+                NavScreen: "MyTickets"
+            },
+            {
+                ID: 3,
+                NavName: "Ticket Log",
+                NavIcon: Icon.DocumentWithContent,
+                NavScreen: "Log of All Tickets - Admin Tech"
+            },
+            {
+                ID: 4,
+                NavName: "Ticket Metrics",
+                NavIcon: Icon.Trending,
+                NavScreen: "Metrics - Admin Tech"
+            },
+            {
+                ID: 5,
+                NavName: "Assign Role",
+                NavIcon: Icon.People,
+                NavScreen: "Assign Role - Admin"
+            }
+        );
     StartScreen: ='Splash Screen'
 
