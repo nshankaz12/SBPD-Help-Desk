@@ -40,7 +40,7 @@
         AutoDisableOnSelect: =false
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        OnSelect: =Navigate('Create A Ticket - Deprocated', ScreenTransition.Fade);
         PressedBorderColor: =RGBA(0, 0, 0, 0)
         PressedColor: =
         PressedFill: =RGBA(0, 0, 0, 0)
@@ -126,7 +126,7 @@
     Button4 As button:
         AutoDisableOnSelect: =false
         Fill: =RGBA(118, 173, 149, 1)
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        OnSelect: =Navigate('Create A Ticket - Deprocated', ScreenTransition.Fade);
         PressedBorderColor: =RGBA(0, 0, 0, 0)
         PressedColor: =
         PressedFill: =RGBA(0, 0, 0, 0)
@@ -295,7 +295,7 @@
 
         Button4_1 As button:
             Fill: =RGBA(118, 173, 149, 1)
-            OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+            OnSelect: =Navigate('Create A Ticket - Deprocated', ScreenTransition.Fade);
             Text: ="New Ticket"
             Visible: =filterStatus.Selected.Result = "All" || filterStatus.Selected.Result = "open"
             X: =1150
