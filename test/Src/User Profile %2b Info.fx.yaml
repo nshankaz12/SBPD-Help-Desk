@@ -1,0 +1,165 @@
+"'User Profile + Info' As screen":
+    BackgroundImage: =
+    ImagePosition: =ImagePosition.Stretch
+
+    Image13_8 As image:
+        Height: =734
+        Image: ='image (2)'
+        Width: =1331
+        X: =17
+        Y: =18
+        ZIndex: =1
+
+    Greeting_5 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =122
+        Size: =30
+        Text: ="Hello, "
+        Width: =456
+        X: =308
+        Y: =56
+        ZIndex: =2
+
+    "'Back Scroll_3' As icon.BackArrow":
+        Color: =RGBA(232, 244, 217, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(Fade)
+        X: =59
+        Y: =87
+        ZIndex: =9
+
+    "'nav-Ticket_5' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Create Ticket"
+        Width: =174
+        X: =181
+        Y: =18
+        ZIndex: =14
+
+    "'nav-name2_5' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="My Tickets"
+        Width: =174
+        X: =355
+        Y: =18
+        ZIndex: =15
+
+    "'nav-name3_5' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Ticket Log"
+        Width: =174
+        X: =529
+        Y: =18
+        ZIndex: =16
+
+    "'nav-name4_5' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Ticket Metrics"
+        Width: =174
+        X: =703
+        Y: =18
+        ZIndex: =17
+
+    "'nav-name5_5' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Assign Role"
+        Width: =174
+        X: =877
+        Y: =18
+        ZIndex: =18
+
+    Label3_1 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =70
+        Size: =30
+        Text: =User().FullName
+        Width: =493
+        X: =592
+        Y: =81
+        ZIndex: =37
+
+    Image7_1 As image:
+        Height: =128
+        Image: =User().Image
+        Width: =152
+        X: =1136
+        Y: =52
+        ZIndex: =38
+
+    Rectangle1 As rectangle:
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =35
+        Width: =471
+        X: =447
+        Y: =256
+        ZIndex: =39
+
+    Rectangle1_1 As rectangle:
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =35
+        Width: =471
+        X: =447
+        Y: =317
+        ZIndex: =40
+
+    Rectangle1_2 As rectangle:
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =35
+        Width: =471
+        X: =447
+        Y: =379
+        ZIndex: =41
+
+    Label15 As label:
+        Align: =Align.Center
+        Height: =35
+        Text: =User().Email
+        Width: =471
+        X: =447
+        Y: =256
+        ZIndex: =42
+
+    Label15_1 As label:
+        Align: =Align.Center
+        Height: =35
+        Text: =LookUp(userInfo, email = User().Email, userRole)
+        Width: =471
+        X: =447
+        Y: =317
+        ZIndex: =43
+
+    Label15_2 As label:
+        Align: =Align.Center
+        Height: =35
+        Text: =LookUp(Users, email = User().Email, id)
+        Width: =471
+        X: =447
+        Y: =379
+        ZIndex: =44
+
