@@ -1,0 +1,47 @@
+Notifications As CanvasComponent:
+    AlertDuration: =100
+    AlertLocation: ="Text"
+    Fill: =RGBA(0, 0, 0, 0)
+    FillColor: ="Text"
+    Height: =640
+    Message: ="Text"
+    ShowAlert: =true
+    TextColor: =RGBA(0, 0, 0, 1)
+    Type: ="Text"
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    TimerHideAlert As timer:
+        X: =120
+        Y: =465
+        ZIndex: =1
+
+    TimerShowAlert As timer:
+        X: =350
+        Y: =465
+        ZIndex: =2
+
+    Notification As label:
+        Align: =Align.Justify
+        Fill: =RGBA(204, 231, 246, 1)
+        Height: =70
+        OnSelect: =
+        PaddingLeft: =10
+        Text: ="Text"
+        Width: =640
+        X: =640
+        ZIndex: =3
+
+    Alert As icon.Bell:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(9, 33, 98, 1)
+        Height: =70
+        Icon: =Icon.Bell
+        OnSelect: =Select(Notification);
+        Rotation: =30
+        Width: =70
+        X: =640
+        ZIndex: =4
+

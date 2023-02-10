@@ -1,0 +1,385 @@
+"'Single Ticket Info' As screen":
+
+    TextInput1 As text:
+        Default: =//Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
+        Height: =505
+        Mode: =TextMode.MultiLine
+        Width: =536
+        X: =70
+        Y: =256
+        ZIndex: =1
+
+    Image13_6 As image:
+        Height: =739
+        Image: ='image (2)'
+        Width: =Parent.Width
+        ZIndex: =2
+
+    Ticket_Title_1 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =122
+        Size: =30
+        Text: ="Ticket Details"
+        Width: =456
+        X: =465
+        Y: =58
+        ZIndex: =3
+
+    Label2 As label:
+        Align: =Align.Center
+        Height: =44
+        Size: =20
+        Text: ="Activity History"
+        Width: =302
+        X: =860
+        Y: =212
+        ZIndex: =4
+
+    TextInput2 As text:
+        Default: ="Text input"
+        Height: =72
+        Width: =708
+        X: =634
+        Y: =599
+        ZIndex: =5
+
+    Button1 As button:
+        Text: ="Add Comment"
+        X: =785
+        Y: =694
+        ZIndex: =6
+
+    "'profile pic + drop down_4' As icon.Person":
+        BorderColor: =RGBA(0, 0, 0, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        Height: =40
+        Icon: =Icon.Person
+        Width: =40
+        X: =140
+        Y: =18
+        ZIndex: =7
+
+    "'nav-Ticket_2' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Create Ticket"
+        Width: =174
+        X: =181
+        Y: =18
+        ZIndex: =8
+
+    "'nav-name2_2' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="My Tickets"
+        Width: =174
+        X: =355
+        Y: =18
+        ZIndex: =9
+
+    "'nav-name3_2' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Ticket Log"
+        Width: =174
+        X: =529
+        Y: =18
+        ZIndex: =10
+
+    "'nav-name4_2' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Ticket Metrics"
+        Width: =174
+        X: =703
+        Y: =18
+        ZIndex: =11
+
+    "'nav-name5_2' As button":
+        AutoDisableOnSelect: =false
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        Text: ="Assign Role"
+        Width: =174
+        X: =877
+        Y: =18
+        ZIndex: =12
+
+    "'new notification in dropdown_4' As circle":
+        BorderColor: =RGBA(168, 0, 0, 1)
+        Fill: =RGBA(168, 0, 0, 1)
+        Height: =15
+        Width: =15
+        X: =140
+        Y: =18
+        ZIndex: =13
+
+    title_label As label:
+        Text: =""
+        X: =70
+        Y: =256
+        ZIndex: =14
+
+    Status_label As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Status:"
+        Width: =248
+        X: =70
+        Y: =373
+        ZIndex: =15
+
+    Category_label As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Category:"
+        Width: =248
+        X: =70
+        Y: =431
+        ZIndex: =16
+
+    Tags_label As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Tags:"
+        Width: =248
+        X: =70
+        Y: =489
+        ZIndex: =17
+
+    Reporting_person_label As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Reporting Person:"
+        Width: =248
+        X: =70
+        Y: =547
+        ZIndex: =18
+
+    Ticket_Created_value As label:
+        Height: =58
+        Size: =15
+        Text: =dateCreated
+        Width: =248
+        X: =318
+        Y: =316
+        ZIndex: =19
+
+    Status_value As label:
+        Height: =58
+        Size: =15
+        Text: =status
+        Width: =248
+        X: =317
+        Y: =374
+        ZIndex: =20
+
+    Category_value As label:
+        Height: =58
+        Size: =15
+        Text: =category
+        Width: =248
+        X: =318
+        Y: =432
+        ZIndex: =21
+
+    Tags_value As label:
+        Height: =58
+        Size: =15
+        Text: =tags
+        Width: =248
+        X: =318
+        Y: =490
+        ZIndex: =22
+
+    Reporting_person_value As label:
+        Height: =58
+        Size: =15
+        Text: =reporting_person
+        Width: =248
+        X: =318
+        Y: =548
+        ZIndex: =23
+
+    Close_Ticket_Button As button:
+        Text: ="Close Ticket"
+        X: =1052
+        Y: =694
+        ZIndex: =24
+
+    Label1_8 As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Assigned to:"
+        Width: =248
+        X: =70
+        Y: =606
+        ZIndex: =25
+
+    Assigned_to_value As label:
+        Height: =58
+        Size: =15
+        Text: =assigned_person
+        Width: =248
+        X: =318
+        Y: =605
+        ZIndex: =26
+
+    Title_value As label:
+        Height: =58
+        Size: =15
+        Text: =title
+        Width: =248
+        X: =318
+        Y: =258
+        ZIndex: =27
+
+    "Gallery2 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
+        Height: =348
+        Items: =Comments
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(168, Self.Height - 60)
+        Width: =708
+        X: =634
+        Y: =257
+        ZIndex: =28
+
+        Image6 As image:
+            Height: =128
+            Image: =Untitled_Artwork
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title3 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.creatorId
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image6.Width - 104
+            X: =Image6.X + Image6.Width + 16
+            Y: =16
+            ZIndex: =2
+
+        Subtitle2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.message
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title3.Width
+            X: =Title3.X
+            Y: =Title3.Y + Title3.Height + 2
+            ZIndex: =3
+
+        Body2 As label:
+            Height: =Self.Size * 4
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.message
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Subtitle2.Width
+            X: =Subtitle2.X
+            Y: =Subtitle2.Y + Subtitle2.Height + 4
+            ZIndex: =4
+
+        NextArrow5 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =5
+
+        Separator5 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =6
+
+    Ticket_Created_label As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Ticket created:"
+        Width: =248
+        X: =70
+        Y: =315
+        ZIndex: =29
+
+    Title_label As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Title:"
+        Width: =248
+        X: =70
+        Y: =257
+        ZIndex: =30
+
+    Label1_9 As label:
+        Height: =58
+        Size: =15
+        Text: |-
+            ="Description: "
+        Width: =248
+        X: =70
+        Y: =664
+        ZIndex: =31
+
+    Assigned_to_value_1 As label:
+        Height: =90
+        Size: =15
+        Text: =description
+        Width: =411
+        X: =195
+        Y: =671
+        ZIndex: =32
+

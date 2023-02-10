@@ -1,0 +1,308 @@
+"'Log of All Tickets - Admin Tech' As screen":
+    BackgroundImage: =
+    ImagePosition: =ImagePosition.Stretch
+
+    "'Screen Container_1' As groupContainer.manualLayoutContainer":
+        Height: =768
+        Width: =1366
+        ZIndex: =31
+
+        Image_1 As image:
+            Height: =768
+            Image: ='image (2)'
+            Width: =1366
+            ZIndex: =27
+
+        "'Header Container_1' As groupContainer.manualLayoutContainer":
+            Height: =228
+            Width: =1366
+            ZIndex: =28
+
+            "'TicketLog Header' As group":
+                Height: =5
+                Width: =5
+                X: =40
+                Y: =40
+                ZIndex: =18
+
+                "'My Activity nav Label_1' As button":
+                    AutoDisableOnSelect: =false
+                    Color: =RGBA(0, 0, 0, 1)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    OnSelect: =Navigate(MyTickets,Fade)
+                    PressedColor: =RGBA(0, 0, 0, 1)
+                    PressedFill: =
+                    Text: ="My Activity"
+                    Width: =174
+                    X: =231
+                    Y: =27
+                    ZIndex: =1
+
+                "'Reports nav Label' As button":
+                    AutoDisableOnSelect: =false
+                    Color: =RGBA(0, 0, 0, 1)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    OnSelect: =Navigate('Reports - Admin Tech',Fade)
+                    PressedColor: =RGBA(0, 0, 0, 1)
+                    PressedFill: =
+                    Text: ="Reports"
+                    Width: =174
+                    X: =385
+                    Y: =27
+                    ZIndex: =2
+
+                "'Ticket Metrics nav Label_1' As button":
+                    AutoDisableOnSelect: =false
+                    Color: =RGBA(0, 0, 0, 1)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    OnSelect: =Navigate('Metrics - Admin Tech',Fade)
+                    PressedColor: =RGBA(0, 0, 0, 1)
+                    PressedFill: =
+                    Text: ="Ticket Metrics"
+                    Width: =174
+                    X: =559
+                    Y: =27
+                    ZIndex: =3
+
+                Image4_2 As image:
+                    Height: =142
+                    Image: ='image (3)'
+                    Width: =270
+                    X: =57
+                    Y: =60
+                    ZIndex: =5
+
+                Label6_6 As label:
+                    Font: =Font.'Open Sans Condensed'
+                    Height: =20
+                    Size: =7
+                    Text: ="Profile"
+                    Width: =84
+                    X: =176
+                    Y: =68
+                    ZIndex: =6
+
+                Icon3_3 As icon.Person:
+                    Color: =RGBA(0, 0, 0, 1)
+                    FocusedBorderThickness: =1
+                    Height: =14
+                    Icon: =Icon.Person
+                    Width: =14
+                    X: =162
+                    Y: =71
+                    ZIndex: =7
+
+                Icon4_3 As icon.Bell:
+                    Color: =RGBA(0, 0, 0, 1)
+                    Height: =15
+                    Icon: =Icon.Bell
+                    OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
+                    Width: =18
+                    X: =160
+                    Y: =93
+                    ZIndex: =8
+
+                Label6_7 As label:
+                    Font: =Font.'Open Sans Condensed'
+                    Height: =20
+                    OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
+                    Size: =7
+                    Text: ="Notifications"
+                    Width: =84
+                    X: =176
+                    Y: =90
+                    ZIndex: =9
+
+                Circle2_3 As circle:
+                    BorderColor: =RGBA(220, 153, 153, 1)
+                    BorderThickness: =1
+                    Fill: =RGBA(255, 235, 235, 1)
+                    Height: =9
+                    Width: =9
+                    X: =222
+                    Y: =95
+                    ZIndex: =10
+
+                Label7_3 As label:
+                    Align: =Align.Right
+                    BorderColor: =RGBA(0, 0, 0, 0)
+                    Height: =9
+                    OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
+                    Size: =4
+                    Text: ="2"
+                    Width: =9
+                    X: =220
+                    Y: =94
+                    ZIndex: =11
+
+                "'profile pic + drop down_3' As icon.Person":
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    Height: =40
+                    Icon: =Icon.Person
+                    Width: =44
+                    X: =113
+                    Y: =21
+                    ZIndex: =13
+
+                "'new notification in dropdown_3' As circle":
+                    BorderColor: =RGBA(168, 0, 0, 1)
+                    Fill: =RGBA(168, 0, 0, 1)
+                    Height: =11
+                    Width: =11
+                    X: =111
+                    Y: =27
+                    ZIndex: =14
+
+                Icon1_3 As icon.ChevronDown:
+                    Color: =RGBA(255, 255, 255, 1)
+                    Height: =14
+                    Icon: =Icon.ChevronDown
+                    Width: =23
+                    X: =153
+                    Y: =46
+                    ZIndex: =15
+
+                Greeting_4 As label:
+                    Align: =Align.Center
+                    Color: =RGBA(255, 255, 255, 1)
+                    Height: =122
+                    Size: =30
+                    Text: ="Ticket Log"
+                    Width: =456
+                    X: =395
+                    Y: =61
+                    ZIndex: =16
+
+                BackButton As icon.BackArrow:
+                    Color: =RGBA(237, 255, 194, 1)
+                    Icon: =Icon.BackArrow
+                    OnSelect: =Back(ScreenTransition.Fade)
+                    X: =47
+                    Y: =93
+                    ZIndex: =17
+
+    DataTable1 As dataTable.datatable:
+        BorderStyle: =BorderStyle.Solid
+        DisplayMode: =DisplayMode.Edit
+        Fill: =RGBA(0, 0, 0, 0)
+        HeadingFill: =RGBA(118, 173, 149, 1)
+        Height: =543
+        Items: =Tickets_1
+        Width: =1366
+        X: =0
+        Y: =225
+        ZIndex: =32
+
+        id_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="id"
+            FieldName: ="id"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =1
+            Text: =ThisItem.id
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =29
+
+        title_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="title"
+            FieldName: ="title"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =2
+            Text: =ThisItem.title
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =30
+
+        tags_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="tags"
+            FieldName: ="tags"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =3
+            Text: =ThisItem.tags
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =31
+
+        status_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="status"
+            FieldName: ="status"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =4
+            Text: =ThisItem.status
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =32
+
+        dateCreated_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="dateCreated"
+            FieldName: ="dateCreated"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =5
+            Text: =ThisItem.dateCreated
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =33
+
+        dateClosed_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="dateClosed"
+            FieldName: ="dateClosed"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =6
+            Text: =ThisItem.dateClosed
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =34
+
+        lastUpdated_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="lastUpdated"
+            FieldName: ="lastUpdated"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =7
+            Text: =ThisItem.lastUpdated
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =35
+
+        updatedBy_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="updatedBy"
+            FieldName: ="updatedBy"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =8
+            Text: =ThisItem.updatedBy
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =36
+
