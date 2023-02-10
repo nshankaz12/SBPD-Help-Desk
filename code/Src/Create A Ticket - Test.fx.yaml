@@ -2,9 +2,7 @@
     BackgroundImage: =
     Fill: =
     ImagePosition: =ImagePosition.Stretch
-    OnVisible: |-
-        =ClearCollect(categories,GET_CATEGORIES.Run());
-        categories
+    OnVisible: =Set(userID, LookUp(userInfo, email = User().Email, id));
 
     Image13_13 As image:
         Height: =734
