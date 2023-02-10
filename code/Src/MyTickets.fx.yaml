@@ -5,7 +5,7 @@
         //Set(searchTicketQuery, ""); Reset(filterStatus); Reset(searchBox); Reset(TemplateGalleryList1);
         
         //Use for testing because current user may not have any tickets and user 4 and 5 have tickets
-        Set(CurrentTicketInfo,GetCurrentTickets.Run(4));
+        Set(CurrentTicketInfo,GetCurrentTickets.Run(userData.id));
         
         //get tickets for the current user
         //Set(CurrentTicketInfo,GetCurrentTickets.Run(LookUp(Users, email = User().Email, id)))
