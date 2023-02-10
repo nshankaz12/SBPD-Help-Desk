@@ -13,6 +13,8 @@
         //Can use a button to navigate to another screen if needed
         //enable if initialization takes place on this screen, and timer is disabled
         //If(splashNavigate,Select(SplashNavigate))
+        
+        Set(userId, LookUp(userInfo, Email = User().Email, id))
 
     TransitionTimer As timer:
         AutoPause: =false
