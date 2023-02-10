@@ -311,7 +311,7 @@
     Button7_1 As button:
         Height: =57
         OnSelect: |-
-            =INSERT_NEW_TICKET.Run(Dropdown1.Selected.id, userID, DataCardValue4_1.Text, Dropdown4.Selected.id, DataCardValue6_1.Text);
+            =INSERT_NEW_TICKET.Run(Dropdown1.Selected.id, 7, DataCardValue4_1.Text, Dropdown4.Selected.id, DataCardValue6_1.Text);
             //INSERT_NEW_TICKET.Run(2, 10, "Hello - 2", 2, "App");
             // INSERT_NEW_TICKET.Run(categoryId, creatorId, description, subCategoryId, title);
         Text: ="Submit"
