@@ -2,6 +2,9 @@
     BackgroundImage: =
     Fill: =
     ImagePosition: =ImagePosition.Stretch
+    OnVisible: |-
+        =ClearCollect(categories,GET_CATEGORIES.Run());
+        categories
 
     Image13_9 As image:
         Height: =734
@@ -184,16 +187,16 @@
                 ZIndex: =4
 
         categoryId_DataCard4 As typedDataCard.allowedValuesNumberEditCard:
-            AllowedValues: =DataSourceInfo([@Tickets_1], DataSourceInfo.AllowedValues, "categoryId")
+            AllowedValues: =
             BorderStyle: =BorderStyle.Solid
-            DataField: ="categoryId"
-            Default: =ThisItem.categoryId
+            DataField: ="category"
+            Default: =
             DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"categoryId")
+            DisplayName: =
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =false
-            Update: =DataCardValue12.Selected.Value
+            Update: =DataCardValue12.Selected
             Width: =626
             X: =1
             Y: =0
@@ -213,11 +216,11 @@
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: ="Choose From Menu"
                 DisplayMode: =Parent.DisplayMode
-                Items: =["Choose From Menu", "Hardware", "Software", "Laptop"]
+                Items: =Category
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardKey12.Y + DataCardKey12.Height + 5
+                Y: =50
                 ZIndex: =2
 
             ErrorMessage12 As label:
@@ -343,11 +346,11 @@
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: ="Choose From Menu"
                 DisplayMode: =Parent.DisplayMode
-                Items: =["Choose From Menu", "Option 1", "Option 2", "Option 3"]
+                Items: =Filter(SubCategory, categoryId = DataCardValue12.Selected.id)
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardKey11.Y + DataCardKey11.Height + 5
+                Y: =44
                 ZIndex: =2
 
             ErrorMessage11 As label:

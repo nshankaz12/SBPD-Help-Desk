@@ -336,7 +336,7 @@ Playground As screen:
 
     Button9 As button:
         OnSelect: |
-            =INSERT_NEW_TICKET.Run(2, 10, "My app is not working", 2, "App");
+            =INSERT_NEW_TICKET.Run(2, 10, "Hello", 2, "App");
             // INSERT_NEW_TICKET.Run(categoryId, creatorId, description, subCategoryId, title);
         Text: |-
             ="create-ticket

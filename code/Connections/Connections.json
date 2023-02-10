@@ -143,6 +143,9 @@
           "Media": {
             "tableName": "[dbo].[Media]"
           },
+          "SubCategory": {
+            "tableName": "[dbo].[SubCategory]"
+          },
           "Tickets_1": {
             "tableName": "[dbo].[Tickets]"
           },
@@ -161,7 +164,8 @@
       "Comments",
       "Media",
       "Users",
-      "Tickets_2"
+      "Tickets_2",
+      "SubCategory"
     ],
     "dependencies": {},
     "dependents": [
@@ -169,7 +173,8 @@
       "410fd47b-6bd5-49fb-9709-4a364053c654",
       "4e8d8a85-54c9-4fdc-822d-e468edd6cb2c",
       "479d8cfd-0f43-498d-92a3-dec2c6ecb6a5",
-      "71fc2de0-f3fb-4674-9df5-18cf47e5491f"
+      "71fc2de0-f3fb-4674-9df5-18cf47e5491f",
+      "d6812297-1eaa-4542-9821-f5b153b32ec3"
     ],
     "id": "6473c741-1f4a-4775-89a7-71303b3885d0"
   },
@@ -213,6 +218,34 @@
     "dependents": [],
     "id": "71fc2de0-f3fb-4674-9df5-18cf47e5491f"
   },
+  "c36f6dd7-5a8e-46e6-9235-89880ee9d2d8": {
+    "connectionParameters": {
+      "database": "cs4961stu01",
+      "server": "cs3.calstatela.edu"
+    },
+    "connectionRef": {
+      "authenticationType": "sqlAuthentication",
+      "displayName": "SQL Server",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1617/1.0.1617.3171/sql/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sql",
+      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_sql/connections/f6964fa6084c45ffb59e7a636ddffe1b"
+    },
+    "datasets": {
+      "cs3.calstatela.edu,cs4961stu01": {
+        "dataSources": {
+          "Category": {
+            "tableName": "[dbo].[Category]"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Category"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "c36f6dd7-5a8e-46e6-9235-89880ee9d2d8"
+  },
   "d44fdecc-b956-477f-8a4e-509378bf62df": {
     "connectionParameters": {
       "workFlowCallbackUri": "https://prod-158.westus.logic.azure.com:443/workflows/2bcb2d2f25a140e1810cd356c52ff5c5/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=q3_n2UKJVbYX74eco_xB5MvMI0QhBHN-saWZIY12d7I",
@@ -252,6 +285,46 @@
     },
     "dependents": [],
     "id": "d44fdecc-b956-477f-8a4e-509378bf62df"
+  },
+  "d6812297-1eaa-4542-9821-f5b153b32ec3": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-157.westus.logic.azure.com:443/workflows/11fe935796eb47dc8993349a543ede84/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ff4jizn9vVHXlGp9v6SMu_s5ziz-DAJ-h_TEEErBHiU",
+      "workflowEndpoint": "/subscriptions/3a3c8f3a-b051-4389-add3-35f0cadf681c/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-99a8c69526d04263b50511ba63eececb/providers/Microsoft.Logic/workflows/53feed7c-a693-408e-a071-75ca60c1612d",
+      "workflowName": "53feed7c-a693-408e-a071-75ca60c1612d",
+      "workflowPath": "/subscriptions/3a3c8f3a-b051-4389-add3-35f0cadf681c/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-99a8c69526d04263b50511ba63eececb/providers/Microsoft.Logic/workflows/53feed7c-a693-408e-a071-75ca60c1612d"
+    },
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "6473c741-1f4a-4775-89a7-71303b3885d0": {
+          "value": "shared_sql"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "53feed7c-a693-408e-a071-75ca60c1612d"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sql": {
+          "value": "6473c741-1f4a-4775-89a7-71303b3885d0"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "53feed7c-a693-408e-a071-75ca60c1612d"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "GET_CATEGORIES"
+    ],
+    "dependencies": {
+      "shared_sql": "6473c741-1f4a-4775-89a7-71303b3885d0"
+    },
+    "dependents": [],
+    "id": "d6812297-1eaa-4542-9821-f5b153b32ec3"
   },
   "f7aef8e6-faea-42d9-be4a-90b317bfa5b1": {
     "connectionParameters": {
