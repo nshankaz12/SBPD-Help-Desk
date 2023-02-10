@@ -160,7 +160,7 @@ Home As screen:
                         Fill: =RGBA(0, 0, 0, 0)
                         FillPortions: =1
                         HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate('Create A Ticket - Deprocated', ScreenTransition.Fade);
+                        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
                         PressedColor: =RGBA(0, 0, 0, 1)
                         PressedFill: =
                         Text: ="Create Ticket"
@@ -347,7 +347,7 @@ Home As screen:
                             Align: =Align.Center
                             BorderColor: =RGBA(0, 0, 0, 0)
                             Height: =27
-                            OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
+                            OnSelect: =
                             PaddingLeft: =3
                             PaddingTop: =4
                             Size: =10
@@ -362,7 +362,7 @@ Home As screen:
                             Height: =33
                             Icon: =Icon.Bell
                             OnSelect: |
-                                =Navigate(Notifcations, ScreenTransition.Cover);
+                                =
                             Visible: =NDrop
                             Width: =30
                             ZIndex: =3
@@ -370,7 +370,7 @@ Home As screen:
                         UserNotificationsLabel As label:
                             Font: =Font.'Open Sans Condensed'
                             Height: =31
-                            OnSelect: =Navigate(Notifcations, ScreenTransition.Fade);
+                            OnSelect: =
                             PaddingLeft: =0
                             Size: =15
                             Text: ="Notifications"
@@ -589,7 +589,7 @@ Home As screen:
             BorderThickness: =10
             Fill: =RGBA(232, 244, 217, 1)
             Height: =100
-            OnSelect: =Navigate('Create A Ticket - Deprocated')
+            OnSelect: =Navigate('Create A Ticket')
             Text: =""
             Visible: =is_admin
             Width: =200
