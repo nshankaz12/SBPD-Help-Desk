@@ -47,9 +47,12 @@
 
     Button1 As button:
         OnSelect: |-
-            =INSERT_NEW_COMMENT.Run(userData.id, TextInput2.Text, ticketId);
-            Refresh(Comments);
-            Navigate('Single Ticket Info')
+            =Patch(Comments, Defaults(Comments), 
+            {
+                ticketId:ticket,
+                message:TextInput2.Text,
+                creatorId:userData.id
+            })
         Text: ="Add Comment"
         X: =785
         Y: =694
@@ -266,12 +269,14 @@
 
     "Gallery2 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
         BorderStyle: =BorderStyle.None
+        Default: =Last(Filter(Comments, ticketId = ticket))
         Height: =348
-        Items: =Filter(Comments, ticketId = ticketId)
+        Items: =Filter(Comments, ticketId = ticket)
         Layout: =Layout.Vertical
-        ShowScrollbar: =false
+        TabIndex: =1
         TemplatePadding: =0
         TemplateSize: =Min(168, Self.Height - 60)
+        Transition: =Transition.Pop
         Width: =736
         X: =617
         Y: =257
@@ -314,13 +319,6 @@
             X: =155
             Y: =68
             ZIndex: =3
-
-        Separator5 As rectangle:
-            Height: =1
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =Parent.TemplateHeight - 1
-            ZIndex: =6
 
         Label1 As label:
             OnSelect: =Select(Parent)
