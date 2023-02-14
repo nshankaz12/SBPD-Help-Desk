@@ -4,359 +4,725 @@
         =// Set dropdown and gallery to default when view this screen
         //Set(searchTicketQuery, ""); Reset(filterStatus); Reset(searchBox); Reset(TemplateGalleryList1);
         
-        //Use for testing because current user may not have any tickets and user 4 and 5 have tickets
-        Set(CurrentTicketInfo,GetCurrentTickets.Run(userData.id));
+        // Set screen to display the user's created tickets by default
+        UpdateContext({varAssignedToMe: false});
+        
+        // Get user's created tickets
+        Set(MyTicketList,GetCurrentTickets.Run(7)); // testing 
+        //Set(MyTicketList, Filter(Tickets_1, creatorId = userData.id));
+        
+        // Get the tickets assigned to the user
+        Set(AssignedTicketList,GetCurrentTickets.Run(10)); // testing 
+        //Set(AssignedTicketList, Filter(Tickets_1, assignedTo = userData.id)); 
+        
+        // Create local variables for mobile view property on this screen using UpdateContext
+        UpdateContext({MobileGallery: false});
+        UpdateContext({HamburgerIconChange: false});
         
         //get tickets for the current user
+        //Set(CurrentTicketInfo,GetCurrentTickets.Run(userData.id));
         //Set(CurrentTicketInfo,GetCurrentTickets.Run(LookUp(Users, email = User().Email, id)))
 
     Image13_5 As image:
         Height: =768
         Image: ='image (2)'
+        ImagePosition: =ImagePosition.Stretch
         Width: =Parent.Width
         ZIndex: =1
 
-    Label12 As label:
-        Align: =Align.Center
-        Color: =RGBA(255, 255, 255, 1)
-        Height: =209
-        Size: =28
-        Text: ="My Tickets"
-        Width: =Parent.Width
-        Y: =15
-        ZIndex: =2
-
-    "'profile pic + drop down_6' As icon.Person":
-        BorderColor: =RGBA(0, 0, 0, 1)
-        Color: =RGBA(0, 0, 0, 1)
-        Height: =40
-        Icon: =Icon.Person
-        Width: =40
-        X: =140
-        Y: =18
-        ZIndex: =4
-
-    "'nav-Ticket_4' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-        PressedBorderColor: =RGBA(0, 0, 0, 0)
-        PressedColor: =
-        PressedFill: =RGBA(0, 0, 0, 0)
-        Text: ="Create Ticket"
-        Width: =174
-        X: =181
-        Y: =18
-        ZIndex: =5
-
-    "'nav-name2_4' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-        PressedBorderColor: =RGBA(0, 0, 0, 0)
-        PressedColor: =
-        PressedFill: =RGBA(0, 0, 0, 0)
-        Text: ="My Tickets"
-        Width: =174
-        X: =355
-        Y: =18
-        ZIndex: =6
-
-    "'nav-name3_4' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
-        PressedBorderColor: =RGBA(0, 0, 0, 0)
-        PressedColor: =
-        PressedFill: =RGBA(0, 0, 0, 0)
-        Text: ="Ticket Log"
-        Width: =174
-        X: =529
-        Y: =18
-        ZIndex: =7
-
-    "'nav-name4_4' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-        PressedBorderColor: =RGBA(0, 0, 0, 0)
-        PressedColor: =
-        PressedFill: =RGBA(0, 0, 0, 0)
-        Text: ="Ticket Metrics"
-        Width: =174
-        X: =703
-        Y: =18
-        ZIndex: =8
-
-    "'nav-name5_4' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-        PressedBorderColor: =RGBA(0, 0, 0, 0)
-        PressedColor: =
-        PressedFill: =RGBA(0, 0, 0, 0)
-        Text: ="Assign Role"
-        Width: =174
-        X: =877
-        Y: =18
-        ZIndex: =9
-
-    "'new notification in dropdown_6' As circle":
-        BorderColor: =RGBA(168, 0, 0, 1)
-        Fill: =RGBA(168, 0, 0, 1)
-        Height: =15
-        Width: =15
-        X: =140
-        Y: =18
-        ZIndex: =10
-
-    "'Back Scroll_5' As icon.BackArrow":
-        Color: =RGBA(232, 244, 217, 1)
-        Icon: =Icon.BackArrow
-        OnSelect: =Back(Fade)
-        X: =59
-        Y: =87
-        ZIndex: =11
-
-    Button4 As button:
-        AutoDisableOnSelect: =false
-        Fill: =RGBA(118, 173, 149, 1)
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-        PressedBorderColor: =RGBA(0, 0, 0, 0)
-        PressedColor: =
-        PressedFill: =RGBA(0, 0, 0, 0)
-        Text: ="New Ticket"
-        X: =1150
-        Y: =99
-        ZIndex: =12
-
-    TemplateGalleryList1 As gallery.galleryVertical:
-        Height: =544
-        Items: =Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
-        Layout: =Layout.Vertical
-        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(265, Self.Height - 60))
-        Transition: =Transition.Push
-        Visible: |-
-            =!IsEmpty(CurrentTicketInfo)
-            And 
-            !IsEmpty(Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description"))
-        Width: =1366
-        WrapCount: =3
-        Y: =224
-        ZIndex: =13
-
-        btnBkg As button:
-            Fill: =RGBA(255, 255, 255, 1)
-            Height: =Parent.TemplateHeight
-            HoverFill: =Self.Fill
-            OnSelect: =Select(Parent)
-            PressedFill: =Self.Fill
-            RadiusBottomLeft: =0
-            RadiusBottomRight: =0
-            RadiusTopLeft: =0
-            RadiusTopRight: =0
-            Text: =""
-            Width: =Parent.TemplateWidth
-            ZIndex: =1
-
-        Label20 As label:
-            FontWeight: =FontWeight.Bold
-            Height: =41
-            OnSelect: =Select(Parent)
-            Size: =15
-            Text: =ThisItem.title
-            Width: =Parent.TemplateWidth
-            Y: =60
-            ZIndex: =3
-
-        Label20_1 As label:
-            Height: =79
-            OnSelect: =Select(Parent)
-            Text: =ThisItem.description
-            Width: =Parent.TemplateWidth
-            Y: =94
-            ZIndex: =4
-
-        Rectangle2 As rectangle:
-            Height: =47
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            ZIndex: =5
-
-        Label22 As label:
-            Align: =Align.Center
-            Color: =RGBA(255, 255, 255, 1)
-            Height: =47
-            OnSelect: =Select(Parent)
-            Text: =ThisItem.id
-            Width: =Parent.TemplateWidth
-            ZIndex: =6
-
-        "'Label-datecreated' As label":
-            OnSelect: =Select(Parent)
-            Text: =DateValue(ThisItem.dateCreated)
-            Width: =200
-            Y: =173
-            ZIndex: =7
-
-        Image7_3 As image:
-            Height: =40
-            Image: =User().Image
-            RadiusBottomLeft: =128
-            RadiusBottomRight: =128
-            RadiusTopLeft: =128
-            RadiusTopRight: =128
-            Width: =40
-            X: =5
-            Y: =213
-            ZIndex: =8
-
-        "'Label-assignee' As label":
-            OnSelect: =Select(Parent)
-            Text: =If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
-            Width: =200
-            X: =45
-            Y: =213
-            ZIndex: =9
-
-        statusColor As rectangle:
-            DisplayMode: =DisplayMode.View
-            Fill: |-
-                =Switch(
-                    ThisItem.status,
-                    "open", RGBA(0, 127, 187, 1),
-                    "close", RGBA(127, 178, 57, 1),
-                    RGBA(221, 79, 14, 1)
-                )
-            Height: =40
-            OnSelect: =Select(Parent)
-            Width: =10
-            X: =288
-            Y: =173
-            ZIndex: =10
-
-        lblStatus As label:
-            Align: =Align.Center
-            Color: |-
-                =Switch(
-                    ThisItem.status,
-                    "open", RGBA(0, 127, 187, 1),
-                    "close", RGBA(127, 178, 57, 1),
-                    RGBA(221, 79, 14, 1)
-                )
-            DisplayMode: =DisplayMode.View
-            Fill: =RGBA(241, 244, 249, 1)
-            FontWeight: =FontWeight.Semibold
-            OnSelect: =Select(Parent)
-            Size: =15
-            Text: =ThisItem.status
-            Width: =140
-            X: =298
-            Y: =173
-            ZIndex: =11
-
-        btnTemplate As button:
-            BorderThickness: =0
-            Fill: =Transparent
-            Height: =Parent.TemplateHeight
-            HoverFill: =Self.Fill
-            OnSelect: |-
-                =Navigate('Single Ticket Info', Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.categoryId, tags:ThisItem.tags, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id})
-            PressedFill: =Self.Fill
-            Text: =""
-            Width: =Parent.TemplateWidth
-            ZIndex: =12
-
-    EmptyState As groupContainer.verticalAutoLayoutContainer:
-        Height: =544
-        LayoutAlignItems: =LayoutAlignItems.Center
-        LayoutDirection: =LayoutDirection.Vertical
-        LayoutGap: =10
-        LayoutJustifyContent: =LayoutJustifyContent.Center
+    MyTicketsMainContainer As groupContainer.horizontalAutoLayoutContainer:
+        Height: =Parent.Height
         LayoutMode: =LayoutMode.Auto
-        Visible: |-
-            =!IsBlank(filterStatus.Selected.Result)
-            And IsEmpty(Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description"))
-        Width: =1366
-        Y: =224
-        ZIndex: =14
-
-        Label16 As label:
-            Align: =Align.Center
-            AlignInContainer: =AlignInContainer.Stretch
-            Size: =32
-            Text: ="No Tickets Found"
-            ZIndex: =1
-
-        Button4_1 As button:
-            Fill: =RGBA(118, 173, 149, 1)
-            OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-            Text: ="New Ticket"
-            Visible: =filterStatus.Selected.Result = "All" || filterStatus.Selected.Result = "open"
-            X: =1150
-            Y: =99
-            ZIndex: =2
-
-    filterStatus As dropdown:
-        Default: ="open"
-        Items: =colStatus
-        Width: =226
-        X: =1117
-        Y: =184
-        ZIndex: =15
-
-    searchTicketBar As group:
-        Height: =5
-        Width: =5
-        X: =40
-        Y: =40
+        Width: =Parent.Width
         ZIndex: =20
 
-        searchBox As text:
-            Default: =
-            DelayOutput: =true
-            HintText: ="Search by title or description"
-            OnChange: =Set(searchTicketQuery, searchBox.Text); Reset(TemplateGalleryList1)
-            PaddingRight: =40
-            Width: =685
-            X: =320
-            Y: =184
-            ZIndex: =16
+        MyTicketsMobileNavLinks As groupContainer.horizontalAutoLayoutContainer:
+            FillPortions: =0
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Visible: |-
+                =MobileGallery
+                //This is a side panel that is visible when the user selects the hamburger menu
+            Width: =100
+            ZIndex: =1
 
-        bgSearchIcon As rectangle:
-            BorderThickness: =2
-            Height: =40
-            OnSelect: =Set(searchTicketQuery, searchBox.Text); Reset(TemplateGalleryList1)
-            Width: =40
-            X: =1006
-            Y: =184
-            ZIndex: =17
+            MyTicketsNavButtonGallery As gallery.galleryVertical:
+                AlignInContainer: =AlignInContainer.Center
+                FillPortions: =0
+                Height: =Parent.Height
+                Items: =navCol
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =287
+                LayoutMinWidth: =320
+                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                ShowScrollbar: =false
+                TemplateSize: =Parent.Width
+                Width: =Parent.Width
+                ZIndex: =1
 
-        searchIcon As icon.Search:
-            Color: =RGBA(255, 255, 255, 1)
-            Height: =39
-            Icon: =Icon.Search
-            OnSelect: =Set(searchTicketQuery, searchBox.Text); Reset(TemplateGalleryList1)
-            Tooltip: ="Search"
-            Width: =39
-            X: =1007
-            Y: =185
-            ZIndex: =18
+                MobileNavGalleryNameLabel_1 As label:
+                    Align: =Align.Center
+                    FontWeight: =FontWeight.Semibold
+                    Height: =74
+                    OnSelect: =Select(Parent)
+                    Size: =15
+                    Text: =ThisItem.NavName
+                    Width: =Parent.TemplateWidth
+                    Y: =(Parent.TemplateHeight-Self.Height)/2
+                    ZIndex: =1
 
-        cancelIcon As icon.Cancel:
-            Color: =RGBA(116, 116, 116, 1)
-            Height: =40
-            Icon: =Icon.Cancel
-            OnSelect: =Set(searchTicketQuery, ""); Reset(searchBox); Reset(TemplateGalleryList1)
-            Tooltip: ="Cancel"
-            Visible: =!IsBlank(searchBox.Text)
-            Width: =40
-            X: =965
-            Y: =184
-            ZIndex: =19
+                MobileNavButton_2 As button:
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =Parent.TemplateHeight
+                    HoverFill: =ColorFade(RGBA(105,105,105, .25), -20%)
+                    OnSelect: =Select(Parent)
+                    PressedColor: =RGBA(105,105,105,.35)
+                    PressedFill: =RGBA(105,105,105,.35)
+                    Text: =""
+                    Width: =Parent.TemplateWidth
+                    ZIndex: =2
+
+        MyTicketsLayoutContainer As groupContainer.verticalAutoLayoutContainer:
+            Height: =Parent.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width
+            ZIndex: =2
+
+            MyTicketsHeaderContainer1 As groupContainer.horizontalAutoLayoutContainer:
+                Fill: =RGBA(118, 173, 149, 1)
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Visible: =MyTickets.Size <> 1
+                ZIndex: =1
+
+                NotificationsDropdownContainer_1 As groupContainer.manualLayoutContainer:
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    Visible: =Home.Size>1
+                    Width: =75
+                    ZIndex: =1
+
+                    "'profile pic + drop down_8' As icon.Person":
+                        AutoDisableOnSelect: =false
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        Height: =55
+                        Icon: =Icon.Person
+                        Width: =55
+                        X: =27
+                        Y: =25
+                        ZIndex: =1
+
+                    "'new notification in dropdown_8' As circle":
+                        BorderColor: =RGBA(168, 0, 0, 1)
+                        Fill: =RGBA(168, 0, 0, 1)
+                        Height: =15
+                        Width: =15
+                        X: =27
+                        Y: =25
+                        ZIndex: =2
+
+                    UserNotificationsDropdownSymbolIcon_1 As icon.ChevronDown:
+                        Color: =RGBA(255, 255, 255, 1)
+                        Height: =14
+                        HoverBorderColor: =ColorFade(Color.DimGrey, 20%)
+                        HoverFill: =Color.DimGrey
+                        Icon: =Icon.ChevronDown
+                        OnSelect: |-
+                            =UpdateContext({NDrop:!NDrop})
+                        Width: =23
+                        X: =59
+                        Y: =66
+                        ZIndex: =3
+
+                MyTicketsNavContainer As groupContainer.horizontalAutoLayoutContainer:
+                    FillPortions: =7
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =2
+
+                    "'nav-Ticket_6' As button":
+                        AutoDisableOnSelect: =false
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        HoverFill: =ColorFade(DimGrey,-20%)
+                        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+                        PressedColor: =RGBA(0, 0, 0, 1)
+                        PressedFill: =
+                        Text: ="Create Ticket"
+                        Width: =174
+                        X: =7
+                        Y: =18
+                        ZIndex: =1
+
+                    "'nav-name2_6' As button":
+                        AutoDisableOnSelect: =false
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        HoverFill: =ColorFade(DimGrey,-20%)
+                        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
+                        PressedColor: =RGBA(0, 0, 0, 1)
+                        PressedFill: =
+                        Text: ="My Tickets"
+                        Width: =174
+                        X: =174
+                        Y: =18
+                        ZIndex: =2
+
+                    "'nav-name3_6' As button":
+                        AutoDisableOnSelect: =false
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        HoverFill: =ColorFade(DimGrey,-20%)
+                        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
+                        PressedColor: =RGBA(0, 0, 0, 1)
+                        PressedFill: =
+                        Text: ="Ticket Log"
+                        Width: =174
+                        X: =174
+                        Y: =18
+                        ZIndex: =3
+
+                    "'nav-name4_6' As button":
+                        AutoDisableOnSelect: =false
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        HoverFill: =ColorFade(DimGrey,-20%)
+                        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
+                        PressedColor: =RGBA(0, 0, 0, 1)
+                        PressedFill: =
+                        Text: ="Ticket Metrics"
+                        Width: =174
+                        X: =348
+                        Y: =18
+                        ZIndex: =4
+
+                    "'nav-name5_6' As button":
+                        AutoDisableOnSelect: =false
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        HoverFill: =ColorFade(DimGrey,-20%)
+                        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
+                        PressedColor: =RGBA(0, 0, 0, 1)
+                        PressedFill: =
+                        Text: ="Assign Role"
+                        Width: =174
+                        X: =522
+                        Y: =18
+                        ZIndex: =5
+
+            MyTicketsMoblieHeaderContainer As groupContainer.verticalAutoLayoutContainer:
+                Fill: =RGBA(118, 173, 149, 1)
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =50
+                Visible: |-
+                    =MyTickets.Size=1
+                    //This container is visible when the screen is in mobile view and the topmost is invisible
+                ZIndex: =2
+
+                MoblieHamburgerMenu_1 As icon.Hamburger:
+                    Color: =RGBA(0, 0, 0, 1)
+                    Icon: =If(HamburgerIconChange, ChevronLeft, Hamburger)
+                    OnSelect: |-
+                        =UpdateContext({HamburgerIconChange:!HamburgerIconChange});
+                        UpdateContext({MobileGallery:!MobileGallery});
+                    ZIndex: =1
+
+            MyTicketsHeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
+                Fill: =RGBA(118, 173, 149, 1)
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: =10
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =If (MyTickets.Size <> 1, 40, 15)
+                PaddingRight: =If (MyTickets.Size <> 1, 40, 15)
+                ZIndex: =3
+
+                "'Back Scroll_5' As icon.BackArrow":
+                    Color: =RGBA(232, 244, 217, 1)
+                    Height: =If (MyTickets.Size <> 1, 64, 56)
+                    Icon: =Icon.BackArrow
+                    OnSelect: =Back(Fade)
+                    Width: =If (MyTickets.Size <> 1, 64, 56)
+                    X: =59
+                    Y: =72
+                    ZIndex: =1
+
+                HeaderLabel As label:
+                    Align: =Align.Center
+                    Color: =RGBA(255, 255, 255, 1)
+                    FillPortions: =1
+                    Height: =Parent.Height
+                    Size: =If (MyTickets.Size <> 1, 32, 24)
+                    Text: =If(varAssignedToMe, "Assigned To Me", "My Tickets")
+                    Width: =Parent.Width
+                    Y: =15
+                    ZIndex: =2
+
+                NewTicketButton As button:
+                    AutoDisableOnSelect: =false
+                    Color: =RGBA(0, 0, 0, 1)
+                    Fill: =RGBA(232, 244, 217, 1)
+                    OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+                    PressedBorderColor: =RGBA(0, 0, 0, 0)
+                    PressedColor: =
+                    PressedFill: =RGBA(0, 0, 0, 0)
+                    Text: ="New Ticket"
+                    Visible: =MyTickets.Size > 2
+                    X: =1150
+                    Y: =84
+                    ZIndex: =3
+
+                NewTicketIcon As icon.Add:
+                    Color: =RGBA(232, 244, 217, 1)
+                    Height: =If (MyTickets.Size <> 1, 64, 56)
+                    Icon: =Icon.Add
+                    OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+                    Visible: =MyTickets.Size < 3
+                    Width: =If (MyTickets.Size <> 1, 64, 56)
+                    ZIndex: =4
+
+            MyTicketsMainContentContainer As groupContainer.verticalAutoLayoutContainer:
+                FillPortions: =10
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                ZIndex: =4
+
+                SearchFilterContainer As groupContainer.horizontalAutoLayoutContainer:
+                    Fill: =RGBA(118, 173, 149, 1)
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    LayoutWrap: =true
+                    PaddingRight: =40
+                    ZIndex: =1
+
+                    SearchTicketsBar As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.Center
+                        Height: =40
+                        LayoutMinHeight: =50
+                        LayoutMinWidth: =Parent.Width / 2
+                        Width: =Parent.Width
+                        ZIndex: =1
+
+                        searchBox As text:
+                            Default: =
+                            DelayOutput: =true
+                            HintText: ="Search by title or description"
+                            OnChange: =Set(searchTicketQuery, searchBox.Text); Reset(MyTicketsGallery)
+                            PaddingRight: =40
+                            Width: =Parent.Width / 4 * 3
+                            X: =(Parent.Width - searchBox.Width - ( 2 * searchIcon.Width)) + 10
+                            ZIndex: =1
+
+                        bgSearchIcon As rectangle:
+                            BorderThickness: =2
+                            Height: =40
+                            OnSelect: =Set(searchTicketQuery, searchBox.Text); Reset(MyTicketsGallery)
+                            Width: =40
+                            X: =searchBox.X + searchBox.Width 
+                            ZIndex: =2
+
+                        searchIcon As icon.Search:
+                            Color: =RGBA(255, 255, 255, 1)
+                            Height: =39
+                            Icon: =Icon.Search
+                            OnSelect: =Set(searchTicketQuery, searchBox.Text); Reset(MyTicketsGallery)
+                            Tooltip: ="Search"
+                            Width: =39
+                            X: =searchBox.X + searchBox.Width 
+                            ZIndex: =3
+
+                        cancelIcon As icon.Cancel:
+                            Color: =RGBA(116, 116, 116, 1)
+                            Height: =40
+                            Icon: =Icon.Cancel
+                            OnSelect: =Set(searchTicketQuery, ""); Reset(searchBox); Reset(MyTicketsGallery)
+                            Tooltip: ="Cancel"
+                            Visible: =!IsBlank(searchBox.Text)
+                            Width: =40
+                            X: =searchBox.X + searchBox.Width - Self.Width
+                            ZIndex: =4
+
+                    TicketFiltersContainer As groupContainer.horizontalAutoLayoutContainer:
+                        FillPortions: =0
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutGap: =10
+                        LayoutJustifyContent: =LayoutJustifyContent.End
+                        LayoutMinHeight: =50
+                        LayoutMinWidth: =350
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =350
+                        ZIndex: =2
+
+                        filterStatus As dropdown:
+                            Default: ="open"
+                            Items: =colStatus
+                            Tooltip: ="Ticket Status"
+                            Width: =180
+                            X: =1117
+                            Y: =184
+                            ZIndex: =1
+
+                        ChangeTicketsButton As button:
+                            Color: =RGBA(0, 0, 0, 1)
+                            Fill: =RGBA(232, 244, 217, 1)
+                            OnSelect: |-
+                                =UpdateContext({varAssignedToMe: !varAssignedToMe});
+                            Text: =If(varAssignedToMe, "My Tickets", "Assigned To Me")
+                            ZIndex: =2
+
+                MyTicketsTicketsContainer As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =8
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =2
+
+                    MyTicketsGallery As gallery.galleryVertical:
+                        Height: =544
+                        Items: =Search(If(filterStatus.Selected.Result = "All", MyTicketList, Filter(MyTicketList, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
+                        Layout: =Layout.Vertical
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =320
+                        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(260, Self.Height - 60))
+                        Transition: =Transition.Push
+                        Visible: |-
+                            =!varAssignedToMe && !IsEmpty(MyTicketList)
+                            And 
+                            !IsEmpty(Search(If(filterStatus.Selected.Result = "All", MyTicketList, Filter(MyTicketList, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description"))
+                        Width: =1366
+                        WrapCount: =RoundDown((Parent.Width / Self.LayoutMinWidth), 0)
+                        Y: =224
+                        ZIndex: =1
+
+                        btnBkg As button:
+                            Fill: =RGBA(255, 255, 255, 1)
+                            Height: =Parent.TemplateHeight
+                            HoverFill: =Self.Fill
+                            OnSelect: =Select(Parent)
+                            PressedFill: =Self.Fill
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Text: =""
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =1
+
+                        TitleLabel As label:
+                            FontWeight: =FontWeight.Bold
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Size: =15
+                            Text: =ThisItem.title
+                            Width: =Parent.TemplateWidth
+                            Y: =IdBkg.Y + IdBkg.Height
+                            ZIndex: =3
+
+                        DescriptionLabel As label:
+                            Height: =Parent.TemplateHeight / 3
+                            OnSelect: =Select(Parent)
+                            Text: =ThisItem.description
+                            Width: =Parent.TemplateWidth
+                            Y: =TitleLabel.Y + TitleLabel.Height
+                            ZIndex: =4
+
+                        IdBkg As rectangle:
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =5
+
+                        IdLabel As label:
+                            Align: =Align.Center
+                            Color: =RGBA(255, 255, 255, 1)
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Text: =ThisItem.id
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =6
+
+                        DateCreatedLabel As label:
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Text: =DateValue(ThisItem.dateCreated)
+                            Width: =Parent.TemplateWidth / 3 * 2 - 10
+                            Y: =DescriptionLabel.Y + DescriptionLabel.Height
+                            ZIndex: =7
+
+                        Image7_3 As image:
+                            Height: =Parent.TemplateHeight / 6
+                            Image: =User().Image
+                            ImagePosition: =ImagePosition.Fill
+                            RadiusBottomLeft: =256
+                            RadiusBottomRight: =256
+                            RadiusTopLeft: =256
+                            RadiusTopRight: =256
+                            Width: =Parent.TemplateHeight / 6
+                            Y: =DateCreatedLabel.Y + DateCreatedLabel.Height
+                            ZIndex: =8
+
+                        AssigneeLabel As label:
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Text: =If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
+                            Width: =Parent.TemplateWidth - Image7_3.Width
+                            X: =Image7_3.X + Image7_3.Width
+                            Y: =DateCreatedLabel.Y + DateCreatedLabel.Height
+                            ZIndex: =9
+
+                        StatusColor As rectangle:
+                            DisplayMode: =DisplayMode.View
+                            Fill: |-
+                                =Switch(
+                                    ThisItem.status,
+                                    "open", RGBA(0, 127, 187, 1),
+                                    "close", RGBA(127, 178, 57, 1),
+                                    RGBA(221, 79, 14, 1)
+                                )
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Width: =10
+                            X: =DateCreatedLabel.Width
+                            Y: =DescriptionLabel.Y + DescriptionLabel.Height
+                            ZIndex: =10
+
+                        StatusLabel As label:
+                            Align: =Align.Center
+                            Color: |-
+                                =Switch(
+                                    ThisItem.status,
+                                    "open", RGBA(0, 127, 187, 1),
+                                    "close", RGBA(127, 178, 57, 1),
+                                    RGBA(221, 79, 14, 1)
+                                )
+                            DisplayMode: =DisplayMode.View
+                            Fill: =RGBA(241, 244, 249, 1)
+                            FontWeight: =FontWeight.Semibold
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Size: =15
+                            Text: =ThisItem.status
+                            Width: =Parent.TemplateWidth - DateCreatedLabel.Width - 20
+                            X: =Parent.TemplateWidth - Self.Width - 10
+                            Y: =DescriptionLabel.Y + DescriptionLabel.Height
+                            ZIndex: =11
+
+                        btnTemplate As button:
+                            BorderThickness: =0
+                            Fill: =Transparent
+                            Height: =Parent.TemplateHeight
+                            HoverFill: =Self.Fill
+                            OnSelect: |-
+                                =Navigate('Single Ticket Info', Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.categoryId, tags:ThisItem.tags, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id})
+                            PressedFill: =Self.Fill
+                            Text: =""
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =12
+
+                    AssignedToMeTicketsGallery As gallery.galleryVertical:
+                        Height: =544
+                        Items: =Search(If(filterStatus.Selected.Result = "All", AssignedTicketList, Filter(AssignedTicketList, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
+                        Layout: =Layout.Vertical
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =320
+                        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(260, Self.Height - 60))
+                        Transition: =Transition.Push
+                        Visible: |-
+                            =varAssignedToMe && !IsEmpty(AssignedTicketList)
+                            And 
+                            !IsEmpty(Search(If(filterStatus.Selected.Result = "All", AssignedTicketList, Filter(AssignedTicketList, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description"))
+                        Width: =1366
+                        WrapCount: =RoundDown((Parent.Width / Self.LayoutMinWidth), 0)
+                        Y: =224
+                        ZIndex: =2
+
+                        btnBkg_1 As button:
+                            Fill: =RGBA(255, 255, 255, 1)
+                            Height: =Parent.TemplateHeight
+                            HoverFill: =Self.Fill
+                            OnSelect: =Select(Parent)
+                            PressedFill: =Self.Fill
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Text: =""
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =1
+
+                        TitleLabel_1 As label:
+                            FontWeight: =FontWeight.Bold
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Size: =15
+                            Text: =ThisItem.title
+                            Width: =Parent.TemplateWidth
+                            Y: =IdBkg_1.Y + IdBkg_1.Height
+                            ZIndex: =3
+
+                        DescriptionLabel_1 As label:
+                            Height: =Parent.TemplateHeight / 3
+                            OnSelect: =Select(Parent)
+                            Text: =ThisItem.description
+                            Width: =Parent.TemplateWidth
+                            Y: =TitleLabel_1.Y + TitleLabel_1.Height
+                            ZIndex: =4
+
+                        IdBkg_1 As rectangle:
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =5
+
+                        IdLabel_1 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(255, 255, 255, 1)
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Text: =ThisItem.id
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =6
+
+                        DateCreatedLabel_1 As label:
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Text: =DateValue(ThisItem.dateCreated)
+                            Width: =Parent.TemplateWidth / 3 * 2 - 10
+                            Y: =DescriptionLabel_1.Y + DescriptionLabel_1.Height
+                            ZIndex: =7
+
+                        Image7_7 As image:
+                            Height: =Parent.TemplateHeight / 6
+                            Image: =User().Image
+                            ImagePosition: =ImagePosition.Fill
+                            RadiusBottomLeft: =256
+                            RadiusBottomRight: =256
+                            RadiusTopLeft: =256
+                            RadiusTopRight: =256
+                            Width: =Parent.TemplateHeight / 6
+                            Y: =DateCreatedLabel_1.Y + DateCreatedLabel_1.Height
+                            ZIndex: =8
+
+                        AssigneeLabel_1 As label:
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Text: =If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
+                            Width: =Parent.TemplateWidth - Image7_7.Width
+                            X: =Image7_7.X + Image7_7.Width
+                            Y: =DateCreatedLabel_1.Y + DateCreatedLabel_1.Height
+                            ZIndex: =9
+
+                        StatusColor_1 As rectangle:
+                            DisplayMode: =DisplayMode.View
+                            Fill: |-
+                                =Switch(
+                                    ThisItem.status,
+                                    "open", RGBA(0, 127, 187, 1),
+                                    "close", RGBA(127, 178, 57, 1),
+                                    RGBA(221, 79, 14, 1)
+                                )
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Width: =10
+                            X: =DateCreatedLabel_1.Width
+                            Y: =DescriptionLabel_1.Y + DescriptionLabel_1.Height
+                            ZIndex: =10
+
+                        StatusLabel_1 As label:
+                            Align: =Align.Center
+                            Color: |-
+                                =Switch(
+                                    ThisItem.status,
+                                    "open", RGBA(0, 127, 187, 1),
+                                    "close", RGBA(127, 178, 57, 1),
+                                    RGBA(221, 79, 14, 1)
+                                )
+                            DisplayMode: =DisplayMode.View
+                            Fill: =RGBA(241, 244, 249, 1)
+                            FontWeight: =FontWeight.Semibold
+                            Height: =Parent.TemplateHeight / 6
+                            OnSelect: =Select(Parent)
+                            Size: =15
+                            Text: =ThisItem.status
+                            Width: =Parent.TemplateWidth - DateCreatedLabel_1.Width - 20
+                            X: =Parent.TemplateWidth - Self.Width - 10
+                            Y: =DescriptionLabel_1.Y + DescriptionLabel_1.Height
+                            ZIndex: =11
+
+                        btnTemplate_1 As button:
+                            BorderThickness: =0
+                            Fill: =Transparent
+                            Height: =Parent.TemplateHeight
+                            HoverFill: =Self.Fill
+                            OnSelect: |-
+                                =Navigate('Single Ticket Info', Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.categoryId, tags:ThisItem.tags, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id})
+                            PressedFill: =Self.Fill
+                            Text: =""
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =12
+
+                    EmptyState As groupContainer.verticalAutoLayoutContainer:
+                        Height: =544
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =10
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Visible: |-
+                            =varAssignedToMe && !IsBlank(filterStatus.Selected.Result)
+                            And IsEmpty(Search(If(filterStatus.Selected.Result = "All", AssignedTicketList, Filter(AssignedTicketList, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")) || !varAssignedToMe && !IsBlank(filterStatus.Selected.Result)
+                            And IsEmpty(Search(If(filterStatus.Selected.Result = "All", MyTicketList, Filter(MyTicketList, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")) 
+                        Width: =1366
+                        Y: =224
+                        ZIndex: =3
+
+                        Label16 As label:
+                            Align: =Align.Center
+                            AlignInContainer: =AlignInContainer.Stretch
+                            Size: =32
+                            Text: ="No Tickets Found"
+                            ZIndex: =1
+
+                        Button4_1 As button:
+                            Fill: =RGBA(118, 173, 149, 1)
+                            OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+                            Text: ="New Ticket"
+                            Visible: |-
+                                =//Button should only appears when user is not viewing their assigned tickets
+                                (!varAssignedToMe && filterStatus.Selected.Result = "All") || (!varAssignedToMe && filterStatus.Selected.Result = "open")
+                            X: =1150
+                            Y: =99
+                            ZIndex: =2
 
