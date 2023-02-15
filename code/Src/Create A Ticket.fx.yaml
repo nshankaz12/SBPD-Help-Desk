@@ -319,7 +319,16 @@
             =//INSERT_NEW_TICKET.Run(Dropdown1.Selected.id, Dropdown5.Selected.id, DataCardValue4_1.Text, Dropdown4.Selected.id, DataCardValue6_1.Text);
             //INSERT_NEW_TICKET.Run(2, 10, "Hello - 2", 2, "App");
             // INSERT_NEW_TICKET.Run(categoryId, creatorId, description, subCategoryId, title);
-            
+            Patch(Tickets_1, Defaults(Tickets_1), 
+            {
+                title:DataCardValue6_1.Text,
+                description:DataCardValue4_1.Text,
+                creatorId:userData.id,
+                mainCategory:Dropdown1.Selected.id,
+                category:Dropdown4.Selected.id,
+                subCategory:Dropdown6.Selected.id,
+                status:"open"
+            });
             Navigate(MyTickets);
         Text: ="Submit"
         Width: =173

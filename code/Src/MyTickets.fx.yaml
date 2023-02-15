@@ -8,8 +8,8 @@
         UpdateContext({varAssignedToMe: false});
         
         // Get user's created tickets
-        Set(MyTicketList,GetCurrentTickets.Run(7)); // testing 
-        //Set(MyTicketList, Filter(Tickets_1, creatorId = userData.id));
+        //Set(MyTicketList,GetCurrentTickets.Run(7)); // testing 
+        Set(MyTicketList, Filter(Tickets_1, creatorId = userData.id));
         
         // Get the tickets assigned to the user
         Set(AssignedTicketList,GetCurrentTickets.Run(10)); // testing 
@@ -543,10 +543,10 @@
                             Height: =Parent.TemplateHeight
                             HoverFill: =Self.Fill
                             OnSelect: |-
-                                =Navigate('Single Ticket Info', Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.categoryId, tags:ThisItem.tags, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id})
+                                =Navigate('Single Ticket Info', Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id})
                             PressedFill: =Self.Fill
                             Text: =""
-                            Width: =Parent.TemplateWidth
+                            Width: =335.25
                             ZIndex: =12
 
                     AssignedToMeTicketsGallery As gallery.galleryVertical:
