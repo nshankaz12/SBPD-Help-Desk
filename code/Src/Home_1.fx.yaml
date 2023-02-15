@@ -297,8 +297,11 @@ Home_1 As screen:
                     ZIndex: =3
 
             HomeMainContentContainer_1 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
                 Height: =HomeMainContainer_1.Height - HomeMainContentContainer_1.Y
                 LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 Visible: |-
                     =true
@@ -307,8 +310,11 @@ Home_1 As screen:
                 ZIndex: =4
 
                 ButtonsContainer_1 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
                     Height: =HomeMainContainer_1.Height - HomeMainContentContainer_1.Y
                     LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     Width: =Parent.Width
                     ZIndex: =2
@@ -347,9 +353,12 @@ Home_1 As screen:
                         ZIndex: =4
 
                     HomeMobileNavButtonGallery_3 As gallery.galleryVertical:
+                        AlignInContainer: =AlignInContainer.SetByContainer
                         Height: =Parent.Height
                         Items: =navCol
                         Layout: =Layout.Vertical
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =320
                         OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket - Deprocated'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
                         ShowScrollbar: =false
                         TemplateSize: =Parent.Width
