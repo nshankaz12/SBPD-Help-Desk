@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =false
-    OnStart: |-
+    OnStart: |
         =If(
             LookUp(
                 Users,
@@ -82,5 +82,9 @@ App As appinfo:
                 NavScreen: "Assign Role - Admin"
             }
         );
+        
+        Set(NDrop,false);
+        Set(MGallery,false);
+        Set(HambIconChange,false);
     StartScreen: =Home
 

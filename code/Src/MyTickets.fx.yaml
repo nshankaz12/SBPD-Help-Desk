@@ -55,7 +55,7 @@
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
                 LayoutMinWidth: =320
-                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech (old)'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
                 ShowScrollbar: =false
                 TemplateSize: =Parent.Width
                 Width: =Parent.Width
@@ -153,80 +153,40 @@
                     LayoutMode: =LayoutMode.Auto
                     ZIndex: =2
 
-                    "'nav-Ticket_6' As button":
-                        AutoDisableOnSelect: =false
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(0, 0, 0, 0)
-                        FillPortions: =1
-                        HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-                        PressedColor: =RGBA(0, 0, 0, 1)
-                        PressedFill: =
-                        Text: ="Create Ticket"
-                        Width: =174
-                        X: =7
-                        Y: =18
-                        ZIndex: =1
+                    MyTicketsNavLinkGallery As gallery.galleryHorizontal:
+                        AlignInContainer: =AlignInContainer.Center
+                        DelayItemLoading: =true
+                        Height: =Parent.Height
+                        Items: =navCol
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =320
+                        LoadingSpinner: =LoadingSpinner.Data
+                        OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech (old)'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                        ShowScrollbar: =false
+                        TemplateSize: =Parent.Width/5
+                        Width: =Parent.Width
+                        ZIndex: =6
 
-                    "'nav-name2_6' As button":
-                        AutoDisableOnSelect: =false
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(0, 0, 0, 0)
-                        FillPortions: =1
-                        HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-                        PressedColor: =RGBA(0, 0, 0, 1)
-                        PressedFill: =
-                        Text: ="My Tickets"
-                        Width: =174
-                        X: =174
-                        Y: =18
-                        ZIndex: =2
+                        MyTicketsNavLinkGalleryLabel As label:
+                            Align: =Align.Center
+                            DisplayMode: =DisplayMode.View
+                            FontWeight: =FontWeight.Semibold
+                            Height: =Parent.TemplateHeight
+                            OnSelect: =Select(Parent)
+                            Size: =15
+                            Text: =ThisItem.NavName
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =1
 
-                    "'nav-name3_6' As button":
-                        AutoDisableOnSelect: =false
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(0, 0, 0, 0)
-                        FillPortions: =1
-                        HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
-                        PressedColor: =RGBA(0, 0, 0, 1)
-                        PressedFill: =
-                        Text: ="Ticket Log"
-                        Width: =174
-                        X: =174
-                        Y: =18
-                        ZIndex: =3
-
-                    "'nav-name4_6' As button":
-                        AutoDisableOnSelect: =false
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(0, 0, 0, 0)
-                        FillPortions: =1
-                        HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-                        PressedColor: =RGBA(0, 0, 0, 1)
-                        PressedFill: =
-                        Text: ="Ticket Metrics"
-                        Width: =174
-                        X: =348
-                        Y: =18
-                        ZIndex: =4
-
-                    "'nav-name5_6' As button":
-                        AutoDisableOnSelect: =false
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(0, 0, 0, 0)
-                        FillPortions: =1
-                        HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-                        PressedColor: =RGBA(0, 0, 0, 1)
-                        PressedFill: =
-                        Text: ="Assign Role"
-                        Width: =174
-                        X: =522
-                        Y: =18
-                        ZIndex: =5
+                        MyTicketsNavLinkGalleryButton As button:
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =Parent.TemplateHeight
+                            HoverFill: =ColorFade(RGBA(105,105,105,.5), -20%)
+                            OnSelect: =Select(Parent)
+                            PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
+                            Text: =""
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =2
 
             MyTicketsMoblieHeaderContainer As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)

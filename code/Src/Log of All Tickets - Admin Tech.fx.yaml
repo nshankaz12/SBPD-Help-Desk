@@ -1,308 +1,518 @@
 "'Log of All Tickets - Admin Tech' As screen":
-    BackgroundImage: =
+    BackgroundImage: ='image (2)'
     ImagePosition: =ImagePosition.Stretch
+    OnVisible: |-
+        =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false});
 
-    "'Screen Container_1' As groupContainer.manualLayoutContainer":
-        Height: =768
-        Width: =1366
-        ZIndex: =31
+    TicketLogMainContainer As groupContainer.horizontalAutoLayoutContainer:
+        Height: ='Log of All Tickets - Admin Tech'.Height
+        LayoutMode: =LayoutMode.Auto
+        Visible: |-
+            =true
+            //This is the Main container
+        Width: ='Log of All Tickets - Admin Tech'.Width
+        ZIndex: =18
 
-        Image_1 As image:
-            Height: =768
-            Image: ='image (2)'
-            Width: =1366
-            ZIndex: =27
+        TicketLogMobileNavLinks As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =Parent.Height
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Visible: |-
+                =MGallery && 'Log of All Tickets - Admin Tech'.Size<=1
+                //This is a side panel that is visible when the user selects the hamburger menu
+            Width: =100
+            ZIndex: =1
 
-        "'Header Container_1' As groupContainer.manualLayoutContainer":
-            Height: =228
-            Width: =1366
-            ZIndex: =28
+            TicketLogNavButtonGallery As gallery.galleryVertical:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =Parent.Height
+                Items: =navCol
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =287
+                LayoutMinWidth: =320
+                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech (old)'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                ShowScrollbar: =false
+                TemplateSize: =Parent.Width
+                Width: =Parent.Width
+                ZIndex: =1
 
-            "'TicketLog Header' As group":
-                Height: =5
-                Width: =5
-                X: =40
-                Y: =40
-                ZIndex: =18
-
-                "'My Activity nav Label_1' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate(MyTickets,Fade)
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="My Activity"
-                    Width: =174
-                    X: =231
-                    Y: =27
+                MobileNavGalleryNameLabel_3 As label:
+                    Align: =Align.Center
+                    FontWeight: =FontWeight.Semibold
+                    Height: =74
+                    OnSelect: =Select(Parent)
+                    Size: =15
+                    Text: =ThisItem.NavName
+                    Width: =Parent.TemplateWidth
+                    Y: =(Parent.TemplateHeight-Self.Height)/2
                     ZIndex: =1
 
-                "'Reports nav Label' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
+                MobileNavButton_5 As button:
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Reports - Admin Tech',Fade)
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="Reports"
-                    Width: =174
-                    X: =385
-                    Y: =27
+                    Height: =Parent.TemplateHeight
+                    HoverFill: =ColorFade(RGBA(105,105,105, .25), -20%)
+                    OnSelect: =Select(Parent)
+                    PressedColor: =RGBA(105,105,105,.35)
+                    PressedFill: =RGBA(105,105,105,.35)
+                    Text: =""
+                    Width: =Parent.TemplateWidth
                     ZIndex: =2
 
-                "'Ticket Metrics nav Label_1' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Metrics - Admin Tech',Fade)
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="Ticket Metrics"
-                    Width: =174
-                    X: =559
-                    Y: =27
-                    ZIndex: =3
+        TicketLogVerticalLayoutContainer As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =9
+            Height: =Parent.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Visible: |-
+                =true
+                // This is the main Vertical container of the screen
+            Width: =Parent.Width
+            ZIndex: =2
 
-                Image4_2 As image:
-                    Height: =142
-                    Image: ='image (3)'
-                    Width: =270
-                    X: =57
-                    Y: =60
-                    ZIndex: =5
+            TicketLogHeaderContainer1 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                Fill: =RGBA(118, 173, 149, 1)
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Visible: |-
+                    ='Log of All Tickets - Admin Tech'.Size<>1
+                    //This is the top most header container that houses the navbar links
+                Width: =Parent.Width
+                ZIndex: =1
 
-                Label6_6 As label:
-                    Font: =Font.'Open Sans Condensed'
-                    Height: =20
-                    Size: =7
-                    Text: ="Profile"
-                    Width: =84
-                    X: =176
-                    Y: =68
-                    ZIndex: =6
+                TicketLogNotificationsDropDownContainer As groupContainer.manualLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    Visible: ='Log of All Tickets - Admin Tech'.Size>1
+                    Width: =75
+                    ZIndex: =1
 
-                Icon3_3 As icon.Person:
-                    Color: =RGBA(0, 0, 0, 1)
-                    FocusedBorderThickness: =1
-                    Height: =14
-                    Icon: =Icon.Person
-                    Width: =14
-                    X: =162
-                    Y: =71
+                    "'profile pic + drop down_9' As icon.Person":
+                        AutoDisableOnSelect: =false
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        Height: =55
+                        Icon: =Icon.Person
+                        Width: =55
+                        X: =27
+                        Y: =25
+                        ZIndex: =1
+
+                    "'new notification in dropdown_9' As circle":
+                        BorderColor: =RGBA(168, 0, 0, 1)
+                        Fill: =RGBA(168, 0, 0, 1)
+                        Height: =15
+                        Width: =15
+                        X: =27
+                        Y: =25
+                        ZIndex: =2
+
+                    UserNotificationsDropdownSymbolIcon_3 As icon.ChevronDown:
+                        Color: =RGBA(255, 255, 255, 1)
+                        Height: =14
+                        HoverBorderColor: =ColorFade(Color.DimGrey, 20%)
+                        HoverFill: =Color.DimGrey
+                        Icon: =Icon.ChevronDown
+                        OnSelect: |-
+                            =UpdateContext({NDrop:!NDrop})
+                        Width: =23
+                        X: =59
+                        Y: =66
+                        ZIndex: =3
+
+                TicketLogNavHeaderContainer As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =7
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
                     ZIndex: =7
 
-                Icon4_3 As icon.Bell:
+                    TicketLogNavLinkHeaderGallery As gallery.galleryHorizontal:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DelayItemLoading: =true
+                        Height: =Parent.Height
+                        Items: =navCol
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =320
+                        LoadingSpinner: =LoadingSpinner.Data
+                        OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech (old)'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                        ShowScrollbar: =false
+                        TemplateSize: =Parent.Width/5
+                        Width: =Parent.Width
+                        ZIndex: =1
+
+                        HomeNavLinkGalleryLabel_2 As label:
+                            Align: =Align.Center
+                            DisplayMode: =DisplayMode.View
+                            FontWeight: =FontWeight.Semibold
+                            Height: =Parent.TemplateHeight
+                            OnSelect: =Select(Parent)
+                            Size: =15
+                            Text: =ThisItem.NavName
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =1
+
+                        HomeNavLinkGalleryButton_2 As button:
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =Parent.TemplateHeight
+                            HoverFill: =ColorFade(RGBA(105,105,105,.5), -20%)
+                            OnSelect: =Select(Parent)
+                            PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
+                            Text: =""
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =2
+
+            TicketLogMobileHeaderContainer As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                Fill: =RGBA(118, 173, 149, 1)
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =50
+                Visible: |-
+                    ='Log of All Tickets - Admin Tech'.Size=1
+                    //This container is visible when the screen is in mobile view and the topmost is invisible
+                Width: =Parent.Width
+                ZIndex: =2
+
+                MoblieHamburgerMenu_3 As icon.Hamburger:
                     Color: =RGBA(0, 0, 0, 1)
-                    Height: =15
-                    Icon: =Icon.Bell
-                    OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
-                    Width: =18
-                    X: =160
-                    Y: =93
-                    ZIndex: =8
+                    Icon: =If(HambIconChange, Icon.ChevronLeft, Icon.Hamburger)
+                    OnSelect: |-
+                        =UpdateContext({HambIconChange:!HambIconChange});
+                        UpdateContext({MGallery:!MGallery});
+                    ZIndex: =1
 
-                Label6_7 As label:
-                    Font: =Font.'Open Sans Condensed'
-                    Height: =20
-                    OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
-                    Size: =7
-                    Text: ="Notifications"
-                    Width: =84
-                    X: =176
-                    Y: =90
-                    ZIndex: =9
+            TicketLogHeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                Fill: =RGBA(118, 173, 149, 1)
+                FillPortions: =2
+                Height: =117
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Visible: |-
+                    =true
+                    //Second header container housing the dropdown for the notifications button, user name, and picture, the picture and notifications icon disappear after a screen breakpoint has been reached
+                Width: =Parent.Width
+                ZIndex: =3
 
-                Circle2_3 As circle:
-                    BorderColor: =RGBA(220, 153, 153, 1)
-                    BorderThickness: =1
-                    Fill: =RGBA(255, 235, 235, 1)
-                    Height: =9
-                    Width: =9
-                    X: =222
-                    Y: =95
-                    ZIndex: =10
+                NotificationsDropdownContent_1 As groupContainer.manualLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    Height: =44
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    Visible: |
+                        ='Log of All Tickets - Admin Tech'.Size>1
+                    Width: =72
+                    X: =150
+                    Y: =56
+                    ZIndex: =1
 
-                Label7_3 As label:
-                    Align: =Align.Right
-                    BorderColor: =RGBA(0, 0, 0, 0)
-                    Height: =9
-                    OnSelect: =Navigate(Notifcations, ScreenTransition.Cover);
-                    Size: =4
-                    Text: ="2"
-                    Width: =9
-                    X: =220
-                    Y: =94
-                    ZIndex: =11
+                    UserNotificationsRoundedBorder_1 As image:
+                        Image: ='image (4)'
+                        ImagePosition: =ImagePosition.Stretch
+                        Visible: =NDrop
+                        Width: =184
+                        X: =64
+                        ZIndex: =1
 
-                "'profile pic + drop down_3' As icon.Person":
-                    BorderColor: =RGBA(0, 0, 0, 1)
-                    Color: =RGBA(0, 0, 0, 1)
-                    Height: =40
-                    Icon: =Icon.Person
-                    Width: =44
-                    X: =113
-                    Y: =21
-                    ZIndex: =13
+                    ProfileButtonContainer_1 As groupContainer.manualLayoutContainer:
+                        Height: =32
+                        Width: =184
+                        X: =64
+                        Y: =14
+                        ZIndex: =8
 
-                "'new notification in dropdown_3' As circle":
-                    BorderColor: =RGBA(168, 0, 0, 1)
-                    Fill: =RGBA(168, 0, 0, 1)
-                    Height: =11
-                    Width: =11
-                    X: =111
-                    Y: =27
-                    ZIndex: =14
+                        UserNotificationsProfileLabel_1 As label:
+                            Font: =Font.'Open Sans Condensed'
+                            Height: =27
+                            PaddingLeft: =0
+                            Size: =15
+                            Text: ="Profile"
+                            Visible: =NDrop
+                            Width: =59
+                            X: =34
+                            Y: =2
+                            ZIndex: =1
 
-                Icon1_3 As icon.ChevronDown:
-                    Color: =RGBA(255, 255, 255, 1)
-                    Height: =14
-                    Icon: =Icon.ChevronDown
-                    Width: =23
-                    X: =153
-                    Y: =46
-                    ZIndex: =15
+                        UserProfileDropdownIcon_1 As icon.Person:
+                            Color: =RGBA(0, 0, 0, 1)
+                            FocusedBorderThickness: =1
+                            Height: =32
+                            Icon: =Icon.Person
+                            Visible: =NDrop
+                            Width: =34
+                            ZIndex: =2
 
-                Greeting_4 As label:
+                        ProfileDropdownbtn_1 As button:
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =32
+                            HoverFill: =ColorFade(RGBA(105,105,105,.25), -20%)
+                            PressedColor: =RGBA(105,105,105,.25)
+                            PressedFill: =RGBA(105,105,105,.25)
+                            Text: =""
+                            Visible: =NDrop
+                            Width: =184
+                            ZIndex: =3
+
+                    NotificationsButtonContainer_1 As groupContainer.manualLayoutContainer:
+                        Height: =33
+                        Width: =184
+                        X: =64
+                        Y: =46
+                        ZIndex: =9
+
+                        UserNotificationRedCircle_1 As circle:
+                            BorderColor: =RGBA(220, 153, 153, 1)
+                            BorderThickness: =1
+                            Fill: =RGBA(255, 235, 235, 1)
+                            Height: =20
+                            Visible: =NDrop
+                            Width: =20
+                            X: =115
+                            Y: =3
+                            ZIndex: =1
+
+                        UserNotificationNumberLabel_1 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(0, 0, 0, 0)
+                            Height: =27
+                            OnSelect: =
+                            PaddingLeft: =3
+                            PaddingTop: =4
+                            Size: =10
+                            Text: ="2"
+                            Visible: =NDrop
+                            Width: =22
+                            X: =114
+                            ZIndex: =2
+
+                        UserNotificationsDropdownIcon_1 As icon.Bell:
+                            Color: =RGBA(0, 0, 0, 1)
+                            Height: =33
+                            Icon: =Icon.Bell
+                            OnSelect: |
+                                =
+                            Visible: =NDrop
+                            Width: =30
+                            ZIndex: =3
+
+                        UserNotificationsLabel_1 As label:
+                            Font: =Font.'Open Sans Condensed'
+                            Height: =31
+                            OnSelect: =
+                            PaddingLeft: =0
+                            Size: =15
+                            Text: ="Notifications"
+                            Visible: =NDrop
+                            Width: =95
+                            X: =30
+                            ZIndex: =4
+
+                        NotificationsDropdownbtn_1 As button:
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =33
+                            HoverFill: =ColorFade(RGBA(105,105,105,.25), -20%)
+                            PressedColor: =RGBA(0,0,0,0)
+                            PressedFill: =RGBA(105,105,105,.35)
+                            Text: =""
+                            Visible: =NDrop
+                            Width: =184
+                            ZIndex: =5
+
+                UserNameLabel_2 As label:
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
-                    Height: =122
+                    FillPortions: =7
+                    Height: =Parent.Height
                     Size: =30
                     Text: ="Ticket Log"
-                    Width: =456
-                    X: =395
-                    Y: =61
-                    ZIndex: =16
+                    Width: =Parent.Width
+                    X: =557
+                    Y: =86
+                    ZIndex: =2
 
-                BackButton As icon.BackArrow:
-                    Color: =RGBA(237, 255, 194, 1)
-                    Icon: =Icon.BackArrow
-                    OnSelect: =Back(ScreenTransition.Fade)
-                    X: =47
-                    Y: =93
-                    ZIndex: =17
+                HomeUserImage_2 As image:
+                    Height: =Parent.Height
+                    Image: =User().Image
+                    Visible: ='Log of All Tickets - Admin Tech'.Size>2
+                    Width: =152
+                    X: =1136
+                    Y: =52
+                    ZIndex: =3
 
-    DataTable1 As dataTable.datatable:
-        BorderStyle: =BorderStyle.Solid
-        DisplayMode: =DisplayMode.Edit
-        Fill: =RGBA(0, 0, 0, 0)
-        HeadingFill: =RGBA(118, 173, 149, 1)
-        Height: =543
-        Items: =Tickets_1
-        Width: =1366
-        X: =0
-        Y: =225
-        ZIndex: =32
+            TicketLogMainContentContainer As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =10
+                Height: =Parent.Height
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Visible: |-
+                    =true
+                    //Main Content container this houses certian elements such as the searchbar, and 2 button galleries, one for desktop, and another for mobile
+                Width: =Parent.Width
+                ZIndex: =4
 
-        id_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="id"
-            FieldName: ="id"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =1
-            Text: =ThisItem.id
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =29
+                Gallery6 As gallery.galleryVertical:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    Height: =Parent.Height
+                    Items: =Search(Tickets_1, "open", "status")
+                    Layout: =Layout.Vertical
+                    LayoutMinHeight: =320
+                    LayoutMinWidth: =320
+                    ShowScrollbar: =false
+                    TemplatePadding: =10
+                    TemplateSize: =Parent.Height
+                    Width: =Parent.Width
+                    ZIndex: =1
 
-        title_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="title"
-            FieldName: ="title"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =2
-            Text: =ThisItem.title
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =30
+                    Label20 As label:
+                        Height: =143
+                        OnSelect: =Select(Parent)
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        Text: =ThisItem.description
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth
+                        Y: =55
+                        ZIndex: =2
 
-        tags_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="tags"
-            FieldName: ="tags"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =3
-            Text: =ThisItem.tags
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =31
+                    Label19 As label:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        BorderThickness: =1
+                        Height: =22
+                        OnSelect: =Select(Parent)
+                        Text: =ThisItem.title
+                        Width: =Parent.TemplateWidth
+                        Y: =33
+                        ZIndex: =3
 
-        status_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="status"
-            FieldName: ="status"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =4
-            Text: =ThisItem.status
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =32
+                    Label18 As label:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(118, 173, 149, 1)
+                        Height: =33
+                        OnSelect: =Select(Parent)
+                        Text: =ThisItem.id
+                        Width: =Parent.TemplateWidth
+                        ZIndex: =4
 
-        dateCreated_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="dateCreated"
-            FieldName: ="dateCreated"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =5
-            Text: =ThisItem.dateCreated
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =33
+                    Rectangle3 As rectangle:
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        ZIndex: =5
 
-        dateClosed_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="dateClosed"
-            FieldName: ="dateClosed"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =6
-            Text: =ThisItem.dateClosed
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =34
+                    Group3 As group:
+                        Height: =5
+                        Width: =5
+                        X: =40
+                        Y: =40
+                        ZIndex: =11
 
-        lastUpdated_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="lastUpdated"
-            FieldName: ="lastUpdated"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =7
-            Text: =ThisItem.lastUpdated
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =35
+                        Image1 As image:
+                            Height: =40
+                            Image: =User().Image
+                            OnSelect: =Select(Parent)
+                            Width: =86
+                            X: =20
+                            Y: =473
+                            ZIndex: =6
 
-        updatedBy_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="updatedBy"
-            FieldName: ="updatedBy"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =8
-            Text: =ThisItem.updatedBy
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =36
+                        Label21 As label:
+                            Align: =Align.Center
+                            OnSelect: =Select(Parent)
+                            Text: =If(IsBlank(ThisItem.assignedTO), "Unassigned", User().FullName)
+                            Width: =151
+                            X: =106
+                            Y: =475
+                            ZIndex: =7
+
+                    Group2 As group:
+                        Height: =5
+                        Width: =5
+                        X: =40
+                        Y: =40
+                        ZIndex: =12
+
+                        Button7 As button:
+                            BorderColor: =Black
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =37
+                            OnSelect: =Select(Parent)
+                            Text: =""
+                            Width: =82
+                            X: =1192
+                            Y: =472
+                            ZIndex: =1
+
+                        Label22 As label:
+                            Align: =Align.Center
+                            Height: =39
+                            OnSelect: =Select(Parent)
+                            Text: =ThisItem.status
+                            Width: =78
+                            X: =1181
+                            Y: =468
+                            ZIndex: =8
+
+                        PartialCircle1 As partialCircle:
+                            BorderColor: =RGBA(0, 0, 0, 1)
+                            BorderThickness: =1
+                            Height: =45
+                            OnSelect: =Select(Parent)
+                            Width: =24
+                            X: =1181
+                            Y: =468
+                            ZIndex: =9
+
+                        Icon6 As icon.CancelBadge:
+                            Height: =45
+                            Icon: =Icon.CancelBadge
+                            OnSelect: =Select(Parent)
+                            Visible: =false
+                            Width: =19
+                            X: =1203
+                            Y: =472
+                            ZIndex: =10
+
+    ScreenSizeLabel_2 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        Size: =20
+        Text: |-
+            =Concatenate("ScreenSize: ",Text('Log of All Tickets - Admin Tech'.Size))
+        Width: =184
+        X: =372
+        Y: =498
+        ZIndex: =19
 

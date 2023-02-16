@@ -2,9 +2,7 @@ Home As screen:
     BackgroundImage: ='image (2)'
     ImagePosition: =ImagePosition.Stretch
     OnVisible: |-
-        =Set(NDrop,false);
-        Set(MGallery,false);
-        Set(HambIconChange,false);
+        =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false});
 
     Image2 As image:
         Image: =Untitled_Artwork
@@ -36,7 +34,7 @@ Home As screen:
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             Visible: |-
-                =MGallery
+                =MGallery && Home.Size<=1
                 //This is a side panel that is visible when the user selects the hamburger menu
             Width: =100
             ZIndex: =1
@@ -49,7 +47,7 @@ Home As screen:
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
                 LayoutMinWidth: =320
-                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket - Deprocated'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech (old)'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
                 ShowScrollbar: =false
                 TemplateSize: =Parent.Width
                 Width: =Parent.Width
@@ -153,85 +151,40 @@ Home As screen:
                     LayoutMode: =LayoutMode.Auto
                     ZIndex: =7
 
-                    "'nav-Ticket_1' As button":
+                    HomeNavLinkGallery As gallery.galleryHorizontal:
                         AlignInContainer: =AlignInContainer.Center
-                        AutoDisableOnSelect: =false
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(0, 0, 0, 0)
-                        FillPortions: =1
-                        HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-                        PressedColor: =RGBA(0, 0, 0, 1)
-                        PressedFill: =
-                        Text: ="Create Ticket"
-                        Width: =174
-                        X: =7
-                        Y: =18
+                        DelayItemLoading: =true
+                        Height: =Parent.Height
+                        Items: =navCol
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =320
+                        LoadingSpinner: =LoadingSpinner.Data
+                        OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech (old)'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                        ShowScrollbar: =false
+                        TemplateSize: =Parent.Width/5
+                        Width: =Parent.Width
                         ZIndex: =1
 
-                    "'nav-name2_1' As button":
-                        AlignInContainer: =AlignInContainer.Center
-                        AutoDisableOnSelect: =false
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(0, 0, 0, 0)
-                        FillPortions: =1
-                        HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-                        PressedColor: =RGBA(0, 0, 0, 1)
-                        PressedFill: =
-                        Text: ="My Tickets"
-                        Width: =174
-                        X: =174
-                        Y: =18
-                        ZIndex: =2
+                        HomeNavLinkGalleryLabel As label:
+                            Align: =Align.Center
+                            DisplayMode: =DisplayMode.View
+                            FontWeight: =FontWeight.Semibold
+                            Height: =Parent.TemplateHeight
+                            OnSelect: =Select(Parent)
+                            Size: =15
+                            Text: =ThisItem.NavName
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =1
 
-                    "'nav-name3_1' As button":
-                        AlignInContainer: =AlignInContainer.Center
-                        AutoDisableOnSelect: =false
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(0, 0, 0, 0)
-                        FillPortions: =1
-                        HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
-                        PressedColor: =RGBA(0, 0, 0, 1)
-                        PressedFill: =
-                        Text: ="Ticket Log"
-                        Width: =174
-                        X: =174
-                        Y: =18
-                        ZIndex: =3
-
-                    "'nav-name4_1' As button":
-                        AlignInContainer: =AlignInContainer.Center
-                        AutoDisableOnSelect: =false
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(0, 0, 0, 0)
-                        FillPortions: =1
-                        HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-                        PressedColor: =RGBA(0, 0, 0, 1)
-                        PressedFill: =
-                        Text: ="Ticket Metrics"
-                        Width: =174
-                        X: =348
-                        Y: =18
-                        ZIndex: =4
-
-                    "'nav-name5_1' As button":
-                        AlignInContainer: =AlignInContainer.Center
-                        AutoDisableOnSelect: =false
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(0, 0, 0, 0)
-                        FillPortions: =1
-                        HoverFill: =ColorFade(DimGrey,-20%)
-                        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-                        PressedColor: =RGBA(0, 0, 0, 1)
-                        PressedFill: =
-                        Text: ="Assign Role"
-                        Width: =174
-                        X: =522
-                        Y: =18
-                        ZIndex: =5
+                        HomeNavLinkGalleryButton As button:
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =Parent.TemplateHeight
+                            HoverFill: =ColorFade(RGBA(105,105,105,.5), -20%)
+                            OnSelect: =Select(Parent)
+                            PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
+                            Text: =""
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =2
 
             HomeMoblieHeaderContainer As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
@@ -248,7 +201,7 @@ Home As screen:
                 MoblieHamburgerMenu As icon.Hamburger:
                     AlignInContainer: =AlignInContainer.Center
                     Color: =RGBA(0, 0, 0, 1)
-                    Icon: =If(HambIconChange, ChevronLeft, Hamburger)
+                    Icon: =If(HambIconChange, Icon.ChevronLeft, Icon.Hamburger)
                     OnSelect: |-
                         =UpdateContext({HambIconChange:!HambIconChange});
                         UpdateContext({MGallery:!MGallery});
@@ -462,7 +415,7 @@ Home As screen:
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
-                        OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket - Deprocated'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                        OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech (old)'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
                         ShowScrollbar: =false
                         TemplateSize: =Parent.Height/2
                         Visible: =Home.Size>1
@@ -501,9 +454,9 @@ Home As screen:
                         Overlapbtn As button:
                             Fill: =RGBA(255, 255, 255, 0)
                             Height: =137
-                            HoverFill: =RGBA(0,0,0,0)
+                            HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
                             OnSelect: =Select(Parent)
-                            PressedFill: =RGBA(105,105,105,.35)
+                            PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
                             Text: =""
                             Width: =150
                             X: =60
@@ -518,7 +471,7 @@ Home As screen:
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
-                        OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket - Deprocated'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                        OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech (old)'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
                         ShowScrollbar: =false
                         TemplateSize: =Parent.Width
                         Visible: |
