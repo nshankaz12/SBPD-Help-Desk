@@ -41,24 +41,23 @@
 
         LogoContainer As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
-            Height: =768
+            Height: =Parent.Height
             LayoutAlignItems: =LayoutAlignItems.Center
             LayoutDirection: =LayoutDirection.Vertical
             LayoutJustifyContent: =LayoutJustifyContent.Center
             LayoutMinHeight: =300
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            Width: =1366
+            Width: =Parent.Width
             ZIndex: =1
 
             Logo As image:
-                FillPortions: =1
                 Height: =530
                 Image: =unnamed
                 Width: =498
                 X: =20
-                Y: =20
-                ZIndex: =1
+                Y: =10
+                ZIndex: =2
 
             SplashScreenLoadingContainer As groupContainer.verticalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
@@ -68,7 +67,7 @@
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                ZIndex: =2
+                ZIndex: =3
 
                 SplashImage2 As image:
                     Image: =LoadGif
