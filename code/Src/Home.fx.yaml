@@ -2,7 +2,7 @@ Home As screen:
     BackgroundImage: ='image (2)'
     ImagePosition: =ImagePosition.Stretch
     OnVisible: |-
-        =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false});
+        =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false,CloseAlertRibbon:false});
 
     Image2 As image:
         Image: =Untitled_Artwork
@@ -170,10 +170,10 @@ Home As screen:
                         HomeNavLinkGalleryLabel As label:
                             Align: =Align.Center
                             DisplayMode: =DisplayMode.View
-                            FontWeight: =FontWeight.Semibold
+                            FontWeight: =FontWeight.Bold
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
-                            Size: =15
+                            Size: =If(Home.Size>2 , 15, 10)
                             Text: =ThisItem.NavName
                             Width: =Parent.TemplateWidth
                             ZIndex: =1
@@ -211,7 +211,8 @@ Home As screen:
 
             HomeHeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
-                Height: =117
+                FillPortions: =0
+                Height: =50
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutJustifyContent: =LayoutJustifyContent.Center
                 LayoutMinHeight: =100
@@ -221,129 +222,6 @@ Home As screen:
                     =true
                     //Second header container housing the dropdown for the notifications button, user name, and picture, the picture and notifications icon disappear after a screen breakpoint has been reached
                 ZIndex: =3
-
-                NotificationsDropdownContent As groupContainer.manualLayoutContainer:
-                    Height: =44
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    Visible: |
-                        =Home.Size>1
-                    Width: =72
-                    X: =150
-                    Y: =56
-                    ZIndex: =1
-
-                    UserNotificationsRoundedBorder As image:
-                        Image: ='image (4)'
-                        ImagePosition: =ImagePosition.Stretch
-                        Visible: =NDrop
-                        Width: =184
-                        X: =64
-                        ZIndex: =1
-
-                    ProfileButtonContainer As groupContainer.manualLayoutContainer:
-                        Height: =32
-                        Width: =184
-                        X: =64
-                        Y: =14
-                        ZIndex: =8
-
-                        UserNotificationsProfileLabel As label:
-                            Font: =Font.'Open Sans Condensed'
-                            Height: =27
-                            PaddingLeft: =0
-                            Size: =15
-                            Text: ="Profile"
-                            Visible: =NDrop
-                            Width: =59
-                            X: =34
-                            Y: =2
-                            ZIndex: =1
-
-                        UserProfileDropdownIcon As icon.Person:
-                            Color: =RGBA(0, 0, 0, 1)
-                            FocusedBorderThickness: =1
-                            Height: =32
-                            Icon: =Icon.Person
-                            Visible: =NDrop
-                            Width: =34
-                            ZIndex: =2
-
-                        ProfileDropdownbtn As button:
-                            Fill: =RGBA(0, 0, 0, 0)
-                            Height: =32
-                            HoverFill: =ColorFade(RGBA(105,105,105,.25), -20%)
-                            PressedColor: =RGBA(105,105,105,.25)
-                            PressedFill: =RGBA(105,105,105,.25)
-                            Text: =""
-                            Visible: =NDrop
-                            Width: =184
-                            ZIndex: =3
-
-                    NotificationsButtonContainer As groupContainer.manualLayoutContainer:
-                        Height: =33
-                        Width: =184
-                        X: =64
-                        Y: =46
-                        ZIndex: =9
-
-                        UserNotificationRedCircle As circle:
-                            BorderColor: =RGBA(220, 153, 153, 1)
-                            BorderThickness: =1
-                            Fill: =RGBA(255, 235, 235, 1)
-                            Height: =20
-                            Visible: =NDrop
-                            Width: =20
-                            X: =115
-                            Y: =3
-                            ZIndex: =1
-
-                        UserNotificationNumberLabel As label:
-                            Align: =Align.Center
-                            BorderColor: =RGBA(0, 0, 0, 0)
-                            Height: =27
-                            OnSelect: =
-                            PaddingLeft: =3
-                            PaddingTop: =4
-                            Size: =10
-                            Text: ="2"
-                            Visible: =NDrop
-                            Width: =22
-                            X: =114
-                            ZIndex: =2
-
-                        UserNotificationsDropdownIcon As icon.Bell:
-                            Color: =RGBA(0, 0, 0, 1)
-                            Height: =33
-                            Icon: =Icon.Bell
-                            OnSelect: |
-                                =
-                            Visible: =NDrop
-                            Width: =30
-                            ZIndex: =3
-
-                        UserNotificationsLabel As label:
-                            Font: =Font.'Open Sans Condensed'
-                            Height: =31
-                            OnSelect: =
-                            PaddingLeft: =0
-                            Size: =15
-                            Text: ="Notifications"
-                            Visible: =NDrop
-                            Width: =95
-                            X: =30
-                            ZIndex: =4
-
-                        NotificationsDropdownbtn As button:
-                            Fill: =RGBA(0, 0, 0, 0)
-                            Height: =33
-                            HoverFill: =ColorFade(RGBA(105,105,105,.25), -20%)
-                            PressedColor: =RGBA(0,0,0,0)
-                            PressedFill: =RGBA(105,105,105,.35)
-                            Text: =""
-                            Visible: =NDrop
-                            Width: =184
-                            ZIndex: =5
 
                 UserNameLabel As label:
                     Align: =Align.Center
@@ -402,13 +280,54 @@ Home As screen:
                         Y: =40
                         ZIndex: =1
 
+                AlertRibbonContainerTest As groupContainer.verticalAutoLayoutContainer:
+                    Fill: =RGBA(232, 244, 217, 1)
+                    FillPortions: =0
+                    Height: =25
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Visible: =!CloseAlertRibbon
+                    Width: =Parent.Width
+                    ZIndex: =2
+
+                    AlertContianer As groupContainer.horizontalAutoLayoutContainer:
+                        FillPortions: =0
+                        Height: =Parent.Height
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        ZIndex: =3
+
+                        Label12 As label:
+                            Align: =Align.Center
+                            AlignInContainer: =AlignInContainer.Stretch
+                            Color: =RGBA(168, 0, 0, 1)
+                            FillPortions: =1
+                            Height: =Parent.Height
+                            LayoutMinHeight: =Parent.Height
+                            Size: =If(Home.Size=1, 8, 15)
+                            Text: |-
+                                ="This is a Test Alert! Nothing is Down at the moment, Service will resume at 12:00 am."
+                            ZIndex: =1
+
+                        Icon12 As icon.Cancel:
+                            Color: =RGBA(176, 176, 176, 1)
+                            Height: =Parent.Height
+                            Icon: =Icon.Cancel
+                            OnSelect: |-
+                                =UpdateContext({CloseAlertRibbon:true})
+                            ZIndex: =2
+
                 ButtonsContainer As groupContainer.verticalAutoLayoutContainer:
                     FillPortions: =8
                     LayoutDirection: =LayoutDirection.Vertical
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    ZIndex: =2
+                    LayoutWrap: =true
+                    ZIndex: =3
 
                     ButtonGallery As gallery.galleryVertical:
                         AlignInContainer: =AlignInContainer.SetByContainer
@@ -528,6 +447,7 @@ Home As screen:
         Size: =20
         Text: |-
             =Concatenate("ScreenSize: ",Text(Home.Size))
+        Visible: =false
         Width: =184
         Y: =712
         ZIndex: =19
@@ -660,9 +580,123 @@ Home As screen:
         Y: =76
         ZIndex: =21
 
-    Label4 As label:
-        Text: ="Text"
-        X: =285
-        Y: =546
+    NotificationsDropdownContent As groupContainer.manualLayoutContainer:
+        Height: =72
+        Visible: |
+            =Home.Size>1
+        Width: =164
+        X: =59
+        Y: =56
         ZIndex: =22
+
+        UserNotificationsRoundedBorder As image:
+            Height: =71
+            Image: ='image (4)'
+            ImagePosition: =ImagePosition.Stretch
+            Visible: =NDrop
+            Width: =164
+            ZIndex: =1
+
+        ProfileButtonContainer As groupContainer.manualLayoutContainer:
+            Height: =Parent.Height/2
+            Width: =164
+            ZIndex: =8
+
+            UserNotificationsProfileLabel As label:
+                Font: =Font.'Open Sans Condensed'
+                Height: =16
+                PaddingLeft: =0
+                Size: =15
+                Text: ="Profile"
+                Visible: =NDrop
+                Width: =59
+                X: =33
+                Y: =11
+                ZIndex: =1
+
+            UserProfileDropdownIcon As icon.Person:
+                Color: =RGBA(0, 0, 0, 1)
+                FocusedBorderThickness: =1
+                Height: =34
+                Icon: =Icon.Person
+                Visible: =NDrop
+                Width: =33
+                Y: =2
+                ZIndex: =2
+
+            ProfileDropdownbtn As button:
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =34
+                HoverFill: =ColorFade(RGBA(105,105,105,.25), -20%)
+                PressedColor: =RGBA(105,105,105,.25)
+                PressedFill: =RGBA(105,105,105,.25)
+                Text: =""
+                Visible: =NDrop
+                Width: =164
+                Y: =2
+                ZIndex: =3
+
+        NotificationsButtonContainer As groupContainer.manualLayoutContainer:
+            Height: =Parent.Height/2
+            Width: =164
+            Y: =35
+            ZIndex: =9
+
+            UserNotificationRedCircle As circle:
+                BorderColor: =RGBA(220, 153, 153, 1)
+                BorderThickness: =1
+                Fill: =RGBA(255, 235, 235, 1)
+                Height: =14
+                Visible: =NDrop
+                Width: =15
+                X: =112
+                ZIndex: =1
+
+            UserNotificationNumberLabel As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 0, 0, 0)
+                Height: =14
+                OnSelect: =
+                PaddingLeft: =3
+                PaddingTop: =4
+                Size: =8
+                Text: ="2"
+                Visible: =NDrop
+                Width: =15
+                X: =112
+                ZIndex: =2
+
+            UserNotificationsDropdownIcon As icon.Bell:
+                Color: =RGBA(0, 0, 0, 1)
+                Height: =34
+                Icon: =Icon.Bell
+                OnSelect: |
+                    =
+                Visible: =NDrop
+                Width: =33
+                ZIndex: =3
+
+            UserNotificationsLabel As label:
+                Font: =Font.'Open Sans Condensed'
+                Height: =18
+                OnSelect: =
+                PaddingLeft: =0
+                Size: =15
+                Text: ="Notifications"
+                Visible: =NDrop
+                Width: =111
+                X: =33
+                Y: =8
+                ZIndex: =4
+
+            NotificationsDropdownbtn As button:
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =34
+                HoverFill: =ColorFade(RGBA(105,105,105,.25), -20%)
+                PressedColor: =RGBA(0,0,0,0)
+                PressedFill: =RGBA(105,105,105,.35)
+                Text: =""
+                Visible: =NDrop
+                Width: =164
+                ZIndex: =5
 

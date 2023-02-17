@@ -95,6 +95,7 @@
         FontWeight: =FontWeight.Bold
         Size: =30
         Text: ='Splash Screen'.Size
+        Visible: =false
         ZIndex: =7
 
     "'SplashScreen Width Heigh Label' As label":
@@ -104,6 +105,7 @@
         Size: =25
         Text: |-
             =Concatenate("Width x Height: ", Text('Splash Screen'.Width)," x ", Text('Splash Screen'.Height))
+        Visible: =false
         Width: =200
         Y: =40
         ZIndex: =8

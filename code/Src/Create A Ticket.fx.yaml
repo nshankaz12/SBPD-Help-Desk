@@ -1,345 +1,615 @@
 "'Create A Ticket' As screen":
-    BackgroundImage: =
+    BackgroundImage: ='image (2)'
     Fill: =
     ImagePosition: =ImagePosition.Stretch
     OnVisible: =Set(userID, LookUp(userInfo, email = User().Email, id));
 
-    Image13_13 As image:
-        Height: =734
-        Image: ='image (2)'
-        Width: =1331
-        X: =17
-        ZIndex: =1
-
-    Greeting_9 As label:
-        Align: =Align.Center
-        Color: =RGBA(255, 255, 255, 1)
-        Height: =122
-        Size: =30
-        Text: ="Create a Ticket"
-        Width: =456
-        X: =454
-        Y: =58
+    CreateATicketMainContainer As groupContainer.horizontalAutoLayoutContainer:
+        Height: ='Create A Ticket'.Height
+        LayoutMode: =LayoutMode.Auto
+        Width: ='Create A Ticket'.Width
         ZIndex: =2
 
-    "'Back Scroll_8' As icon.BackArrow":
-        Color: =RGBA(232, 244, 217, 1)
-        Icon: =Icon.BackArrow
-        OnSelect: =Back(ScreenTransition.Fade)
-        X: =59
-        Y: =87
-        ZIndex: =3
-
-    "'nav-Ticket_10' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Create Ticket"
-        Width: =174
-        X: =181
-        Y: =18
-        ZIndex: =4
-
-    "'nav-name2_10' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="My Tickets"
-        Width: =174
-        X: =355
-        Y: =18
-        ZIndex: =5
-
-    "'nav-name3_10' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Log of All Tickets - Admin Tech (old)', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Log"
-        Width: =174
-        X: =529
-        Y: =18
-        ZIndex: =6
-
-    "'nav-name4_10' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Metrics"
-        Width: =174
-        X: =703
-        Y: =18
-        ZIndex: =7
-
-    "'nav-name5_10' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Assign Role"
-        Width: =174
-        X: =877
-        Y: =18
-        ZIndex: =8
-
-    Image7_5 As image:
-        Height: =128
-        Image: =User().Image
-        Width: =152
-        X: =1136
-        Y: =52
-        ZIndex: =9
-
-    TicketForm_1 As form:
-        AcceptsFocus: =false
-        BorderColor: =RGBA(56, 96, 178, 1)
-        DataSource: =Tickets_1
-        DefaultMode: =FormMode.New
-        Height: =552
-        NumberOfColumns: =2
-        OnSuccess: =Navigate(LblSuccessMsg1,Fade)
-        Width: =1331
-        X: =17
-        Y: =215
-        ZIndex: =10
-
-        title_DataCard1_1 As typedDataCard.textualEditCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="title"
-            Default: =ThisItem.title
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"title")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =0
-            MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "title")
-            Required: =false
-            Update: =DataCardValue6_1.Text
-            Width: =665
-            X: =0
-            Y: =0
+        CreateATicketMobileNavLinksContainer As groupContainer.horizontalAutoLayoutContainer:
+            FillPortions: =0
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Visible: =MGallery && 'Create A Ticket'.Size=1
+            Width: =100
             ZIndex: =1
 
-            DataCardKey7_1 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
+            CreateATicketMobileNavButtonGallery As gallery.galleryVertical:
+                AlignInContainer: =AlignInContainer.Center
+                FillPortions: =0
+                Height: =Parent.Height
+                Items: =navCol
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =287
+                LayoutMinWidth: =320
+                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                ShowScrollbar: =false
+                TemplateSize: =Parent.Width
+                Width: =Parent.Width
                 ZIndex: =1
 
-            DataCardValue6_1 As text:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                Default: =Parent.Default
-                DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
-                MaxLength: =Parent.MaxLength
-                PaddingLeft: =5
-                RadiusBottomLeft: =0
-                RadiusBottomRight: =0
-                RadiusTopLeft: =0
-                RadiusTopRight: =0
-                Tooltip: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey7_1.Y + DataCardKey7_1.Height + 5
+                MobileNavGalleryNameLabel_4 As label:
+                    Align: =Align.Center
+                    FontWeight: =FontWeight.Semibold
+                    Height: =74
+                    OnSelect: =Select(Parent)
+                    Size: =15
+                    Text: =ThisItem.NavName
+                    Width: =Parent.TemplateWidth
+                    Y: =(Parent.TemplateHeight-Self.Height)/2
+                    ZIndex: =1
+
+                MobileNavButton_6 As button:
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =Parent.TemplateHeight
+                    HoverFill: =ColorFade(RGBA(105,105,105, .25), -20%)
+                    OnSelect: =Select(Parent)
+                    PressedColor: =RGBA(105,105,105,.35)
+                    PressedFill: =RGBA(105,105,105,.35)
+                    Text: =""
+                    Width: =Parent.TemplateWidth
+                    ZIndex: =2
+
+        CreateATicketVerticalLayoutContainer As groupContainer.verticalAutoLayoutContainer:
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =2
+
+            CreateATicketHeaderContainer1 As groupContainer.horizontalAutoLayoutContainer:
+                Fill: =RGBA(118, 173, 149, 1)
+                FillPortions: =0
+                Height: =50
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Visible: ='Create A Ticket'.Size>1
+                ZIndex: =1
+
+                NotificationsDropdownContainer_3 As groupContainer.manualLayoutContainer:
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    Visible: =Home.Size>1
+                    Width: =75
+                    ZIndex: =1
+
+                    "'profile pic + drop down_10' As icon.Person":
+                        AutoDisableOnSelect: =false
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        Height: =55
+                        Icon: =Icon.Person
+                        Width: =55
+                        X: =20
+                        ZIndex: =1
+
+                    "'new notification in dropdown_10' As circle":
+                        BorderColor: =RGBA(168, 0, 0, 1)
+                        Fill: =RGBA(168, 0, 0, 1)
+                        Height: =15
+                        Width: =15
+                        X: =20
+                        ZIndex: =2
+
+                    UserNotificationsDropdownSymbolIcon_4 As icon.ChevronDown:
+                        Color: =RGBA(255, 255, 255, 1)
+                        Height: =14
+                        HoverBorderColor: =ColorFade(Color.DimGrey, 20%)
+                        HoverFill: =Color.DimGrey
+                        Icon: =Icon.ChevronDown
+                        OnSelect: |-
+                            =UpdateContext({NDrop:!NDrop})
+                        Width: =23
+                        X: =52
+                        Y: =41
+                        ZIndex: =3
+
+                CreateATicketNavContainer As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Center
+                    Height: =Parent.Height
+                    LayoutMinHeight: =0
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =2
+
+                    CreateATicketNavLinkGallery As gallery.galleryHorizontal:
+                        AlignInContainer: =AlignInContainer.Center
+                        DelayItemLoading: =true
+                        Height: =Parent.Height
+                        Items: =navCol
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =320
+                        LoadingSpinner: =LoadingSpinner.Data
+                        OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                        ShowScrollbar: =false
+                        TemplateSize: =Parent.Width/5
+                        Width: =Parent.Width
+                        ZIndex: =1
+
+                        CreateATicketNavLinkGalleryLabel As label:
+                            Align: =Align.Center
+                            DisplayMode: =DisplayMode.View
+                            FontWeight: =FontWeight.Semibold
+                            Height: =Parent.TemplateHeight
+                            OnSelect: =Select(Parent)
+                            Size: =15
+                            Text: =ThisItem.NavName
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =1
+
+                        CreateATicketNavLinkGalleryButton As button:
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =Parent.TemplateHeight
+                            HoverFill: =ColorFade(RGBA(105,105,105,.5), -20%)
+                            OnSelect: =Select(Parent)
+                            PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
+                            Text: =""
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =2
+
+            CreateATicketMobileHeaderContainer As groupContainer.horizontalAutoLayoutContainer:
+                Fill: =RGBA(118, 173, 149, 1)
+                FillPortions: =0
+                Height: =100
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Visible: ='Create A Ticket'.Size=1
                 ZIndex: =2
 
-            ErrorMessage7_1 As label:
-                AutoHeight: =true
-                Height: =10
-                Live: =Live.Assertive
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Error
-                Visible: =Parent.DisplayMode=DisplayMode.Edit
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardValue6_1.Y + DataCardValue6_1.Height
+                MoblieHamburgerMenu_4 As icon.Hamburger:
+                    AlignInContainer: =AlignInContainer.Center
+                    Color: =RGBA(0, 0, 0, 1)
+                    Icon: =If(HambIconChange, Icon.ChevronLeft, Icon.Hamburger)
+                    OnSelect: |-
+                        =UpdateContext({HambIconChange:!HambIconChange});
+                        UpdateContext({MGallery:!MGallery});
+                    Width: =100
+                    ZIndex: =1
+
+                CreateATicketMoblieTitleLabelContainer As groupContainer.horizontalAutoLayoutContainer:
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =2
+
+                    CreateATicketMobileHeaderLabel As label:
+                        Align: =Align.Center
+                        Color: =RGBA(255, 255, 255, 1)
+                        FontWeight: =FontWeight.Bold
+                        Height: =Parent.Height
+                        Size: =If(HambIconChange, 20, 30)
+                        Text: ="Create A Ticket"
+                        Width: =Parent.Width
+                        ZIndex: =1
+
+            CreateATicketHeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
+                Fill: =RGBA(118, 173, 149, 1)
+                FillPortions: =0
+                Height: =100
+                LayoutMinHeight: =100
+                LayoutMinWidth: =100
+                LayoutMode: =LayoutMode.Auto
                 ZIndex: =3
 
-            StarVisible7_1 As label:
-                Align: =Align.Center
-                Height: =DataCardKey7_1.Height
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                Wrap: =false
-                Y: =DataCardKey7_1.Y
+                NotificationsDropdownContent_2 As groupContainer.manualLayoutContainer:
+                    Height: =44
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    Visible: |
+                        =true
+                    Width: =72
+                    X: =150
+                    Y: =56
+                    ZIndex: =1
+
+                    Icon11 As icon.BackArrow:
+                        Color: =RGBA(232, 244, 217, 1)
+                        Icon: =Icon.BackArrow
+                        OnSelect: =Back(Fade)
+                        X: =12
+                        Y: =18
+                        ZIndex: =1
+
+                    UserNotificationsRoundedBorder_2 As image:
+                        Image: ='image (4)'
+                        ImagePosition: =ImagePosition.Stretch
+                        Visible: =NDrop
+                        Width: =184
+                        X: =64
+                        ZIndex: =2
+
+                    ProfileButtonContainer_2 As groupContainer.manualLayoutContainer:
+                        Height: =32
+                        Width: =184
+                        X: =64
+                        Y: =14
+                        ZIndex: =3
+
+                        UserNotificationsProfileLabel_2 As label:
+                            Font: =Font.'Open Sans Condensed'
+                            Height: =27
+                            PaddingLeft: =0
+                            Size: =15
+                            Text: ="Profile"
+                            Visible: =NDrop
+                            Width: =59
+                            X: =34
+                            Y: =2
+                            ZIndex: =1
+
+                        UserProfileDropdownIcon_2 As icon.Person:
+                            Color: =RGBA(0, 0, 0, 1)
+                            FocusedBorderThickness: =1
+                            Height: =32
+                            Icon: =Icon.Person
+                            Visible: =NDrop
+                            Width: =34
+                            ZIndex: =2
+
+                        ProfileDropdownbtn_2 As button:
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =32
+                            HoverFill: =ColorFade(RGBA(105,105,105,.25), -20%)
+                            PressedColor: =RGBA(105,105,105,.25)
+                            PressedFill: =RGBA(105,105,105,.25)
+                            Text: =""
+                            Visible: =NDrop
+                            Width: =184
+                            ZIndex: =3
+
+                    NotificationsButtonContainer_2 As groupContainer.manualLayoutContainer:
+                        Height: =33
+                        Width: =184
+                        X: =64
+                        Y: =46
+                        ZIndex: =4
+
+                        UserNotificationRedCircle_2 As circle:
+                            BorderColor: =RGBA(220, 153, 153, 1)
+                            BorderThickness: =1
+                            Fill: =RGBA(255, 235, 235, 1)
+                            Height: =20
+                            Visible: =NDrop
+                            Width: =20
+                            X: =115
+                            Y: =3
+                            ZIndex: =1
+
+                        UserNotificationNumberLabel_2 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(0, 0, 0, 0)
+                            Height: =27
+                            OnSelect: =
+                            PaddingLeft: =3
+                            PaddingTop: =4
+                            Size: =10
+                            Text: ="2"
+                            Visible: =NDrop
+                            Width: =22
+                            X: =114
+                            ZIndex: =2
+
+                        UserNotificationsDropdownIcon_2 As icon.Bell:
+                            Color: =RGBA(0, 0, 0, 1)
+                            Height: =33
+                            Icon: =Icon.Bell
+                            OnSelect: |
+                                =
+                            Visible: =NDrop
+                            Width: =30
+                            ZIndex: =3
+
+                        UserNotificationsLabel_2 As label:
+                            Font: =Font.'Open Sans Condensed'
+                            Height: =31
+                            OnSelect: =
+                            PaddingLeft: =0
+                            Size: =15
+                            Text: ="Notifications"
+                            Visible: =NDrop
+                            Width: =95
+                            X: =30
+                            ZIndex: =4
+
+                        NotificationsDropdownbtn_2 As button:
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =33
+                            HoverFill: =ColorFade(RGBA(105,105,105,.25), -20%)
+                            PressedColor: =RGBA(0,0,0,0)
+                            PressedFill: =RGBA(105,105,105,.35)
+                            Text: =""
+                            Visible: =NDrop
+                            Width: =184
+                            ZIndex: =5
+
+                CreateATicketDesktopHeaderLabel As label:
+                    Align: =Align.Center
+                    Color: =RGBA(255, 255, 255, 1)
+                    FillPortions: =7
+                    Height: =Parent.Height
+                    Size: =If('Create A Ticket'.Size>=3, 40, 25)
+                    Text: ="Create A Ticket"
+                    Visible: ='Create A Ticket'.Size<>1
+                    Width: =Parent.Width
+                    ZIndex: =2
+
+                Image1 As image:
+                    Image: =User().Image
+                    Visible: ='Create A Ticket'.Size>2
+                    ZIndex: =3
+
+            CreateATicketMainContentContainer As groupContainer.verticalAutoLayoutContainer:
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =Parent.Width
+                LayoutMode: =LayoutMode.Auto
+                LayoutWrap: =true
                 ZIndex: =4
 
-        Categories As typedDataCard.blankCard:
-            BorderStyle: =BorderStyle.Solid
-            DisplayMode: =DisplayMode.Edit
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =200
-            Width: =665
-            X: =1
-            Y: =0
-            ZIndex: =1
+                TicketForm_1 As form:
+                    AcceptsFocus: =false
+                    AlignInContainer: =AlignInContainer.Center
+                    BorderColor: =RGBA(56, 96, 178, 1)
+                    DataSource: =Tickets_1
+                    DefaultMode: =FormMode.New
+                    Height: =552
+                    LayoutMinHeight: =250
+                    LayoutMinWidth: =Parent.Height
+                    NumberOfColumns: =2
+                    OnSuccess: =Navigate(LblSuccessMsg1,Fade)
+                    Width: =Parent.Width
+                    X: =35
+                    Y: =216
+                    ZIndex: =1
 
-            Dropdown1 As dropdown:
-                Items: =Filter(Category, parentId = Blank())
-                X: =76
-                Y: =48
-                ZIndex: =1
+                    title_DataCard1_1 As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="title"
+                        Default: =ThisItem.title
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"title")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =99
+                        MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "title")
+                        Required: =false
+                        Update: =DataCardValue6_1.Text
+                        Width: =If('Create A Ticket'.Size=1, Parent.Width, 665)
+                        WidthFit: =false
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
 
-            Label5 As label:
-                Text: ="Category"
-                X: =76
-                Y: =8
-                ZIndex: =2
+                        DataCardKey7_1 As label:
+                            AutoHeight: =true
+                            Height: =34
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =30
+                            Y: =36
+                            ZIndex: =1
 
-        description_DataCard2_1 As typedDataCard.textualMultiLineEditCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="description"
-            Default: =ThisItem.description
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"description")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =314
-            Required: =false
-            Update: =DataCardValue4_1.Text
-            Width: =665
-            X: =0
-            Y: =1
-            ZIndex: =1
+                        DataCardValue6_1 As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            Default: =Parent.Default
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            MaxLength: =Parent.MaxLength
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =75
+                            ZIndex: =2
 
-            DataCardKey5_1 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                ZIndex: =1
+                        ErrorMessage7_1 As label:
+                            AutoHeight: =true
+                            Height: =10
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =Parent.Error
+                            Visible: =Parent.DisplayMode=DisplayMode.Edit
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =115
+                            ZIndex: =3
 
-            DataCardValue4_1 As text:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                Default: =Parent.Default
-                DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
-                Height: =278
-                Mode: =TextMode.MultiLine
-                PaddingLeft: =5
-                RadiusBottomLeft: =0
-                RadiusBottomRight: =0
-                RadiusTopLeft: =0
-                RadiusTopRight: =0
-                Tooltip: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =40
-                ZIndex: =2
+                        StarVisible7_1 As label:
+                            Align: =Align.Center
+                            Height: =DataCardKey7_1.Height
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            Wrap: =false
+                            Y: =36
+                            ZIndex: =4
 
-            ErrorMessage5_1 As label:
-                AutoHeight: =true
-                Height: =10
-                Live: =Live.Assertive
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Error
-                Visible: =Parent.DisplayMode=DisplayMode.Edit
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardValue4_1.Y + DataCardValue4_1.Height
-                ZIndex: =3
+                    Categories As typedDataCard.blankCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =200
+                        Visible: =true
+                        Width: =If('Create A Ticket'.Size=1, Parent.Width, 665)
+                        WidthFit: =true
+                        X: =1
+                        Y: =0
+                        ZIndex: =1
 
-            StarVisible5_1 As label:
-                Align: =Align.Center
-                Height: =DataCardKey5_1.Height
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                Wrap: =false
-                Y: =DataCardKey5_1.Y
-                ZIndex: =4
+                        Dropdown1 As dropdown:
+                            Items: =Filter(Category, parentId = Blank())
+                            X: =76
+                            Y: =48
+                            ZIndex: =1
 
-        "'Sub Categories' As typedDataCard.blankCard":
-            BorderStyle: =BorderStyle.Solid
-            DisplayMode: =DisplayMode.Edit
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: |
-                =224
-            Width: =665
-            X: =1
-            Y: =1
-            ZIndex: =1
+                        Label5 As label:
+                            Text: ="Category"
+                            X: =76
+                            Y: =8
+                            ZIndex: =2
 
-            Dropdown4 As dropdown:
-                Items: =Filter(Category, parentId = Dropdown1.Selected.id)
-                X: =80
-                Y: =40
-                ZIndex: =1
+                    description_DataCard2_1 As typedDataCard.textualMultiLineEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="description"
+                        Default: =ThisItem.description
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"description")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =314
+                        Required: =false
+                        Update: =DataCardValue4_1.Text
+                        Width: =If('Create A Ticket'.Size=1, Parent.Width, 665)
+                        WidthFit: =false
+                        X: =0
+                        Y: =1
+                        ZIndex: =1
 
-            Label5_1 As label:
-                Text: ="Sub Category"
-                X: =80
-                ZIndex: =2
+                        DataCardKey5_1 As label:
+                            AutoHeight: =true
+                            Height: =34
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =30
+                            ZIndex: =1
 
-            Label5_2 As label:
-                Text: ="Specific Issue"
-                Visible: =If(LookUp(Category, parentId = Dropdown4.Selected.id, name) = Blank(), false, true)
-                X: =80
-                Y: =106
-                ZIndex: =3
+                        DataCardValue4_1 As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            Default: =Parent.Default
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =278
+                            Mode: =TextMode.MultiLine
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =40
+                            ZIndex: =2
 
-    AddMediaButton2 As addMedia:
-        BorderColor: =RGBA(56, 96, 178, 1)
-        BorderThickness: =2
-        Height: =57
-        Size: =25
-        Text: ="Attach Image"
-        Width: =245
-        X: =752
-        Y: =664
-        ZIndex: =11
+                        ErrorMessage5_1 As label:
+                            AutoHeight: =true
+                            Height: =10
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =Parent.Error
+                            Visible: =Parent.DisplayMode=DisplayMode.Edit
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =DataCardValue4_1.Y + DataCardValue4_1.Height
+                            ZIndex: =3
 
-    Button7_1 As button:
-        Height: =57
-        OnSelect: |-
-            =//INSERT_NEW_TICKET.Run(Dropdown1.Selected.id, Dropdown5.Selected.id, DataCardValue4_1.Text, Dropdown4.Selected.id, DataCardValue6_1.Text);
-            //INSERT_NEW_TICKET.Run(2, 10, "Hello - 2", 2, "App");
-            // INSERT_NEW_TICKET.Run(categoryId, creatorId, description, subCategoryId, title);
-            Patch(Tickets_1, Defaults(Tickets_1), 
-            {
-                title:DataCardValue6_1.Text,
-                description:DataCardValue4_1.Text,
-                creatorId:userData.id,
-                mainCategory:Dropdown1.Selected.id,
-                category:Dropdown4.Selected.id,
-                subCategory:Dropdown6.Selected.id,
-                status:"open"
-            });
-            Navigate(MyTickets);
-        Text: ="Submit"
-        Width: =173
-        X: =1064
-        Y: =664
-        ZIndex: =12
+                        StarVisible5_1 As label:
+                            Align: =Align.Center
+                            Height: =DataCardKey5_1.Height
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            Wrap: =false
+                            Y: =DataCardKey5_1.Y
+                            ZIndex: =4
 
-    Dropdown6 As dropdown:
-        Items: =Filter(Category, parentId = Dropdown4.Selected.id)
-        Visible: =If(LookUp(Category, parentId = Dropdown4.Selected.id, name) = Blank(), false, true)
-        X: =759
-        Y: =567
-        ZIndex: =14
+                    "'Sub Categories' As typedDataCard.blankCard":
+                        BorderStyle: =BorderStyle.Solid
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =206
+                        Width: =If('Create A Ticket'.Size=1, Parent.Width, 665)
+                        WidthFit: =true
+                        X: =1
+                        Y: =1
+                        ZIndex: =1
+
+                        Dropdown6 As dropdown:
+                            Items: =Filter(Category, parentId = Dropdown4.Selected.id)
+                            Visible: =If(LookUp(Category, parentId = Dropdown4.Selected.id, name) = Blank(), false, true)
+                            X: =80
+                            Y: =146
+                            ZIndex: =1
+
+                        Dropdown4 As dropdown:
+                            Items: =Filter(Category, parentId = Dropdown1.Selected.id)
+                            X: =80
+                            Y: =40
+                            ZIndex: =2
+
+                        Label5_1 As label:
+                            Text: ="Sub Category"
+                            X: =80
+                            ZIndex: =3
+
+                        Label5_2 As label:
+                            Text: ="Specific Issue"
+                            Visible: =If(LookUp(Category, parentId = Dropdown4.Selected.id, name) = Blank(), false, true)
+                            X: =80
+                            Y: =106
+                            ZIndex: =4
+
+                Container2 As groupContainer.manualLayoutContainer:
+                    FillPortions: =0
+                    Height: =75
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    Width: =Parent.Width
+                    ZIndex: =4
+
+                    AddMediaButton2 As addMedia:
+                        BorderColor: =RGBA(56, 96, 178, 1)
+                        BorderThickness: =2
+                        Height: =57
+                        Size: =If('Create A Ticket'.Size = 1, 15, 25)
+                        Text: ="Attach Image"
+                        Width: =If('Create A Ticket'.Size = 1,120, 245)
+                        X: =Button7_1.X+Button7_1.Width+50
+                        Y: =Button7_1.Y
+                        ZIndex: =1
+
+                    Button7_1 As button:
+                        Height: =57
+                        OnSelect: |-
+                            =//INSERT_NEW_TICKET.Run(Dropdown1.Selected.id, Dropdown5.Selected.id, DataCardValue4_1.Text, Dropdown4.Selected.id, DataCardValue6_1.Text);
+                            //INSERT_NEW_TICKET.Run(2, 10, "Hello - 2", 2, "App");
+                            // INSERT_NEW_TICKET.Run(categoryId, creatorId, description, subCategoryId, title);
+                            Patch(Tickets_1, Defaults(Tickets_1), 
+                            {
+                                title:DataCardValue6_1.Text,
+                                description:DataCardValue4_1.Text,
+                                creatorId:userData.id,
+                                mainCategory:Dropdown1.Selected.id,
+                                category:Dropdown4.Selected.id,
+                                subCategory:Dropdown6.Selected.id,
+                                status:"open"
+                            });
+                            Navigate(MyTickets);
+                        Text: ="Submit"
+                        Width: =120
+                        X: =20
+                        Y: =10
+                        ZIndex: =2
 

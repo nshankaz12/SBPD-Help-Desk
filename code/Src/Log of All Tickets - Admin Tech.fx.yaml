@@ -182,24 +182,48 @@
             TicketLogMobileHeaderContainer As groupContainer.verticalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 Fill: =RGBA(118, 173, 149, 1)
+                FillPortions: =0
+                Height: =50
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                PaddingLeft: =50
                 Visible: |-
-                    ='Log of All Tickets - Admin Tech'.Size=1
+                    =true
                     //This container is visible when the screen is in mobile view and the topmost is invisible
                 Width: =Parent.Width
                 ZIndex: =2
 
-                MoblieHamburgerMenu_3 As icon.Hamburger:
-                    Color: =RGBA(0, 0, 0, 1)
-                    Icon: =If(HambIconChange, Icon.ChevronLeft, Icon.Hamburger)
-                    OnSelect: |-
-                        =UpdateContext({HambIconChange:!HambIconChange});
-                        UpdateContext({MGallery:!MGallery});
-                    ZIndex: =1
+                TicketLogMobileHeader As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =25
+                    PaddingTop: =5
+                    Width: =Parent.Width
+                    ZIndex: =2
+
+                    MoblieHamburgerMenu_3 As icon.Hamburger:
+                        Color: =RGBA(0, 0, 0, 1)
+                        Height: =Parent.Height
+                        Icon: =If(HambIconChange, Icon.ChevronLeft, Icon.Hamburger)
+                        OnSelect: |-
+                            =UpdateContext({HambIconChange:!HambIconChange});
+                            UpdateContext({MGallery:!MGallery});
+                        ZIndex: =1
+
+                    TicketLogMobileHeaderTitleLabel As label:
+                        Align: =Align.Center
+                        Color: =RGBA(255, 255, 255, 1)
+                        FillPortions: =1
+                        FontWeight: =FontWeight.Semibold
+                        Height: =Parent.Height
+                        Size: =20
+                        Text: ="Ticket Log"
+                        ZIndex: =2
 
             TicketLogHeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
@@ -233,7 +257,7 @@
                         Color: =RGBA(232, 244, 217, 1)
                         Icon: =Icon.BackArrow
                         OnSelect: =Back(Fade)
-                        X: =14
+                        X: =24
                         Y: =18
                         ZIndex: =1
 
@@ -358,6 +382,7 @@
                     Height: =Parent.Height
                     Size: =30
                     Text: ="Ticket Log"
+                    Visible: ='Log of All Tickets - Admin Tech'.Size<>1
                     Width: =Parent.Width
                     X: =557
                     Y: =86
