@@ -8,7 +8,7 @@
         UpdateContext({varAssignedToMe: false});
         
         // Get user's created tickets
-        //Set(MyTicketList,GetCurrentTickets.Run(7)); // testing 
+        //Set(MyTicketList,GetCurrentTickets.Run(1)); // testing 
         Set(MyTicketList, Filter(Tickets_1, creatorId = userData.id));
         
         // Get the tickets assigned to the user
@@ -96,8 +96,8 @@
                 Fill: =RGBA(118, 173, 149, 1)
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutJustifyContent: =LayoutJustifyContent.Center
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
+                LayoutMinHeight: =MyTickets.Height / 8
+                LayoutMinWidth: =Parent.Width
                 LayoutMode: =LayoutMode.Auto
                 Visible: =MyTickets.Size <> 1
                 ZIndex: =1
@@ -105,8 +105,8 @@
                 NotificationsDropdownContainer_1 As groupContainer.manualLayoutContainer:
                     FillPortions: =0
                     Height: =Parent.Height
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
+                    LayoutMinHeight: =Parent.Height
+                    LayoutMinWidth: =Parent.Width
                     Visible: =Home.Size>1
                     Width: =75
                     ZIndex: =1
@@ -115,40 +115,40 @@
                         AutoDisableOnSelect: =false
                         BorderColor: =RGBA(0, 0, 0, 1)
                         Color: =RGBA(0, 0, 0, 1)
-                        Height: =55
+                        Height: =Parent.Height / 4 * 3
                         Icon: =Icon.Person
-                        Width: =55
-                        X: =27
-                        Y: =25
+                        Width: =Parent.Height / 4 * 3
+                        X: =(Parent.Width - Self.Width) / 2
+                        Y: =(Parent.Height - Self.Height) / 2
                         ZIndex: =1
 
                     "'new notification in dropdown_8' As circle":
                         BorderColor: =RGBA(168, 0, 0, 1)
                         Fill: =RGBA(168, 0, 0, 1)
-                        Height: =15
-                        Width: =15
-                        X: =27
-                        Y: =25
+                        Height: ='profile pic + drop down_8'.Width / 5
+                        Width: ='profile pic + drop down_8'.Width / 5
+                        X: =(Parent.Width - Self.Width) / 2 - Self.Width
+                        Y: =(('profile pic + drop down_8'.Height - Self.Height) / 2) - (Self.Height * 0.75)
                         ZIndex: =2
 
                     UserNotificationsDropdownSymbolIcon_1 As icon.ChevronDown:
                         Color: =RGBA(255, 255, 255, 1)
-                        Height: =14
+                        Height: ='profile pic + drop down_8'.Height / 4
                         HoverBorderColor: =ColorFade(Color.DimGrey, 20%)
                         HoverFill: =Color.DimGrey
                         Icon: =Icon.ChevronDown
                         OnSelect: |-
                             =UpdateContext({NDrop:!NDrop})
-                        Width: =23
-                        X: =59
-                        Y: =66
+                        Width: ='profile pic + drop down_8'.Width / 4
+                        X: =(Parent.Width - Self.Width) / 2 + (Self.Width * 1.5)
+                        Y: ='profile pic + drop down_8'.Y + 'profile pic + drop down_8'.Height - (Self.Height)
                         ZIndex: =3
 
                 MyTicketsNavContainer As groupContainer.horizontalAutoLayoutContainer:
                     FillPortions: =7
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutJustifyContent: =LayoutJustifyContent.Center
-                    LayoutMinHeight: =100
+                    LayoutMinHeight: =Parent.Height
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     ZIndex: =2
@@ -158,7 +158,7 @@
                         DelayItemLoading: =true
                         Height: =Parent.Height
                         Items: =navCol
-                        LayoutMinHeight: =287
+                        LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
@@ -191,7 +191,7 @@
             MyTicketsMoblieHeaderContainer As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
                 LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutMinHeight: =100
+                LayoutMinHeight: =Parent.Height / 8
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 PaddingLeft: =50
@@ -213,8 +213,8 @@
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutGap: =10
                 LayoutJustifyContent: =LayoutJustifyContent.Center
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
+                LayoutMinHeight: =Parent.Height / 8 
+                LayoutMinWidth: =Parent.Width
                 LayoutMode: =LayoutMode.Auto
                 PaddingLeft: =If (MyTickets.Size <> 1, 40, 15)
                 PaddingRight: =If (MyTickets.Size <> 1, 40, 15)
@@ -222,10 +222,10 @@
 
                 "'Back Scroll_5' As icon.BackArrow":
                     Color: =RGBA(232, 244, 217, 1)
-                    Height: =If (MyTickets.Size <> 1, 64, 56)
+                    Height: =Parent.Height / 5 * 4
                     Icon: =Icon.BackArrow
                     OnSelect: =Back(Fade)
-                    Width: =If (MyTickets.Size <> 1, 64, 56)
+                    Width: =Parent.Height / 5 * 4
                     X: =59
                     Y: =72
                     ZIndex: =1
@@ -235,6 +235,7 @@
                     Color: =RGBA(255, 255, 255, 1)
                     FillPortions: =1
                     Height: =Parent.Height
+                    LayoutMinHeight: =Parent.Height
                     Size: =If (MyTickets.Size <> 1, 32, 24)
                     Text: =If(varAssignedToMe, "Assigned To Me", "My Tickets")
                     Width: =Parent.Width
@@ -257,18 +258,18 @@
 
                 NewTicketIcon As icon.Add:
                     Color: =RGBA(232, 244, 217, 1)
-                    Height: =If (MyTickets.Size <> 1, 64, 56)
+                    Height: =Parent.Height / 5 * 4
                     Icon: =Icon.Add
                     OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
                     Visible: =MyTickets.Size < 3
-                    Width: =If (MyTickets.Size <> 1, 64, 56)
+                    Width: =Parent.Height / 5 * 4
                     ZIndex: =4
 
             MyTicketsMainContentContainer As groupContainer.verticalAutoLayoutContainer:
                 FillPortions: =10
                 LayoutDirection: =LayoutDirection.Vertical
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
+                LayoutMinHeight: =Parent.Height / 8 * 6
+                LayoutMinWidth: =Parent.Width
                 LayoutMode: =LayoutMode.Auto
                 ZIndex: =4
 
@@ -276,17 +277,16 @@
                     Fill: =RGBA(118, 173, 149, 1)
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutJustifyContent: =LayoutJustifyContent.Center
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
+                    LayoutMinHeight: =Parent.Height / 5
+                    LayoutMinWidth: =Parent.Width
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
-                    PaddingRight: =40
                     ZIndex: =1
 
                     SearchTicketsBar As groupContainer.manualLayoutContainer:
                         AlignInContainer: =AlignInContainer.Center
-                        Height: =40
-                        LayoutMinHeight: =50
+                        Height: =If (MyTickets.Width < 700, 30, 40)
+                        LayoutMinHeight: =Parent.Height / 2
                         LayoutMinWidth: =Parent.Width / 2
                         Width: =Parent.Width
                         ZIndex: =1
@@ -294,55 +294,57 @@
                         searchBox As text:
                             Default: =
                             DelayOutput: =true
-                            HintText: ="Search by title or description"
+                            Height: =Parent.Height
+                            HintText: =If(MyTickets.Width < 450, "Search", "Search by title or description")
                             OnChange: =Set(searchTicketQuery, searchBox.Text); Reset(MyTicketsGallery)
                             PaddingRight: =40
-                            Width: =Parent.Width / 4 * 3
-                            X: =(Parent.Width - searchBox.Width - ( 2 * searchIcon.Width)) + 10
+                            Width: =If (MyTickets.Width < 700, ((Parent.Width - searchIcon.Width) /4 * 3) - (searchIcon.Width/2), Parent.Width / 4 * 3)
+                            X: =If (MyTickets.Width < 700, (Parent.Width - searchBox.Width - searchIcon.Width) / 2, (Parent.Width - searchBox.Width - ( 2 * searchIcon.Width)) + 10)
                             ZIndex: =1
 
                         bgSearchIcon As rectangle:
                             BorderThickness: =2
-                            Height: =40
+                            Height: =Parent.Height
                             OnSelect: =Set(searchTicketQuery, searchBox.Text); Reset(MyTicketsGallery)
-                            Width: =40
+                            Width: =Parent.Height
                             X: =searchBox.X + searchBox.Width 
                             ZIndex: =2
 
                         searchIcon As icon.Search:
                             Color: =RGBA(255, 255, 255, 1)
-                            Height: =39
+                            Height: =Parent.Height
                             Icon: =Icon.Search
                             OnSelect: =Set(searchTicketQuery, searchBox.Text); Reset(MyTicketsGallery)
                             Tooltip: ="Search"
-                            Width: =39
+                            Width: =Parent.Height
                             X: =searchBox.X + searchBox.Width 
                             ZIndex: =3
 
                         cancelIcon As icon.Cancel:
                             Color: =RGBA(116, 116, 116, 1)
-                            Height: =40
+                            Height: =Parent.Height
                             Icon: =Icon.Cancel
                             OnSelect: =Set(searchTicketQuery, ""); Reset(searchBox); Reset(MyTicketsGallery)
                             Tooltip: ="Cancel"
                             Visible: =!IsBlank(searchBox.Text)
-                            Width: =40
+                            Width: =Parent.Height
                             X: =searchBox.X + searchBox.Width - Self.Width
                             ZIndex: =4
 
                     TicketFiltersContainer As groupContainer.horizontalAutoLayoutContainer:
                         FillPortions: =0
+                        Height: =Parent.Height / 2
                         LayoutAlignItems: =LayoutAlignItems.Center
-                        LayoutGap: =10
-                        LayoutJustifyContent: =LayoutJustifyContent.End
-                        LayoutMinHeight: =50
-                        LayoutMinWidth: =350
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =If (MyTickets.Width < 700, 30, 40)
+                        LayoutMinWidth: =400
                         LayoutMode: =LayoutMode.Auto
                         Width: =350
                         ZIndex: =2
 
                         filterStatus As dropdown:
                             Default: ="open"
+                            Height: =If (MyTickets.Width < 700, 30, 40)
                             Items: =colStatus
                             Tooltip: ="Ticket Status"
                             Width: =180
@@ -353,6 +355,7 @@
                         ChangeTicketsButton As button:
                             Color: =RGBA(0, 0, 0, 1)
                             Fill: =RGBA(232, 244, 217, 1)
+                            Height: =If (MyTickets.Width < 700, 30, 40)
                             OnSelect: |-
                                 =UpdateContext({varAssignedToMe: !varAssignedToMe});
                             Text: =If(varAssignedToMe, "My Tickets", "Assigned To Me")
@@ -362,8 +365,8 @@
                     FillPortions: =8
                     LayoutAlignItems: =LayoutAlignItems.Stretch
                     LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
+                    LayoutMinHeight: =Parent.Height / 5 * 4
+                    LayoutMinWidth: =Parent.Width
                     LayoutMode: =LayoutMode.Auto
                     ZIndex: =2
 
@@ -371,7 +374,7 @@
                         Height: =544
                         Items: =Search(If(filterStatus.Selected.Result = "All", MyTicketList, Filter(MyTicketList, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
                         Layout: =Layout.Vertical
-                        LayoutMinHeight: =287
+                        LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320
                         TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(260, Self.Height - 60))
                         Transition: =Transition.Push
@@ -513,7 +516,7 @@
                         Height: =544
                         Items: =Search(If(filterStatus.Selected.Result = "All", AssignedTicketList, Filter(AssignedTicketList, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
                         Layout: =Layout.Vertical
-                        LayoutMinHeight: =287
+                        LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320
                         TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(260, Self.Height - 60))
                         Transition: =Transition.Push
@@ -657,7 +660,7 @@
                         LayoutDirection: =LayoutDirection.Vertical
                         LayoutGap: =10
                         LayoutJustifyContent: =LayoutJustifyContent.Center
-                        LayoutMinHeight: =100
+                        LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
                         Visible: |-
