@@ -1,93 +1,12 @@
 "'Category Select' As screen":
 
-    "'Back Scroll_9' As icon.BackArrow":
-        Color: =RGBA(232, 244, 217, 1)
-        Icon: =Icon.BackArrow
-        OnSelect: =Back(ScreenTransition.Fade)
-        X: =59
-        Y: =87
-        ZIndex: =3
-
-    "'nav-Ticket_11' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Create Ticket"
-        Width: =174
-        X: =181
-        Y: =18
-        ZIndex: =4
-
-    "'nav-name2_11' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="My Tickets"
-        Width: =174
-        X: =355
-        Y: =18
-        ZIndex: =5
-
-    "'nav-name3_11' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Log of All Tickets - Admin Tech (old)', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Log"
-        Width: =174
-        X: =529
-        Y: =18
-        ZIndex: =6
-
-    "'nav-name4_11' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Metrics"
-        Width: =174
-        X: =703
-        Y: =18
-        ZIndex: =7
-
-    "'nav-name5_11' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Assign Role"
-        Width: =174
-        X: =877
-        Y: =18
-        ZIndex: =8
-
-    Image7_6 As image:
-        Height: =128
-        Image: =User().Image
-        Width: =152
-        X: =1136
-        Y: =52
-        ZIndex: =9
-
     ScreenContainer As groupContainer.verticalAutoLayoutContainer:
         Height: =768
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         Width: =1366
-        ZIndex: =10
+        ZIndex: =1
 
         HomeHeaderContainer1_2 As groupContainer.verticalAutoLayoutContainer:
             Fill: =RGBA(118, 173, 149, 1)
@@ -436,7 +355,7 @@
         Width: =100
         X: =20
         Y: =20
-        ZIndex: =11
+        ZIndex: =2
 
         HomeMobileNavButtonGallery_4 As gallery.galleryVertical:
             AlignInContainer: =AlignInContainer.Center
@@ -473,4 +392,12 @@
                 Text: =""
                 Width: =Parent.TemplateWidth
                 ZIndex: =2
+
+    "'Back Scroll_9' As icon.BackArrow":
+        Color: =RGBA(232, 244, 217, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.Fade)
+        X: =59
+        Y: =87
+        ZIndex: =3
 
