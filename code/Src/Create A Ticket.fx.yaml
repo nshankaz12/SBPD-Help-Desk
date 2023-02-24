@@ -1,8 +1,10 @@
 "'Create A Ticket' As screen":
-    BackgroundImage: ='image (2)'
+    BackgroundImage: =
     Fill: =
     ImagePosition: =ImagePosition.Stretch
-    OnVisible: =Set(userID, LookUp(userInfo, email = User().Email, id));
+    OnVisible: |
+        =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false});
+        Set(userID, LookUp(userInfo, email = User().Email, id));
 
     CreateATicketMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: ='Create A Ticket'.Height
@@ -15,7 +17,8 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            Visible: =MGallery && 'Create A Ticket'.Size=1
+            Visible: |
+                =MGallery && 'Create A Ticket'.Size=1
             Width: =100
             ZIndex: =1
 
@@ -86,6 +89,7 @@
                         AutoDisableOnSelect: =false
                         BorderColor: =RGBA(0, 0, 0, 1)
                         Color: =RGBA(0, 0, 0, 1)
+                        DisplayMode: =DisplayMode.View
                         Height: =55
                         Icon: =Icon.Person
                         Width: =55
@@ -106,8 +110,8 @@
                         HoverBorderColor: =ColorFade(Color.DimGrey, 20%)
                         HoverFill: =Color.DimGrey
                         Icon: =Icon.ChevronDown
-                        OnSelect: |-
-                            =UpdateContext({NDrop:!NDrop})
+                        OnSelect: |
+                            =UpdateContext({NDrop:!NDrop});
                         Width: =23
                         X: =52
                         Y: =41
@@ -171,10 +175,9 @@
                 MoblieHamburgerMenu_4 As icon.Hamburger:
                     AlignInContainer: =AlignInContainer.Center
                     Color: =RGBA(0, 0, 0, 1)
-                    Icon: =If(HambIconChange, Icon.ChevronLeft, Icon.Hamburger)
+                    Icon: =If(HambIconChange,Icon.ChevronLeft,Icon.Hamburger)
                     OnSelect: |-
-                        =UpdateContext({HambIconChange:!HambIconChange});
-                        UpdateContext({MGallery:!MGallery});
+                        =UpdateContext({HambIconChange:!HambIconChange,MGallery:!MGallery})
                     Width: =100
                     ZIndex: =1
 
@@ -232,6 +235,7 @@
 
                     ProfileButtonContainer_2 As groupContainer.manualLayoutContainer:
                         Height: =32
+                        Visible: =NDrop
                         Width: =184
                         X: =64
                         Y: =14
@@ -271,6 +275,7 @@
 
                     NotificationsButtonContainer_2 As groupContainer.manualLayoutContainer:
                         Height: =33
+                        Visible: =NDrop
                         Width: =184
                         X: =64
                         Y: =46
@@ -410,6 +415,44 @@
                         Items: =Filter(Category, parentId = Blank())
                         ZIndex: =4
 
+                Container2 As groupContainer.manualLayoutContainer:
+                    LayoutMinHeight: =80
+                    LayoutMinWidth: =250
+                    ZIndex: =3
+
+                    Label3 As label:
+                        Height: =23
+                        Size: =15
+                        Text: ="Title"
+                        Width: =50
+                        X: =50
+                        Y: =11
+                        ZIndex: =1
+
+                    TextInput3 As text:
+                        Default: ="Text input"
+                        Height: =38
+                        Width: =Parent.Width/2 - Label3.Width 
+                        X: =Label3.X
+                        Y: =Label3.Y+Label3.Height+2
+                        ZIndex: =2
+
+                    FreeContCategoryLabel As label:
+                        Height: =23
+                        Size: =15
+                        Text: ="Category"
+                        Width: =100
+                        X: =Parent.Width/2 +50
+                        Y: =11
+                        ZIndex: =3
+
+                    Dropdown5 As dropdown:
+                        Items: =DropDownSample
+                        Width: =Parent.Width/3
+                        X: =FreeContCategoryLabel.X
+                        Y: =FreeContCategoryLabel.Y+FreeContCategoryLabel.Height
+                        ZIndex: =4
+
                 Container19_1 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
@@ -424,7 +467,7 @@
                     PaddingRight: =30
                     Width: |
                         =Parent.Width
-                    ZIndex: =3
+                    ZIndex: =4
 
                     SubCategoryLabel As label:
                         FillPortions: =1
@@ -466,7 +509,7 @@
                     PaddingRight: =30
                     Width: |
                         =Parent.Width
-                    ZIndex: =4
+                    ZIndex: =5
 
                     CreateATicketDescriptionlabel As label:
                         FillPortions: =1
@@ -494,7 +537,7 @@
                     PaddingRight: =30
                     Width: |
                         =Parent.Width
-                    ZIndex: =5
+                    ZIndex: =6
 
                     Button7_1 As button:
                         FillPortions: =1
@@ -678,7 +721,6 @@
                 RadiusTopRight: =0
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
-                X: =30
                 Y: =40
                 ZIndex: =2
 
@@ -742,11 +784,4 @@
                 X: =80
                 Y: =106
                 ZIndex: =4
-
-    Container2 As groupContainer.manualLayoutContainer:
-        Height: =75
-        Visible: =false
-        Width: =Parent.Width
-        Y: =20
-        ZIndex: =4
 

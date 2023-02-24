@@ -1,7 +1,7 @@
 "'Splash Screen' As screen":
     Fill: =RGBA(118, 173, 149, 1)
     ImagePosition: =ImagePosition.Center
-    OnVisible: |+
+    OnVisible: |-
         =//UpdateContext will update a variable on this screen, contextLoading status is the text at the bottom
         UpdateContext({contextLoadingStatus: "Processing Records..."});
         
@@ -16,6 +16,7 @@
         
         //Set(userID, LookUp(userInfo, email = User().Email, id));
         
+        UpdateContext({NDrop:false,MGallery:false,HambIconChange:false,CloseAlertRibbon:false});
 
     TransitionTimer As timer:
         AutoPause: =false
