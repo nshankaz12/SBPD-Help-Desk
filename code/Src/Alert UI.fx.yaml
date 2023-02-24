@@ -4,7 +4,7 @@
         Height: =734
         Image: ='image (2)'
         Width: =1331
-        X: =17
+        X: =16
         ZIndex: =1
 
     "'nav-name5_9' As button":
@@ -92,74 +92,59 @@
         Y: =58
         ZIndex: =8
 
-    "Gallery8 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
-        Height: =559
-        Items: =CustomGallerySample
-        Layout: =Layout.Vertical
-        TemplatePadding: =0
-        TemplateSize: =Min(160, Self.Height - 60)
-        Width: =1342
-        X: =11
-        Y: =209
+    Button4 As button:
+        Height: =64
+        OnSelect: |
+            =ClearCollect(
+                AlertCollection,
+                {
+                    Title: TextInput7.Text,
+                    Description: TextInput6.Text,
+                    Status: "New"
+                }
+            );
+            Notify("Alert created!", NotificationType.Success);
+        Text: ="Create Alert"
+        Tooltip: =
+        Width: =214
+        X: =1068
+        Y: =573
         ZIndex: =9
 
-        Image17 As image:
-            Height: =128
-            OnSelect: =Select(Parent)
-            Width: =128
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =1
+    TextInput6 As text:
+        Default: =""
+        Height: =353
+        Size: =25
+        Width: =712
+        X: =339
+        Y: =345
+        ZIndex: =10
 
-        Title12 As label:
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Text: ="Alert Message"
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Parent.TemplateWidth - Image17.Width - 104
-            X: =168
-            Y: =44
-            ZIndex: =2
+    TextInput7 As text:
+        Default: =""
+        Height: =64
+        Size: =18
+        Width: =331
+        X: =347
+        Y: =249
+        ZIndex: =11
 
-        Subtitle9 As label:
-            Font: =Font.Georgia
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Text: ="Descripition of the alert message"
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Title12.Width
-            X: =Title12.X
-            Y: =Title12.Y + Title12.Height + 4
-            ZIndex: =3
+    Label19 As label:
+        Height: =52
+        Size: =24
+        Text: |-
+            ="Alert title :"
+        Width: =228
+        X: =135
+        Y: =255
+        ZIndex: =12
 
-        NextArrow8 As icon.ChevronRight:
-            AccessibleLabel: =Self.Tooltip
-            Height: =60
-            Icon: =Icon.ChevronRight
-            OnSelect: =Select(Parent)
-            PaddingBottom: =10
-            PaddingLeft: =10
-            PaddingRight: =10
-            PaddingTop: =10
-            TabIndex: =0
-            Tooltip: ="View item details"
-            Width: =60
-            X: =Parent.TemplateWidth - Self.Width - 5
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =4
-
-        Separator8 As rectangle:
-            Height: =1
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =Parent.TemplateHeight - 1
-            ZIndex: =5
+    Label20 As label:
+        Size: =25
+        Text: |-
+            ="Alert Message :"
+        Width: =254
+        X: =59
+        Y: =501
+        ZIndex: =13
 
