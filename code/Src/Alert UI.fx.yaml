@@ -103,6 +103,8 @@
                     Status: "New"
                 }
             );
+            Set(AlertMessage, TextInput7.Text);
+            Notify(AlertMessage, NotificationType.Warning);
             Notify("Alert created!", NotificationType.Success);
         Text: ="Create Alert"
         Tooltip: =

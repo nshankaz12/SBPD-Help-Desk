@@ -311,8 +311,8 @@ Home As screen:
                             Height: =Parent.Height
                             LayoutMinHeight: =Parent.Height
                             Size: =If(Home.Size=1, 8, 15)
-                            Text: |-
-                                ="This is a Test Alert! Nothing is Down at the moment, Service will resume at 12:00 am."
+                            Text: |
+                                =If(IsBlank(AlertMessage), "", AlertMessage)
                             ZIndex: =1
 
                         Icon12 As icon.Cancel:
