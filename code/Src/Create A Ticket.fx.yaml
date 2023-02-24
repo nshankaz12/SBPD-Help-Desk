@@ -357,6 +357,7 @@
 
             CreateATicketMainContentContainer As groupContainer.verticalAutoLayoutContainer:
                 Height: =App.Height
+                LayoutDirection: =LayoutDirection.Vertical
                 LayoutMinHeight: =100
                 LayoutMinWidth: =Parent.Width
                 LayoutMode: =LayoutMode.Auto
@@ -364,15 +365,6 @@
                 LayoutWrap: =true
                 Width: =Parent.Width
                 ZIndex: =4
-
-                Container21 As groupContainer.verticalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    Height: =65
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    ZIndex: =1
 
                 Container19 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
@@ -386,6 +378,8 @@
                     LayoutWrap: =true
                     PaddingLeft: =30
                     PaddingRight: =30
+                    Visible: |
+                        =false
                     Width: |
                         =Parent.Width
                     ZIndex: =2
@@ -465,6 +459,7 @@
                     LayoutWrap: =true
                     PaddingLeft: =30
                     PaddingRight: =30
+                    Visible: =false
                     Width: |
                         =Parent.Width
                     ZIndex: =4
@@ -495,6 +490,43 @@
                         Visible: =If(LookUp(Category, parentId = SubCatergoryDropdown.Selected.id, name) = Blank(), false, true)
                         ZIndex: =4
 
+                Container3 As groupContainer.manualLayoutContainer:
+                    FillPortions: =0
+                    Height: =80
+                    LayoutMinHeight: =80
+                    LayoutMinWidth: =250
+                    ZIndex: =5
+
+                    Label10 As label:
+                        Height: =23
+                        Size: =15
+                        Text: ="SubCategory"
+                        X: =50
+                        Y: =11
+                        ZIndex: =1
+
+                    Dropdown7 As dropdown:
+                        Items: =DropDownSample
+                        Width: =Parent.Width/3
+                        X: =Label10.X
+                        Y: =Label10.Y+Label10.Height
+                        ZIndex: =2
+
+                    Label10_1 As label:
+                        Height: =23
+                        Size: =15
+                        Text: ="SubCategory"
+                        X: =Parent.Width/2 +50
+                        Y: =11
+                        ZIndex: =3
+
+                    Dropdown7_1 As dropdown:
+                        Items: =DropDownSample
+                        Width: =Parent.Width/3
+                        X: =Label10_1.X
+                        Y: =Label10_1.Y+Label10_1.Height
+                        ZIndex: =4
+
                 Container19_2 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
@@ -507,9 +539,10 @@
                     LayoutWrap: =true
                     PaddingLeft: =30
                     PaddingRight: =30
+                    Visible: =false
                     Width: |
                         =Parent.Width
-                    ZIndex: =5
+                    ZIndex: =6
 
                     CreateATicketDescriptionlabel As label:
                         FillPortions: =1
@@ -522,6 +555,28 @@
                         FillPortions: =1
                         Height: =150
                         Mode: =TextMode.MultiLine
+                        ZIndex: =2
+
+                Container4 As groupContainer.manualLayoutContainer:
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    ZIndex: =7
+
+                    Label14 As label:
+                        Align: =Align.Center
+                        Size: =15
+                        Text: ="Description"
+                        X: =(Parent.Width-Self.Width)/2
+                        ZIndex: =1
+
+                    TextInput5 As text:
+                        Default: ="Text input"
+                        Height: =Parent.Height-Label14.Height
+                        Mode: =TextMode.MultiLine
+                        Size: =15
+                        Width: =Parent.Width -100
+                        X: =50
+                        Y: =40
                         ZIndex: =2
 
                 Container19_3 As groupContainer.horizontalAutoLayoutContainer:
@@ -537,7 +592,7 @@
                     PaddingRight: =30
                     Width: |
                         =Parent.Width
-                    ZIndex: =6
+                    ZIndex: =8
 
                     Button7_1 As button:
                         FillPortions: =1
