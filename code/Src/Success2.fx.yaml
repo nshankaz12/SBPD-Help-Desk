@@ -299,8 +299,8 @@ Success2 As screen:
                             Height: =Parent.Height
                             LayoutMinHeight: =Parent.Height
                             Size: =If(Success2.Size=1, 8, 15)
-                            Text: |-
-                                ="This is a Test Alert! Nothing is Down at the moment, Service will resume at 12:00 am."
+                            Text: |
+                                =If(IsBlank(AlertMessage), "", AlertMessage)
                             ZIndex: =1
 
                         Icon12_1 As icon.Cancel:
@@ -543,15 +543,6 @@ Success2 As screen:
             Width: =132
             X: =139
             ZIndex: =16
-
-    Icon6_1 As icon.Ribbon:
-        Height: =52
-        Icon: =Icon.Ribbon
-        OnSelect: =Navigate('Alert UI',ScreenTransition.None)
-        Width: =58
-        X: =84
-        Y: =76
-        ZIndex: =21
 
     NotificationsDropdownContent_3 As groupContainer.manualLayoutContainer:
         Height: =72
