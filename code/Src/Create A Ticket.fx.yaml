@@ -603,12 +603,12 @@
                             //INSERT_NEW_TICKET.Run(categoryId, creatorId, description, subCategoryId, title);
                             Patch(Tickets_1, Defaults(Tickets_1), 
                             {
-                                title:TitleTextInput.Text,
-                                description:TextInput4.Text,
+                                title:TextInput3.Text,
+                                description:TextInput5.Text,
                                 creatorId:userData.id,
-                                mainCategory:CatergoryDropdown.Selected.id,
-                                category:SubCatergoryDropdown.Selected.id,
-                                subCategory:Dropdown9.Selected.id,
+                                mainCategory:Dropdown5.Selected.id,
+                                category:Dropdown7.Selected.id,
+                                subCategory:Dropdown7_1.Selected.id,
                                 status:"open"
                             });
                             Office365Outlook.SendEmailV2(userData.email, "Ticket has been Created Successfully", "This ticket has been created. We will have our technicians take a look at the issue and deliver a solution");
