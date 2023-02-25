@@ -423,8 +423,9 @@
                         ZIndex: =1
 
                     TextInput3 As text:
-                        Default: ="Text input"
+                        Default: =""
                         Height: =38
+                        HintText: ="Please Enter A Title"
                         Width: =Parent.Width/2 - Label3.Width 
                         X: =Label3.X
                         Y: =Label3.Y+Label3.Height+2
@@ -570,8 +571,9 @@
                         ZIndex: =1
 
                     TextInput5 As text:
-                        Default: ="Text input"
+                        Default: =""
                         Height: =Parent.Height-Label14.Height
+                        HintText: ="Please Describe Your Issue"
                         Mode: =TextMode.MultiLine
                         Size: =15
                         Width: =Parent.Width -100
