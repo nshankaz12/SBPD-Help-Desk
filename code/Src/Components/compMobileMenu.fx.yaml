@@ -1,0 +1,100 @@
+compMobileMenu As CanvasComponent:
+    BackgroundMenuColor: =LightGray
+    Fill: =RGBA(0, 0, 0, 0)
+    ForegroundColor: =RGBA(70, 130, 180, 1)
+    Height: |
+        =120
+    NavigationItems: |-
+        =Table(
+            {
+                MenuText: "Home",
+                MenuIcon: Icon.Home,
+                ScreenToGoTo: 'Home'
+            },
+            {
+                MenuText: "Create Ticket",
+                MenuIcon: Icon.AddDocument,
+                ScreenToGoTo: 'Create A Ticket'
+            },
+            {
+                MenuText: "My Tickets",
+                MenuIcon: Icon.Folder,
+                ScreenToGoTo: 'MyTickets'
+            },
+            {
+                MenuText: "Ticket Log",
+                MenuIcon: Icon.DocumentWithContent,
+                ScreenToGoTo: 'Log of All Tickets - Admin Tech'
+            },
+            {
+                MenuText: "Settings",
+                MenuIcon: Icon.Settings,
+                ScreenToGoTo: 'User Profile + Info'
+            }
+        )
+    SelectedItemBackground: =LightGray
+    Width: =App.DesignWidth
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Gallery1_1 As gallery.galleryHorizontal:
+        Default: |
+            =LookUp(compMobileMenu.NavigationItems, ScreenToGoTo.Name = App.ActiveScreen.Name)
+        DelayItemLoading: =true
+        Height: =Parent.Height
+        Items: =compMobileMenu.NavigationItems
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =
+        TemplateFill: |-
+            =If(
+                ThisItem.IsSelected, 
+                compMobileMenu.ForegroundColor,
+                compMobileMenu.BackgroundMenuColor
+            )
+        TemplatePadding: =0
+        TemplateSize: =Self.Width / 5
+        Width: =Parent.Width
+        ZIndex: =1
+
+        Icon1_5 As icon.Add:
+            Color: |-
+                =If(
+                    ThisItem.IsSelected, 
+                    compMobileMenu.BackgroundMenuColor,
+                    compMobileMenu.ForegroundColor
+                )
+            Icon: =ThisItem.MenuIcon
+            OnSelect: =Select(Parent)
+            PaddingBottom: =8
+            X: =Parent.TemplateWidth / 2 - Self.Width / 2
+            Y: =13
+            ZIndex: =1
+
+        Label1_2 As label:
+            Align: =Align.Center
+            Color: |-
+                =If(
+                    ThisItem.IsSelected, 
+                    compMobileMenu.BackgroundMenuColor,
+                    compMobileMenu.ForegroundColor
+                )
+            Height: =43
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: =ThisItem.MenuText
+            Width: =267
+            X: =3
+            Y: =77
+            ZIndex: =2
+
+        Icon1_1 As icon.Add:
+            Color: =Transparent
+            Height: =120
+            Icon: =ThisItem.MenuIcon
+            OnSelect: =Select(Parent)
+            PaddingBottom: =8
+            Width: =267
+            X: =3
+            ZIndex: =3
+
