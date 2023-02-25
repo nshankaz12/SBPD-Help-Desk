@@ -576,14 +576,14 @@
                         HintText: ="Please Describe Your Issue"
                         Mode: =TextMode.MultiLine
                         Size: =15
-                        Width: =Parent.Width -100
-                        X: =50
+                        Width: =Parent.Width - 63
+                        X: =32
                         Y: =40
                         ZIndex: =2
 
                 Container19_3 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
-                    Height: =If('Create A Ticket'.Size<4, AddMediaButton2.Height+Button7_1.Height+35,80)
+                    Height: =If('Create A Ticket'.Size<4, AttachmentControl.Height+Button7_1.Height+35,80)
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutGap: =10
                     LayoutMinHeight: =100
@@ -621,15 +621,19 @@
                         Y: =10
                         ZIndex: =1
 
-                    AddMediaButton2 As addMedia:
-                        BorderColor: =RGBA(56, 96, 178, 1)
-                        BorderThickness: =2
+                    AttachmentControl As attachments:
+                        BorderColor: =Black
+                        DisplayMode: =Parent.DisplayMode
                         FillPortions: =1
-                        Height: =55
-                        Size: =If('Create A Ticket'.Size = 1, 15, 25)
-                        Text: ="Attach Image"
-                        Width: =If('Create A Ticket'.Size = 1,120, 245)
-                        X: =Button7_1.X+Button7_1.Width+50
-                        Y: =Button7_1.Y
+                        Height: =165
+                        IsInDataCard: =true
+                        Items: =
+                        PaddingBottom: =5
+                        PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                        PaddingRight: =5
+                        PaddingTop: =5
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =
                         ZIndex: =2
 
