@@ -600,24 +600,34 @@
                         FillPortions: =1
                         Height: =57
                         OnSelect: |
-                            =//INSERT_NEW_TICKET.Run(Dropdown1.Selected.id, Dropdown5.Selected.id, DataCardValue4_1.Text, Dropdown4.Selected.id, DataCardValue6_1.Text);
-                            //INSERT_NEW_TICKET.Run(2, 10, "Hello - 2", 2, "App");
-                            //INSERT_NEW_TICKET.Run(categoryId, creatorId, description, subCategoryId, title);
-                            Set(
+                            =Set(
                                 recID,
                                 Patch(
-                                Tickets_1,
-                                Defaults(Tickets_1),
-                                {
-                                    title: TextInput3.Text,
-                                    description: TextInput5.Text,
-                                    creatorId: userData.id,
-                                    mainCategory: Dropdown5.Selected.id,
-                                    category: Dropdown7.Selected.id,
-                                    subCategory: Dropdown7_1.Selected.id,
-                                    status: "open"
-                                }
+                                    Tickets_1,
+                                    Defaults(Tickets_1),
+                                    {
+                                        title: TextInput3.Text,
+                                        description: TextInput5.Text,
+                                        creatorId: userData.id,
+                                        mainCategory: Dropdown5.Selected.id,
+                                        category: Dropdown7.Selected.id,
+                                        subCategory: Dropdown7_1.Selected.id,
+                                        status: "open"
+                                    }
                                 ).id
+                            );
+                            
+                            ForAll(
+                                AttachmentControl.Attachments,
+                                'UploadFile(s)'.Run(
+                                    recID,
+                                    {
+                                        file: {
+                                            contentBytes: Value,
+                                            name: Name
+                                        }
+                                    }
+                                )
                             );
                             
                             Reset(TextInput3);
@@ -625,12 +635,14 @@
                             Reset(TextInput5);
                             Reset(Dropdown7);
                             Reset(Dropdown7_1);
+                            Reset(AttachmentControl);
                             
                             Office365Outlook.SendEmailV2(
                                 userData.email,
                                 "Ticket has been Created Successfully",
                                 "This ticket has been created. We will have our technicians take a look at the issue and deliver a solution"
                             );
+                            
                             Navigate(MyTickets);
                         Text: ="Submit"
                         Width: =120
