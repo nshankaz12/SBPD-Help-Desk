@@ -6,6 +6,14 @@ WelcomeUser As CanvasComponent:
     Y: =0
     ZIndex: =1
 
+    Rectangle2 As rectangle:
+        Fill: =RGBA(246, 149, 43, 1)
+        Height: =2
+        Width: =Len(WelcomeName.Text) * 10
+        X: =WelcomeName.X + WelcomeName.Width/2 - Rectangle2.Width/2 + (Len(User().FullName) - Len("Welcome, ")) * 2
+        Y: =40
+        ZIndex: =2
+
     WelcomeName As label:
         Align: =Align.Center
         BorderColor: =RGBA(246,149,43,255)
@@ -16,13 +24,12 @@ WelcomeUser As CanvasComponent:
         Size: =20
         Text: =Concatenate("Welcome, ", User().FullName)
         Width: =1366
-        ZIndex: =1
+        ZIndex: =8
 
-    Rectangle2 As rectangle:
-        Fill: =RGBA(246, 149, 43, 1)
-        Height: =2
-        Width: =Len(WelcomeName.Text) * 10
-        X: =WelcomeName.X + WelcomeName.Width/2 - Rectangle2.Width/2 + (Len(User().FullName) - Len("Welcome, ")) * 2
-        Y: =37
-        ZIndex: =2
+    UserIcon As image:
+        Height: =50
+        Image: =User().Image
+        X: |
+            =(WelcomeName.Width/2 - WelcomeName.Text/2)
+        ZIndex: =9
 
