@@ -41,7 +41,7 @@
             "Name": "galleryTemplate1_2",
             "Parent": "Gallery1_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 17,
+            "PublishOrderIndex": 645,
             "Rules": [
               {
                 "Category": "Design",
@@ -150,7 +150,7 @@
             "Name": "Icon1_1",
             "Parent": "Gallery1_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 18,
+            "PublishOrderIndex": 646,
             "Rules": [
               {
                 "Category": "Design",
@@ -397,7 +397,7 @@
             "Name": "Icon1_5",
             "Parent": "Gallery1_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 19,
+            "PublishOrderIndex": 647,
             "Rules": [
               {
                 "Category": "Design",
@@ -652,7 +652,7 @@
             "Name": "Label1_2",
             "Parent": "Gallery1_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 20,
+            "PublishOrderIndex": 648,
             "Rules": [
               {
                 "Category": "Data",
@@ -994,7 +994,7 @@
         "Name": "Gallery1_1",
         "Parent": "compMobileMenu",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 16,
+        "PublishOrderIndex": 644,
         "Rules": [
           {
             "Category": "Data",
@@ -1209,21 +1209,14 @@
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       },
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "Table(\n    {\n        MenuText: \"Menu Item 1\",\n        MenuIcon: Icon.Home,\n        ScreenToGoTo: App.ActiveScreen\n    },\n    {\n        MenuText: \"Menu Item 2\",\n        MenuIcon: Icon.AddDocument,\n        ScreenToGoTo: App.ActiveScreen\n    },\n    {\n        MenuText: \"Menu Item 3\",\n        MenuIcon: Icon.Airplane,\n        ScreenToGoTo: App.ActiveScreen\n    },\n    {\n        MenuText: \"Menu Item 4\",\n        MenuIcon: Icon.Cars,\n        ScreenToGoTo: App.ActiveScreen\n    },\n    {\n        MenuText: \"Menu Item 5\",\n        MenuIcon: Icon.Settings,\n        ScreenToGoTo: App.ActiveScreen\n    }\n)",
-        "InvariantPropertyName": "NavigationItems",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      }
+      "NavigationItems"
     ],
-    "LastModifiedTimestamp": "638129905199249787",
+    "LastModifiedTimestamp": "638129908476059226",
     "Name": "compMobileMenu",
     "Rules": [
       {
         "Category": "Data",
-        "InvariantScript": "// IF adimn or tech show this table, if not show Staff table\nTable(\n    {\n        MenuText: \"Home\",\n        MenuIcon: Icon.Home,\n        ScreenToGoTo: Home\n    },\n    {\n        MenuText: \"Create Ticket\",\n        MenuIcon: Icon.AddDocument,\n        ScreenToGoTo: 'Create Ticket'\n    },\n    {\n        MenuText: \"My Tickets\",\n        MenuIcon: Icon.Folder,\n        ScreenToGoTo: 'My Tickets'\n    },\n    {\n        MenuText: \"Ticket Log\",\n        MenuIcon: Icon.DocumentWithContent,\n        ScreenToGoTo: 'Ticket Log'\n    },\n    {\n        MenuText: \"Settings\",\n        MenuIcon: Icon.Settings,\n        ScreenToGoTo: Settings\n    }\n    )",
+        "InvariantScript": "// IF adimn or tech show this table, if not show Staff table\ngblNavItems",
         "Property": "NavigationItems",
         "RuleProviderType": "System"
       },
@@ -1338,7 +1331,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638129905199249787",
+  "LastModifiedTimestamp": "638129908476059226",
   "Name": "944c7634152c4e2fb90907ad36ea6879",
   "OverridableProperties": {},
   "TemplateOriginalName": "42d5b7a489574720974df3572c8d14fc",

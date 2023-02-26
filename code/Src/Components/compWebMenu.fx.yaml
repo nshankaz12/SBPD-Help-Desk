@@ -3,34 +3,7 @@ compWebMenu As CanvasComponent:
     Fill: =Transparent
     HamburgerColor: =White
     Height: =640
-    MenuItems: |-
-        =Table(
-            {
-                MenuText: "Home",
-                MenuIcon: Icon.Home,
-                ScreenToGoTo: Home
-            },
-            {
-                MenuText: "Create Ticket",
-                MenuIcon: Icon.AddDocument,
-                ScreenToGoTo: 'Create Ticket'
-            },
-            {
-                MenuText: "My Tickets",
-                MenuIcon: Icon.Folder,
-                ScreenToGoTo: 'My Tickets'
-            },
-            {
-                MenuText: "Ticket Log",
-                MenuIcon: Icon.DocumentWithContent,
-                ScreenToGoTo: 'Ticket Log'
-            },
-            {
-                MenuText: "Settings",
-                MenuIcon: Icon.Settings,
-                ScreenToGoTo: Settings
-            }
-            )
+    MenuItems: =gblNavItems
     OnReset: |-
         =Set(showMenu, compWebMenu.ExpandMenu);
         Set(showHamIcon, compWebMenu.showHamburgerIcon);

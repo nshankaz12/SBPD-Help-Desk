@@ -6,33 +6,7 @@ compMobileMenu As CanvasComponent:
         =120
     NavigationItems: |-
         =// IF adimn or tech show this table, if not show Staff table
-        Table(
-            {
-                MenuText: "Home",
-                MenuIcon: Icon.Home,
-                ScreenToGoTo: Home
-            },
-            {
-                MenuText: "Create Ticket",
-                MenuIcon: Icon.AddDocument,
-                ScreenToGoTo: 'Create Ticket'
-            },
-            {
-                MenuText: "My Tickets",
-                MenuIcon: Icon.Folder,
-                ScreenToGoTo: 'My Tickets'
-            },
-            {
-                MenuText: "Ticket Log",
-                MenuIcon: Icon.DocumentWithContent,
-                ScreenToGoTo: 'Ticket Log'
-            },
-            {
-                MenuText: "Settings",
-                MenuIcon: Icon.Settings,
-                ScreenToGoTo: Settings
-            }
-            )
+        gblNavItems
     SelectedItemBackground: =LightGray
     Width: =App.DesignWidth
     X: =0
