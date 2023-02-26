@@ -354,7 +354,7 @@
                             ZIndex: =1
 
                         TextInput2 As text:
-                            Default: =If(editMessage, Gallery2.Selected.message, Blank())
+                            Default: =
                             Height: =72
                             HintText: ="Add a comment..."
                             OnSelect: =
@@ -365,11 +365,11 @@
                             ZIndex: =2
 
                         TextInput9 As text:
-                            Default: ="Text input"
+                            Default: =If(editMessage, Gallery2.Selected.message, Blank())
                             Height: =72
                             OnSelect: =editMessage
                             Visible: =editMessage
-                            Width: =811
+                            Width: =Parent.Width - 100
                             X: =32
                             Y: =467
                             ZIndex: =3
@@ -390,14 +390,64 @@
                                     Reset(TextInput2);
                                     
                                 );
-                            Text: =If(addMessage, "Add Comment", "Edit Comment")
+                                If(
+                                    editMessage,
+                                    Patch(
+                                        Comments,
+                                        LookUp(
+                                            Comments,
+                                            id = editableRec.id
+                                        ),
+                                        {
+                                            message: TextInput9.Text,
+                                            lastUpdated: Now()
+                                        }
+                                    );
+                                    Set(editMessage, false);
+                                    Set(addMessage, true);
+                                );
+                            Text: |-
+                                =If(
+                                    addMessage,
+                                    "Add Comment",
+                                    If(
+                                        editMessage,
+                                        "Update Comment"
+                                    )
+                                )
+                            Width: =200
                             X: =32
                             Y: =578
                             ZIndex: =4
 
                         Close_Ticket_Button As button:
-                            OnSelect: =Set(varShowResPopup, true)
-                            Text: ="Close Ticket"
+                            OnSelect: |-
+                                =If(
+                                    addMessage,
+                                    Set(
+                                        varShowResPopup,
+                                        true
+                                    ),
+                                    If(
+                                        editMessage,
+                                        Set(
+                                            addMessage,
+                                            true
+                                        ) && Set(
+                                            editMessage,
+                                            false
+                                        )
+                                    )
+                                )
+                            Text: |-
+                                =If(
+                                    editMessage,
+                                    "Cancel Update",
+                                    If(
+                                        addMessage,
+                                        "Close Ticket"
+                                    )
+                                )
                             X: =407
                             Y: =578
                             ZIndex: =5
@@ -422,7 +472,7 @@
                                 ZIndex: =1
 
                             Title3 As label:
-                                Height: =30
+                                Height: =49
                                 OnSelect: =Select(Parent)
                                 PaddingBottom: =0
                                 PaddingLeft: =0
@@ -430,7 +480,7 @@
                                 PaddingTop: =0
                                 Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
                                 VerticalAlign: =VerticalAlign.Top
-                                Width: =260
+                                Width: =268
                                 X: =102
                                 Y: =22
                                 ZIndex: =2
@@ -451,11 +501,12 @@
                                 ZIndex: =3
 
                             Label1 As label:
+                                Height: =34
                                 OnSelect: =Select(Parent)
                                 Text: =ThisItem.lastUpdated
-                                Width: =167
-                                X: =330
-                                Y: =18
+                                Width: =263
+                                X: =356
+                                Y: =22
                                 ZIndex: =7
 
                             Button11 As button:
@@ -471,6 +522,7 @@
                                 OnSelect: |-
                                     =Set(editMessage, true);
                                     Set(addMessage, false);
+                                    Set(editableRec, ThisItem);
                                 PressedBorderColor: =
                                 PressedColor: =Gray
                                 PressedFill: =
