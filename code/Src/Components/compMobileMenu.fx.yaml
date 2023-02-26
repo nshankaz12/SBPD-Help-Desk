@@ -1,7 +1,9 @@
 compMobileMenu As CanvasComponent:
     BackgroundMenuColor: =LightGray
     Fill: =RGBA(0, 0, 0, 0)
-    ForegroundColor: =RGBA(70, 130, 180, 1)
+    ForegroundColor: |-
+        =//RGBA(70, 130, 180, 1)
+        ColorScheme.primary
     Height: |
         =120
     NavigationItems: |-
