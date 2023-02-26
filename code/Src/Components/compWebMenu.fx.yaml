@@ -1,0 +1,177 @@
+compWebMenu As CanvasComponent:
+    ExpandMenu: =false
+    Fill: =Transparent
+    HamburgerColor: =White
+    Height: =640
+    MenuItems: |-
+        =Table(
+            {
+                MenuText: "Home",
+                MenuIcon: Icon.Home,
+                ScreenToGoTo: Home
+            },
+            {
+                MenuText: "Create Ticket",
+                MenuIcon: Icon.AddDocument,
+                ScreenToGoTo: 'Create Ticket'
+            },
+            {
+                MenuText: "My Tickets",
+                MenuIcon: Icon.Folder,
+                ScreenToGoTo: 'My Tickets'
+            },
+            {
+                MenuText: "Ticket Log",
+                MenuIcon: Icon.DocumentWithContent,
+                ScreenToGoTo: 'Ticket Log'
+            },
+            {
+                MenuText: "Settings",
+                MenuIcon: Icon.Settings,
+                ScreenToGoTo: Settings
+            }
+            )
+    OnReset: |-
+        =Set(showMenu, compWebMenu.ExpandMenu);
+        Set(showHamIcon, compWebMenu.showHamburgerIcon);
+    Width: =185
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    icoHamburgerMenu As icon.Hamburger:
+        Color: =compWebMenu.HamburgerColor
+        Fill: =Transparent
+        Height: =48
+        Icon: =Icon.Hamburger
+        OnSelect: =Set(showMenu, !showMenu);
+        Visible: =!showMenu
+        Width: =62
+        X: =6
+        Y: =12
+        ZIndex: =1
+
+    xIcon As icon.Cancel:
+        Color: =compWebMenu.HamburgerColor
+        Fill: =Transparent
+        Height: =48
+        Icon: =Icon.Cancel
+        OnSelect: =Set(showMenu, !showMenu);
+        PaddingTop: =2
+        Visible: =showMenu
+        Width: =62
+        X: =6
+        Y: =12
+        ZIndex: =2
+
+    MenuOpened As gallery.variableTemplateHeightGallery:
+        DelayItemLoading: =true
+        Height: =Parent.Height - icoHamburgerMenu.Height
+        Items: =compWebMenu.MenuItems
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TemplateSize: =280
+        Visible: =showMenu
+        Width: =185
+        Y: |-
+            =//icoHamburgerMenu.Height
+            82
+        ZIndex: =3
+
+        Rectangle2_1 As rectangle:
+            Height: =48
+            OnSelect: =
+            Visible: =ThisItem.ScreenToGoTo.Name = App.ActiveScreen.Name
+            Width: =6
+            ZIndex: =1
+
+        Icon3_1 As icon.Add:
+            Height: =48
+            Icon: =ThisItem.MenuIcon
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            Width: =62
+            X: =3
+            ZIndex: =2
+
+        Label2_1 As label:
+            FontWeight: =FontWeight.Lighter
+            Height: =48
+            OnSelect: =Select(Parent)
+            Size: =14
+            Text: =ThisItem.MenuText
+            Width: =175
+            ZIndex: =3
+
+        Button2_1 As button:
+            Fill: =Transparent
+            Height: =Label2_1.Height + Label2_1.Y
+            HoverFill: =Transparent
+            OnSelect: |-
+                =Set(showMenu, false);
+                Navigate(ThisItem.ScreenToGoTo);
+            PressedFill: =Transparent
+            Text: =""
+            Width: =175
+            ZIndex: =4
+
+    MenuClosed As gallery.variableTemplateHeightGallery:
+        DelayItemLoading: =true
+        Height: =Parent.Height - icoHamburgerMenu.Height
+        Items: =compWebMenu.MenuItems
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TemplateSize: =280
+        Visible: =!showMenu
+        Width: =68
+        Y: |-
+            =//icoHamburgerMenu.Height
+            82
+        ZIndex: =4
+
+        Rectangle2_2 As rectangle:
+            Height: =48
+            OnSelect: =
+            Visible: =ThisItem.ScreenToGoTo.Name = App.ActiveScreen.Name
+            Width: =6
+            ZIndex: =1
+
+        Icon3_5 As icon.Add:
+            Height: =48
+            Icon: =ThisItem.MenuIcon
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            Width: =58
+            ZIndex: =2
+
+        Label2_2 As label:
+            FontWeight: =FontWeight.Lighter
+            Height: =48
+            OnSelect: =Select(Parent)
+            Size: =14
+            Text: =ThisItem.MenuText
+            Visible: |
+                =false
+            Width: =58
+            ZIndex: =3
+
+        Button2_2 As button:
+            Fill: =Transparent
+            Height: =Label2_1.Height + Label2_1.Y
+            HoverFill: =Transparent
+            OnSelect: |-
+                =Set(showMenu, false);
+                Navigate(ThisItem.ScreenToGoTo);
+            PressedFill: =Transparent
+            Text: =""
+            Width: =58
+            ZIndex: =4
+

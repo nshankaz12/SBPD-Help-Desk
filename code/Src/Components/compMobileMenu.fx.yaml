@@ -5,7 +5,8 @@ compMobileMenu As CanvasComponent:
     Height: |
         =120
     NavigationItems: |-
-        =Table(
+        =// IF adimn or tech show this table, if not show Staff table
+        Table(
             {
                 MenuText: "Home",
                 MenuIcon: Icon.Home,
@@ -14,24 +15,24 @@ compMobileMenu As CanvasComponent:
             {
                 MenuText: "Create Ticket",
                 MenuIcon: Icon.AddDocument,
-                ScreenToGoTo: 'Create A Ticket'
+                ScreenToGoTo: 'Create Ticket'
             },
             {
                 MenuText: "My Tickets",
                 MenuIcon: Icon.Folder,
-                ScreenToGoTo: MyTickets
+                ScreenToGoTo: 'My Tickets'
             },
             {
                 MenuText: "Ticket Log",
                 MenuIcon: Icon.DocumentWithContent,
-                ScreenToGoTo: 'Log of All Tickets - Admin Tech'
+                ScreenToGoTo: 'Ticket Log'
             },
             {
                 MenuText: "Settings",
                 MenuIcon: Icon.Settings,
-                ScreenToGoTo: 'User Profile + Info'
+                ScreenToGoTo: Settings
             }
-        )
+            )
     SelectedItemBackground: =LightGray
     Width: =App.DesignWidth
     X: =0
@@ -92,7 +93,7 @@ compMobileMenu As CanvasComponent:
             Color: =Transparent
             Height: =120
             Icon: =ThisItem.MenuIcon
-            OnSelect: =Select(Parent)
+            OnSelect: =Navigate(ThisItem.ScreenToGoTo);
             PaddingBottom: =8
             Width: =267
             X: =3
