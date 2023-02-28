@@ -312,19 +312,27 @@ Success2 As screen:
                             ZIndex: =2
 
                 ButtonsContainer_1 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
                     Height: =Parent.Height
                     LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
                     Width: =Parent.Width
                     ZIndex: =3
 
                     Component2_1 As Component2:
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
 
                     HomeMobileNavButtonGallery_3 As gallery.galleryVertical:
+                        AlignInContainer: =AlignInContainer.SetByContainer
                         Height: =Parent.Height
                         Items: =navCol
                         Layout: =Layout.Vertical
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =320
                         OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
                         ShowScrollbar: =false
                         TemplateSize: =Parent.Width
