@@ -444,7 +444,12 @@
 
                         Image7_3 As image:
                             Height: =Parent.TemplateHeight / 6
-                            Image: =User().Image
+                            Image: |-
+                                =// Get assignee's profile pic if they have one
+                                //If(!IsBlank(LookUp(Users, id = ThisItem.assignedTO, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.assignedTO, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.assignedTO, email)), 'blank-profile-pic')
+                                
+                                // For testing purposes because don't have any assignees yet
+                                If(!IsBlank(LookUp(Users, id = 2, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = 2, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = 2, email)), 'blank-profile-pic')
                             ImagePosition: =ImagePosition.Fill
                             RadiusBottomLeft: =256
                             RadiusBottomRight: =256
@@ -586,7 +591,12 @@
 
                         Image7_7 As image:
                             Height: =Parent.TemplateHeight / 6
-                            Image: =User().Image
+                            Image: |-
+                                =// Get assignee's profile pic if they have one
+                                //If(!IsBlank(LookUp(Users, id = ThisItem.assignedTO, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.assignedTO, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.assignedTO, email)), 'blank-profile-pic')
+                                
+                                // For testing purposes because don't have any assignees yet
+                                If(!IsBlank(LookUp(Users, id = 2, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = 2, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = 2, email)), 'blank-profile-pic')
                             ImagePosition: =ImagePosition.Fill
                             RadiusBottomLeft: =256
                             RadiusBottomRight: =256
