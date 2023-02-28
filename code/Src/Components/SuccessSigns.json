@@ -8,7 +8,14 @@
         "AllowAccessToGlobals": true,
         "Children": [],
         "ControlPropertyState": [
-          "Fill",
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "RGBA(56, 96, 178, 1)",
+            "InvariantPropertyName": "Fill",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "DisabledFill",
           "PressedFill",
           "HoverFill",
@@ -55,13 +62,13 @@
         "LayoutName": "",
         "MetaDataIDKey": "",
         "Name": "iconCircle1_2",
-        "Parent": "Component2",
+        "Parent": "SuccessSigns",
         "PersistMetaDataIDKey": false,
         "PublishOrderIndex": 636,
         "Rules": [
           {
             "Category": "Design",
-            "InvariantScript": "RGBA(56, 96, 178, 1)",
+            "InvariantScript": "SuccessSigns.SuccessColor",
             "Property": "Fill",
             "RuleProviderType": "Unknown"
           },
@@ -109,14 +116,14 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "Parent.Height/4",
-            "Property": "Y",
+            "InvariantScript": "Parent.Width/2 -Self.Width/2",
+            "Property": "X",
             "RuleProviderType": "Unknown"
           },
           {
             "Category": "Design",
-            "InvariantScript": "Parent.Width/2 -Self.Width/2",
-            "Property": "X",
+            "InvariantScript": "Parent.Height/4",
+            "Property": "Y",
             "RuleProviderType": "Unknown"
           },
           {
@@ -222,7 +229,7 @@
         "LayoutName": "",
         "MetaDataIDKey": "",
         "Name": "iconCheck1_2",
-        "Parent": "Component2",
+        "Parent": "SuccessSigns",
         "PersistMetaDataIDKey": false,
         "PublishOrderIndex": 637,
         "Rules": [
@@ -288,14 +295,14 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "Parent.Height/4",
-            "Property": "Y",
+            "InvariantScript": "Parent.Width/2 -Self.Width/2",
+            "Property": "X",
             "RuleProviderType": "Unknown"
           },
           {
             "Category": "Design",
-            "InvariantScript": "Parent.Width/2 -Self.Width/2",
-            "Property": "X",
+            "InvariantScript": "Parent.Height/4",
+            "Property": "Y",
             "RuleProviderType": "Unknown"
           },
           {
@@ -477,7 +484,7 @@
         "LayoutName": "",
         "MetaDataIDKey": "",
         "Name": "LblSuccessMsg1_1",
-        "Parent": "Component2",
+        "Parent": "SuccessSigns",
         "PersistMetaDataIDKey": false,
         "PublishOrderIndex": 638,
         "Rules": [
@@ -615,8 +622,8 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "Parent.Width * 0.75",
-            "Property": "Width",
+            "InvariantScript": "Parent.Width/2 - Self.Width/2",
+            "Property": "X",
             "RuleProviderType": "Unknown"
           },
           {
@@ -627,8 +634,8 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "Parent.Width/2 - Self.Width/2",
-            "Property": "X",
+            "InvariantScript": "Parent.Width * 0.75",
+            "Property": "Width",
             "RuleProviderType": "Unknown"
           },
           {
@@ -717,21 +724,41 @@
       },
       "X",
       "Y",
-      "ZIndex"
+      "ZIndex",
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "RGBA(0, 0, 0, 1)",
+        "InvariantPropertyName": "SuccessColor",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      }
     ],
-    "LastModifiedTimestamp": "638132172925308434",
-    "Name": "Component2",
+    "LastModifiedTimestamp": "638132187035279148",
+    "Name": "SuccessSigns",
     "Rules": [
       {
-        "Category": "Design",
-        "InvariantScript": "RGBA(0, 0, 0, 0)",
-        "Property": "Fill",
+        "Category": "Data",
+        "InvariantScript": "ColorScheme.primary",
+        "Property": "SuccessColor",
         "RuleProviderType": "System"
       },
       {
         "Category": "Design",
-        "InvariantScript": "Parent.Height",
-        "Property": "Height",
+        "InvariantScript": "1",
+        "Property": "ZIndex",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Design",
+        "InvariantScript": "0",
+        "Property": "Y",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Design",
+        "InvariantScript": "0",
+        "Property": "X",
         "RuleProviderType": "System"
       },
       {
@@ -742,21 +769,15 @@
       },
       {
         "Category": "Design",
-        "InvariantScript": "0",
-        "Property": "X",
-        "RuleProviderType": "Unknown"
+        "InvariantScript": "Parent.Height",
+        "Property": "Height",
+        "RuleProviderType": "System"
       },
       {
         "Category": "Design",
-        "InvariantScript": "0",
-        "Property": "Y",
-        "RuleProviderType": "Unknown"
-      },
-      {
-        "Category": "Design",
-        "InvariantScript": "1",
-        "Property": "ZIndex",
-        "RuleProviderType": "Unknown"
+        "InvariantScript": "RGBA(0, 0, 0, 0)",
+        "Property": "Fill",
+        "RuleProviderType": "System"
       }
     ]
   },
@@ -764,12 +785,22 @@
     "AllowAccessToGlobals": false,
     "AllowCustomization": true,
     "Description": "",
-    "Name": "Component2",
+    "Name": "SuccessSigns",
     "TemplateGuid": "583c474863d04d06828ced4be193ade9"
   },
   "ComponentType": "CanvasComponent",
   "CustomGroupControlTemplateName": "",
-  "CustomProperties": [],
+  "CustomProperties": [
+    {
+      "Category": 0,
+      "DisplayName": "SuccessColor",
+      "Hidden": false,
+      "Name": "SuccessColor",
+      "PropertyDataTypeKey": "Color",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.328\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}}"
+    }
+  ],
   "FirstParty": true,
   "Id": "http://microsoft.com/appmagic/Component",
   "IsComponentLocked": false,
@@ -778,7 +809,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638132172925308434",
+  "LastModifiedTimestamp": "638132187035279148",
   "Name": "583c474863d04d06828ced4be193ade9",
   "OverridableProperties": {},
   "Version": "638031951490728403"

@@ -1,6 +1,7 @@
-Component2 As CanvasComponent:
+SuccessSigns As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =Parent.Height
+    SuccessColor: =ColorScheme.primary
     Width: =Parent.Width
     X: =0
     Y: =0
@@ -22,6 +23,7 @@ Component2 As CanvasComponent:
 
     iconCircle1_2 As circle.Circle:
         DisplayMode: =DisplayMode.View
+        Fill: =SuccessSigns.SuccessColor
         X: =Parent.Width/2 -Self.Width/2
         Y: =Parent.Height/4
         ZIndex: =2

@@ -1,5 +1,5 @@
 Success2 As screen:
-    BackgroundImage: ='image (2)'
+    BackgroundImage: =
     ImagePosition: =ImagePosition.Stretch
     OnVisible: |-
         =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false,CloseAlertRibbon:false});
@@ -322,7 +322,7 @@ Success2 As screen:
                     Width: =Parent.Width
                     ZIndex: =3
 
-                    Component2_1 As Component2:
+                    Component2_1 As SuccessSigns:
                         LayoutMinHeight: =640
                         LayoutMinWidth: =640
 
