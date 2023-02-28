@@ -1,8 +1,38 @@
 Component2 As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
-    Height: =640
-    Width: =640
+    Height: =Parent.Height
+    Width: =Parent.Width
     X: =0
     Y: =0
     ZIndex: =1
+
+    iconCircle1_2 As circle.Circle:
+        X: =600
+        Y: =200
+        ZIndex: =1
+
+    iconCheck1_2 As icon.Check:
+        Height: =iconCircle1_2.Height
+        Icon: =Icon.Check
+        PaddingBottom: =Self.PaddingTop
+        PaddingLeft: =Self.PaddingTop
+        PaddingRight: =Self.PaddingTop
+        PaddingTop: =24
+        Width: =iconCircle1_2.Width
+        X: =600
+        Y: =200
+        ZIndex: =2
+
+    LblSuccessMsg1_2 As label:
+        Align: =Align.Justify
+        AutoHeight: =true
+        Height: =iconCircle1_2.Height
+        LineHeight: |
+            =0
+        Size: =20
+        Text: ="Your ticket has been submitted!"
+        Width: =Parent.Width * 0.75
+        X: =450
+        Y: =400
+        ZIndex: =3
 
