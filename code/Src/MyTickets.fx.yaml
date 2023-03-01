@@ -15,6 +15,9 @@
         Set(AssignedTicketList,GetCurrentTickets.Run(10)); // testing 
         //Set(AssignedTicketList, Filter(Tickets_1, assignedTo = userData.id)); 
         
+        // Set filter menu not visible when enter screen
+        Set(varFilterVisible, false);
+        
         // Create local variables for mobile view property on this screen using UpdateContext
         UpdateContext({MobileGallery: false});
         UpdateContext({HamburgerIconChange: false});

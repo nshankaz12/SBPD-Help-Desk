@@ -1,0 +1,13 @@
+compFilterMenu As CanvasComponent:
+    CheckAdmin: =is_admin
+    Fill: =RGBA(0, 0, 0, 0)
+    FilterVisible: =varFilterVisible
+    FontSize: =If(App.Width > 900, 18, 14)
+    Height: =640
+    IconSize: =If(App.Width > 900, 40, 30)
+    StatusItems: =varColumnStatus
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+

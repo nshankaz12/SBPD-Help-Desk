@@ -125,10 +125,13 @@ App As appinfo:
             backgroundDark: RGBA(124,134,137, 1),
             offColor: RGBA(219,199,175, 1),
             orange: RGBA(246,149,43, 1)
-        })
+        });
         
         
-        
+        // Collection passed to filter component
+        Set(varColumnStatus, colStatus);
+        // Passed to filter component to check if filter is visible
+        Set(varFilterVisible, false);
         
         
         
