@@ -103,9 +103,13 @@
                     Status: "New"
                 }
             );
+            Collect(Items, {Text: TextInput7, Description: TextInput6});
             Set(AlertMessage, TextInput7.Text);
             Notify(AlertMessage, NotificationType.Warning);
             Notify("Alert created!", NotificationType.Success);
+            Navigate('Alert Manager', Fade);
+            Set(SelectedText, {});
+            Set(varItems, Items);
         Text: ="Create Alert"
         Tooltip: =
         Width: =214
@@ -116,7 +120,7 @@
     TextInput6 As text:
         Default: =""
         Height: =291
-        Size: =25
+        Size: =20
         Width: =712
         X: =339
         Y: =345
