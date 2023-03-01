@@ -1,13 +1,142 @@
 compFilterMenu As CanvasComponent:
     CheckAdmin: =is_admin
+    CloseFilter: =Set(varFilterVisible, false)
     Fill: =RGBA(0, 0, 0, 0)
+    FilterIconSize: |-
+        =//If(App.Width > 900, 50, 40)
+        50
     FilterVisible: =varFilterVisible
     FontSize: =If(App.Width > 900, 18, 14)
-    Height: =640
+    Height: =If(compFilterMenu.FilterVisible, compFilterMenu.NewHeight, compFilterMenu.FilterIconSize)
     IconSize: =If(App.Width > 900, 40, 30)
+    NewHeight: |-
+        =//640
+        If(App.ActiveScreen.Name = "MyTickets" && compFilterMenu.CheckAdmin, 300, 145)
+    OpenFilter: =Set(varFilterVisible, true)
+    StatusChoice: =DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult'
     StatusItems: =varColumnStatus
-    Width: =640
+    TicketsChoice: =RadioTickets.SelectedText.Value
+    Width: =If(compFilterMenu.FilterVisible, If(App.Width > 900, 220, 180), compFilterMenu.FilterIconSize)
     X: =0
     Y: =0
     ZIndex: =1
+
+    FilterMenu As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height
+        Width: =Parent.Width
+        ZIndex: =1
+
+        FilterPanel As groupContainer.manualLayoutContainer:
+            Fill: =RGBA(241, 244, 249, 1)
+            Height: =Parent.Height
+            Visible: =compFilterMenu.FilterVisible
+            Width: =Parent.Width
+            Y: =
+            ZIndex: =1
+
+            FilterHeader As groupContainer.manualLayoutContainer:
+                Height: =compFilterMenu.IconSize + 5
+                Width: =Parent.Width
+                ZIndex: =1
+
+                LabelTitle As label:
+                    FontWeight: =FontWeight.Semibold
+                    Height: =compFilterMenu.IconSize
+                    PaddingLeft: =10
+                    Size: =compFilterMenu.FontSize
+                    Text: ="Filter"
+                    Width: =Parent.Width - CancelIcon.Width
+                    ZIndex: =1
+
+                ResetIcon As icon.Reset:
+                    Height: =compFilterMenu.IconSize * 0.90
+                    Icon: =Icon.Reset
+                    OnSelect: =Reset(RadioTickets); Reset(DropdownStatus)
+                    Width: =compFilterMenu.IconSize
+                    X: =LabelTitle.Width / 2
+                    ZIndex: =2
+
+                CancelIcon As icon.Cancel:
+                    Height: =compFilterMenu.IconSize
+                    Icon: =Icon.Cancel
+                    OnSelect: =compFilterMenu.CloseFilter()
+                    Width: =compFilterMenu.IconSize
+                    X: =Parent.Width - Self.Width
+                    ZIndex: =3
+
+                Separator As rectangle:
+                    Height: =1
+                    Width: =Parent.Width
+                    Y: =LabelTitle.Y + LabelTitle.Height
+                    ZIndex: =4
+
+            TicketsSelection As groupContainer.manualLayoutContainer:
+                Height: =150
+                Visible: =App.ActiveScreen.Name = "MyTickets" && compFilterMenu.CheckAdmin
+                Width: =Parent.Width
+                Y: =FilterHeader.Y + FilterHeader.Height
+                ZIndex: =2
+
+                LabelTickets As label:
+                    FontWeight: =FontWeight.Semibold
+                    PaddingLeft: =10
+                    Size: =compFilterMenu.FontSize
+                    Text: ="Tickets"
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                Separator_1 As rectangle:
+                    Height: =1
+                    Width: =Parent.Width
+                    Y: =LabelTickets.Y + LabelTickets.Height
+                    ZIndex: =2
+
+                RadioTickets As radio:
+                    Default: ="My Tickets"
+                    Height: =Parent.Height - LabelTickets.Height - Separator_1.Height
+                    Items: =["My Tickets", "Assigned Tickets"]
+                    RadioSize: =compFilterMenu.IconSize - 5
+                    Size: =compFilterMenu.FontSize - 2
+                    Width: =Parent.Width
+                    Y: =Separator_1.Y + Separator_1.Height
+                    ZIndex: =3
+
+            StatusSelection As groupContainer.manualLayoutContainer:
+                Height: =If(App.ActiveScreen.Name = "MyTickets" && compFilterMenu.CheckAdmin, Parent.Height - FilterHeader.Height - TicketsSelection.Height, Parent.Height - FilterHeader.Height)
+                Width: =Parent.Width
+                Y: |
+                    =If(App.ActiveScreen.Name = "MyTickets" && compFilterMenu.CheckAdmin,TicketsSelection.Y + TicketsSelection.Height, FilterHeader.Y + FilterHeader.Height)
+                ZIndex: =3
+
+                LabelStatus As label:
+                    FontWeight: =FontWeight.Semibold
+                    PaddingLeft: =10
+                    Size: =compFilterMenu.FontSize
+                    Text: ="Status"
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                Separator_2 As rectangle:
+                    Height: =1
+                    Width: =Parent.Width
+                    Y: =LabelStatus.Y + LabelStatus.Height
+                    ZIndex: =2
+
+                DropdownStatus As dropdown:
+                    Default: ="open"
+                    Items: =compFilterMenu.StatusItems
+                    Size: =compFilterMenu.FontSize
+                    Width: =Parent.Width - 20
+                    X: =(Parent.Width - Self.Width) / 2
+                    Y: =Separator_2.Y + Separator_2.Height + 10
+                    ZIndex: =3
+
+        FilterIcon As icon.FilterFlat:
+            Height: =compFilterMenu.FilterIconSize
+            Icon: =If(!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Tickets"), FilterFlatFilled, FilterFlat)
+            OnSelect: =compFilterMenu.OpenFilter()
+            Visible: =!compFilterMenu.FilterVisible
+            Width: =compFilterMenu.FilterIconSize
+            X: =Parent.Width - Self.Width
+            ZIndex: =2
 
