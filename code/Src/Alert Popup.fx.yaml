@@ -1,0 +1,30 @@
+"'Alert Popup' As screen":
+
+    Label23 As label:
+        Font: =Font.'Lato Black'
+        Height: =94
+        Size: =20
+        Text: ="Is this alert resolved?"
+        Width: =334
+        X: =465
+        Y: =222
+        ZIndex: =1
+
+    Button12 As button:
+        OnSelect: |
+            =Set(AlertResolved, "Yes");
+            Navigate('Alert UI');
+        Text: ="Yes"
+        X: =450
+        Y: =297
+        ZIndex: =2
+
+    Button13 As button:
+        OnSelect: |
+            =Set(AlertResolved, "No");
+            Navigate('Alert UI')
+        Text: ="No"
+        X: =624
+        Y: =297
+        ZIndex: =3
+
