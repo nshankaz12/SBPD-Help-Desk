@@ -56,12 +56,12 @@ compMobileMenu As CanvasComponent:
                     compMobileMenu.BackgroundMenuColor,
                     compMobileMenu.ForegroundColor
                 )
-            Height: =43
+            Height: =Parent.Height/3
             OnSelect: =Select(Parent)
             Size: =12
             Text: =ThisItem.MenuText
-            Width: =267
-            X: =3
+            Width: =Parent.Width/5
+            X: =I
             Y: =77
             ZIndex: =2
 
