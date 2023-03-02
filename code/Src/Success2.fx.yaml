@@ -381,6 +381,16 @@ Success2 As screen:
                             Width: =Parent.TemplateWidth
                             ZIndex: =4
 
+                compMobileMenu_2 As compMobileMenu:
+                    Height: |
+                        =
+                        Parent.Height/5
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    Visible: =Success2.Size =1
+                    Width: =Parent.Width
+                    ZIndex: =4
+
     ScreenSizeLabel_1 As label:
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
@@ -392,125 +402,6 @@ Success2 As screen:
         Width: =184
         Y: =712
         ZIndex: =19
-
-    OldElements_1 As groupContainer.manualLayoutContainer:
-        Height: =100
-        Visible: =false
-        Width: =Parent.Width
-        Y: =668
-        ZIndex: =20
-
-        "'Create Ticket_1' As button":
-            BorderColor: =ColorFade(Self.Fill, 15%)
-            BorderThickness: =10
-            Fill: =RGBA(232, 244, 217, 1)
-            Height: =100
-            OnSelect: =Navigate('Create A Ticket')
-            Text: =""
-            Visible: =is_admin
-            Width: =200
-            X: =124
-            ZIndex: =2
-
-        "'My Tickets_1' As button":
-            BorderColor: =ColorFade(Self.Fill, 15%)
-            BorderThickness: =10
-            Fill: =RGBA(232, 244, 217, 1)
-            Height: =100
-            OnSelect: =Navigate(MyTickets)
-            Text: =""
-            Width: =200
-            X: =396
-            ZIndex: =3
-
-        Tutorials_1 As button:
-            BorderColor: =ColorFade(Self.Fill, 15%)
-            BorderThickness: =10
-            Fill: =RGBA(232, 244, 217, 1)
-            Height: =100
-            Text: =""
-            Width: =200
-            X: =671
-            ZIndex: =4
-
-        "'Forward Scroll_2' As icon.NextArrow":
-            Color: =RGBA(99, 139, 44, 1)
-            Icon: =Icon.NextArrow
-            X: =1213
-            Y: =36
-            ZIndex: =6
-
-        "'Back Scroll_4' As icon.BackArrow":
-            Color: =RGBA(232, 244, 217, 1)
-            Icon: =Icon.BackArrow
-            X: =40
-            Y: =36
-            ZIndex: =7
-
-        "'Popular Articles_2' As label":
-            Text: ="Popular Articles"
-            X: =63
-            Y: =60
-            ZIndex: =8
-
-        line_3 As rectangle:
-            BorderColor: =RGBA(0, 0, 0, 1)
-            Fill: =RGBA(0, 0, 0, 1)
-            Height: =2
-            Width: =1150
-            X: =63
-            Y: =98
-            ZIndex: =9
-
-        Label9_1 As label:
-            Align: =Align.Center
-            Text: ="MY TICKETS"
-            X: =398
-            Y: =60
-            ZIndex: =10
-
-        Label11_2 As label:
-            Align: =Align.Center
-            Text: ="TUTORIALS"
-            X: =696
-            Y: =60
-            ZIndex: =11
-
-        Label11_3 As label:
-            Align: =Align.Center
-            Text: ="FAQ"
-            X: =995
-            Y: =60
-            ZIndex: =12
-
-        Image5_1 As image:
-            Image: ='my tickets'
-            Width: =177
-            X: =407
-            ZIndex: =13
-
-        Image12_1 As image:
-            Image: =tutorials
-            Width: =136
-            X: =676
-            ZIndex: =14
-
-        Image14_1 As image:
-            Height: =95
-            Image: =faq
-            Width: =123
-            X: =1
-            ZIndex: =15
-
-        FAQ_1 As button:
-            BorderColor: =ColorFade(Self.Fill, 15%)
-            BorderThickness: =10
-            Fill: =RGBA(232, 244, 217, 1)
-            Height: =100
-            Text: =""
-            Width: =132
-            X: =139
-            ZIndex: =16
 
     NotificationsDropdownContent_3 As groupContainer.manualLayoutContainer:
         Height: =72
