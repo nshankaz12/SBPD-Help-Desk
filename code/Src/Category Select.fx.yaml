@@ -108,6 +108,12 @@
                         Width: =Parent.TemplateWidth
                         ZIndex: =2
 
+        WelcomeUser_1 As WelcomeUser:
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            Visible: =false
+            ZIndex: =2
+
         HomeMoblieHeaderContainer_2 As groupContainer.verticalAutoLayoutContainer:
             Fill: =RGBA(118, 173, 149, 1)
             LayoutAlignItems: =LayoutAlignItems.Center
@@ -118,7 +124,7 @@
             Visible: |-
                 =Home.Size=1
                 //This container is visible when the screen is in mobile view and the topmost is invisible
-            ZIndex: =2
+            ZIndex: =3
 
             MoblieHamburgerMenu_5 As icon.Hamburger:
                 AlignInContainer: =AlignInContainer.Center
@@ -133,20 +139,15 @@
             Fill: =RGBA(118, 173, 149, 1)
             FillPortions: =0
             Height: =50
-            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutJustifyContent: =LayoutJustifyContent.Center
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            Visible: |-
-                =true
-                //Second header container housing the dropdown for the notifications button, user name, and picture, the picture and notifications icon disappear after a screen breakpoint has been reached
-            ZIndex: =3
+            ZIndex: =4
 
             UserNameLabel_3 As label:
                 Align: =Align.Center
                 Color: =RGBA(255, 255, 255, 1)
-                FillPortions: =7
+                FillPortions: =1
                 Height: =Parent.Height
                 Size: =30
                 Text: =User().FullName
@@ -173,7 +174,7 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            ZIndex: =4
+            ZIndex: =5
 
             PleaseSelectCategory As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
@@ -239,15 +240,15 @@
                         ZIndex: =2
 
             ButtonGallery_1 As gallery.galleryVertical:
-                AlignInContainer: =AlignInContainer.SetByContainer
+                AlignInContainer: =AlignInContainer.Center
                 Height: =Parent.Height
-                Items: =Category
+                Items: =Filter(Category, parentId = Blank())
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
                 LayoutMinWidth: =320
                 OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
                 ShowScrollbar: =false
-                TemplateSize: =Parent.Height/2
+                TemplateSize: =Parent.Height/2.5
                 Visible: =Home.Size>1
                 Width: =Parent.Width
                 WrapCount: =If(Home.Size=4,CountRows(navCol),3)
@@ -258,7 +259,7 @@
                     Fill: =RGBA(232, 244, 217, 1)
                     Height: =Parent.TemplateHeight - 20
                     OnSelect: =Filter(Category,parentId = Blank())
-                    Text: =Filter(Category,parentId = Blank())
+                    Text: =""
                     Width: =Parent.TemplateWidth - 20
                     X: =(Parent.TemplateWidth - Self.Width)/2
                     Y: =(Parent.TemplateHeight - Self.Height)/2
@@ -274,6 +275,14 @@
                     Width: =150
                     Y: =9
                     ZIndex: =4
+
+                Label22 As label:
+                    Align: =Align.Center
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.name
+                    X: =58
+                    Y: =106
+                    ZIndex: =5
 
     HomeMobileNavLinks_2 As groupContainer.horizontalAutoLayoutContainer:
         LayoutMode: =LayoutMode.Auto
