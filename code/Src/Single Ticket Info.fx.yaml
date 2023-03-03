@@ -453,6 +453,7 @@
                             ZIndex: =5
 
                         "Gallery2 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
+                            AccessibleLabel: =
                             BorderStyle: =BorderStyle.None
                             Default: =Last(Filter(Comments, ticketId = ticket))
                             Height: =365
@@ -463,13 +464,6 @@
                             Width: =Parent.Width
                             Y: =80
                             ZIndex: =6
-
-                            Image6 As image:
-                                Height: =86
-                                Image: =Untitled_Artwork
-                                OnSelect: =Select(Parent)
-                                Width: =93
-                                ZIndex: =1
 
                             Title3 As label:
                                 Height: =49
@@ -483,7 +477,7 @@
                                 Width: =268
                                 X: =102
                                 Y: =22
-                                ZIndex: =2
+                                ZIndex: =1
 
                             Subtitle2 As label:
                                 Height: =74
@@ -498,7 +492,7 @@
                                 Width: =799
                                 X: =102
                                 Y: =71
-                                ZIndex: =3
+                                ZIndex: =2
 
                             Label1 As label:
                                 Height: =34
@@ -507,7 +501,7 @@
                                 Width: =263
                                 X: =356
                                 Y: =22
-                                ZIndex: =7
+                                ZIndex: =3
 
                             Button11 As button:
                                 BorderStyle: =BorderStyle.None
@@ -535,7 +529,7 @@
                                 Width: =62
                                 X: =93
                                 Y: =145
-                                ZIndex: =8
+                                ZIndex: =4
 
                             Button11_1 As button:
                                 BorderStyle: =BorderStyle.None
@@ -560,14 +554,25 @@
                                 Width: =105
                                 X: =159
                                 Y: =145
-                                ZIndex: =9
+                                ZIndex: =5
 
-                        Image7 As image:
-                            Image: |-
-                                ="https://ui-avatars.com/api/?name=" & Left(reporting_person,1) & "+" & Left(reporting_person,1) & "&background=ffffff&color=000000&size=128"
-                            X: =82
-                            Y: =30
-                            ZIndex: =7
+                            Image7 As image:
+                                Height: =76
+                                Image: |-
+                                    =
+                                    "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                Width: =91
+                                X: =4
+                                Y: =8
+                                ZIndex: =6
+
+                            Circle3 As circle:
+                                BorderThickness: =2
+                                Fill: =Transparent
+                                Height: =95
+                                Width: =93
+                                X: =2
+                                ZIndex: =7
 
                 Image7_2 As image:
                     Image: |-
@@ -584,12 +589,12 @@
         Width: =Parent.Width
         ZIndex: =4
 
-    Group1_2 As group:
-        Height: =5
-        Width: =5
-        X: =-1200
-        Y: =40
-        ZIndex: =42
+    Container5 As groupContainer:
+        Height: =484
+        Width: =729
+        X: =(Parent.Width/2 - Self.Width/2)
+        Y: =(Parent.Height/2 - Self.Height/2)
+        ZIndex: =11
 
         Rectangle2_3 As rectangle:
             Fill: =RGBA(241, 244, 249, 1)
@@ -598,7 +603,7 @@
             Width: =648
             X: =Parent.Width/2 - Self.Width/2
             Y: =Parent.Height/2 - Self.Height/2
-            ZIndex: =5
+            ZIndex: =1
 
         Label1_4 As label:
             Align: =Align.Center
@@ -608,7 +613,7 @@
             Width: =649
             X: =Parent.Width/2 - Self.Width/2
             Y: =(Parent.Height/2 - Self.Height/2) - 200
-            ZIndex: =6
+            ZIndex: =2
 
         Label2_3 As label:
             Align: =Align.Center
@@ -622,7 +627,7 @@
             Width: =648
             X: =Parent.Width/2 - Self.Width/2
             Y: =(Parent.Height/2 - Self.Height/2) - 130
-            ZIndex: =7
+            ZIndex: =3
 
         TextInput1_3 As text:
             Default: =""
@@ -633,7 +638,7 @@
             Width: =442
             X: =(Parent.Width/2 - Self.Width/2)
             Y: =Parent.Height/2 - Self.Height/2
-            ZIndex: =8
+            ZIndex: =4
 
         Button4_7 As button:
             OnSelect: =Set(varShowResPopup, false)
@@ -643,7 +648,7 @@
             Visible: =varShowResPopup
             X: =(Parent.Width/2 - Self.Width/2) - 100
             Y: =(Parent.Height/2 - Self.Height/2) + 120
-            ZIndex: =9
+            ZIndex: =5
 
         Button4_6 As button:
             OnSelect: |-
@@ -660,5 +665,5 @@
             Visible: =varShowResPopup
             X: =(Parent.Width/2 - Self.Width/2) + 100
             Y: =(Parent.Height/2 - Self.Height/2) + 120
-            ZIndex: =10
+            ZIndex: =6
 
