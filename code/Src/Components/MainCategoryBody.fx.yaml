@@ -3,14 +3,13 @@ MainCategoryBody As CanvasComponent:
         =Table({name: MainCategory.CategoryName, parent: MainCategory.parentID})
     Fill: =RGBA(0, 0, 0, 0)
     Height: =640
-    parent: =MainCategory.parentID
     Width: =640
     X: =0
     Y: =0
     ZIndex: =1
 
     Gallery6 As gallery.galleryVertical:
-        Items: =MainCategoryBody.categories
+        Items: =MainCategoryBody.categories.name
         Layout: =Layout.Vertical
         TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
         Y: =40
@@ -18,7 +17,7 @@ MainCategoryBody As CanvasComponent:
 
         Button14 As button:
             OnSelect: =Select(Parent)
-            Text: =Filter(ThisItem.name, ThisItem.parent = Blank())
+            Text: =Filter(MainCategoryBody.categories, parent = Blank())
             X: =40
             Y: =40
             ZIndex: =1
