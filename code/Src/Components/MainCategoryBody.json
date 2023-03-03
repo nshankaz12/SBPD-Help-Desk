@@ -10,7 +10,26 @@
   },
   "ComponentType": "CanvasComponent",
   "CustomGroupControlTemplateName": "",
-  "CustomProperties": [],
+  "CustomProperties": [
+    {
+      "Category": 0,
+      "DisplayName": "parent",
+      "Hidden": false,
+      "Name": "parent",
+      "PropertyDataTypeKey": "String",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.328\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "categories",
+      "Hidden": false,
+      "Name": "categories",
+      "PropertyDataTypeKey": "Table",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.328\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"Category\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"name\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]},{\"Name\":\"ID\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"id\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]},{\"Name\":\"parent\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"parentId\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]}]}}"
+    }
+  ],
   "FirstParty": true,
   "Id": "http://microsoft.com/appmagic/Component",
   "IsComponentLocked": false,
@@ -19,7 +38,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638134002210102894",
+  "LastModifiedTimestamp": "638134013464185053",
   "Name": "3cabc8340eb247958821b91de9010234",
   "OverridableProperties": {},
   "Version": "638134002074040498"
