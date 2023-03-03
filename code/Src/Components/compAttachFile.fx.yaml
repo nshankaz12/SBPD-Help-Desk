@@ -1,0 +1,154 @@
+compAttachFile As CanvasComponent:
+    Attachments: =ShowColumns(AttachmentsGal.AllItems,"fileName","fileExtension","fileContent")
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =compAttachFile.PHeight
+    PHeight: =640
+    PWidth: =640
+    Width: =compAttachFile.PWidth
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    AttachmentsGal As gallery.galleryVertical:
+        BorderColor: =RGBA(116, 116, 116, 1)
+        BorderThickness: =2
+        Fill: =RGBA(230, 230, 230, 1)
+        Height: =Parent.Height-ButtonAttachFile.Height-ButtonAttachFile.Y-30
+        Items: =colAttachedFiles
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TemplateSize: =50
+        Visible: =!IsEmpty(colAttachedFiles)
+        Width: =compAttachFile.Width-20
+        X: =10
+        Y: =UnderlineRect.Y
+        ZIndex: =1
+
+        Button15 As button:
+            Align: =Align.Left
+            Color: =RGBA(0, 0, 0, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Normal
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.fileName
+            Width: =Parent.TemplateWidth-Icon6.Width-Self.X
+            Y: =(Parent.TemplateHeight-Self.Height)/2
+            ZIndex: =1
+
+        Icon6 As icon.Cancel:
+            Height: =25
+            Icon: =Icon.Cancel
+            OnSelect: =Select(Parent); Remove(colAttachedFiles,ThisItem)
+            Width: =29
+            X: =Parent.TemplateWidth-Self.Width
+            Y: =(Parent.TemplateHeight-Self.Height)/2
+            ZIndex: =2
+
+    AddMediaWithImage1 As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =2
+
+        FieldAttachFile As image:
+            Height: =74
+            Image: =If(IsBlank(ButtonAttachFile.Media), SampleImage, ButtonAttachFile.Media)
+            ImagePosition: =ImagePosition.Fill
+            Visible: =false
+            Width: =435
+            X: =ButtonAttachFile.X
+            ZIndex: =3
+
+        ButtonAttachFile As addMedia:
+            Align: =Align.Right
+            ChangePictureText: ="Attach Files"
+            Height: =74
+            OnChange: |-
+                =
+                With
+                (
+                    {
+                        fileJSON: JSON(
+                            FieldAttachFile.Image,
+                            JSONFormat.IncludeBinaryData
+                        )
+                    },
+                
+                    Collect(
+                        colAttachedFiles,
+                        {
+                            fileName: ButtonAttachFile.FileName,
+                            fileExtension: Last(
+                                Split(
+                                    ButtonAttachFile.FileName,
+                                    "."
+                                )
+                            ).Result,
+                            fileContent: {
+                                contentType: Substitute(
+                                    First(
+                                        Split(
+                                            fileJSON,
+                                            ";"
+                                        )
+                                    ).Result,
+                                    """data:",
+                                    ""
+                                ),
+                                content: Substitute(
+                                    Last(
+                                        Split(
+                                            fileJSON,
+                                            ","
+                                        )
+                                    ).Result,
+                                    """",
+                                    ""
+                                )
+                            },
+                            blob: ButtonAttachFile.Media
+                        }
+                    );
+                );
+            Size: =20
+            Text: ="Attach Files"
+            Width: =435
+            X: =AttachmentsGal.X+AttachmentsGal.Width-Self.Width
+            ZIndex: =4
+
+    AttachmentsLabel As label:
+        Text: ="Attachments"
+        X: |
+            =AttachmentsGal.X
+        Y: =15
+        ZIndex: =5
+
+    FileCountLabel As label:
+        Text: =Concatenate(Text(CountRows(AttachmentsGal.AllItems))," attachments")
+        Visible: =If(CountRows(AttachmentsGal.AllItems)>1,true,false)
+        X: =AttachmentsLabel.X
+        Y: =AttachmentsLabel.Y+AttachmentsLabel.Height
+        ZIndex: =6
+
+    UnderlineRect As rectangle:
+        Fill: =RGBA(0, 0, 0, 1)
+        Height: =3
+        Visible: =IsEmpty(colAttachedFiles)
+        Width: =AttachmentsGal.Width
+        X: =(Parent.Width-Self.Width)/2
+        Y: =100
+        ZIndex: =7
+
+    NoFilesLabel As label:
+        Align: =Align.Center
+        Color: =RGBA(148, 148, 148, 1)
+        Text: ="No Files Attached"
+        Visible: =IsEmpty(colAttachedFiles)
+        Width: =UnderlineRect.Width
+        X: |
+            =UnderlineRect.X
+        Y: =UnderlineRect.Y
+        ZIndex: =8
+

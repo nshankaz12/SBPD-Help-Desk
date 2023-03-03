@@ -314,6 +314,46 @@
     "dependents": [],
     "id": "c36f6dd7-5a8e-46e6-9235-89880ee9d2d8"
   },
+  "d2a89ce3-2b73-44a2-93a6-efc5e0121e5f": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-11.westus.logic.azure.com:443/workflows/e3fc4b0d6a404e7590b073ea3a1e8215/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=rotO27XcZOmXSH-L1Vkvr_Qpw5hsY9IEOhh80BTw3io",
+      "workflowEndpoint": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-a012b83bdd9145169ba0303d02ed154e/providers/Microsoft.Logic/workflows/d99c3073-08b8-42b2-855c-ef00209ccea8",
+      "workflowName": "d99c3073-08b8-42b2-855c-ef00209ccea8",
+      "workflowPath": "/subscriptions/e9bc7b8d-bb95-4e7a-baf8-230462d93177/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-a012b83bdd9145169ba0303d02ed154e/providers/Microsoft.Logic/workflows/d99c3073-08b8-42b2-855c-ef00209ccea8"
+    },
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "f7aef8e6-faea-42d9-be4a-90b317bfa5b1": {
+          "value": "shared_sharepointonline"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "d99c3073-08b8-42b2-855c-ef00209ccea8"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sharepointonline": {
+          "value": "f7aef8e6-faea-42d9-be4a-90b317bfa5b1"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "d99c3073-08b8-42b2-855c-ef00209ccea8"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "NewAttachmentsFlow"
+    ],
+    "dependencies": {
+      "shared_sharepointonline": "f7aef8e6-faea-42d9-be4a-90b317bfa5b1"
+    },
+    "dependents": [],
+    "id": "d2a89ce3-2b73-44a2-93a6-efc5e0121e5f"
+  },
   "d44fdecc-b956-477f-8a4e-509378bf62df": {
     "connectionParameters": {
       "workFlowCallbackUri": "https://prod-158.westus.logic.azure.com:443/workflows/2bcb2d2f25a140e1810cd356c52ff5c5/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=q3_n2UKJVbYX74eco_xB5MvMI0QhBHN-saWZIY12d7I",
@@ -497,7 +537,8 @@
     ],
     "dependencies": {},
     "dependents": [
-      "dcf084c2-21c1-47ea-a69c-39ac78ec4a52"
+      "dcf084c2-21c1-47ea-a69c-39ac78ec4a52",
+      "d2a89ce3-2b73-44a2-93a6-efc5e0121e5f"
     ],
     "id": "f7aef8e6-faea-42d9-be4a-90b317bfa5b1"
   }

@@ -351,3 +351,16 @@ Playground As screen:
         Y: =648
         ZIndex: =19
 
+    compAttachFile_1 As compAttachFile:
+        Height: =compAttachFile_1.PHeight
+        Width: =compAttachFile_1.PWidth
+        X: =726
+        ZIndex: =20
+
+    Button16 As button:
+        OnSelect: =NewAttachmentsFlow.Run(JSON(compAttachFile_1.Attachments),6)
+        Text: ="Upload Files"
+        X: =682
+        Y: =40
+        ZIndex: =21
+
