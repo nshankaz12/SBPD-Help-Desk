@@ -441,7 +441,7 @@
                         ZIndex: =3
 
                     Dropdown5 As dropdown:
-                        Items: =Filter(Category,parentId = Blank())
+                        Items: =Filter(Category, id = FirstCategory)
                         Width: =Parent.Width/3
                         X: =FreeContCategoryLabel.X
                         Y: =FreeContCategoryLabel.Y+FreeContCategoryLabel.Height

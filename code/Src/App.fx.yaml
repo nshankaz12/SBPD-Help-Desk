@@ -127,7 +127,7 @@ App As appinfo:
             orange: RGBA(246,149,43, 1)
         });
         
-        Set(MainCategory, Filter(Category, parentId = Blank()); //only main categories. those that dont rely on a parent
+        Set(MainCategory, Filter(Category, parentId = Blank())); //only main categories. those that dont rely on a parent
         
         // Collection passed to filter component
         Set(varColumnStatus, colStatus);
