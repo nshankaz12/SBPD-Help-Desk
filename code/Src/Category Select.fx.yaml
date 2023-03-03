@@ -330,7 +330,7 @@
 
     Container6 As groupContainer:
         Height: =768
-        Width: =1366
+        Width: =Parent.Width
         ZIndex: =8
 
         ButtonGallery_2 As gallery.galleryVertical:
@@ -359,17 +359,6 @@
                 Y: =(Parent.TemplateHeight - Self.Height)/2
                 ZIndex: =1
 
-            Overlapbtn_4 As button:
-                Fill: =RGBA(255, 255, 255, 0)
-                Height: =137
-                HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
-                OnSelect: =Select(Parent)
-                PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
-                Text: =""
-                Width: =150
-                Y: =9
-                ZIndex: =4
-
             Label22_1 As label:
                 Align: =Align.Center
                 OnSelect: =Select(Parent)
@@ -379,6 +368,7 @@
                 ZIndex: =5
 
         compWebHeader_1 As compWebHeader:
+            Width: =Parent.Width
             ZIndex: =3
 
         Label24 As label:
@@ -397,6 +387,7 @@
             ZIndex: =4
 
         WelcomeUser_1 As WelcomeUser:
+            Width: ='Category Select'.Width
             Y: =80
             ZIndex: =5
 
