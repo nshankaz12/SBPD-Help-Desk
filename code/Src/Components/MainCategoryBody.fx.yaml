@@ -1,9 +1,8 @@
 MainCategoryBody As CanvasComponent:
-    categories: |-
-        =Table({Category: MainCategory.CategoryName, ID: MainCategory.ID, parent: MainCategory.parentID})
+    categories: =MainCategory.CategoryName
     Fill: =RGBA(0, 0, 0, 0)
     Height: =640
-    parent: ="Text"
+    parent: =MainCategory.parentID
     Width: =640
     X: =0
     Y: =0
@@ -18,7 +17,7 @@ MainCategoryBody As CanvasComponent:
 
         Button14 As button:
             OnSelect: =Select(Parent)
-            Text: =Filter(ThisItem.Category, ThisItem.parent = Blank())
+            Text: =Filter(MainCategoryBody.categories,MainCategoryBody.parent = Blank())
             X: =40
             Y: =40
             ZIndex: =1

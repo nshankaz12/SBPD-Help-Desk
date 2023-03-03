@@ -1007,7 +1007,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 42,
+                  "charOffset": 59,
                   "snippet": {
                     "text": "="
                   }
@@ -1047,10 +1047,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 52,
+                  "charLength": 69,
                   "charOffset": 0,
                   "snippet": {
-                    "text": "Filter(ThisItem.Category, ThisItem.parent = Blank())"
+                    "text": "Filter(MainCategoryBody.categories,MainCategoryBody.parent = Blank())"
                   }
                 }
               },
@@ -6448,17 +6448,17 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.CloseAlertRibbon"
+                  "fullyQualifiedName": "App.MGallery"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.CloseAlertRibbon",
+                  "fullyQualifiedName": "App.MGallery",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "CloseAlertRibbon",
+                "member": "MGallery",
                 "module": "App",
                 "type": "App"
               }
@@ -6508,47 +6508,17 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.MGallery"
+                  "fullyQualifiedName": "App.CloseAlertRibbon"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.MGallery",
+                  "fullyQualifiedName": "App.CloseAlertRibbon",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "MGallery",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 11
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.NDrop"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.NDrop",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "NDrop",
+                "member": "CloseAlertRibbon",
                 "module": "App",
                 "type": "App"
               }
@@ -6639,6 +6609,36 @@
               },
               "properties": {
                 "member": "varItems",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 11
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.NDrop"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.NDrop",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "NDrop",
                 "module": "App",
                 "type": "App"
               }
