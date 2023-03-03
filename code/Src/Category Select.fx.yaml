@@ -6,7 +6,7 @@
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         Visible: =false
-        Width: =1366
+        Width: =Parent.Width
         ZIndex: =1
 
         HomeHeaderContainer1_2 As groupContainer.verticalAutoLayoutContainer:
@@ -368,7 +368,6 @@
                 ZIndex: =5
 
         compWebHeader_1 As compWebHeader:
-            Width: =Parent.Width
             ZIndex: =3
 
         Label24 As label:
@@ -382,12 +381,12 @@
             PaddingTop: =0
             Size: =28
             Text: ="Select a Category"
-            Width: =1366
+            Width: =App.Width
             Y: =114
             ZIndex: =4
 
         WelcomeUser_1 As WelcomeUser:
-            Width: ='Category Select'.Width
+            Width: =Parent.Width
             Y: =80
             ZIndex: =5
 

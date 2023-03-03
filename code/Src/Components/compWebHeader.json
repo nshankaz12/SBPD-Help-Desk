@@ -25,7 +25,14 @@
           "DisplayMode",
           "X",
           "Y",
-          "Width",
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "1366",
+            "InvariantPropertyName": "Width",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "Height",
           "ZIndex",
           "BorderThickness",
@@ -108,7 +115,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "1366",
+            "InvariantScript": "App.Width",
             "Property": "Width",
             "RuleProviderType": "Unknown"
           },
@@ -219,7 +226,14 @@
           },
           "Height",
           "DisplayMode",
-          "OnSelect",
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "Select(Parent)",
+            "InvariantPropertyName": "OnSelect",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "ZIndex",
           "LineHeight",
           "BorderThickness",
@@ -263,7 +277,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "\"COUNTY of SANTA BARBARA\r\nPUBLIC DEFENDER\"",
+            "InvariantScript": "\"COUNTY of SANTA BARBARA\nPUBLIC DEFENDER\"",
             "Property": "Text",
             "RuleProviderType": "Unknown"
           },
@@ -389,7 +403,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "Parent.TemplateWidth / 2 - Self.Width / 2",
+            "InvariantScript": "//Parent.TemplateWidth / 2 - Self.Width / 2",
             "Property": "X",
             "RuleProviderType": "Unknown"
           },
@@ -491,7 +505,7 @@
           },
           {
             "Category": "Behavior",
-            "InvariantScript": "Select(Parent)",
+            "InvariantScript": "",
             "Property": "OnSelect",
             "RuleProviderType": "Unknown"
           }
@@ -541,7 +555,14 @@
           "FocusedBorderColor",
           "BorderStyle",
           "DisplayMode",
-          "OnSelect",
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "Select(Parent)",
+            "InvariantPropertyName": "OnSelect",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "ZIndex",
           "RadiusTopLeft",
           "RadiusTopRight",
@@ -773,7 +794,7 @@
           },
           {
             "Category": "Behavior",
-            "InvariantScript": "Select(Parent)",
+            "InvariantScript": "//Select(Parent)",
             "Property": "OnSelect",
             "RuleProviderType": "Unknown"
           }
@@ -825,7 +846,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638134692897196114",
+    "LastModifiedTimestamp": "638134698617600032",
     "Name": "compWebHeader",
     "Rules": [
       {
@@ -900,7 +921,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638134692897196114",
+  "LastModifiedTimestamp": "638134698617600032",
   "Name": "230e8715b59e404192559563c3e6d5c7",
   "OverridableProperties": {},
   "TemplateOriginalName": "c8bd10dabc7f45ef8e18ce89167c298c",
