@@ -350,7 +350,7 @@
                 Fill: =ColorScheme.secondary
                 Height: =Parent.TemplateHeight - 20
                 OnSelect: |-
-                    =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.parentId })
+                    =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.id })
                 Text: =""
                 Width: =Parent.TemplateWidth - 20
                 X: =(Parent.TemplateWidth - Self.Width)/2
@@ -384,14 +384,14 @@
             Color: =RGBA(255, 255, 255, 1)
             Fill: =ColorScheme.primary
             FontWeight: =FontWeight.Bold
-            Height: =86
+            Height: =100
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingTop: =0
             Size: =28
             Text: ="Select a Category"
             Width: =1366
-            Y: =129
+            Y: =114
             ZIndex: =4
 
         WelcomeUser_1 As WelcomeUser:
