@@ -349,7 +349,8 @@
                 Color: =ColorScheme.secondary
                 Fill: =ColorScheme.secondary
                 Height: =Parent.TemplateHeight - 20
-                OnSelect: =Filter(Category,parentId = Blank())
+                OnSelect: |-
+                    =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.parentId })
                 Text: =""
                 Width: =Parent.TemplateWidth - 20
                 X: =(Parent.TemplateWidth - Self.Width)/2
