@@ -28,7 +28,7 @@ WelcomeUser As CanvasComponent:
 
     Rectangle2 As rectangle:
         Fill: =WelcomeUser.orange
-        Height: =1
+        Height: =2
         Width: =Len(WelcomeName.Text) * 10
         X: =WelcomeName.X + WelcomeName.Width/2 - Rectangle2.Width/2 + (Len(User().FullName) - Len("Welcome, ")) * 2
         Y: =40

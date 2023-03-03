@@ -5,6 +5,7 @@
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
+        Visible: =false
         Width: =1366
         ZIndex: =1
 
@@ -108,12 +109,6 @@
                         Width: =Parent.TemplateWidth
                         ZIndex: =2
 
-        WelcomeUser_1 As WelcomeUser:
-            LayoutMinHeight: =640
-            LayoutMinWidth: =640
-            Visible: =false
-            ZIndex: =2
-
         HomeMoblieHeaderContainer_2 As groupContainer.verticalAutoLayoutContainer:
             Fill: =RGBA(118, 173, 149, 1)
             LayoutAlignItems: =LayoutAlignItems.Center
@@ -142,6 +137,7 @@
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutJustifyContent: =LayoutJustifyContent.Center
             LayoutMode: =LayoutMode.Auto
+            Visible: =false
             ZIndex: =4
 
             UserNameLabel_3 As label:
@@ -330,11 +326,83 @@
                 Width: =Parent.TemplateWidth
                 ZIndex: =2
 
-    "'Back Scroll_9' As icon.BackArrow":
-        Color: =RGBA(232, 244, 217, 1)
+    Container6 As groupContainer:
+        Height: =768
+        Width: =1366
+        ZIndex: =8
+
+        ButtonGallery_2 As gallery.galleryVertical:
+            Height: =553
+            Items: =Filter(Category, parentId = Blank())
+            Layout: =Layout.Vertical
+            OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+            ShowScrollbar: =false
+            TemplateSize: =Parent.Height/3
+            Visible: =Home.Size>1
+            Width: =Parent.Width
+            WrapCount: =If(Home.Size=4,CountRows(navCol),3)
+            Y: =215
+            ZIndex: =1
+
+            ButtonGalleryBackgroundButton_2 As button:
+                BorderColor: =ColorScheme.secondary
+                Color: =ColorScheme.secondary
+                Fill: =ColorScheme.secondary
+                Height: =Parent.TemplateHeight - 20
+                OnSelect: =Filter(Category,parentId = Blank())
+                Text: =""
+                Width: =Parent.TemplateWidth - 20
+                X: =(Parent.TemplateWidth - Self.Width)/2
+                Y: =(Parent.TemplateHeight - Self.Height)/2
+                ZIndex: =1
+
+            Overlapbtn_4 As button:
+                Fill: =RGBA(255, 255, 255, 0)
+                Height: =137
+                HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
+                OnSelect: =Select(Parent)
+                PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
+                Text: =""
+                Width: =150
+                Y: =9
+                ZIndex: =4
+
+            Label22_1 As label:
+                Align: =Align.Center
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.name
+                X: =58
+                Y: =106
+                ZIndex: =5
+
+        compWebHeader_1 As compWebHeader:
+            ZIndex: =3
+
+        Label24 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            Fill: =ColorScheme.primary
+            FontWeight: =FontWeight.Bold
+            Height: =86
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingTop: =0
+            Size: =28
+            Text: ="Select a Category"
+            Width: =1366
+            Y: =129
+            ZIndex: =4
+
+        WelcomeUser_1 As WelcomeUser:
+            Y: =80
+            ZIndex: =5
+
+    Icon14 As icon.BackArrow:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Color: =ColorScheme.secondary
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
-        X: =59
-        Y: =87
-        ZIndex: =3
+        X: =38
+        Y: =88
+        ZIndex: =9
 
