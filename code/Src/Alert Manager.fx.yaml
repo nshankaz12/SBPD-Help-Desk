@@ -91,46 +91,59 @@
         Y: =101
         ZIndex: =8
 
-    "'Alerts Collection' As gallery.galleryHorizontal":
-        BorderThickness: =2
-        DelayItemLoading: =true
-        Fill: =RGBA(230, 230, 230, 1)
-        Height: =280
-        Items: =AlertCollection
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplateSize: =381
-        Width: =386
-        X: =40
-        Y: =252
-        ZIndex: =16
+    Container7 As groupContainer.horizontalAutoLayoutContainer:
+        Height: =292
+        LayoutJustifyContent: =LayoutJustifyContent.End
+        LayoutMode: =LayoutMode.Auto
+        Width: =428
+        X: =36
+        Y: =231
+        ZIndex: =17
 
-        Button7 As button:
-            Height: =56
-            OnSelect: |
-                =Navigate('Alert Popup', Fade);
-                If(AlertResolved = "Yes",
-                    Notify("Alert marked as resolved", NotificationType.Success),
-                    Notify("Alert not yet resolved", NotificationType.Warning)
-                )
-            Text: =ThisItem.Status
-            Width: =188
-            X: =165
-            Y: =189
-            ZIndex: =1
-
-        Label5 As label:
-            Height: =108
-            OnSelect: =Select(Parent)
-            Text: =ThisItem.Description
-            Width: =320
-            X: =8
-            Y: =63
+        "'Alerts Collection_1' As gallery.galleryHorizontal":
+            BorderThickness: =2
+            DelayItemLoading: =true
+            Fill: =RGBA(230, 230, 230, 1)
+            Height: =280
+            Items: =AlertCollection
+            LayoutMinHeight: =287
+            LayoutMinWidth: =320
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateSize: =381
+            Width: =386
+            X: =40
+            Y: =252
             ZIndex: =2
 
-        Label21 As label:
-            OnSelect: =Select(Parent)
-            Text: =ThisItem.Title
-            X: =93
-            Y: =9
-            ZIndex: =3
+            Button7_2 As button:
+                Height: =56
+                OnSelect: |
+                    =Navigate('Alert Popup', Fade);
+                    If(AlertResolved = "Yes",
+                        Notify("Alert marked as resolved", NotificationType.Success),
+                        Notify("Alert not yet resolved", NotificationType.Warning)
+                    )
+                Text: =ThisItem.Status
+                Width: =188
+                X: =192
+                Y: =201
+                ZIndex: =1
+
+            Label5_1 As label:
+                Height: =108
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.Description
+                Width: =320
+                X: =15
+                Y: =76
+                ZIndex: =2
+
+            Label18_1 As label:
+                Font: =Font.'Lato Black'
+                OnSelect: =Select(Parent)
+                Size: =18
+                Text: =ThisItem.Title
+                X: =15
+                Y: =36
+                ZIndex: =4
 
