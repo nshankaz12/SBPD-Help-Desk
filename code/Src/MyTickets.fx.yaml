@@ -477,18 +477,6 @@
                             Width: =329
                             ZIndex: =1
 
-                        btnTemplate As button:
-                            BorderThickness: =0
-                            Fill: =Color.Transparent
-                            Height: =Parent.TemplateHeight
-                            HoverFill: =Self.Fill
-                            OnSelect: |-
-                                =Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO})
-                            PressedFill: =Self.Fill
-                            Text: =""
-                            Width: =335.25
-                            ZIndex: =2
-
                         btnBkg As button:
                             Fill: =RGBA(255, 255, 255, 1)
                             Height: =Parent.TemplateHeight
@@ -502,7 +490,7 @@
                             Text: =""
                             Visible: =false
                             Width: =Parent.TemplateWidth
-                            ZIndex: =3
+                            ZIndex: =2
 
                         TitleLabel As label:
                             FontWeight: =FontWeight.Semibold
@@ -513,7 +501,7 @@
                             Width: =208
                             X: =24
                             Y: =27
-                            ZIndex: =4
+                            ZIndex: =3
 
                         DescriptionLabel As label:
                             Height: =37
@@ -524,7 +512,7 @@
                             Wrap: =false
                             X: =24
                             Y: =TitleLabel.Y + TitleLabel.Height
-                            ZIndex: =5
+                            ZIndex: =4
 
                         IdLabel As label:
                             Align: =Align.Center
@@ -536,7 +524,7 @@
                             Width: =74
                             X: =232
                             Y: =27
-                            ZIndex: =6
+                            ZIndex: =5
 
                         DateCreatedLabel As label:
                             Height: =25
@@ -546,7 +534,21 @@
                             Width: =75
                             X: =231
                             Y: =147
-                            ZIndex: =7
+                            ZIndex: =6
+
+                        btnTemplate As button:
+                            BorderThickness: =0
+                            Fill: =Color.Transparent
+                            Height: =220
+                            HoverFill: =Self.Fill
+                            OnSelect: |-
+                                =Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO})
+                            PressedFill: =Self.Fill
+                            Text: =""
+                            Width: =303
+                            X: =13
+                            Y: =15
+                            ZIndex: =13
 
                         "'Assigne Group' As group":
                             Height: =5
@@ -571,7 +573,7 @@
                                 Width: =Parent.TemplateHeight / 6
                                 X: =24
                                 Y: =180
-                                ZIndex: =8
+                                ZIndex: =7
 
                             AssigneeLabel As label:
                                 Height: =Parent.TemplateHeight / 6
@@ -580,7 +582,7 @@
                                 Width: =154
                                 X: =67
                                 Y: =180
-                                ZIndex: =9
+                                ZIndex: =8
 
                         "'Status Group' As group":
                             Height: =5
@@ -603,7 +605,7 @@
                                 Width: =9
                                 X: =232
                                 Y: =180
-                                ZIndex: =10
+                                ZIndex: =9
 
                             StatusLabel As label:
                                 Align: =Align.Center
@@ -623,7 +625,7 @@
                                 Width: =65
                                 X: =241
                                 Y: =180
-                                ZIndex: =11
+                                ZIndex: =10
 
                         "'Category Group' As group":
                             Height: =5
@@ -640,7 +642,7 @@
                                 Width: =67
                                 X: =24
                                 Y: =147
-                                ZIndex: =12
+                                ZIndex: =11
 
                             CategoryLabelText_1 As label:
                                 Height: =25
@@ -650,7 +652,7 @@
                                 Width: =143
                                 X: =89
                                 Y: =147
-                                ZIndex: =13
+                                ZIndex: =12
 
                     AssignedToMeTicketsGallery As gallery.galleryVertical:
                         Height: =544
