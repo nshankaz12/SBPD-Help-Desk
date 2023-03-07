@@ -1,5 +1,5 @@
 compMobileMenu As CanvasComponent:
-    BackgroundMenuColor: =LightGray
+    BackgroundMenuColor: =Color.LightGray
     Fill: =RGBA(0, 0, 0, 0)
     ForegroundColor: |-
         =//RGBA(70, 130, 180, 1)
@@ -9,7 +9,7 @@ compMobileMenu As CanvasComponent:
     NavigationItems: |-
         =// IF adimn or tech show this table, if not show Staff table
         gblNavItems
-    SelectedItemBackground: =LightGray
+    SelectedItemBackground: =Color.LightGray
     Width: =App.DesignWidth
     X: =0
     Y: =0
@@ -66,7 +66,7 @@ compMobileMenu As CanvasComponent:
             ZIndex: =2
 
         Icon1_1 As icon.Add:
-            Color: =Transparent
+            Color: =Color.Transparent
             Height: =120
             Icon: =ThisItem.MenuIcon
             OnSelect: =Navigate(ThisItem.ScreenToGoTo);

@@ -133,7 +133,7 @@ compFilterMenu As CanvasComponent:
 
         FilterIcon As icon.FilterFlat:
             Height: =compFilterMenu.FilterIconSize
-            Icon: =If(!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Tickets"), FilterFlatFilled, FilterFlat)
+            Icon: =If(!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Tickets"), Icon.FilterFlatFilled, Icon.FilterFlat)
             OnSelect: =compFilterMenu.OpenFilter()
             Visible: =!compFilterMenu.FilterVisible
             Width: =compFilterMenu.FilterIconSize

@@ -107,7 +107,7 @@
             Set(AlertMessage, TextInput7.Text);
             Notify(AlertMessage, NotificationType.Warning);
             Notify("Alert created!", NotificationType.Success);
-            Navigate('Alert Manager', Fade);
+            Navigate('Alert Manager', ScreenTransition.Fade);
             Set(SelectedText, {});
             Set(varItems, Items);
         Text: ="Create Alert"

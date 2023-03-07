@@ -1,7 +1,7 @@
 compWebMenu As CanvasComponent:
     ExpandMenu: =false
-    Fill: =Transparent
-    HamburgerColor: =White
+    Fill: =Color.Transparent
+    HamburgerColor: =Color.White
     Height: =640
     MenuItems: =gblNavItems
     OnReset: |-
@@ -14,7 +14,7 @@ compWebMenu As CanvasComponent:
 
     icoHamburgerMenu As icon.Hamburger:
         Color: =compWebMenu.HamburgerColor
-        Fill: =Transparent
+        Fill: =Color.Transparent
         Height: =48
         Icon: =Icon.Hamburger
         OnSelect: =Set(showMenu, !showMenu);
@@ -26,7 +26,7 @@ compWebMenu As CanvasComponent:
 
     xIcon As icon.Cancel:
         Color: =compWebMenu.HamburgerColor
-        Fill: =Transparent
+        Fill: =Color.Transparent
         Height: =48
         Icon: =Icon.Cancel
         OnSelect: =Set(showMenu, !showMenu);
@@ -81,13 +81,13 @@ compWebMenu As CanvasComponent:
             ZIndex: =3
 
         Button2_1 As button:
-            Fill: =Transparent
+            Fill: =Color.Transparent
             Height: =Label2_1.Height + Label2_1.Y
-            HoverFill: =Transparent
+            HoverFill: =Color.Transparent
             OnSelect: |-
                 =Set(showMenu, false);
                 Navigate(ThisItem.ScreenToGoTo);
-            PressedFill: =Transparent
+            PressedFill: =Color.Transparent
             Text: =""
             Width: =175
             ZIndex: =4
@@ -137,13 +137,13 @@ compWebMenu As CanvasComponent:
             ZIndex: =3
 
         Button2_2 As button:
-            Fill: =Transparent
+            Fill: =Color.Transparent
             Height: =Label2_1.Height + Label2_1.Y
-            HoverFill: =Transparent
+            HoverFill: =Color.Transparent
             OnSelect: |-
                 =Set(showMenu, false);
                 Navigate(ThisItem.ScreenToGoTo);
-            PressedFill: =Transparent
+            PressedFill: =Color.Transparent
             Text: =""
             Width: =58
             ZIndex: =4

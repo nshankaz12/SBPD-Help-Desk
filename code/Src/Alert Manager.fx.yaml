@@ -118,7 +118,7 @@
             Button7_2 As button:
                 Height: =56
                 OnSelect: |
-                    =Navigate('Alert Popup', Fade);
+                    =Navigate('Alert Popup', ScreenTransition.Fade);
                     If(AlertResolved = "Yes",
                         Notify("Alert marked as resolved", NotificationType.Success),
                         Notify("Alert not yet resolved", NotificationType.Warning)

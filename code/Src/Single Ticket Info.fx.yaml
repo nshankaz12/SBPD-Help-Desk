@@ -505,20 +505,20 @@
 
                             Button11 As button:
                                 BorderStyle: =BorderStyle.None
-                                Color: =DarkGray
+                                Color: =Color.DarkGray
                                 DisabledBorderColor: =
                                 DisabledColor: =
-                                Fill: =Transparent
+                                Fill: =Color.Transparent
                                 Height: =30
                                 HoverBorderColor: =
-                                HoverColor: =Gray
+                                HoverColor: =Color.Gray
                                 HoverFill: =
                                 OnSelect: |-
                                     =Set(editMessage, true);
                                     Set(addMessage, false);
                                     Set(editableRec, ThisItem);
                                 PressedBorderColor: =
-                                PressedColor: =Gray
+                                PressedColor: =Color.Gray
                                 PressedFill: =
                                 RadiusBottomLeft: =0
                                 RadiusBottomRight: =0
@@ -533,17 +533,17 @@
 
                             Button11_1 As button:
                                 BorderStyle: =BorderStyle.None
-                                Color: =DarkGray
+                                Color: =Color.DarkGray
                                 DisabledBorderColor: =
                                 DisabledColor: =
-                                Fill: =Transparent
+                                Fill: =Color.Transparent
                                 Height: =30
                                 HoverBorderColor: =
-                                HoverColor: =Gray
+                                HoverColor: =Color.Gray
                                 HoverFill: =
                                 OnSelect: =Remove(Comments, ThisItem);
                                 PressedBorderColor: =
-                                PressedColor: =Gray
+                                PressedColor: =Color.Gray
                                 PressedFill: =
                                 RadiusBottomLeft: =0
                                 RadiusBottomRight: =0
@@ -568,7 +568,7 @@
 
                             Circle3 As circle:
                                 BorderThickness: =2
-                                Fill: =Transparent
+                                Fill: =Color.Transparent
                                 Height: =95
                                 Width: =93
                                 X: =2

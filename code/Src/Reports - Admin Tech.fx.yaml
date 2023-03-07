@@ -29,7 +29,7 @@
                     AutoDisableOnSelect: =false
                     Color: =RGBA(0, 0, 0, 1)
                     Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate(MyTickets,Fade)
+                    OnSelect: =Navigate(MyTickets,ScreenTransition.Fade)
                     PressedColor: =RGBA(0, 0, 0, 1)
                     PressedFill: =
                     Text: ="My Activity"
@@ -185,7 +185,7 @@
         Icon10 As icon.BackArrow:
             Color: =RGBA(232, 244, 217, 1)
             Icon: =Icon.BackArrow
-            OnSelect: =Back(Fade)
+            OnSelect: =Back(ScreenTransition.Fade)
             X: =37
             Y: =82
             ZIndex: =19
@@ -231,7 +231,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =200
                 HoverFill: =ColorFade(RGBA(56, 96, 178, 0), -20%)
-                OnSelect: =Navigate('Metrics - Admin Tech',Fade)
+                OnSelect: =Navigate('Metrics - Admin Tech',ScreenTransition.Fade)
                 Text: ="0"
                 Width: =200
                 X: =1014
@@ -288,7 +288,7 @@
                 Height: =200
                 HoverColor: =RGBA(0, 0, 0, 0)
                 HoverFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
-                OnSelect: =Navigate(MyTickets,Fade)
+                OnSelect: =Navigate(MyTickets,ScreenTransition.Fade)
                 Text: =""
                 Width: =200
                 X: =143
@@ -433,7 +433,7 @@
                 Height: =200
                 HoverColor: =RGBA(0, 0, 0, 0)
                 HoverFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
-                OnSelect: =Navigate('Log of All Tickets - Admin Tech',Fade)
+                OnSelect: =Navigate('Log of All Tickets - Admin Tech',ScreenTransition.Fade)
                 PressedFill: =RGBA(0,0,0,0)
                 Text: =""
                 Width: =200
