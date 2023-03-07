@@ -277,7 +277,9 @@
                 ZIndex: =4
 
                 SearchFilterContainer As groupContainer.horizontalAutoLayoutContainer:
-                    Fill: =RGBA(118, 173, 149, 1)
+                    Fill: |-
+                        =Color.White
+                        //RGBA(118, 173, 149, 1)
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutJustifyContent: =LayoutJustifyContent.Center
                     LayoutMinHeight: =Parent.Height / 5
@@ -362,7 +364,10 @@
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320
-                        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(260, Self.Height - 60))
+                        TemplatePadding: =10
+                        TemplateSize: |-
+                            =If(Self.Layout = Layout.Horizontal, Min(250, Self.Width - 60), Min(250, Self.Height - 60))
+                            //If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(260, Self.Height - 60))
                         Transition: =Transition.Push
                         Visible: |-
                             =compFilterMenu_1.TicketsChoice = "My Tickets" && !IsEmpty(MyTicketList) && !IsEmpty(
@@ -385,123 +390,92 @@
                         Y: =224
                         ZIndex: =1
 
-                        btnBkg As button:
-                            Fill: =RGBA(255, 255, 255, 1)
-                            Height: =Parent.TemplateHeight
-                            HoverFill: =Self.Fill
-                            OnSelect: =Select(Parent)
-                            PressedFill: =Self.Fill
-                            RadiusBottomLeft: =0
-                            RadiusBottomRight: =0
-                            RadiusTopLeft: =0
-                            RadiusTopRight: =0
-                            Text: =""
-                            Width: =Parent.TemplateWidth
-                            ZIndex: =1
-
-                        TitleLabel As label:
-                            FontWeight: =FontWeight.Bold
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Size: =15
-                            Text: =ThisItem.title
-                            Width: =Parent.TemplateWidth
-                            Y: =IdBkg.Y + IdBkg.Height
-                            ZIndex: =3
-
-                        DescriptionLabel As label:
-                            Height: =Parent.TemplateHeight / 3
-                            OnSelect: =Select(Parent)
-                            Text: =ThisItem.description
-                            Width: =Parent.TemplateWidth
-                            Y: =TitleLabel.Y + TitleLabel.Height
-                            ZIndex: =4
-
-                        IdBkg As rectangle:
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            ZIndex: =5
-
-                        IdLabel As label:
-                            Align: =Align.Center
-                            Color: =RGBA(255, 255, 255, 1)
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Text: =ThisItem.id
-                            Width: =Parent.TemplateWidth
-                            ZIndex: =6
-
-                        DateCreatedLabel As label:
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Text: =DateValue(ThisItem.dateCreated)
-                            Width: =Parent.TemplateWidth / 3 * 2 - 10
-                            Y: =DescriptionLabel.Y + DescriptionLabel.Height
-                            ZIndex: =7
-
-                        Image7_3 As image:
-                            Height: =Parent.TemplateHeight / 6
+                        Image6 As image:
+                            Height: =250
                             Image: |-
-                                =// Get assignee's profile pic if they have one
-                                //If(!IsBlank(LookUp(Users, id = ThisItem.assignedTO, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.assignedTO, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.assignedTO, email)), 'blank-profile-pic')
-                                
-                                // For testing purposes because don't have any assignees yet
-                                If(!IsBlank(LookUp(Users, id = 2, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = 2, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = 2, email)), 'blank-profile-pic')
-                            ImagePosition: =ImagePosition.Fill
-                            RadiusBottomLeft: =256
-                            RadiusBottomRight: =256
-                            RadiusTopLeft: =256
-                            RadiusTopRight: =256
-                            Width: =Parent.TemplateHeight / 6
-                            Y: =DateCreatedLabel.Y + DateCreatedLabel.Height
-                            ZIndex: =8
-
-                        AssigneeLabel As label:
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Text: =If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
-                            Width: =Parent.TemplateWidth - Image7_3.Width
-                            X: =Image7_3.X + Image7_3.Width
-                            Y: =DateCreatedLabel.Y + DateCreatedLabel.Height
-                            ZIndex: =9
-
-                        StatusColor As rectangle:
-                            DisplayMode: =DisplayMode.View
-                            Fill: |-
-                                =Switch(
-                                    ThisItem.status,
-                                    "open", RGBA(0, 127, 187, 1),
-                                    "close", RGBA(127, 178, 57, 1),
-                                    RGBA(221, 79, 14, 1)
+                                ="data:image/svg+xml," & EncodeUrl(
+                                    "<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+                                <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+                                <svg version='1.1'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid meet' viewBox='0 0 " & Self.Width & " " & Self.Height & "' width='" & Self.Width & "' height='" & Self.Height & "'>
+                                    <defs>" &
+                                    // ----- Box for fill
+                                 "<path d='" &
+                                 // Upper left
+                                 "M" & Max(5 * 3 - 0, 0) & " " & Max(5 * 3 - 0,0) &
+                                    // Upper right
+                                 "L" & Self.Width - Max(5 * 3 + 0, 0) & " " & Max(5 * 3 - 0, 0) &
+                                    // Lower right
+                                 "L" & Self.Width - Max(5 * 3 + 0, 0) & " " & Self.Height - Max(5 * 3 + 0, 0) &
+                                    // Lower left
+                                 "L" & Max(5 * 3 - 0, 0) & " " & Self.Height - Max(5 * 3 + 0, 0) & 
+                                 "Z' id='box' stroke='" & "#ff0000" & "' stroke-width='" & 0 & "'></path>
+                                    </defs>
+                                    <g>
+                                        <g>
+                                            <filter id='shadow' x='-20%' y='-20%' width='200%' height='200%' filterUnits='userSpaceOnUse' primitiveUnits='userSpaceOnUse'>
+                                                <feFlood></feFlood>
+                                                <feComposite in2='SourceAlpha' operator='in'></feComposite>
+                                                <feGaussianBlur stdDeviation='" & 5 & "'></feGaussianBlur>
+                                                <feOffset dx='" & 0 & "' dy='" & 0 & "' result='afterOffset'></feOffset>
+                                                <feFlood flood-color='" & "#000000" & "' flood-opacity='" & Substitute(Text(0.5), ",", ".") & "'></feFlood>
+                                                <feComposite in2='afterOffset' operator='in'></feComposite>
+                                                <feMorphology operator='dilate' radius='1'></feMorphology>
+                                                <feComposite in2='SourceAlpha' operator='out'></feComposite>
+                                            </filter>" &
+                                            // ----- Box for shadow
+                                 "<path d='" &
+                                 // Upper left
+                                 "M" & Max(5 * 3 - 0, 0) & " " & Max(5 * 3 - 0, 0) &
+                                    // Upper right
+                                 "L" & Self.Width - Max(5 * 3 + 0, 0) & " " & Max(5 * 3 - 0, 0) &
+                                    // Lower right
+                                 "L" & Self.Width - Max(5 * 3 + 0, 0) & " " & Self.Height - Max(5 * 3 + 0, 0) &
+                                    // Lower left
+                                 "L" & Max(5 * 3 - 0, 0) & " " & Self.Height - Max(5 * 3 + 0, 0) & 
+                                 "Z' id='Component1' filter='url(#shadow)'></path>
+                                        </g>
+                                        <use xlink:href='#box' opacity='1' fill='" & "#ffffff" & "' fill-opacity='" & Substitute(Text(0), ",", ".") & "'></use>
+                                    </g>
+                                    <g>
+                                        " &
+                                        // ----- Edge
+                                 If(
+                                        true,
+                                        Switch(
+                                            "left",
+                                            "left",// -- Position: left
+                                            "<path d='" &
+                                        // Upper left
+                                 "M" & Max(5 * 3 - 0, 0) + 0 & " " & Max(5 * 3 - 0, 0) + 0 &
+                                        // Upper right
+                                 "L" & Max(5 * 3 - 0, 0) + 0 + 8 & " " & Max(5 * 3 - 0, 0) + 0 &
+                                        // Lower right
+                                 "L" & Max(5 * 3 - 0, 0) + 0 + 8 & " " & Self.Height - Max(5 * 3 + 0, 0) - 0 &
+                                        // Lower left
+                                 "L" & Max(5 * 3 - 0, 0) + 0 & " " & Self.Height - Max(5 * 3 + 0, 0) - 0 & 
+                                 "Z' id='box' stroke-width='0' fill='" & "#ffffff" & "'></path>",
+                                             "right",// -- Position: right
+                                            "<path d='" &
+                                        // Upper left
+                                 "M" & Self.Width - Max(5 * 3 + 0, 0) - 0 - 8 & " " & Max(5 * 3 - 0, 0) + 0 &
+                                        // Upper right
+                                 "L" & Self.Width - Max(5 * 3 + 0, 0) - 0 & " " & Max(5 * 3 - 0, 0) + 0 &
+                                        // Lower right
+                                 "L" & Self.Width - Max(5 * 3 + 0, 0) - 0 & " " & Self.Height - Max(5 * 3 + 0, 0) - 0 &
+                                        // Lower left
+                                 "L" & Self.Width - Max(5 * 3 + 0, 0) - 0 - 8 & " " & Self.Height - Max(5 * 3 + 0, 0) - 0 & 
+                                 "Z' id='box' stroke-width='0' fill='" & "#ffffff" & "'></path>"
+                                           
+                                        )
+                                    ) & "
+                                    </g>
+                                </svg>"
                                 )
-                            Height: =Parent.TemplateHeight / 6
                             OnSelect: =Select(Parent)
-                            Width: =10
-                            X: =DateCreatedLabel.Width
-                            Y: =DescriptionLabel.Y + DescriptionLabel.Height
-                            ZIndex: =10
-
-                        StatusLabel As label:
-                            Align: =Align.Center
-                            Color: |-
-                                =Switch(
-                                    ThisItem.status,
-                                    "open", RGBA(0, 127, 187, 1),
-                                    "close", RGBA(127, 178, 57, 1),
-                                    RGBA(221, 79, 14, 1)
-                                )
-                            DisplayMode: =DisplayMode.View
-                            Fill: =RGBA(241, 244, 249, 1)
-                            FontWeight: =FontWeight.Semibold
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Size: =15
-                            Text: =ThisItem.status
-                            Width: =Parent.TemplateWidth - DateCreatedLabel.Width - 20
-                            X: =Parent.TemplateWidth - Self.Width - 10
-                            Y: =DescriptionLabel.Y + DescriptionLabel.Height
-                            ZIndex: =11
+                            Width: =329
+                            ZIndex: =1
 
                         btnTemplate As button:
                             BorderThickness: =0
@@ -513,7 +487,170 @@
                             PressedFill: =Self.Fill
                             Text: =""
                             Width: =335.25
-                            ZIndex: =12
+                            ZIndex: =2
+
+                        btnBkg As button:
+                            Fill: =RGBA(255, 255, 255, 1)
+                            Height: =Parent.TemplateHeight
+                            HoverFill: =Self.Fill
+                            OnSelect: =Select(Parent)
+                            PressedFill: =Self.Fill
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Text: =""
+                            Visible: =false
+                            Width: =Parent.TemplateWidth
+                            ZIndex: =3
+
+                        TitleLabel As label:
+                            FontWeight: =FontWeight.Semibold
+                            Height: =54
+                            OnSelect: =Select(Parent)
+                            Size: =12
+                            Text: =ThisItem.title
+                            Width: =208
+                            X: =24
+                            Y: =27
+                            ZIndex: =4
+
+                        DescriptionLabel As label:
+                            Height: =37
+                            OnSelect: =Select(Parent)
+                            Size: =10
+                            Text: =ThisItem.description
+                            Width: =282
+                            Wrap: =false
+                            X: =24
+                            Y: =TitleLabel.Y + TitleLabel.Height
+                            ZIndex: =5
+
+                        IdLabel As label:
+                            Align: =Align.Center
+                            Color: =Color.Black
+                            Fill: =RGBA(241, 244, 249, 1)
+                            Height: =34
+                            OnSelect: =Select(Parent)
+                            Text: =ThisItem.id
+                            Width: =74
+                            X: =232
+                            Y: =37
+                            ZIndex: =6
+
+                        DateCreatedLabel As label:
+                            Height: =25
+                            OnSelect: =Select(Parent)
+                            Size: =10
+                            Text: =DateValue(ThisItem.dateCreated)
+                            Width: =75
+                            X: =231
+                            Y: =147
+                            ZIndex: =7
+
+                        "'Assigne Group' As group":
+                            Height: =5
+                            Width: =5
+                            X: =40
+                            Y: =40
+                            ZIndex: =13
+
+                            Image7_3 As image:
+                                Height: =Parent.TemplateHeight / 6
+                                Image: |-
+                                    =// Get assignee's profile pic if they have one
+                                    //If(!IsBlank(LookUp(Users, id = ThisItem.assignedTO, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.assignedTO, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.assignedTO, email)), 'blank-profile-pic')
+                                    
+                                    // For testing purposes because don't have any assignees yet
+                                    If(!IsBlank(LookUp(Users, id = 2, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = 2, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = 2, email)), 'blank-profile-pic')
+                                ImagePosition: =ImagePosition.Fill
+                                RadiusBottomLeft: =256
+                                RadiusBottomRight: =256
+                                RadiusTopLeft: =256
+                                RadiusTopRight: =256
+                                Width: =Parent.TemplateHeight / 6
+                                X: =24
+                                Y: =180
+                                ZIndex: =8
+
+                            AssigneeLabel As label:
+                                Height: =Parent.TemplateHeight / 6
+                                OnSelect: =Select(Parent)
+                                Text: =If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
+                                Width: =154
+                                X: =67
+                                Y: =180
+                                ZIndex: =9
+
+                        "'Status Group' As group":
+                            Height: =5
+                            Width: =5
+                            X: =40
+                            Y: =40
+                            ZIndex: =13
+
+                            StatusColor As rectangle:
+                                DisplayMode: =DisplayMode.View
+                                Fill: |-
+                                    =Switch(
+                                        ThisItem.status,
+                                        "open", RGBA(0, 127, 187, 1),
+                                        "close", RGBA(127, 178, 57, 1),
+                                        RGBA(221, 79, 14, 1)
+                                    )
+                                Height: =41
+                                OnSelect: =Select(Parent)
+                                Width: =9
+                                X: =232
+                                Y: =180
+                                ZIndex: =10
+
+                            StatusLabel As label:
+                                Align: =Align.Center
+                                Color: |-
+                                    =Switch(
+                                        ThisItem.status,
+                                        "open", RGBA(0, 127, 187, 1),
+                                        "close", RGBA(127, 178, 57, 1),
+                                        RGBA(221, 79, 14, 1)
+                                    )
+                                DisplayMode: =DisplayMode.View
+                                Fill: =RGBA(241, 244, 249, 1)
+                                FontWeight: =FontWeight.Semibold
+                                Height: =41
+                                OnSelect: =Select(Parent)
+                                Text: =ThisItem.status
+                                Width: =65
+                                X: =241
+                                Y: =180
+                                ZIndex: =11
+
+                        "'Category Group' As group":
+                            Height: =5
+                            Width: =5
+                            X: =40
+                            Y: =40
+                            ZIndex: =14
+
+                            CategoryLabelText As label:
+                                Height: =25
+                                OnSelect: =Select(Parent)
+                                Size: =10
+                                Text: ="Category"
+                                Width: =67
+                                X: =24
+                                Y: =147
+                                ZIndex: =12
+
+                            CategoryLabelText_1 As label:
+                                Height: =25
+                                OnSelect: =Select(Parent)
+                                Size: =10
+                                Text: =ThisItem.category
+                                Width: =143
+                                X: =89
+                                Y: =147
+                                ZIndex: =13
 
                     AssignedToMeTicketsGallery As gallery.galleryVertical:
                         Height: =544
