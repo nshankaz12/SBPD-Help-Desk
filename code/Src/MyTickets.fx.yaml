@@ -1,30 +1,10 @@
 "MyTickets As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
     ImagePosition: =ImagePosition.Center
-    OnVisible: |-
-        =// Set dropdown and gallery to default when view this screen
-        //Set(searchTicketQuery, ""); Reset(filterStatus); Reset(searchBox); Reset(TemplateGalleryList1);
-        
-        // Set screen to display the user's created tickets by default
-        UpdateContext({varAssignedToMe: false});
-        
-        // Get user's created tickets
-        //Set(MyTicketList,GetCurrentTickets.Run(1)); // testing 
-        Set(MyTicketList, Filter(Tickets_1, creatorId = userData.id));
-        
-        // Get the tickets assigned to the user
-        Set(AssignedTicketList,GetCurrentTickets.Run(10)); // testing 
-        //Set(AssignedTicketList, Filter(Tickets_1, assignedTo = userData.id)); 
-        
-        // Set filter menu not visible when enter screen
-        Set(varFilterVisible, false);
-        
-        // Create local variables for mobile view property on this screen using UpdateContext
+    OnHidden: =Reset(compFilterMenu_1)
+    OnVisible: |
+        =// Create local variables for mobile view property on this screen using UpdateContext
         UpdateContext({MobileGallery: false});
         UpdateContext({HamburgerIconChange: false});
-        
-        //get tickets for the current user
-        //Set(CurrentTicketInfo,GetCurrentTickets.Run(userData.id));
-        //Set(CurrentTicketInfo,GetCurrentTickets.Run(LookUp(Users, email = User().Email, id)))
 
     Image13_5 As image:
         Height: =768
@@ -359,8 +339,73 @@
                     MyTicketsGallery As gallery.galleryVertical:
                         Height: =544
                         Items: |-
-                            =//Search(If(filterStatus.Selected.Result = "All", MyTicketList, Filter(MyTicketList, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
-                            Search(If(compFilterMenu_1.StatusChoice = "All", MyTicketList, Filter(MyTicketList, status = compFilterMenu_1.StatusChoice)), searchTicketQuery, "title", "description")
+                            =If(
+                                compFilterMenu_1.TicketsChoice = "My Tickets",
+                                Filter(
+                                    Filter(
+                                        If(
+                                            compFilterMenu_1.StatusChoice = "All",
+                                            Filter(
+                                                Tickets_1,
+                                                creatorId = userData.id
+                                            ),
+                                            Filter(
+                                                Filter(
+                                                    Tickets_1,
+                                                    creatorId = userData.id
+                                                ),
+                                                status = compFilterMenu_1.StatusChoice
+                                            )
+                                        ),
+                                        If(
+                                            !IsBlank(searchTicketQuery),
+                                            Or(
+                                                searchTicketQuery in id,
+                                                searchTicketQuery in title,
+                                                searchTicketQuery in description
+                                            ),
+                                            true
+                                        )
+                                    ),
+                                    If(
+                                        !IsBlank(compFilterMenu_1.TagChoice),
+                                        compFilterMenu_1.TagChoice in tags,
+                                        true
+                                    )
+                                ),
+                                Filter(
+                                    Filter(
+                                        If(
+                                            compFilterMenu_1.StatusChoice = "All",
+                                            Filter(
+                                                Tickets_1,
+                                                assignedTO = userData.id
+                                            ),
+                                            Filter(
+                                                Filter(
+                                                    Tickets_1,
+                                                    assignedTO = userData.id
+                                                ),
+                                                status = compFilterMenu_1.StatusChoice
+                                            )
+                                        ),
+                                        If(
+                                            !IsBlank(searchTicketQuery),
+                                            Or(
+                                                searchTicketQuery in id,
+                                                searchTicketQuery in title,
+                                                searchTicketQuery in description
+                                            ),
+                                            true
+                                        )
+                                    ),
+                                    If(
+                                        !IsBlank(compFilterMenu_1.TagChoice),
+                                        compFilterMenu_1.TagChoice in tags,
+                                        true
+                                    )
+                                )
+                            )
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320
@@ -369,22 +414,7 @@
                             =If(Self.Layout = Layout.Horizontal, Min(250, Self.Width - 60), Min(250, Self.Height - 60))
                             //If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(260, Self.Height - 60))
                         Transition: =Transition.Push
-                        Visible: |-
-                            =compFilterMenu_1.TicketsChoice = "My Tickets" && !IsEmpty(MyTicketList) && !IsEmpty(
-                                Search(
-                                    If(
-                                        compFilterMenu_1.StatusChoice = "All",
-                                        MyTicketList,
-                                        Filter(
-                                            MyTicketList,
-                                            status = compFilterMenu_1.StatusChoice
-                                        )
-                                    ),
-                                    searchTicketQuery,
-                                    "title",
-                                    "description"
-                                )
-                            )
+                        Visible: =!IsEmpty(MyTicketsGallery.AllItems)
                         Width: =1366
                         WrapCount: =RoundDown((Parent.Width / Self.LayoutMinWidth), 0)
                         Y: =224
@@ -550,7 +580,7 @@
                             Y: =15
                             ZIndex: =13
 
-                        "'Assigne Group' As group":
+                        "'Assignee Group' As group":
                             Height: =5
                             Width: =5
                             X: =40
@@ -570,6 +600,7 @@
                                 RadiusBottomRight: =256
                                 RadiusTopLeft: =256
                                 RadiusTopRight: =256
+                                Visible: =is_admin
                                 Width: =Parent.TemplateHeight / 6
                                 X: =24
                                 Y: =180
@@ -579,6 +610,7 @@
                                 Height: =Parent.TemplateHeight / 6
                                 OnSelect: =Select(Parent)
                                 Text: =If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
+                                Visible: =is_admin
                                 Width: =154
                                 X: =67
                                 Y: =180
@@ -641,180 +673,18 @@
                                 Text: ="Category"
                                 Width: =67
                                 X: =24
-                                Y: =147
+                                Y: =If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
                                 ZIndex: =11
 
                             CategoryLabelText_1 As label:
                                 Height: =25
                                 OnSelect: =Select(Parent)
                                 Size: =10
-                                Text: =ThisItem.category
+                                Text: =LookUp(Category, id = ThisItem.mainCategory, name)
                                 Width: =143
                                 X: =89
-                                Y: =147
+                                Y: =If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
                                 ZIndex: =12
-
-                    AssignedToMeTicketsGallery As gallery.galleryVertical:
-                        Height: =544
-                        Items: |-
-                            =//Search(If(filterStatus.Selected.Result = "All", AssignedTicketList, Filter(AssignedTicketList, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
-                            
-                            Search(If(compFilterMenu_1.StatusChoice = "All", AssignedTicketList, Filter(AssignedTicketList, status = compFilterMenu_1.StatusChoice)), searchTicketQuery, "title", "description")
-                        Layout: =Layout.Vertical
-                        LayoutMinHeight: =Parent.Height
-                        LayoutMinWidth: =320
-                        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(260, Self.Height - 60))
-                        Transition: =Transition.Push
-                        Visible: |-
-                            =compFilterMenu_1.TicketsChoice = "Assigned Tickets" && !IsEmpty(AssignedTicketList) && !IsEmpty(
-                                Search(
-                                    If(
-                                        compFilterMenu_1.StatusChoice = "All",
-                                        AssignedTicketList,
-                                        Filter(
-                                            AssignedTicketList,
-                                            status = compFilterMenu_1.StatusChoice
-                                        )
-                                    ),
-                                    searchTicketQuery,
-                                    "title",
-                                    "description"
-                                )
-                            )
-                        Width: =1366
-                        WrapCount: =RoundDown((Parent.Width / Self.LayoutMinWidth), 0)
-                        Y: =224
-                        ZIndex: =2
-
-                        btnBkg_1 As button:
-                            Fill: =RGBA(255, 255, 255, 1)
-                            Height: =Parent.TemplateHeight
-                            HoverFill: =Self.Fill
-                            OnSelect: =Select(Parent)
-                            PressedFill: =Self.Fill
-                            RadiusBottomLeft: =0
-                            RadiusBottomRight: =0
-                            RadiusTopLeft: =0
-                            RadiusTopRight: =0
-                            Text: =""
-                            Width: =Parent.TemplateWidth
-                            ZIndex: =1
-
-                        TitleLabel_1 As label:
-                            FontWeight: =FontWeight.Bold
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Size: =15
-                            Text: =ThisItem.title
-                            Width: =Parent.TemplateWidth
-                            Y: =IdBkg_1.Y + IdBkg_1.Height
-                            ZIndex: =3
-
-                        DescriptionLabel_1 As label:
-                            Height: =Parent.TemplateHeight / 3
-                            OnSelect: =Select(Parent)
-                            Text: =ThisItem.description
-                            Width: =Parent.TemplateWidth
-                            Y: =TitleLabel_1.Y + TitleLabel_1.Height
-                            ZIndex: =4
-
-                        IdBkg_1 As rectangle:
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            ZIndex: =5
-
-                        IdLabel_1 As label:
-                            Align: =Align.Center
-                            Color: =RGBA(255, 255, 255, 1)
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Text: =ThisItem.id
-                            Width: =Parent.TemplateWidth
-                            ZIndex: =6
-
-                        DateCreatedLabel_1 As label:
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Text: =DateValue(ThisItem.dateCreated)
-                            Width: =Parent.TemplateWidth / 3 * 2 - 10
-                            Y: =DescriptionLabel_1.Y + DescriptionLabel_1.Height
-                            ZIndex: =7
-
-                        Image7_7 As image:
-                            Height: =Parent.TemplateHeight / 6
-                            Image: |-
-                                =// Get assignee's profile pic if they have one
-                                //If(!IsBlank(LookUp(Users, id = ThisItem.assignedTO, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.assignedTO, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.assignedTO, email)), 'blank-profile-pic')
-                                
-                                // For testing purposes because don't have any assignees yet
-                                If(!IsBlank(LookUp(Users, id = 2, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = 2, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = 2, email)), 'blank-profile-pic')
-                            ImagePosition: =ImagePosition.Fill
-                            RadiusBottomLeft: =256
-                            RadiusBottomRight: =256
-                            RadiusTopLeft: =256
-                            RadiusTopRight: =256
-                            Width: =Parent.TemplateHeight / 6
-                            Y: =DateCreatedLabel_1.Y + DateCreatedLabel_1.Height
-                            ZIndex: =8
-
-                        AssigneeLabel_1 As label:
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Text: =If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
-                            Width: =Parent.TemplateWidth - Image7_7.Width
-                            X: =Image7_7.X + Image7_7.Width
-                            Y: =DateCreatedLabel_1.Y + DateCreatedLabel_1.Height
-                            ZIndex: =9
-
-                        StatusColor_1 As rectangle:
-                            DisplayMode: =DisplayMode.View
-                            Fill: |-
-                                =Switch(
-                                    ThisItem.status,
-                                    "open", RGBA(0, 127, 187, 1),
-                                    "close", RGBA(127, 178, 57, 1),
-                                    RGBA(221, 79, 14, 1)
-                                )
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Width: =10
-                            X: =DateCreatedLabel_1.Width
-                            Y: =DescriptionLabel_1.Y + DescriptionLabel_1.Height
-                            ZIndex: =10
-
-                        StatusLabel_1 As label:
-                            Align: =Align.Center
-                            Color: |-
-                                =Switch(
-                                    ThisItem.status,
-                                    "open", RGBA(0, 127, 187, 1),
-                                    "close", RGBA(127, 178, 57, 1),
-                                    RGBA(221, 79, 14, 1)
-                                )
-                            DisplayMode: =DisplayMode.View
-                            Fill: =RGBA(241, 244, 249, 1)
-                            FontWeight: =FontWeight.Semibold
-                            Height: =Parent.TemplateHeight / 6
-                            OnSelect: =Select(Parent)
-                            Size: =15
-                            Text: =ThisItem.status
-                            Width: =Parent.TemplateWidth - DateCreatedLabel_1.Width - 20
-                            X: =Parent.TemplateWidth - Self.Width - 10
-                            Y: =DescriptionLabel_1.Y + DescriptionLabel_1.Height
-                            ZIndex: =11
-
-                        btnTemplate_1 As button:
-                            BorderThickness: =0
-                            Fill: =Color.Transparent
-                            Height: =Parent.TemplateHeight
-                            HoverFill: =Self.Fill
-                            OnSelect: |-
-                                =Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.categoryId, tags:ThisItem.tags, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id})
-                            PressedFill: =Self.Fill
-                            Text: =""
-                            Width: =Parent.TemplateWidth
-                            ZIndex: =12
 
                     EmptyState As groupContainer.verticalAutoLayoutContainer:
                         Height: =544
@@ -825,36 +695,7 @@
                         LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
-                        Visible: |-
-                            =compFilterMenu_1.TicketsChoice = "Assigned Tickets" && !IsBlank(compFilterMenu_1.StatusChoice) && IsEmpty(
-                                Search(
-                                    If(
-                                        compFilterMenu_1.StatusChoice = "All",
-                                        AssignedTicketList,
-                                        Filter(
-                                            AssignedTicketList,
-                                            status = compFilterMenu_1.StatusChoice
-                                        )
-                                    ),
-                                    searchTicketQuery,
-                                    "title",
-                                    "description"
-                                )
-                            ) || compFilterMenu_1.TicketsChoice = "My Tickets" && !IsBlank(compFilterMenu_1.StatusChoice) && IsEmpty(
-                                Search(
-                                    If(
-                                        compFilterMenu_1.StatusChoice = "All",
-                                        MyTicketList,
-                                        Filter(
-                                            MyTicketList,
-                                            status = compFilterMenu_1.StatusChoice
-                                        )
-                                    ),
-                                    searchTicketQuery,
-                                    "title",
-                                    "description"
-                                )
-                            )
+                        Visible: =IsEmpty(MyTicketsGallery.AllItems)
                         Width: =1366
                         Y: =224
                         ZIndex: =3
@@ -872,17 +713,15 @@
                             Text: ="New Ticket"
                             Visible: |-
                                 =//Button should only appears when user is not viewing their assigned tickets
-                                (compFilterMenu_1.TicketsChoice = "My Tickets" && compFilterMenu_1.StatusChoice = "All") || (compFilterMenu_1.TicketsChoice = "My Tickets" && compFilterMenu_1.StatusChoice = "open")
+                                IsEmpty(MyTicketsGallery.AllItems) && compFilterMenu_1.TicketsChoice = "My Tickets" && (compFilterMenu_1.StatusChoice = "All" || compFilterMenu_1.StatusChoice = "open")
                             X: =1150
                             Y: =99
                             ZIndex: =2
 
     compFilterMenu_1 As compFilterMenu:
         Height: =If(compFilterMenu_1.FilterVisible, compFilterMenu_1.NewHeight, compFilterMenu_1.FilterIconSize)
-        NewHeight: |-
-            =//640
-            If(App.ActiveScreen.Name = "MyTickets" && compFilterMenu_1.CheckAdmin, 300, 145)
-        Width: =If(compFilterMenu_1.FilterVisible, If(App.Width > 900, 220, 180), compFilterMenu_1.FilterIconSize)
+        NewHeight: =If(compFilterMenu_1.CheckAdmin && App.ActiveScreen.Name = "MyTickets", If(App.Height > 560, 400, 320), If(compFilterMenu_1.CheckAdmin, If(App.Height > 560, 250, 210), 150))
+        Width: =If(compFilterMenu_1.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu_1.FilterIconSize)
         X: =Parent.Width - Self.Width
         Y: =Parent.Height / 3.5
         ZIndex: =21
