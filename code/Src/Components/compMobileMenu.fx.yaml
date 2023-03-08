@@ -4,8 +4,7 @@ compMobileMenu As CanvasComponent:
     ForegroundColor: |-
         =//RGBA(70, 130, 180, 1)
         ColorScheme.primary
-    Height: |
-        =120
+    Height: =90
     NavigationItems: |-
         =// IF adimn or tech show this table, if not show Staff table
         gblNavItems
@@ -41,11 +40,13 @@ compMobileMenu As CanvasComponent:
                     compMobileMenu.BackgroundMenuColor,
                     compMobileMenu.ForegroundColor
                 )
+            DisplayMode: =DisplayMode.View
+            Height: =40
             Icon: =ThisItem.MenuIcon
             OnSelect: =Select(Parent)
-            PaddingBottom: =8
-            X: =Parent.TemplateWidth / 2 - Self.Width / 2
-            Y: =13
+            Width: =40
+            X: =(Parent.TemplateWidth-Self.Width)/2
+            Y: =(Parent.TemplateHeight-Self.Height)/2
             ZIndex: =1
 
         Label1_2 As label:
@@ -56,22 +57,36 @@ compMobileMenu As CanvasComponent:
                     compMobileMenu.BackgroundMenuColor,
                     compMobileMenu.ForegroundColor
                 )
-            Height: =Parent.Height/3
+            Height: =20
             OnSelect: =Select(Parent)
-            Size: =12
+            Size: =10
             Text: =ThisItem.MenuText
             Width: =Parent.Width/5
-            X: =I
-            Y: =77
+            X: =(Parent.TemplateWidth-Self.Width)/2
+            Y: =Icon1_5.Y+Icon1_5.Height
             ZIndex: =2
 
         Icon1_1 As icon.Add:
             Color: =Color.Transparent
-            Height: =120
+            DisplayMode: =DisplayMode.View
+            Height: =90
             Icon: =ThisItem.MenuIcon
             OnSelect: =Navigate(ThisItem.ScreenToGoTo);
             PaddingBottom: =8
-            Width: =267
-            X: =3
+            Width: =273
             ZIndex: =3
+
+        Button7 As button:
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.TemplateHeight
+            HoverFill: =ColorFade(RGBA(56, 96, 178, .25), -20%)
+            OnSelect: =Navigate(ThisItem.ScreenToGoTo,ScreenTransition.Fade);
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            PressedFill: =RGBA(15, 16, 46, 0.36)
+            Text: =""
+            Width: =Parent.TemplateWidth
+            ZIndex: =4
 

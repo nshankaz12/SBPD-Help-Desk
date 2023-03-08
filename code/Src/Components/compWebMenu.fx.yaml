@@ -6,7 +6,8 @@ compWebMenu As CanvasComponent:
     MenuItems: =gblNavItems
     OnReset: |-
         =Set(showMenu, compWebMenu.ExpandMenu);
-        Set(showHamIcon, compWebMenu.showHamburgerIcon);
+        //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+        Set(showHamIcon, !compWebMenu.ExpandMenu)
     Width: =185
     X: =0
     Y: =0
@@ -78,6 +79,7 @@ compWebMenu As CanvasComponent:
             Size: =14
             Text: =ThisItem.MenuText
             Width: =175
+            X: =Icon3_1.Width
             ZIndex: =3
 
         Button2_1 As button:
