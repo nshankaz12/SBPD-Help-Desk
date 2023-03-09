@@ -443,7 +443,6 @@
                         ZIndex: =4
 
                 Container19_2 As groupContainer.horizontalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
                     Height: =If('Create A Ticket'.Size<4, CreateATicketDescriptionlabel.Height+TextInput4.Height+35,200)
                     LayoutAlignItems: =LayoutAlignItems.Center
@@ -473,6 +472,7 @@
                         ZIndex: =2
 
                 Container4 As groupContainer.manualLayoutContainer:
+                    FillPortions: =0
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     ZIndex: =7
@@ -481,19 +481,35 @@
                         Align: =Align.Center
                         Size: =15
                         Text: ="Description"
-                        X: =(Parent.Width-Self.Width)/2
+                        X: =32
                         ZIndex: =1
 
                     TextInput5 As text:
                         Default: =""
-                        Height: =Parent.Height-Label14.Height
+                        Height: =128
                         HintText: ="Please Describe Your Issue"
                         Mode: =TextMode.MultiLine
                         Size: =15
-                        Width: =Parent.Width - 63
-                        X: =32
+                        Width: =598
+                        X: =53
                         Y: =40
                         ZIndex: =2
+
+                    Dropdown1 As dropdown:
+                        Height: =55
+                        Items: =Locations
+                        Width: =Parent.Width/3
+                        X: =Parent.Width/2 +50
+                        Y: =40
+                        ZIndex: =3
+
+                    Label14_1 As label:
+                        Align: =Align.Center
+                        Size: =15
+                        Text: ="Location"
+                        Width: =118
+                        X: =Parent.Width/2 + 34
+                        ZIndex: =4
 
                 Container19_3 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
