@@ -203,8 +203,8 @@
                             ZIndex: =3
 
                         Button1_2 As button:
-                            OnSelect: |
-                                =If(
+                            OnSelect: |-
+                                =/*If(
                                     addMessage,
                                     Patch(
                                         Comments,
@@ -234,6 +234,7 @@
                                     Set(editMessage, false);
                                     Set(addMessage, true);
                                 );
+                                */
                             Text: |-
                                 =If(
                                     addMessage,
@@ -343,7 +344,7 @@
                                 OnSelect: |-
                                     =Set(editMessage, true);
                                     Set(addMessage, false);
-                                    Set(editableRec, ThisItem);
+                                    //Set(editableRec, ThisItem);
                                 PressedBorderColor: =
                                 PressedColor: =Color.Gray
                                 PressedFill: =
