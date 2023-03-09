@@ -10,7 +10,7 @@
         Height: ='Create A Ticket'.Height
         LayoutMode: =LayoutMode.Auto
         Width: ='Create A Ticket'.Width
-        ZIndex: =2
+        ZIndex: =1
 
         CreateATicketMobileNavLinksContainer As groupContainer.horizontalAutoLayoutContainer:
             FillPortions: =0
@@ -18,7 +18,7 @@
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             Visible: |
-                =MGallery && 'Create A Ticket'.Size=1
+                =false
             Width: =100
             ZIndex: =1
 
@@ -68,12 +68,11 @@
             CreateATicketHeaderContainer1 As groupContainer.horizontalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
                 FillPortions: =0
-                Height: =50
+                Height: =82
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                Visible: ='Create A Ticket'.Size>1
                 ZIndex: =1
 
                 NotificationsDropdownContainer_3 As groupContainer.manualLayoutContainer:
@@ -81,7 +80,7 @@
                     Height: =Parent.Height
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
-                    Visible: =Home.Size>1
+                    Visible: =false
                     Width: =75
                     ZIndex: =1
 
@@ -123,6 +122,7 @@
                     LayoutMinHeight: =0
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    Visible: =false
                     ZIndex: =2
 
                     CreateATicketNavLinkGallery As gallery.galleryHorizontal:
@@ -160,6 +160,13 @@
                             Width: =Parent.TemplateWidth
                             ZIndex: =2
 
+                compWebHeader_5 As compWebHeader:
+                    CompScreenSize: ='Create A Ticket'.Size
+                    Height: =Parent.Height
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    ZIndex: =3
+
             CreateATicketMobileHeaderContainer As groupContainer.horizontalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
                 FillPortions: =0
@@ -169,7 +176,7 @@
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                Visible: ='Create A Ticket'.Size=1
+                Visible: =false
                 ZIndex: =2
 
                 MoblieHamburgerMenu_4 As icon.Hamburger:
@@ -198,7 +205,7 @@
                         ZIndex: =1
 
             CreateATicketHeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
-                Fill: =RGBA(118, 173, 149, 1)
+                Fill: =ColorScheme.primary
                 FillPortions: =0
                 Height: =100
                 LayoutMinHeight: =100
@@ -583,7 +590,7 @@
                     AttachmentControl As attachments:
                         BorderColor: =Color.Black
                         FillPortions: =1
-                        Height: =165
+                        Height: =160
                         IsInDataCard: =true
                         Items: =
                         MaxAttachments: =10
@@ -596,6 +603,21 @@
                         Y: =
                         ZIndex: =2
 
+                Container12 As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =90
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Visible: ='Create A Ticket'.Size=1
+                    ZIndex: =9
+
+                    compMobileMenu_4 As compMobileMenu:
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        Width: =Parent.Width
+
     Label25 As label:
         Height: =41
         Text: |-
@@ -603,5 +625,15 @@
         Width: =275
         X: =111
         Y: =78
+        ZIndex: =2
+
+    compWebMenu_2 As compWebMenu:
+        Height: =Parent.Height
+        OnReset: |-
+            =Set(showMenu, compWebMenu_2.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_2.ExpandMenu)
+        Visible: ='Create A Ticket'.Size>1
+        Width: =If(!compWebMenu_2.ExpandMenu, 55, 160)
         ZIndex: =3
 

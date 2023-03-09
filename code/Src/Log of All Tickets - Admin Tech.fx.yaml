@@ -1,5 +1,5 @@
 "'Log of All Tickets - Admin Tech' As screen":
-    BackgroundImage: ='image (2)'
+    BackgroundImage: =
     ImagePosition: =ImagePosition.Stretch
     OnVisible: |-
         =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false});
@@ -21,8 +21,9 @@
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             Visible: |-
-                =MGallery && 'Log of All Tickets - Admin Tech'.Size<=1
+                =//MGallery && 'Log of All Tickets - Admin Tech'.Size<=1
                 //This is a side panel that is visible when the user selects the hamburger menu
+                false
             Width: =100
             ZIndex: =1
 
@@ -78,15 +79,16 @@
 
             TicketLogHeaderContainer1 As groupContainer.verticalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
-                Fill: =RGBA(118, 173, 149, 1)
+                Fill: =RGBA(255,255,255,1)
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutJustifyContent: =LayoutJustifyContent.Center
-                LayoutMinHeight: =100
+                LayoutMinHeight: =82
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 Visible: |-
-                    ='Log of All Tickets - Admin Tech'.Size<>1
+                    =//'Log of All Tickets - Admin Tech'.Size<>1
                     //This is the top most header container that houses the navbar links
+                    true
                 Width: =Parent.Width
                 ZIndex: =1
 
@@ -96,7 +98,7 @@
                     Height: =Parent.Height
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
-                    Visible: ='Log of All Tickets - Admin Tech'.Size>1
+                    Visible: =false
                     Width: =75
                     ZIndex: =1
 
@@ -142,6 +144,7 @@
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    Visible: =false
                     ZIndex: =7
 
                     TicketLogNavLinkHeaderGallery As gallery.galleryHorizontal:
@@ -179,6 +182,13 @@
                             Width: =Parent.TemplateWidth
                             ZIndex: =2
 
+                compWebHeader_7 As compWebHeader:
+                    CompScreenSize: ='Log of All Tickets - Admin Tech'.Size
+                    Height: =Parent.Height
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    ZIndex: =8
+
             TicketLogMobileHeaderContainer As groupContainer.verticalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 Fill: =RGBA(118, 173, 149, 1)
@@ -189,7 +199,7 @@
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 Visible: |-
-                    =true
+                    =false
                     //This container is visible when the screen is in mobile view and the topmost is invisible
                 Width: =Parent.Width
                 ZIndex: =2
@@ -227,7 +237,7 @@
 
             TicketLogHeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
-                Fill: =RGBA(118, 173, 149, 1)
+                Fill: =ColorScheme.primary
                 FillPortions: =2
                 Height: =117
                 LayoutAlignItems: =LayoutAlignItems.Center
@@ -427,7 +437,7 @@
                         Align: =Align.Center
                         BorderColor: =RGBA(0, 0, 0, 1)
                         BorderThickness: =1
-                        Fill: =RGBA(118, 173, 149, 1)
+                        Fill: =ColorScheme.primary
                         FontWeight: =FontWeight.Bold
                         OnSelect: =Select(Parent)
                         Size: =15
@@ -471,6 +481,21 @@
                         Y: =Parent.TemplateHeight - Self.Height
                         ZIndex: =6
 
+                TicketLogMobileComp As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =90
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Visible: ='Log of All Tickets - Admin Tech'.Size=1
+                    ZIndex: =2
+
+                    compMobileMenu_6 As compMobileMenu:
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        Width: =Parent.Width
+
     ScreenSizeLabel_2 As label:
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
@@ -483,4 +508,14 @@
         X: =372
         Y: =498
         ZIndex: =19
+
+    compWebMenu_4 As compWebMenu:
+        Height: =Parent.Height
+        OnReset: |-
+            =Set(showMenu, compWebMenu_4.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_4.ExpandMenu)
+        Visible: ='Log of All Tickets - Admin Tech'.Size>1
+        Width: =If(!compWebMenu_4.ExpandMenu,55, 200)
+        ZIndex: =20
 

@@ -27,8 +27,9 @@
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             Visible: |-
-                =MobileGallery
+                =//MobileGallery
                 //This is a side panel that is visible when the user selects the hamburger menu
+                false
             Width: =100
             ZIndex: =1
 
@@ -78,13 +79,17 @@
             ZIndex: =2
 
             MyTicketsHeaderContainer1 As groupContainer.horizontalAutoLayoutContainer:
-                Fill: =RGBA(118, 173, 149, 1)
+                Fill: =RGBA(255,255,255,1)
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutJustifyContent: =LayoutJustifyContent.Center
-                LayoutMinHeight: =MyTickets.Height / 8
+                LayoutMinHeight: |-
+                    =//MyTickets.Height / 8
+                    82
                 LayoutMinWidth: =Parent.Width
                 LayoutMode: =LayoutMode.Auto
-                Visible: =MyTickets.Size <> 1
+                Visible: |-
+                    =//MyTickets.Size <> 1
+                    true
                 ZIndex: =1
 
                 NotificationsDropdownContainer_1 As groupContainer.manualLayoutContainer:
@@ -92,7 +97,7 @@
                     Height: =Parent.Height
                     LayoutMinHeight: =Parent.Height
                     LayoutMinWidth: =Parent.Width
-                    Visible: =Home.Size>1
+                    Visible: =false
                     Width: =75
                     ZIndex: =1
 
@@ -136,6 +141,7 @@
                     LayoutMinHeight: =Parent.Height
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    Visible: =false
                     ZIndex: =2
 
                     MyTicketsNavLinkGallery As gallery.galleryHorizontal:
@@ -173,6 +179,14 @@
                             Width: =Parent.TemplateWidth
                             ZIndex: =2
 
+                compWebHeader_6 As compWebHeader:
+                    AlignInContainer: =AlignInContainer.Center
+                    CompScreenSize: =MyTickets.Size
+                    Height: =Parent.Height
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    ZIndex: =3
+
             MyTicketsMoblieHeaderContainer As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
                 LayoutAlignItems: =LayoutAlignItems.Center
@@ -181,8 +195,9 @@
                 LayoutMode: =LayoutMode.Auto
                 PaddingLeft: =50
                 Visible: |-
-                    =MyTickets.Size=1
+                    =//MyTickets.Size=1
                     //This container is visible when the screen is in mobile view and the topmost is invisible
+                    false
                 ZIndex: =2
 
                 MoblieHamburgerMenu_1 As icon.Hamburger:
@@ -194,7 +209,7 @@
                     ZIndex: =1
 
             MyTicketsHeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
-                Fill: =RGBA(118, 173, 149, 1)
+                Fill: =ColorScheme.primary
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutGap: =10
                 LayoutJustifyContent: =LayoutJustifyContent.Center
@@ -333,7 +348,7 @@
                     FillPortions: =8
                     LayoutAlignItems: =LayoutAlignItems.Stretch
                     LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =Parent.Height / 5 * 4
+                    LayoutMinHeight: =//Parent.Height / 5 * 4
                     LayoutMinWidth: =Parent.Width
                     LayoutMode: =LayoutMode.Auto
                     ZIndex: =2
@@ -720,6 +735,21 @@
                             Y: =99
                             ZIndex: =2
 
+                MyTicketsMobileComp As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =90
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Visible: =MyTickets.Size=1
+                    ZIndex: =3
+
+                    compMobileMenu_5 As compMobileMenu:
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        Width: =Parent.Width
+
     compFilterMenu_1 As compFilterMenu:
         Height: =If(compFilterMenu_1.FilterVisible, compFilterMenu_1.NewHeight, compFilterMenu_1.FilterIconSize)
         NewHeight: =If(compFilterMenu_1.CheckAdmin && App.ActiveScreen.Name = "MyTickets", If(App.Height > 560, 400, 320), If(compFilterMenu_1.CheckAdmin, If(App.Height > 560, 250, 210), 150))
@@ -727,4 +757,14 @@
         X: =Parent.Width - Self.Width
         Y: =Parent.Height / 3.5
         ZIndex: =21
+
+    compWebMenu_3 As compWebMenu:
+        Height: =Parent.Height
+        OnReset: |-
+            =Set(showMenu, compWebMenu_3.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_3.ExpandMenu)
+        Visible: =MyTickets.Size>1
+        Width: =If(!compWebMenu_3.ExpandMenu, 55, 165)
+        ZIndex: =22
 

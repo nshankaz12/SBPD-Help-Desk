@@ -18,7 +18,8 @@ compWebMenu As CanvasComponent:
         Fill: =Color.Transparent
         Height: =48
         Icon: =Icon.Hamburger
-        OnSelect: =Set(showMenu, !showMenu);
+        OnSelect: |
+            =Set(showMenu, !showMenu);
         Visible: =!showMenu
         Width: =62
         X: =6
