@@ -366,49 +366,6 @@
                 Width: =Parent.Width
                 ZIndex: =4
 
-                Container19 As groupContainer.horizontalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    FillPortions: =0
-                    Height: =If('Create A Ticket'.Size<4, TicketTitleLabel.Height+TitleTextInput.Height+CatergoryLabel.Height+CatergoryDropdown.Height+35,80)
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutGap: =10
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =Parent.Width
-                    LayoutMode: =LayoutMode.Auto
-                    LayoutWrap: =true
-                    PaddingLeft: =30
-                    PaddingRight: =30
-                    Visible: |
-                        =false
-                    Width: |
-                        =Parent.Width
-                    ZIndex: =2
-
-                    TicketTitleLabel As label:
-                        FillPortions: =1
-                        LayoutMinHeight: =Parent.Height
-                        Text: |-
-                            ="Title:"
-                        ZIndex: =1
-
-                    TitleTextInput As text:
-                        Align: =Align.Center
-                        Default: =""
-                        FillPortions: =1
-                        Height: =55
-                        ZIndex: =2
-
-                    CatergoryLabel As label:
-                        FillPortions: =1
-                        Text: ="Category"
-                        ZIndex: =3
-
-                    CatergoryDropdown As dropdown:
-                        FillPortions: =1
-                        Height: =55
-                        Items: =Filter(Category, parentId = Blank())
-                        ZIndex: =4
-
                 Container2 As groupContainer.manualLayoutContainer:
                     LayoutMinHeight: =80
                     LayoutMinWidth: =250
@@ -447,49 +404,6 @@
                         Y: =FreeContCategoryLabel.Y+FreeContCategoryLabel.Height
                         ZIndex: =4
 
-                Container19_1 As groupContainer.horizontalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    FillPortions: =0
-                    Height: =If('Create A Ticket'.Size<4, SpecificIssueLabel.Height+Dropdown9.Height+SubCategoryLabel.Height+SubCatergoryDropdown.Height+35,80)
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutGap: =10
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =Parent.Width
-                    LayoutMode: =LayoutMode.Auto
-                    LayoutWrap: =true
-                    PaddingLeft: =30
-                    PaddingRight: =30
-                    Visible: =false
-                    Width: |
-                        =Parent.Width
-                    ZIndex: =4
-
-                    SubCategoryLabel As label:
-                        FillPortions: =1
-                        Text: ="SubCategory"
-                        ZIndex: =1
-
-                    SubCatergoryDropdown As dropdown:
-                        FillPortions: =1
-                        Height: =55
-                        Items: =Filter(Category, parentId = CatergoryDropdown.Selected.id)
-                        ZIndex: =2
-
-                    SpecificIssueLabel As label:
-                        FillPortions: =1
-                        LayoutMinHeight: =Parent.Height
-                        Text: |-
-                            ="Specific Issue:"
-                        Visible: =If(LookUp(Category, parentId = SubCatergoryDropdown.Selected.id, name) = Blank(), false, true)
-                        ZIndex: =3
-
-                    Dropdown9 As dropdown:
-                        FillPortions: =1
-                        Height: =55
-                        Items: =Filter(Category, parentId = SubCatergoryDropdown.Selected.id)
-                        Visible: =If(LookUp(Category, parentId = SubCatergoryDropdown.Selected.id, name) = Blank(), false, true)
-                        ZIndex: =4
-
                 Container3 As groupContainer.manualLayoutContainer:
                     FillPortions: =0
                     Height: =80
@@ -509,7 +423,7 @@
                         Items: =Filter(Category, parentId = Dropdown5.Selected.id)
                         Width: =Parent.Width/3
                         X: =Label10.X
-                        Y: =Label10.Y+Label10.Height
+                        Y: =40
                         ZIndex: =2
 
                     Label10_1 As label:

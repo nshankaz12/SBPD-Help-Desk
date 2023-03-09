@@ -171,6 +171,9 @@
           "Alerts": {
             "tableName": "[dbo].[Alerts]"
           },
+          "Category": {
+            "tableName": "[dbo].[Category]"
+          },
           "Comments": {
             "tableName": "[dbo].[Comments]"
           },
@@ -195,7 +198,8 @@
       "Media",
       "Users",
       "Tickets_1",
-      "Tags"
+      "Tags",
+      "Category"
     ],
     "dependencies": {},
     "dependents": [
@@ -289,34 +293,6 @@
     },
     "dependents": [],
     "id": "9b59efce-623e-4b97-8102-93b0dad21f2f"
-  },
-  "c36f6dd7-5a8e-46e6-9235-89880ee9d2d8": {
-    "connectionParameters": {
-      "database": "cs4961stu01",
-      "server": "cs3.calstatela.edu"
-    },
-    "connectionRef": {
-      "authenticationType": "sqlAuthentication",
-      "displayName": "SQL Server",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1617/1.0.1617.3171/sql/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_sql",
-      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_sql/connections/f6964fa6084c45ffb59e7a636ddffe1b"
-    },
-    "datasets": {
-      "cs3.calstatela.edu,cs4961stu01": {
-        "dataSources": {
-          "Category": {
-            "tableName": "[dbo].[Category]"
-          }
-        }
-      }
-    },
-    "dataSources": [
-      "Category"
-    ],
-    "dependencies": {},
-    "dependents": [],
-    "id": "c36f6dd7-5a8e-46e6-9235-89880ee9d2d8"
   },
   "d2a89ce3-2b73-44a2-93a6-efc5e0121e5f": {
     "connectionParameters": {
