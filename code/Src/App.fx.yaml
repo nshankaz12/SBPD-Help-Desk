@@ -133,7 +133,9 @@ App As appinfo:
         // Passed to filter component to check if filter is visible
         Set(varFilterVisible, false);
         // Passed tags to filter component
-        Set(varTags, Tags)
+        ClearCollect(colTags,{Result:""});
+        Collect(colTags,Distinct(Tags,name));
+        Set(varTags, colTags);
         
         
         

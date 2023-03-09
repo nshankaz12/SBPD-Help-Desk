@@ -1,6 +1,8 @@
 "MyTickets As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
     ImagePosition: =ImagePosition.Center
-    OnHidden: =Reset(compFilterMenu_1)
+    OnHidden: |-
+        =Reset(compFilterMenu_1);
+        Reset(MyTicketsGallery)
     OnVisible: |
         =// Create local variables for mobile view property on this screen using UpdateContext
         UpdateContext({MobileGallery: false});
@@ -572,7 +574,7 @@
                             Height: =220
                             HoverFill: =Self.Fill
                             OnSelect: |-
-                                =Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO})
+                                =Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO, tags: ThisItem.tags})
                             PressedFill: =Self.Fill
                             Text: =""
                             Width: =303

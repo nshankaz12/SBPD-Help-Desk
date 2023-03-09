@@ -13,7 +13,7 @@ compFilterMenu As CanvasComponent:
     IconSize: =If(App.Height > 560, 40, 30)
     NewHeight: =If(compFilterMenu.CheckAdmin && App.ActiveScreen.Name = "MyTickets", If(App.Height > 560, 400, 320), If(compFilterMenu.CheckAdmin, If(App.Height > 560, 250, 210), 150))
     OffColor: =ColorScheme.offColor
-    OnReset: =Reset(RadioTickets); Reset(DropdownStatus); Reset(DropdownTag)
+    OnReset: =Reset(RadioTickets); Reset(DropdownStatus); Reset(DropdownTag); compFilterMenu.CloseFilter()
     OpenFilter: =Set(varFilterVisible, true)
     PrimaryColor: =ColorScheme.primary
     SecondaryColor: =ColorScheme.secondary
@@ -57,14 +57,17 @@ compFilterMenu As CanvasComponent:
                 ZIndex: =1
 
             ResetIcon As icon.Reset:
-                Height: =compFilterMenu.IconSize * 0.90
-                Icon: =Icon.Reset
+                Color: =compFilterMenu.OffColor
+                Height: =compFilterMenu.IconSize * 0.80
+                Icon: =Icon.Reload
                 OnSelect: =Reset(RadioTickets); Reset(DropdownStatus); Reset(DropdownTag)
                 Width: =compFilterMenu.IconSize
                 X: =LabelTitle.Width / 2
+                Y: =(LabelTitle.Height - Self.Height) / 2
                 ZIndex: =2
 
             CancelIcon As icon.Cancel:
+                Color: =compFilterMenu.OffColor
                 Height: =compFilterMenu.IconSize
                 Icon: =Icon.Cancel
                 OnSelect: =compFilterMenu.CloseFilter()
@@ -107,6 +110,7 @@ compFilterMenu As CanvasComponent:
                 ZIndex: =2
 
             RadioTickets As radio:
+                Color: =Color.White
                 Default: ="My Tickets"
                 Height: =Parent.Height - LabelTickets.Height - Separator_1.Height
                 Items: =["My Tickets", "Assigned Tickets"]
@@ -116,14 +120,6 @@ compFilterMenu As CanvasComponent:
                 Width: =Parent.Width
                 Y: =Separator_1.Y + Separator_1.Height
                 ZIndex: =3
-
-            ResetIcon_1 As icon.Reset:
-                Height: =compFilterMenu.IconSize * 0.90
-                Icon: =Icon.Reset
-                OnSelect: =Reset(RadioTickets);
-                Width: =compFilterMenu.IconSize
-                X: =LabelTickets.Width / 2
-                ZIndex: =4
 
         StatusSelection As groupContainer.manualLayoutContainer:
             FillPortions: =0
@@ -165,14 +161,6 @@ compFilterMenu As CanvasComponent:
                 Y: =Separator_2.Y + Separator_2.Height + 10
                 ZIndex: =3
 
-            ResetIcon_2 As icon.Reset:
-                Height: =compFilterMenu.IconSize * 0.90
-                Icon: =Icon.Reset
-                OnSelect: =Reset(DropdownStatus);
-                Width: =compFilterMenu.IconSize
-                X: =LabelStatus.Width / 2
-                ZIndex: =4
-
         TagSelection As groupContainer.manualLayoutContainer:
             Height: =If(App.ActiveScreen.Name = "MyTickets" && compFilterMenu.CheckAdmin, Parent.Height - FilterHeader.Height - TicketsSelection.Height, Parent.Height - FilterHeader.Height)
             LayoutMinHeight: =If(App.Height > 560, 100, 80)
@@ -183,6 +171,7 @@ compFilterMenu As CanvasComponent:
             ZIndex: =4
 
             LabelTag As label:
+                Color: =Color.White
                 Fill: =compFilterMenu.PrimaryColor
                 FontWeight: =FontWeight.Semibold
                 Height: =compFilterMenu.IconSize
@@ -200,9 +189,9 @@ compFilterMenu As CanvasComponent:
                 ZIndex: =2
 
             DropdownTag As dropdown:
-                AllowEmptySelection: =true
                 ChevronBackground: =compFilterMenu.PrimaryColor
-                Default: =
+                Color: =Color.White
+                Default: =""
                 Fill: =compFilterMenu.BackgroundColor
                 Height: =compFilterMenu.IconSize
                 Items: =compFilterMenu.TagItems
@@ -212,15 +201,8 @@ compFilterMenu As CanvasComponent:
                 Y: =Separator_3.Y + Separator_3.Height + 10
                 ZIndex: =3
 
-            ResetIcon_3 As icon.Reset:
-                Height: =compFilterMenu.IconSize * 0.90
-                Icon: =Icon.Reset
-                OnSelect: =Reset(DropdownTag)
-                Width: =compFilterMenu.IconSize
-                X: =LabelTag.Width / 2
-                ZIndex: =4
-
     FilterIcon As icon.FilterFlat:
+        Color: =compFilterMenu.SecondaryColor
         Height: =compFilterMenu.FilterIconSize
         Icon: =If(!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Tickets"), Icon.FilterFlatFilled, Icon.FilterFlat)
         OnSelect: =compFilterMenu.OpenFilter()
