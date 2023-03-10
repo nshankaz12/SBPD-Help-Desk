@@ -603,7 +603,7 @@
 
                 SingleticketInfoActivityHistoryContainer_2 As groupContainer.horizontalAutoLayoutContainer:
                     FillPortions: =2
-                    Height: =Parent.Height //200
+                    Height: =Parent.Height
                     LayoutDirection: =LayoutDirection.Vertical
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
@@ -969,7 +969,7 @@
                                 LayoutMinWidth: =320
                                 LoadingSpinner: =LoadingSpinner.Data
                                 TemplateSize: =50
-                                Visible: =//If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
                                 Width: =408
                                 X: =96
                                 Y: =157

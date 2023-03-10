@@ -556,17 +556,16 @@
                             
                             ForAll(
                                 AttachmentControl.Attachments,
-                                'UploadFile(s)'.Run(
-                                    recID,
+                                AttachFiles.Run(
+                                    recID, 
                                     {
-                                        file: {
+                                        file:{
                                             contentBytes: Value,
                                             name: Name
                                         }
                                     }
                                 )
                             );
-                            
                             Reset(TextInput3);
                             Reset(Dropdown5);
                             Reset(TextInput5);
