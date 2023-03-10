@@ -612,6 +612,7 @@
                     ZIndex: =1
 
                     Container18_2 As groupContainer.manualLayoutContainer:
+                        FillPortions: =0
                         Height: =Parent.Height //200
                         LayoutMinHeight: =100
                         LayoutMinWidth: =250
@@ -933,14 +934,11 @@
                             Height: =Parent.Height
                             LayoutDirection: =LayoutDirection.Vertical
                             LayoutMode: =LayoutMode.Auto
-                            LayoutOverflowY: =LayoutOverflow.Scroll
-                            Width: =890
-                            X: =21
-                            Y: =12
+                            PaddingLeft: =10
+                            Width: =Parent.Width
                             ZIndex: =14
 
                             Title_label_3 As label:
-                                AlignInContainer: =AlignInContainer.Start
                                 Font: =Font.Georgia
                                 Height: =70
                                 Size: =24
@@ -949,26 +947,40 @@
                                 X: =32
                                 ZIndex: =1
 
-                            AttachmentControl_3 As attachments:
-                                BorderColor: =Color.Black
-                                BorderThickness: =5
-                                DisabledBorderColor: =RGBA(0, 0, 0, 1)
-                                DisplayMode: =DisplayMode.View
-                                Fill: =RGBA(192, 192, 192, 0.5)
-                                Font: =Font.Georgia
-                                Height: =42
-                                IsInDataCard: =true
-                                Items: =
-                                MaxAttachments: =10
-                                PaddingBottom: =5
-                                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                                PaddingRight: =5
-                                PaddingTop: =5
-                                Visible: =true //If(IsEmpty(AttachmentControl_1.Attachments), false, true)
-                                Width: =249
-                                X: =32
-                                Y: =70
+                            Label21 As label:
+                                Text: ="Attachments"
                                 ZIndex: =2
+
+                            Label25 As label:
+                                Text: ="No Attachments Found."
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), true, false)
+                                Width: |
+                                    =300
+                                ZIndex: =3
+
+                            Gallery5 As gallery.variableTemplateHeightGallery:
+                                BorderThickness: =1
+                                DelayItemLoading: =true
+                                FillPortions: =0
+                                Height: =200
+                                Items: =Filter('Ticket Attachments', ticketID=ticket)
+                                Layout: =Layout.Vertical
+                                LayoutMinHeight: =287
+                                LayoutMinWidth: =320
+                                LoadingSpinner: =LoadingSpinner.Data
+                                TemplateSize: =50
+                                Visible: =//If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
+                                Width: =408
+                                X: =96
+                                Y: =157
+                                ZIndex: =4
+
+                                HtmlText3 As htmlViewer:
+                                    HtmlText: ="<a href='" & ThisItem.'Link to item' & "'>" & ThisItem.'File name with extension' & "</a>" 
+                                    OnSelect: =Select(Parent)
+                                    Width: =891
+                                    Y: =10
+                                    ZIndex: =1
 
                             Description_label_4 As label:
                                 Align: =Align.Center
@@ -978,7 +990,7 @@
                                 Text: |-
                                     ="Description:"
                                 Width: =127
-                                ZIndex: =3
+                                ZIndex: =5
 
                             Label18_4 As label:
                                 AutoHeight: =true
@@ -990,7 +1002,7 @@
                                 Width: =752
                                 X: =127
                                 Y: =11
-                                ZIndex: =4
+                                ZIndex: =6
 
                             Label_above_comments_2 As label:
                                 Align: =Align.Center
@@ -1001,15 +1013,16 @@
                                 Size: =20
                                 Text: ="Comments"
                                 Width: =302
-                                X: =286
+                                X: =100
                                 Y: =267
-                                ZIndex: =5
+                                ZIndex: =7
 
                             Container18_3 As groupContainer.manualLayoutContainer:
+                                AlignInContainer: =AlignInContainer.SetByContainer
                                 LayoutMinHeight: =100
                                 LayoutMinWidth: =250
                                 Width: =Parent.Width
-                                ZIndex: =6
+                                ZIndex: =8
 
                                 TextInput2_4 As text:
                                     Default: =
@@ -1119,7 +1132,7 @@
                                     Layout: =Layout.Vertical
                                     TabIndex: =1
                                     TemplateSize: =184
-                                    Width: =911
+                                    Width: =Parent.Width
                                     ZIndex: =6
 
                                     Title3_4 As label:
@@ -1232,10 +1245,11 @@
                                         ZIndex: =7
 
                             ContainerforCommentsOnly As groupContainer.manualLayoutContainer:
+                                AlignInContainer: =AlignInContainer.SetByContainer
                                 LayoutMinHeight: =100
                                 LayoutMinWidth: =250
                                 Visible: =false
-                                ZIndex: =7
+                                ZIndex: =9
 
                                 Close_Ticket_Button_3 As button:
                                     OnSelect: |-
@@ -1618,18 +1632,6 @@
                             Y: =313
                             ZIndex: =14
 
-                        Reporter_value_10 As label:
-                            Align: =Align.Center
-                            DisplayMode: =DisplayMode.View
-                            Font: =Font.Georgia
-                            Height: =58
-                            Size: =16
-                            Text: =tags
-                            Width: =248
-                            X: =180
-                            Y: =370
-                            ZIndex: =15
-
                         Reporter_value_11 As label:
                             Align: =Align.Center
                             DisplayMode: =DisplayMode.View
@@ -1648,11 +1650,42 @@
                             Height: =57
                             Size: =16
                             Text: |-
-                                ="Asignee:"
+                                ="Assignee:"
                             Width: =127
                             X: =32
                             Y: =199
                             ZIndex: =17
+
+                        ComboBox1_1 As combobox:
+                            DefaultSelectedItems: =If(tags = "", Blank(), Filter(Tags, name in tags))
+                            DisplayFields: =["name"]
+                            Height: =37
+                            Items: =Tags
+                            SearchFields: =["name"]
+                            SearchItems: =Search(Tags,ComboBox1_1.SearchText,"name")
+                            Width: =254
+                            X: =159
+                            Y: =379
+                            ZIndex: =18
+
+                        Button7_3 As button:
+                            OnSelect: |-
+                                =Patch(Tickets_1, LookUp(Tickets_1, id = ticket), {tags: Label4_1.Text});
+                                //Patch(Tickets_1,ticketRec, {addAssignees: Label4_1.Text});
+                                Refresh(Tickets_1)
+                            Text: ="Save"
+                            X: =224
+                            Y: =501
+                            ZIndex: =19
+
+                        Label4_1 As label:
+                            Height: =0
+                            Text: =Concat(ComboBox1_1.SelectedItems, Concatenate(name, ","))
+                            Visible: =false
+                            Width: =0
+                            X: =40
+                            Y: =40
+                            ZIndex: =20
 
     Rectangle1_6 As rectangle:
         Fill: =RGBA(56, 96, 178, 0.5)

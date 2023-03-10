@@ -511,10 +511,6 @@
 
     compWebMenu_4 As compWebMenu:
         Height: =Parent.Height
-        OnReset: |-
-            =Set(showMenu, compWebMenu_4.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_4.ExpandMenu)
         Visible: ='Log of All Tickets - Admin Tech'.Size>1
         Width: =If(!compWebMenu_4.ExpandMenu,55, 200)
         ZIndex: =20

@@ -760,10 +760,6 @@
 
     compWebMenu_3 As compWebMenu:
         Height: =Parent.Height
-        OnReset: |-
-            =Set(showMenu, compWebMenu_3.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_3.ExpandMenu)
         Visible: =MyTickets.Size>1
         Width: =If(!compWebMenu_3.ExpandMenu, 55, 165)
         ZIndex: =22

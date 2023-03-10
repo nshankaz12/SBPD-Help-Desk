@@ -618,21 +618,8 @@
                         LayoutMinWidth: =640
                         Width: =Parent.Width
 
-    Label25 As label:
-        Height: =41
-        Text: |-
-            =Concatenate("Selected Category: ", FirstCategory) //test to see if category was passed to screen from Category Select
-        Width: =275
-        X: =111
-        Y: =78
-        ZIndex: =2
-
     compWebMenu_2 As compWebMenu:
         Height: =Parent.Height
-        OnReset: |-
-            =Set(showMenu, compWebMenu_2.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_2.ExpandMenu)
         Visible: ='Create A Ticket'.Size>1
         Width: =If(!compWebMenu_2.ExpandMenu, 55, 160)
         ZIndex: =3
