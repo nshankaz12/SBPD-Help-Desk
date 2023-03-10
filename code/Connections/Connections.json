@@ -33,47 +33,6 @@
     "dependents": [],
     "id": "09b1aa80-ea59-4eaf-875c-de5761158dbf"
   },
-  "109414ea-a611-4668-864a-84a79ed77b0d": {
-    "connectionParameters": {
-      "logicAppHostType": "ARM",
-      "workFlowCallbackUri": "https://prod-174.westus.logic.azure.com:443/workflows/270fab893eba4e5ab6ba8e38980cbdad/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=-Yzgpfc2aZwvzIo1sACP1KkKcoKtCoc8rxIBD2J_Rxg",
-      "workflowEndpoint": "/subscriptions/3a3c8f3a-b051-4389-add3-35f0cadf681c/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-99a8c69526d04263b50511ba63eececb/providers/Microsoft.Logic/workflows/515e44a0-2e95-4eef-a882-4ed5c959da22",
-      "workflowName": "515e44a0-2e95-4eef-a882-4ed5c959da22",
-      "workflowPath": "/subscriptions/3a3c8f3a-b051-4389-add3-35f0cadf681c/resourceGroups/ce8a2002448f4f5882b1d86f73e3afdd-99a8c69526d04263b50511ba63eececb/providers/Microsoft.Logic/workflows/515e44a0-2e95-4eef-a882-4ed5c959da22"
-    },
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "f7aef8e6-faea-42d9-be4a-90b317bfa5b1": {
-          "value": "shared_sharepointonline"
-        },
-        "workflowEntityId": {},
-        "workflowName": {
-          "value": "515e44a0-2e95-4eef-a882-4ed5c959da22"
-        }
-      },
-      "parameterHintsV2": {
-        "shared_sharepointonline": {
-          "value": "f7aef8e6-faea-42d9-be4a-90b317bfa5b1"
-        },
-        "workflowEntityId": {},
-        "workflowName": {
-          "value": "515e44a0-2e95-4eef-a882-4ed5c959da22"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "AttachFiles"
-    ],
-    "dependencies": {
-      "shared_sharepointonline": "f7aef8e6-faea-42d9-be4a-90b317bfa5b1"
-    },
-    "dependents": [],
-    "id": "109414ea-a611-4668-864a-84a79ed77b0d"
-  },
   "6473c741-1f4a-4775-89a7-71303b3885d0": {
     "connectionParameters": {
       "database": "cs4961stu01",
@@ -127,16 +86,7 @@
       "Locations"
     ],
     "dependencies": {},
-    "dependents": [
-      "d44fdecc-b956-477f-8a4e-509378bf62df",
-      "4e8d8a85-54c9-4fdc-822d-e468edd6cb2c",
-      "479d8cfd-0f43-498d-92a3-dec2c6ecb6a5",
-      "71fc2de0-f3fb-4674-9df5-18cf47e5491f",
-      "d6812297-1eaa-4542-9821-f5b153b32ec3",
-      "9b59efce-623e-4b97-8102-93b0dad21f2f",
-      "2e543f57-1a3c-4b99-9c56-16b15d293cd6",
-      "dd1b7737-b72b-46a5-9aae-c2ec3626b7e2"
-    ],
+    "dependents": [],
     "id": "6473c741-1f4a-4775-89a7-71303b3885d0"
   },
   "f7aef8e6-faea-42d9-be4a-90b317bfa5b1": {
