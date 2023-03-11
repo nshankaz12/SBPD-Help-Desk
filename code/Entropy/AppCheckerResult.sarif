@@ -367,285 +367,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Create A Ticket'.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 5,
-                  "charOffset": 96,
-                  "snippet": {
-                    "text": "email"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "email"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1,
-                  "charOffset": 102,
-                  "snippet": {
-                    "text": "="
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Error",
-              "Text"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 118,
-                  "snippet": {
-                    "text": "id"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "id"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 42,
-                  "charOffset": 79,
-                  "snippet": {
-                    "text": "LookUp(userInfo, email = User().Email, id)"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 55,
-                  "charOffset": 67,
-                  "snippet": {
-                    "text": "Set(userID, LookUp(userInfo, email = User().Email, id))"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.Button7_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.Button7_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 163,
-                  "charOffset": 459,
-                  "snippet": {
-                    "text": "AttachFiles.Run(\r\n        recID, \r\n        {\r\n            file:{\r\n                contentBytes: Value,\r\n                name: Name\r\n            }\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.Button7_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Run",
-              "AttachFiles"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.Button7_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.Button7_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 215,
-                  "charOffset": 410,
-                  "snippet": {
-                    "text": "ForAll(\r\n    AttachmentControl.Attachments,\r\n    AttachFiles.Run(\r\n        recID, \r\n        {\r\n            file:{\r\n                contentBytes: Value,\r\n                name: Name\r\n            }\r\n        }\r\n    )\r\n)"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.Button7_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ForAll"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Single Notification Info'.'nav-Ticket_3'.OnSelect"
                 }
               ],
@@ -1405,7 +1126,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 7
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1445,7 +1166,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 5
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1486,7 +1207,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 7
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1527,7 +1248,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 7
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1568,7 +1289,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 7
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1605,7 +1326,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 6
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1841,7 +1562,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 7
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1878,7 +1599,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 6
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -2588,7 +2309,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 7
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -2629,7 +2350,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 7
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -2669,7 +2390,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 5
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -2750,6 +2471,204 @@
           },
           "ruleId": "app-SuggestRemoteExecutionHint-InOpRhs",
           "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.OnVisible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.OnVisible",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 5,
+                  "charOffset": 96,
+                  "snippet": {
+                    "text": "email"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnVisible",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "email"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.OnVisible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.OnVisible",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 102,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnVisible",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Error",
+              "Text"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.OnVisible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.OnVisible",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 118,
+                  "snippet": {
+                    "text": "id"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnVisible",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "id"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.OnVisible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.OnVisible",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 42,
+                  "charOffset": 79,
+                  "snippet": {
+                    "text": "LookUp(userInfo, email = User().Email, id)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnVisible",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "LookUp"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.OnVisible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.OnVisible",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 55,
+                  "charOffset": 67,
+                  "snippet": {
+                    "text": "Set(userID, LookUp(userInfo, email = User().Email, id))"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnVisible",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -3116,306 +3035,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "MainCategoryBody",
-                "type": "MainCategoryBody.Gallery6"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "MainCategoryBody",
-                "type": "MainCategoryBody.Gallery6"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compWebMenu.icoHamburgerMenu.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compWebMenu.icoHamburgerMenu.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "compWebMenu",
-                "type": "compWebMenu.icoHamburgerMenu"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compWebMenu.icoHamburgerMenu.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compWebMenu.icoHamburgerMenu.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "compWebMenu",
-                "type": "compWebMenu.icoHamburgerMenu"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compWebMenu.xIcon.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compWebMenu.xIcon.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "compWebMenu",
-                "type": "compWebMenu.xIcon"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compWebMenu.xIcon.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compWebMenu.xIcon.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "compWebMenu",
-                "type": "compWebMenu.xIcon"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compWebMenu.MenuOpened.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compWebMenu.MenuOpened.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "compWebMenu",
-                "type": "compWebMenu.MenuOpened"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compWebMenu.MenuOpened.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compWebMenu.MenuOpened.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "compWebMenu",
-                "type": "compWebMenu.MenuOpened"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compWebMenu.MenuClosed.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compWebMenu.MenuClosed.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "compWebMenu",
-                "type": "compWebMenu.MenuClosed"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compWebMenu.MenuClosed.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compWebMenu.MenuClosed.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "compWebMenu",
-                "type": "compWebMenu.MenuClosed"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "compFilterMenu.FilterIcon.AccessibleLabel"
                 }
               ],
@@ -3680,6 +3299,66 @@
           },
           "ruleId": "acc-AccessibleLabelNeeded",
           "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "MainCategoryBody",
+                "type": "MainCategoryBody.Gallery6"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "MainCategoryBody",
+                "type": "MainCategoryBody.Gallery6"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -4076,19 +3755,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery.AccessibleLabel"
+                  "fullyQualifiedName": "compWebMenu.icoHamburgerMenu.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery.AccessibleLabel",
+                  "fullyQualifiedName": "compWebMenu.icoHamburgerMenu.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery"
+                "module": "compWebMenu",
+                "type": "compWebMenu.icoHamburgerMenu"
               }
             }
           ],
@@ -4106,19 +3785,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery.TabIndex"
+                  "fullyQualifiedName": "compWebMenu.icoHamburgerMenu.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery.TabIndex",
+                  "fullyQualifiedName": "compWebMenu.icoHamburgerMenu.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery"
+                "module": "compWebMenu",
+                "type": "compWebMenu.icoHamburgerMenu"
               }
             }
           ],
@@ -4136,19 +3815,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4.AccessibleLabel"
+                  "fullyQualifiedName": "compWebMenu.xIcon.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4.AccessibleLabel",
+                  "fullyQualifiedName": "compWebMenu.xIcon.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4"
+                "module": "compWebMenu",
+                "type": "compWebMenu.xIcon"
               }
             }
           ],
@@ -4166,19 +3845,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4.TabIndex"
+                  "fullyQualifiedName": "compWebMenu.xIcon.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4.TabIndex",
+                  "fullyQualifiedName": "compWebMenu.xIcon.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4"
+                "module": "compWebMenu",
+                "type": "compWebMenu.xIcon"
               }
             }
           ],
@@ -4196,19 +3875,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery.AccessibleLabel"
+                  "fullyQualifiedName": "compWebMenu.MenuOpened.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery.AccessibleLabel",
+                  "fullyQualifiedName": "compWebMenu.MenuOpened.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery"
+                "module": "compWebMenu",
+                "type": "compWebMenu.MenuOpened"
               }
             }
           ],
@@ -4226,19 +3905,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery.TabIndex"
+                  "fullyQualifiedName": "compWebMenu.MenuOpened.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery.TabIndex",
+                  "fullyQualifiedName": "compWebMenu.MenuOpened.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery"
+                "module": "compWebMenu",
+                "type": "compWebMenu.MenuOpened"
               }
             }
           ],
@@ -4256,19 +3935,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4.AccessibleLabel"
+                  "fullyQualifiedName": "compWebMenu.MenuClosed.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4.AccessibleLabel",
+                  "fullyQualifiedName": "compWebMenu.MenuClosed.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4"
+                "module": "compWebMenu",
+                "type": "compWebMenu.MenuClosed"
               }
             }
           ],
@@ -4286,19 +3965,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4.TabIndex"
+                  "fullyQualifiedName": "compWebMenu.MenuClosed.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4.TabIndex",
+                  "fullyQualifiedName": "compWebMenu.MenuClosed.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4"
+                "module": "compWebMenu",
+                "type": "compWebMenu.MenuClosed"
               }
             }
           ],
@@ -4310,366 +3989,6 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.Dropdown5.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.Dropdown5.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.Dropdown5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.TextInput3.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.TextInput3.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.TextInput3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_2.TextInput4.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_2.TextInput4.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_2.TextInput4"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.TextInput5.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.TextInput5.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.TextInput5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.Dropdown1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.Dropdown1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.Dropdown1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.AttachmentControl.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.AttachmentControl.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.AttachmentControl"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
         },
         {
           "locations": [
@@ -8996,6 +8315,606 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketMobileNavLinksContainer.CreateATicketMobileNavButtonGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.NotificationsDropdownContainer_3.UserNotificationsDropdownSymbolIcon_4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer1.CreateATicketNavContainer.CreateATicketNavLinkGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMobileHeaderContainer.MoblieHamburgerMenu_4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.Icon11"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketHeaderContainer2.NotificationsDropdownContent_2.NotificationsButtonContainer_2.UserNotificationsDropdownIcon_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.Dropdown5.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.Dropdown5.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.Dropdown5"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.TextInput3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.TextInput3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container2.TextInput3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_2.TextInput4.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_2.TextInput4.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_2.TextInput4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container3.Dropdown7"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.TextInput5.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.TextInput5.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.TextInput5"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.Dropdown1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.Dropdown1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container4.Dropdown1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.AttachmentControl.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.AttachmentControl.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer.CreateATicketVerticalLayoutContainer.CreateATicketMainContentContainer.Container19_3.AttachmentControl"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Category Select'.ScreenContainer.HomeHeaderContainer1_2.NotificationsDropdownContainer_4.UserNotificationsDropdownSymbolIcon_5.AccessibleLabel"
                 }
               ],
@@ -9566,36 +9485,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.userID"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.userID",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "userID",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 13
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App.SelectedText"
                 }
               ],
@@ -9637,6 +9526,36 @@
               },
               "properties": {
                 "member": "varItems",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 13
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.userID"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.userID",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "userID",
                 "module": "App",
                 "type": "App"
               }
@@ -10492,6 +10411,20 @@
               }
             },
             {
+              "id": "app-ErrUnknownNamespaceFunction",
+              "messageStrings": {
+                "issue": {
+                  "text": "'{0}' is an unknown or unsupported function in namespace '{1}'."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
               "id": "app-ErrInvalidArgs-Func",
               "messageStrings": {
                 "issue": {
@@ -10517,20 +10450,6 @@
                 "howToFix": [
                   "Look at places where you use a context variable and make sure that the type (e.g., text, number, date, record, table) is compatible."
                 ],
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
-              "id": "app-ErrUnknownNamespaceFunction",
-              "messageStrings": {
-                "issue": {
-                  "text": "'{0}' is an unknown or unsupported function in namespace '{1}'."
-                }
-              },
-              "properties": {
-                "componentType": "app",
                 "level": "High",
                 "primaryCategory": "formula",
                 "whyFix": ""
