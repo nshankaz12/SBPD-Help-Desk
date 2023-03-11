@@ -1,0 +1,444 @@
+"'Create A Ticket (Redesign)' As screen":
+
+    Form1 As form:
+        DataSource: =Tickets_1
+        DefaultMode: =FormMode.New
+        Height: =707
+        Width: =Parent.Width
+        Y: =40
+        ZIndex: =1
+
+        title_DataCard1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="title"
+            Default: =ThisItem.title
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"title")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height/5 + 30
+            MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "title")
+            Required: =false
+            Update: =
+            Width: =433
+            WidthFit: =true
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey1_1 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage1_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =TextInput3_1.Y + TextInput3_1.Height
+                ZIndex: =3
+
+            StarVisible1_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey1_1.Height
+                Text: ="*"
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey1_1.Y
+                ZIndex: =4
+
+            TextInput3_1 As text:
+                Default: =""
+                Height: =47
+                HintText: ="Please Enter A Title"
+                Width: =373
+                X: =30
+                Y: =44
+                ZIndex: =5
+
+        mainCategory_DataCard3 As typedDataCard.numberEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="mainCategory"
+            Default: =ThisItem.mainCategory
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"mainCategory")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height/5 + 30
+            Required: =true
+            Update: =
+            Width: =433
+            WidthFit: =true
+            X: =1
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey8 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: ="Category"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage8 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =Dropdown5_2.Y + Dropdown5_2.Height
+                ZIndex: =3
+
+            StarVisible8 As label:
+                Align: =Align.Center
+                Height: =DataCardKey8.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey8.Y
+                ZIndex: =4
+
+            Dropdown5_2 As dropdown:
+                Items: =Filter(Category, parentId = Blank())
+                Width: =373
+                X: =30
+                Y: =44
+                ZIndex: =5
+
+        category_DataCard1 As typedDataCard.numberEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="category"
+            Default: =ThisItem.category
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"category")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height/5 + 30
+            Required: =true
+            Update: =
+            Width: =433
+            WidthFit: =true
+            X: =2
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey3 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: ="Sub Category"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage3 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =Dropdown5_1.Y + Dropdown5_1.Height
+                ZIndex: =3
+
+            StarVisible3 As label:
+                Align: =Align.Center
+                Height: =DataCardKey3.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey3.Y
+                ZIndex: =4
+
+            Dropdown5_1 As dropdown:
+                Items: =Filter(Category, parentId = Dropdown5_2.Selected.id)
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =44
+                ZIndex: =5
+
+        subCategory_DataCard1 As typedDataCard.numberEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="subCategory"
+            Default: =ThisItem.subCategory
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"subCategory")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height/5 + 30
+            Required: =false
+            Update: =
+            Width: =433
+            WidthFit: =true
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey4 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage4 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =Dropdown7_2.Y + Dropdown7_2.Height
+                ZIndex: =3
+
+            StarVisible4 As label:
+                Align: =Align.Center
+                Height: =DataCardKey4.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey4.Y
+                ZIndex: =4
+
+            Dropdown7_2 As dropdown:
+                Items: =Filter(Category, parentId = Dropdown5_1.Selected.id)
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =44
+                ZIndex: =5
+
+        description_DataCard1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="description"
+            Default: =ThisItem.description
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"description")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height/5 + 30
+            MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "description")
+            Required: =false
+            Update: =
+            Width: =433
+            WidthFit: =true
+            X: =1
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey5 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage5 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =TextInput5_1.Y + TextInput5_1.Height
+                ZIndex: =3
+
+            StarVisible5 As label:
+                Align: =Align.Center
+                Height: =DataCardKey5.Height
+                Text: ="*"
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey5.Y
+                ZIndex: =4
+
+            TextInput5_1 As text:
+                Default: =""
+                Height: =89
+                HintText: ="Please Describe Your Issue"
+                Mode: =TextMode.MultiLine
+                Size: =15
+                Width: =373
+                X: =30
+                Y: =40
+                ZIndex: =5
+
+        locationId_DataCard1 As typedDataCard.numberEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="locationId"
+            Default: =ThisItem.locationId
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"locationId")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height/5 + 30
+            Required: =false
+            Update: =//Value(DataCardValue6.Text)
+            Width: =433
+            WidthFit: =true
+            X: =2
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey6 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: ="Location"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage6 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =Dropdown1_1.Y + Dropdown1_1.Height
+                ZIndex: =3
+
+            StarVisible6 As label:
+                Align: =Align.Center
+                Height: =DataCardKey6.Height
+                Text: ="*"
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey6.Y
+                ZIndex: =4
+
+            Dropdown1_1 As dropdown:
+                Height: =41
+                Items: =Locations
+                Width: =373
+                X: =30
+                Y: =44
+                ZIndex: =5
+
+        DataCard1 As typedDataCard.blankCard:
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height/5 + 30
+            Width: =433
+            WidthFit: =true
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            AttachmentControl_3 As attachments:
+                BorderColor: =Color.Black
+                Height: =129
+                IsInDataCard: =true
+                Items: =
+                MaxAttachments: =10
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Width: =346
+                X: =28
+                Y: =36
+                ZIndex: =1
+
+    Button7_4 As button:
+        Height: =62
+        OnSelect: |
+            =Set(
+                recID,
+                Patch(
+                    Tickets_1,
+                    Defaults(Tickets_1),
+                    {
+                        title: TextInput3_1.Text,
+                        description: TextInput5_1.Text,
+                        creatorId: userData.id,
+                        mainCategory: Dropdown5_2.Selected.id,
+                        category: Dropdown5_1.Selected.id,
+                        subCategory: Dropdown7_2.Selected.id,
+                        status: "open",
+                        locationId: Dropdown1_1.Selected.id
+                    }
+                ).id
+            );
+            
+            ForAll(
+                AttachmentControl.Attachments,
+                AttachFiles.Run(
+                    recID, 
+                    {
+                        file:{
+                            contentBytes: Value,
+                            name: Name
+                        }
+                    }
+                )
+            );
+            /*Reset(TextInput3);
+            Reset(Dropdown5);
+            Reset(TextInput5);
+            Reset(Dropdown7);
+            Reset(Dropdown7_1);
+            Reset(AttachmentControl);
+            */
+            
+            Office365Outlook.SendEmailV2(
+                userData.email,
+                "Ticket has been Created Successfully",
+                "This ticket has been created. We will have our technicians take a look at the issue and deliver a solution"
+            );
+            
+            Navigate(MyTickets);
+        Text: ="Submit"
+        Width: =225
+        X: =510
+        Y: =483
+        ZIndex: =2
+
