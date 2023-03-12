@@ -1,0 +1,173 @@
+"'Admin Manager' As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+
+    AdminManagerContainer As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =1
+
+        HeaderContainer As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =130
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width
+            ZIndex: =2
+
+            compWebHeader_10 As compWebHeader_9:
+                Height: |
+                    =82
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                Width: =Parent.Width
+                ZIndex: =1
+
+            Label26 As label:
+                Align: =Align.Center
+                Color: =Color.White
+                Fill: =ColorScheme.primary
+                Size: =19
+                Text: ="Admin Manager"
+                Width: =Parent.Width
+                ZIndex: =2
+
+        MainSectionContainer As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =3
+
+            ButtonGallery_4 As gallery.galleryVertical:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                Height: =Parent.Height
+                Items: |-
+                    =Table(
+                        {
+                            MenuText: "All Tickets",
+                            MenuIcon: Icon.DocumentWithContent,
+                            ScreenToGoTo: 'Log of All Tickets - Admin Tech'
+                        },
+                        {
+                            MenuText: "Tag Manager",
+                            MenuIcon: Icon.Tag,
+                            ScreenToGoTo: 'Tag Manager'
+                        },
+                        {
+                            MenuText: "Alert Manager",
+                            MenuIcon: Icon.Bell,
+                            ScreenToGoTo: 'Alert Manager'
+                        },
+                        {
+                            MenuText: "Ticket Metrics",
+                            MenuIcon: Icon.Trending,
+                            ScreenToGoTo: 'Metrics - Admin Tech'
+                        },
+                        {
+                            MenuText: "Assign Role",
+                            MenuIcon: Icon.People,
+                            ScreenToGoTo: 'Assign Role - Admin'
+                        },
+                        {
+                            MenuText: "My Profile",
+                            MenuIcon: Icon.Person,
+                            ScreenToGoTo: 'User Profile + Info'
+                        }
+                    )
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =287
+                LayoutMinWidth: =320
+                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Category Select'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                ShowScrollbar: =false
+                TemplateSize: =200
+                Width: =Parent.Width
+                WrapCount: =Switch('Admin Manager'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
+                ZIndex: =1
+
+                HtmlText1_2 As htmlViewer:
+                    DisplayMode: =DisplayMode.View
+                    Height: =66.66666666666667
+                    HtmlText: |-
+                        ="<div style='box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
+                        -webkit-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
+                        -moz-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05); height:"&ButtonGalleryBackgroundButton_4.Height-11&"px; width:"&ButtonGalleryBackgroundButton_4.Width-11&"px; border-style:none; border-radius:10px'></div>"
+                    OnSelect: =Select(Parent)
+                    Width: =1
+                    ZIndex: =1
+
+                ButtonGalleryBackgroundButton_4 As button:
+                    BorderStyle: =BorderStyle.Dashed
+                    BorderThickness: =0
+                    Color: =ColorScheme.secondary
+                    Fill: =ColorScheme.secondary
+                    Height: =Parent.TemplateHeight - 50
+                    OnSelect: =Select(Parent)
+                    Text: =""
+                    Width: =Parent.TemplateWidth - 50
+                    X: =(Parent.TemplateWidth - Self.Width)/2
+                    Y: =(Parent.TemplateHeight - Self.Height)/2
+                    ZIndex: =2
+
+                ButtonGalleryNavLabel_2 As label:
+                    Align: =Align.Center
+                    Color: =ColorScheme.primary
+                    FontWeight: =FontWeight.Semibold
+                    OnSelect: =Select(Parent)
+                    Size: =15
+                    Text: =ThisItem.MenuText
+                    Width: =Parent.TemplateWidth
+                    Y: =ButtonGalleryNavIcon_4.Y+ButtonGalleryNavIcon_4.Height
+                    ZIndex: =3
+
+                ButtonGalleryNavIcon_4 As icon.Add:
+                    Color: =ColorScheme.primary
+                    Height: =Parent.TemplateHeight - 150
+                    Icon: =ThisItem.MenuIcon
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth 
+                    X: =(Parent.TemplateWidth-Self.Width)/2
+                    Y: =(ButtonGalleryBackgroundButton_4.Height-Self.Height)/2
+                    ZIndex: =4
+
+                Overlapbtn_5 As button:
+                    Fill: =RGBA(255, 255, 255, 0)
+                    Height: =ButtonGalleryBackgroundButton_4.Height
+                    HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
+                    OnSelect: =Select(Parent)
+                    PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
+                    Text: =""
+                    Width: =Parent.TemplateWidth - 50
+                    X: =(Parent.TemplateWidth - Self.Width)/2
+                    Y: =ButtonGalleryBackgroundButton_4.Y
+                    ZIndex: =5
+
+        FooterContainer As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =100
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Visible: =If('Admin Manager'.Size > 1, false, true)
+            ZIndex: =4
+
+            compMobileMenu_9 As compMobileMenu_8:
+                Height: =Parent.Height
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                Width: =Parent.Width
+
+    compWebMenu_7 As compWebMenu_6:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_7.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_7.ExpandMenu)
+        Visible: =If('Admin Manager'.Size > 1, true, false)
+        ZIndex: =2
+
