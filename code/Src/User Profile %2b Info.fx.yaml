@@ -139,7 +139,7 @@
     Label15 As label:
         Align: =Align.Center
         Height: =35
-        Text: =User().Email
+        Text: =LookUp(Users, email = User().Email, userRole)//User().Email
         Width: =471
         X: =447
         Y: =256

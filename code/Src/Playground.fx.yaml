@@ -1,84 +1,51 @@
 Playground As screen:
-    OnVisible: |
-        =Set(
-            userData,
-            {
-                firstName: LookUp(
-                    Users,
-                    email = User().Email,
-                    firstName
-                ),
-                lastName: LookUp(
-                    Users,
-                    email = User().Email,
-                    lastName
-                ),
-                email: User().Email,
-                role: LookUp(
-                    Users,
-                    email = User().Email,
-                    userRole
-                ),
-                id: LookUp(
-                    Users,
-                    email = User().Email,
-                    id
-                )
-            }
-        );
-        
-        ClearCollect(userInfo,GetUserDetails.Run(User().Email));
 
     "Gallery3 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
-        Height: =517
-        Items: =Tickets_1
+        Items: =Users
         Layout: =Layout.Vertical
         TemplatePadding: =0
         TemplateSize: =Min(160, Self.Height - 60)
-        Width: =473
-        X: =884
-        Y: =16
-        ZIndex: =9
+        X: =40
+        Y: =40
+        ZIndex: =1
 
-        Image9 As image:
+        Image3 As image:
             Height: =128
-            Image: |
-                =SampleImage
             OnSelect: =Select(Parent)
             Width: =128
             X: =16
             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
             ZIndex: =1
 
-        Title4 As label:
+        Title1 As label:
             Height: =Self.Size * 1.8
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
-            Text: =ThisItem.category
+            Text: =ThisItem.email
             VerticalAlign: =VerticalAlign.Top
-            Width: =Parent.TemplateWidth - Image9.Width - 104
-            X: =Image9.X + Image9.Width + 24
+            Width: =Parent.TemplateWidth - Image3.Width - 104
+            X: =Image3.X + Image3.Width + 24
             Y: =44
             ZIndex: =2
 
-        Subtitle3 As label:
+        Subtitle1 As label:
             Height: =Self.Size * 1.8
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
-            Text: =ThisItem.description
+            Text: =ThisItem.fullName
             VerticalAlign: =VerticalAlign.Top
-            Width: =Title4.Width
-            X: =Title4.X
-            Y: =Title4.Y + Title4.Height + 4
+            Width: =Title1.Width
+            X: =Title1.X
+            Y: =Title1.Y + Title1.Height + 4
             ZIndex: =3
 
-        NextArrow3 As icon.ChevronRight:
+        NextArrow1 As icon.ChevronRight:
             AccessibleLabel: =Self.Tooltip
             Height: =60
             Icon: =Icon.ChevronRight
@@ -94,273 +61,10 @@ Playground As screen:
             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
             ZIndex: =4
 
-        Separator3 As rectangle:
+        Separator1 As rectangle:
             Height: =1
             OnSelect: =Select(Parent)
             Width: =Parent.TemplateWidth
             Y: =Parent.TemplateHeight - 1
             ZIndex: =5
-
-    Button3 As button:
-        OnSelect: =
-        Text: ="Refresh"
-        X: =584
-        Y: =112
-        ZIndex: =12
-
-    DataTable2 As dataTable.datatable:
-        BorderStyle: =BorderStyle.Solid
-        DisplayMode: =DisplayMode.Edit
-        Fill: =RGBA(0, 0, 0, 0)
-        Height: =101
-        Items: =userInfo
-        Width: =708
-        X: =0
-        Y: =461
-        ZIndex: =13
-
-        email_Column1 As dataTableColumn.textualColumn:
-            AutoWidth: =false
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="email"
-            FieldName: ="email"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =1
-            Text: =ThisItem.email
-            Width: =216
-            X: =15
-            Y: =0
-            ZIndex: =6
-
-        firstName_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="firstName"
-            FieldName: ="firstName"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =2
-            Text: =ThisItem.firstName
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =7
-
-        lastName_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="lastName"
-            FieldName: ="lastName"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =3
-            Text: =ThisItem.lastName
-            Width: =100
-            X: =256
-            Y: =0
-            ZIndex: =8
-
-        id_Column3 As dataTableColumn.textualColumn:
-            AutoWidth: =false
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="id"
-            FieldName: ="id"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =4
-            Text: =ThisItem.id
-            Width: =44
-            X: =553
-            Y: =0
-            ZIndex: =9
-
-        userRole_Column1 As dataTableColumn.textualColumn:
-            AutoWidth: =false
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="userRole"
-            FieldName: ="userRole"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =5
-            Text: =ThisItem.userRole
-            Width: =141
-            X: =0
-            Y: =0
-            ZIndex: =10
-
-    Button6 As button:
-        Height: =58
-        OnSelect: |-
-            =//use this method to test for id of 4
-            //Set(CurrentTicketInfo,GetCurrentTickets.Run(4));
-            
-            //Otherwise, get the id for the current user
-            Set(CurrentTicketInfo,GetCurrentTickets.Run(LookUp(Users, email = User().Email, id)))
-        Text: ="Get All user Tickets"
-        Width: =191
-        X: =708
-        Y: =315
-        ZIndex: =14
-
-    DataTable3 As dataTable.datatable:
-        BorderStyle: =BorderStyle.Solid
-        DisplayMode: =DisplayMode.Edit
-        Fill: =RGBA(0, 0, 0, 0)
-        Height: =202
-        Items: =CurrentTicketInfo
-        Width: =708
-        X: =0
-        Y: =563
-        ZIndex: =15
-
-        assignedTO_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="assignedTO"
-            FieldName: ="assignedTO"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =4
-            Text: =ThisItem.assignedTO
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =13
-
-        title_Column2 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="title"
-            FieldName: ="title"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =5
-            Text: =ThisItem.title
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =14
-
-        creatorId_Column1 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="creatorId"
-            FieldName: ="creatorId"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =1
-            Text: =ThisItem.creatorId
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =15
-
-        status_Column2 As dataTableColumn.textualColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="status"
-            FieldName: ="status"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =6
-            Text: =ThisItem.status
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =16
-
-    Container1 As groupContainer.manualLayoutContainer:
-        Width: =708
-        Y: =244
-        ZIndex: =16
-
-        alrt_header As label:
-            Align: =Align.Center
-            Fill: =RGBA(203, 102, 102, 1)
-            FontWeight: =FontWeight.Bold
-            Height: =38
-            Text: ="Alert Message"
-            Width: =708
-            ZIndex: =2
-
-        Button8 As button:
-            Height: =39
-            OnSelect: =Set(AlertsData, GetLiveAlerts.Run(1))
-            Text: ="Get latest Alert"
-            X: =274
-            Y: =159
-            ZIndex: =3
-
-    DataTable4 As dataTable.datatable:
-        BorderStyle: =BorderStyle.Solid
-        DisplayMode: =DisplayMode.Edit
-        Fill: =RGBA(0, 0, 0, 0)
-        Height: =134
-        Items: =AlertsData
-        Width: =696
-        X: =0
-        Y: =286
-        ZIndex: =17
-
-        creatorId_Column3 As dataTableColumn.textualColumn:
-            AutoWidth: =false
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="creatorId"
-            FieldName: ="creatorId"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =1
-            Text: =ThisItem.creatorId
-            Width: =43
-            X: =0
-            Y: =0
-            ZIndex: =17
-
-        messageText_Column1 As dataTableColumn.textualColumn:
-            AutoWidth: =false
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="messageText"
-            FieldName: ="messageText"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =2
-            Text: =ThisItem.messageText
-            Width: =835
-            X: =-139
-            Y: =0
-            ZIndex: =18
-
-    Button9 As button:
-        OnSelect: |
-            =INSERT_NEW_TICKET.Run(2, 10, "Hello", 2, "App");
-            // INSERT_NEW_TICKET.Run(categoryId, creatorId, description, subCategoryId, title);
-        Text: |-
-            ="create-ticket
-            "
-        X: =40
-        Y: =40
-        ZIndex: =18
-
-    compMobileMenu_1 As compMobileMenu:
-        Y: =648
-        ZIndex: =19
-
-    compAttachFile_1 As compAttachFile:
-        Height: =compAttachFile_1.PHeight
-        Width: =compAttachFile_1.PWidth
-        X: =726
-        ZIndex: =20
-
-    Button16 As button:
-        OnSelect: =NewAttachmentsFlow.Run(JSON(compAttachFile_1.Attachments),6)
-        Text: ="Upload Files"
-        X: =682
-        Y: =40
-        ZIndex: =21
 
