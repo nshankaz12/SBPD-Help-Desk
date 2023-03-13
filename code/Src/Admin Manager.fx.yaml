@@ -163,7 +163,9 @@
                 LayoutMinWidth: =640
                 Width: =Parent.Width
 
-    compWebMenu_7 As compWebMenu_6:
-        Visible: =If('Admin Manager'.Size > 1, true, false)
-        ZIndex: =2
+    compWebMenu_8 As compWebMenu:
+        Height: =Parent.Height
+        Visible: =Home.Size>1
+        Width: =If(!compWebMenu_8.ExpandMenu,200,200)
+        ZIndex: =3
 
