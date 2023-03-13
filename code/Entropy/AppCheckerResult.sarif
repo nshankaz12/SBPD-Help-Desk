@@ -1893,12 +1893,12 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "compWebMenu.Rectangle4.OnSelect"
+                  "fullyQualifiedName": "compWebMenu.'White nav background'.OnSelect"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "compWebMenu.Rectangle4.OnSelect",
+                  "fullyQualifiedName": "compWebMenu.'White nav background'.OnSelect",
                   "relativeAddress": 0
                 },
                 "region": {
@@ -1912,7 +1912,7 @@
               "properties": {
                 "member": "OnSelect",
                 "module": "compWebMenu",
-                "type": "compWebMenu.Rectangle4"
+                "type": "compWebMenu.'White nav background'"
               }
             }
           ],
@@ -9070,6 +9070,66 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "compWebMenu.Background.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compWebMenu.Background.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compWebMenu",
+                "type": "compWebMenu.Background"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compWebMenu.Background.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compWebMenu.Background.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "compWebMenu",
+                "type": "compWebMenu.Background"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.SelectedText"
                 }
               ],
@@ -9953,6 +10013,36 @@
                 "member": "Visible",
                 "module": "Admin Manager",
                 "type": "'Admin Manager'.compWebMenu_8"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 13
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Tag Manager'.compWebMenu_9.Visible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Tag Manager'.compWebMenu_9.Visible",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Visible",
+                "module": "Tag Manager",
+                "type": "'Tag Manager'.compWebMenu_9"
               }
             }
           ],

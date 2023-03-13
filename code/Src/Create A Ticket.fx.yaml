@@ -620,6 +620,8 @@
     compWebMenu_2 As compWebMenu:
         Height: =Parent.Height
         Visible: ='Create A Ticket'.Size>1
-        Width: =If(!compWebMenu_2.ExpandMenu, 200, 200)
+        Width: |-
+            =App.DesignWidth
+            //If(!compWebMenu_2.ExpandMenu,200,200)
         ZIndex: =3
 

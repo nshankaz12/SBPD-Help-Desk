@@ -166,6 +166,8 @@
     compWebMenu_8 As compWebMenu:
         Height: =Parent.Height
         Visible: =Home.Size>1
-        Width: =If(!compWebMenu_8.ExpandMenu,200,200)
+        Width: |-
+            =App.DesignWidth
+            //If(!compWebMenu_8.ExpandMenu,200,200)
         ZIndex: =3
 

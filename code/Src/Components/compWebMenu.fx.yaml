@@ -2,24 +2,32 @@ compWebMenu As CanvasComponent:
     ExpandMenu: =false
     Fill: =Color.Transparent
     HamburgerColor: =Color.White
-    Height: =640
+    Height: =App.DesignHeight
     MenuItems: =gblNavItems
     OnReset: |-
         =Set(showMenu, compWebMenu.ExpandMenu);
         //Set(showHamIcon, compWebMenu.showHamburgerIcon);
         Set(showHamIcon, !compWebMenu.ExpandMenu)
-    Width: =185
+    Width: =App.DesignWidth
     X: =0
     Y: =0
     ZIndex: =1
 
-    Rectangle4 As rectangle:
+    Background As rectangle:
+        Fill: =RGBA(56, 96, 178, 0.5)
+        Height: =App.DesignHeight
+        OnSelect: =Set(showMenu, false);
+        Visible: =showMenu
+        Width: =App.DesignWidth
+        ZIndex: =1
+
+    "'White nav background' As rectangle":
         Fill: =Color.White
         Height: =App.DesignHeight
         OnSelect: =Select(Parent)
         Visible: =showMenu
         Width: =185
-        ZIndex: =1
+        ZIndex: =2
 
     icoHamburgerMenu As icon.Hamburger:
         Color: =compWebMenu.HamburgerColor
@@ -32,7 +40,7 @@ compWebMenu As CanvasComponent:
         Width: =62
         X: =6
         Y: =12
-        ZIndex: =2
+        ZIndex: =3
 
     xIcon As icon.Cancel:
         Fill: =Color.Transparent
@@ -44,7 +52,7 @@ compWebMenu As CanvasComponent:
         Width: =62
         X: =6
         Y: =12
-        ZIndex: =3
+        ZIndex: =4
 
     MenuOpened As gallery.variableTemplateHeightGallery:
         DelayItemLoading: =true
@@ -59,7 +67,7 @@ compWebMenu As CanvasComponent:
         Y: |-
             =//icoHamburgerMenu.Height
             82
-        ZIndex: =4
+        ZIndex: =5
 
         Rectangle2_1 As rectangle:
             Height: =48
@@ -117,7 +125,7 @@ compWebMenu As CanvasComponent:
         Y: |-
             =//icoHamburgerMenu.Height
             82
-        ZIndex: =5
+        ZIndex: =6
 
         Rectangle2_2 As rectangle:
             Height: =48
