@@ -13,6 +13,14 @@ compWebMenu As CanvasComponent:
     Y: =0
     ZIndex: =1
 
+    Rectangle4 As rectangle:
+        Fill: =Color.White
+        Height: =App.DesignHeight
+        OnSelect: =Select(Parent)
+        Visible: =showMenu
+        Width: =185
+        ZIndex: =1
+
     icoHamburgerMenu As icon.Hamburger:
         Color: =compWebMenu.HamburgerColor
         Fill: =Color.Transparent
@@ -24,10 +32,9 @@ compWebMenu As CanvasComponent:
         Width: =62
         X: =6
         Y: =12
-        ZIndex: =1
+        ZIndex: =2
 
     xIcon As icon.Cancel:
-        Color: =compWebMenu.HamburgerColor
         Fill: =Color.Transparent
         Height: =48
         Icon: =Icon.Cancel
@@ -37,29 +44,29 @@ compWebMenu As CanvasComponent:
         Width: =62
         X: =6
         Y: =12
-        ZIndex: =2
+        ZIndex: =3
 
     MenuOpened As gallery.variableTemplateHeightGallery:
         DelayItemLoading: =true
-        Height: =Parent.Height - icoHamburgerMenu.Height
+        Height: =App.DesignHeight
         Items: =compWebMenu.MenuItems
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         ShowScrollbar: =false
-        TemplateSize: =280
+        TemplateSize: =47
         Visible: =showMenu
         Width: =185
         Y: |-
             =//icoHamburgerMenu.Height
             82
-        ZIndex: =3
+        ZIndex: =4
 
         Rectangle2_1 As rectangle:
             Height: =48
             OnSelect: =
             Visible: =ThisItem.ScreenToGoTo.Name = App.ActiveScreen.Name
             Width: =6
-            ZIndex: =1
+            ZIndex: =2
 
         Icon3_1 As icon.Add:
             Height: =48
@@ -71,7 +78,7 @@ compWebMenu As CanvasComponent:
             PaddingTop: =10
             Width: =62
             X: =3
-            ZIndex: =2
+            ZIndex: =3
 
         Label2_1 As label:
             FontWeight: =FontWeight.Lighter
@@ -81,7 +88,7 @@ compWebMenu As CanvasComponent:
             Text: =ThisItem.MenuText
             Width: =175
             X: =Icon3_1.Width
-            ZIndex: =3
+            ZIndex: =4
 
         Button2_1 As button:
             Fill: =Color.Transparent
@@ -93,22 +100,24 @@ compWebMenu As CanvasComponent:
             PressedFill: =Color.Transparent
             Text: =""
             Width: =175
-            ZIndex: =4
+            ZIndex: =5
 
     MenuClosed As gallery.variableTemplateHeightGallery:
         DelayItemLoading: =true
-        Height: =Parent.Height - icoHamburgerMenu.Height
+        Height: =558
         Items: =compWebMenu.MenuItems
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         ShowScrollbar: =false
         TemplateSize: =280
-        Visible: =!showMenu
+        Visible: |-
+            =false
+            //!showMenu
         Width: =68
         Y: |-
             =//icoHamburgerMenu.Height
             82
-        ZIndex: =4
+        ZIndex: =5
 
         Rectangle2_2 As rectangle:
             Height: =48

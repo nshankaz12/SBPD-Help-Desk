@@ -164,10 +164,6 @@
                 Width: =Parent.Width
 
     compWebMenu_7 As compWebMenu_6:
-        OnReset: |-
-            =Set(showMenu, compWebMenu_7.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_7.ExpandMenu)
         Visible: =If('Admin Manager'.Size > 1, true, false)
         ZIndex: =2
 
