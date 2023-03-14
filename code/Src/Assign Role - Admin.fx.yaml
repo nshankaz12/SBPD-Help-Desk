@@ -162,7 +162,8 @@
                 Dropdown3 As dropdown:
                     Default: =""
                     Height: =59
-                    Items: =Distinct(Users, userRole)
+                    Items: |-
+                        =ForAll(Distinct(Users, userRole), {Result: ThisRecord.Value})
                     Width: =340
                     X: =Label17_3.X
                     Y: =Label17_3.Y+Label17_3.Height

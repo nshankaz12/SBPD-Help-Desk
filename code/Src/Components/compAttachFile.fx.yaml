@@ -81,28 +81,28 @@ compAttachFile As CanvasComponent:
                         {
                             fileName: ButtonAttachFile.FileName,
                             fileExtension: Last(
-                                Split(
+                                ForAll(Split(
                                     ButtonAttachFile.FileName,
                                     "."
-                                )
+                                ), {Result: ThisRecord.Value})
                             ).Result,
                             fileContent: {
                                 contentType: Substitute(
                                     First(
-                                        Split(
+                                        ForAll(Split(
                                             fileJSON,
                                             ";"
-                                        )
+                                        ), {Result: ThisRecord.Value})
                                     ).Result,
                                     """data:",
                                     ""
                                 ),
                                 content: Substitute(
                                     Last(
-                                        Split(
+                                        ForAll(Split(
                                             fileJSON,
                                             ","
-                                        )
+                                        ), {Result: ThisRecord.Value})
                                     ).Result,
                                     """",
                                     ""

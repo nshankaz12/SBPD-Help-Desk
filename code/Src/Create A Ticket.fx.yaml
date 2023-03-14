@@ -503,6 +503,7 @@
                         ZIndex: =2
 
                     Dropdown1 As dropdown:
+                        Default: =LookUp(Locations, name = "Other", name)
                         Height: =55
                         Items: =Locations
                         Width: =Parent.Width/3

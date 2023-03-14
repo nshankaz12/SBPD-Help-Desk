@@ -134,7 +134,7 @@ App As appinfo:
         Set(varFilterVisible, false);
         // Passed tags to filter component
         ClearCollect(colTags,{Result:""});
-        Collect(colTags,Distinct(Tags,name));
+        Collect(colTags,ForAll(Distinct(Tags,name), {Result: ThisRecord.Value}));
         Set(varTags, colTags);
         
         
