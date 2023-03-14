@@ -1,5 +1,5 @@
 compMobileMenu As CanvasComponent:
-    BackgroundMenuColor: =Color.LightGray
+    BackgroundMenuColor: =RGBA(227, 234, 243, 1)
     Fill: =RGBA(0, 0, 0, 0)
     ForegroundColor: |-
         =//RGBA(70, 130, 180, 1)
@@ -41,12 +41,12 @@ compMobileMenu As CanvasComponent:
                     compMobileMenu.ForegroundColor
                 )
             DisplayMode: =DisplayMode.View
-            Height: =40
+            Height: =Parent.Height/2
             Icon: =ThisItem.MenuIcon
             OnSelect: =Select(Parent)
-            Width: =40
+            Width: =Parent.Width/5
             X: =(Parent.TemplateWidth-Self.Width)/2
-            Y: =(Parent.TemplateHeight-Self.Height)/2
+            Y: =(Parent.Height-Self.Height)/2 -10
             ZIndex: =1
 
         Label1_2 As label:
@@ -57,9 +57,9 @@ compMobileMenu As CanvasComponent:
                     compMobileMenu.BackgroundMenuColor,
                     compMobileMenu.ForegroundColor
                 )
-            Height: =20
+            Height: =Parent.Height/3
             OnSelect: =Select(Parent)
-            Size: =10
+            Size: =8
             Text: =ThisItem.MenuText
             Width: =Parent.Width/5
             X: =(Parent.TemplateWidth-Self.Width)/2
@@ -69,11 +69,11 @@ compMobileMenu As CanvasComponent:
         Icon1_1 As icon.Add:
             Color: =Color.Transparent
             DisplayMode: =DisplayMode.View
-            Height: =90
+            Height: =Parent.Height
             Icon: =ThisItem.MenuIcon
             OnSelect: =Navigate(ThisItem.ScreenToGoTo);
             PaddingBottom: =8
-            Width: =273
+            Width: =Parent.Width/5
             ZIndex: =3
 
         Button7 As button:

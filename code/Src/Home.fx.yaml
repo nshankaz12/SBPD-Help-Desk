@@ -100,7 +100,7 @@ Home As screen:
             HomeHeaderContainer1 As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(255,255,255, 1)
                 FillPortions: =0
-                Height: =Parent.Height/9.5
+                Height: =Parent.Height/11
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutJustifyContent: =LayoutJustifyContent.Center
                 LayoutMinHeight: =100
@@ -164,14 +164,16 @@ Home As screen:
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
                     ZIndex: =7
 
-                    compWebHeader_2 As compWebHeader:
+                    compWebHeader_11 As compWebHeader_2:
                         AlignInContainer: =AlignInContainer.Center
                         CompScreenSize: =Home.Size
                         Height: =Parent.Height
                         LayoutMinHeight: =640
                         LayoutMinWidth: =640
+                        Width: =Parent.Width
 
                     HomeNavLinkGallery As gallery.galleryHorizontal:
                         AlignInContainer: =AlignInContainer.Center
@@ -233,42 +235,34 @@ Home As screen:
                         UpdateContext({MGallery:!MGallery});
                     ZIndex: =1
 
-            HomeHeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
+            Container10 As groupContainer.manualLayoutContainer:
                 Fill: =ColorScheme.primary
                 FillPortions: =0
                 Height: =Parent.Height/12
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutJustifyContent: =LayoutJustifyContent.Center
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                Visible: |-
-                    =Home.Size>1
-                    //Second header container housing the dropdown for the notifications button, user name, and picture, the picture and notifications icon disappear after a screen breakpoint has been reached
                 Width: =Parent.Width
                 ZIndex: =3
 
                 UserNameLabel As label:
                     Align: =Align.Center
-                    AlignInContainer: =AlignInContainer.End
                     Color: =RGBA(255, 255, 255, 1)
-                    FillPortions: =1
                     Height: =Parent.Height
-                    Size: =30
+                    PaddingBottom: =10
+                    PaddingTop: =0
+                    Size: =If(Home.Size= 1 , 13,Parent.Width/40)
                     Text: =User().FullName
                     Width: =Parent.Width
-                    X: |
-                        =0
-                    ZIndex: =2
+                    X: =(Parent.Width - Self.Width)/2
+                    ZIndex: =1
 
                 HomeUserImage As image:
                     Height: =Parent.Height
                     Image: =User().Image
                     Visible: =Home.Size>2
-                    Width: =50
-                    X: =1136
-                    Y: =52
-                    ZIndex: =3
+                    Width: =Parent.Width/10
+                    X: =Parent.Width -Self.Width
+                    ZIndex: =2
 
             HomeMainContentContainer As groupContainer.verticalAutoLayoutContainer:
                 FillPortions: =10
@@ -285,13 +279,14 @@ Home As screen:
 
                 SearchBarContainer As groupContainer.verticalAutoLayoutContainer:
                     Fill: =ColorScheme.primary
-                    Height: =50
+                    Height: =Parent.Height
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutDirection: =LayoutDirection.Vertical
                     LayoutJustifyContent: =LayoutJustifyContent.Center
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
                     ZIndex: =1
 
                     "'Search Knowledgebase_1' As text":
@@ -300,8 +295,8 @@ Home As screen:
                         Color: =RGBA(204, 204, 204, 1)
                         Default: ="Search Knowledgebase"
                         Font: =Font.'Segoe UI'
-                        Height: =58
-                        Width: =Parent.Width/2
+                        Height: =Parent.Height/2
+                        Width: =If(Home.Size >1 , Parent.Width/2 , Parent.Width*.8)
                         X: =443
                         Y: =40
                         ZIndex: =1
@@ -334,9 +329,8 @@ Home As screen:
                             Height: =Parent.Height
                             LayoutMinHeight: =Parent.Height
                             Size: =If(Home.Size=1, 8, 15)
-                            Text: |+
+                            Text: |
                                 =If(IsBlank(AlertMessage), "", AlertMessage)
-                                
                             ZIndex: =1
 
                         Icon12 As icon.Cancel:
@@ -370,7 +364,7 @@ Home As screen:
                         TemplateSize: =Parent.Height/2
                         Visible: =Home.Size>1
                         Width: =Parent.Width
-                        WrapCount: =If(Home.Size=4,CountRows(navCol),3)
+                        WrapCount: =Switch(Home.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
                         ZIndex: =1
 
                         HtmlText1 As htmlViewer:
