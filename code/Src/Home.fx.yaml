@@ -334,8 +334,9 @@ Home As screen:
                             Height: =Parent.Height
                             LayoutMinHeight: =Parent.Height
                             Size: =If(Home.Size=1, 8, 15)
-                            Text: |
+                            Text: |+
                                 =If(IsBlank(AlertMessage), "", AlertMessage)
+                                
                             ZIndex: =1
 
                         Icon12 As icon.Cancel:
@@ -755,10 +756,8 @@ Home As screen:
                 ZIndex: =5
 
     compWebMenu_1 As compWebMenu:
-        Height: =Parent.Height
+        Height: =768
         Visible: =Home.Size>1
-        Width: |-
-            =App.DesignWidth
-            //If(!compWebMenu_1.ExpandMenu,200,200)
+        Width: =1366
         ZIndex: =9
 

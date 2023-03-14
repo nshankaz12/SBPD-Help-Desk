@@ -1,11 +1,14 @@
 "'Alert Manager' As screen":
     Fill: =
+    OnVisible: |
+        =IsDataEntered
 
     Image13_13 As image:
-        Height: =734
+        Fill: =RGBA(50, 86, 160, 1)
+        Height: =220
         Image: ='image (2)'
-        Width: =1331
-        X: =16
+        ImagePosition: =ImagePosition.Fill
+        Width: =1366
         ZIndex: =1
 
     "'nav-name5_10' As button":
@@ -17,7 +20,7 @@
         PressedFill: =
         Text: ="Assign Role"
         Width: =174
-        X: =877
+        X: =951
         Y: =18
         ZIndex: =2
 
@@ -30,7 +33,7 @@
         PressedFill: =
         Text: ="Ticket Metrics"
         Width: =174
-        X: =723
+        X: =766
         Y: =18
         ZIndex: =3
 
@@ -43,7 +46,7 @@
         PressedFill: =
         Text: ="Ticket Log"
         Width: =174
-        X: =549
+        X: =570
         Y: =18
         ZIndex: =4
 
@@ -56,7 +59,7 @@
         PressedFill: =
         Text: ="My Tickets"
         Width: =174
-        X: =375
+        X: =385
         Y: =18
         ZIndex: =5
 
@@ -83,6 +86,7 @@
         ZIndex: =7
 
     Label4 As label:
+        Color: =RGBA(255, 255, 255, 1)
         Height: =64
         Size: =27
         Text: ="Alerts Log"
@@ -91,59 +95,42 @@
         Y: =101
         ZIndex: =8
 
-    Container7 As groupContainer.horizontalAutoLayoutContainer:
-        Height: =292
-        LayoutJustifyContent: =LayoutJustifyContent.End
-        LayoutMode: =LayoutMode.Auto
-        Width: =428
-        X: =36
-        Y: =231
-        ZIndex: =17
+    Gallery7 As gallery.variableTemplateHeightGallery:
+        DelayItemLoading: =true
+        Fill: =RGBA(237, 237, 237, 1)
+        Height: =260
+        Items: =AlertCollection
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateSize: =255
+        Width: =478
+        Y: =222
+        ZIndex: =18
 
-        "'Alerts Collection_1' As gallery.galleryHorizontal":
-            BorderThickness: =2
-            DelayItemLoading: =true
-            Fill: =RGBA(230, 230, 230, 1)
-            Height: =280
-            Items: =AlertCollection
-            LayoutMinHeight: =287
-            LayoutMinWidth: =320
-            LoadingSpinner: =LoadingSpinner.Data
-            TemplateSize: =381
-            Width: =386
-            X: =40
-            Y: =252
+        Button3 As button:
+            Height: =52
+            OnSelect: |
+                =Remove(AlertCollection, ThisItem)
+            Text: ="X"
+            Width: =90
+            X: =358
+            ZIndex: =1
+
+        Label31 As label:
+            Align: =Align.Center
+            Height: =154
+            OnSelect: =Select(Parent)
+            Size: =20
+            Text: =ThisItem.Description
+            Width: =358
+            Y: =92
             ZIndex: =2
 
-            Button7_2 As button:
-                Height: =56
-                OnSelect: |
-                    =Navigate('Alert Popup', ScreenTransition.Fade);
-                    If(AlertResolved = "Yes",
-                        Notify("Alert marked as resolved", NotificationType.Success),
-                        Notify("Alert not yet resolved", NotificationType.Warning)
-                    )
-                Text: =ThisItem.Status
-                Width: =188
-                X: =192
-                Y: =201
-                ZIndex: =1
-
-            Label5_1 As label:
-                Height: =108
-                OnSelect: =Select(Parent)
-                Text: =ThisItem.Description
-                Width: =320
-                X: =15
-                Y: =76
-                ZIndex: =2
-
-            Label18_1 As label:
-                Font: =Font.'Lato Black'
-                OnSelect: =Select(Parent)
-                Size: =18
-                Text: =ThisItem.Title
-                X: =15
-                Y: =36
-                ZIndex: =4
+        Label32 As label:
+            Height: =80
+            OnSelect: =Select(Parent)
+            Size: =30
+            Text: =ThisItem.Title
+            Width: =272
+            ZIndex: =3
 
