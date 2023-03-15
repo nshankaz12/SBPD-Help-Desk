@@ -92,7 +92,7 @@ Success As screen:
             HomeHeaderContainer1_1 As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
                 FillPortions: =0
-                Height: =Parent.Height/15
+                Height: =82
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutJustifyContent: =LayoutJustifyContent.Center
                 LayoutMinHeight: =100
@@ -109,7 +109,7 @@ Success As screen:
                     Height: =Parent.Height
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
-                    Visible: =Success.Size>1
+                    Visible: =false
                     Width: =Parent.Width/18
                     ZIndex: =1
 
@@ -153,6 +153,7 @@ Success As screen:
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    Visible: =false
                     Width: =Parent.Width
                     ZIndex: =7
 
@@ -167,6 +168,7 @@ Success As screen:
                         OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
                         ShowScrollbar: =false
                         TemplateSize: =Parent.Width/5
+                        Visible: =false
                         Width: =Parent.Width
                         ZIndex: =1
 
@@ -190,6 +192,11 @@ Success As screen:
                             Text: =""
                             Width: =Parent.TemplateWidth
                             ZIndex: =2
+
+                compWebHeader_18 As compWebHeader:
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    ZIndex: =8
 
             HomeMoblieHeaderContainer_1 As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
@@ -522,4 +529,14 @@ Success As screen:
                 Visible: =NDrop
                 Width: =164
                 ZIndex: =5
+
+    compWebMenu_16 As compWebMenu:
+        Height: =Parent.Height
+        Visible: |-
+            =Success.Size>1
+            //'Assign Role - Admin'.Size>1
+        Width: |-
+            =App.DesignWidth
+            //If(!compWebMenu_5.ExpandMenu,200,200)
+        ZIndex: =23
 
