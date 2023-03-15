@@ -167,7 +167,9 @@
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    Visible: =!CloseAlertRibbon
+                    Visible: |-
+                        =false
+                        //!CloseAlertRibbon
                     Width: =Parent.Width
                     ZIndex: =2
 
