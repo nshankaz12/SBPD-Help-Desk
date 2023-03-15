@@ -2,7 +2,8 @@
     ImagePosition: =ImagePosition.Center
     OnHidden: |-
         =Reset(compFilterMenu_1);
-        Reset(MyTicketsGallery)
+        Reset(MyTicketsGallery);
+        Reset(compSearch_1);
     OnVisible: |
         =// Create local variables for mobile view property on this screen using UpdateContext
         UpdateContext({MobileGallery: false});
@@ -13,13 +14,13 @@
         Image: ='image (2)'
         ImagePosition: =ImagePosition.Stretch
         Width: =Parent.Width
-        ZIndex: =1
+        ZIndex: =2
 
     MyTicketsMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
         LayoutMode: =LayoutMode.Auto
         Width: =Parent.Width
-        ZIndex: =20
+        ZIndex: =3
 
         MyTicketsMobileNavLinks As groupContainer.horizontalAutoLayoutContainer:
             FillPortions: =0
@@ -273,76 +274,19 @@
                 LayoutMode: =LayoutMode.Auto
                 ZIndex: =4
 
-                SearchFilterContainer As groupContainer.horizontalAutoLayoutContainer:
-                    Fill: |-
-                        =Color.White
-                        //RGBA(118, 173, 149, 1)
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutJustifyContent: =LayoutJustifyContent.Center
-                    LayoutMinHeight: =Parent.Height / 5
+                SearchFilterContainer As groupContainer.manualLayoutContainer:
+                    Fill: =ColorScheme.primary
+                    FillPortions: =0
+                    Height: =60
+                    LayoutMinHeight: =60
                     LayoutMinWidth: =Parent.Width
-                    LayoutMode: =LayoutMode.Auto
-                    LayoutWrap: =true
+                    Width: =Parent.Width
                     ZIndex: =1
 
-                    SearchTicketsBar As groupContainer.manualLayoutContainer:
-                        AlignInContainer: =AlignInContainer.Center
-                        Height: =If (MyTickets.Width < 700, 30, 40)
-                        LayoutMinHeight: =Parent.Height / 2
-                        LayoutMinWidth: =Parent.Width / 2
-                        Width: =Parent.Width
-                        ZIndex: =1
-
-                        searchBox As text:
-                            Default: =
-                            DelayOutput: =true
-                            Height: =Parent.Height
-                            HintText: =If(MyTickets.Width < 450, "Search", "Search by title or description")
-                            OnChange: =Set(searchTicketQuery, searchBox.Text); Reset(MyTicketsGallery)
-                            PaddingRight: =40
-                            Width: =If (MyTickets.Width < 700, ((Parent.Width - searchIcon.Width) /4 * 3) - (searchIcon.Width/2), Parent.Width / 4 * 3)
-                            X: =If (MyTickets.Width < 700, (Parent.Width - searchBox.Width - searchIcon.Width) / 2, (Parent.Width - searchBox.Width - ( 2 * searchIcon.Width)) + 10)
-                            ZIndex: =1
-
-                        bgSearchIcon As rectangle:
-                            BorderThickness: =2
-                            Height: =Parent.Height
-                            OnSelect: =Set(searchTicketQuery, searchBox.Text); Reset(MyTicketsGallery)
-                            Width: =Parent.Height
-                            X: =searchBox.X + searchBox.Width 
-                            ZIndex: =2
-
-                        searchIcon As icon.Search:
-                            Color: =RGBA(255, 255, 255, 1)
-                            Height: =Parent.Height
-                            Icon: =Icon.Search
-                            OnSelect: =Set(searchTicketQuery, searchBox.Text); Reset(MyTicketsGallery)
-                            Tooltip: ="Search"
-                            Width: =Parent.Height
-                            X: =searchBox.X + searchBox.Width 
-                            ZIndex: =3
-
-                        cancelIcon As icon.Cancel:
-                            Color: =RGBA(116, 116, 116, 1)
-                            Height: =Parent.Height
-                            Icon: =Icon.Cancel
-                            OnSelect: =Set(searchTicketQuery, ""); Reset(searchBox); Reset(MyTicketsGallery)
-                            Tooltip: ="Cancel"
-                            Visible: =!IsBlank(searchBox.Text)
-                            Width: =Parent.Height
-                            X: =searchBox.X + searchBox.Width - Self.Width
-                            ZIndex: =4
-
-                    TicketFiltersContainer As groupContainer.horizontalAutoLayoutContainer:
-                        FillPortions: =0
-                        Height: =Parent.Height / 2
-                        LayoutAlignItems: =LayoutAlignItems.Center
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                        LayoutMinHeight: =If (MyTickets.Width < 700, 30, 40)
-                        LayoutMinWidth: =400
-                        LayoutMode: =LayoutMode.Auto
-                        Width: =350
-                        ZIndex: =2
+                    compSearch_1 As compSearch:
+                        OnReset: =Set(searchTicketQuery, ""); Reset(searchBox_1); Set(varSearchText, ""); compSearch_1.CloseSearch()
+                        X: =(Parent.Width - Self.Width) / 2
+                        Y: =(Parent.Height - Self.Height) / 2
 
                 MyTicketsTicketsContainer As groupContainer.verticalAutoLayoutContainer:
                     FillPortions: =8
@@ -354,73 +298,48 @@
                     ZIndex: =2
 
                     MyTicketsGallery As gallery.galleryVertical:
+                        Default: =First(MyTicketsGallery.AllItems)
                         Height: =544
                         Items: |-
-                            =If(
-                                compFilterMenu_1.TicketsChoice = "My Tickets",
-                                Filter(
-                                    Filter(
-                                        If(
-                                            compFilterMenu_1.StatusChoice = "All",
-                                            Filter(
-                                                Tickets_1,
-                                                creatorId = userData.id
-                                            ),
-                                            Filter(
-                                                Filter(
-                                                    Tickets_1,
-                                                    creatorId = userData.id
-                                                ),
-                                                status = compFilterMenu_1.StatusChoice
-                                            )
+                            =//If(compFilterMenu_1.TicketsChoice="My Tickets",Filter(Filter(If(compFilterMenu_1.StatusChoice="All",Filter(Tickets_1,creatorId=userData.id),Filter(Filter(Tickets_1,creatorId=userData.id),status=compFilterMenu_1.StatusChoice)),If(!IsBlank(searchTicketQuery),Or(searchTicketQuery in id,searchTicketQuery in title,searchTicketQuery in description), true )),If(!IsBlank(compFilterMenu_1.TagChoice),compFilterMenu_1.TagChoice in tags, true )),Filter(Filter(If(compFilterMenu_1.StatusChoice="All",Filter(Tickets_1,assignedTO=userData.id),Filter(Filter(Tickets_1,assignedTO=userData.id),status=compFilterMenu_1.StatusChoice)),If(!IsBlank(searchTicketQuery),Or(searchTicketQuery in id,searchTicketQuery in title,searchTicketQuery in description), true )),If(!IsBlank(compFilterMenu_1.TagChoice),compFilterMenu_1.TagChoice in tags, true )))
+                            Filter(
+                                If(
+                                    compFilterMenu_1.TicketsChoice = "My Tickets",
+                                    If(
+                                        compFilterMenu_1.StatusChoice = "All",
+                                        Filter(
+                                            Tickets_1,
+                                            creatorId = userData.id
                                         ),
-                                        If(
-                                            !IsBlank(searchTicketQuery),
-                                            Or(
-                                                searchTicketQuery in id,
-                                                searchTicketQuery in title,
-                                                searchTicketQuery in description
-                                            ),
-                                            true
+                                        Filter(
+                                            Tickets_1,
+                                            creatorId = userData.id && status = compFilterMenu_1.StatusChoice
                                         )
                                     ),
                                     If(
-                                        !IsBlank(compFilterMenu_1.TagChoice),
-                                        compFilterMenu_1.TagChoice in tags,
-                                        true
+                                        compFilterMenu_1.StatusChoice = "All",
+                                        Filter(
+                                            Tickets_1,
+                                            assignedTO = userData.id
+                                        ),
+                                        Filter(
+                                            Tickets_1,
+                                            assignedTO = userData.id && status = compFilterMenu_1.StatusChoice
+                                        )
                                     )
                                 ),
-                                Filter(
-                                    Filter(
-                                        If(
-                                            compFilterMenu_1.StatusChoice = "All",
-                                            Filter(
-                                                Tickets_1,
-                                                assignedTO = userData.id
-                                            ),
-                                            Filter(
-                                                Filter(
-                                                    Tickets_1,
-                                                    assignedTO = userData.id
-                                                ),
-                                                status = compFilterMenu_1.StatusChoice
-                                            )
-                                        ),
-                                        If(
-                                            !IsBlank(searchTicketQuery),
-                                            Or(
-                                                searchTicketQuery in id,
-                                                searchTicketQuery in title,
-                                                searchTicketQuery in description
-                                            ),
-                                            true
-                                        )
+                                If(
+                                    !IsBlank(compFilterMenu_1.TagChoice),
+                                    compFilterMenu_1.TagChoice in tags,
+                                    true
+                                ) && If(
+                                    !IsBlank(compSearch_1.SearchQuery),
+                                    Or(
+                                        compSearch_1.SearchQuery in id,
+                                        compSearch_1.SearchQuery in title,
+                                        compSearch_1.SearchQuery in description
                                     ),
-                                    If(
-                                        !IsBlank(compFilterMenu_1.TagChoice),
-                                        compFilterMenu_1.TagChoice in tags,
-                                        true
-                                    )
+                                    true
                                 )
                             )
                         Layout: =Layout.Vertical
@@ -753,10 +672,11 @@
     compFilterMenu_1 As compFilterMenu:
         Height: =If(compFilterMenu_1.FilterVisible, compFilterMenu_1.NewHeight, compFilterMenu_1.FilterIconSize)
         NewHeight: =If(compFilterMenu_1.CheckAdmin && App.ActiveScreen.Name = "MyTickets", If(App.Height > 560, 400, 320), If(compFilterMenu_1.CheckAdmin, If(App.Height > 560, 250, 210), 150))
+        Visible: =App.Width > 600 || (App.Width <= 600 && !compSearch_1.SearchVisible)
         Width: =If(compFilterMenu_1.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu_1.FilterIconSize)
-        X: =Parent.Width - Self.Width
-        Y: =Parent.Height / 3.5
-        ZIndex: =21
+        X: =Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
+        Y: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + ((SearchFilterContainer.Height - compFilterMenu_1.FilterIconSize) / 2)
+        ZIndex: =4
 
     compWebMenu_3 As compWebMenu:
         Height: =Parent.Height
@@ -764,5 +684,33 @@
         Width: |-
             =App.DesignWidth
             //If(!compWebMenu_3.ExpandMenu,200,200)
-        ZIndex: =22
+        ZIndex: =5
+
+    SearchBlocker As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =8
+
+        SearchBlockerTop As rectangle:
+            Fill: |-
+                =//Color.Transparent
+                RGBA(0, 0, 0, 0.25)
+            Height: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height
+            OnSelect: =Set(varSearchVisible, false)
+            Visible: =App.Width <= 600 && compSearch_1.SearchVisible
+            Width: =Parent.Width
+            ZIndex: =6
+
+        SearchBlockerBottom As rectangle:
+            Fill: |-
+                =//Color.Transparent
+                RGBA(0, 0, 0, 0.25)
+            Height: =Parent.Height - (MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + SearchFilterContainer.Height)
+            OnSelect: =Set(varSearchVisible, false)
+            Visible: =App.Width <= 600 && compSearch_1.SearchVisible
+            Width: =Parent.Width
+            Y: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + SearchFilterContainer.Height
+            ZIndex: =7
 

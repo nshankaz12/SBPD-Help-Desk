@@ -5,8 +5,8 @@ compFilterMenu As CanvasComponent:
     ColorOrange: =ColorScheme.orange
     Fill: =RGBA(0, 0, 0, 0)
     FilterIconSize: |-
-        =//If(App.Width > 900, 50, 40)
-        50
+        =If(App.Width > 600, 50, 40)
+        //50
     FilterVisible: =varFilterVisible
     FontSize: =If(App.Height > 560, 18, 13)
     Height: =If(compFilterMenu.FilterVisible, compFilterMenu.NewHeight, compFilterMenu.FilterIconSize)
@@ -28,6 +28,8 @@ compFilterMenu As CanvasComponent:
     ZIndex: =1
 
     FilterMenu As groupContainer.verticalAutoLayoutContainer:
+        BorderColor: =compFilterMenu.OffColor
+        BorderThickness: =2
         Fill: =compFilterMenu.SecondaryColor
         Height: =Parent.Height
         LayoutDirection: =LayoutDirection.Vertical
@@ -204,6 +206,9 @@ compFilterMenu As CanvasComponent:
     FilterIcon As icon.FilterFlat:
         Color: =compFilterMenu.SecondaryColor
         Height: =compFilterMenu.FilterIconSize
+        HoverColor: |-
+            =//ColorFade(Self.Color, 20%)
+            RGBA(0, 18, 107, 1)
         Icon: =If(!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Tickets"), Icon.FilterFlatFilled, Icon.FilterFlat)
         OnSelect: =compFilterMenu.OpenFilter()
         Visible: =!compFilterMenu.FilterVisible

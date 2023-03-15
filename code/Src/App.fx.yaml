@@ -137,7 +137,8 @@ App As appinfo:
         Collect(colTags,ForAll(Distinct(Tags,name), {Result: ThisRecord.Value}));
         Set(varTags, colTags);
         
-        
+        // Passed variable to check if search bar should be visible
+        Set(varSearchVisible, false);
         
         
         
