@@ -11,72 +11,6 @@
         Width: =1366
         ZIndex: =1
 
-    "'nav-name5_10' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Assign Role"
-        Width: =174
-        X: =951
-        Y: =18
-        ZIndex: =2
-
-    "'nav-name4_10' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Metrics"
-        Width: =174
-        X: =766
-        Y: =18
-        ZIndex: =3
-
-    "'nav-name3_10' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Ticket Log Example', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Log"
-        Width: =174
-        X: =570
-        Y: =18
-        ZIndex: =4
-
-    "'nav-name2_10' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="My Tickets"
-        Width: =174
-        X: =385
-        Y: =18
-        ZIndex: =5
-
-    "'nav-Ticket_10' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Create Ticket"
-        Tooltip: =
-        Width: =174
-        X: =201
-        Y: =18
-        ZIndex: =6
-
     "'Back Scroll_10' As icon.BackArrow":
         Color: =RGBA(232, 244, 217, 1)
         Icon: =Icon.BackArrow
@@ -133,4 +67,15 @@
             Text: =ThisItem.Title
             Width: =272
             ZIndex: =3
+
+    compWebHeader_20 As compWebHeader:
+        ZIndex: =19
+
+    compWebMenu_18 As compWebMenu:
+        Height: =Parent.Height
+        Visible: ='Alert Manager'.Size>1
+        Width: |-
+            =App.DesignWidth
+            //If(!compWebMenu_5.ExpandMenu,200,200)
+        ZIndex: =20
 

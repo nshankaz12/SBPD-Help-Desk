@@ -12,67 +12,6 @@
         X: =3
         ZIndex: =1
 
-    "'nav-name5_9' As button":
-        AutoDisableOnSelect: =false
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Assign Role"
-        Width: =174
-        X: =939
-        Y: =18
-        ZIndex: =2
-
-    "'nav-name4_9' As button":
-        AutoDisableOnSelect: =false
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Metrics"
-        Width: =174
-        X: =744
-        Y: =18
-        ZIndex: =3
-
-    "'nav-name3_9' As button":
-        AutoDisableOnSelect: =false
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Ticket Log Example', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Log"
-        Width: =174
-        X: =549
-        Y: =18
-        ZIndex: =4
-
-    "'nav-name2_9' As button":
-        AutoDisableOnSelect: =false
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="My Tickets"
-        Width: =174
-        X: =375
-        Y: =18
-        ZIndex: =5
-
-    "'nav-Ticket_9' As button":
-        AutoDisableOnSelect: =false
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Create Ticket"
-        Tooltip: =
-        Width: =174
-        X: =201
-        Y: =18
-        ZIndex: =6
-
     "'Back Scroll_7' As icon.BackArrow":
         Color: =RGBA(232, 244, 217, 1)
         Icon: =Icon.BackArrow
@@ -176,4 +115,15 @@
         X: =42
         Y: =636
         ZIndex: =15
+
+    compWebHeader_19 As compWebHeader:
+        ZIndex: =16
+
+    compWebMenu_17 As compWebMenu:
+        Height: =Parent.Height
+        Visible: ='Create Alert - Admin Tech'.Size>1
+        Width: |-
+            =App.DesignWidth
+            //If(!compWebMenu_5.ExpandMenu,200,200)
+        ZIndex: =17
 
