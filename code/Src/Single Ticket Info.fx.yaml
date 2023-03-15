@@ -8,6 +8,7 @@
         Height: =739
         Image: ='image (2)'
         ImagePosition: =ImagePosition.Stretch
+        Visible: =false
         Width: =Parent.Width
         ZIndex: =1
 
@@ -28,109 +29,16 @@
 
             SingleTicketInfoHeader1 As groupContainer.horizontalAutoLayoutContainer:
                 FillPortions: =0
-                Height: =50
+                Height: =82
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                PaddingLeft: =50
                 ZIndex: =1
 
-                Container11 As groupContainer.manualLayoutContainer:
-                    FillPortions: =0
-                    Height: =Parent.Height
-                    LayoutMinHeight: =50
-                    LayoutMinWidth: =250
-                    Width: =50
-                    ZIndex: =1
-
-                    "'profile pic + drop down_4' As icon.Person":
-                        BorderColor: =RGBA(0, 0, 0, 1)
-                        Color: =RGBA(0, 0, 0, 1)
-                        Height: =40
-                        Icon: =Icon.Person
-                        Width: =40
-                        X: =8
-                        Y: =8
-                        ZIndex: =1
-
-                    "'new notification in dropdown_4' As circle":
-                        BorderColor: =RGBA(168, 0, 0, 1)
-                        Fill: =RGBA(168, 0, 0, 1)
-                        Height: =15
-                        Width: =15
-                        X: =8
-                        Y: =8
-                        ZIndex: =2
-
-                "'nav-Ticket_2' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    FillPortions: =1
-                    OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="Create Ticket"
-                    Width: =174
-                    X: =41
-                    Y: =18
-                    ZIndex: =3
-
-                "'nav-name2_2' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    FillPortions: =1
-                    OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="My Tickets"
-                    Width: =174
-                    X: =215
-                    Y: =18
-                    ZIndex: =4
-
-                "'nav-name3_2' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    FillPortions: =1
-                    OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="Ticket Log"
-                    Width: =174
-                    X: =389
-                    Y: =18
-                    ZIndex: =5
-
-                "'nav-name4_2' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    FillPortions: =1
-                    OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="Ticket Metrics"
-                    Width: =174
-                    X: =563
-                    Y: =18
-                    ZIndex: =6
-
-                "'nav-name5_2' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    FillPortions: =1
-                    OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="Assign Role"
-                    Width: =174
-                    X: =737
-                    Y: =18
-                    ZIndex: =7
+                compWebHeader_17 As compWebHeader:
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    ZIndex: =8
 
             SingleTicketInfoHeader2 As groupContainer.horizontalAutoLayoutContainer:
                 FillPortions: =0
@@ -1773,4 +1681,12 @@
             X: =(Parent.Width/2 - Self.Width/2) + 100
             Y: =(Parent.Height/2 - Self.Height/2) + 120
             ZIndex: =6
+
+    compWebMenu_15 As compWebMenu:
+        Height: =Parent.Height
+        Visible: ='Create A Ticket'.Size>1
+        Width: |-
+            =App.DesignWidth
+            //If(!compWebMenu_2.ExpandMenu,85,200)
+        ZIndex: =5
 
