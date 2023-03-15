@@ -284,7 +284,6 @@
                     ZIndex: =1
 
                     compSearch_1 As compSearch:
-                        OnReset: =Set(searchTicketQuery, ""); Reset(searchBox_1); Set(varSearchText, ""); compSearch_1.CloseSearch()
                         X: =(Parent.Width - Self.Width) / 2
                         Y: =(Parent.Height - Self.Height) / 2
 
