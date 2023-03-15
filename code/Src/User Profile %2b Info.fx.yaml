@@ -2,23 +2,35 @@
     BackgroundImage: =
     ImagePosition: =ImagePosition.Stretch
 
+    MobileNav As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Visible: |-
+            =true
+            //Main Content container this houses certian elements such as the searchbar, and 2 button galleries, one for desktop, and another for mobile
+        Width: =Parent.Width
+        ZIndex: =1
+
+        compMobileMenu_12 As compMobileMenu:
+            Height: =Parent.Height/5
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            Visible: |-
+                ='User Profile + Info'.Size=1
+                //Home.Size=1
+            Width: =Parent.Width
+            Y: =Parent.Height-Self.Height
+            ZIndex: =4
+
     Image13_8 As image:
         Height: =734
         Image: ='image (2)'
+        Visible: |
+            =false
         Width: =1331
         X: =17
         Y: =18
-        ZIndex: =1
-
-    Greeting_5 As label:
-        Align: =Align.Center
-        Color: =RGBA(255, 255, 255, 1)
-        Height: =122
-        Size: =30
-        Text: ="Hello, "
-        Width: =456
-        X: =308
-        Y: =56
         ZIndex: =2
 
     "'Back Scroll_3' As icon.BackArrow":
@@ -27,90 +39,7 @@
         OnSelect: =Back(ScreenTransition.Fade)
         X: =59
         Y: =87
-        ZIndex: =9
-
-    "'nav-Ticket_5' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Create Ticket"
-        Width: =174
-        X: =181
-        Y: =18
-        ZIndex: =14
-
-    "'nav-name2_5' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="My Tickets"
-        Width: =174
-        X: =355
-        Y: =18
-        ZIndex: =15
-
-    "'nav-name3_5' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Ticket Log Example', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Log"
-        Width: =174
-        X: =529
-        Y: =18
-        ZIndex: =16
-
-    "'nav-name4_5' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Ticket Metrics"
-        Width: =174
-        X: =703
-        Y: =18
-        ZIndex: =17
-
-    "'nav-name5_5' As button":
-        AutoDisableOnSelect: =false
-        Color: =RGBA(0, 0, 0, 1)
-        Fill: =RGBA(0, 0, 0, 0)
-        OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-        PressedColor: =RGBA(0, 0, 0, 1)
-        PressedFill: =
-        Text: ="Assign Role"
-        Width: =174
-        X: =877
-        Y: =18
-        ZIndex: =18
-
-    Label3_1 As label:
-        Color: =RGBA(255, 255, 255, 1)
-        Height: =70
-        Size: =30
-        Text: =User().FullName
-        Width: =493
-        X: =592
-        Y: =81
-        ZIndex: =37
-
-    Image7_1 As image:
-        Height: =128
-        Image: =User().Image
-        Width: =152
-        X: =1136
-        Y: =52
-        ZIndex: =38
+        ZIndex: =4
 
     Rectangle1 As rectangle:
         Fill: =RGBA(232, 244, 217, 1)
@@ -118,7 +47,7 @@
         Width: =471
         X: =447
         Y: =256
-        ZIndex: =39
+        ZIndex: =12
 
     Rectangle1_1 As rectangle:
         Fill: =RGBA(232, 244, 217, 1)
@@ -126,7 +55,7 @@
         Width: =471
         X: =447
         Y: =317
-        ZIndex: =40
+        ZIndex: =13
 
     Rectangle1_2 As rectangle:
         Fill: =RGBA(232, 244, 217, 1)
@@ -134,7 +63,7 @@
         Width: =471
         X: =447
         Y: =379
-        ZIndex: =41
+        ZIndex: =14
 
     Label15 As label:
         Align: =Align.Center
@@ -143,5 +72,128 @@
         Width: =471
         X: =447
         Y: =256
-        ZIndex: =42
+        ZIndex: =15
+
+    compWebHeader_1 As compWebHeader:
+        ZIndex: =16
+
+    compWebMenu_12 As compWebMenu:
+        Height: =768
+        Visible: =Home.Size>1
+        Width: =1366
+        ZIndex: =17
+
+    old As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =43
+
+        "'nav-Ticket_5' As button":
+            AutoDisableOnSelect: =false
+            Color: =RGBA(0, 0, 0, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+            PressedColor: =RGBA(0, 0, 0, 1)
+            PressedFill: =
+            Text: ="Create Ticket"
+            Visible: =false
+            Width: =174
+            X: =181
+            Y: =18
+            ZIndex: =5
+
+        "'nav-name2_5' As button":
+            AutoDisableOnSelect: =false
+            Color: =RGBA(0, 0, 0, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
+            PressedColor: =RGBA(0, 0, 0, 1)
+            PressedFill: =
+            Text: ="My Tickets"
+            Visible: =false
+            Width: =174
+            X: =355
+            Y: =18
+            ZIndex: =6
+
+        "'nav-name3_5' As button":
+            AutoDisableOnSelect: =false
+            Color: =RGBA(0, 0, 0, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            OnSelect: =Navigate('Ticket Log Example', ScreenTransition.Fade);
+            PressedColor: =RGBA(0, 0, 0, 1)
+            PressedFill: =
+            Text: ="Ticket Log"
+            Visible: =false
+            Width: =174
+            X: =529
+            Y: =18
+            ZIndex: =7
+
+        "'nav-name4_5' As button":
+            AutoDisableOnSelect: =false
+            Color: =RGBA(0, 0, 0, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
+            PressedColor: =RGBA(0, 0, 0, 1)
+            PressedFill: =
+            Text: ="Ticket Metrics"
+            Visible: =false
+            Width: =174
+            X: =703
+            Y: =18
+            ZIndex: =8
+
+        "'nav-name5_5' As button":
+            AutoDisableOnSelect: =false
+            Color: =RGBA(0, 0, 0, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
+            PressedColor: =RGBA(0, 0, 0, 1)
+            PressedFill: =
+            Text: ="Assign Role"
+            Visible: =false
+            Width: =174
+            X: =877
+            Y: =18
+            ZIndex: =9
+
+        Image7_1 As image:
+            Height: =128
+            Image: =User().Image
+            Visible: =false
+            Width: =152
+            X: =1136
+            Y: =52
+            ZIndex: =11
+
+    Greeting As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =43
+
+        Greeting_5 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =122
+            Size: =30
+            Text: ="Hello, "
+            Width: =456
+            X: =308
+            Y: =56
+            ZIndex: =3
+
+        Label3_1 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =70
+            Size: =30
+            Text: =User().FullName
+            Width: =493
+            X: =592
+            Y: =81
+            ZIndex: =10
 

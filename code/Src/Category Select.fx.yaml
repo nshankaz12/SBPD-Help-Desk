@@ -311,10 +311,6 @@
 
     compWebMenu_11 As compWebMenu_10:
         Height: =Parent.Height
-        OnReset: |-
-            =Set(showMenu, compWebMenu_11.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_11.ExpandMenu)
         Visible: ='Create A Ticket'.Size>1
         Width: =If(!compWebMenu_10.ExpandMenu, 55, 160)
         ZIndex: =11
