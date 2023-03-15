@@ -311,9 +311,11 @@
                     Y: =Parent.Height-Self.Height
                     ZIndex: =4
 
-    compWebMenu_11 As compWebMenu_10:
+    compWebMenu_14 As compWebMenu:
         Height: =Parent.Height
         Visible: ='Create A Ticket'.Size>1
-        Width: =If(!compWebMenu_10.ExpandMenu, 55, 160)
-        ZIndex: =11
+        Width: |-
+            =App.DesignWidth
+            //If(!compWebMenu_2.ExpandMenu,85,200)
+        ZIndex: =12
 
