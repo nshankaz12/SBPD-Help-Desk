@@ -448,52 +448,6 @@
         Width: ='Create A Ticket'.Width
         ZIndex: =3
 
-        CreateATicketMobileNavLinksContainer_1 As groupContainer.horizontalAutoLayoutContainer:
-            FillPortions: =0
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            Visible: |
-                =false
-            Width: =100
-            ZIndex: =1
-
-            CreateATicketMobileNavButtonGallery_1 As gallery.galleryVertical:
-                AlignInContainer: =AlignInContainer.Center
-                FillPortions: =0
-                Height: =Parent.Height
-                Items: =navCol
-                Layout: =Layout.Vertical
-                LayoutMinHeight: =287
-                LayoutMinWidth: =320
-                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
-                ShowScrollbar: =false
-                TemplateSize: =Parent.Width
-                Width: =Parent.Width
-                ZIndex: =1
-
-                MobileNavGalleryNameLabel_6 As label:
-                    Align: =Align.Center
-                    FontWeight: =FontWeight.Semibold
-                    Height: =74
-                    OnSelect: =Select(Parent)
-                    Size: =15
-                    Text: =ThisItem.NavName
-                    Width: =Parent.TemplateWidth
-                    Y: =(Parent.TemplateHeight-Self.Height)/2
-                    ZIndex: =1
-
-                MobileNavButton_8 As button:
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =Parent.TemplateHeight
-                    HoverFill: =ColorFade(RGBA(105,105,105, .25), -20%)
-                    OnSelect: =Select(Parent)
-                    PressedColor: =RGBA(105,105,105,.35)
-                    PressedFill: =RGBA(105,105,105,.35)
-                    Text: =""
-                    Width: =Parent.TemplateWidth
-                    ZIndex: =2
-
         CreateATicketVerticalLayoutContainer_1 As groupContainer.verticalAutoLayoutContainer:
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
@@ -650,43 +604,6 @@
                     Width: =Parent.Height
                     X: =40
                     ZIndex: =5
-
-            CreateATicketMobileHeaderContainer_1 As groupContainer.horizontalAutoLayoutContainer:
-                Fill: =RGBA(118, 173, 149, 1)
-                FillPortions: =0
-                Height: =100
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutJustifyContent: =LayoutJustifyContent.Center
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                Visible: =false
-                ZIndex: =3
-
-                MoblieHamburgerMenu_6 As icon.Hamburger:
-                    AlignInContainer: =AlignInContainer.Center
-                    Color: =RGBA(0, 0, 0, 1)
-                    Icon: =If(HambIconChange,Icon.ChevronLeft,Icon.Hamburger)
-                    OnSelect: |-
-                        =UpdateContext({HambIconChange:!HambIconChange,MGallery:!MGallery})
-                    Width: =100
-                    ZIndex: =1
-
-                CreateATicketMoblieTitleLabelContainer_1 As groupContainer.horizontalAutoLayoutContainer:
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    ZIndex: =2
-
-                    CreateATicketMobileHeaderLabel_1 As label:
-                        Align: =Align.Center
-                        Color: =RGBA(255, 255, 255, 1)
-                        FontWeight: =FontWeight.Bold
-                        Height: =Parent.Height
-                        Size: =If(HambIconChange, 20, 30)
-                        Text: ="Create A Ticket"
-                        Width: =Parent.Width
-                        ZIndex: =1
 
     compWebMenu_7 As compWebMenu:
         ZIndex: =4
