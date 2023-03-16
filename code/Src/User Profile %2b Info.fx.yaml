@@ -78,10 +78,6 @@
         ZIndex: =16
 
     compWebMenu_1 As compWebMenu:
-        OnReset: |-
-            =Set(showMenu, compWebMenu_1.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_1.ExpandMenu)
         ZIndex: =17
 
     old As group:

@@ -678,10 +678,6 @@
         ZIndex: =5
 
     compWebMenu_3 As compWebMenu:
-        OnReset: |-
-            =Set(showMenu, compWebMenu_3.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_3.ExpandMenu)
         ZIndex: =6
 
     SearchBlocker As group:

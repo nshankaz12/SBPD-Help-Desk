@@ -1683,9 +1683,5 @@
             ZIndex: =6
 
     compWebMenu_10 As compWebMenu:
-        OnReset: |-
-            =Set(showMenu, compWebMenu_10.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_10.ExpandMenu)
         ZIndex: =6
 

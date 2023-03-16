@@ -222,9 +222,5 @@
                     Width: =Parent.Width
 
     compWebMenu_5 As compWebMenu:
-        OnReset: |-
-            =Set(showMenu, compWebMenu_5.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_5.ExpandMenu)
         ZIndex: =15
 

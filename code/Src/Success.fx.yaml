@@ -531,9 +531,5 @@ Success As screen:
                 ZIndex: =5
 
     compWebMenu_13 As compWebMenu:
-        OnReset: |-
-            =Set(showMenu, compWebMenu_13.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_13.ExpandMenu)
         ZIndex: =23
 

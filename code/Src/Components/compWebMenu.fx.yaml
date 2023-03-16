@@ -2,31 +2,31 @@ compWebMenu As CanvasComponent:
     ExpandMenu: =showMenu
     Fill: =Color.Transparent
     HamburgerColor: =Color.White
-    Height: =If(showMenu, App.DesignHeight, 80)
+    Height: =If(showMenu, App.Height, 80)
     MenuItems: =gblNavItems
     OnReset: |-
         =Set(showMenu, compWebMenu.ExpandMenu);
         //Set(showHamIcon, compWebMenu.showHamburgerIcon);
         Set(showHamIcon, !compWebMenu.ExpandMenu)
-    Width: =If(showMenu, App.DesignWidth, 80)
+    Width: =If(showMenu, App.Width, 80)
     X: =0
     Y: =0
     ZIndex: =1
 
     Background As rectangle:
         Fill: =RGBA(56, 96, 178, 0.5)
-        Height: =App.DesignHeight
+        Height: =App.Height
         OnSelect: =Set(showMenu, false);
         Visible: =showMenu
-        Width: =App.DesignWidth
+        Width: =App.Width
         ZIndex: =1
 
     "'White nav background' As rectangle":
         Fill: =Color.White
-        Height: =App.DesignHeight
+        Height: =App.Height
         OnSelect: =//Select(Parent)
         Visible: =showMenu
-        Width: =185
+        Width: =200
         ZIndex: =2
 
     icoHamburgerMenu As icon.Hamburger:

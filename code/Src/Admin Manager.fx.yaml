@@ -164,9 +164,11 @@
                 Width: =Parent.Width
 
     compWebMenu_8 As compWebMenu:
+        Height: =If(showMenu, Parent.Height, 80)
         OnReset: |-
             =Set(showMenu, compWebMenu_8.ExpandMenu);
             //Set(showHamIcon, compWebMenu.showHamburgerIcon);
             Set(showHamIcon, !compWebMenu_8.ExpandMenu)
+        Width: =If(showMenu, Parent.Width, 80)
         ZIndex: =2
 

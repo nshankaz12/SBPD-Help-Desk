@@ -209,10 +209,6 @@
             ZIndex: =19
 
         compWebMenu_12 As compWebMenu:
-            OnReset: |-
-                =Set(showMenu, compWebMenu_12.ExpandMenu);
-                //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-                Set(showHamIcon, !compWebMenu_12.ExpandMenu)
             ZIndex: =20
 
         "'Ticket Metrics Group' As group":

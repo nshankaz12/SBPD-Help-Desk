@@ -689,9 +689,5 @@
                         ZIndex: =1
 
     compWebMenu_7 As compWebMenu:
-        OnReset: |-
-            =Set(showMenu, compWebMenu_7.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_7.ExpandMenu)
         ZIndex: =4
 
