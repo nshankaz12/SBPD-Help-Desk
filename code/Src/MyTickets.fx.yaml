@@ -14,13 +14,13 @@
         Image: ='image (2)'
         ImagePosition: =ImagePosition.Stretch
         Width: =Parent.Width
-        ZIndex: =2
+        ZIndex: =3
 
     MyTicketsMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
         LayoutMode: =LayoutMode.Auto
         Width: =Parent.Width
-        ZIndex: =3
+        ZIndex: =4
 
         MyTicketsMobileNavLinks As groupContainer.horizontalAutoLayoutContainer:
             FillPortions: =0
@@ -675,15 +675,14 @@
         Width: =If(compFilterMenu_1.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu_1.FilterIconSize)
         X: =Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
         Y: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + ((SearchFilterContainer.Height - compFilterMenu_1.FilterIconSize) / 2)
-        ZIndex: =4
+        ZIndex: =5
 
     compWebMenu_3 As compWebMenu:
-        Height: =Parent.Height
-        Visible: =MyTickets.Size>1
-        Width: |-
-            =App.DesignWidth
-            //If(!compWebMenu_3.ExpandMenu,200,200)
-        ZIndex: =5
+        OnReset: |-
+            =Set(showMenu, compWebMenu_3.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_3.ExpandMenu)
+        ZIndex: =6
 
     SearchBlocker As group:
         Height: =5
@@ -700,7 +699,7 @@
             OnSelect: =Set(varSearchVisible, false)
             Visible: =App.Width <= 600 && compSearch_1.SearchVisible
             Width: =Parent.Width
-            ZIndex: =6
+            ZIndex: =1
 
         SearchBlockerBottom As rectangle:
             Fill: |-
@@ -711,5 +710,5 @@
             Visible: =App.Width <= 600 && compSearch_1.SearchVisible
             Width: =Parent.Width
             Y: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + SearchFilterContainer.Height
-            ZIndex: =7
+            ZIndex: =2
 

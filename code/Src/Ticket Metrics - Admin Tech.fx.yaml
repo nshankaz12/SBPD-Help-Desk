@@ -208,12 +208,11 @@
             Y: =82
             ZIndex: =19
 
-        compWebMenu_13 As compWebMenu:
-            Height: =Parent.Height
-            Visible: ='Ticket Metrics - Admin Tech'.Size>1
-            Width: |-
-                =App.DesignWidth
-                //If(!compWebMenu_4.ExpandMenu,200,200)
+        compWebMenu_12 As compWebMenu:
+            OnReset: |-
+                =Set(showMenu, compWebMenu_12.ExpandMenu);
+                //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+                Set(showHamIcon, !compWebMenu_12.ExpandMenu)
             ZIndex: =20
 
         "'Ticket Metrics Group' As group":

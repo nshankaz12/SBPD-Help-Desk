@@ -119,11 +119,10 @@
     compWebHeader_19 As compWebHeader:
         ZIndex: =16
 
-    compWebMenu_17 As compWebMenu:
-        Height: =Parent.Height
-        Visible: ='Create Alert - Admin Tech'.Size>1
-        Width: |-
-            =App.DesignWidth
-            //If(!compWebMenu_5.ExpandMenu,200,200)
+    compWebMenu_14 As compWebMenu:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_14.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_14.ExpandMenu)
         ZIndex: =17
 

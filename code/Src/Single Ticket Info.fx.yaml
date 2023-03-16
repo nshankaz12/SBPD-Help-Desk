@@ -1682,11 +1682,10 @@
             Y: =(Parent.Height/2 - Self.Height/2) + 120
             ZIndex: =6
 
-    compWebMenu_15 As compWebMenu:
-        Height: =Parent.Height
-        Visible: ='Single Ticket Info'.Size>1
-        Width: |-
-            =App.DesignWidth
-            //If(!compWebMenu_2.ExpandMenu,85,200)
-        ZIndex: =5
+    compWebMenu_10 As compWebMenu:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_10.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_10.ExpandMenu)
+        ZIndex: =6
 

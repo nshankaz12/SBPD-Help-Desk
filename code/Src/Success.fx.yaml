@@ -530,13 +530,10 @@ Success As screen:
                 Width: =164
                 ZIndex: =5
 
-    compWebMenu_16 As compWebMenu:
-        Height: =Parent.Height
-        Visible: |-
-            =Success.Size>1
-            //'Assign Role - Admin'.Size>1
-        Width: |-
-            =App.DesignWidth
-            //If(!compWebMenu_5.ExpandMenu,200,200)
+    compWebMenu_13 As compWebMenu:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_13.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_13.ExpandMenu)
         ZIndex: =23
 

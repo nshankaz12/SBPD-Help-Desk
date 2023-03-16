@@ -749,9 +749,10 @@ Home As screen:
                 Width: =164
                 ZIndex: =5
 
-    compWebMenu_1 As compWebMenu:
-        Height: =768
-        Visible: =Home.Size>1
-        Width: =1366
-        ZIndex: =9
+    compWebMenu_19 As compWebMenu:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_19.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_19.ExpandMenu)
+        ZIndex: =10
 

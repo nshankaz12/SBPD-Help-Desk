@@ -311,11 +311,10 @@
                     Y: =Parent.Height-Self.Height
                     ZIndex: =4
 
-    compWebMenu_14 As compWebMenu:
-        Height: =Parent.Height
-        Visible: ='Category Select'.Size>1
-        Width: |-
-            =App.DesignWidth
-            //If(!compWebMenu_2.ExpandMenu,85,200)
-        ZIndex: =12
+    compWebMenu_2 As compWebMenu:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_2.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_2.ExpandMenu)
+        ZIndex: =11
 

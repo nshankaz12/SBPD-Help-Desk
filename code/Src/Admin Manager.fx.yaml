@@ -164,10 +164,9 @@
                 Width: =Parent.Width
 
     compWebMenu_8 As compWebMenu:
-        Height: =Parent.Height
-        Visible: =Home.Size>1
-        Width: |-
-            =App.DesignWidth
-            //If(!compWebMenu_8.ExpandMenu,200,200)
-        ZIndex: =3
+        OnReset: |-
+            =Set(showMenu, compWebMenu_8.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_8.ExpandMenu)
+        ZIndex: =2
 

@@ -510,10 +510,9 @@
         ZIndex: =19
 
     compWebMenu_4 As compWebMenu:
-        Height: =Parent.Height
-        Visible: ='Log of All Tickets - Admin Tech'.Size>1
-        Width: |-
-            =App.DesignWidth
-            //If(!compWebMenu_4.ExpandMenu,200,200)
+        OnReset: |-
+            =Set(showMenu, compWebMenu_4.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_4.ExpandMenu)
         ZIndex: =20
 

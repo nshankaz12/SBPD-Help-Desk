@@ -77,10 +77,11 @@
     compWebHeader_1 As compWebHeader:
         ZIndex: =16
 
-    compWebMenu_12 As compWebMenu:
-        Height: =768
-        Visible: ='User Profile + Info'.Size>1
-        Width: =1366
+    compWebMenu_1 As compWebMenu:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_1.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_1.ExpandMenu)
         ZIndex: =17
 
     old As group:

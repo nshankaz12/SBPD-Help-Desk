@@ -1,14 +1,14 @@
 compWebMenu As CanvasComponent:
-    ExpandMenu: =false
+    ExpandMenu: =showMenu
     Fill: =Color.Transparent
     HamburgerColor: =Color.White
-    Height: =App.DesignHeight
+    Height: =If(showMenu, App.DesignHeight, 80)
     MenuItems: =gblNavItems
     OnReset: |-
         =Set(showMenu, compWebMenu.ExpandMenu);
         //Set(showHamIcon, compWebMenu.showHamburgerIcon);
         Set(showHamIcon, !compWebMenu.ExpandMenu)
-    Width: =App.DesignWidth
+    Width: =If(showMenu, App.DesignWidth, 80)
     X: =0
     Y: =0
     ZIndex: =1

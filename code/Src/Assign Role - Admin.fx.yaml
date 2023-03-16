@@ -222,10 +222,9 @@
                     Width: =Parent.Width
 
     compWebMenu_5 As compWebMenu:
-        Height: =Parent.Height
-        Visible: ='Assign Role - Admin'.Size>1
-        Width: |-
-            =App.DesignWidth
-            //If(!compWebMenu_5.ExpandMenu,200,200)
+        OnReset: |-
+            =Set(showMenu, compWebMenu_5.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_5.ExpandMenu)
         ZIndex: =15
 

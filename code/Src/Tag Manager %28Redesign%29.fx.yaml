@@ -30,3 +30,10 @@
                 Y: =14
                 ZIndex: =1
 
+    compWebMenu_16 As compWebMenu:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_16.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_16.ExpandMenu)
+        ZIndex: =6
+

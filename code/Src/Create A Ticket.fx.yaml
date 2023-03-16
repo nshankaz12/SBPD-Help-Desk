@@ -618,11 +618,10 @@
                         LayoutMinWidth: =640
                         Width: =Parent.Width
 
-    compWebMenu_2 As compWebMenu:
-        Height: =Parent.Height
-        Visible: ='Create A Ticket'.Size>1
-        Width: |-
-            =App.DesignWidth
-            //If(!compWebMenu_2.ExpandMenu,85,200)
-        ZIndex: =3
+    compWebMenu_6 As compWebMenu:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_6.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_6.ExpandMenu)
+        ZIndex: =4
 
