@@ -1,0 +1,41 @@
+compWebHeader_17 As CanvasComponent:
+    BackgroundColor: =ColorScheme.primary
+    CompScreenSize: =1
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =82
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =2
+
+    Rectangle3_4 As rectangle:
+        Fill: =compWebHeader_17.BackgroundColor
+        Height: =82
+        Width: =App.Width
+        ZIndex: =1
+
+    Label9_6 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height
+        OnSelect: =
+        Size: =If(compWebHeader_17.CompScreenSize=1, 13, 18)
+        Text: |-
+            ="COUNTY of SANTA BARBARA
+            PUBLIC DEFENDER"
+        Width: =332
+        X: =(Parent.Width-Self.Width)/2
+        ZIndex: =2
+
+    Image3_5 As image:
+        Height: =Parent.Height
+        Image: =PUBDEF_IT__LOGO_Vector
+        OnSelect: =//Select(Parent)
+        PaddingBottom: =2
+        PaddingLeft: =3
+        PaddingRight: =2
+        PaddingTop: =2
+        Width: =80
+        X: =Parent.Width - Self.Width
+        ZIndex: =3
+

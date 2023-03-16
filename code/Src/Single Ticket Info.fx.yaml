@@ -4,45 +4,72 @@
         Set(addMessage, true);
     OnVisible: =Refresh(Comments)
 
-    Image13_6 As image:
-        Height: =739
-        Image: ='image (2)'
-        ImagePosition: =ImagePosition.Stretch
-        Visible: =false
-        Width: =Parent.Width
-        ZIndex: =1
-
     SingleTicketInfoMainContainer As groupContainer.horizontalAutoLayoutContainer:
-        Height: =App.Height
+        Height: =Parent.Height
         LayoutAlignItems: =LayoutAlignItems.Center
         LayoutJustifyContent: =LayoutJustifyContent.Center
         LayoutMode: =LayoutMode.Auto
-        Width: =App.Width
-        ZIndex: =2
+        Width: =Parent.Width
+        ZIndex: =1
 
         SingleTicketInfoVerticalLayoutContainer As groupContainer.verticalAutoLayoutContainer:
+            Height: =Parent.Height
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width
             ZIndex: =1
 
             SingleTicketInfoHeader1 As groupContainer.horizontalAutoLayoutContainer:
                 FillPortions: =0
-                Height: =82
+                Height: =Parent.Height/11
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
                 ZIndex: =1
 
-                compWebHeader_17 As compWebHeader:
+                compWebHeader_21 As compWebHeader_17:
+                    CompScreenSize: ='Single Ticket Info'.Size
+                    Height: =Parent.Height
                     LayoutMinHeight: =640
                     LayoutMinWidth: =640
-                    ZIndex: =8
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                Container11 As groupContainer.manualLayoutContainer:
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutMinHeight: =50
+                    LayoutMinWidth: =250
+                    Visible: =false
+                    Width: =50
+                    ZIndex: =2
+
+                    "'profile pic + drop down_4' As icon.Person":
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        Height: =40
+                        Icon: =Icon.Person
+                        Width: =40
+                        X: =8
+                        Y: =8
+                        ZIndex: =1
+
+                    "'new notification in dropdown_4' As circle":
+                        BorderColor: =RGBA(168, 0, 0, 1)
+                        Fill: =RGBA(168, 0, 0, 1)
+                        Height: =15
+                        Width: =15
+                        X: =8
+                        Y: =8
+                        ZIndex: =2
 
             SingleTicketInfoHeader2 As groupContainer.horizontalAutoLayoutContainer:
+                Fill: =ColorScheme.primary
                 FillPortions: =0
-                Height: =100
+                Height: =50
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
@@ -53,907 +80,390 @@
                     Color: =RGBA(255, 255, 255, 1)
                     FillPortions: =1
                     Height: =Parent.Height
-                    Size: =30
+                    Size: =If('Single Ticket Info'.Size=1, 13, 25)
                     Text: ="Ticket Details"
                     Width: =456
                     X: =465
                     Y: =58
                     ZIndex: =1
 
-            SingleTicketInfoMainContent As groupContainer.horizontalAutoLayoutContainer:
+            SingleTicketInfoMainContent_2 As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =Parent.Height
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                PaddingTop: =50
-                Visible: =false
-                ZIndex: =3
+                LayoutOverflowY: =LayoutOverflow.Scroll
+                LayoutWrap: =true
+                Width: =Parent.Width
+                ZIndex: =4
 
-                SingleticketInfoActivityHistoryContainer As groupContainer.horizontalAutoLayoutContainer:
-                    FillPortions: =2
+                SingleTicketInfoDetailsContainer_4 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =Parent.Height/4
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    Visible: ='Single Ticket Info'.Size<3
+                    Width: =Parent.Width
                     ZIndex: =1
 
-                    Container18 As groupContainer.manualLayoutContainer:
+                    Container17_4 As groupContainer.manualLayoutContainer:
                         LayoutMinHeight: =100
                         LayoutMinWidth: =250
-                        Width: =Parent.Width
                         ZIndex: =1
 
-                        Label2 As label:
-                            Align: =Align.Center
-                            Height: =44
-                            Size: =20
-                            Text: ="Activity History"
-                            Width: =302
-                            X: =286
-                            Y: =36
+                        Rectangle_behind_details_2 As rectangle:
+                            BorderThickness: =3
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =343
+                            Width: =395
+                            X: =32
+                            Y: =143
                             ZIndex: =1
 
-                        TextInput2 As text:
-                            Default: =
-                            Height: =72
-                            HintText: ="Add a comment..."
-                            OnSelect: =
-                            Visible: =addMessage
-                            Width: =Parent.Width - 100
-                            X: =32
-                            Y: =467
+                        Image_behind_Details_label_2 As image:
+                            Height: =220
+                            Image: ='image (2)'
+                            Width: =396
+                            X: =31
+                            Y: =81
                             ZIndex: =2
 
-                        TextInput9 As text:
-                            Default: =If(editMessage, Gallery2.Selected.message, Blank())
-                            Height: =72
-                            OnSelect: =editMessage
-                            Visible: =editMessage
-                            Width: =Parent.Width - 100
+                        Details_label_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(255, 255, 255, 1)
+                            Height: =38
+                            Size: =24
+                            Text: ="Details"
+                            Width: =396
                             X: =32
-                            Y: =467
+                            Y: =94
                             ZIndex: =3
 
-                        Button1 As button:
-                            OnSelect: |-
-                                =/*If(
-                                    addMessage,
-                                    Patch(
-                                        Comments,
-                                        Defaults(Comments),
-                                        {
-                                            ticketId: ticket,
-                                            message: TextInput2.Text,
-                                            creatorId: userData.id
-                                        }
-                                    );
-                                    Reset(TextInput2);
-                                    
-                                );
-                                If(
-                                    editMessage,
-                                    Patch(
-                                        Comments,
-                                        LookUp(
-                                            Comments,
-                                            id = editableRec.id
-                                        ),
-                                        {
-                                            message: TextInput9.Text,
-                                            lastUpdated: Now()
-                                        }
-                                    );
-                                    Set(editMessage, false);
-                                    Set(addMessage, true);
-                                );
-                                */
-                            Text: |-
-                                =If(
-                                    addMessage,
-                                    "Add Comment",
-                                    If(
-                                        editMessage,
-                                        "Update Comment"
-                                    )
-                                )
-                            Width: =200
+                        TextInput1_6 As text:
+                            BorderThickness: =3
+                            Default: =//Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
+                            Height: =344
+                            Mode: =TextMode.MultiLine
+                            Width: =396
                             X: =32
-                            Y: =578
+                            Y: =142
                             ZIndex: =4
 
-                        Close_Ticket_Button As button:
-                            OnSelect: |-
-                                =If(
-                                    addMessage,
-                                    Set(
-                                        varShowResPopup,
-                                        true
-                                    ),
-                                    If(
-                                        editMessage,
-                                        Set(
-                                            addMessage,
-                                            true
-                                        ) && Set(
-                                            editMessage,
-                                            false
-                                        )
-                                    )
-                                )
-                            Text: |-
-                                =If(
-                                    editMessage,
-                                    "Cancel Update",
-                                    If(
-                                        addMessage,
-                                        "Close Ticket"
-                                    )
-                                )
-                            X: =407
-                            Y: =578
-                            ZIndex: =5
-
-                        "Gallery2 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
-                            AccessibleLabel: =
-                            BorderStyle: =BorderStyle.None
-                            Default: =Last(Filter(Comments, ticketId = ticket))
-                            Height: =365
-                            Items: =Filter(Comments, ticketId = ticket)
-                            Layout: =Layout.Vertical
-                            TabIndex: =1
-                            TemplateSize: =184
-                            Width: =843
-                            Y: =80
-                            ZIndex: =6
-
-                            Title3 As label:
-                                Height: =49
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =268
-                                X: =102
-                                Y: =22
-                                ZIndex: =1
-
-                            Subtitle2 As label:
-                                Height: =74
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =10
-                                PaddingLeft: =1
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =15
-                                Text: =ThisItem.message
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =799
-                                X: =102
-                                Y: =71
-                                ZIndex: =2
-
-                            Label1 As label:
-                                Height: =34
-                                OnSelect: =Select(Parent)
-                                Text: =ThisItem.lastUpdated
-                                Width: =263
-                                X: =356
-                                Y: =22
-                                ZIndex: =3
-
-                            Button11 As button:
-                                BorderStyle: =BorderStyle.None
-                                Color: =Color.DarkGray
-                                DisabledBorderColor: =
-                                DisabledColor: =
-                                Fill: =Color.Transparent
-                                Height: =30
-                                HoverBorderColor: =
-                                HoverColor: =Color.Gray
-                                HoverFill: =
-                                OnSelect: |-
-                                    =Set(editMessage, true);
-                                    Set(addMessage, false);
-                                    //Set(editableRec, ThisItem);
-                                PressedBorderColor: =
-                                PressedColor: =Color.Gray
-                                PressedFill: =
-                                RadiusBottomLeft: =0
-                                RadiusBottomRight: =0
-                                RadiusTopLeft: =0
-                                RadiusTopRight: =0
-                                Text: ="Edit"
-                                Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                Width: =62
-                                X: =93
-                                Y: =145
-                                ZIndex: =4
-
-                            Button11_1 As button:
-                                BorderStyle: =BorderStyle.None
-                                Color: =Color.DarkGray
-                                DisabledBorderColor: =
-                                DisabledColor: =
-                                Fill: =Color.Transparent
-                                Height: =30
-                                HoverBorderColor: =
-                                HoverColor: =Color.Gray
-                                HoverFill: =
-                                OnSelect: =Remove(Comments, ThisItem);
-                                PressedBorderColor: =
-                                PressedColor: =Color.Gray
-                                PressedFill: =
-                                RadiusBottomLeft: =0
-                                RadiusBottomRight: =0
-                                RadiusTopLeft: =0
-                                RadiusTopRight: =0
-                                Text: ="Delete"
-                                Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                Width: =105
-                                X: =159
-                                Y: =145
-                                ZIndex: =5
-
-                            Image7 As image:
-                                Height: =76
-                                Image: |-
-                                    =
-                                    "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
-                                Width: =91
-                                X: =4
-                                Y: =8
-                                ZIndex: =6
-
-                            Circle3 As circle:
-                                BorderThickness: =2
-                                Fill: =Color.Transparent
-                                Height: =95
-                                Width: =93
-                                X: =2
-                                ZIndex: =7
-
-                SingleTicketInfoDetailsContainer As groupContainer.horizontalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    Height: =Parent.Height
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    ZIndex: =2
-
-                    Container17 As groupContainer.manualLayoutContainer:
-                        LayoutMinHeight: =100
-                        LayoutMinWidth: =250
-                        ZIndex: =1
-
-                        AttachmentControl_1 As attachments:
-                            BorderColor: =Color.Black
-                            BorderThickness: =5
-                            DisabledBorderColor: =RGBA(0, 0, 0, 1)
-                            DisplayMode: =DisplayMode.View
-                            Height: =70
-                            IsInDataCard: =true
-                            Items: =
-                            MaxAttachments: =10
-                            PaddingBottom: =5
-                            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                            PaddingRight: =5
-                            PaddingTop: =5
-                            Width: =455
-                            Y: =14
-                            ZIndex: =1
-
-                        TextInput1 As text:
-                            Default: =//Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
-                            Height: =482
-                            Mode: =TextMode.MultiLine
-                            Width: =455
-                            Y: =84
-                            ZIndex: =2
-
-                        title_label As label:
+                        title_label_4 As label:
                             Height: =58
                             Text: =""
                             Width: =93
                             Y: =84
-                            ZIndex: =3
-
-                        Status_label As label:
-                            Height: =59
-                            Size: =15
-                            Text: |-
-                                ="Status:"
-                            Width: =187
-                            Y: =200
-                            ZIndex: =4
-
-                        Category_label As label:
-                            Height: =62
-                            Size: =15
-                            Text: |-
-                                ="Category:"
-                            Width: =186
-                            Y: =255
                             ZIndex: =5
 
-                        Tags_label As label:
-                            Height: =62
-                            Size: =15
-                            Text: |-
-                                ="Tags:"
-                            Width: =186
-                            Y: =313
-                            ZIndex: =6
-
-                        Ticket_Created_value As label:
-                            Height: =58
-                            Size: =15
-                            Text: =dateCreated
-                            Width: =302
-                            X: =153
-                            Y: =434
-                            ZIndex: =7
-
-                        Status_value As label:
-                            Height: =58
-                            Size: =15
-                            Text: =status
-                            Width: =249
-                            X: =186
-                            Y: =201
-                            ZIndex: =8
-
-                        Category_value As label:
-                            Height: =58
-                            Size: =15
-                            Text: =LookUp(Category, category = id, name)
-                            Width: =283
-                            X: =144
-                            Y: =255
-                            ZIndex: =9
-
-                        Tags_value As label:
-                            Height: =58
-                            Size: =15
-                            Text: =//LookUp(tags, tags = id, name)
-                            Width: =362
-                            X: =93
-                            Y: =313
-                            ZIndex: =10
-
-                        Assigned_to_label As label:
-                            Height: =58
-                            Size: =15
-                            Text: |-
-                                ="Assignee:"
-                            Width: =186
-                            Y: =142
-                            ZIndex: =11
-
-                        Assigned_to_value As label:
-                            Height: =58
-                            Size: =15
-                            Text: =assigned_person
-                            Width: =252
-                            X: =203
-                            Y: =142
-                            ZIndex: =12
-
-                        Title_value As label:
-                            Height: =58
-                            Size: =15
-                            Text: =title
-                            Width: =303
-                            X: =152
-                            Y: =376
-                            ZIndex: =13
-
-                        Ticket_Created_label As label:
-                            Height: =58
-                            Size: =15
-                            Text: |-
-                                ="Ticket created:"
-                            Width: =187
-                            Y: =434
-                            ZIndex: =14
-
-                        Title_label As label:
-                            Height: =58
-                            Size: =15
-                            Text: |-
-                                ="Title:"
-                            Width: =187
-                            Y: =376
-                            ZIndex: =15
-
-                        Description_label As label:
-                            Height: =58
-                            Size: =15
-                            Text: |-
-                                ="Description: "
-                            Width: =132
-                            Y: =492
-                            ZIndex: =16
-
-                        Assigned_to_value_1 As label:
-                            Height: =90
-                            Size: =15
-                            Text: =description
-                            Width: =310
-                            X: =145
-                            Y: =476
-                            ZIndex: =17
-
-                        Reporting_person_value As label:
-                            Height: =58
-                            Size: =15
-                            Text: =reporting_person
-                            Width: =268
-                            X: =186
-                            Y: =84
-                            ZIndex: =18
-
-                        Reporting_person_label As label:
-                            Height: =58
-                            Size: =15
-                            Text: |-
-                                ="Reporter:"
-                            Width: =187
-                            Y: =86
-                            ZIndex: =19
-
-            SingleTicketInfoMainContent_2 As groupContainer.horizontalAutoLayoutContainer:
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                PaddingTop: =50
-                ZIndex: =4
-
-                SingleticketInfoActivityHistoryContainer_2 As groupContainer.horizontalAutoLayoutContainer:
-                    FillPortions: =2
-                    Height: =Parent.Height
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    LayoutOverflowY: =LayoutOverflow.Scroll
-                    ZIndex: =1
-
-                    Container18_2 As groupContainer.manualLayoutContainer:
-                        FillPortions: =0
-                        Height: =Parent.Height //200
-                        LayoutMinHeight: =100
-                        LayoutMinWidth: =250
-                        Width: =Parent.Width
-                        ZIndex: =1
-
-                        Label_above_comments As label:
-                            Align: =Align.Center
-                            AutoHeight: =true
-                            Font: =Font.Georgia
-                            Height: =44
-                            Size: =20
-                            Text: ="Comments"
-                            Visible: =false
-                            Width: =302
-                            X: =286
-                            Y: =267
-                            ZIndex: =1
-
-                        TextInput2_2 As text:
-                            Default: =
-                            Height: =72
-                            HintText: ="Add a comment..."
-                            OnSelect: =
-                            Visible: =false //addMessage
-                            Width: =879
-                            X: =21
-                            Y: =496
-                            ZIndex: =2
-
-                        TextInput9_2 As text:
-                            Default: =If(editMessage, Gallery2_3.Selected.message, Blank())
-                            Height: =72
-                            OnSelect: =editMessage
-                            Visible: =false //editMessage
-                            Width: =Parent.Width - 100
-                            X: =32
-                            Y: =467
-                            ZIndex: =3
-
-                        Button1_3 As button:
-                            OnSelect: |
-                                =If(
-                                    addMessage,
-                                    Patch(
-                                        Comments,
-                                        Defaults(Comments),
-                                        {
-                                            ticketId: ticket,
-                                            message: TextInput2_2.Text,
-                                            creatorId: userData.id
-                                        }
-                                    );
-                                    Reset(TextInput2_2);
-                                    
-                                );
-                                If(
-                                    editMessage,
-                                    Patch(
-                                        Comments,
-                                        LookUp(
-                                            Comments,
-                                            id = editableRec.id
-                                        ),
-                                        {
-                                            message: TextInput9_2.Text,
-                                            lastUpdated: Now()
-                                        }
-                                    );
-                                    Set(editMessage, false);
-                                    Set(addMessage, true);
-                                );
-                            Text: |-
-                                =If(
-                                    addMessage,
-                                    "Add Comment",
-                                    If(
-                                        editMessage,
-                                        "Update Comment"
-                                    )
-                                )
-                            Visible: =false
-                            Width: =200
-                            X: =32
-                            Y: =578
-                            ZIndex: =4
-
-                        Close_Ticket_Button_2 As button:
-                            OnSelect: |-
-                                =If(
-                                    addMessage,
-                                    Set(
-                                        varShowResPopup,
-                                        true
-                                    ),
-                                    If(
-                                        editMessage,
-                                        Set(
-                                            addMessage,
-                                            true
-                                        ) && Set(
-                                            editMessage,
-                                            false
-                                        )
-                                    )
-                                )
-                            Text: |-
-                                =If(
-                                    editMessage,
-                                    "Cancel Update",
-                                    If(
-                                        addMessage,
-                                        "Close Ticket"
-                                    )
-                                )
-                            Visible: =false
-                            X: =407
-                            Y: =578
-                            ZIndex: =5
-
-                        "Gallery2_3 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
-                            AccessibleLabel: =
-                            BorderStyle: =BorderStyle.None
-                            Default: =Last(Filter(Comments, ticketId = ticket))
-                            Height: =185
-                            Items: =Filter(Comments, ticketId = ticket)
-                            Layout: =Layout.Vertical
-                            TabIndex: =1
-                            TemplateSize: =184
-                            Visible: =false
-                            Width: =879
-                            X: =32
-                            Y: =302
-                            ZIndex: =6
-
-                            Title3_2 As label:
-                                Height: =49
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =268
-                                X: =102
-                                Y: =22
-                                ZIndex: =1
-
-                            Subtitle2_2 As label:
-                                Height: =74
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =10
-                                PaddingLeft: =1
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =15
-                                Text: =ThisItem.message
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =799
-                                X: =70
-                                Y: =71
-                                ZIndex: =2
-
-                            Label1_6 As label:
-                                Height: =34
-                                OnSelect: =Select(Parent)
-                                Text: =ThisItem.lastUpdated
-                                Width: =263
-                                X: =356
-                                Y: =22
-                                ZIndex: =3
-
-                            Button11_4 As button:
-                                BorderStyle: =BorderStyle.None
-                                Color: =Color.DarkGray
-                                DisabledBorderColor: =
-                                DisabledColor: =
-                                Fill: =Color.Transparent
-                                Height: =30
-                                HoverBorderColor: =
-                                HoverColor: =Color.Gray
-                                HoverFill: =
-                                OnSelect: |-
-                                    =Set(editMessage, true);
-                                    Set(addMessage, false);
-                                    Set(editableRec, ThisItem);
-                                PressedBorderColor: =
-                                PressedColor: =Color.Gray
-                                PressedFill: =
-                                RadiusBottomLeft: =0
-                                RadiusBottomRight: =0
-                                RadiusTopLeft: =0
-                                RadiusTopRight: =0
-                                Text: ="Edit"
-                                Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                Width: =62
-                                X: =93
-                                Y: =145
-                                ZIndex: =4
-
-                            Button11_5 As button:
-                                BorderStyle: =BorderStyle.None
-                                Color: =Color.DarkGray
-                                DisabledBorderColor: =
-                                DisabledColor: =
-                                Fill: =Color.Transparent
-                                Height: =30
-                                HoverBorderColor: =
-                                HoverColor: =Color.Gray
-                                HoverFill: =
-                                OnSelect: =Remove(Comments, ThisItem);
-                                PressedBorderColor: =
-                                PressedColor: =Color.Gray
-                                PressedFill: =
-                                RadiusBottomLeft: =0
-                                RadiusBottomRight: =0
-                                RadiusTopLeft: =0
-                                RadiusTopRight: =0
-                                Text: ="Delete"
-                                Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                Width: =105
-                                X: =159
-                                Y: =145
-                                ZIndex: =5
-
-                            Image7_5 As image:
-                                Height: =76
-                                Image: |-
-                                    =
-                                    "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
-                                Width: =91
-                                X: =4
-                                Y: =8
-                                ZIndex: =6
-
-                            Circle3_2 As circle:
-                                BorderThickness: =2
-                                Fill: =Color.Transparent
-                                Height: =95
-                                Width: =93
-                                X: =2
-                                ZIndex: =7
-
-                        Description_value_1 As text:
-                            BorderColor: =RGBA(0, 0, 0, 1)
-                            Default: =description & " There once was a ship that put to sea The name of the ship was the Billy O' Tea The winds blew up, her bow dipped down Oh blow, my bully boys, blow (huh) Soon may the Wellerman come To bring us sugar and tea and rum One day, when the tonguing is done We'll take our leave and go"
-                            DisplayMode: =DisplayMode.View
-                            Font: =Font.Georgia
-                            Height: =88
-                            HoverBorderColor: =RGBA(237, 237, 237, 1)
-                            HoverColor: =RGBA(237, 237, 237, 1)
-                            HoverFill: =RGBA(237, 237, 237, 1)
-                            Mode: =TextMode.MultiLine
-                            Size: =16
-                            Visible: =false
-                            Width: =752
-                            X: =146
-                            Y: =143
-                            ZIndex: =7
-
-                        Label18 As label:
-                            AutoHeight: =true
-                            Font: =Font.Georgia
-                            Height: =88
-                            Size: =16
-                            Text: ="Lorem ipsum dolor sit amet. Sed placeat dolorem qui porro nobis qui laudantium beatae a mollitia obcaecati quo magni corrupti aut nostrum vitae nam esse similique! Aut aspernatur porro hic molestias nostrum et temporibus ullam ut debitis rerum ut explicabo similique rem aperiam dolorem qui totam rerum." //Ex aspernatur quod ut dolorem perspiciatis et accusantium rerum ab magni numquam ut nihil harum. Aut rerum eveniet est autem quam sit ducimus rerum qui eveniet perspiciatis. Ea voluptas quos in facilis aliquid qui corporis quasi sit laboriosam odit in dolores dolor. Cum possimus sint qui excepturi quaerat est officiis sint ea odit voluptatem eos quam voluptas hic rerum consequatur sed deserunt laboriosam. Et quam numquam qui illo possimus et consequatur eligendi hic voluptatum debitis quo veniam excepturi ut dolores ducimus. Id galisum dolorem eos doloremque beatae aut veniam minus et magni molestiae aut repudiandae quia sed placeat aliquid qui quasi deleniti. Est consequatur tenetur est consequuntur accusamus ad quia praesentium sit consectetur illo non possimus rerum in velit doloribus. Ut internos explicabo et magnam provident ut earum pariatur a eaque deserunt et assumenda Quis. At distinctio atque et quae dolor est repellat officia a aliquam quod."
-                            Visible: =false
-                            Width: =752
-                            X: =159
-                            Y: =143
-                            ZIndex: =8
-
-                        Description_label_1 As label:
+                        Status_label_4 As label:
                             Align: =Align.Center
                             Font: =Font.Georgia
                             Height: =56
                             Size: =16
                             Text: |-
-                                ="Description:"
-                            Visible: =false
+                                ="Status:"
                             Width: =127
                             X: =32
-                            Y: =130
+                            Y: =256
+                            ZIndex: =6
+
+                        Category_label_4 As label:
+                            Align: =Align.Center
+                            Font: =Font.Georgia
+                            Height: =58
+                            Size: =16
+                            Text: |-
+                                ="Category:"
+                            Width: =127
+                            X: =32
+                            Y: =313
+                            ZIndex: =7
+
+                        Tags_label_4 As label:
+                            Align: =Align.Center
+                            Font: =Font.Georgia
+                            Height: =59
+                            Size: =16
+                            Text: |-
+                                ="Tags:"
+                            Width: =127
+                            X: =32
+                            Y: =370
+                            ZIndex: =8
+
+                        Ticket_Created_label_4 As label:
+                            Align: =Align.Center
+                            Font: =Font.Georgia
+                            Height: =46
+                            Size: =16
+                            Text: |-
+                                ="Created:"
+                            Width: =127
+                            X: =32
+                            Y: =428
                             ZIndex: =9
 
-                        AttachmentControl_2 As attachments:
-                            BorderColor: =Color.Black
-                            BorderThickness: =5
-                            DisabledBorderColor: =RGBA(0, 0, 0, 1)
-                            DisplayMode: =DisplayMode.View
-                            Fill: =RGBA(192, 192, 192, 0.5)
+                        Reporter_value_6 As label:
+                            Align: =Align.Center
                             Font: =Font.Georgia
-                            Height: =42
-                            IsInDataCard: =true
-                            Items: =
-                            MaxAttachments: =10
-                            PaddingBottom: =5
-                            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                            PaddingRight: =5
-                            PaddingTop: =5
-                            Visible: =false //If(IsEmpty(AttachmentControl_1.Attachments), false, true)
-                            Width: =249
+                            Height: =56
+                            Size: =16
+                            Text: =reporting_person
+                            Width: =247
+                            X: =180
+                            Y: =143
+                            ZIndex: =10
+
+                        Reporter_label_4 As label:
+                            Align: =Align.Center
+                            Font: =Font.Georgia
+                            Height: =57
+                            Size: =16
+                            Text: |-
+                                ="Reporter:"
+                            Width: =127
                             X: =32
-                            Y: =70
+                            Y: =142
                             ZIndex: =11
 
-                        Title_label_2 As label:
+                        Reporter_value_10 As label:
+                            Align: =Align.Center
                             Font: =Font.Georgia
-                            Height: =70
-                            Size: =24
-                            Text: =title
-                            Visible: =false
-                            Width: =444
-                            X: =32
+                            Height: =58
+                            Size: =16
+                            Text: = assigned_person
+                            Width: =248
+                            X: =180
+                            Y: =199
                             ZIndex: =12
+
+                        Reporter_value_12 As label:
+                            Align: =Align.Center
+                            Font: =Font.Georgia
+                            Height: =57
+                            Size: =16
+                            Text: =status
+                            Width: =248
+                            X: =180
+                            Y: =256
+                            ZIndex: =13
+
+                        Reporter_value_13 As label:
+                            Align: =Align.Center
+                            DisplayMode: =DisplayMode.View
+                            Font: =Font.Georgia
+                            Height: =58
+                            Size: =16
+                            Text: =LookUp(Category, category = id, name)
+                            Width: =248
+                            X: =180
+                            Y: =313
+                            ZIndex: =14
+
+                        Reporter_value_14 As label:
+                            Align: =Align.Center
+                            DisplayMode: =DisplayMode.View
+                            Font: =Font.Georgia
+                            Height: =58
+                            Size: =16
+                            Text: =dateCreated
+                            Width: =248
+                            X: =180
+                            Y: =416
+                            ZIndex: =16
+
+                        Reporter_label_5 As label:
+                            Align: =Align.Center
+                            Font: =Font.Georgia
+                            Height: =57
+                            Size: =16
+                            Text: |-
+                                ="Assignee:"
+                            Width: =127
+                            X: =32
+                            Y: =199
+                            ZIndex: =17
+
+                        ComboBox1_2 As combobox:
+                            DefaultSelectedItems: =If(tags = "", Blank(), Filter(Tags, name in tags))
+                            DisplayFields: =["name"]
+                            Height: =37
+                            Items: =Tags
+                            SearchFields: =["name"]
+                            SearchItems: =Search(Tags,ComboBox1_2.SearchText,"name")
+                            Width: =254
+                            X: =159
+                            Y: =379
+                            ZIndex: =18
+
+                        Button7_7 As button:
+                            OnSelect: |-
+                                =Patch(Tickets_1, LookUp(Tickets_1, id = ticket), {tags: Label4_2.Text});
+                                //Patch(Tickets_1,ticketRec, {addAssignees: Label4_1.Text});
+                                Refresh(Tickets_1)
+                            Text: ="Save"
+                            X: =224
+                            Y: =501
+                            ZIndex: =19
+
+                        Label4_2 As label:
+                            Height: =0
+                            Text: =Concat(ComboBox1_2.SelectedItems, Concatenate(name, ","))
+                            Visible: =false
+                            Width: =0
+                            X: =40
+                            Y: =40
+                            ZIndex: =20
+
+                SingleticketInfoActivityHistoryContainer_2 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutMinHeight: =Parent.Height
+                    LayoutMinWidth: =100
+                    LayoutMode: =LayoutMode.Auto
+                    LayoutOverflowY: =LayoutOverflow.Scroll
+                    Width: =If('Single Ticket Info'.Size>2, Parent.Width/2, Parent.Width)
+                    ZIndex: =2
+
+                    Container18_2 As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: |-
+                            = //200
+                            Parent.Height-SingleTicketInfoHeader1.Height-SingleTicketInfoHeader2.Height
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        Width: =Parent.Width
+                        ZIndex: =2
 
                         Container9 As groupContainer.verticalAutoLayoutContainer:
                             Height: =Parent.Height
                             LayoutDirection: =LayoutDirection.Vertical
                             LayoutMode: =LayoutMode.Auto
-                            PaddingLeft: =10
+                            PaddingLeft: =5
+                            PaddingRight: =10
+                            PaddingTop: =40
                             Width: =Parent.Width
                             ZIndex: =14
 
-                            Title_label_3 As label:
-                                Font: =Font.Georgia
-                                Height: =70
-                                Size: =24
-                                Text: =title
-                                Width: =444
-                                X: =32
+                            Label21 As label:
+                                Height: =If('Single Ticket Info'.Size<3, 20, 40)
+                                Size: =If('Single Ticket Info'.Size>1,13, 8)
+                                Text: ="Attachments"
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
+                                Width: =Parent.Width
                                 ZIndex: =1
 
-                            Label21 As label:
-                                Text: ="Attachments"
-                                ZIndex: =2
-
                             Label25 As label:
+                                Height: =If('Single Ticket Info'.Size<3, 20, 40)
+                                Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="No Attachments Found."
                                 Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), true, false)
                                 Width: |
                                     =300
-                                ZIndex: =3
+                                ZIndex: =2
 
                             Gallery5 As gallery.variableTemplateHeightGallery:
+                                AlignInContainer: =AlignInContainer.SetByContainer
                                 BorderThickness: =1
                                 DelayItemLoading: =true
                                 FillPortions: =0
-                                Height: =200
+                                Height: =If('Single Ticket Info'.Size>1, 100, 25)
                                 Items: =Filter('Ticket Attachments', ticketID=ticket)
                                 Layout: =Layout.Vertical
                                 LayoutMinHeight: =287
-                                LayoutMinWidth: =320
+                                LayoutMinWidth: =100
                                 LoadingSpinner: =LoadingSpinner.Data
-                                TemplateSize: =50
+                                TemplateSize: =25
                                 Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
-                                Width: =408
+                                Width: =Parent.Width*.97
                                 X: =96
                                 Y: =157
-                                ZIndex: =4
+                                ZIndex: =3
 
                                 HtmlText3 As htmlViewer:
+                                    AutoHeight: =true
+                                    Height: =25
                                     HtmlText: ="<a href='" & ThisItem.'Link to item' & "'>" & ThisItem.'File name with extension' & "</a>" 
                                     OnSelect: =Select(Parent)
-                                    Width: =891
-                                    Y: =10
+                                    Size: =10
+                                    Width: =Parent.TemplateWidth
                                     ZIndex: =1
 
                             Description_label_4 As label:
-                                Align: =Align.Center
                                 Font: =Font.Georgia
-                                Height: =56
-                                Size: =16
+                                Height: =If('Single Ticket Info'.Size<3, 20, 40)
+                                Size: =If('Single Ticket Info'.Size=1,10,16)
                                 Text: |-
                                     ="Description:"
-                                Width: =127
-                                ZIndex: =5
+                                Width: =Parent.Width
+                                X: =40
+                                Y: =40
+                                ZIndex: =4
 
                             Label18_4 As label:
-                                AutoHeight: =true
                                 DisplayMode: =DisplayMode.View
                                 Font: =Font.Georgia
-                                Height: =88
-                                Size: =16
+                                Height: =100
+                                LayoutMinHeight: =100
+                                Size: =If('Single Ticket Info'.Size<2,10,16)
                                 Text: =description
-                                Width: =752
+                                Width: =Parent.Width
                                 X: =127
                                 Y: =11
-                                ZIndex: =6
+                                ZIndex: =5
 
                             Label_above_comments_2 As label:
                                 Align: =Align.Center
                                 AlignInContainer: =AlignInContainer.Center
                                 AutoHeight: =true
                                 Font: =Font.Georgia
-                                Height: =44
-                                Size: =20
+                                Height: =If('Single Ticket Info'.Size<3, 20, 40)
+                                Size: =If('Single Ticket Info'.Size<2,10,20)
                                 Text: ="Comments"
-                                Width: =302
-                                X: =100
-                                Y: =267
-                                ZIndex: =7
+                                Width: =Parent.Width
+                                X: =60
+                                Y: =60
+                                ZIndex: =6
 
                             Container18_3 As groupContainer.manualLayoutContainer:
                                 AlignInContainer: =AlignInContainer.SetByContainer
-                                LayoutMinHeight: =100
+                                Height: =Parent.Height/2
+                                LayoutMinHeight: =200
                                 LayoutMinWidth: =250
                                 Width: =Parent.Width
-                                ZIndex: =8
+                                ZIndex: =7
 
                                 TextInput2_4 As text:
                                     Default: =
-                                    Height: =72
+                                    Height: =If('Single Ticket Info'.Size=1,25, 36)
                                     HintText: ="Add a comment..."
                                     OnSelect: =
                                     Visible: =addMessage
-                                    Width: =Parent.Width - 100
-                                    X: =32
-                                    Y: =200
+                                    Width: =Parent.Width *.95
+                                    X: =CommentContentLabel.X
+                                    Y: =Gallery2_5.Height
                                     ZIndex: =2
 
                                 TextInput9_4 As text:
                                     Default: =If(editMessage, Gallery2_5.Selected.message, Blank())
-                                    Height: =72
+                                    Height: =If('Single Ticket Info'.Size=1,25, 36)
                                     OnSelect: =editMessage
                                     Visible: =editMessage
-                                    Width: =Parent.Width - 100
-                                    X: =32
-                                    Y: =200
+                                    Width: =Parent.Width *.95
+                                    X: =CommentContentLabel.X
+                                    Y: =Gallery2_5.Height
                                     ZIndex: =3
 
                                 Button1_5 As button:
+                                    Fill: =ColorScheme.primary
+                                    Height: =30
                                     OnSelect: |
                                         =If(
                                             addMessage,
@@ -985,6 +495,7 @@
                                             Set(editMessage, false);
                                             Set(addMessage, true);
                                         );
+                                    Size: =12
                                     Text: |-
                                         =If(
                                             addMessage,
@@ -995,11 +506,13 @@
                                             )
                                         )
                                     Width: =200
-                                    X: =32
-                                    Y: =280
+                                    X: =TextInput2_4.X
+                                    Y: =Parent.Height-Self.Height-5
                                     ZIndex: =4
 
                                 Close_Ticket_Button_4 As button:
+                                    Fill: =ColorScheme.primary
+                                    Height: =30
                                     OnSelect: |-
                                         =If(
                                             addMessage,
@@ -1018,6 +531,7 @@
                                                 )
                                             )
                                         )
+                                    Size: =12
                                     Text: |-
                                         =If(
                                             editMessage,
@@ -1027,58 +541,61 @@
                                                 "Close Ticket"
                                             )
                                         )
-                                    X: =407
-                                    Y: =280
+                                    X: =Button1_5.X + Button1_5.Width+50
+                                    Y: =Parent.Height-Self.Height-5
                                     ZIndex: =5
 
                                 "Gallery2_5 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                     AccessibleLabel: =
-                                    BorderStyle: =BorderStyle.None
+                                    BorderColor: =RGBA(0, 0, 0, 1)
                                     Default: =Last(Filter(Comments, ticketId = ticket))
-                                    Height: =192
+                                    Height: =Parent.Height*.75
                                     Items: =Filter(Comments, ticketId = ticket)
                                     Layout: =Layout.Vertical
+                                    ShowScrollbar: =false
                                     TabIndex: =1
-                                    TemplateSize: =184
-                                    Width: =Parent.Width
+                                    TemplatePadding: =3
+                                    TemplateSize: =150
+                                    Width: =Parent.Width*.97
                                     ZIndex: =6
 
-                                    Title3_4 As label:
-                                        Height: =49
+                                    CommentOwnerNameLabel As label:
+                                        Height: =30
                                         OnSelect: =Select(Parent)
                                         PaddingBottom: =0
-                                        PaddingLeft: =0
-                                        PaddingRight: =0
-                                        PaddingTop: =0
-                                        Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
-                                        VerticalAlign: =VerticalAlign.Top
-                                        Width: =268
-                                        X: =102
-                                        Y: =22
-                                        ZIndex: =1
-
-                                    Subtitle2_4 As label:
-                                        Height: =74
-                                        OnSelect: =Select(Parent)
-                                        PaddingBottom: =10
-                                        PaddingLeft: =1
-                                        PaddingRight: =0
                                         PaddingTop: =0
                                         Size: =15
+                                        Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                        VerticalAlign: =VerticalAlign.Top
+                                        Width: =Parent.TemplateWidth-DateAndTimeStamp.Width - InitialsCircle.Width
+                                        X: =InitialsCircle.X+InitialsCircle.Width+5
+                                        Y: =12
+                                        ZIndex: =1
+
+                                    CommentContentLabel As label:
+                                        DisplayMode: =DisplayMode.View
+                                        Height: =68
+                                        OnSelect: =Select(Parent)
+                                        Overflow: =Overflow.Scroll
+                                        PaddingBottom: =10
+                                        PaddingLeft: =10
+                                        PaddingTop: =0
+                                        Size: =If(CountRows(Filter(MatchAll(CommentContentLabel.Text, "\S*(\s|\n?)"), !IsBlank(FullMatch)))>=20, 10, 15)
                                         Text: =ThisItem.message
                                         VerticalAlign: =VerticalAlign.Top
-                                        Width: =697
-                                        X: =102
-                                        Y: =71
+                                        Width: =Parent.TemplateWidth
+                                        X: =1
+                                        Y: =CommentOwnerNameLabel.Y+CommentOwnerNameLabel.Height+5
                                         ZIndex: =2
 
-                                    Label1_8 As label:
-                                        Height: =34
+                                    DateAndTimeStamp As label:
+                                        Height: =30
                                         OnSelect: =Select(Parent)
+                                        Size: =15
                                         Text: =ThisItem.lastUpdated
-                                        Width: =263
-                                        X: =401
-                                        Y: =22
+                                        Width: =200
+                                        X: =Parent.TemplateWidth-Self.Width
+                                        Y: =CommentOwnerNameLabel.Y
                                         ZIndex: =3
 
                                     Button11_8 As button:
@@ -1104,9 +621,8 @@
                                         RadiusTopRight: =0
                                         Text: ="Edit"
                                         Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                        Width: =62
-                                        X: =93
-                                        Y: =145
+                                        Width: =105
+                                        Y: =Parent.TemplateHeight-Self.Height-5
                                         ZIndex: =4
 
                                     Button11_9 As button:
@@ -1130,26 +646,27 @@
                                         Text: ="Delete"
                                         Visible: =If(ThisItem.creatorId = userData.id, true, false)
                                         Width: =105
-                                        X: =159
-                                        Y: =145
+                                        X: =Button11_8.X+Button11_8.Width+5
+                                        Y: =Parent.TemplateHeight-Self.Height-5
                                         ZIndex: =5
 
-                                    Image7_7 As image:
-                                        Height: =76
+                                    InitialsImage As image:
+                                        Height: =32
                                         Image: |-
                                             =
                                             "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
-                                        Width: =91
-                                        X: =4
-                                        Y: =8
+                                        Width: =32
+                                        X: =InitialsCircle.X
+                                        Y: =10
                                         ZIndex: =6
 
-                                    Circle3_4 As circle:
+                                    InitialsCircle As circle:
                                         BorderThickness: =2
                                         Fill: =Color.Transparent
-                                        Height: =95
-                                        Width: =93
-                                        X: =2
+                                        Height: =32
+                                        Width: =32
+                                        X: =10
+                                        Y: =10
                                         ZIndex: =7
 
                             ContainerforCommentsOnly As groupContainer.manualLayoutContainer:
@@ -1157,7 +674,7 @@
                                 LayoutMinHeight: =100
                                 LayoutMinWidth: =250
                                 Visible: =false
-                                ZIndex: =9
+                                ZIndex: =8
 
                                 Close_Ticket_Button_3 As button:
                                     OnSelect: |-
@@ -1377,32 +894,367 @@
                                         X: =2
                                         ZIndex: =7
 
+                        Title_label_3 As label:
+                            Font: =Font.Georgia
+                            Size: =If('Single Ticket Info'.Size=1,12,24)
+                            Text: =title
+                            Width: =Parent.Width
+                            Y: =10
+                            ZIndex: =15
+
+                        Group1 As group:
+                            Height: =5
+                            Width: =5
+                            X: =40
+                            Y: =40
+                            ZIndex: =16
+
+                            Label_above_comments As label:
+                                Align: =Align.Center
+                                AutoHeight: =true
+                                Font: =Font.Georgia
+                                Height: =44
+                                Size: =20
+                                Text: ="Comments"
+                                Visible: =false
+                                Width: =302
+                                X: =286
+                                Y: =267
+                                ZIndex: =1
+
+                            TextInput2_2 As text:
+                                Default: =
+                                Height: =72
+                                HintText: ="Add a comment..."
+                                OnSelect: =
+                                Visible: =false //addMessage
+                                Width: =879
+                                X: =21
+                                Y: =496
+                                ZIndex: =2
+
+                            TextInput9_2 As text:
+                                Default: =If(editMessage, Gallery2_3.Selected.message, Blank())
+                                Height: =72
+                                OnSelect: =editMessage
+                                Visible: =false //editMessage
+                                Width: =Parent.Width - 100
+                                X: =32
+                                Y: =467
+                                ZIndex: =3
+
+                            Button1_3 As button:
+                                OnSelect: |
+                                    =If(
+                                        addMessage,
+                                        Patch(
+                                            Comments,
+                                            Defaults(Comments),
+                                            {
+                                                ticketId: ticket,
+                                                message: TextInput2_2.Text,
+                                                creatorId: userData.id
+                                            }
+                                        );
+                                        Reset(TextInput2_2);
+                                        
+                                    );
+                                    If(
+                                        editMessage,
+                                        Patch(
+                                            Comments,
+                                            LookUp(
+                                                Comments,
+                                                id = editableRec.id
+                                            ),
+                                            {
+                                                message: TextInput9_2.Text,
+                                                lastUpdated: Now()
+                                            }
+                                        );
+                                        Set(editMessage, false);
+                                        Set(addMessage, true);
+                                    );
+                                Text: |-
+                                    =If(
+                                        addMessage,
+                                        "Add Comment",
+                                        If(
+                                            editMessage,
+                                            "Update Comment"
+                                        )
+                                    )
+                                Visible: =false
+                                Width: =200
+                                X: =32
+                                Y: =578
+                                ZIndex: =4
+
+                            Close_Ticket_Button_2 As button:
+                                OnSelect: |-
+                                    =If(
+                                        addMessage,
+                                        Set(
+                                            varShowResPopup,
+                                            true
+                                        ),
+                                        If(
+                                            editMessage,
+                                            Set(
+                                                addMessage,
+                                                true
+                                            ) && Set(
+                                                editMessage,
+                                                false
+                                            )
+                                        )
+                                    )
+                                Text: |-
+                                    =If(
+                                        editMessage,
+                                        "Cancel Update",
+                                        If(
+                                            addMessage,
+                                            "Close Ticket"
+                                        )
+                                    )
+                                Visible: =false
+                                X: =407
+                                Y: =578
+                                ZIndex: =5
+
+                            "Gallery2_3 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
+                                AccessibleLabel: =
+                                BorderStyle: =BorderStyle.None
+                                Default: =Last(Filter(Comments, ticketId = ticket))
+                                Height: =185
+                                Items: =Filter(Comments, ticketId = ticket)
+                                Layout: =Layout.Vertical
+                                TabIndex: =1
+                                TemplateSize: =184
+                                Visible: =false
+                                Width: =879
+                                X: =32
+                                Y: =302
+                                ZIndex: =6
+
+                                Title3_2 As label:
+                                    Height: =49
+                                    OnSelect: =Select(Parent)
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                    VerticalAlign: =VerticalAlign.Top
+                                    Width: =268
+                                    X: =102
+                                    Y: =22
+                                    ZIndex: =1
+
+                                Subtitle2_2 As label:
+                                    Height: =74
+                                    OnSelect: =Select(Parent)
+                                    PaddingBottom: =10
+                                    PaddingLeft: =1
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =15
+                                    Text: =ThisItem.message
+                                    VerticalAlign: =VerticalAlign.Top
+                                    Width: =799
+                                    X: =70
+                                    Y: =71
+                                    ZIndex: =2
+
+                                Label1_6 As label:
+                                    Height: =34
+                                    OnSelect: =Select(Parent)
+                                    Text: =ThisItem.lastUpdated
+                                    Width: =263
+                                    X: =356
+                                    Y: =22
+                                    ZIndex: =3
+
+                                Button11_4 As button:
+                                    BorderStyle: =BorderStyle.None
+                                    Color: =Color.DarkGray
+                                    DisabledBorderColor: =
+                                    DisabledColor: =
+                                    Fill: =Color.Transparent
+                                    Height: =30
+                                    HoverBorderColor: =
+                                    HoverColor: =Color.Gray
+                                    HoverFill: =
+                                    OnSelect: |-
+                                        =Set(editMessage, true);
+                                        Set(addMessage, false);
+                                        Set(editableRec, ThisItem);
+                                    PressedBorderColor: =
+                                    PressedColor: =Color.Gray
+                                    PressedFill: =
+                                    RadiusBottomLeft: =0
+                                    RadiusBottomRight: =0
+                                    RadiusTopLeft: =0
+                                    RadiusTopRight: =0
+                                    Text: ="Edit"
+                                    Visible: =If(ThisItem.creatorId = userData.id, true, false)
+                                    Width: =62
+                                    X: =93
+                                    Y: =145
+                                    ZIndex: =4
+
+                                Button11_5 As button:
+                                    BorderStyle: =BorderStyle.None
+                                    Color: =Color.DarkGray
+                                    DisabledBorderColor: =
+                                    DisabledColor: =
+                                    Fill: =Color.Transparent
+                                    Height: =30
+                                    HoverBorderColor: =
+                                    HoverColor: =Color.Gray
+                                    HoverFill: =
+                                    OnSelect: =Remove(Comments, ThisItem);
+                                    PressedBorderColor: =
+                                    PressedColor: =Color.Gray
+                                    PressedFill: =
+                                    RadiusBottomLeft: =0
+                                    RadiusBottomRight: =0
+                                    RadiusTopLeft: =0
+                                    RadiusTopRight: =0
+                                    Text: ="Delete"
+                                    Visible: =If(ThisItem.creatorId = userData.id, true, false)
+                                    Width: =105
+                                    X: =159
+                                    Y: =145
+                                    ZIndex: =5
+
+                                Image7_5 As image:
+                                    Height: =76
+                                    Image: |-
+                                        =
+                                        "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                    Width: =91
+                                    X: =4
+                                    Y: =8
+                                    ZIndex: =6
+
+                                Circle3_2 As circle:
+                                    BorderThickness: =2
+                                    Fill: =Color.Transparent
+                                    Height: =95
+                                    Width: =93
+                                    X: =2
+                                    ZIndex: =7
+
+                            Description_value_1 As text:
+                                BorderColor: =RGBA(0, 0, 0, 1)
+                                Default: =description & " There once was a ship that put to sea The name of the ship was the Billy O' Tea The winds blew up, her bow dipped down Oh blow, my bully boys, blow (huh) Soon may the Wellerman come To bring us sugar and tea and rum One day, when the tonguing is done We'll take our leave and go"
+                                DisplayMode: =DisplayMode.View
+                                Font: =Font.Georgia
+                                Height: =88
+                                HoverBorderColor: =RGBA(237, 237, 237, 1)
+                                HoverColor: =RGBA(237, 237, 237, 1)
+                                HoverFill: =RGBA(237, 237, 237, 1)
+                                Mode: =TextMode.MultiLine
+                                Size: =16
+                                Visible: =false
+                                Width: =752
+                                X: =146
+                                Y: =143
+                                ZIndex: =7
+
+                            Label18 As label:
+                                AutoHeight: =true
+                                Font: =Font.Georgia
+                                Height: =88
+                                Size: =16
+                                Text: ="Lorem ipsum dolor sit amet. Sed placeat dolorem qui porro nobis qui laudantium beatae a mollitia obcaecati quo magni corrupti aut nostrum vitae nam esse similique! Aut aspernatur porro hic molestias nostrum et temporibus ullam ut debitis rerum ut explicabo similique rem aperiam dolorem qui totam rerum." //Ex aspernatur quod ut dolorem perspiciatis et accusantium rerum ab magni numquam ut nihil harum. Aut rerum eveniet est autem quam sit ducimus rerum qui eveniet perspiciatis. Ea voluptas quos in facilis aliquid qui corporis quasi sit laboriosam odit in dolores dolor. Cum possimus sint qui excepturi quaerat est officiis sint ea odit voluptatem eos quam voluptas hic rerum consequatur sed deserunt laboriosam. Et quam numquam qui illo possimus et consequatur eligendi hic voluptatum debitis quo veniam excepturi ut dolores ducimus. Id galisum dolorem eos doloremque beatae aut veniam minus et magni molestiae aut repudiandae quia sed placeat aliquid qui quasi deleniti. Est consequatur tenetur est consequuntur accusamus ad quia praesentium sit consectetur illo non possimus rerum in velit doloribus. Ut internos explicabo et magnam provident ut earum pariatur a eaque deserunt et assumenda Quis. At distinctio atque et quae dolor est repellat officia a aliquam quod."
+                                Visible: =false
+                                Width: =752
+                                X: =159
+                                Y: =143
+                                ZIndex: =8
+
+                            Description_label_1 As label:
+                                Align: =Align.Center
+                                Font: =Font.Georgia
+                                Height: =56
+                                Size: =16
+                                Text: |-
+                                    ="Description:"
+                                Visible: =false
+                                Width: =127
+                                X: =32
+                                Y: =130
+                                ZIndex: =9
+
+                            AttachmentControl_2 As attachments:
+                                BorderColor: =Color.Black
+                                BorderThickness: =5
+                                DisabledBorderColor: =RGBA(0, 0, 0, 1)
+                                DisplayMode: =DisplayMode.View
+                                Fill: =RGBA(192, 192, 192, 0.5)
+                                Font: =Font.Georgia
+                                Height: =42
+                                IsInDataCard: =true
+                                Items: =
+                                MaxAttachments: =10
+                                PaddingBottom: =5
+                                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                                PaddingRight: =5
+                                PaddingTop: =5
+                                Visible: =false //If(IsEmpty(AttachmentControl_1.Attachments), false, true)
+                                Width: =249
+                                X: =32
+                                Y: =70
+                                ZIndex: =11
+
+                            Title_label_2 As label:
+                                Font: =Font.Georgia
+                                Height: =70
+                                Size: =24
+                                Text: =title
+                                Visible: =false
+                                Width: =444
+                                X: =32
+                                ZIndex: =12
+
                 SingleTicketInfoDetailsContainer_3 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
-                    Height: =Parent.Height
+                    Height: =Parent.Height-SingleTicketInfoHeader1.Height-SingleTicketInfoHeader2.Height
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    Visible: ='Single Ticket Info'.Size>2
+                    Width: =If('Single Ticket Info'.Size>1,Parent.Width/2,Parent.Width)
                     ZIndex: =3
 
                     Container17_3 As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.Start
+                        Height: =Parent.Height
                         LayoutMinHeight: =100
                         LayoutMinWidth: =250
+                        Width: =Parent.Width
                         ZIndex: =1
 
                         Rectangle_behind_details_1 As rectangle:
                             BorderThickness: =3
                             Fill: =RGBA(0, 0, 0, 0)
-                            Height: =343
-                            Width: =395
-                            X: =32
-                            Y: =143
+                            Height: =Parent.Height*.90
+                            Visible: |-
+                                =
+                                true
+                            Width: =Parent.Width*.90
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =(Parent.Height-Self.Height)/2
                             ZIndex: =1
 
                         Image_behind_Details_label_1 As image:
                             Height: =220
                             Image: ='image (2)'
-                            Width: =396
+                            Visible: =false
+                            Width: =375
                             X: =31
                             Y: =81
                             ZIndex: =2
@@ -1410,161 +1262,48 @@
                         Details_label_1 As label:
                             Align: =Align.Center
                             Color: =RGBA(255, 255, 255, 1)
+                            Fill: =ColorScheme.primary
                             Height: =38
                             Size: =24
                             Text: ="Details"
-                            Width: =396
-                            X: =32
-                            Y: =94
+                            Width: =Parent.Width*.90
+                            X: =Rectangle_behind_details_1.X
+                            Y: =Rectangle_behind_details_1.Y
                             ZIndex: =3
 
                         TextInput1_5 As text:
                             BorderThickness: =3
                             Default: =//Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
+                            DisplayMode: =DisplayMode.View
                             Height: =344
                             Mode: =TextMode.MultiLine
+                            Visible: |
+                                =false
                             Width: =396
-                            X: =32
+                            X: =(Parent.Width-Self.Width)/2
                             Y: =142
                             ZIndex: =4
 
-                        title_label_3 As label:
+                        Title_Label As label:
                             Height: =58
                             Text: =""
                             Width: =93
                             Y: =84
                             ZIndex: =5
 
-                        Status_label_3 As label:
-                            Align: =Align.Center
-                            Font: =Font.Georgia
-                            Height: =56
-                            Size: =16
-                            Text: |-
-                                ="Status:"
-                            Width: =127
-                            X: =32
-                            Y: =256
-                            ZIndex: =6
-
-                        Category_label_3 As label:
-                            Align: =Align.Center
-                            Font: =Font.Georgia
-                            Height: =58
-                            Size: =16
-                            Text: |-
-                                ="Category:"
-                            Width: =127
-                            X: =32
-                            Y: =313
-                            ZIndex: =7
-
-                        Tags_label_3 As label:
-                            Align: =Align.Center
+                        Tags_Label As label:
                             Font: =Font.Georgia
                             Height: =59
                             Size: =16
                             Text: |-
                                 ="Tags:"
                             Width: =127
-                            X: =32
-                            Y: =370
-                            ZIndex: =8
-
-                        Ticket_Created_label_3 As label:
-                            Align: =Align.Center
-                            Font: =Font.Georgia
-                            Height: =46
-                            Size: =16
-                            Text: |-
-                                ="Created:"
-                            Width: =127
-                            X: =32
-                            Y: =428
-                            ZIndex: =9
-
-                        Reporter_value_5 As label:
-                            Align: =Align.Center
-                            Font: =Font.Georgia
-                            Height: =56
-                            Size: =16
-                            Text: =reporting_person
-                            Width: =247
-                            X: =180
-                            Y: =143
-                            ZIndex: =10
-
-                        Reporter_label_2 As label:
-                            Align: =Align.Center
-                            Font: =Font.Georgia
-                            Height: =57
-                            Size: =16
-                            Text: |-
-                                ="Reporter:"
-                            Width: =127
-                            X: =32
-                            Y: =142
-                            ZIndex: =11
-
-                        Reporter_value_7 As label:
-                            Align: =Align.Center
-                            Font: =Font.Georgia
-                            Height: =58
-                            Size: =16
-                            Text: = assigned_person
-                            Width: =248
-                            X: =180
-                            Y: =199
-                            ZIndex: =12
-
-                        Reporter_value_8 As label:
-                            Align: =Align.Center
-                            Font: =Font.Georgia
-                            Height: =57
-                            Size: =16
-                            Text: =status
-                            Width: =248
-                            X: =180
-                            Y: =256
-                            ZIndex: =13
-
-                        Reporter_value_9 As label:
-                            Align: =Align.Center
-                            DisplayMode: =DisplayMode.View
-                            Font: =Font.Georgia
-                            Height: =58
-                            Size: =16
-                            Text: =LookUp(Category, category = id, name)
-                            Width: =248
-                            X: =180
-                            Y: =313
-                            ZIndex: =14
-
-                        Reporter_value_11 As label:
-                            Align: =Align.Center
-                            DisplayMode: =DisplayMode.View
-                            Font: =Font.Georgia
-                            Height: =58
-                            Size: =16
-                            Text: =dateCreated
-                            Width: =248
-                            X: =180
-                            Y: =416
-                            ZIndex: =16
-
-                        Reporter_label_3 As label:
-                            Align: =Align.Center
-                            Font: =Font.Georgia
-                            Height: =57
-                            Size: =16
-                            Text: |-
-                                ="Assignee:"
-                            Width: =127
-                            X: =32
-                            Y: =199
-                            ZIndex: =17
+                            X: =Reporter_Label.X
+                            Y: =Category_Label.Y+Category_Label.Height+5
+                            ZIndex: =6
 
                         ComboBox1_1 As combobox:
+                            ChevronBackground: =ColorScheme.primary
                             DefaultSelectedItems: =If(tags = "", Blank(), Filter(Tags, name in tags))
                             DisplayFields: =["name"]
                             Height: =37
@@ -1572,19 +1311,20 @@
                             SearchFields: =["name"]
                             SearchItems: =Search(Tags,ComboBox1_1.SearchText,"name")
                             Width: =254
-                            X: =159
-                            Y: =379
-                            ZIndex: =18
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Tags_Label.Y
+                            ZIndex: =7
 
-                        Button7_3 As button:
+                        Save_Button As button:
+                            Fill: =ColorScheme.primary
                             OnSelect: |-
                                 =Patch(Tickets_1, LookUp(Tickets_1, id = ticket), {tags: Label4_1.Text});
                                 //Patch(Tickets_1,ticketRec, {addAssignees: Label4_1.Text});
                                 Refresh(Tickets_1)
                             Text: ="Save"
-                            X: =224
-                            Y: =501
-                            ZIndex: =19
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Rectangle_behind_details_1.Height-Self.Height
+                            ZIndex: =8
 
                         Label4_1 As label:
                             Height: =0
@@ -1593,7 +1333,119 @@
                             Width: =0
                             X: =40
                             Y: =40
-                            ZIndex: =20
+                            ZIndex: =9
+
+                        Created_Date_Stamp_Label As label:
+                            Align: =Align.Center
+                            DisplayMode: =DisplayMode.View
+                            Font: =Font.Georgia
+                            Height: =58
+                            Size: =16
+                            Text: =dateCreated
+                            Width: =248
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Created_Label.Y
+                            ZIndex: =10
+
+                        Created_Label As label:
+                            Font: =Font.Georgia
+                            Height: =46
+                            Size: =16
+                            Text: |-
+                                ="Created:"
+                            Width: =127
+                            X: =Reporter_Label.X
+                            Y: =Tags_Label.Y+Tags_Label.Height+5
+                            ZIndex: =11
+
+                        Status_Value_Label As label:
+                            Align: =Align.Center
+                            Font: =Font.Georgia
+                            Height: =57
+                            Size: =16
+                            Text: =status
+                            Width: =248
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Status_Label.Y
+                            ZIndex: =12
+
+                        Status_Label As label:
+                            Font: =Font.Georgia
+                            Height: =56
+                            Size: =16
+                            Text: |-
+                                ="Status:"
+                            Width: =127
+                            X: =Reporter_Label.X
+                            Y: =Assignee_Label.Y+Assignee_Label.Height+5
+                            ZIndex: =13
+
+                        Assignee_Value_Label As label:
+                            Align: =Align.Center
+                            Font: =Font.Georgia
+                            Height: =58
+                            Size: =16
+                            Text: = assigned_person
+                            Width: =248
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Assignee_Label.Y 
+                            ZIndex: =14
+
+                        Assignee_Label As label:
+                            Font: =Font.Georgia
+                            Height: =57
+                            Size: =16
+                            Text: |-
+                                ="Assignee:"
+                            Width: =127
+                            X: =Reporter_Label.X
+                            Y: =Reporter_Label.Y+Reporter_Label.Height+5
+                            ZIndex: =15
+
+                        Category_Value_Label As label:
+                            Align: =Align.Center
+                            DisplayMode: =DisplayMode.View
+                            Font: =Font.Georgia
+                            Height: =58
+                            Size: =16
+                            Text: =LookUp(Category, category = id, name)
+                            Width: =248
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Category_Label.Y
+                            ZIndex: =16
+
+                        Category_Label As label:
+                            Font: =Font.Georgia
+                            Height: =58
+                            Size: =16
+                            Text: |-
+                                ="Category:"
+                            Width: =127
+                            X: =Reporter_Label.X
+                            Y: =Status_Label.Y+Status_Label.Height+5
+                            ZIndex: =17
+
+                        Reporter_Value_Label As label:
+                            Align: =Align.Center
+                            Font: =Font.Georgia
+                            Height: =56
+                            Size: =16
+                            Text: =reporting_person
+                            Width: =247
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Reporter_Label.Y
+                            ZIndex: =18
+
+                        Reporter_Label As label:
+                            Font: =Font.Georgia
+                            Height: =57
+                            Size: =16
+                            Text: |-
+                                ="Reporter:"
+                            Width: =127
+                            X: =Rectangle_behind_details_1.X+10
+                            Y: =Rectangle_behind_details_1.Y+50
+                            ZIndex: =19
 
     Rectangle1_6 As rectangle:
         Fill: =RGBA(56, 96, 178, 0.5)
@@ -1601,7 +1453,7 @@
         OnSelect: =varShowResPopup
         Visible: =varShowResPopup
         Width: =Parent.Width
-        ZIndex: =3
+        ZIndex: =2
 
     Container5 As groupContainer:
         Height: =484
@@ -1609,7 +1461,7 @@
         Width: =729
         X: =(Parent.Width/2 - Self.Width/2)
         Y: =(Parent.Height/2 - Self.Height/2)
-        ZIndex: =4
+        ZIndex: =3
 
         Rectangle2_3 As rectangle:
             Fill: =RGBA(241, 244, 249, 1)
@@ -1682,6 +1534,16 @@
             Y: =(Parent.Height/2 - Self.Height/2) + 120
             ZIndex: =6
 
+    Icon1 As icon.BackArrow:
+        Color: =ColorScheme.secondary
+        Height: =49
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.Fade)
+        Width: =49
+        X: =15
+        Y: =65
+        ZIndex: =4
+
     compWebMenu_10 As compWebMenu:
-        ZIndex: =6
+        ZIndex: =5
 
