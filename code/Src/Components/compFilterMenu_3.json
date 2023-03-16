@@ -1,0 +1,190 @@
+{
+  "ComponentAllowCustomization": true,
+  "ComponentChangedSinceFileImport": true,
+  "ComponentManifest": {
+    "AllowAccessToGlobals": false,
+    "AllowCustomization": true,
+    "Description": "",
+    "Name": "compFilterMenu_3",
+    "TemplateGuid": "9956c354ab16494a82d9bb0955fad35e"
+  },
+  "ComponentType": "CanvasComponent",
+  "CustomGroupControlTemplateName": "",
+  "CustomProperties": [
+    {
+      "Category": 0,
+      "DisplayName": "FilterVisible",
+      "Hidden": false,
+      "Name": "FilterVisible",
+      "PropertyDataTypeKey": "Boolean",
+      "Tooltip": "Determines if menu should be visible or not",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"_MinPrimitive\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "FontSize",
+      "Hidden": false,
+      "Name": "FontSize",
+      "PropertyDataTypeKey": "Number",
+      "Tooltip": "Sets the font size",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "IconSize",
+      "Hidden": false,
+      "Name": "IconSize",
+      "PropertyDataTypeKey": "Number",
+      "Tooltip": "Sets the icon size",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "CheckAdmin",
+      "Hidden": false,
+      "Name": "CheckAdmin",
+      "PropertyDataTypeKey": "Boolean",
+      "Tooltip": "Checks if user is either admin/tech",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"_MinPrimitive\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "StatusItems",
+      "Hidden": false,
+      "Name": "StatusItems",
+      "PropertyDataTypeKey": "Table",
+      "Tooltip": "Get the collection of statuses",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"Result\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "NewHeight",
+      "Hidden": false,
+      "Name": "NewHeight",
+      "PropertyDataTypeKey": "Number",
+      "Tooltip": "Set the height of the component",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "TicketsChoice",
+      "Hidden": true,
+      "Name": "TicketsChoice",
+      "PropertyDataTypeKey": "String",
+      "Tooltip": "Returns the chosen selection of tickets",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "StatusChoice",
+      "Hidden": true,
+      "Name": "StatusChoice",
+      "PropertyDataTypeKey": "String",
+      "Tooltip": "Returns the chosen status",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "FilterIconSize",
+      "Hidden": false,
+      "Name": "FilterIconSize",
+      "PropertyDataTypeKey": "Number",
+      "Tooltip": "Sets the size of the filter icon",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 2,
+      "DisplayName": "OpenFilter",
+      "Hidden": false,
+      "Name": "OpenFilter",
+      "PropertyDataTypeKey": "Boolean",
+      "Tooltip": "Sets filter visible to true",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"_MinPrimitive\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 2,
+      "DisplayName": "CloseFilter",
+      "Hidden": false,
+      "Name": "CloseFilter",
+      "PropertyDataTypeKey": "Boolean",
+      "Tooltip": "Sets filter visible to false",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"_MinPrimitive\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "TagItems",
+      "Hidden": false,
+      "Name": "TagItems",
+      "PropertyDataTypeKey": "Table",
+      "Tooltip": "Gets the table of tags",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"Result\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "TagChoice",
+      "Hidden": true,
+      "Name": "TagChoice",
+      "PropertyDataTypeKey": "String",
+      "Tooltip": "Returns the chosen tag",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "PrimaryColor",
+      "Hidden": false,
+      "Name": "PrimaryColor",
+      "PropertyDataTypeKey": "Color",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "SecondaryColor",
+      "Hidden": false,
+      "Name": "SecondaryColor",
+      "PropertyDataTypeKey": "Color",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "BackgroundColor",
+      "Hidden": false,
+      "Name": "BackgroundColor",
+      "PropertyDataTypeKey": "Color",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "OffColor",
+      "Hidden": false,
+      "Name": "OffColor",
+      "PropertyDataTypeKey": "Color",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "ColorOrange",
+      "Hidden": false,
+      "Name": "ColorOrange",
+      "PropertyDataTypeKey": "Color",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.330\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}}"
+    }
+  ],
+  "FirstParty": true,
+  "Id": "http://microsoft.com/appmagic/Component",
+  "IsComponentLocked": false,
+  "IsComponentTemplate": true,
+  "IsCustomGroupControlTemplate": false,
+  "IsPcfControl": false,
+  "IsPremiumPcfControl": false,
+  "IsWidgetTemplate": false,
+  "LastModifiedTimestamp": "638145507008657249",
+  "Name": "9956c354ab16494a82d9bb0955fad35e",
+  "OverridableProperties": {},
+  "TemplateOriginalName": "00ac356f15114f3a985817426ac52b02",
+  "Version": "638132878595804106"
+}
