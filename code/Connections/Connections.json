@@ -140,6 +140,28 @@
       "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline"
     },
     "datasets": {
+      "https://csula.sharepoint.com/sites/SBPD_DB": {
+        "dataSources": {
+          "Alerts_1": {
+            "tableName": "421c291c-fd22-4403-9c63-97c4de48dc46"
+          },
+          "Category_1": {
+            "tableName": "19cb57fd-d9b2-45d3-8ed0-ff3b5a29dfb0"
+          },
+          "Comments_1": {
+            "tableName": "96dffb50-98de-4868-8179-208f622f1f02"
+          },
+          "Tags_1": {
+            "tableName": "7b6bfcfd-fa2b-4b6e-a04f-4ddc66919f03"
+          },
+          "Tickets": {
+            "tableName": "5ac5fd2b-3ebd-4793-bfc7-db3ac5bdd0c7"
+          },
+          "Users_1": {
+            "tableName": "823257f2-e654-4f36-a9eb-05450846c742"
+          }
+        }
+      },
       "https://csula.sharepoint.com/sites/SBPDProject": {
         "dataSources": {
           "Administrators": {
@@ -157,7 +179,13 @@
     },
     "dataSources": [
       "Administrators",
-      "Ticket Attachments"
+      "Ticket Attachments",
+      "Alerts_1",
+      "Category_1",
+      "Comments_1",
+      "Tags_1",
+      "Tickets",
+      "Users_1"
     ],
     "dependencies": {},
     "dependents": [
