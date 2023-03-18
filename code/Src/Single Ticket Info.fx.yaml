@@ -1383,18 +1383,20 @@
                         Assignee_ComboBox As combobox:
                             ChevronBackground: =ColorScheme.primary
                             Default: |
-                                =If(IsBlank(assigneeId), Blank(), First(Filter(Users, id = assigneeId)))
-                                //If(IsBlank(assigneeId), Blank(), Filter(Users,id = assigneeId))
-                                //If(assigned_person = "Unassigned",Blank(), LookUp(Users, id = assigneeId, fullName)) 
-                            DefaultSelectedItems: =//If(tags = "", Blank(), Filter(Tags, name in tags))
+                                =
+                            DefaultSelectedItems: =If(IsBlank(assigneeId), Blank(), Filter(Users,id = assigneeId))
                             DisplayFields: =["fullName"]
                             Height: =37
                             InputTextPlaceholder: ="Find items"
-                            Items: =Users
+                            IsSearchable: =false
+                            Items: |-
+                                =Filter(Users, userRole = "tech" || userRole = "admin")
+                                //Users
                             SearchFields: =["fullName"]
-                            SearchItems: =Search(Users,Assignee_ComboBox.SearchText,"fullName")
+                            SearchItems: =[]
                             SelectMultiple: =false
-                            Visible: =false
+                            Visible: |
+                                =true
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Assignee_Label.Y 
@@ -1406,6 +1408,8 @@
                             Height: =58
                             Size: =16
                             Text: = assigned_person
+                            Visible: |
+                                =false
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Assignee_Label.Y 
