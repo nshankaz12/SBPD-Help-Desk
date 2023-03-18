@@ -1387,11 +1387,12 @@
                             DefaultSelectedItems: =If(IsBlank(assigneeId), Blank(), Filter(Users,id = assigneeId))
                             DisplayFields: =["fullName"]
                             Height: =37
-                            InputTextPlaceholder: ="Find items"
+                            InputTextPlaceholder: ="Unassigned"
                             IsSearchable: =false
                             Items: |-
                                 =Filter(Users, userRole = "tech" || userRole = "admin")
                                 //Users
+                            NoSelectionText: ="Unassigned"
                             SearchFields: =["fullName"]
                             SearchItems: =[]
                             SelectMultiple: =false
