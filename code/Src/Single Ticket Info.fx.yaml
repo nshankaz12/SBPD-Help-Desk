@@ -1318,7 +1318,29 @@
                         Save_Button As button:
                             Fill: =ColorScheme.primary
                             OnSelect: |-
-                                =Patch(Tickets_1, LookUp(Tickets_1, id = ticket), {tags: Label4_1.Text},{assignedTO: Value(AssigneeId.Text)});
+                                =
+                                If(AssigneeId.Text = "0",
+                                    Patch(
+                                        Tickets_1,
+                                        LookUp(
+                                            Tickets_1,
+                                            id = ticket
+                                        ),
+                                        {tags: Label4_1.Text},
+                                        {assignedTO: 0}
+                                    ),
+                                    Patch(
+                                        Tickets_1,
+                                        LookUp(
+                                            Tickets_1,
+                                            id = ticket
+                                        ),
+                                        {tags: Label4_1.Text},
+                                        {assignedTO: Value(AssigneeId.Text)}
+                                        )
+                                );
+                                
+                                
                                 //Patch(Tickets_1,ticketRec, {addAssignees: Label4_1.Text});
                                 Refresh(Tickets_1)
                             Text: ="Save"
@@ -1428,8 +1450,9 @@
                             ZIndex: =16
 
                         AssigneeId As label:
-                            Text: =Concat(Assignee_ComboBox.SelectedItems, id)
-                            Visible: =false
+                            Text: |-
+                                =//Concat(Assignee_ComboBox.SelectedItems, id)
+                                If(CountRows(Assignee_ComboBox.SelectedItems) = 0, "0",Concat(Assignee_ComboBox.SelectedItems, id) )
                             X: =299
                             Y: =80
                             ZIndex: =17
@@ -1478,6 +1501,21 @@
                             X: =Rectangle_behind_details_1.X+10
                             Y: =Rectangle_behind_details_1.Y+50
                             ZIndex: =21
+
+                        AssignMe As label:
+                            Align: =Align.Center
+                            Height: =24
+                            HoverColor: =ColorScheme.primary
+                            OnSelect: |+
+                                =UpdateContext({assigneeId:userData.id})
+                                
+                            Size: =12
+                            Text: ="Assign to me"
+                            Underline: =
+                            Width: =250
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Assignee_ComboBox.Y + 38 
+                            ZIndex: =22
 
     Rectangle1_6 As rectangle:
         Fill: =RGBA(56, 96, 178, 0.5)
