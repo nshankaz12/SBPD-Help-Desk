@@ -1458,51 +1458,6 @@
                             Y: =80
                             ZIndex: =17
 
-                        Category_Value_Label As label:
-                            Align: =Align.Center
-                            DisplayMode: =DisplayMode.View
-                            Font: =Font.Georgia
-                            Height: =58
-                            Size: =16
-                            Text: =LookUp(Category, category = id, name)
-                            Width: =248
-                            X: =(Parent.Width-Self.Width)/2
-                            Y: =Category_Label.Y
-                            ZIndex: =18
-
-                        Category_Label As label:
-                            Font: =Font.Georgia
-                            Height: =58
-                            Size: =16
-                            Text: |-
-                                ="Category:"
-                            Width: =127
-                            X: =Reporter_Label.X
-                            Y: =Status_Label.Y+Status_Label.Height+5
-                            ZIndex: =19
-
-                        Reporter_Value_Label As label:
-                            Align: =Align.Center
-                            Font: =Font.Georgia
-                            Height: =56
-                            Size: =16
-                            Text: =reporting_person
-                            Width: =247
-                            X: =(Parent.Width-Self.Width)/2
-                            Y: =Reporter_Label.Y
-                            ZIndex: =20
-
-                        Reporter_Label As label:
-                            Font: =Font.Georgia
-                            Height: =57
-                            Size: =16
-                            Text: |-
-                                ="Reporter:"
-                            Width: =127
-                            X: =Rectangle_behind_details_1.X+10
-                            Y: =Rectangle_behind_details_1.Y+50
-                            ZIndex: =21
-
                         AssignMe As label:
                             Align: =Align.Center
                             Height: =24
@@ -1513,9 +1468,55 @@
                             Size: =12
                             Text: ="Assign to me"
                             Underline: =
+                            Visible: =If(Value(AssigneeId.Text) = userData.id,false, true)
                             Width: =250
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Assignee_ComboBox.Y + 38 
+                            ZIndex: =18
+
+                        Category_Value_Label As label:
+                            Align: =Align.Center
+                            DisplayMode: =DisplayMode.View
+                            Font: =Font.Georgia
+                            Height: =58
+                            Size: =16
+                            Text: =LookUp(Category, category = id, name)
+                            Width: =248
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Category_Label.Y
+                            ZIndex: =19
+
+                        Category_Label As label:
+                            Font: =Font.Georgia
+                            Height: =58
+                            Size: =16
+                            Text: |-
+                                ="Category:"
+                            Width: =127
+                            X: =Reporter_Label.X
+                            Y: =Status_Label.Y+Status_Label.Height+5
+                            ZIndex: =20
+
+                        Reporter_Value_Label As label:
+                            Align: =Align.Center
+                            Font: =Font.Georgia
+                            Height: =56
+                            Size: =16
+                            Text: =reporting_person
+                            Width: =247
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Reporter_Label.Y
+                            ZIndex: =21
+
+                        Reporter_Label As label:
+                            Font: =Font.Georgia
+                            Height: =57
+                            Size: =16
+                            Text: |-
+                                ="Reporter:"
+                            Width: =127
+                            X: =Rectangle_behind_details_1.X+10
+                            Y: =Rectangle_behind_details_1.Y+50
                             ZIndex: =22
 
     Rectangle1_6 As rectangle:
