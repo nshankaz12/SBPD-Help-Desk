@@ -1380,6 +1380,26 @@
                             Y: =Assignee_Label.Y+Assignee_Label.Height+5
                             ZIndex: =13
 
+                        Assignee_ComboBox As combobox:
+                            ChevronBackground: =ColorScheme.primary
+                            Default: |
+                                =If(IsBlank(assigneeId), Blank(), First(Filter(Users, id = assigneeId)))
+                                //If(IsBlank(assigneeId), Blank(), Filter(Users,id = assigneeId))
+                                //If(assigned_person = "Unassigned",Blank(), LookUp(Users, id = assigneeId, fullName)) 
+                            DefaultSelectedItems: =//If(tags = "", Blank(), Filter(Tags, name in tags))
+                            DisplayFields: =["fullName"]
+                            Height: =37
+                            InputTextPlaceholder: ="Find items"
+                            Items: =Users
+                            SearchFields: =["fullName"]
+                            SearchItems: =Search(Users,Assignee_ComboBox.SearchText,"fullName")
+                            SelectMultiple: =false
+                            Visible: =false
+                            Width: =248
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =Assignee_Label.Y 
+                            ZIndex: =14
+
                         Assignee_Value_Label As label:
                             Align: =Align.Center
                             Font: =Font.Georgia
@@ -1389,7 +1409,7 @@
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Assignee_Label.Y 
-                            ZIndex: =14
+                            ZIndex: =15
 
                         Assignee_Label As label:
                             Font: =Font.Georgia
@@ -1400,7 +1420,7 @@
                             Width: =127
                             X: =Reporter_Label.X
                             Y: =Reporter_Label.Y+Reporter_Label.Height+5
-                            ZIndex: =15
+                            ZIndex: =16
 
                         Category_Value_Label As label:
                             Align: =Align.Center
@@ -1412,7 +1432,7 @@
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Category_Label.Y
-                            ZIndex: =16
+                            ZIndex: =17
 
                         Category_Label As label:
                             Font: =Font.Georgia
@@ -1423,7 +1443,7 @@
                             Width: =127
                             X: =Reporter_Label.X
                             Y: =Status_Label.Y+Status_Label.Height+5
-                            ZIndex: =17
+                            ZIndex: =18
 
                         Reporter_Value_Label As label:
                             Align: =Align.Center
@@ -1434,7 +1454,7 @@
                             Width: =247
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Reporter_Label.Y
-                            ZIndex: =18
+                            ZIndex: =19
 
                         Reporter_Label As label:
                             Font: =Font.Georgia
@@ -1445,7 +1465,7 @@
                             Width: =127
                             X: =Rectangle_behind_details_1.X+10
                             Y: =Rectangle_behind_details_1.Y+50
-                            ZIndex: =19
+                            ZIndex: =20
 
     Rectangle1_6 As rectangle:
         Fill: =RGBA(56, 96, 178, 0.5)
