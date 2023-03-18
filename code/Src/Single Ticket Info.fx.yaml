@@ -1453,6 +1453,7 @@
                             Text: |-
                                 =//Concat(Assignee_ComboBox.SelectedItems, id)
                                 If(CountRows(Assignee_ComboBox.SelectedItems) = 0, "0",Concat(Assignee_ComboBox.SelectedItems, id) )
+                            Visible: =false
                             X: =299
                             Y: =80
                             ZIndex: =17
