@@ -267,10 +267,10 @@ Home_1 As screen:
                             BorderThickness: =0
                             Color: =ColorScheme.secondary
                             Fill: =ColorScheme.secondary
-                            Height: =Parent.TemplateHeight/1.1
+                            Height: =If ( Home_1.Size =1 , Parent.TemplateHeight/1.5,Parent.TemplateHeight/1.1)
                             OnSelect: =Select(Parent)
                             Text: =""
-                            Width: =Parent.TemplateWidth/1.2
+                            Width: =If( Home_1.Size =1, Parent.TemplateWidth / 1.5, Parent.TemplateWidth/1.2)
                             X: =(Parent.TemplateWidth - Self.Width)/2
                             Y: =(Parent.TemplateHeight - Self.Height)/2
                             ZIndex: =2
@@ -279,7 +279,7 @@ Home_1 As screen:
                             Align: =Align.Center
                             Color: =ColorScheme.primary
                             FontWeight: =FontWeight.Semibold
-                            Height: =If(Home_1.Size >1,ButtonGalleryBackgroundButton_1.Height/4,15)
+                            Height: =If(Home_1.Size >1,ButtonGalleryBackgroundButton_1.Height/4.5,15)
                             OnSelect: =Select(Parent)
                             Size: =If(Home_1.Size =1,11,15)
                             Text: =ThisItem.NavName
@@ -290,10 +290,14 @@ Home_1 As screen:
 
                         ButtonGalleryNavIcon_2 As icon.Add:
                             Color: =ColorScheme.primary
-                            Height: =Parent.TemplateHeight/2.5
+                            Height: |-
+                                =
+                                
+                                If(Home_1.Size >1, Parent.TemplateHeight/2.5,Parent.TemplateHeight/3)
                             Icon: =ThisItem.NavIcon
                             OnSelect: =Select(Parent)
-                            Width: =Switch(Home.Size,4,100,3,100,2,64,1,10)
+                            PaddingTop: =20
+                            Width: =Parent.TemplateWidth/2
                             X: =(Parent.TemplateWidth-Self.Width)/2
                             Y: =(ButtonGalleryBackgroundButton_1.Height-Self.Height)/2
                             ZIndex: =4

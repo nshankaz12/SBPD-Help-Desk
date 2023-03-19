@@ -157,11 +157,13 @@
             Visible: =If('Admin Manager'.Size > 1, false, true)
             ZIndex: =4
 
-            compMobileMenu_9 As compMobileMenu_8:
+            compMobileMenu_14 As compMobileMenu:
                 Height: =Parent.Height
                 LayoutMinHeight: =640
                 LayoutMinWidth: =640
+                Visible: =Home_1.Size=1
                 Width: =Parent.Width
+                Y: =Parent.Height-Self.Height
 
     compWebMenu_8 As compWebMenu:
         Height: =If(showMenu, Parent.Height, 80)
