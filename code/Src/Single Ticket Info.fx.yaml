@@ -1318,8 +1318,7 @@
                         Save_Button As button:
                             Fill: =ColorScheme.primary
                             OnSelect: |-
-                                =
-                                If(AssigneeId.Text = "0",
+                                =If(AssigneeId.Text = "0",
                                     Patch(
                                         Tickets_1,
                                         LookUp(
@@ -1336,7 +1335,8 @@
                                             id = ticket
                                         ),
                                         {tags: Label4_1.Text},
-                                        {assignedTO: Value(AssigneeId.Text)}
+                                        {assignedTO: Value(AssigneeId.Text)},
+                                        {addAssignees: Additional_Assign_Value_Label.Text}
                                         )
                                 );
                                 
@@ -1430,7 +1430,7 @@
                             Font: =Font.Georgia
                             Height: =58
                             Size: =16
-                            Text: = assigned_person
+                            Text: =Concat(Assignee_ComboBox.SelectedItems, Concatenate(fullName, ""))
                             Visible: |
                                 =false
                             Width: =248
@@ -1535,13 +1535,20 @@
                             DisplayFields: =["fullName"]
                             Height: =37
                             IsSearchable: =false
-                            Items: =Filter(Users, userRole = "admin" || userRole = "tech")
+                            Items: =Filter(Users, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label.Text)
                             SearchFields: =["fullName"]
                             SearchItems: =[]
                             Width: =250
                             X: =291
                             Y: =216
                             ZIndex: =24
+
+                        Additional_Assign_Value_Label As label:
+                            Text: =Concat(Additional_Assign_ComboBox.SelectedItems, Concatenate(fullName, ","))
+                            Visible: =false
+                            X: =60
+                            Y: =60
+                            ZIndex: =25
 
     Rectangle1_6 As rectangle:
         Fill: =RGBA(56, 96, 178, 0.5)
