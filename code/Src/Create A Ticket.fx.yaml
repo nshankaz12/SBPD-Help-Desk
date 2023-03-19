@@ -4,7 +4,6 @@
     ImagePosition: =ImagePosition.Stretch
     OnVisible: |
         =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false});
-        Set(userID, LookUp(userInfo, email = User().Email, id));
 
     CreateATicketMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: ='Create A Ticket'.Height
