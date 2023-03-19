@@ -507,11 +507,11 @@
                             Height: =220
                             HoverFill: =Self.Fill
                             OnSelect: |-
-                                =Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.parentId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO, tags: ThisItem.tags, addAssignees: ThisItem.addAssignees})
+                                =Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.creatorId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO, tags: ThisItem.tags, addAssignees: ThisItem.addAssignees})
                             PressedFill: =Self.Fill
                             Text: =""
                             Width: =303
-                            X: =13
+                            X: =24
                             Y: =15
                             ZIndex: =13
 
