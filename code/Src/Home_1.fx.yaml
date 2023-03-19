@@ -267,20 +267,23 @@ Home_1 As screen:
                         LayoutMinWidth: =320
                         OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Category Select'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
                         ShowScrollbar: =false
-                        TemplateSize: =Parent.Height/2
+                        TemplateSize: =Parent.Height/2.67
                         Width: =Parent.Width
                         WrapCount: =Switch(Home_1.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
                         ZIndex: =1
 
                         HtmlText1_1 As htmlViewer:
                             DisplayMode: =DisplayMode.View
-                            Height: =247.5
+                            Height: =ButtonGalleryBackgroundButton_1.Height
                             HtmlText: |-
                                 ="<div style='box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
                                 -webkit-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
                                 -moz-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05); height:"&ButtonGalleryBackgroundButton_1.Height-11&"px; width:"&ButtonGalleryBackgroundButton_1.Width-11&"px; border-style:none; border-radius:10px'></div>"
                             OnSelect: =Select(Parent)
-                            Width: =335.25
+                            Width: =ButtonGalleryBackgroundButton_1.Width
+                            X: =ButtonGalleryBackgroundButton_1.X
+                            Y: |
+                                =ButtonGalleryBackgroundButton_1.Y
                             ZIndex: =1
 
                         ButtonGalleryBackgroundButton_1 As button:
@@ -288,10 +291,10 @@ Home_1 As screen:
                             BorderThickness: =0
                             Color: =ColorScheme.secondary
                             Fill: =ColorScheme.secondary
-                            Height: =Parent.TemplateHeight - 20
+                            Height: =Parent.TemplateHeight/1.1
                             OnSelect: =Select(Parent)
                             Text: =""
-                            Width: =Parent.TemplateWidth - 20
+                            Width: =Parent.TemplateWidth/1.1
                             X: =(Parent.TemplateWidth - Self.Width)/2
                             Y: =(Parent.TemplateHeight - Self.Height)/2
                             ZIndex: =2
@@ -300,19 +303,21 @@ Home_1 As screen:
                             Align: =Align.Center
                             Color: =ColorScheme.primary
                             FontWeight: =FontWeight.Semibold
+                            Height: =If(Home_1.Size >1,ButtonGalleryBackgroundButton_1.Height/4,15)
                             OnSelect: =Select(Parent)
-                            Size: =If(Home_1.Size =1,13,15)
+                            Size: =If(Home_1.Size =1,11,15)
                             Text: =ThisItem.NavName
+                            Width: =ButtonGalleryBackgroundButton_1.Width
                             X: =(Parent.TemplateWidth-Self.Width)/2
                             Y: =ButtonGalleryNavIcon_2.Y+ButtonGalleryNavIcon_2.Height
                             ZIndex: =3
 
                         ButtonGalleryNavIcon_2 As icon.Add:
                             Color: =ColorScheme.primary
-                            Height: =Switch(Home.Size,4,100,3,100,2,64)
+                            Height: =Parent.TemplateHeight/2
                             Icon: =ThisItem.NavIcon
                             OnSelect: =Select(Parent)
-                            Width: =Switch(Home.Size,4,100,3,100,2,64)
+                            Width: =Switch(Home.Size,4,100,3,100,2,64,1,10)
                             X: =(Parent.TemplateWidth-Self.Width)/2
                             Y: =(ButtonGalleryBackgroundButton_1.Height-Self.Height)/2
                             ZIndex: =4
