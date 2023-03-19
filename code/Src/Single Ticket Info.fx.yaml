@@ -477,7 +477,31 @@
                                                 }
                                             );
                                             Reset(TextInput2_4);
-                                            
+                                            If(
+                                                userData.role = "admin" || userData.role = "tech",
+                                                Office365Outlook.SendEmailV2(
+                                                    LookUp(
+                                                        Users,
+                                                        id = reporting_person,
+                                                        email
+                                                    ),
+                                                    Concatenate(
+                                                        "Update on Ticket # ",
+                                                        ticket
+                                                    ),
+                                                    Concatenate(
+                                                        "A comment has been added by ",
+                                                        userData.firstName
+                                                    ),
+                                                    {
+                                                        Cc: Concat(
+                                                            Additional_Assign_ComboBox.SelectedItems,
+                                                            email,
+                                                            ";"
+                                                        )
+                                                    }
+                                                );
+                                            )
                                         );
                                         If(
                                             editMessage,
@@ -492,8 +516,15 @@
                                                     lastUpdated: Now()
                                                 }
                                             );
-                                            Set(editMessage, false);
-                                            Set(addMessage, true);
+                                            Set(
+                                                editMessage,
+                                                false
+                                            );
+                                            Set(
+                                                addMessage,
+                                                true
+                                            );
+                                            
                                         );
                                     Size: =12
                                     Text: |-
@@ -1502,10 +1533,10 @@
                             Font: =Font.Georgia
                             Height: =56
                             Size: =16
-                            Text: =reporting_person
+                            Text: =LookUp(Users, id = reporting_person, fullName)
                             Width: =247
-                            X: =(Parent.Width-Self.Width)/2
-                            Y: =Reporter_Label.Y
+                            X: =289
+                            Y: =82
                             ZIndex: =21
 
                         Reporter_Label As label:
