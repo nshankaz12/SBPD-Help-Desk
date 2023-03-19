@@ -183,30 +183,6 @@ Home_1 As screen:
                 Width: =Parent.Width
                 ZIndex: =4
 
-                SearchBarContainer_1 As groupContainer.verticalAutoLayoutContainer:
-                    Fill: =ColorScheme.primary
-                    Height: =Parent.Height
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutJustifyContent: =LayoutJustifyContent.Center
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    Width: =Parent.Width
-                    ZIndex: =1
-
-                    "'Search Knowledgebase_2' As text":
-                        BorderColor: =RGBA(140, 140, 140, 1)
-                        BorderThickness: =5
-                        Color: =RGBA(204, 204, 204, 1)
-                        Default: ="Search Knowledgebase"
-                        Font: =Font.'Segoe UI'
-                        Height: =Parent.Height/2
-                        Width: =If(Home_1.Size >1 , Parent.Width/2 , Parent.Width*.8)
-                        X: =443
-                        Y: =40
-                        ZIndex: =1
-
                 AlertRibbonContainerTest_2 As groupContainer.verticalAutoLayoutContainer:
                     Fill: =RGBA(232, 244, 217, 1)
                     FillPortions: =0
@@ -294,7 +270,7 @@ Home_1 As screen:
                             Height: =Parent.TemplateHeight/1.1
                             OnSelect: =Select(Parent)
                             Text: =""
-                            Width: =Parent.TemplateWidth/1.1
+                            Width: =Parent.TemplateWidth/1.2
                             X: =(Parent.TemplateWidth - Self.Width)/2
                             Y: =(Parent.TemplateHeight - Self.Height)/2
                             ZIndex: =2
@@ -314,7 +290,7 @@ Home_1 As screen:
 
                         ButtonGalleryNavIcon_2 As icon.Add:
                             Color: =ColorScheme.primary
-                            Height: =Parent.TemplateHeight/2
+                            Height: =Parent.TemplateHeight/2.5
                             Icon: =ThisItem.NavIcon
                             OnSelect: =Select(Parent)
                             Width: =Switch(Home.Size,4,100,3,100,2,64,1,10)
