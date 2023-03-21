@@ -436,6 +436,7 @@
             );
             
             Navigate(MyTickets);
+        Size: =If( 'Create A Ticket'.Size =1, 11,15)
         Text: ="Submit"
         Width: =Parent.Width/6
         X: =Parent.Width - Self.Width - 20
