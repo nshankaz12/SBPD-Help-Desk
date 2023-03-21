@@ -538,7 +538,38 @@
                         FillPortions: =1
                         Height: =57
                         OnSelect: |
-                            =Set(
+                            =Patch(
+                                Tickets,
+                                {
+                                    Title: TextInput3.Text,
+                                    description: TextInput5.Text,
+                                    creatorId:  {
+                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                        Id: LookUp(Users_1, ID = userData.id,ID),
+                                        Value: "creatorId"
+                                    },
+                                    mainCategory: {
+                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                        Id:LookUp(Category_1, ID = Dropdown5.Selected.id, ID),
+                                        Value: "mainCategory"
+                                    },
+                                    category: {
+                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                        Id:LookUp(Category_1, ID = Dropdown7.Selected.id, ID),
+                                        Value: "category"
+                                    },
+                                    subCategory: {
+                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                        Id:LookUp(Category_1, ID = Dropdown7_1.Selected.id, ID),
+                                        Value: "subCategory"
+                                    },
+                                    status: "open"
+                                }
+                            );
+                            
+                            
+                            /*
+                            Set(
                                 recID,
                                 Patch(
                                     Tickets_1,
@@ -553,7 +584,7 @@
                                         status: "open"
                                     }
                                 ).id
-                            );
+                            );*/
                             
                             ForAll(
                                 AttachmentControl.Attachments,
