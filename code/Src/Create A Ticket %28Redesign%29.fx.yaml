@@ -15,11 +15,11 @@
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"title")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =Parent.Height/5 + 30
+            Height: =Parent.Height/4
             MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "title")
             Required: =false
             Update: =
-            Width: =433
+            Width: =If( 'Create A Ticket (Redesign)'.Size = 1, Parent.Width, Parent.Width/3)
             WidthFit: =true
             X: =0
             Y: =0
@@ -61,9 +61,9 @@
 
             TextInput3_1 As text:
                 Default: =""
-                Height: =47
+                Height: =Parent.Height/3.5
                 HintText: ="Please Enter A Title"
-                Width: =373
+                Width: =Parent.Width/1.25
                 X: =30
                 Y: =44
                 ZIndex: =5
@@ -75,10 +75,10 @@
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"mainCategory")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =Parent.Height/5 + 30
+            Height: =Parent.Height/4
             Required: =true
             Update: =
-            Width: =433
+            Width: =If( 'Create A Ticket (Redesign)'.Size = 1, Parent.Width, Parent.Width/3)
             WidthFit: =true
             X: =1
             Y: =0
@@ -120,8 +120,9 @@
                 ZIndex: =4
 
             Dropdown5_2 As dropdown:
+                Height: =Parent.Height/3.5
                 Items: =Filter(Category, parentId = Blank())
-                Width: =373
+                Width: =Parent.Width/1.25
                 X: =30
                 Y: =44
                 ZIndex: =5
@@ -133,10 +134,10 @@
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"category")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =Parent.Height/5 + 30
+            Height: =Parent.Height/4
             Required: =true
             Update: =
-            Width: =433
+            Width: =If( 'Create A Ticket (Redesign)'.Size = 1, Parent.Width, Parent.Width/3)
             WidthFit: =true
             X: =2
             Y: =0
@@ -178,8 +179,9 @@
                 ZIndex: =4
 
             Dropdown5_1 As dropdown:
+                Height: =Parent.Height/3.5
                 Items: =Filter(Category, parentId = Dropdown5_2.Selected.id)
-                Width: =Parent.Width - 60
+                Width: =Parent.Width/1.25
                 X: =30
                 Y: =44
                 ZIndex: =5
@@ -191,10 +193,10 @@
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"subCategory")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =Parent.Height/5 + 30
+            Height: =Parent.Height/4
             Required: =false
             Update: =
-            Width: =433
+            Width: =If( 'Create A Ticket (Redesign)'.Size = 1, Parent.Width, Parent.Width/3)
             WidthFit: =true
             X: =0
             Y: =1
@@ -236,8 +238,9 @@
                 ZIndex: =4
 
             Dropdown7_2 As dropdown:
+                Height: =Parent.Height/3.5
                 Items: =Filter(Category, parentId = Dropdown5_1.Selected.id)
-                Width: =Parent.Width - 60
+                Width: =Parent.Width/1.25
                 X: =30
                 Y: =44
                 ZIndex: =5
@@ -249,11 +252,11 @@
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"description")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =Parent.Height/5 + 30
+            Height: =Parent.Height/4
             MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "description")
             Required: =false
             Update: =
-            Width: =433
+            Width: =If( 'Create A Ticket (Redesign)'.Size = 1, Parent.Width, Parent.Width/3)
             WidthFit: =true
             X: =1
             Y: =1
@@ -295,11 +298,11 @@
 
             TextInput5_1 As text:
                 Default: =""
-                Height: =89
+                Height: =Parent.Height/1.5
                 HintText: ="Please Describe Your Issue"
                 Mode: =TextMode.MultiLine
                 Size: =15
-                Width: =373
+                Width: =Parent.Width/1.25
                 X: =30
                 Y: =40
                 ZIndex: =5
@@ -311,10 +314,10 @@
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"locationId")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =Parent.Height/5 + 30
+            Height: =Parent.Height/4
             Required: =false
             Update: =//Value(DataCardValue6.Text)
-            Width: =433
+            Width: =If( 'Create A Ticket (Redesign)'.Size = 1, Parent.Width, Parent.Width/3)
             WidthFit: =true
             X: =2
             Y: =1
@@ -355,9 +358,9 @@
                 ZIndex: =4
 
             Dropdown1_1 As dropdown:
-                Height: =41
+                Height: =Parent.Height/3.5
                 Items: =Locations
-                Width: =373
+                Width: =Parent.Width/1.25
                 X: =30
                 Y: =44
                 ZIndex: =5
@@ -366,8 +369,8 @@
             BorderStyle: =BorderStyle.Solid
             DisplayMode: =DisplayMode.Edit
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =Parent.Height/5 + 30
-            Width: =433
+            Height: =Parent.Height/3.5
+            Width: =1365
             WidthFit: =true
             X: =0
             Y: =2
@@ -375,7 +378,7 @@
 
             AttachmentControl_3 As attachments:
                 BorderColor: =Color.Black
-                Height: =129
+                Height: =Parent.Height/1.5
                 IsInDataCard: =true
                 Items: =
                 MaxAttachments: =10
@@ -383,65 +386,10 @@
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                 PaddingRight: =5
                 PaddingTop: =5
-                Width: =346
+                Width: =Parent.Width/4
                 X: =28
                 Y: =36
                 ZIndex: =1
-
-    Button7_4 As button:
-        Height: =Parent.Height/11
-        OnSelect: |
-            =Set(
-                recID,
-                Patch(
-                    Tickets_1,
-                    Defaults(Tickets_1),
-                    {
-                        title: TextInput3_1.Text,
-                        description: TextInput5_1.Text,
-                        creatorId: userData.id,
-                        mainCategory: Dropdown5_2.Selected.id,
-                        category: Dropdown5_1.Selected.id,
-                        subCategory: Dropdown7_2.Selected.id,
-                        status: "open",
-                        locationId: Dropdown1_1.Selected.id
-                    }
-                ).id
-            );
-            
-            ForAll(
-                AttachmentControl.Attachments,
-                AttachFiles.Run(
-                    recID, 
-                    {
-                        file:{
-                            contentBytes: Value,
-                            name: Name
-                        }
-                    }
-                )
-            );
-            /*Reset(TextInput3);
-            Reset(Dropdown5);
-            Reset(TextInput5);
-            Reset(Dropdown7);
-            Reset(Dropdown7_1);
-            Reset(AttachmentControl);
-            */
-            
-            Office365Outlook.SendEmailV2(
-                userData.email,
-                "Ticket has been Created Successfully",
-                "This ticket has been created. We will have our technicians take a look at the issue and deliver a solution"
-            );
-            
-            Navigate(MyTickets);
-        Size: =If( 'Create A Ticket'.Size =1, 11,15)
-        Text: ="Submit"
-        Width: =Parent.Width/6
-        X: =Parent.Width - Self.Width - 20
-        Y: =Parent.Height - Self.Height - 20
-        ZIndex: =2
 
     CreateATicketMainContainer_1 As groupContainer.horizontalAutoLayoutContainer:
         Height: ='Create A Ticket'.Height
@@ -579,14 +527,6 @@
                 Width: =Parent.Width
                 ZIndex: =2
 
-                HomeUserImage_3 As image:
-                    Height: =Parent.Height
-                    Image: =User().Image
-                    Visible: =Home.Size>2
-                    Width: =Parent.Width/10
-                    X: =Parent.Width -Self.Width
-                    ZIndex: =2
-
                 CreateATicketDesktopHeaderLabel_2 As label:
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
@@ -608,4 +548,59 @@
 
     compWebMenu_7 As compWebMenu:
         ZIndex: =4
+
+    Button7_4 As button:
+        Height: =Parent.Height/11
+        OnSelect: |
+            =Set(
+                recID,
+                Patch(
+                    Tickets_1,
+                    Defaults(Tickets_1),
+                    {
+                        title: TextInput3_1.Text,
+                        description: TextInput5_1.Text,
+                        creatorId: userData.id,
+                        mainCategory: Dropdown5_2.Selected.id,
+                        category: Dropdown5_1.Selected.id,
+                        subCategory: Dropdown7_2.Selected.id,
+                        status: "open",
+                        locationId: Dropdown1_1.Selected.id
+                    }
+                ).id
+            );
+            
+            ForAll(
+                AttachmentControl.Attachments,
+                AttachFiles.Run(
+                    recID, 
+                    {
+                        file:{
+                            contentBytes: Value,
+                            name: Name
+                        }
+                    }
+                )
+            );
+            /*Reset(TextInput3);
+            Reset(Dropdown5);
+            Reset(TextInput5);
+            Reset(Dropdown7);
+            Reset(Dropdown7_1);
+            Reset(AttachmentControl);
+            */
+            
+            Office365Outlook.SendEmailV2(
+                userData.email,
+                "Ticket has been Created Successfully",
+                "This ticket has been created. We will have our technicians take a look at the issue and deliver a solution"
+            );
+            
+            Navigate(MyTickets);
+        Size: =If( 'Create A Ticket'.Size =1, 11,15)
+        Text: ="Submit"
+        Width: =Parent.Width/6
+        X: =Parent.Width - Self.Width - 20
+        Y: =Parent.Height - Self.Height - 20
+        ZIndex: =5
 

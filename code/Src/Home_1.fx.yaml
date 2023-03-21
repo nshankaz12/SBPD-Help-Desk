@@ -298,7 +298,7 @@ Home_1 As screen:
                             OnSelect: =Select(Parent)
                             Width: =Parent.TemplateWidth/2
                             X: =(Parent.TemplateWidth-Self.Width)/2
-                            Y: =(ButtonGalleryBackgroundButton_1.Height-Self.Height)/2
+                            Y: =If( Home_1.Size = 1, (ButtonGalleryBackgroundButton_1.Height-Self.Height)/1.2,(ButtonGalleryBackgroundButton_1.Height-Self.Height)/2)
                             ZIndex: =4
 
                         Overlapbtn_2 As button:
@@ -309,8 +309,9 @@ Home_1 As screen:
                             PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
                             Text: =""
                             Width: =ButtonGalleryBackgroundButton_1.Width
-                            X: =10
-                            Y: =ButtonGalleryBackgroundButton_1.Y
+                            X: =ButtonGalleryBackgroundButton_1.X
+                            Y: |
+                                =ButtonGalleryBackgroundButton_1.Y
                             ZIndex: =5
 
                 compMobileMenu_13 As compMobileMenu:
