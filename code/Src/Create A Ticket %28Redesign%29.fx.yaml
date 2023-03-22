@@ -156,8 +156,11 @@
                     ZIndex: =5
 
             CreateATicketMainContentContainer_4 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
                 Height: =Parent.Height/1.21
                 LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 LayoutOverflowY: =LayoutOverflow.Scroll
                 Visible: |-
@@ -539,7 +542,7 @@
                         DisplayMode: =DisplayMode.Edit
                         Fill: =RGBA(0, 0, 0, 0)
                         Height: =Parent.Height/3.5
-                        Width: =If( 'Create A Ticket (Redesign)'.Size = 1, Parent.Width, Parent.Width/3)
+                        Width: =If( 'Create A Ticket (Redesign)'.Size = 1, Parent.Width/1.25, Parent.Width/3)
                         WidthFit: =true
                         X: =0
                         Y: =2
@@ -555,7 +558,7 @@
                             PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                             PaddingRight: =5
                             PaddingTop: =5
-                            Width: =If('Create A Ticket (Redesign)'.Size = 1, Parent.Width,Parent.Width/1.5)
+                            Width: =If('Create A Ticket (Redesign)'.Size = 1, Parent.Width/1.5,Parent.Width/1.5)
                             X: =28
                             Y: =36
                             ZIndex: =1
@@ -572,8 +575,8 @@
 
                         submitBtn As button:
                             Text: ="Submit"
-                            X: =Parent.Width - (Self.Width *1.1)
-                            Y: =Parent.Height - (Self.Height *1.2)
+                            X: =Parent.Width - (Self.Width *2)
+                            Y: =Parent.Height - (Self.Height *2)
                             ZIndex: =2
 
     compWebMenu_7 As compWebMenu:
