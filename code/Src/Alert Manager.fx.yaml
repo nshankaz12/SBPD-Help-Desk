@@ -29,48 +29,92 @@
         Y: =101
         ZIndex: =8
 
-    Gallery7 As gallery.variableTemplateHeightGallery:
-        DelayItemLoading: =true
-        Fill: =RGBA(237, 237, 237, 1)
-        Height: =260
-        Items: =AlertCollection
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplateSize: =255
-        Width: =478
-        Y: =222
-        ZIndex: =18
-
-        Button3 As button:
-            Height: =52
-            OnSelect: |
-                =Remove(AlertCollection, ThisItem)
-            Text: ="X"
-            Width: =90
-            X: =358
-            ZIndex: =1
-
-        Label31 As label:
-            Align: =Align.Center
-            Height: =154
-            OnSelect: =Select(Parent)
-            Size: =20
-            Text: =ThisItem.Description
-            Width: =358
-            Y: =92
-            ZIndex: =2
-
-        Label32 As label:
-            Height: =80
-            OnSelect: =Select(Parent)
-            Size: =30
-            Text: =ThisItem.Title
-            Width: =272
-            ZIndex: =3
-
     compWebHeader_20 As compWebHeader:
         ZIndex: =19
 
     compWebMenu_15 As compWebMenu:
         ZIndex: =20
+
+    Container1 As groupContainer.manualLayoutContainer:
+        Height: =548
+        Width: =1366
+        Y: =220
+        ZIndex: =21
+
+        Gallery2 As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =462
+            Items: =AlertCollection
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateSize: =99
+            Width: =1366
+            Y: =86
+            ZIndex: =1
+
+            Label1 As label:
+                DisplayMode: =DisplayMode.View
+                Height: =54
+                OnSelect: =Select(Parent)
+                Size: =20
+                Text: =DatePicker1.SelectedDate
+                Width: =302
+                X: =678
+                ZIndex: =1
+
+            Label2 As label:
+                Height: =56
+                OnSelect: =Select(Parent)
+                Size: =20
+                Text: =ThisItem.Description
+                Width: =364
+                X: =314
+                Y: =1
+                ZIndex: =2
+
+            Label5 As label:
+                Height: =57
+                OnSelect: =Select(Parent)
+                Size: =20
+                Text: =ThisItem.Title
+                Width: =294
+                ZIndex: =3
+
+            Button1 As button:
+                Height: =50
+                OnSelect: =Navigate('Create Alert - Admin Tech')
+                Text: ="Edit Alert"
+                Width: =200
+                X: =1126
+                Y: =7
+                ZIndex: =4
+
+        Label7 As label:
+            FontWeight: =FontWeight.Bold
+            Height: =56
+            Size: =24
+            Text: ="Title"
+            Width: =294
+            Y: =3
+            ZIndex: =2
+
+        Label22 As label:
+            FontWeight: =FontWeight.Bold
+            Height: =56
+            Size: =25
+            Text: ="Description"
+            Width: =318
+            X: =306
+            Y: =3
+            ZIndex: =3
+
+        Label24 As label:
+            FontWeight: =FontWeight.Bold
+            Height: =42
+            Size: =25
+            Text: ="Expiration Date"
+            Width: =412
+            X: =668
+            Y: =3
+            ZIndex: =4
 

@@ -38,15 +38,17 @@
                 AlertCollection,
                 {
                     Title: TextInput7.Text,
-                    Description: TextInput6.Text,
-                    Status: "New"
+                    Description: TextInput6.Text
                 }
             );
+            Patch(AlertCollection, Defaults(AlertCollection), {Title:  TextInput7.Text, Description:TextInput6.Text});
             If(
                 IsBlank(LookUp(AlertCollection, Title = TextInput7.Text && Description = TextInput6.Text)),
                 Collect(AlertCollection, {Title: TextInput7.Text, Description: TextInput6.Text}),
                 Notify("An alert with this title and description already exists.", NotificationType.Error)
             );
+            
+            
             Navigate('Alert Manager', ScreenTransition.Fade);
             
             Collect(Items, {Text: TextInput7, Description: TextInput6});
@@ -101,8 +103,8 @@
         ZIndex: =13
 
     DatePicker1 As datepicker:
-        X: =354
-        Y: =656
+        X: =339
+        Y: =636
         ZIndex: =14
 
     Label33 As label:
