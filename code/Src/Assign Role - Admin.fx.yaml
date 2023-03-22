@@ -13,6 +13,7 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
             Width: =Parent.Width
             ZIndex: =1
 
@@ -31,9 +32,16 @@
                     ZIndex: =1
 
             Container20 As groupContainer.manualLayoutContainer:
+                FillPortions: =5
+                Height: =Parent.Height
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 ZIndex: =2
+
+                compMobileMenu_7 As compMobileMenu:
+                    Visible: ='Assign Role - Admin'.Size=1
+                    Width: =Parent.Width
+                    Y: =Parent.Height-Self.Height
 
                 Label17 As label:
                     Align: =Align.Center
@@ -43,8 +51,8 @@
                     Text: ="User"
                     Width: =328
                     X: =(Parent.Width-Self.Width)/4
-                    Y: =If('Assign Role - Admin'.Size=1, Container19.Height+50 , 200)
-                    ZIndex: =1
+                    Y: =If('Assign Role - Admin'.Size=1, 50 , 200)
+                    ZIndex: =2
 
                 Label17_3 As label:
                     Align: =Align.Center
@@ -55,119 +63,24 @@
                     Width: =328
                     X: =If('Assign Role - Admin'.Size=1, Dropdown2.X, (Parent.Width-Self.Width)/4 +Dropdown2.X+Dropdown2.Width)
                     Y: =If('Assign Role - Admin'.Size=1, Dropdown2.Y+50,200)
-                    ZIndex: =2
-
-                Image13_10 As image:
-                    Height: =686
-                    Image: ='image (2)'
-                    ImagePosition: =ImagePosition.Stretch
-                    Visible: =false
-                    Width: =1331
-                    X: =35
                     ZIndex: =3
-
-                "'nav-name2_7' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate(MyTickets, ScreenTransition.Fade);
-                    PressedBorderColor: =
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="My Tickets"
-                    Visible: =false
-                    Width: =174
-                    X: =373
-                    Y: =18
-                    ZIndex: =4
-
-                "'nav-name3_7' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Log of All Tickets - Admin Tech', ScreenTransition.Fade);
-                    PressedBorderColor: =
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="Ticket Log"
-                    Visible: =false
-                    Width: =174
-                    X: =547
-                    Y: =18
-                    ZIndex: =5
-
-                "'nav-name4_7' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Metrics - Admin Tech', ScreenTransition.Fade);
-                    PressedBorderColor: =
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="Ticket Metrics"
-                    Visible: =false
-                    Width: =174
-                    X: =721
-                    Y: =18
-                    ZIndex: =6
-
-                "'nav-name5_7' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Assign Role - Admin', ScreenTransition.Fade);
-                    PressedBorderColor: =
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="Assign Role"
-                    Visible: =false
-                    Width: =174
-                    X: =895
-                    Y: =18
-                    ZIndex: =7
-
-                "'nav-Ticket_7' As button":
-                    AutoDisableOnSelect: =false
-                    Color: =RGBA(0, 0, 0, 1)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-                    PressedBorderColor: =
-                    PressedColor: =RGBA(0, 0, 0, 1)
-                    PressedFill: =
-                    Text: ="Create Ticket"
-                    Visible: =false
-                    Width: =174
-                    X: =199
-                    Y: =18
-                    ZIndex: =8
-
-                Greeting_2 As label:
-                    Align: =Align.Center
-                    Color: =RGBA(255, 255, 255, 1)
-                    Height: =122
-                    Size: =30
-                    Text: ="Assign A Role"
-                    Width: =456
-                    X: =460
-                    Y: =58
-                    ZIndex: =9
 
                 Icon9 As icon.BackArrow:
                     Icon: =Icon.BackArrow
                     OnSelect: =Navigate(Home,ScreenTransition.Fade)
                     X: =79
                     Y: =58
-                    ZIndex: =10
+                    ZIndex: =4
 
                 Dropdown3 As dropdown:
                     Default: =""
                     Height: =59
                     Items: |-
-                        =ForAll(Distinct(Users, userRole), {Result: ThisRecord.Value})
+                        =ForAll(Distinct(Users, userRole), {Result: If(ThisRecord.Value = "client", "staff", ThisRecord.Value)})
                     Width: =340
                     X: =Label17_3.X
                     Y: =Label17_3.Y+Label17_3.Height
-                    ZIndex: =11
+                    ZIndex: =5
 
                 Dropdown2 As dropdown:
                     Default: =""
@@ -176,7 +89,7 @@
                     Width: =340
                     X: =Label17.X
                     Y: =Label17.Y+ Label17.Height
-                    ZIndex: =12
+                    ZIndex: =6
 
                 Button2 As button:
                     Fill: =RGBA(184, 0, 0, 1)
@@ -202,24 +115,8 @@
                     Text: ="Assign Role"
                     Width: =240
                     X: =(Parent.Width-Self.Width)/2
-                    Y: =504
-                    ZIndex: =13
-
-            Container21 As groupContainer.verticalAutoLayoutContainer:
-                FillPortions: =0
-                Height: =90
-                LayoutDirection: =LayoutDirection.Vertical
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                Visible: ='Assign Role - Admin'.Size=1
-                Width: =Parent.Width
-                ZIndex: =3
-
-                compMobileMenu_7 As compMobileMenu:
-                    LayoutMinHeight: =640
-                    LayoutMinWidth: =640
-                    Width: =Parent.Width
+                    Y: =Parent.Height-Self.Height-compMobileMenu_7.Height
+                    ZIndex: =7
 
     compWebMenu_5 As compWebMenu:
         ZIndex: =15
