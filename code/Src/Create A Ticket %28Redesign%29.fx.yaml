@@ -142,18 +142,8 @@
                     Height: =Parent.Height
                     Size: =If('Create A Ticket'.Size>=3, 40, 25)
                     Text: ="Create A Ticket"
-                    Visible: ='Create A Ticket'.Size<>1
                     Width: =Parent.Width
                     ZIndex: =4
-
-                "'Back Scroll_9' As icon.BackArrow":
-                    Color: =RGBA(232, 244, 217, 1)
-                    Height: =Parent.Height
-                    Icon: =Icon.BackArrow
-                    OnSelect: =Back(ScreenTransition.Fade)
-                    Width: =Parent.Height
-                    X: =40
-                    ZIndex: =5
 
             CreateATicketMainContentContainer_4 As groupContainer.verticalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
@@ -573,11 +563,19 @@
                         Y: =2
                         ZIndex: =1
 
-                        submitBtn As button:
-                            Text: ="Submit"
-                            X: =Parent.Width - (Self.Width *2)
+                        canceltBtn As button:
+                            Text: ="Cancel"
+                            Width: =Parent.Width/3
+                            X: =submitBtn_1.X + (Self.Width*1.3)
                             Y: =Parent.Height - (Self.Height *2)
                             ZIndex: =2
+
+                        submitBtn_1 As button:
+                            Text: ="Submit"
+                            Width: =Parent.Width/3
+                            X: =Parent.Width - (Self.Width *2.5)
+                            Y: =Parent.Height - (Self.Height *2)
+                            ZIndex: =3
 
     compWebMenu_7 As compWebMenu:
         ZIndex: =4
