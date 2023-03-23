@@ -33,23 +33,31 @@
 
     Button4 As button:
         Height: =64
-        OnSelect: |+
+        OnSelect: |
             =ClearCollect(
-                AlertCollection,
+                AlertCollection, 
                 {
-                    Title: TextInput7.Text,
-                    Description: TextInput6.Text
+                    Title: DataCardValue25.Text,
+                    Description: DataCardValue26.Text,
+                    DateAdded: DatePicker1.SelectedDate
                 }
-            );
-            Patch(AlertCollection, Defaults(AlertCollection), {Title:  TextInput7.Text, Description:TextInput6.Text});
-            If(
+                );
+            /*ClearCollect(
+                AlertCollection, 
+                SortByColumns(
+                    Filter(AlertCollection, !IsBlank(Title) && !IsBlank(Description)
+                        ),"DateAdded",SortOrder.Ascending)
+                );*/
+            
+            
+            //Patch(AlertCollection, Defaults(AlertCollection), {Title:  TextInput7.Text, Description:TextInput6.Text});
+            /*If(
                 IsBlank(LookUp(AlertCollection, Title = TextInput7.Text && Description = TextInput6.Text)),
                 Collect(AlertCollection, {Title: TextInput7.Text, Description: TextInput6.Text}),
                 Notify("An alert with this title and description already exists.", NotificationType.Error)
-            );
+            );*/
             
-            
-            Navigate('Alert Manager', ScreenTransition.Fade);
+            Navigate('Alert Manager', ScreenTransition.Fade, {NewRecord: {Title: TextInput7.Text, Description: TextInput6.Text}});
             
             Collect(Items, {Text: TextInput7, Description: TextInput6});
             Set(AlertMessage, TextInput7.Text);
@@ -57,7 +65,6 @@
             Notify("Alert created!", NotificationType.Success);
             Set(SelectedText, {});
             Set(varItems, Items);
-            
         Text: ="Create Alert"
         Tooltip: =
         Width: =214

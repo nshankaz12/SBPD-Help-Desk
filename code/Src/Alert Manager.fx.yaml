@@ -1,7 +1,6 @@
 "'Alert Manager' As screen":
     Fill: =
-    OnVisible: |
-        =IsDataEntered
+    OnVisible: =true
 
     Image13_13 As image:
         Fill: =RGBA(50, 86, 160, 1)
@@ -14,7 +13,10 @@
     "'Back Scroll_10' As icon.BackArrow":
         Color: =RGBA(232, 244, 217, 1)
         Icon: =Icon.BackArrow
-        OnSelect: =Back(ScreenTransition.Fade)
+        OnSelect: |-
+            =
+            
+            Back(ScreenTransition.Fade)
         X: =59
         Y: =87
         ZIndex: =7
@@ -44,10 +46,25 @@
         Gallery2 As gallery.galleryVertical:
             DelayItemLoading: =true
             Height: =462
-            Items: =AlertCollection
+            Items: |
+                =
+                /*FirstN(
+                    Filter(
+                    AlertCollection,
+                    !IsBlank(Title) && !IsBlank(Description)
+                ))*/
+                
+                AlertCollection
+                
+                /*FirstN(SortByColumns(
+                    If(
+                        IsEmpty(NewRecord),
+                        AlertCollection,
+                        AddColumns(AlertCollection, "NewRecord", {Title: NewRecord.Title, Description: NewRecord.Description})),"Date",SortOrder.Ascending),10)*/
+                        
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
-            TemplateSize: =99
+            TemplateSize: =179
             Width: =1366
             Y: =86
             ZIndex: =1
@@ -82,7 +99,9 @@
 
             Button1 As button:
                 Height: =50
-                OnSelect: =Navigate('Create Alert - Admin Tech')
+                OnSelect: |-
+                    =UpdateContext({SelectedRecord: ThisItem});
+                    Navigate('Create Alert - Admin Tech',ScreenTransition.Fade, {RecordName: ThisItem});
                 Text: ="Edit Alert"
                 Width: =200
                 X: =1126
