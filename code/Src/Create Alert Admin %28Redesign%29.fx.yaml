@@ -248,7 +248,29 @@
             Navigate('Alert Manager');
         Text: ="Create Alert"
         Width: =204
-        X: =1098
-        Y: =675
+        X: =802
+        Y: =677
         ZIndex: =6
+
+    Button6 As button:
+        Height: =60
+        OnSelect: |
+            =Patch('Alerts List', Gallery2.Selected, {Title: DataCardValue2.Text, Description: DataCardValue4.Text});
+            Navigate('Alert Manager')
+        Text: ="Save Edit"
+        Width: =204
+        X: =564
+        Y: =677
+        ZIndex: =7
+
+    Button8 As button:
+        Height: =60
+        OnSelect: |
+            =ResetForm(Form1);
+            Navigate(Gallery2, ScreenTransition.None)
+        Text: ="Cancel"
+        Width: =204
+        X: =1038
+        Y: =677
+        ZIndex: =8
 

@@ -92,12 +92,22 @@
 
             Button1 As button:
                 Height: =50
-                OnSelect: =Set(varMod, "Edit"); Select(Parent); Navigate(Form1, ScreenTransition.None)
+                OnSelect: |
+                    =Navigate(Form1, ScreenTransition.None,{Item: Gallery2.Selected})
                 Text: ="Edit Alert"
                 Width: =200
                 X: =1126
                 Y: =7
                 ZIndex: =4
+
+            Icon3 As icon.Trash:
+                Height: =54
+                Icon: =Icon.Trash
+                OnSelect: |
+                    =Remove('Alerts List', Gallery2.Selected)
+                Width: =44
+                X: =1004
+                ZIndex: =5
 
         Label7 As label:
             FontWeight: =FontWeight.Bold
