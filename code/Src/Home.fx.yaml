@@ -321,25 +321,29 @@ Home As screen:
                         LayoutMode: =LayoutMode.Auto
                         ZIndex: =3
 
-                        Label12 As label:
-                            Align: =Align.Center
-                            AlignInContainer: =AlignInContainer.Stretch
-                            Color: =RGBA(168, 0, 0, 1)
-                            FillPortions: =1
-                            Height: =Parent.Height
-                            LayoutMinHeight: =Parent.Height
-                            Size: =If(Home.Size=1, 8, 15)
-                            Text: |
-                                =If(IsBlank(AlertMessage), "", AlertMessage)
-                            ZIndex: =1
-
                         Icon12 As icon.Cancel:
+                            AlignInContainer: =AlignInContainer.Start
                             Color: =RGBA(176, 176, 176, 1)
                             Height: =Parent.Height
                             Icon: =Icon.Cancel
                             OnSelect: |-
                                 =UpdateContext({CloseAlertRibbon:true})
                             ZIndex: =2
+
+                        Button9 As button:
+                            Fill: =RGBA(255, 0, 0, 1)
+                            OnSelect: =Navigate('Alert Manager')
+                            Text: ="Check Alert"
+                            ZIndex: =3
+
+                        Label6 As label:
+                            Align: =Align.Center
+                            FillPortions: =1
+                            Font: =Font.'Lato Black'
+                            Size: =20
+                            Text: |
+                                =If(IsBlank(DataCardValue2), "", DataCardValue2)
+                            ZIndex: =4
 
                 ButtonsContainer As groupContainer.verticalAutoLayoutContainer:
                     FillPortions: =8
