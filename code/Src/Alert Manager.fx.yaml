@@ -47,14 +47,7 @@
             DelayItemLoading: =true
             Height: =462
             Items: |
-                =
-                /*FirstN(
-                    Filter(
-                    AlertCollection,
-                    !IsBlank(Title) && !IsBlank(Description)
-                ))*/
-                
-                AlertCollection
+                ='Alerts List'
                 
                 /*FirstN(SortByColumns(
                     If(
@@ -64,7 +57,7 @@
                         
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
-            TemplateSize: =179
+            TemplateSize: =157
             Width: =1366
             Y: =86
             ZIndex: =1
@@ -74,7 +67,7 @@
                 Height: =54
                 OnSelect: =Select(Parent)
                 Size: =20
-                Text: =DatePicker1.SelectedDate
+                Text: =ThisItem.'Expiration Date'
                 Width: =302
                 X: =678
                 ZIndex: =1
@@ -99,9 +92,7 @@
 
             Button1 As button:
                 Height: =50
-                OnSelect: |-
-                    =UpdateContext({SelectedRecord: ThisItem});
-                    Navigate('Create Alert - Admin Tech',ScreenTransition.Fade, {RecordName: ThisItem});
+                OnSelect: =Set(varMod, "Edit"); Select(Parent); Navigate(Form1, ScreenTransition.None)
                 Text: ="Edit Alert"
                 Width: =200
                 X: =1126

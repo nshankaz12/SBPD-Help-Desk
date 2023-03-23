@@ -1,187 +1,179 @@
 "'Create Alert Admin (Redesign)' As screen":
 
-    Form8 As form:
-        DataSource: =Alerts
-        Height: =564
-        Width: =1366
-        Y: =204
+    Form1 As form:
+        DataSource: ='Alerts List'
+        Height: =534
+        Item: =Gallery2.Selected
+        NumberOfColumns: =1
+        Width: =1340
+        X: =10
+        Y: =214
         ZIndex: =1
 
-        messageText_DataCard6 As typedDataCard.textualEditCard:
+        Title_DataCard1 As typedDataCard.textualEditCard:
             BorderStyle: =BorderStyle.Solid
-            DataField: ="messageText"
-            Default: =ThisItem.messageText
+            DataField: ="Title"
+            Default: =ThisItem.Title
             DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Alerts],DataSourceInfo.DisplayName,"messageText")
+            DisplayName: =DataSourceInfo([@'Alerts List'],DataSourceInfo.DisplayName,"Title")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =438
-            MaxLength: =DataSourceInfo([@Alerts], DataSourceInfo.MaxLength, "messageText")
-            Required: =false
-            Update: =DataCardValue25.Text
-            Width: =600
-            WidthFit: =false
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Alerts List'], DataSourceInfo.MaxLength, "Title")
+            Required: =true
+            Update: =DataCardValue2.Text
+            Width: =1340
             X: =0
             Y: =0
-            ZIndex: =1
+            ZIndex: =2
 
-            DataCardKey44 As label:
+            DataCardKey2 As label:
                 AutoHeight: =true
-                Font: =Font.'Lato Black'
-                Height: =42
-                Size: =20
-                Text: ="Alert Desc"
-                Width: =440
-                Wrap: =false
-                X: =160
-                Y: =36
-                ZIndex: =1
-
-            DataCardValue25 As text:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                Default: =Parent.Default
-                DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
-                Height: =234
-                MaxLength: =Parent.MaxLength
-                PaddingLeft: =5
-                RadiusBottomLeft: =0
-                RadiusBottomRight: =0
-                RadiusTopLeft: =0
-                RadiusTopRight: =0
-                Tooltip: =Parent.DisplayName
-                Width: =470
-                X: =78
-                Y: =96
-                ZIndex: =2
-
-            ErrorMessage44 As label:
-                AutoHeight: =true
-                Height: =10
-                Live: =Live.Assertive
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Error
-                Visible: =Parent.DisplayMode=DisplayMode.Edit
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardValue25.Y + DataCardValue25.Height
-                ZIndex: =3
-
-            StarVisible44 As label:
-                Align: =Align.Center
-                Height: =DataCardKey44.Height
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                Wrap: =false
-                Y: =DataCardKey44.Y
-                ZIndex: =4
-
-        messageText_DataCard7 As typedDataCard.textualEditCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="messageText"
-            Default: =ThisItem.messageText
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Alerts],DataSourceInfo.DisplayName,"messageText")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            MaxLength: =DataSourceInfo([@Alerts], DataSourceInfo.MaxLength, "messageText")
-            Required: =false
-            Update: =DataCardValue26.Text
-            Width: =455
-            X: =1
-            Y: =0
-            ZIndex: =1
-
-            DataCardKey45 As label:
-                AutoHeight: =true
-                Font: =Font.'Lato Black'
                 Height: =34
-                Size: =25
-                Text: |-
-                    ="Alert Title
-                    "
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue26 As text:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                Default: =Parent.Default
-                DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
-                Height: =50
-                MaxLength: =Parent.MaxLength
-                PaddingLeft: =5
-                RadiusBottomLeft: =0
-                RadiusBottomRight: =0
-                RadiusTopLeft: =0
-                RadiusTopRight: =0
-                Tooltip: =Parent.DisplayName
-                Width: =407
-                X: =30
-                Y: =DataCardKey45.Y + DataCardKey45.Height + 5
-                ZIndex: =2
-
-            ErrorMessage45 As label:
-                AutoHeight: =true
-                Height: =10
-                Live: =Live.Assertive
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Error
-                Visible: =Parent.DisplayMode=DisplayMode.Edit
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardValue26.Y + DataCardValue26.Height
-                ZIndex: =3
-
-            StarVisible45 As label:
-                Align: =Align.Center
-                Height: =DataCardKey45.Height
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                Wrap: =false
-                Y: =DataCardKey45.Y
-                ZIndex: =4
-
-        dateExpired_DataCard6 As typedDataCard.dateTimeEditCard:
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="dateExpired"
-            Default: =ThisItem.dateExpired
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Alerts],DataSourceInfo.DisplayName,"dateExpired")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            Required: =false
-            Update: =DateValue15.SelectedDate + Time(Value(HourValue15.Selected.Value), Value(MinuteValue15.Selected.Value), 0)
-            Width: =455
-            X: =2
-            Y: =0
-            ZIndex: =1
-
-            DataCardKey46 As label:
-                AutoHeight: =true
-                Font: =Font.'Lato Black'
-                Height: =34
-                Size: =20
                 Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
+                Width: =(Parent.Width - 60) * 0.4
                 Wrap: =false
-                X: =60
-                Y: =10
+                X: =30
+                Y: =10 + (DataCardValue2.Height / 2) - (Self.Height / 2)
                 ZIndex: =1
 
-            DateValue15 As datepicker:
+            DataCardValue2 As text:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                DefaultDate: =Parent.Default
+                Default: =ThisItem.Title
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey2.X + DataCardKey2.Width
+                Y: =10
+                ZIndex: =2
+
+            ErrorMessage2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue2.Y + DataCardValue2.Height
+                ZIndex: =3
+
+            StarVisible2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey2.Y
+                ZIndex: =4
+
+        Description_DataCard1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Description"
+            Default: =ThisItem.Description
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Alerts List'],DataSourceInfo.DisplayName,"Description")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =352
+            MaxLength: =DataSourceInfo([@'Alerts List'], DataSourceInfo.MaxLength, "Description")
+            Required: =false
+            Update: =DataCardValue4.Text
+            Width: =1340
+            X: =0
+            Y: =1
+            ZIndex: =2
+
+            DataCardKey9 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.4
+                Wrap: =false
+                X: =30
+                Y: =10 + (DataCardValue4.Height / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            DataCardValue4 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =ThisItem.Description
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =320
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey9.X + DataCardKey9.Width
+                Y: =10
+                ZIndex: =2
+
+            ErrorMessage9 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue4.Y + DataCardValue4.Height
+                ZIndex: =3
+
+            StarVisible9 As label:
+                Align: =Align.Center
+                Height: =DataCardKey9.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey9.Y
+                ZIndex: =4
+
+        "'Expiration Date_DataCard1' As typedDataCard.dateEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Date"
+            Default: =ThisItem.'Expiration Date'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Alerts List'],DataSourceInfo.DisplayName,"Date")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue3.SelectedDate
+            Width: =1340
+            X: =0
+            Y: =2
+            ZIndex: =2
+
+            DataCardKey7 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.4
+                Wrap: =false
+                X: =30
+                ZIndex: =1
+
+            DataCardValue3 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =
                 DisplayMode: =Parent.DisplayMode
                 EndYear: =Year(Today())+100
                 IsEditable: =true
@@ -189,60 +181,11 @@
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                 StartYear: =1899
                 Tooltip: =Parent.DisplayName
-                Width: =(Parent.Width - 60) / 2
-                X: =30
-                Y: =DataCardKey46.Y + DataCardKey46.Height + 5
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey7.X + DataCardKey7.Width
                 ZIndex: =2
 
-            HourValue15 As dropdown:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                Default: =Text(Hour(Parent.Default),"00")
-                DisplayMode: =Parent.DisplayMode
-                Height: =DateValue15.Height
-                Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
-                PaddingBottom: =5
-                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                PaddingRight: =5
-                PaddingTop: =5
-                Tooltip: =Parent.DisplayName
-                Width: =DateValue15.Width / 2 - 10
-                X: =DateValue15.X + DateValue15.Width + 10
-                Y: =DateValue15.Y
-                ZIndex: =3
-
-            Separator17 As label:
-                Align: =Align.Center
-                FontWeight: =FontWeight.Bold
-                Height: =HourValue15.Height
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: |-
-                    =":"
-                Width: =10
-                Wrap: =false
-                X: =HourValue15.X + HourValue15.Width
-                Y: =HourValue15.Y
-                ZIndex: =4
-
-            MinuteValue15 As dropdown:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                Default: =Text(Minute(Parent.Default),"00")
-                DisplayMode: =Parent.DisplayMode
-                Height: =HourValue15.Height
-                Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
-                PaddingBottom: =5
-                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                PaddingRight: =5
-                PaddingTop: =5
-                Tooltip: =Parent.DisplayName
-                Width: =HourValue15.Width
-                X: =HourValue15.X + HourValue15.Width + Separator17.Width
-                Y: =HourValue15.Y
-                ZIndex: =5
-
-            ErrorMessage46 As label:
+            ErrorMessage7 As label:
                 AutoHeight: =true
                 Height: =10
                 Live: =Live.Assertive
@@ -254,16 +197,58 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =HourValue15.Y + HourValue15.Height
-                ZIndex: =6
+                Y: =DataCardValue3.Y + DataCardValue3.Height
+                ZIndex: =3
 
-            StarVisible46 As label:
+            StarVisible7 As label:
                 Align: =Align.Center
-                Height: =DataCardKey46.Height
+                Height: =DataCardKey7.Height
                 Text: ="*"
                 Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
                 Width: =30
                 Wrap: =false
-                Y: =DataCardKey46.Y
-                ZIndex: =7
+                Y: =DataCardKey7.Y
+                ZIndex: =4
+
+    Image13_14 As image:
+        BorderColor: =RGBA(0, 16, 96, 1)
+        Fill: =RGBA(39, 67, 125, 1)
+        Height: =208
+        Image: =
+        Width: =1363
+        X: =3
+        ZIndex: =2
+
+    compWebHeader_27 As compWebHeader:
+        ZIndex: =3
+
+    "'Back Scroll_9' As icon.BackArrow":
+        Color: =RGBA(232, 244, 217, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.Fade)
+        X: =59
+        Y: =87
+        ZIndex: =4
+
+    alert_1 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =122
+        Size: =30
+        Text: ="Alerts"
+        Width: =456
+        X: =454
+        Y: =58
+        ZIndex: =5
+
+    Button3 As button:
+        Height: =60
+        OnSelect: |-
+            =Patch('Alerts List', Defaults('Alerts List'), {Title: DataCardValue2.Text, Description: DataCardValue4.Text});
+            Navigate('Alert Manager');
+        Text: ="Create Alert"
+        Width: =204
+        X: =1098
+        Y: =675
+        ZIndex: =6
 
