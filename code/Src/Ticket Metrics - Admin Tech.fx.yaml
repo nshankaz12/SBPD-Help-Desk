@@ -14,7 +14,7 @@
             },
             {
                 metricTitle: "Monthly Tickets Open",
-                metricNumber: CountRows(Filter(Tickets, dateCreated <= Today() + 1))
+                metricNumber: CountRows(Filter(Tickets, dateCreated <= Today() + 1 && status = "open"))
             },
             {
                 metricTitle: "Tickets Assigned to Me",
@@ -75,6 +75,7 @@
                 BorderThickness: =5
                 DelayItemLoading: =true
                 Items: =ticketMetrics
+                LayoutMinHeight: =287
                 LayoutMinWidth: =320
                 LoadingSpinner: =LoadingSpinner.Data
                 TemplateSize: =334//If(Self.Layout = Layout.Horizontal, Min(320, Self.Width - 60), Min(320, Self.Height - 60))
