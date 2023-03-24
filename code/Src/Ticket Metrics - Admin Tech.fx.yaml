@@ -6,19 +6,19 @@
         Table(
             {
                 metricTitle: "Monthly Tickets Recieved",
-                metricNumber: 142
+                metricNumber: CountRows(Filter(Tickets, dateCreated <= Today() + 1))
             },
             {
                 metricTitle: "Monthly Tickets Resolved",
-                metricNumber: 20
+                metricNumber: CountRows(Filter(Tickets, dateCreated <= Today() + 1 && status = "closed"))
             },
             {
                 metricTitle: "Monthly Tickets Open",
-                metricNumber: 20
+                metricNumber: CountRows(Filter(Tickets, dateCreated <= Today() + 1 && status = "open"))
             },
             {
-                metricTitle: "Ticket Assigned to Me",
-                metricNumber: CountIf(Tickets_1, assignedTO = userData.id)
+                metricTitle: "Tickets Assigned to Me",
+                metricNumber: CountRows(Filter(Tickets_1, assignedTO = userData.id))
             }
             )
         );

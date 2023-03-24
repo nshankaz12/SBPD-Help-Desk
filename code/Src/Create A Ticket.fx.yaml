@@ -541,28 +541,13 @@
                             =Patch(
                                 Tickets,
                                 {
-                                    titleDelete2: TextInput3.Text,
+                                    title: TextInput3.Text,
                                     description: TextInput5.Text,
-                                    creatorId:  {
-                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                                        Id: LookUp(Users_1, ID = userData.id,ID),
-                                        Value: "creatorId"
-                                    },
-                                    mainCategory: {
-                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                                        Id:LookUp(Category_1, ID = Dropdown5.Selected.id, ID),
-                                        Value: "mainCategory"
-                                    },
-                                    category: {
-                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                                        Id:LookUp(Category_1, ID = Dropdown7.Selected.id, ID),
-                                        Value: "category"
-                                    },
-                                    subCategory: {
-                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                                        Id:LookUp(Category_1, ID = Dropdown7_1.Selected.id, ID),
-                                        Value: "subCategory"
-                                    },
+                                    creatorId:  userData.id,
+                                    mainCategory: Dropdown5.Selected.id,
+                                    category: Dropdown7.Selected.id,
+                                    subCategory: Dropdown7_1.Selected.id,
+                                    locationId: Dropdown1.Selected.id,
                                     status: "open"
                                 }
                             );
