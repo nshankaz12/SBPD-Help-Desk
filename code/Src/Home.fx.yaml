@@ -303,47 +303,30 @@ Home As screen:
 
                 AlertRibbonContainerTest As groupContainer.verticalAutoLayoutContainer:
                     Fill: =RGBA(232, 244, 217, 1)
-                    FillPortions: =0
                     Height: =Parent.Height/16
+                    LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    LayoutOverflowY: =LayoutOverflow.Scroll
                     Visible: =!CloseAlertRibbon
                     Width: =Parent.Width
                     ZIndex: =2
 
-                    AlertContianer As groupContainer.horizontalAutoLayoutContainer:
-                        FillPortions: =0
-                        Height: =Parent.Height
+                    Gallery7 As gallery.galleryVertical:
+                        DelayItemLoading: =true
+                        Items: =Filter('Alerts List', 'Expiration Date' >= Today())
+                        Layout: =Layout.Vertical
                         LayoutMinHeight: =100
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        ZIndex: =3
+                        LayoutMinWidth: =320
+                        LoadingSpinner: =LoadingSpinner.Data
+                        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
+                        ZIndex: =1
 
-                        Icon12 As icon.Cancel:
-                            AlignInContainer: =AlignInContainer.Start
-                            Color: =RGBA(176, 176, 176, 1)
-                            Height: =Parent.Height
-                            Icon: =Icon.Cancel
-                            OnSelect: |-
-                                =UpdateContext({CloseAlertRibbon:true})
-                            ZIndex: =2
-
-                        Button9 As button:
-                            Fill: =RGBA(255, 0, 0, 1)
-                            OnSelect: =Navigate('Alert Manager')
-                            Text: ="Check Alert"
-                            ZIndex: =3
-
-                        Label6 As label:
-                            Align: =Align.Center
-                            FillPortions: =1
-                            Font: =Font.'Lato Black'
-                            Size: =20
-                            Text: |
-                                =If(IsBlank(DataCardValue2), "", DataCardValue2)
-                            ZIndex: =4
+                        Label12 As label:
+                            OnSelect: =Select(Parent)
+                            Text: =ThisItem.Title
+                            X: =522
+                            ZIndex: =1
 
                 ButtonsContainer As groupContainer.verticalAutoLayoutContainer:
                     FillPortions: =8

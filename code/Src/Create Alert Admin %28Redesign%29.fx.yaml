@@ -2,6 +2,7 @@
 
     Form1 As form:
         DataSource: ='Alerts List'
+        DefaultMode: =FormMode.New
         Height: =534
         Item: =Gallery2.Selected
         NumberOfColumns: =1
@@ -155,7 +156,7 @@
             DisplayName: =DataSourceInfo([@'Alerts List'],DataSourceInfo.DisplayName,"Date")
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
-            Required: =false
+            Required: =true
             Update: =DataCardValue3.SelectedDate
             Width: =1340
             X: =0
@@ -173,9 +174,10 @@
 
             DataCardValue3 As datepicker:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                DefaultDate: =
+                DefaultDate: =ThisItem.'Expiration Date'
                 DisplayMode: =Parent.DisplayMode
                 EndYear: =Year(Today())+100
+                InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Date(2023,03,31), Self.Format, Self.Language))
                 IsEditable: =true
                 PaddingBottom: =0
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
@@ -244,7 +246,7 @@
     Button3 As button:
         Height: =60
         OnSelect: |-
-            =Patch('Alerts List', Defaults('Alerts List'), {Title: DataCardValue2.Text, Description: DataCardValue4.Text});
+            =Patch('Alerts List', Defaults('Alerts List'), {Title: DataCardValue2.Text, Description: DataCardValue4.Text, ExpDate :DataCardValue3});
             Navigate('Alert Manager');
         Text: ="Create Alert"
         Width: =204
