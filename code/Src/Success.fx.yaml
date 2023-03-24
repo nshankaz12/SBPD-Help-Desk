@@ -220,50 +220,34 @@ Success As screen:
                         UpdateContext({MGallery:!MGallery});
                     ZIndex: =1
 
-            HomeHeaderContainer2_1 As groupContainer.horizontalAutoLayoutContainer:
-                Fill: =RGBA(118, 173, 149, 1)
+            Container10_4 As groupContainer.manualLayoutContainer:
+                Fill: =ColorScheme.primary
                 FillPortions: =0
-                Height: =Parent.Height/6
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutJustifyContent: =LayoutJustifyContent.Center
+                Height: =Parent.Height/12
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                PaddingLeft: =15
-                Visible: |-
-                    =true
-                    //Second header container housing the dropdown for the notifications button, user name, and picture, the picture and notifications icon disappear after a screen breakpoint has been reached
                 Width: =Parent.Width
                 ZIndex: =3
 
-                "'Back Scroll_8' As icon.BackArrow":
-                    Color: =RGBA(232, 244, 217, 1)
-                    Icon: =Icon.BackArrow
-                    OnSelect: =Back(ScreenTransition.Fade)
-                    X: =59
-                    Y: =87
-                    ZIndex: =1
-
-                UserNameLabel_1 As label:
+                UserNameLabel_4 As label:
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
-                    FillPortions: =7
                     Height: =Parent.Height
-                    Size: =30
+                    PaddingBottom: =10
+                    PaddingTop: =0
+                    Size: =If(Home_1.Size= 1 , 13,Parent.Width/40)
                     Text: =User().FullName
                     Width: =Parent.Width
-                    X: =557
-                    Y: =86
-                    ZIndex: =2
+                    X: =(Parent.Width - Self.Width)/2
+                    ZIndex: =1
 
-                HomeUserImage_1 As image:
+                HomeUserImage_3 As image:
                     Height: =Parent.Height
                     Image: =User().Image
-                    Visible: =Success.Size>2
-                    Width: =152
-                    X: =1136
-                    Y: =52
-                    ZIndex: =3
+                    Visible: =Home_1.Size>2
+                    Width: =Parent.Width/10
+                    X: =Parent.Width -Self.Width
+                    ZIndex: =2
 
             HomeMainContentContainer_1 As groupContainer.verticalAutoLayoutContainer:
                 FillPortions: =10
