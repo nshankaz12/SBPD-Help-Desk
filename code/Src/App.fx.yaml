@@ -124,7 +124,8 @@ App As appinfo:
             backgroundDark: RGBA(124,134,137, 1),
             offColor: RGBA(219,199,175, 1),
             orange: RGBA(246,149,43, 1),
-            screenBackground: RGBA(227, 234, 243, 1)
+            screenBackground: RGBA(227, 234, 243, 1),
+            secondaryPressedColor:  RGBA(126,149,180,.35)
         });
         
         Set(MainCategory, Filter(Category, parentId = Blank())); //only main categories. those that dont rely on a parent
@@ -140,6 +141,24 @@ App As appinfo:
         
         // Passed variable to check if search bar should be visible
         Set(varSearchVisible, false);
+        
+        ClearCollect(
+            dummyArticles,
+            {
+                ArticleFileName:"1021203.txt",
+                ArticleTags:"Hardware, Mobile"
+            },
+            {
+                ArticleFileName:"EDefender_Intro.docx",
+                ArticleTags:"EDefender"
+            },
+            {
+                ArticleFileName:"RemoteLogin.PDF",
+                ArticleTags:"Software, Login, Remote"
+            }
+        
+        );
+        
         
         
         

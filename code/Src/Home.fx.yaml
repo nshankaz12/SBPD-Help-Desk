@@ -314,7 +314,7 @@ Home As screen:
 
                     Gallery7 As gallery.galleryVertical:
                         DelayItemLoading: =true
-                        Items: =Filter('Alerts List', 'Expiration Date' >= Today())
+                        Items: =Filter('Alerts List', ExpDate >= Today())
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =100
                         LayoutMinWidth: =320

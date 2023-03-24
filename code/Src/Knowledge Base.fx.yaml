@@ -1,0 +1,363 @@
+"'Knowledge Base' As screen":
+
+    KnowledgeBaseContainer As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        Width: =Parent.Width
+        ZIndex: =1
+
+        KnowledgeBaseHeaderContainer As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =70
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =1
+
+        KnowledgeBaseHeaderContainer_1 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Fill: =ColorScheme.primary
+            FillPortions: =0
+            Height: =70
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =2
+
+        KnowledgeBaseSearchContainer As groupContainer.manualLayoutContainer:
+            Fill: =ColorScheme.secondaryPressedColor
+            FillPortions: =If('Knowledge Base'.Size<=2 || SearchVisible ,1,3)
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            ZIndex: =3
+
+            TextInput1 As text:
+                Default: =""
+                Height: =If('Knowledge Base'.Size=1,24,40)
+                HintText: ="Type in Keywords, or titles"
+                OnChange: |-
+                    =UpdateContext({SearchVisible:true});
+                    ClearCollect(SearchResults,Filter(dummyArticles,TextInput1.Text in ArticleTags))
+                PaddingRight: =Icon4.Width+5
+                RadiusBottomRight: =20
+                RadiusTopRight: =20
+                Width: =Parent.Width*.80
+                X: =(Parent.Width-Self.Width)/2
+                Y: =Parent.Height/2
+                ZIndex: =1
+
+            Button6_1 As button:
+                DisplayMode: =DisplayMode.View
+                Fill: =ColorScheme.primary
+                Height: =TextInput1.Height
+                RadiusBottomLeft: =5
+                RadiusBottomRight: =20
+                RadiusTopLeft: =5
+                RadiusTopRight: =20
+                Text: =""
+                Width: =50
+                X: =TextInput1.Width+TextInput1.X-Self.Width
+                Y: =TextInput1.Y
+                ZIndex: =2
+
+            Icon4 As icon.Send:
+                Color: =ColorScheme.secondary
+                Fill: =Color.Transparent
+                Height: =TextInput1.Height
+                Icon: =Icon.Send
+                Width: =50
+                X: =Button6_1.X
+                Y: =TextInput1.Y
+                ZIndex: =3
+
+            Label2_4 As label:
+                Align: =Align.Center
+                DisplayMode: =DisplayMode.View
+                Height: =If('Knowledge Base'.Size=1,20,43)
+                Size: =If('Knowledge Base'.Size=1,14,24)
+                Text: ="How can we help?"
+                Width: =TextInput1.Width
+                X: =TextInput1.X
+                Y: =Parent.Height/8
+                ZIndex: =4
+
+            Button6_2 As button:
+                Fill: =Color.Transparent
+                Height: =TextInput1.Height
+                OnSelect: |-
+                    =UpdateContext({SearchVisible:true});
+                    ClearCollect(SearchResults,FirstN(dummyArticles,0));
+                PressedFill: =ColorScheme.secondaryPressedColor
+                RadiusBottomLeft: =5
+                RadiusBottomRight: =20
+                RadiusTopLeft: =5
+                RadiusTopRight: =20
+                Text: =""
+                Width: =50
+                X: =TextInput1.Width+TextInput1.X-Self.Width
+                Y: =TextInput1.Y
+                ZIndex: =5
+
+            Button8_1 As button:
+                Fill: =RGBA(0, 18, 107, 1)
+                Height: =27
+                OnSelect: |-
+                    =UpdateContext({SearchVisible:false});
+                    Reset(TextInput1);
+                Text: ="Reset"
+                Visible: |
+                    =false
+                X: =21
+                Y: =12
+                ZIndex: =6
+
+        KnowledgeBaseResultsContainer As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            FillPortions: =0
+            Height: =1000
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            Visible: |
+                =SearchVisible
+            Width: =Parent.Width
+            ZIndex: =4
+
+            Rectangle4 As rectangle:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderThickness: =2
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =Parent.Height*.85
+                Width: =Parent.Width*.90
+                X: =(Parent.Width-Self.Width)/2
+                Y: =Parent.Height/12
+                ZIndex: =1
+
+            Gallery2_1 As gallery.galleryVertical:
+                Height: =Rectangle4.Height
+                Items: =SearchResults
+                Layout: =Layout.Vertical
+                TemplateSize: =Parent.Height/6
+                Width: =Rectangle4.Width
+                X: =Rectangle4.X
+                Y: =Rectangle4.Y
+                ZIndex: =4
+
+                Icon3_2 As icon.DocumentwithContent:
+                    DisplayMode: =DisplayMode.View
+                    Icon: =Icon.DocumentWithContent
+                    OnSelect: =Select(Parent)
+                    X: =10
+                    Y: =(Parent.TemplateHeight-Self.Height)/2
+                    ZIndex: =1
+
+                Label1_1 As label:
+                    Color: =RGBA(102, 182, 227, 1)
+                    FontWeight: =FontWeight.Semibold
+                    OnSelect: =Select(Parent)
+                    Size: =21
+                    Text: =ThisItem.ArticleFileName
+                    Underline: =true
+                    Width: =Parent.TemplateWidth-Self.X
+                    X: =Icon3_2.X+Icon3_2.Width+5
+                    Y: =Icon3_2.Height/4
+                    ZIndex: =2
+
+                Label5_1 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.ArticleTags
+                    Width: =Parent.TemplateWidth-Self.X
+                    X: =Label1_1.X
+                    Y: =Label1_1.Y+Label1_1.Height
+                    ZIndex: =3
+
+                Rectangle5 As rectangle:
+                    Fill: =ColorScheme.primary
+                    Height: =7
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =159.66666666666666
+                    ZIndex: =4
+
+                Button1_1 As button:
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =Parent.TemplateHeight
+                    HoverFill: =RGBA(0, 0, 0, 0)
+                    OnSelect: =Select(Parent)
+                    PressedFill: =ColorFade(ColorScheme.secondaryPressedColor,79%)
+                    Text: =""
+                    Width: =Parent.TemplateWidth
+                    ZIndex: =5
+
+        KnowledgeBasePopularArticleContainer As groupContainer.verticalAutoLayoutContainer:
+            FillPortions: =0
+            Height: =100
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Visible: =!SearchVisible
+            ZIndex: =5
+
+            Label7_1 As label:
+                Align: =Align.Center
+                Height: =20
+                Text: ="Popular Articles"
+                Underline: =true
+                Width: =Parent.Width
+                X: =21
+                Y: =KnowledgeBaseHeaderContainer.Height+KnowledgeBaseHeaderContainer_1.Height+KnowledgeBaseSearchContainer.Height+(Gallery9.Height/2)
+                ZIndex: =1
+
+            Gallery9 As gallery.galleryHorizontal:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DelayItemLoading: =true
+                FillPortions: =0
+                Height: =Parent.Height*.80
+                Items: =dummyArticles
+                LayoutMinHeight: =287
+                LayoutMinWidth: =320
+                LoadingSpinner: =LoadingSpinner.Data
+                ShowScrollbar: =false
+                TemplateSize: =If('Knowledge Base'.Size=1,Parent.Width/2,Parent.Width/6)
+                Width: =Parent.Width
+                WrapCount: =If('Knowledge Base'.Size=1, 2, 1)
+                X: =Rectangle4.X
+                Y: =40
+                ZIndex: =2
+
+                Label24_1 As label:
+                    Height: =Parent.TemplateHeight/2
+                    OnSelect: =Select(Parent)
+                    PaddingLeft: =20
+                    PaddingRight: =15
+                    Size: =If('Knowledge Base'.Size=1, 8,13)
+                    Text: =ThisItem.ArticleFileName
+                    Width: =Parent.TemplateWidth
+                    X: =(Parent.TemplateWidth-Self.Width)/2
+                    Y: =(Parent.TemplateHeight-Self.Height)/2
+                    ZIndex: =1
+
+        ButtonGallery_2 As gallery.galleryVertical:
+            AlignInContainer: =AlignInContainer.Center
+            FillPortions: =0
+            Height: =Parent.Height
+            Items: =navCol
+            Layout: =Layout.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =320
+            OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Category Select'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+            TemplateSize: =If('Knowledge Base'.Size>1,200, 100)
+            Width: =Parent.Width
+            WrapCount: =Switch('Knowledge Base'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
+            ZIndex: =6
+
+            HtmlText1_3 As htmlViewer:
+                DisplayMode: =DisplayMode.View
+                Height: =200
+                HtmlText: |-
+                    ="<div style='box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
+                    -webkit-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
+                    -moz-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05); height:"&ButtonGalleryBackgroundButton_2.Height-11&"px; width:"&ButtonGalleryBackgroundButton_2.Width-11&"px; border-style:none; border-radius:10px'></div>"
+                OnSelect: =Select(Parent)
+                Width: =335.25
+                ZIndex: =1
+
+            ButtonGalleryBackgroundButton_2 As button:
+                BorderStyle: =BorderStyle.Dashed
+                BorderThickness: =0
+                Color: =ColorScheme.secondary
+                Fill: =ColorScheme.secondary
+                Height: =Parent.TemplateHeight*.90
+                OnSelect: =Select(Parent)
+                Text: =""
+                Width: =Parent.TemplateWidth *.80
+                X: =(Parent.TemplateWidth - Self.Width)/2
+                Y: =(Parent.TemplateHeight - Self.Height)/2
+                ZIndex: =2
+
+            ButtonGalleryNavLabel_3 As label:
+                Align: =Align.Center
+                Color: =ColorScheme.primary
+                FontWeight: =FontWeight.Semibold
+                OnSelect: =Select(Parent)
+                Size: =If('Knowledge Base'.Size=1, 11,15)
+                Text: =ThisItem.NavName
+                X: =(Parent.TemplateWidth-Self.Width)/2
+                Y: =ButtonGalleryNavIcon_5.Y+ButtonGalleryNavIcon_5.Height
+                ZIndex: =3
+
+            ButtonGalleryNavIcon_5 As icon.Add:
+                Color: =ColorScheme.primary
+                Height: =Switch(Home.Size,4,80,3,80,2,64,1,32)
+                Icon: =ThisItem.NavIcon
+                OnSelect: =Select(Parent)
+                Width: =Switch(Home.Size,4,80,3,80,2,64,1,32)
+                X: =(Parent.TemplateWidth-Self.Width)/2
+                Y: =(ButtonGalleryBackgroundButton_2.Height-Self.Height)/2
+                ZIndex: =4
+
+            Overlapbtn_4 As button:
+                Fill: =RGBA(255, 255, 255, 0)
+                Height: =ButtonGalleryBackgroundButton_2.Height
+                HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
+                OnSelect: =Select(Parent)
+                PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
+                Text: =""
+                Width: =ButtonGalleryBackgroundButton_2.Width
+                X: =ButtonGalleryBackgroundButton_2.X
+                Y: =ButtonGalleryBackgroundButton_2.Y
+                ZIndex: =5
+
+        KnowledgeBaseFooterContainer As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Visible: ='Knowledge Base'.Size=1
+            ZIndex: =7
+
+        KnowledgeBaseMainContentContainer As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            FillPortions: =7
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            Width: =Parent.Width
+            ZIndex: =8
+
+    compMobileMenu_9 As compMobileMenu_1:
+        Height: =60
+        Visible: ='Knowledge Base'.Size=1
+        Width: =Parent.Width
+        Y: =Parent.Height-Self.Height
+        ZIndex: =2
+
+    Label6 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =ColorScheme.primary
+        Height: =If('Knowledge Base'.Size=1,35,70)
+        Size: =If('Knowledge Base'.Size=1, 13, 25)
+        Text: ="Knowledge Base"
+        Width: =Parent.Width
+        Y: =compWebHeader_29.Height
+        ZIndex: =3
+
+    compWebHeader_29 As compWebHeader_19:
+        CompScreenSize: ='Knowledge Base'.Size
+        Height: =70
+        ZIndex: =4
+
+    compWebMenu_17 As compWebMenu_14:
+        Height: =If(showMenu, App.Height, KnowledgeBaseHeaderContainer.Height)
+        Visible: ='Knowledge Base'.Size>1
+        ZIndex: =5
+

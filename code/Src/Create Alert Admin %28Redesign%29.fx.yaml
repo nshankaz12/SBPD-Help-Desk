@@ -151,7 +151,7 @@
         "'Expiration Date_DataCard1' As typedDataCard.dateEditCard":
             BorderStyle: =BorderStyle.Solid
             DataField: ="Date"
-            Default: =ThisItem.'Expiration Date'
+            Default: =ThisItem.ExpDate
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@'Alerts List'],DataSourceInfo.DisplayName,"Date")
             Fill: =RGBA(0, 0, 0, 0)
@@ -174,7 +174,7 @@
 
             DataCardValue3 As datepicker:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                DefaultDate: =ThisItem.'Expiration Date'
+                DefaultDate: =ThisItem.ExpDate
                 DisplayMode: =Parent.DisplayMode
                 EndYear: =Year(Today())+100
                 InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Date(2023,03,31), Self.Format, Self.Language))
