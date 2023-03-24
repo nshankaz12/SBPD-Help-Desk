@@ -1,0 +1,25 @@
+"'User Not Valid' As screen":
+
+    Label13 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Height: =60
+        Size: =If('User Not Valid'.Size > 1, 30, 15)
+        Text: |-
+            ="You don't have access to use this app
+            "
+        Width: =Parent.Width
+        Y: =Parent.Height/2
+        ZIndex: =1
+
+    Label19 As label:
+        Align: =Align.Center
+        Size: =If('User Not Valid'.Size > 1, 13, 10)
+        Text: ="Please contact system adminstrators to see if this is a mistake"
+        Width: =Parent.Width
+        Y: =Parent.Height / 2 + 50
+        ZIndex: =2
+
+    compWebHeader_30 As compWebHeader:
+        ZIndex: =3
+
