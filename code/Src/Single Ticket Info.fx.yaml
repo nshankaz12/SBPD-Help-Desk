@@ -1653,13 +1653,24 @@
 
         Button4_6 As button:
             OnSelect: |-
-                =Patch(Tickets_1, LookUp(Tickets_1, id = ticket), 
-                {resolution:TextInput1_3.Text,
-                lastUpdated:Now(),
-                dateClosed:Now(),
-                status: "closed",
-                updatedBy:userData.id});
-                Set(varShowResPopup, false)
+                =Patch(
+                    Tickets,
+                    LookUp(
+                        Tickets,
+                        ID = 70
+                    ),
+                    {
+                        resolution: TextInput1_3.Text,
+                        lastUpdated: Now(),
+                        dateClosed: Now(),
+                        status: "closed",
+                        updatedBy: userData.id
+                    }
+                );
+                Set(
+                    varShowResPopup,
+                    false
+                )
             Text: |-
                 ="Close Ticket
                 "
