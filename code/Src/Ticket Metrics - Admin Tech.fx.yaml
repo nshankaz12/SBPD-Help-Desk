@@ -6,33 +6,34 @@
         Table(
             {
                 metricTitle: "Monthly Tickets Recieved",
-                metricNumber: CountRows(Filter(Tickets, dateCreated <= Today() + 1))
+                metricNumber: CountRows(Filter(Tickets, metricDate = Concatenate(Month(Today()),"/", Year(Today()))))
             },
             {
                 metricTitle: "Monthly Tickets Resolved",
-                metricNumber: CountRows(Filter(Tickets, dateCreated <= Today() + 1 && status = "closed"))
+                metricNumber: CountRows(Filter(Tickets, metricDate = Concatenate(Month(Today()),"/", Year(Today())) && status = "closed"))
             },
             {
                 metricTitle: "Monthly Tickets Open",
-                metricNumber: CountRows(Filter(Tickets, dateCreated <= Today() + 1 && status = "open"))
+                metricNumber: CountRows(Filter(Tickets, metricDate = Concatenate(Month(Today()),"/", Year(Today())) && status = "open"))
             },
             {
                 metricTitle: "Tickets Assigned to Me",
-                metricNumber: CountRows(Filter(Tickets_1, assignedTO = userData.id))
+                metricNumber: CountRows(Filter(Tickets, assignedTo = userData.id))
             }
             )
         );
 
     TicketMetricsContainer As groupContainer.verticalAutoLayoutContainer:
         Height: =Parent.Height
-        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutAlignItems: =LayoutAlignItems.Center
         LayoutDirection: =LayoutDirection.Vertical
+        LayoutJustifyContent: =LayoutJustifyContent.Center
         LayoutMode: =LayoutMode.Auto
         Width: =Parent.Width
         ZIndex: =1
 
         HeaderContainer_1 As groupContainer.horizontalAutoLayoutContainer:
-            AlignInContainer: =AlignInContainer.SetByContainer
+            AlignInContainer: =AlignInContainer.Center
             FillPortions: =0
             Height: =130
             LayoutDirection: =LayoutDirection.Vertical
@@ -61,6 +62,7 @@
 
         MainSectionContainer_1 As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
+            Height: =Parent.Height - 145
             LayoutAlignItems: =LayoutAlignItems.Center
             LayoutJustifyContent: =LayoutJustifyContent.Center
             LayoutMinHeight: =100
@@ -70,7 +72,7 @@
             ZIndex: =2
 
             Gallery1 As gallery.galleryHorizontal:
-                AlignInContainer: =AlignInContainer.SetByContainer
+                AlignInContainer: =AlignInContainer.Center
                 BorderStyle: =BorderStyle.None
                 BorderThickness: =5
                 DelayItemLoading: =true
