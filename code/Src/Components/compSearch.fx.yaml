@@ -7,7 +7,48 @@ compSearch As CanvasComponent:
     IconSearchOpenNewX: =
     NewHintText: =
     OffColor: =ColorScheme.offColor
-    OnReset: =Set(searchTicketQuery, ""); Reset(searchBox_1); Set(varSearchText, ""); compSearch.CloseSearch()
+    OnReset: |-
+        =Set(
+            SearchQuery,
+            ""
+        );
+        Reset(searchBox_1);
+        Set(
+            varSearchText,
+            ""
+        );
+        compSearch.CloseSearch();
+        
+        ClearCollect(
+            colTickets,
+            ForAll(
+                Table(
+                    ParseJSON(
+                        SearchFilterTicketsSPList.Run(
+                            If(
+                                IsBlank(SearchQuery),
+                                "___",
+                                SearchQuery
+                            ), StatusChoice, TagChoice
+                        ).searchresults
+                    )
+                ),
+                {
+                    ID: Value(Value.ID),
+                    Title: Text(Value.title),
+                    Description: Text(Value.description),
+                    MainCategory: Value(Value.mainCategory),
+                    DateCreated: DateValue(Value.dateCreated),
+                    CreatorId: Value(Value.creatorId),
+                    Status: Text(Value.status),
+                    AssignedToDelete: Value(Value.assignedToDelete),
+                    LastUpdated: DateValue(Value.lastUpdated),
+                    LocationId: Value(Value.locationId),
+                    Tags: Text(Value.tags),
+                    AddAssignees: Text(Value.addAssignees)
+                }
+            )
+        )
     OpenSearch: =Set(varSearchVisible, true)
     PrimaryColor: =ColorScheme.primary
     SearchVisible: =varSearchVisible
@@ -52,7 +93,7 @@ compSearch As CanvasComponent:
     searchBox_1 As text:
         Default: =varSearchText
         Height: =Parent.Height
-        HintText: =If(IsBlank(compSearch.NewHintText), If(searchBox_1.Width < 450, "Search", "Search by ticket id, title, or description"), compSearch.NewHintText)
+        HintText: =If(IsBlank(compSearch.NewHintText), If(searchBox_1.Width < 450, "Search", "Search by ticket title or exact ticket id"), compSearch.NewHintText)
         Mode: =TextMode.MultiLine
         PaddingLeft: =45
         PaddingRight: =80
