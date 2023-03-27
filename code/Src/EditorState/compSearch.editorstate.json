@@ -581,7 +581,7 @@
       "Type": "ControlInfo"
     },
     "compSearch": {
-      "AllowAccessToGlobals": false,
+      "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
         {
@@ -686,14 +686,6 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "\"Text\"",
-          "InvariantPropertyName": "SearchQuery",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
           "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnReset",
           "IsLockable": false,
@@ -750,11 +742,6 @@
         {
           "Category": "Data",
           "PropertyName": "GetIconSearchOpenWidth",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "SearchQuery",
           "RuleProviderType": "System"
         },
         {
@@ -1144,7 +1131,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "IconSearchOpen",
-      "ParentIndex": 0,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1429,7 +1416,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "searchBox_1",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2001,7 +1988,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "TextInputSlider",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

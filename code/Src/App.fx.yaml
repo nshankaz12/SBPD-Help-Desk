@@ -46,7 +46,7 @@ App As appinfo:
         //Enable for non timer based navigation for Splash Screen
         //Set(splashNavigate,true)
         
-        ClearCollect(colStatus,{Result:"All"}, {Result:"open"}, {Result:"closed"});
+        ClearCollect(colStatus, {Result:"open"}, {Result:"closed"});
         
         ClearCollect(
             navCol,
@@ -130,17 +130,19 @@ App As appinfo:
         
         Set(MainCategory, Filter(Category, parentId = Blank())); //only main categories. those that dont rely on a parent
         
-        // Collection passed to filter component
-        Set(varColumnStatus, colStatus);
         // Passed to filter component to check if filter is visible
         Set(varFilterVisible, false);
-        // Passed tags to filter component
-        ClearCollect(colTags,{Result:""});
-        Collect(colTags,ForAll(Distinct(Tags,name), {Result: ThisRecord.Value}));
-        Set(varTags, colTags);
+        
+        ClearCollect(colTags, {Value: "None"});
+        Collect(colTags, ForAll(Sort(Tags, name, SortOrder.Ascending), {Value: ThisRecord.name}));
         
         // Passed variable to check if search bar should be visible
         Set(varSearchVisible, false);
+        
+        // Variables used for searching and filtering in components for the power automate flow
+        Set(StatusChoice, "open");
+        Set(TagChoice, "None");
+        Set(SearchQuery, "");
         
         ClearCollect(
             dummyArticles,

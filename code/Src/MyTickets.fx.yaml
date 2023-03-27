@@ -4,23 +4,47 @@
         =Reset(compFilterMenu_1);
         Reset(MyTicketsGallery);
         Reset(compSearch_1);
-    OnVisible: |
+    OnVisible: |-
         =// Create local variables for mobile view property on this screen using UpdateContext
         UpdateContext({MobileGallery: false});
         UpdateContext({HamburgerIconChange: false});
-
-    Image13_5 As image:
-        Height: =768
-        Image: ='image (2)'
-        ImagePosition: =ImagePosition.Stretch
-        Width: =Parent.Width
-        ZIndex: =3
+        
+        ClearCollect(
+            colTickets,
+            ForAll(
+                Table(
+                    ParseJSON(
+                        SearchFilterTicketsSPList.Run(
+                            If(
+                                IsBlank(SearchQuery),
+                                "___",
+                                SearchQuery
+                            ), StatusChoice, TagChoice
+                        ).searchresults
+                    )
+                ),
+                {
+                    ID: Value(Value.ID),
+                    Title: Text(Value.title),
+                    Description: Text(Value.description),
+                    MainCategory: Value(Value.mainCategory),
+                    DateCreated: DateValue(Value.dateCreated),
+                    CreatorId: Value(Value.creatorId),
+                    Status: Text(Value.status),
+                    AssignedToDelete: Value(Value.assignedToDelete),
+                    LastUpdated: DateValue(Value.lastUpdated),
+                    LocationId: Value(Value.locationId),
+                    Tags: Text(Value.tags),
+                    AddAssignees: Text(Value.addAssignees)
+                }
+            )
+        )
 
     MyTicketsMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
         LayoutMode: =LayoutMode.Auto
         Width: =Parent.Width
-        ZIndex: =4
+        ZIndex: =2
 
         MyTicketsMobileNavLinks As groupContainer.horizontalAutoLayoutContainer:
             FillPortions: =0
@@ -301,46 +325,52 @@
                         Height: =544
                         Items: |-
                             =//If(compFilterMenu_1.TicketsChoice="My Tickets",Filter(Filter(If(compFilterMenu_1.StatusChoice="All",Filter(Tickets_1,creatorId=userData.id),Filter(Filter(Tickets_1,creatorId=userData.id),status=compFilterMenu_1.StatusChoice)),If(!IsBlank(searchTicketQuery),Or(searchTicketQuery in id,searchTicketQuery in title,searchTicketQuery in description), true )),If(!IsBlank(compFilterMenu_1.TagChoice),compFilterMenu_1.TagChoice in tags, true )),Filter(Filter(If(compFilterMenu_1.StatusChoice="All",Filter(Tickets_1,assignedTO=userData.id),Filter(Filter(Tickets_1,assignedTO=userData.id),status=compFilterMenu_1.StatusChoice)),If(!IsBlank(searchTicketQuery),Or(searchTicketQuery in id,searchTicketQuery in title,searchTicketQuery in description), true )),If(!IsBlank(compFilterMenu_1.TagChoice),compFilterMenu_1.TagChoice in tags, true )))
-                            Filter(
-                                If(
-                                    compFilterMenu_1.TicketsChoice = "My Tickets",
-                                    If(
-                                        compFilterMenu_1.StatusChoice = "All",
-                                        Filter(
-                                            Tickets_1,
-                                            creatorId = userData.id
-                                        ),
-                                        Filter(
-                                            Tickets_1,
-                                            creatorId = userData.id && status = compFilterMenu_1.StatusChoice
-                                        )
-                                    ),
-                                    If(
-                                        compFilterMenu_1.StatusChoice = "All",
-                                        Filter(
-                                            Tickets_1,
-                                            assignedTO = userData.id
-                                        ),
-                                        Filter(
-                                            Tickets_1,
-                                            assignedTO = userData.id && status = compFilterMenu_1.StatusChoice
-                                        )
-                                    )
-                                ),
-                                If(
-                                    !IsBlank(compFilterMenu_1.TagChoice),
-                                    compFilterMenu_1.TagChoice in tags,
-                                    true
-                                ) && If(
-                                    !IsBlank(compSearch_1.SearchQuery),
-                                    Or(
-                                        compSearch_1.SearchQuery in id,
-                                        compSearch_1.SearchQuery in title,
-                                        compSearch_1.SearchQuery in description
-                                    ),
-                                    true
-                                )
-                            )
+                            
+                            // SQL Filter
+                            //Filter(
+                            //    If(
+                            //        compFilterMenu_1.TicketsChoice = "My Tickets",
+                            //        If(
+                            //            compFilterMenu_1.StatusChoice = "All",
+                            //            Filter(
+                            //                Tickets_1,
+                            //                creatorId = userData.id
+                            //            ),
+                            //            Filter(
+                            //                Tickets_1,
+                            //                creatorId = userData.id && status = compFilterMenu_1.StatusChoice
+                            //            )
+                            //        ),
+                            //        If(
+                            //            compFilterMenu_1.StatusChoice = "All",
+                            //            Filter(
+                            //                Tickets_1,
+                            //                assignedTO = userData.id
+                            //            ),
+                            //           Filter(
+                            //                Tickets_1,
+                            //                assignedTO = userData.id && status = compFilterMenu_1.StatusChoice
+                            //            )
+                            //        )
+                            //    ),
+                            //    If(
+                            //        !IsBlank(compFilterMenu_1.TagChoice),
+                            //        compFilterMenu_1.TagChoice in tags,
+                            //        true
+                            //    ) && If(
+                            //        !IsBlank(compSearch_1.SearchQuery),
+                            //        Or(
+                            //            compSearch_1.SearchQuery in id,
+                            //            compSearch_1.SearchQuery in title,
+                            //            compSearch_1.SearchQuery in description
+                            //        ),
+                            //        true
+                            //    )
+                            //)
+                            
+                            // Filter for Sharepoint List
+                            colTickets
+                            //Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedToDelete = userData.id))
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320
@@ -462,7 +492,7 @@
                             Height: =54
                             OnSelect: =Select(Parent)
                             Size: =12
-                            Text: =ThisItem.title
+                            Text: =ThisItem.Title
                             Width: =208
                             X: =24
                             Y: =27
@@ -472,7 +502,7 @@
                             Height: =37
                             OnSelect: =Select(Parent)
                             Size: =10
-                            Text: =ThisItem.description
+                            Text: =ThisItem.Description
                             Width: =282
                             Wrap: =false
                             X: =24
@@ -485,7 +515,7 @@
                             Fill: =RGBA(241, 244, 249, 1)
                             Height: =34
                             OnSelect: =Select(Parent)
-                            Text: =ThisItem.id
+                            Text: =ThisItem.ID
                             Width: =74
                             X: =232
                             Y: =27
@@ -495,7 +525,7 @@
                             Height: =25
                             OnSelect: =Select(Parent)
                             Size: =10
-                            Text: =DateValue(ThisItem.dateCreated)
+                            Text: =DateValue(ThisItem.DateCreated)
                             Width: =75
                             X: =231
                             Y: =147
@@ -507,7 +537,11 @@
                             Height: =220
                             HoverFill: =Self.Fill
                             OnSelect: |-
-                                =Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.creatorId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO, tags: ThisItem.tags, addAssignees: ThisItem.addAssignees})
+                                =// SQL 
+                                //Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.creatorId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO, tags: ThisItem.tags, addAssignees: ThisItem.addAssignees})
+                                
+                                // Sharepoint List
+                                Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.Title, dateCreated:DateValue(ThisItem.DateCreated), status:ThisItem.Status, category:ThisItem.MainCategory, reporting_person:ThisItem.CreatorId, assigned_person:If(IsBlank(ThisItem.AssignedToDelete), "Unassigned", LookUp(Users, id = ThisItem.AssignedToDelete, fullName)), description:ThisItem.Description, ticket:ThisItem.ID, creatorId: ThisItem.CreatorId, assigneeId: ThisItem.AssignedToDelete, tags: ThisItem.Tags, addAssignees: ThisItem.AddAssignees})
                             PressedFill: =Self.Fill
                             Text: =""
                             Width: =303
@@ -526,10 +560,12 @@
                                 Height: =Parent.TemplateHeight / 6
                                 Image: |-
                                     =// Get assignee's profile pic if they have one
+                                    
+                                    // SQL
                                     //If(!IsBlank(LookUp(Users, id = ThisItem.assignedTO, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.assignedTO, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.assignedTO, email)), 'blank-profile-pic')
                                     
-                                    // For testing purposes because don't have any assignees yet
-                                    If(!IsBlank(LookUp(Users, id = 2, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = 2, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = 2, email)), 'blank-profile-pic')
+                                    // Sharepoint
+                                    If(!IsBlank(LookUp(Users, id = ThisItem.AssignedToDelete, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.AssignedToDelete, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.AssignedToDelete, email)), 'blank-profile-pic')
                                 ImagePosition: =ImagePosition.Fill
                                 RadiusBottomLeft: =256
                                 RadiusBottomRight: =256
@@ -544,7 +580,12 @@
                             AssigneeLabel As label:
                                 Height: =Parent.TemplateHeight / 6
                                 OnSelect: =Select(Parent)
-                                Text: =If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
+                                Text: |-
+                                    =// SQL
+                                    //If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
+                                    
+                                    // Sharepoint
+                                    If(IsBlank(ThisItem.AssignedToDelete), "Unassigned", LookUp(Users, id = ThisItem.AssignedToDelete, fullName))
                                 Visible: =is_admin
                                 Width: =154
                                 X: =67
@@ -562,7 +603,7 @@
                                 DisplayMode: =DisplayMode.View
                                 Fill: |-
                                     =Switch(
-                                        ThisItem.status,
+                                        ThisItem.Status,
                                         "open", RGBA(0, 127, 187, 1),
                                         "close", RGBA(127, 178, 57, 1),
                                         RGBA(221, 79, 14, 1)
@@ -578,7 +619,7 @@
                                 Align: =Align.Center
                                 Color: |-
                                     =Switch(
-                                        ThisItem.status,
+                                        ThisItem.Status,
                                         "open", RGBA(0, 127, 187, 1),
                                         "close", RGBA(127, 178, 57, 1),
                                         RGBA(221, 79, 14, 1)
@@ -588,7 +629,12 @@
                                 FontWeight: =FontWeight.Semibold
                                 Height: =41
                                 OnSelect: =Select(Parent)
-                                Text: =ThisItem.status
+                                Text: |-
+                                    =// SQL
+                                    //ThisItem.status
+                                    
+                                    // Sharepoint
+                                    ThisItem.Status
                                 Width: =65
                                 X: =241
                                 Y: =180
@@ -615,7 +661,12 @@
                                 Height: =25
                                 OnSelect: =Select(Parent)
                                 Size: =10
-                                Text: =LookUp(Category, id = ThisItem.mainCategory, name)
+                                Text: |-
+                                    =// SQL
+                                    //LookUp(Category, id = ThisItem.mainCategory, name)
+                                    
+                                    // Sharepoint
+                                    LookUp(Category, id = ThisItem.MainCategory, name)
                                 Width: =143
                                 X: =89
                                 Y: =If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
@@ -648,7 +699,7 @@
                             Text: ="New Ticket"
                             Visible: |-
                                 =//Button should only appears when user is not viewing their assigned tickets
-                                IsEmpty(MyTicketsGallery.AllItems) && compFilterMenu_1.TicketsChoice = "My Tickets" && (compFilterMenu_1.StatusChoice = "All" || compFilterMenu_1.StatusChoice = "open")
+                                IsEmpty(MyTicketsGallery.AllItems) && compFilterMenu_1.TicketsChoice = "My Tickets" && (StatusChoice = "All" || StatusChoice = "open")
                             X: =1150
                             Y: =99
                             ZIndex: =2
@@ -670,15 +721,30 @@
 
     compFilterMenu_1 As compFilterMenu:
         Height: =If(compFilterMenu_1.FilterVisible, compFilterMenu_1.NewHeight, compFilterMenu_1.FilterIconSize)
-        NewHeight: =If(compFilterMenu_1.CheckAdmin && App.ActiveScreen.Name = "MyTickets", If(App.Height > 560, 400, 320), If(compFilterMenu_1.CheckAdmin, If(App.Height > 560, 250, 210), 150))
+        NewHeight: |-
+            =If(
+                compFilterMenu_1.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
+                If(
+                    App.Height > 560,
+                    400,
+                    320
+                ),
+                !compFilterMenu_1.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
+                150,
+                If(
+                    App.Height > 560,
+                    420,
+                    320
+                )
+            )
         Visible: =App.Width > 600 || (App.Width <= 600 && !compSearch_1.SearchVisible)
         Width: =If(compFilterMenu_1.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu_1.FilterIconSize)
         X: =Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
         Y: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + ((SearchFilterContainer.Height - compFilterMenu_1.FilterIconSize) / 2)
-        ZIndex: =5
+        ZIndex: =3
 
     compWebMenu_3 As compWebMenu:
-        ZIndex: =6
+        ZIndex: =4
 
     SearchBlocker As group:
         Height: =5
@@ -695,7 +761,7 @@
             OnSelect: =Set(varSearchVisible, false)
             Visible: =App.Width <= 600 && compSearch_1.SearchVisible
             Width: =Parent.Width
-            ZIndex: =1
+            ZIndex: =5
 
         SearchBlockerBottom As rectangle:
             Fill: |-
@@ -706,5 +772,5 @@
             Visible: =App.Width <= 600 && compSearch_1.SearchVisible
             Width: =Parent.Width
             Y: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + SearchFilterContainer.Height
-            ZIndex: =2
+            ZIndex: =6
 

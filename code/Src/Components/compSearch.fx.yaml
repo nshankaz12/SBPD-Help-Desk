@@ -10,7 +10,6 @@ compSearch As CanvasComponent:
     OnReset: =Set(searchTicketQuery, ""); Reset(searchBox_1); Set(varSearchText, ""); compSearch.CloseSearch()
     OpenSearch: =Set(varSearchVisible, true)
     PrimaryColor: =ColorScheme.primary
-    SearchQuery: =searchTicketQuery
     SearchVisible: =varSearchVisible
     SecondaryColor: =ColorScheme.secondary
     Width: =If(App.Width > 1200, 800, App.Width > 900, 600, App.Width > 600, App.Width * 0.65, App.Width - 40)
@@ -68,7 +67,43 @@ compSearch As CanvasComponent:
     bgSearch As button:
         Fill: =compSearch.SecondaryColor
         Height: =38
-        OnSelect: =Set(searchTicketQuery, searchBox_1.Text); compSearch.CloseSearch()
+        OnSelect: |-
+            =Set(
+                SearchQuery,
+                searchBox_1.Text
+            );
+            compSearch.CloseSearch();
+            
+            ClearCollect(
+                colTickets,
+                ForAll(
+                    Table(
+                        ParseJSON(
+                            SearchFilterTicketsSPList.Run(
+                                If(
+                                    IsBlank(SearchQuery),
+                                    "___",
+                                    SearchQuery
+                                ), StatusChoice, TagChoice
+                            ).searchresults
+                        )
+                    ),
+                    {
+                        ID: Value(Value.ID),
+                        Title: Text(Value.title),
+                        Description: Text(Value.description),
+                        MainCategory: Value(Value.mainCategory),
+                        DateCreated: DateValue(Value.dateCreated),
+                        CreatorId: Value(Value.creatorId),
+                        Status: Text(Value.status),
+                        AssignedToDelete: Value(Value.assignedToDelete),
+                        LastUpdated: DateValue(Value.lastUpdated),
+                        LocationId: Value(Value.locationId),
+                        Tags: Text(Value.tags),
+                        AddAssignees: Text(Value.addAssignees)
+                    }
+                )
+            )
         RadiusBottomLeft: =0
         RadiusBottomRight: =5
         RadiusTopLeft: =0
@@ -87,7 +122,43 @@ compSearch As CanvasComponent:
         Height: =Parent.Height
         HoverFill: =RGBA(0, 18, 107, 1)
         Icon: =Icon.ArrowRight
-        OnSelect: =Set(searchTicketQuery, searchBox_1.Text); compSearch.CloseSearch()
+        OnSelect: |-
+            =Set(
+                SearchQuery,
+                searchBox_1.Text
+            );
+            compSearch.CloseSearch();
+            
+            ClearCollect(
+                colTickets,
+                ForAll(
+                    Table(
+                        ParseJSON(
+                            SearchFilterTicketsSPList.Run(
+                                If(
+                                    IsBlank(SearchQuery),
+                                    "___",
+                                    SearchQuery
+                                ), StatusChoice, TagChoice
+                            ).searchresults
+                        )
+                    ),
+                    {
+                        ID: Value(Value.ID),
+                        Title: Text(Value.title),
+                        Description: Text(Value.description),
+                        MainCategory: Value(Value.mainCategory),
+                        DateCreated: DateValue(Value.dateCreated),
+                        CreatorId: Value(Value.creatorId),
+                        Status: Text(Value.status),
+                        AssignedToDelete: Value(Value.assignedToDelete),
+                        LastUpdated: DateValue(Value.lastUpdated),
+                        LocationId: Value(Value.locationId),
+                        Tags: Text(Value.tags),
+                        AddAssignees: Text(Value.addAssignees)
+                    }
+                )
+            )
         PaddingLeft: =5
         PaddingRight: =5
         Tooltip: ="Search"
@@ -102,7 +173,48 @@ compSearch As CanvasComponent:
         Height: =36
         HoverColor: =RGBA(0, 18, 107, 1)
         Icon: =Icon.Cancel
-        OnSelect: =Set(searchTicketQuery, ""); Reset(searchBox_1); Set(varSearchText, ""); SetFocus(searchBox_1)
+        OnSelect: |-
+            =Set(
+                SearchQuery,
+                ""
+            );
+            Reset(searchBox_1);
+            Set(
+                varSearchText,
+                ""
+            );
+            SetFocus(searchBox_1);
+            
+            ClearCollect(
+                colTickets,
+                ForAll(
+                    Table(
+                        ParseJSON(
+                            SearchFilterTicketsSPList.Run(
+                                If(
+                                    IsBlank(SearchQuery),
+                                    "___",
+                                    SearchQuery
+                                ), StatusChoice, TagChoice
+                            ).searchresults
+                        )
+                    ),
+                    {
+                        ID: Value(Value.ID),
+                        Title: Text(Value.title),
+                        Description: Text(Value.description),
+                        MainCategory: Value(Value.mainCategory),
+                        DateCreated: DateValue(Value.dateCreated),
+                        CreatorId: Value(Value.creatorId),
+                        Status: Text(Value.status),
+                        AssignedToDelete: Value(Value.assignedToDelete),
+                        LastUpdated: DateValue(Value.lastUpdated),
+                        LocationId: Value(Value.locationId),
+                        Tags: Text(Value.tags),
+                        AddAssignees: Text(Value.addAssignees)
+                    }
+                )
+            )
         Tooltip: ="Cancel"
         Visible: =!IsBlank(searchBox_1.Text) && (App.Width > 600 || compSearch.SearchVisible)
         Width: =38

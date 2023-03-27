@@ -72,8 +72,22 @@
                 Height: =If(compFilterMenu_5.FilterVisible, compFilterMenu_5.NewHeight, compFilterMenu_5.FilterIconSize)
                 LayoutMinHeight: =640
                 LayoutMinWidth: =640
-                NewHeight: =If(compFilterMenu_5.CheckAdmin && App.ActiveScreen.Name = "MyTickets", If(App.Height > 560, 400, 320), If(compFilterMenu_5.CheckAdmin, If(App.Height > 560, 250, 210), 150))
-                StatusItems: =Tickets_1
+                NewHeight: |-
+                    =If(
+                        compFilterMenu_5.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
+                        If(
+                            App.Height > 560,
+                            400,
+                            320
+                        ),
+                        !compFilterMenu_5.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
+                        150,
+                        If(
+                            App.Height > 560,
+                            420,
+                            320
+                        )
+                    )
                 Visible: =App.Width > 600 || (App.Width <= 600 && !compSearch_1.SearchVisible)
                 Width: =If(compFilterMenu_5.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu_5.FilterIconSize)
                 X: =Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
