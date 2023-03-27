@@ -369,7 +369,10 @@
                             //)
                             
                             // Filter for Sharepoint List
+                            
+                            // Test
                             colTickets
+                            
                             //Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedToDelete = userData.id))
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =Parent.Height
@@ -720,6 +723,7 @@
                         Width: =Parent.Width
 
     compFilterMenu_1 As compFilterMenu:
+        CheckAdmin: =!is_admin
         Height: =If(compFilterMenu_1.FilterVisible, compFilterMenu_1.NewHeight, compFilterMenu_1.FilterIconSize)
         NewHeight: |-
             =If(
