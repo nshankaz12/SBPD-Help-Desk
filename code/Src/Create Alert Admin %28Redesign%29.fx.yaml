@@ -3,12 +3,12 @@
     Form1 As form:
         DataSource: ='Alerts List'
         DefaultMode: =FormMode.New
-        Height: =534
+        Height: =568
         Item: =Gallery2.Selected
         NumberOfColumns: =1
-        Width: =1340
-        X: =10
-        Y: =214
+        Width: =1362
+        X: =4
+        Y: =200
         ZIndex: =1
 
         Title_DataCard1 As typedDataCard.textualEditCard:
@@ -22,7 +22,7 @@
             MaxLength: =DataSourceInfo([@'Alerts List'], DataSourceInfo.MaxLength, "Title")
             Required: =true
             Update: =DataCardValue2.Text
-            Width: =1340
+            Width: =1362
             X: =0
             Y: =0
             ZIndex: =2
@@ -30,6 +30,7 @@
             DataCardKey2 As label:
                 AutoHeight: =true
                 Height: =34
+                Size: =20
                 Text: =Parent.DisplayName
                 Width: =(Parent.Width - 60) * 0.4
                 Wrap: =false
@@ -49,9 +50,9 @@
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
                 Tooltip: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.6
-                X: =DataCardKey2.X + DataCardKey2.Width
-                Y: =10
+                Width: =791
+                X: =358
+                Y: =17
                 ZIndex: =2
 
             ErrorMessage2 As label:
@@ -86,11 +87,11 @@
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@'Alerts List'],DataSourceInfo.DisplayName,"Description")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =352
+            Height: =336
             MaxLength: =DataSourceInfo([@'Alerts List'], DataSourceInfo.MaxLength, "Description")
             Required: =false
             Update: =DataCardValue4.Text
-            Width: =1340
+            Width: =1362
             X: =0
             Y: =1
             ZIndex: =2
@@ -98,6 +99,7 @@
             DataCardKey9 As label:
                 AutoHeight: =true
                 Height: =34
+                Size: =20
                 Text: =Parent.DisplayName
                 Width: =(Parent.Width - 60) * 0.4
                 Wrap: =false
@@ -110,17 +112,18 @@
                 Default: =ThisItem.Description
                 DelayOutput: =true
                 DisplayMode: =Parent.DisplayMode
-                Height: =320
+                Height: =292
                 MaxLength: =Parent.MaxLength
                 PaddingLeft: =5
                 RadiusBottomLeft: =0
                 RadiusBottomRight: =0
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
+                Size: =18
                 Tooltip: =Parent.DisplayName
-                Width: =(Parent.Width - 60) * 0.6
-                X: =DataCardKey9.X + DataCardKey9.Width
-                Y: =10
+                Width: =803
+                X: =361
+                Y: =20
                 ZIndex: =2
 
             ErrorMessage9 As label:
@@ -155,10 +158,10 @@
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@'Alerts List'],DataSourceInfo.DisplayName,"Date")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            Required: =true
+            Height: =55
+            Required: =false
             Update: =DataCardValue3.SelectedDate
-            Width: =1340
+            Width: =1362
             X: =0
             Y: =2
             ZIndex: =2
@@ -166,6 +169,7 @@
             DataCardKey7 As label:
                 AutoHeight: =true
                 Height: =34
+                Size: =20
                 Text: =Parent.DisplayName
                 Width: =(Parent.Width - 60) * 0.4
                 Wrap: =false
@@ -184,7 +188,8 @@
                 StartYear: =1899
                 Tooltip: =Parent.DisplayName
                 Width: =(Parent.Width - 60) * 0.6
-                X: =DataCardKey7.X + DataCardKey7.Width
+                X: =355
+                Y: =10
                 ZIndex: =2
 
             ErrorMessage7 As label:
@@ -212,26 +217,6 @@
                 Y: =DataCardKey7.Y
                 ZIndex: =4
 
-    Image13_14 As image:
-        BorderColor: =RGBA(0, 16, 96, 1)
-        Fill: =RGBA(39, 67, 125, 1)
-        Height: =208
-        Image: =
-        Width: =1363
-        X: =3
-        ZIndex: =2
-
-    compWebHeader_27 As compWebHeader:
-        ZIndex: =3
-
-    "'Back Scroll_9' As icon.BackArrow":
-        Color: =RGBA(232, 244, 217, 1)
-        Icon: =Icon.BackArrow
-        OnSelect: =Back(ScreenTransition.Fade)
-        X: =59
-        Y: =87
-        ZIndex: =4
-
     alert_1 As label:
         Align: =Align.Center
         Color: =RGBA(255, 255, 255, 1)
@@ -246,7 +231,7 @@
     Button3 As button:
         Height: =60
         OnSelect: |-
-            =Patch('Alerts List', Defaults('Alerts List'), {Title: DataCardValue2.Text, Description: DataCardValue4.Text, ExpDate :DataCardValue3});
+            =Patch('Alerts List', Defaults('Alerts List'), {Title: DataCardValue2.Text, Description: DataCardValue4.Text, ExpDate :DataCardValue3.SelectedDate});
             Navigate('Alert Manager');
         Text: ="Create Alert"
         Width: =204
@@ -258,8 +243,10 @@
         Height: =60
         OnSelect: |
             =Patch('Alerts List', Gallery2.Selected, {Title: DataCardValue2.Text, Description: DataCardValue4.Text});
+            Set(formEdit, false);
             Navigate('Alert Manager')
         Text: ="Save Edit"
+        Visible: =If(formEdit, true)
         Width: =204
         X: =564
         Y: =677
@@ -272,7 +259,36 @@
             Navigate(Gallery2, ScreenTransition.None)
         Text: ="Cancel"
         Width: =204
-        X: =1038
+        X: =1052
         Y: =677
         ZIndex: =8
+
+    Container6 As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(39, 67, 125, 1)
+        Width: =1366
+        ZIndex: =9
+
+        compWebHeader_27 As compWebHeader_9:
+            ZIndex: =1
+
+        "'Back Scroll_9' As icon.BackArrow":
+            Color: =RGBA(232, 244, 217, 1)
+            Icon: =Icon.BackArrow
+            OnSelect: =Back(ScreenTransition.Fade)
+            X: =42
+            Y: =105
+            ZIndex: =3
+
+        compWebMenu_18 As compWebMenu:
+            ZIndex: =4
+
+        Label32 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =64
+            Size: =25
+            Text: ="Create Alert"
+            Width: =222
+            X: =574
+            Y: =105
+            ZIndex: =5
 

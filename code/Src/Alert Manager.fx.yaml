@@ -93,7 +93,8 @@
             Button1 As button:
                 Height: =50
                 OnSelect: |
-                    =Navigate(Form1, ScreenTransition.None,{Item: Gallery2.Selected})
+                    =Set(formEdit, true);
+                    Navigate(Form1, ScreenTransition.None,{Item: Gallery2.Selected})
                 Text: ="Edit Alert"
                 Width: =200
                 X: =1126
