@@ -73,11 +73,6 @@
                             MenuText: "Assign Role",
                             MenuIcon: Icon.People,
                             ScreenToGoTo: 'Assign Role - Admin'
-                        },
-                        {
-                            MenuText: "My Profile",
-                            MenuIcon: Icon.Person,
-                            ScreenToGoTo: 'User Profile + Info'
                         }
                     )
                 Layout: =Layout.Vertical
@@ -87,7 +82,7 @@
                 ShowScrollbar: =false
                 TemplateSize: =200
                 Width: =Parent.Width
-                WrapCount: =Switch('Admin Manager'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
+                WrapCount: =Switch('Admin Manager'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 3)
                 ZIndex: =1
 
                 HtmlText1_2 As htmlViewer:
