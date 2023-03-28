@@ -31,7 +31,7 @@
                     DateCreated: DateValue(Value.dateCreated),
                     CreatorId: Value(Value.creatorId),
                     Status: Text(Value.status),
-                    AssignedToDelete: Value(Value.assignedToDelete),
+                    AssignedTo: Value(Value.assignedTo),
                     LastUpdated: DateValue(Value.lastUpdated),
                     LocationId: Value(Value.locationId),
                     Tags: Text(Value.tags),
@@ -371,9 +371,9 @@
                             // Filter for Sharepoint List
                             
                             // Test
-                            colTickets
+                            //colTickets
                             
-                            //Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedToDelete = userData.id))
+                            Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedTo = userData.id))
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320
@@ -544,7 +544,7 @@
                                 //Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.creatorId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO, tags: ThisItem.tags, addAssignees: ThisItem.addAssignees})
                                 
                                 // Sharepoint List
-                                Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.Title, dateCreated:DateValue(ThisItem.DateCreated), status:ThisItem.Status, category:ThisItem.MainCategory, reporting_person:ThisItem.CreatorId, assigned_person:If(IsBlank(ThisItem.AssignedToDelete), "Unassigned", LookUp(Users, id = ThisItem.AssignedToDelete, fullName)), description:ThisItem.Description, ticket:ThisItem.ID, creatorId: ThisItem.CreatorId, assigneeId: ThisItem.AssignedToDelete, tags: ThisItem.Tags, addAssignees: ThisItem.AddAssignees})
+                                Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.Title, dateCreated:DateValue(ThisItem.DateCreated), status:ThisItem.Status, category:ThisItem.MainCategory, reporting_person:ThisItem.CreatorId, assigned_person:If(IsBlank(ThisItem.AssignedTo), "Unassigned", LookUp(Users, id = ThisItem.AssignedTo, fullName)), description:ThisItem.Description, ticket:ThisItem.ID, creatorId: ThisItem.CreatorId, assigneeId: ThisItem.AssignedTo, tags: ThisItem.Tags, addAssignees: ThisItem.AddAssignees})
                             PressedFill: =Self.Fill
                             Text: =""
                             Width: =303
@@ -568,7 +568,7 @@
                                     //If(!IsBlank(LookUp(Users, id = ThisItem.assignedTO, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.assignedTO, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.assignedTO, email)), 'blank-profile-pic')
                                     
                                     // Sharepoint
-                                    If(!IsBlank(LookUp(Users, id = ThisItem.AssignedToDelete, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.AssignedToDelete, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.AssignedToDelete, email)), 'blank-profile-pic')
+                                    If(!IsBlank(LookUp(Users, id = ThisItem.AssignedTo, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.AssignedTo, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.AssignedTo, email)), 'blank-profile-pic')
                                 ImagePosition: =ImagePosition.Fill
                                 RadiusBottomLeft: =256
                                 RadiusBottomRight: =256
@@ -588,7 +588,7 @@
                                     //If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
                                     
                                     // Sharepoint
-                                    If(IsBlank(ThisItem.AssignedToDelete), "Unassigned", LookUp(Users, id = ThisItem.AssignedToDelete, fullName))
+                                    If(IsBlank(ThisItem.AssignedTo), "Unassigned", LookUp(Users, id = ThisItem.AssignedTo, fullName))
                                 Visible: =is_admin
                                 Width: =154
                                 X: =67
@@ -723,7 +723,6 @@
                         Width: =Parent.Width
 
     compFilterMenu_1 As compFilterMenu:
-        CheckAdmin: =!is_admin
         Height: =If(compFilterMenu_1.FilterVisible, compFilterMenu_1.NewHeight, compFilterMenu_1.FilterIconSize)
         NewHeight: |-
             =If(

@@ -134,7 +134,7 @@ App As appinfo:
         Set(varFilterVisible, false);
         
         ClearCollect(colTags, {Value: "None"});
-        Collect(colTags, ForAll(Sort(Tags, name, SortOrder.Ascending), {Value: ThisRecord.name}));
+        Collect(colTags, ForAll(Sort(Tags_1, name, SortOrder.Ascending), {Value: ThisRecord.name}));
         
         // Passed variable to check if search bar should be visible
         Set(varSearchVisible, false);
