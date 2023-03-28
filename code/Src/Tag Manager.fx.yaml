@@ -4,7 +4,7 @@
         BorderColor: =RGBA(0, 0, 0, 1)
         BorderThickness: =2
         Height: =617
-        Items: =Tags
+        Items: =Tags_1
         Layout: =Layout.Vertical
         TemplatePadding: =20
         TemplateSize: =54
@@ -28,7 +28,7 @@
             BorderThickness: =0
             Fill: =RGBA(255, 0, 0, 1)
             Height: =32
-            OnSelect: =Remove(Tags, ThisItem)
+            OnSelect: =Remove(Tags_1, ThisItem)
             Text: ="Button"
             X: =302
             Y: =23
@@ -118,7 +118,7 @@
     ButtonForAddingTag As button:
         BorderThickness: =0
         OnSelect: |-
-            =Patch(Tags, Defaults ( Tags ), { name : DataCardValue1.Text })
+            =Patch(Tags_1, Defaults ( Tags_1 ), { name : DataCardValue1.Text })
         Text: ="Add Tag"
         X: =902
         Y: =489
