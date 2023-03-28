@@ -1,13 +1,16 @@
 "'Assign Role - Admin' As screen":
     Fill: =
 
-    Container15 As groupContainer.horizontalAutoLayoutContainer:
+    Container15_2 As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutJustifyContent: =LayoutJustifyContent.Center
         LayoutMode: =LayoutMode.Auto
         Width: =Parent.Width
-        ZIndex: =14
+        ZIndex: =1
 
-        Container16 As groupContainer.verticalAutoLayoutContainer:
+        Container16_3 As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
             Height: =Parent.Height
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
@@ -17,88 +20,95 @@
             Width: =Parent.Width
             ZIndex: =1
 
-            Container19 As groupContainer.horizontalAutoLayoutContainer:
+            HeaderContainer1_2 As groupContainer.horizontalAutoLayoutContainer:
                 FillPortions: =0
-                Height: =82
+                Height: =130
+                LayoutDirection: =LayoutDirection.Vertical
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                Width: =250
                 ZIndex: =1
 
-                compWebHeader_8 As compWebHeader:
-                    Height: =Parent.Height
+                compWebHeader_32 As compWebHeader_31:
+                    Height: |
+                        =82
                     LayoutMinHeight: =640
                     LayoutMinWidth: =640
+                    Width: =Parent.Width
                     ZIndex: =1
 
-            Container20 As groupContainer.manualLayoutContainer:
-                FillPortions: =5
-                Height: =Parent.Height
+                Label26_4 As label:
+                    Align: =Align.Center
+                    AlignInContainer: =AlignInContainer.Start
+                    Color: =Color.White
+                    Fill: =ColorScheme.primary
+                    FillPortions: =1
+                    Size: =19
+                    Text: ="Assign a Role"
+                    Width: =Parent.Width
+                    ZIndex: =2
+
+            Container1_1 As groupContainer.verticalAutoLayoutContainer:
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =20
+                LayoutJustifyContent: =LayoutJustifyContent.Center
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
-                ZIndex: =2
+                LayoutMode: =LayoutMode.Auto
+                LayoutOverflowY: =LayoutOverflow.Scroll
+                ZIndex: =3
 
-                compMobileMenu_7 As compMobileMenu:
-                    Visible: ='Assign Role - Admin'.Size=1
-                    Width: =Parent.Width
-                    Y: =Parent.Height-Self.Height
-
-                Label17 As label:
+                UserLabel As label:
                     Align: =Align.Center
                     FontWeight: =FontWeight.Bold
                     Height: =91
                     Size: =25
                     Text: ="User"
                     Width: =328
-                    X: =(Parent.Width-Self.Width)/4
-                    Y: =If('Assign Role - Admin'.Size=1, 50 , 200)
+                    X: =(Parent.Width-Self.Width)/2
+                    Y: =Parent.Height
+                    ZIndex: =1
+
+                UserDropdown As dropdown:
+                    Default: =""
+                    Height: =59
+                    Items: =Users
+                    Width: =340
+                    X: =(Parent.Width-Self.Width)/2
+                    Y: =UserLabel.Y+ UserLabel.Height
                     ZIndex: =2
 
-                Label17_3 As label:
+                RoleLabel As label:
                     Align: =Align.Center
                     FontWeight: =FontWeight.Bold
                     Height: =91
                     Size: =25
                     Text: ="Role"
                     Width: =328
-                    X: =If('Assign Role - Admin'.Size=1, Dropdown2.X, (Parent.Width-Self.Width)/4 +Dropdown2.X+Dropdown2.Width)
-                    Y: =If('Assign Role - Admin'.Size=1, Dropdown2.Y+50,200)
+                    X: =(Parent.Width-Self.Width)/2
+                    Y: =If('Assign Role - Admin'.Size=1, UserDropdown.Y+50,200)
                     ZIndex: =3
 
-                Icon9 As icon.BackArrow:
-                    Icon: =Icon.BackArrow
-                    OnSelect: =Navigate(Home,ScreenTransition.Fade)
-                    X: =79
-                    Y: =58
-                    ZIndex: =4
-
-                Dropdown3 As dropdown:
+                RoleDropdown As dropdown:
                     Default: =""
                     Height: =59
                     Items: |-
                         =ForAll(Distinct(Users, userRole), {Result: If(ThisRecord.Value = "client", "staff", ThisRecord.Value)})
                     Width: =340
-                    X: =Label17_3.X
-                    Y: =Label17_3.Y+Label17_3.Height
-                    ZIndex: =5
+                    X: =(Parent.Width-Self.Width)/2
+                    Y: =RoleLabel.Y+RoleLabel.Height
+                    ZIndex: =4
 
-                Dropdown2 As dropdown:
-                    Default: =""
-                    Height: =59
-                    Items: =Users_1
-                    Width: =340
-                    X: =Label17.X
-                    Y: =Label17.Y+ Label17.Height
-                    ZIndex: =6
-
-                Button2 As button:
+                submitButton As button:
                     Fill: =RGBA(184, 0, 0, 1)
                     Height: =72
                     OnSelect: |-
-                        =Patch(Users_1, LookUp(Users_1, email = Dropdown2.Selected.email), {userRole: Dropdown3.Selected.Result});
+                        =Patch(Users, LookUp(Users, email = UserDropdown.Selected.email), {userRole: RoleDropdown.Selected.Result});
                         If(
                             LookUp(
-                                Users_1,
+                                Users,
                                 email = User().Email,
                                 userRole
                             ) = "admin",
@@ -111,13 +121,33 @@
                                 false
                             )
                         );
-                        Refresh(Users_1)
+                        Refresh(Users)
                     Text: ="Assign Role"
                     Width: =240
                     X: =(Parent.Width-Self.Width)/2
-                    Y: =Parent.Height-Self.Height-compMobileMenu_7.Height
-                    ZIndex: =7
+                    Y: =Parent.Height-Self.Height-compMobileMenu_12.Height
+                    ZIndex: =5
 
-    compWebMenu_5 As compWebMenu:
-        ZIndex: =15
+            compMobileMenu_12 As compMobileMenu_7:
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                Visible: ='Assign Role - Admin'.Size=1
+                Width: =Parent.Width
+                ZIndex: =4
+
+    compWebMenu_21 As compWebMenu_20:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_21.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_21.ExpandMenu)
+        ZIndex: =2
+
+    Icon9_2 As icon.BackArrow:
+        Height: =47
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.Fade)
+        Width: =49
+        X: =53
+        Y: =80
+        ZIndex: =3
 
