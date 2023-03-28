@@ -215,12 +215,12 @@
                     ButtonGallery_Category As gallery.galleryVertical:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         Height: =553
-                        Items: =Filter(Category, parentId = Blank())
+                        Items: =Filter(Category_1, parentId = Blank())
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
                         OnSelect: |-
-                            =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.id })
+                            =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                         ShowScrollbar: =false
                         TemplateSize: =Parent.Height/3
                         Visible: ='Category Select'.Size>1
@@ -235,7 +235,7 @@
                             Fill: =ColorScheme.secondary
                             Height: =Parent.TemplateHeight - 20
                             OnSelect: |-
-                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.id })
+                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                             Text: =""
                             Width: =Parent.TemplateWidth - 20
                             X: =(Parent.TemplateWidth - Self.Width)/2
@@ -248,7 +248,7 @@
                             FontWeight: =FontWeight.Semibold
                             Height: =Parent.TemplateHeight - 20
                             OnSelect: |-
-                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.id })
+                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                             Size: =15
                             Text: =ThisItem.name
                             Width: =Parent.TemplateWidth - 20
@@ -260,12 +260,12 @@
                         AlignInContainer: =AlignInContainer.SetByContainer
                         FillPortions: =0
                         Height: =Parent.Height
-                        Items: =Filter(Category, parentId = Blank())
+                        Items: =Filter(Category_1, parentId = Blank())
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
                         OnSelect: |-
-                            =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.id })
+                            =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                         ShowScrollbar: =false
                         TemplatePadding: =0
                         TemplateSize: =Parent.Width
@@ -281,7 +281,7 @@
                             Fill: =ColorScheme.secondary
                             Height: =Parent.TemplateHeight/2.5
                             OnSelect: |-
-                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.id })
+                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                             Text: =""
                             Width: =Parent.TemplateWidth/1.2
                             X: =(Parent.TemplateWidth - Self.Width)/2
@@ -294,7 +294,7 @@
                             FontWeight: =FontWeight.Semibold
                             Height: =ButtonGalleryBackgroundButton_5.Height
                             OnSelect: |-
-                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.id })
+                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                             Size: =15
                             Text: =ThisItem.name
                             Width: =ButtonGalleryBackgroundButton_5.Width

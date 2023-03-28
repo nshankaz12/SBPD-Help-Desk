@@ -283,7 +283,7 @@
 
                         Dropdown5_2 As dropdown:
                             Height: =Parent.Height/3.5
-                            Items: =Filter(Category, parentId = Blank())
+                            Items: =Filter(Category_1, parentId = Blank())
                             Width: =Parent.Width/1.25
                             X: =30
                             Y: =44
@@ -342,7 +342,7 @@
 
                         Dropdown5_1 As dropdown:
                             Height: =Parent.Height/3.5
-                            Items: =Filter(Category, parentId = Dropdown5_2.Selected.id)
+                            Items: =Filter(Category_1, parentId = Dropdown5_2.Selected.ID)
                             Width: =Parent.Width/1.25
                             X: =30
                             Y: =44
@@ -401,7 +401,7 @@
 
                         Dropdown7_2 As dropdown:
                             Height: =Parent.Height/3.5
-                            Items: =Filter(Category, parentId = Dropdown5_1.Selected.id)
+                            Items: =Filter(Category_1, parentId = Dropdown5_1.Selected.ID)
                             Width: =Parent.Width/1.25
                             X: =30
                             Y: =44
