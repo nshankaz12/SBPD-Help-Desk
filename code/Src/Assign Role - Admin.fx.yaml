@@ -85,7 +85,7 @@
                 Dropdown2 As dropdown:
                     Default: =""
                     Height: =59
-                    Items: =Users
+                    Items: =Users_1
                     Width: =340
                     X: =Label17.X
                     Y: =Label17.Y+ Label17.Height
@@ -95,10 +95,10 @@
                     Fill: =RGBA(184, 0, 0, 1)
                     Height: =72
                     OnSelect: |-
-                        =Patch(Users, LookUp(Users, email = Dropdown2.Selected.email), {userRole: Dropdown3.Selected.Result});
+                        =Patch(Users_1, LookUp(Users_1, email = Dropdown2.Selected.email), {userRole: Dropdown3.Selected.Result});
                         If(
                             LookUp(
-                                Users,
+                                Users_1,
                                 email = User().Email,
                                 userRole
                             ) = "admin",
@@ -111,7 +111,7 @@
                                 false
                             )
                         );
-                        Refresh(Users)
+                        Refresh(Users_1)
                     Text: ="Assign Role"
                     Width: =240
                     X: =(Parent.Width-Self.Width)/2
