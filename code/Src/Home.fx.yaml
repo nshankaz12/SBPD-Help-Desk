@@ -307,19 +307,20 @@ Home As screen:
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutDirection: =LayoutDirection.Vertical
                     LayoutMode: =LayoutMode.Auto
-                    LayoutOverflowY: =LayoutOverflow.Scroll
                     Visible: =!CloseAlertRibbon
                     Width: =Parent.Width
                     ZIndex: =2
 
                     Gallery7 As gallery.galleryVertical:
                         DelayItemLoading: =true
+                        Height: =Parent.Height
                         Items: =Filter('Alerts List', ExpDate >= Today())
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =100
                         LayoutMinWidth: =320
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
+                        Width: =Parent.Width
                         ZIndex: =1
 
                         Label12 As label:

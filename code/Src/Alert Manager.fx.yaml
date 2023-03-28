@@ -46,15 +46,7 @@
         Gallery2 As gallery.galleryVertical:
             DelayItemLoading: =true
             Height: =462
-            Items: |
-                ='Alerts List'
-                
-                /*FirstN(SortByColumns(
-                    If(
-                        IsEmpty(NewRecord),
-                        AlertCollection,
-                        AddColumns(AlertCollection, "NewRecord", {Title: NewRecord.Title, Description: NewRecord.Description})),"Date",SortOrder.Ascending),10)*/
-                        
+            Items: =Alerts_1
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplateSize: =157
@@ -67,7 +59,7 @@
                 Height: =54
                 OnSelect: =Select(Parent)
                 Size: =20
-                Text: =ThisItem.ExpDate
+                Text: =ThisItem.dateExpired
                 Width: =302
                 X: =678
                 ZIndex: =1
@@ -76,7 +68,7 @@
                 Height: =56
                 OnSelect: =Select(Parent)
                 Size: =20
-                Text: =ThisItem.Description
+                Text: =ThisItem.messageText
                 Width: =364
                 X: =314
                 Y: =1
@@ -86,7 +78,7 @@
                 Height: =57
                 OnSelect: =Select(Parent)
                 Size: =20
-                Text: =ThisItem.Title
+                Text: =ThisItem.title
                 Width: =294
                 ZIndex: =3
 
@@ -94,7 +86,8 @@
                 Height: =50
                 OnSelect: |
                     =Set(formEdit, true);
-                    Navigate(Form1, ScreenTransition.None,{Item: Gallery2.Selected})
+                    EditForm(Form3);
+                    Navigate(Form3, ScreenTransition.None,{Item: Gallery2.Selected})
                 Text: ="Edit Alert"
                 Width: =200
                 X: =1126
@@ -105,7 +98,7 @@
                 Height: =54
                 Icon: =Icon.Trash
                 OnSelect: |
-                    =Remove('Alerts List', Gallery2.Selected)
+                    =Remove(Alerts_1, Gallery2.Selected)
                 Width: =44
                 X: =1004
                 ZIndex: =5
@@ -138,4 +131,14 @@
             X: =668
             Y: =3
             ZIndex: =4
+
+    Button2 As button:
+        OnSelect: |-
+            =ResetForm(Form3); NewForm(Form3);
+            Navigate('Create Alert Admin (Redesign)')
+        Text: ="Create New Alert"
+        Width: =182
+        X: =1136
+        Y: =220
+        ZIndex: =22
 
