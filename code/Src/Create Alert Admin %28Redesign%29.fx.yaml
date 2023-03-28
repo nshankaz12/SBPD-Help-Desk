@@ -674,7 +674,7 @@
     Button3 As button:
         Height: =60
         OnSelect: |-
-            =Patch(Alerts_1, Defaults(Alerts_1), {title: DataCardValue27.Text, messageText: DataCardValue23.Text, dateCreated: DateValue12.SelectedDate, lastUpdated: DateValue13.SelectedDate, dateExpired: DateValue14.SelectedDate, creatorId: DataCardValue24 });
+            =Patch(Alerts_1, Defaults(Alerts_1), {title: DataCardValue27.Text, messageText: DataCardValue23.Text, dateCreated: DateValue12.SelectedDate, lastUpdated: DateValue13.SelectedDate, dateExpired: DateValue14.SelectedDate, creatorId: DataCardValue24});
             Navigate('Alert Manager');
         Text: ="Create Alert"
         Width: =204

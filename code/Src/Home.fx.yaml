@@ -303,9 +303,11 @@ Home As screen:
 
                 AlertRibbonContainerTest As groupContainer.verticalAutoLayoutContainer:
                     Fill: =RGBA(232, 244, 217, 1)
-                    Height: =Parent.Height/16
+                    FillPortions: =0
+                    Height: =CountRows(Alerts_1) * 30
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =40
                     LayoutMode: =LayoutMode.Auto
                     Visible: =!CloseAlertRibbon
                     Width: =Parent.Width
@@ -313,7 +315,8 @@ Home As screen:
 
                     Gallery7 As gallery.galleryVertical:
                         DelayItemLoading: =true
-                        Height: =Parent.Height
+                        FillPortions: =0
+                        Height: =CountRows(Alerts_1) * 30
                         Items: =Filter(Alerts_1, dateExpired >= Today())
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =100

@@ -78,16 +78,19 @@
                 Height: =57
                 OnSelect: =Select(Parent)
                 Size: =20
-                Text: =ThisItem.title
+                Text: =ThisItem.titleText
                 Width: =294
                 ZIndex: =3
 
             Button1 As button:
                 Height: =50
-                OnSelect: |
+                OnSelect: |+
                     =Set(formEdit, true);
+                    UpdateContext({selectedItem: Gallery2.Selected});
                     EditForm(Form3);
-                    Navigate(Form3, ScreenTransition.None,{Item: Gallery2.Selected})
+                    Navigate(Form3, ScreenTransition.None);
+                    
+                    
                 Text: ="Edit Alert"
                 Width: =200
                 X: =1126
