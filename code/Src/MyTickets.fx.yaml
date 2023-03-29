@@ -544,7 +544,7 @@
                                 //Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.creatorId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO, tags: ThisItem.tags, addAssignees: ThisItem.addAssignees})
                                 
                                 // Sharepoint List
-                                Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.Title, dateCreated:DateValue(ThisItem.DateCreated), status:ThisItem.Status, category:ThisItem.MainCategory, reporting_person:ThisItem.CreatorId, assigned_person:If(IsBlank(ThisItem.AssignedTo), "Unassigned", LookUp(Users, id = ThisItem.AssignedTo, fullName)), description:ThisItem.Description, ticket:ThisItem.ID, creatorId: ThisItem.CreatorId, assigneeId: ThisItem.AssignedTo, tags: ThisItem.Tags, addAssignees: ThisItem.AddAssignees})
+                                Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo: ThisItem})
                             PressedFill: =Self.Fill
                             Text: =""
                             Width: =303

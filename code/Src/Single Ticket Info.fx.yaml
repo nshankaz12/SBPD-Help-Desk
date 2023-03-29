@@ -137,7 +137,7 @@
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="Attachments"
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), false, true)
                                 Width: =Parent.Width
                                 ZIndex: =1
 
@@ -145,7 +145,7 @@
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="No Attachments Found."
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), true, false)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), true, false)
                                 Width: |
                                     =300
                                 ZIndex: =2
@@ -156,13 +156,13 @@
                                 DelayItemLoading: =true
                                 FillPortions: =0
                                 Height: =If('Single Ticket Info'.Size>1, 100, 25)
-                                Items: =Filter('Ticket Attachments', ticketID=ticket)
+                                Items: =Filter('Ticket Attachments', ticketID=ticketInfo.ID)
                                 Layout: =Layout.Vertical
                                 LayoutMinHeight: =287
                                 LayoutMinWidth: =100
                                 LoadingSpinner: =LoadingSpinner.Data
                                 TemplateSize: =25
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), false, true)
                                 Width: =Parent.Width*.97
                                 X: =96
                                 Y: =157
@@ -198,7 +198,7 @@
                                 LayoutMinHeight: =100
                                 Overflow: =Overflow.Scroll
                                 Size: =If('Single Ticket Info'.Size<2,10,16)
-                                Text: =description
+                                Text: =ticketInfo.Description
                                 Width: =Parent.Width
                                 X: =127
                                 Y: =11
@@ -316,7 +316,7 @@
                                         Tickets_1,
                                         LookUp(
                                             Tickets_1,
-                                            id = ticket
+                                            id = ticketInfo.ID
                                         ),
                                         {tags: Label4_3.Text},
                                         {assignedTO: 0}
@@ -325,7 +325,7 @@
                                         Tickets_1,
                                         LookUp(
                                             Tickets_1,
-                                            id = ticket
+                                            id = ticketInfo.ID
                                         ),
                                         {tags: Label4_3.Text},
                                         {assignedTO: Value(AssigneeId_1.Text)},
@@ -356,7 +356,7 @@
                             Font: =Font.Georgia
                             Height: =38
                             Size: =16
-                            Text: =dateCreated
+                            Text: =ticketInfo.DateCreated
                             Width: =247
                             X: =Rectangle_behind_details_3.X+142
                             Y: =372
@@ -473,7 +473,7 @@
                             Font: =Font.Georgia
                             Height: =38
                             Size: =16
-                            Text: =LookUp(Category, category = id, name)
+                            Text: =LookUp(Category_1, ID = ticketInfo.MainCategory, name)
                             Width: =247
                             X: =Rectangle_behind_details_3.X+142
                             Y: =283
@@ -495,7 +495,7 @@
                             Font: =Font.Georgia
                             Height: =38
                             Size: =16
-                            Text: =LookUp(Users, id = reporting_person, fullName)
+                            Text: =LookUp(Users, id = ticketInfo.CreatorId, fullName)
                             Width: =247
                             X: =Rectangle_behind_details_3.X+142
                             Y: =Rectangle_behind_details_3.Y+50
@@ -628,7 +628,7 @@
                                                 Comments,
                                                 Defaults(Comments),
                                                 {
-                                                    ticketId: ticket,
+                                                    ticketId: ticketInfo.ID,
                                                     message: TextInput2_5.Text,
                                                     creatorId: userData.id
                                                 }
@@ -639,12 +639,12 @@
                                                 Office365Outlook.SendEmailV2(
                                                     LookUp(
                                                         Users,
-                                                        id = reporting_person,
+                                                        id = ticketInfo.ID,
                                                         email
                                                     ),
                                                     Concatenate(
                                                         "Update on Ticket # ",
-                                                        ticket
+                                                        ticketInfo.ID
                                                     ),
                                                     Concatenate(
                                                         "A comment has been added by ",
@@ -736,9 +736,9 @@
                                 "Gallery2_6 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                     AccessibleLabel: =
                                     BorderColor: =RGBA(0, 0, 0, 1)
-                                    Default: =Last(Filter(Comments, ticketId = ticket))
+                                    Default: =//Last(Filter(Comments, ticketId = ticketInfo.ID))
                                     Height: =Parent.Height*.75
-                                    Items: =Filter(Comments, ticketId = ticket)
+                                    Items: =Filter(Comments_1, ticketId = ticketInfo.ID)
                                     Layout: =Layout.Vertical
                                     ShowScrollbar: =false
                                     TabIndex: =1
@@ -769,7 +769,7 @@
                                         PaddingLeft: =10
                                         PaddingTop: =0
                                         Size: =If(CountRows(Filter(MatchAll(CommentContentLabel_1.Text, "\S*(\s|\n?)"), !IsBlank(FullMatch)))>=20, 10, 15)
-                                        Text: =ThisItem.message
+                                        Text: =ThisItem.title
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =Parent.TemplateWidth
                                         Y: =CommentOwnerNameLabel_1.Y+CommentOwnerNameLabel_1.Height+5
@@ -822,7 +822,7 @@
                                         HoverBorderColor: =
                                         HoverColor: =Color.Gray
                                         HoverFill: =
-                                        OnSelect: =Remove(Comments, ThisItem);
+                                        OnSelect: =Remove(Comments_1, ThisItem);
                                         PressedBorderColor: =
                                         PressedColor: =Color.Gray
                                         PressedFill: =
@@ -900,10 +900,10 @@
                                         =If(
                                             addMessage,
                                             Patch(
-                                                Comments,
-                                                Defaults(Comments),
+                                                Comments_1,
+                                                Defaults(Comments_1),
                                                 {
-                                                    ticketId: ticket,
+                                                    ticketId: ticketInfo.ID,
                                                     message: TextInput2_7.Text,
                                                     creatorId: userData.id
                                                 }
@@ -914,10 +914,10 @@
                                         If(
                                             editMessage,
                                             Patch(
-                                                Comments,
+                                                Comments_1,
                                                 LookUp(
-                                                    Comments,
-                                                    id = editableRec.id
+                                                    Comments_1,
+                                                    ID = editableRec.id
                                                 ),
                                                 {
                                                     message: TextInput9_7.Text,
@@ -963,9 +963,9 @@
                                 "Gallery2_7 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                     AccessibleLabel: =
                                     BorderStyle: =BorderStyle.None
-                                    Default: =Last(Filter(Comments, ticketId = ticket))
+                                    Default: =//Last(Filter(Comments, ticketId = ticket))
                                     Height: =186
-                                    Items: =Filter(Comments, ticketId = ticket)
+                                    Items: =Filter(Comments_1, ticketId = ticketInfo.ID)
                                     Layout: =Layout.Vertical
                                     TabIndex: =1
                                     TemplateSize: =184
@@ -994,7 +994,7 @@
                                         PaddingRight: =0
                                         PaddingTop: =0
                                         Size: =15
-                                        Text: =ThisItem.message
+                                        Text: =ThisItem.title
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =776
                                         X: =93
@@ -1048,7 +1048,7 @@
                                         HoverBorderColor: =
                                         HoverColor: =Color.Gray
                                         HoverFill: =
-                                        OnSelect: =Remove(Comments, ThisItem);
+                                        OnSelect: =Remove(Comments_1, ThisItem);
                                         PressedBorderColor: =
                                         PressedColor: =Color.Gray
                                         PressedFill: =
@@ -1127,10 +1127,10 @@
                                     =If(
                                         addMessage,
                                         Patch(
-                                            Comments,
-                                            Defaults(Comments),
+                                            Comments_1,
+                                            Defaults(Comments_1),
                                             {
-                                                ticketId: ticket,
+                                                ticketId: ticketInfo.ID,
                                                 message: TextInput2_7.Text,
                                                 creatorId: userData.id
                                             }
@@ -1205,9 +1205,9 @@
                             "Gallery2_8 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                 AccessibleLabel: =
                                 BorderStyle: =BorderStyle.None
-                                Default: =Last(Filter(Comments, ticketId = ticket))
+                                Default: =//Last(Filter(Comments, ticketId = ticket))
                                 Height: =185
-                                Items: =Filter(Comments, ticketId = ticket)
+                                Items: =Filter(Comments_1, ticketId = ticketInfo.ID)
                                 Layout: =Layout.Vertical
                                 TabIndex: =1
                                 TemplateSize: =184
@@ -1239,7 +1239,7 @@
                                     PaddingRight: =0
                                     PaddingTop: =0
                                     Size: =15
-                                    Text: =ThisItem.message
+                                    Text: =ThisItem.title
                                     VerticalAlign: =VerticalAlign.Top
                                     Width: =799
                                     X: =70
@@ -1293,7 +1293,7 @@
                                     HoverBorderColor: =
                                     HoverColor: =Color.Gray
                                     HoverFill: =
-                                    OnSelect: =Remove(Comments, ThisItem);
+                                    OnSelect: =Remove(Comments_1, ThisItem);
                                     PressedBorderColor: =
                                     PressedColor: =Color.Gray
                                     PressedFill: =
@@ -1328,7 +1328,7 @@
 
                             Description_value_2 As text:
                                 BorderColor: =RGBA(0, 0, 0, 1)
-                                Default: =description & " There once was a ship that put to sea The name of the ship was the Billy O' Tea The winds blew up, her bow dipped down Oh blow, my bully boys, blow (huh) Soon may the Wellerman come To bring us sugar and tea and rum One day, when the tonguing is done We'll take our leave and go"
+                                Default: =ticketInfo.Description & " There once was a ship that put to sea The name of the ship was the Billy O' Tea The winds blew up, her bow dipped down Oh blow, my bully boys, blow (huh) Soon may the Wellerman come To bring us sugar and tea and rum One day, when the tonguing is done We'll take our leave and go"
                                 DisplayMode: =DisplayMode.View
                                 Font: =Font.Georgia
                                 Height: =88
@@ -1436,7 +1436,7 @@
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="Attachments"
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), false, true)
                                 Width: =Parent.Width
                                 ZIndex: =1
 
@@ -1444,7 +1444,7 @@
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="No Attachments Found."
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), true, false)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), true, false)
                                 Width: |
                                     =300
                                 ZIndex: =2
@@ -1455,13 +1455,27 @@
                                 DelayItemLoading: =true
                                 FillPortions: =0
                                 Height: =If('Single Ticket Info'.Size>1, 100, 25)
-                                Items: =Filter('Ticket Attachments', ticketID=ticket)
+                                Items: |-
+                                    =Filter(
+                                        'Ticket Attachments',
+                                        ticketID = ticketInfo.ID
+                                    )
                                 Layout: =Layout.Vertical
                                 LayoutMinHeight: =287
                                 LayoutMinWidth: =100
                                 LoadingSpinner: =LoadingSpinner.Data
                                 TemplateSize: =25
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
+                                Visible: |-
+                                    =If(
+                                        IsEmpty(
+                                            Filter(
+                                                'Ticket Attachments',
+                                                ticketID = ticketInfo.ID
+                                            )
+                                        ),
+                                        false,
+                                        true
+                                    )
                                 Width: =Parent.Width*.97
                                 X: =96
                                 Y: =157
@@ -1493,7 +1507,7 @@
                                 Height: =100
                                 LayoutMinHeight: =100
                                 Size: =If('Single Ticket Info'.Size<2,10,16)
-                                Text: =description
+                                Text: =ticketInfo.Description
                                 Width: =Parent.Width
                                 X: =127
                                 Y: =11
@@ -1548,10 +1562,10 @@
                                         =If(
                                             addMessage,
                                             Patch(
-                                                Comments,
-                                                Defaults(Comments),
+                                                Comments_1,
+                                                Defaults(Comments_1),
                                                 {
-                                                    ticketId: ticket,
+                                                    ticketId: ticketInfo.ID,
                                                     message: TextInput2_4.Text,
                                                     creatorId: userData.id
                                                 }
@@ -1562,12 +1576,12 @@
                                                 Office365Outlook.SendEmailV2(
                                                     LookUp(
                                                         Users,
-                                                        id = reporting_person,
+                                                        id = ticketInfo.CreatorId,
                                                         email
                                                     ),
                                                     Concatenate(
                                                         "Update on Ticket # ",
-                                                        ticket
+                                                        ticketInfo.ID
                                                     ),
                                                     Concatenate(
                                                         "A comment has been added by ",
@@ -1659,9 +1673,9 @@
                                 "Gallery2_5 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                     AccessibleLabel: =
                                     BorderColor: =RGBA(0, 0, 0, 1)
-                                    Default: =Last(Filter(Comments, ticketId = ticket))
+                                    Default: =//Last(Filter(Comments, ticketId = ticket))
                                     Height: =Parent.Height*.75
-                                    Items: =Filter(Comments, ticketId = ticket)
+                                    Items: =Filter(Comments_1, ticketId = ticketInfo.ID)
                                     Layout: =Layout.Vertical
                                     ShowScrollbar: =false
                                     TabIndex: =1
@@ -1692,7 +1706,7 @@
                                         PaddingLeft: =10
                                         PaddingTop: =0
                                         Size: =If(CountRows(Filter(MatchAll(CommentContentLabel.Text, "\S*(\s|\n?)"), !IsBlank(FullMatch)))>=20, 10, 15)
-                                        Text: =ThisItem.message
+                                        Text: =ThisItem.title
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =Parent.TemplateWidth
                                         X: =1
@@ -1746,7 +1760,7 @@
                                         HoverBorderColor: =
                                         HoverColor: =Color.Gray
                                         HoverFill: =
-                                        OnSelect: =Remove(Comments, ThisItem);
+                                        OnSelect: =Remove(Comments_1, ThisItem);
                                         PressedBorderColor: =
                                         PressedColor: =Color.Gray
                                         PressedFill: =
@@ -1824,10 +1838,10 @@
                                         =If(
                                             addMessage,
                                             Patch(
-                                                Comments,
-                                                Defaults(Comments),
+                                                Comments_1,
+                                                Defaults(Comments_1),
                                                 {
-                                                    ticketId: ticket,
+                                                    ticketId: ticketInfo.ID,
                                                     message: TextInput2_2.Text,
                                                     creatorId: userData.id
                                                 }
@@ -1887,9 +1901,8 @@
                                 "Gallery2_4 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                     AccessibleLabel: =
                                     BorderStyle: =BorderStyle.None
-                                    Default: =Last(Filter(Comments, ticketId = ticket))
                                     Height: =186
-                                    Items: =Filter(Comments, ticketId = ticket)
+                                    Items: =Filter(Comments, ticketId = ticketInfo.ID)
                                     Layout: =Layout.Vertical
                                     TabIndex: =1
                                     TemplateSize: =184
@@ -2059,10 +2072,10 @@
                                     =If(
                                         addMessage,
                                         Patch(
-                                            Comments,
-                                            Defaults(Comments),
+                                            Comments_1,
+                                            Defaults(Comments_1),
                                             {
-                                                ticketId: ticket,
+                                                ticketId: ticketInfo.ID,
                                                 message: TextInput2_2.Text,
                                                 creatorId: userData.id
                                             }
@@ -2137,9 +2150,8 @@
                             "Gallery2_3 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                 AccessibleLabel: =
                                 BorderStyle: =BorderStyle.None
-                                Default: =Last(Filter(Comments, ticketId = ticket))
                                 Height: =185
-                                Items: =Filter(Comments, ticketId = ticket)
+                                Items: =Filter(Comments_1, ticketId = ticketInfo.ID)
                                 Layout: =Layout.Vertical
                                 TabIndex: =1
                                 TemplateSize: =184
@@ -2171,7 +2183,7 @@
                                     PaddingRight: =0
                                     PaddingTop: =0
                                     Size: =15
-                                    Text: =ThisItem.message
+                                    Text: =ThisItem.title
                                     VerticalAlign: =VerticalAlign.Top
                                     Width: =799
                                     X: =70
@@ -2225,7 +2237,7 @@
                                     HoverBorderColor: =
                                     HoverColor: =Color.Gray
                                     HoverFill: =
-                                    OnSelect: =Remove(Comments, ThisItem);
+                                    OnSelect: =Remove(Comments_1, ThisItem);
                                     PressedBorderColor: =
                                     PressedColor: =Color.Gray
                                     PressedFill: =
@@ -2260,7 +2272,7 @@
 
                             Description_value_1 As text:
                                 BorderColor: =RGBA(0, 0, 0, 1)
-                                Default: =description & " There once was a ship that put to sea The name of the ship was the Billy O' Tea The winds blew up, her bow dipped down Oh blow, my bully boys, blow (huh) Soon may the Wellerman come To bring us sugar and tea and rum One day, when the tonguing is done We'll take our leave and go"
+                                Default: =ticketInfo.Description & " There once was a ship that put to sea The name of the ship was the Billy O' Tea The winds blew up, her bow dipped down Oh blow, my bully boys, blow (huh) Soon may the Wellerman come To bring us sugar and tea and rum One day, when the tonguing is done We'll take our leave and go"
                                 DisplayMode: =DisplayMode.View
                                 Font: =Font.Georgia
                                 Height: =88
@@ -2434,7 +2446,7 @@
                                         Tickets_1,
                                         LookUp(
                                             Tickets_1,
-                                            id = ticket
+                                            id = ticketInfo.ID
                                         ),
                                         {tags: Label4_1.Text},
                                         {assignedTO: 0}
@@ -2443,7 +2455,7 @@
                                         Tickets_1,
                                         LookUp(
                                             Tickets_1,
-                                            id = ticket
+                                            id = ticketInfo.ID
                                         ),
                                         {tags: Label4_1.Text},
                                         {assignedTO: Value(AssigneeId.Text)},
@@ -2474,7 +2486,7 @@
                             Font: =Font.Georgia
                             Height: =58
                             Size: =16
-                            Text: =dateCreated
+                            Text: =ticketInfo.DateCreated
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Created_Label.Y
@@ -2591,7 +2603,7 @@
                             Font: =Font.Georgia
                             Height: =58
                             Size: =16
-                            Text: =LookUp(Category, category = id, name)
+                            Text: =LookUp(Category_1, ID = ticketInfo.MainCategory, name)
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Category_Label.Y
@@ -2613,7 +2625,7 @@
                             Font: =Font.Georgia
                             Height: =56
                             Size: =16
-                            Text: =LookUp(Users, id = reporting_person, fullName)
+                            Text: =LookUp(Users, id = ticketInfo.CreatorId, fullName)
                             Width: =247
                             X: =289
                             Y: =82
