@@ -11,7 +11,7 @@
         HeaderContainer_2 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             FillPortions: =0
-            Height: =130
+            Height: =Parent.Height/5.8
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
             LayoutMinWidth: =250
@@ -31,6 +31,7 @@
                 Align: =Align.Center
                 Color: =Color.White
                 Fill: =ColorScheme.primary
+                Height: =Parent.Height/2.7
                 Size: =19
                 Text: ="Label"
                 Width: =Parent.Width
@@ -43,6 +44,39 @@
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             ZIndex: =3
+
+            AlertRibbonContainerTest_4 As groupContainer.verticalAutoLayoutContainer:
+                Fill: =RGBA(232, 244, 217, 1)
+                FillPortions: =0
+                Height: =CountRows(Alerts_1) * 40
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =40
+                LayoutMode: =LayoutMode.Auto
+                Visible: =!CloseAlertRibbon
+                Width: =Parent.Width
+                ZIndex: =1
+
+                Gallery7_1 As gallery.galleryVertical:
+                    DelayItemLoading: =true
+                    FillPortions: =0
+                    Height: =CountRows(Alerts_1) * 40
+                    Items: =Filter(Alerts_1, dateExpired >= Today())
+                    Layout: =Layout.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =320
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                    Label12_4 As label:
+                        DisplayMode: =DisplayMode.View
+                        OnSelect: =Select(Parent)
+                        Size: =15
+                        Text: =ThisItem.titleText
+                        Underline: =true
+                        ZIndex: =1
 
         FooterContainer_2 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
