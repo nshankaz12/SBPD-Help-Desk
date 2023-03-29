@@ -563,15 +563,16 @@
                         Y: =2
                         ZIndex: =1
 
-                        canceltBtn As button:
-                            Text: ="Cancel"
+                        submitBtn1 As button:
+                            Text: ="Submit"
                             Width: =Parent.Width/3
-                            X: =submitBtn_1.X + (Self.Width*1.3)
+                            X: =cancelBtn1.X + (Self.Width*1.3)
                             Y: =Parent.Height - (Self.Height *2)
                             ZIndex: =2
 
-                        submitBtn_1 As button:
-                            Text: ="Submit"
+                        cancelBtn1 As button:
+                            Fill: =RGBA(149, 149, 149, 1)
+                            Text: ="Cancel"
                             Width: =Parent.Width/3
                             X: =If('Create A Ticket (Redesign)'.Size =1, Parent.Width - (Self.Width *2.73),Parent.Width - (Self.Width *2.5))
                             Y: =Parent.Height - (Self.Height *2)
