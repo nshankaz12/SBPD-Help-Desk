@@ -1,0 +1,64 @@
+"ScreenTemplate As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+
+    AdminManagerContainer_1 As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =1
+
+        HeaderContainer_2 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =130
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width
+            ZIndex: =2
+
+            compWebHeader_33 As compWebHeader_9:
+                Height: |
+                    =82
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                Width: =Parent.Width
+                ZIndex: =1
+
+            Label26_2 As label:
+                Align: =Align.Center
+                Color: =Color.White
+                Fill: =ColorScheme.primary
+                Size: =19
+                Text: ="Label"
+                Width: =Parent.Width
+                ZIndex: =2
+
+        MainSectionContainer_2 As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =3
+
+        FooterContainer_2 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =100
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Visible: =If(ScreenTemplate.Size > 1, false, true)
+            ZIndex: =4
+
+            compMobileMenu_18 As compMobileMenu:
+                Height: =Parent.Height
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                Visible: =Home_1.Size=1
+                Width: =Parent.Width
+                Y: =Parent.Height-Self.Height
+
