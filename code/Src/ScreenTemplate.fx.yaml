@@ -1,6 +1,6 @@
 "ScreenTemplate As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
 
-    AdminManagerContainer_1 As groupContainer.verticalAutoLayoutContainer:
+    TemplateContainer1 As groupContainer.verticalAutoLayoutContainer:
         Height: =Parent.Height
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutDirection: =LayoutDirection.Vertical
@@ -8,10 +8,10 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        HeaderContainer_2 As groupContainer.horizontalAutoLayoutContainer:
+        TemplateHeader As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             FillPortions: =0
-            Height: =Parent.Height/5.8
+            Height: =Parent.Height/5.7
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
             LayoutMinWidth: =250
@@ -31,13 +31,13 @@
                 Align: =Align.Center
                 Color: =Color.White
                 Fill: =ColorScheme.primary
-                Height: =Parent.Height/2.7
+                Height: =Parent.Height/2.4
                 Size: =19
-                Text: ="Label"
+                Text: ="Title"
                 Width: =Parent.Width
                 ZIndex: =2
 
-        MainSectionContainer_2 As groupContainer.verticalAutoLayoutContainer:
+        TemplateMain As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
@@ -46,6 +46,7 @@
             ZIndex: =3
 
             AlertRibbonContainerTest_4 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
                 Fill: =RGBA(232, 244, 217, 1)
                 FillPortions: =0
                 Height: =CountRows(Alerts_1) * 40
@@ -78,7 +79,7 @@
                         Underline: =true
                         ZIndex: =1
 
-        FooterContainer_2 As groupContainer.horizontalAutoLayoutContainer:
+        TemplateFooter As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             FillPortions: =0
             Height: =100
@@ -86,6 +87,7 @@
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             Visible: =If(ScreenTemplate.Size > 1, false, true)
+            Width: =Parent.Width
             ZIndex: =4
 
             compMobileMenu_18 As compMobileMenu:
