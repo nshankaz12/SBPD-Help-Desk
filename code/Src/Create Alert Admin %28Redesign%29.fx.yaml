@@ -54,6 +54,7 @@
 
         Form3 As form:
             DataSource: =Alerts_1
+            DefaultMode: =FormMode.New
             LayoutMinHeight: =250
             LayoutMinWidth: =400
             NumberOfColumns: =2
@@ -61,24 +62,24 @@
 
             title_DataCard2 As typedDataCard.textualEditCard:
                 BorderStyle: =BorderStyle.Solid
-                DataField: ="Title"
-                Default: =ThisItem.title
+                DataField: ="Description"
+                Default: =ThisItem.messageText
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@Alerts_1],DataSourceInfo.DisplayName,"Title")
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
-                MaxLength: =DataSourceInfo([@Alerts_1], DataSourceInfo.MaxLength, "Title")
+                MaxLength: =DataSourceInfo([@Alerts_1], DataSourceInfo.MaxLength, "Description")
                 Required: =false
                 Update: =DataCardValue27.Text
                 Width: =683
-                X: =0
+                X: =1
                 Y: =0
                 ZIndex: =1
 
                 DataCardKey46 As label:
                     AutoHeight: =true
                     Height: =34
-                    Text: =Parent.DisplayName
+                    Text: ="Description"
                     Width: =Parent.Width - 60
                     Wrap: =false
                     X: =30
@@ -87,7 +88,7 @@
 
                 DataCardValue27 As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    Default: =ThisItem.title
+                    Default: =ThisItem.messageText
                     DelayOutput: =true
                     DisplayMode: =Parent.DisplayMode
                     MaxLength: =Parent.MaxLength
@@ -129,24 +130,24 @@
 
             messageText_DataCard4 As typedDataCard.textualEditCard:
                 BorderStyle: =BorderStyle.Solid
-                DataField: ="field_2"
+                DataField: ="Title"
                 Default: =ThisItem.titleText
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@Alerts_1],DataSourceInfo.DisplayName,"field_2")
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
-                MaxLength: =DataSourceInfo([@Alerts_1], DataSourceInfo.MaxLength, "field_2")
-                Required: =false
+                MaxLength: =DataSourceInfo([@Alerts_1], DataSourceInfo.MaxLength, "Title")
+                Required: =true
                 Update: =DataCardValue23.Text
                 Width: =683
-                X: =1
+                X: =0
                 Y: =0
                 ZIndex: =4
 
                 DataCardKey39 As label:
                     AutoHeight: =true
                     Height: =34
-                    Text: ="Description"
+                    Text: ="Title"
                     Width: =Parent.Width - 60
                     Wrap: =false
                     X: =30
@@ -674,7 +675,9 @@
     Button3 As button:
         Height: =60
         OnSelect: |-
-            =Patch(Alerts_1, Defaults(Alerts_1), {title: DataCardValue27.Text, titleText: DataCardValue23.Text, dateCreated: DateValue12.SelectedDate, lastUpdated: DateValue13.SelectedDate, dateExpired: DateValue14.SelectedDate, creatorId: DataCardValue24});
+            =Patch(Alerts_1, Defaults(Alerts_1), {titleText: DataCardValue23.Text, messageText: DataCardValue27.Text, dateCreated: DateValue12.SelectedDate, lastUpdated: DateValue13.SelectedDate, dateExpired: DateValue14.SelectedDate, creatorId: DataCardValue24});
+            SubmitForm(Form3);
+            Notify("Alert Successfully created!", NotificationType.Success);
             Navigate('Alert Manager');
         Text: ="Create Alert"
         Width: =204
@@ -694,4 +697,15 @@
         X: =719
         Y: =666
         ZIndex: =13
+
+    Button8 As button:
+        Height: =60
+        OnSelect: |
+            =ResetForm(Form3);
+            Navigate(Gallery2, ScreenTransition.None)
+        Text: ="Cancel"
+        Width: =204
+        X: =719
+        Y: =666
+        ZIndex: =14
 

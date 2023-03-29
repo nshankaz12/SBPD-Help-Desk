@@ -13,10 +13,8 @@
     "'Back Scroll_10' As icon.BackArrow":
         Color: =RGBA(232, 244, 217, 1)
         Icon: =Icon.BackArrow
-        OnSelect: |-
-            =
-            
-            Back(ScreenTransition.Fade)
+        OnSelect: |
+            =ResetForm(Form3); Navigate('Create Alert Admin (Redesign)', ScreenTransition.None)
         X: =59
         Y: =87
         ZIndex: =7
@@ -68,7 +66,7 @@
                 Height: =56
                 OnSelect: =Select(Parent)
                 Size: =20
-                Text: =ThisItem.titleText
+                Text: =ThisItem.messageText
                 Width: =364
                 X: =314
                 Y: =1
@@ -134,14 +132,4 @@
             X: =668
             Y: =3
             ZIndex: =4
-
-    Button2 As button:
-        OnSelect: |-
-            =ResetForm(Form3); NewForm(Form3);
-            Navigate('Create Alert Admin (Redesign)')
-        Text: ="Create New Alert"
-        Width: =182
-        X: =1136
-        Y: =220
-        ZIndex: =22
 
