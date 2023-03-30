@@ -83,9 +83,7 @@
             Button1 As button:
                 Height: =50
                 OnSelect: |+
-                    =Set(formEdit, true);
-                    UpdateContext({selectedItem: Gallery2.Selected});
-                    EditForm(Form3);
+                    =EditForm(Form3);
                     Navigate(Form3, ScreenTransition.None);
                     
                     
