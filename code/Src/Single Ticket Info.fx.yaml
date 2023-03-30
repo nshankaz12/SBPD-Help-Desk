@@ -2,7 +2,7 @@
     OnHidden: |-
         =Set(editMessage, false);
         Set(addMessage, true);
-    OnVisible: =Refresh(Comments)
+    OnVisible: =Refresh(Comments_1)
 
     SingleTicketInfoMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
@@ -137,7 +137,7 @@
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="Attachments"
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), false, true)
                                 Width: =Parent.Width
                                 ZIndex: =1
 
@@ -145,7 +145,7 @@
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="No Attachments Found."
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), true, false)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), true, false)
                                 Width: |
                                     =300
                                 ZIndex: =2
@@ -156,13 +156,13 @@
                                 DelayItemLoading: =true
                                 FillPortions: =0
                                 Height: =If('Single Ticket Info'.Size>1, 100, 25)
-                                Items: =Filter('Ticket Attachments', ticketID=ticket)
+                                Items: =Filter('Ticket Attachments', ticketID=ticketInfo.ID)
                                 Layout: =Layout.Vertical
                                 LayoutMinHeight: =287
                                 LayoutMinWidth: =100
                                 LoadingSpinner: =LoadingSpinner.Data
                                 TemplateSize: =25
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), false, true)
                                 Width: =Parent.Width*.97
                                 X: =96
                                 Y: =157
@@ -198,7 +198,7 @@
                                 LayoutMinHeight: =100
                                 Overflow: =Overflow.Scroll
                                 Size: =If('Single Ticket Info'.Size<2,10,16)
-                                Text: =description
+                                Text: =ticketInfo.Description
                                 Width: =Parent.Width
                                 X: =127
                                 Y: =11
@@ -207,7 +207,7 @@
                         Title_label_8 As label:
                             Font: =Font.Georgia
                             Size: =If('Single Ticket Info'.Size=1,12,24)
-                            Text: =title
+                            Text: =ticketInfo.Title
                             Width: =Parent.Width
                             Y: =10
                             ZIndex: =15
@@ -292,11 +292,11 @@
                         ComboBox1_2 As combobox:
                             ChevronBackground: =ColorScheme.primary
                             DefaultSelectedItems: =If(tags = "", Blank(), Filter(Tags, name in tags))
-                            DisplayFields: =["name"]
+                            DisplayFields: =["ComplianceAssetId"]
                             Height: =32
-                            Items: =Tags
-                            SearchFields: =["name"]
-                            SearchItems: =Search(Tags,ComboBox1_2.SearchText,"name")
+                            Items: =Tags_1
+                            SearchFields: =["ComplianceAssetId"]
+                            SearchItems: =Search(Tags_1,ComboBox1_2.SearchText,"ComplianceAssetId")
                             Width: =180
                             X: =Rectangle_behind_details_2.X+142
                             Y: =Rectangle_behind_details_2.Y + 261
@@ -502,7 +502,7 @@
                             Font: =Font.Georgia
                             Height: =37
                             Size: =12
-                            Text: =LookUp(Users, id = reporting_person, fullName)
+                            Text: =LookUp(Users_1, ID = ticketInfo.CreatorId, fullName)
                             Width: =180
                             X: =Rectangle_behind_details_2.X+142
                             Y: =Rectangle_behind_details_2.Y + 30
@@ -534,11 +534,11 @@
 
                         Additional_Assign_ComboBox_1 As combobox:
                             DefaultSelectedItems: =If(addAssignees = "", Blank(), Filter(Users, fullName in addAssignees))
-                            DisplayFields: =["fullName"]
+                            DisplayFields: =["ComplianceAssetId"]
                             Height: =32
                             IsSearchable: =false
-                            Items: =Filter(Users, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label_1.Text)
-                            SearchFields: =["fullName"]
+                            Items: =Filter(Users_1, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label_1.Text)
+                            SearchFields: =["ComplianceAssetId"]
                             SearchItems: =[]
                             Width: =180
                             X: =Rectangle_behind_details_2.X+142
@@ -634,8 +634,8 @@
                                         =If(
                                             addMessage,
                                             Patch(
-                                                Comments,
-                                                Defaults(Comments),
+                                                Comments_1,
+                                                Defaults(Comments_1),
                                                 {
                                                     ticketId: ticketInfo.ID,
                                                     message: TextInput2_5.Text,
@@ -647,8 +647,8 @@
                                                 userData.role = "admin" || userData.role = "tech",
                                                 Office365Outlook.SendEmailV2(
                                                     LookUp(
-                                                        Users,
-                                                        id = ticketInfo.ID,
+                                                        Users_1,
+                                                        ID = ticketInfo.CreatorId,
                                                         email
                                                     ),
                                                     Concatenate(
@@ -668,29 +668,6 @@
                                                     }
                                                 );
                                             )
-                                        );
-                                        If(
-                                            editMessage,
-                                            Patch(
-                                                Comments,
-                                                LookUp(
-                                                    Comments,
-                                                    id = editableRec.id
-                                                ),
-                                                {
-                                                    message: TextInput9_5.Text,
-                                                    lastUpdated: Now()
-                                                }
-                                            );
-                                            Set(
-                                                editMessage,
-                                                false
-                                            );
-                                            Set(
-                                                addMessage,
-                                                true
-                                            );
-                                            
                                         );
                                     Size: =12
                                     Text: |-
@@ -762,7 +739,7 @@
                                         PaddingBottom: =0
                                         PaddingTop: =0
                                         Size: =15
-                                        Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                        Text: =LookUp(Users_1, ID = ThisItem.creatorId, fullName)
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =Parent.TemplateWidth-DateAndTimeStamp_1.Width - InitialsCircle_1.Width
                                         X: =InitialsCircle_1.X+InitialsCircle_1.Width+5
@@ -849,8 +826,7 @@
                                     InitialsImage_1 As image:
                                         Height: =32
                                         Image: |-
-                                            =
-                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                            ="https://ui-avatars.com/api/?name=" & Left(LookUp(Users_1, ID = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users_1, ID = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
                                         Width: =32
                                         X: =InitialsCircle_1.X
                                         Y: =10
@@ -920,22 +896,6 @@
                                             Reset(TextInput2_7);
                                             
                                         );
-                                        If(
-                                            editMessage,
-                                            Patch(
-                                                Comments_1,
-                                                LookUp(
-                                                    Comments_1,
-                                                    ID = editableRec.id
-                                                ),
-                                                {
-                                                    message: TextInput9_7.Text,
-                                                    lastUpdated: Now()
-                                                }
-                                            );
-                                            Set(editMessage, false);
-                                            Set(addMessage, true);
-                                        );
                                     Text: |-
                                         =If(
                                             addMessage,
@@ -988,7 +948,7 @@
                                         PaddingLeft: =0
                                         PaddingRight: =0
                                         PaddingTop: =0
-                                        Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                        Text: =LookUp(Users_1, ID = ThisItem.creatorId, fullName)
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =268
                                         X: =102
@@ -1076,7 +1036,7 @@
                                         Height: =76
                                         Image: |-
                                             =
-                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users_1, ID = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users_1, ID = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
                                         Width: =91
                                         X: =4
                                         Y: =8
@@ -1146,22 +1106,6 @@
                                         );
                                         Reset(TextInput2_7);
                                         
-                                    );
-                                    If(
-                                        editMessage,
-                                        Patch(
-                                            Comments,
-                                            LookUp(
-                                                Comments,
-                                                id = editableRec.id
-                                            ),
-                                            {
-                                                message: TextInput9_7.Text,
-                                                lastUpdated: Now()
-                                            }
-                                        );
-                                        Set(editMessage, false);
-                                        Set(addMessage, true);
                                     );
                                 Text: |-
                                     =If(
@@ -1233,7 +1177,7 @@
                                     PaddingLeft: =0
                                     PaddingRight: =0
                                     PaddingTop: =0
-                                    Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                    Text: =LookUp(Users_1, ID = ThisItem.creatorId, fullName)
                                     VerticalAlign: =VerticalAlign.Top
                                     Width: =268
                                     X: =102
@@ -1321,7 +1265,7 @@
                                     Height: =76
                                     Image: |-
                                         =
-                                        "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                        "https://ui-avatars.com/api/?name=" & Left(LookUp(Users_1, ID = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users_1, ID = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
                                     Width: =91
                                     X: =4
                                     Y: =8
@@ -1584,8 +1528,8 @@
                                                 userData.role = "admin" || userData.role = "tech",
                                                 Office365Outlook.SendEmailV2(
                                                     LookUp(
-                                                        Users,
-                                                        id = ticketInfo.CreatorId,
+                                                        Users_1,
+                                                        ID = ticketInfo.CreatorId,
                                                         email
                                                     ),
                                                     Concatenate(
@@ -1605,29 +1549,6 @@
                                                     }
                                                 );
                                             )
-                                        );
-                                        If(
-                                            editMessage,
-                                            Patch(
-                                                Comments,
-                                                LookUp(
-                                                    Comments,
-                                                    id = editableRec.id
-                                                ),
-                                                {
-                                                    message: TextInput9_4.Text,
-                                                    lastUpdated: Now()
-                                                }
-                                            );
-                                            Set(
-                                                editMessage,
-                                                false
-                                            );
-                                            Set(
-                                                addMessage,
-                                                true
-                                            );
-                                            
                                         );
                                     Size: =12
                                     Text: |-
@@ -1699,7 +1620,7 @@
                                         PaddingBottom: =0
                                         PaddingTop: =0
                                         Size: =15
-                                        Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                        Text: =LookUp(Users_1, ID = ThisItem.creatorId, fullName)
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =Parent.TemplateWidth-DateAndTimeStamp.Width - InitialsCircle.Width
                                         X: =InitialsCircle.X+InitialsCircle.Width+5
@@ -1788,7 +1709,7 @@
                                         Height: =32
                                         Image: |-
                                             =
-                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users_1, ID = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users_1, ID = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
                                         Width: =32
                                         X: =InitialsCircle.X
                                         Y: =10
@@ -1858,22 +1779,6 @@
                                             Reset(TextInput2_2);
                                             
                                         );
-                                        If(
-                                            editMessage,
-                                            Patch(
-                                                Comments,
-                                                LookUp(
-                                                    Comments,
-                                                    id = editableRec.id
-                                                ),
-                                                {
-                                                    message: TextInput9_2.Text,
-                                                    lastUpdated: Now()
-                                                }
-                                            );
-                                            Set(editMessage, false);
-                                            Set(addMessage, true);
-                                        );
                                     Text: |-
                                         =If(
                                             addMessage,
@@ -1911,7 +1816,7 @@
                                     AccessibleLabel: =
                                     BorderStyle: =BorderStyle.None
                                     Height: =186
-                                    Items: =Filter(Comments, ticketId = ticketInfo.ID)
+                                    Items: =Filter(Comments_1, ticketId = ticketInfo.ID)
                                     Layout: =Layout.Vertical
                                     TabIndex: =1
                                     TemplateSize: =184
@@ -1925,7 +1830,7 @@
                                         PaddingLeft: =0
                                         PaddingRight: =0
                                         PaddingTop: =0
-                                        Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                        Text: =LookUp(Users_1, ID = ThisItem.creatorId, fullName)
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =268
                                         X: =102
@@ -1940,7 +1845,7 @@
                                         PaddingRight: =0
                                         PaddingTop: =0
                                         Size: =15
-                                        Text: =ThisItem.message
+                                        Text: =ThisItem.title
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =776
                                         X: =93
@@ -2013,7 +1918,7 @@
                                         Height: =76
                                         Image: |-
                                             =
-                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users_1, ID = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users_1, ID = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
                                         Width: =91
                                         X: =4
                                         Y: =8
@@ -2092,22 +1997,6 @@
                                         Reset(TextInput2_2);
                                         
                                     );
-                                    If(
-                                        editMessage,
-                                        Patch(
-                                            Comments,
-                                            LookUp(
-                                                Comments,
-                                                id = editableRec.id
-                                            ),
-                                            {
-                                                message: TextInput9_2.Text,
-                                                lastUpdated: Now()
-                                            }
-                                        );
-                                        Set(editMessage, false);
-                                        Set(addMessage, true);
-                                    );
                                 Text: |-
                                     =If(
                                         addMessage,
@@ -2177,7 +2066,7 @@
                                     PaddingLeft: =0
                                     PaddingRight: =0
                                     PaddingTop: =0
-                                    Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                    Text: =LookUp(Users_1, ID = ThisItem.creatorId, fullName)
                                     VerticalAlign: =VerticalAlign.Top
                                     Width: =268
                                     X: =102
@@ -2265,7 +2154,7 @@
                                     Height: =76
                                     Image: |-
                                         =
-                                        "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                        "https://ui-avatars.com/api/?name=" & Left(LookUp(Users_1, ID = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users_1, ID = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
                                     Width: =91
                                     X: =4
                                     Y: =8
@@ -2436,12 +2325,12 @@
 
                         ComboBox1_1 As combobox:
                             ChevronBackground: =ColorScheme.primary
-                            DefaultSelectedItems: =If(tags = "", Blank(), Filter(Tags, name in tags))
-                            DisplayFields: =["name"]
+                            DefaultSelectedItems: =If(ticketInfo.Tags = "", Blank(), Filter(Tags_1, name in ticketInfo.Tags))
+                            DisplayFields: =["ComplianceAssetId"]
                             Height: =37
-                            Items: =Tags
-                            SearchFields: =["name"]
-                            SearchItems: =Search(Tags,ComboBox1_1.SearchText,"name")
+                            Items: =Tags_1
+                            SearchFields: =["ComplianceAssetId"]
+                            SearchItems: =Search(Tags_1,ComboBox1_1.SearchText,"ComplianceAssetId")
                             Width: =254
                             X: =291
                             Y: =403
@@ -2490,7 +2379,7 @@
                                     },
                                     {addAssignees: Additional_Assign_Value_Label.Text}
                                 );
-                                Refresh(Tickets_1)
+                                Refresh(Tickets)
                             Text: ="Save"
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Rectangle_behind_details_1.Height-Self.Height
@@ -2554,16 +2443,14 @@
                             ChevronBackground: =ColorScheme.primary
                             Default: |
                                 =
-                            DefaultSelectedItems: =If(IsBlank(assigneeId), Blank(), Filter(Users,id = assigneeId))
-                            DisplayFields: =["fullName"]
+                            DefaultSelectedItems: =If(IsBlank(assigneeId), Blank(), Filter(Users_1,ID = assigneeId))
+                            DisplayFields: =["ComplianceAssetId"]
                             Height: =37
                             InputTextPlaceholder: ="Unassigned"
                             IsSearchable: =false
-                            Items: |-
-                                =Filter(Users, userRole = "tech" || userRole = "admin")
-                                //Users
+                            Items: =Filter(Users_1, userRole = "tech" || userRole = "admin")
                             NoSelectionText: ="Unassigned"
-                            SearchFields: =["fullName"]
+                            SearchFields: =["ComplianceAssetId"]
                             SearchItems: =[]
                             SelectMultiple: =false
                             Visible: |
@@ -2650,7 +2537,7 @@
                             Font: =Font.Georgia
                             Height: =56
                             Size: =16
-                            Text: =LookUp(Users, id = ticketInfo.CreatorId, fullName)
+                            Text: =LookUp(Users_1, ID = ticketInfo.CreatorId, fullName)
                             Width: =247
                             X: =289
                             Y: =82
@@ -2679,12 +2566,12 @@
                             ZIndex: =23
 
                         Additional_Assign_ComboBox As combobox:
-                            DefaultSelectedItems: =If(addAssignees = "", Blank(), Filter(Users, fullName in addAssignees))
-                            DisplayFields: =["fullName"]
+                            DefaultSelectedItems: =If(ticketInfo.AddAssignees = "", Blank(), Filter(Users_1, fullName in ticketInfo.AddAssignees))
+                            DisplayFields: =["ComplianceAssetId"]
                             Height: =37
                             IsSearchable: =false
-                            Items: =Filter(Users, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label.Text)
-                            SearchFields: =["fullName"]
+                            Items: =Filter(Users_1, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label.Text)
+                            SearchFields: =["ComplianceAssetId"]
                             SearchItems: =[]
                             Width: =250
                             X: =291
