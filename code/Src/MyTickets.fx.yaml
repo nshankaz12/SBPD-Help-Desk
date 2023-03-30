@@ -588,7 +588,7 @@
                                     //If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
                                     
                                     // Sharepoint
-                                    If(IsBlank(ThisItem.AssignedTo), "Unassigned", LookUp(Users, id = ThisItem.AssignedTo, fullName))
+                                    If(IsBlank(ThisItem.AssignedTo) || ThisItem.AssignedTo = 0, "Unassigned", LookUp(Users, id = ThisItem.AssignedTo, fullName))
                                 Visible: =is_admin
                                 Width: =154
                                 X: =67
