@@ -207,7 +207,7 @@
                         Title_label_7 As label:
                             Font: =Font.Georgia
                             Size: =If('Single Ticket Info'.Size=1,12,24)
-                            Text: =title
+                            Text: =ticketInfo.Title
                             Width: =Parent.Width
                             Y: =10
                             ZIndex: =15
@@ -2765,7 +2765,7 @@
                     Tickets,
                     LookUp(
                         Tickets,
-                        ID = 70
+                        ID = ticketInfo.ID
                     ),
                     {
                         resolution: TextInput1_3.Text,
