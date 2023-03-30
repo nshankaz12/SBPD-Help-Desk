@@ -2441,7 +2441,9 @@
                         Save_Button As button:
                             Fill: =ColorScheme.primary
                             OnSelect: |-
-                                =If(AssigneeId.Text = "0",
+                                =// sql
+                                /*
+                                If(AssigneeId.Text = "0",
                                     Patch(
                                         Tickets_1,
                                         LookUp(
@@ -2461,10 +2463,24 @@
                                         {assignedTO: Value(AssigneeId.Text)},
                                         {addAssignees: Additional_Assign_Value_Label.Text}
                                         )
+                                );*/
+                                // sharepoint
+                                Patch(
+                                    Tickets,
+                                    LookUp(
+                                        Tickets,
+                                        ID = ticketInfo.ID
+                                    ),
+                                    {tags: Label4_1.Text},
+                                    {
+                                        assignedTo: If(
+                                            IsBlank(AssigneeId),
+                                            Blank(),
+                                            Value(AssigneeId.Text)
+                                        )
+                                    },
+                                    {addAssignees: Additional_Assign_Value_Label.Text}
                                 );
-                                
-                                
-                                //Patch(Tickets_1,ticketRec, {addAssignees: Label4_1.Text});
                                 Refresh(Tickets_1)
                             Text: ="Save"
                             X: =(Parent.Width-Self.Width)/2
@@ -2672,6 +2688,12 @@
                             X: =60
                             Y: =60
                             ZIndex: =25
+
+                        Label4 As label:
+                            Text: =ticketInfo.ID
+                            X: =434
+                            Y: =320
+                            ZIndex: =26
 
     Rectangle1_6 As rectangle:
         Fill: =RGBA(56, 96, 178, 0.5)
