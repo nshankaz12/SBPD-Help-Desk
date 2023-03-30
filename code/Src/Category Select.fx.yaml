@@ -248,7 +248,7 @@
                             FontWeight: =FontWeight.Semibold
                             Height: =Parent.TemplateHeight - 20
                             OnSelect: |-
-                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
+                                =Navigate('Create A Ticket (Redesign)', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                             Size: =15
                             Text: =ThisItem.name
                             Width: =Parent.TemplateWidth - 20
