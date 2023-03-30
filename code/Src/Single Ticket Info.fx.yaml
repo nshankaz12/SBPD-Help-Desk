@@ -99,10 +99,10 @@
                 Width: =Parent.Width
                 ZIndex: =4
 
-                SingleticketInfo_MobileView_TitleAttachmentDescription As groupContainer.horizontalAutoLayoutContainer:
+                SingleticketInfo_MobileView_TitleAttachmentDescription_1 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.Start
                     FillPortions: =0
-                    Height: =Parent.Height/3
+                    Height: =(Parent.Height/2-SingleTicketInfoHeader1.Height-SingleTicketInfoHeader2.Height)-60
                     LayoutMinHeight: =250
                     LayoutMinWidth: =100
                     LayoutMode: =LayoutMode.Auto
@@ -111,7 +111,7 @@
                     Width: =If('Single Ticket Info'.Size>2, Parent.Width/2, Parent.Width)
                     ZIndex: =1
 
-                    Container18_6 As groupContainer.manualLayoutContainer:
+                    Container18_7 As groupContainer.manualLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         FillPortions: =0
                         Height: |-
@@ -123,7 +123,7 @@
                         Width: =Parent.Width
                         ZIndex: =2
 
-                        Container9_2 As groupContainer.verticalAutoLayoutContainer:
+                        Container9_3 As groupContainer.verticalAutoLayoutContainer:
                             Height: =Parent.Height
                             LayoutDirection: =LayoutDirection.Vertical
                             LayoutMode: =LayoutMode.Auto
@@ -133,42 +133,42 @@
                             Width: =Parent.Width
                             ZIndex: =14
 
-                            Label21_3 As label:
+                            Label21_4 As label:
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="Attachments"
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), false, true)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
                                 Width: =Parent.Width
                                 ZIndex: =1
 
-                            Label25_2 As label:
+                            Label25_3 As label:
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="No Attachments Found."
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), true, false)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), true, false)
                                 Width: |
                                     =300
                                 ZIndex: =2
 
-                            Gallery5_2 As gallery.variableTemplateHeightGallery:
+                            Gallery5_3 As gallery.variableTemplateHeightGallery:
                                 AlignInContainer: =AlignInContainer.SetByContainer
                                 BorderThickness: =1
                                 DelayItemLoading: =true
                                 FillPortions: =0
                                 Height: =If('Single Ticket Info'.Size>1, 100, 25)
-                                Items: =Filter('Ticket Attachments', ticketID=ticketInfo.ID)
+                                Items: =Filter('Ticket Attachments', ticketID=ticket)
                                 Layout: =Layout.Vertical
                                 LayoutMinHeight: =287
                                 LayoutMinWidth: =100
                                 LoadingSpinner: =LoadingSpinner.Data
                                 TemplateSize: =25
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), false, true)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
                                 Width: =Parent.Width*.97
                                 X: =96
                                 Y: =157
                                 ZIndex: =3
 
-                                HtmlText3_2 As htmlViewer:
+                                HtmlText3_3 As htmlViewer:
                                     AutoHeight: =true
                                     Height: =25
                                     HtmlText: ="<a href='" & ThisItem.'Link to item' & "'>" & ThisItem.'File name with extension' & "</a>" 
@@ -177,7 +177,7 @@
                                     Width: =Parent.TemplateWidth
                                     ZIndex: =1
 
-                            Description_label_6 As label:
+                            Description_label_7 As label:
                                 Font: =Font.Georgia
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size=1,10,16)
@@ -188,7 +188,7 @@
                                 Y: =40
                                 ZIndex: =4
 
-                            Description_value_6 As label:
+                            Description_value_7 As label:
                                 AlignInContainer: =AlignInContainer.Start
                                 AutoHeight: =true
                                 DisplayMode: =DisplayMode.View
@@ -198,16 +198,16 @@
                                 LayoutMinHeight: =100
                                 Overflow: =Overflow.Scroll
                                 Size: =If('Single Ticket Info'.Size<2,10,16)
-                                Text: =ticketInfo.Description
+                                Text: =description
                                 Width: =Parent.Width
                                 X: =127
                                 Y: =11
                                 ZIndex: =5
 
-                        Title_label_7 As label:
+                        Title_label_8 As label:
                             Font: =Font.Georgia
                             Size: =If('Single Ticket Info'.Size=1,12,24)
-                            Text: =ticketInfo.Title
+                            Text: =title
                             Width: =Parent.Width
                             Y: =10
                             ZIndex: =15
@@ -222,7 +222,7 @@
                     Width: =If('Single Ticket Info'.Size>1,Parent.Width/2,Parent.Width)
                     ZIndex: =2
 
-                    Container17_5 As groupContainer.manualLayoutContainer:
+                    Container17_4 As groupContainer.manualLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         Height: =Parent.Height
                         LayoutMinHeight: =100
@@ -230,19 +230,19 @@
                         Width: =Parent.Width
                         ZIndex: =1
 
-                        Rectangle_behind_details_3 As rectangle:
+                        Rectangle_behind_details_2 As rectangle:
                             BorderThickness: =3
                             Fill: =RGBA(0, 0, 0, 0)
-                            Height: =Parent.Height*.90
+                            Height: =382
                             Visible: |-
                                 =
                                 true
-                            Width: =Parent.Width*.90
+                            Width: =378
                             X: =(Parent.Width-Self.Width)/2
                             Y: =(Parent.Height-Self.Height)/2
                             ZIndex: =1
 
-                        Image_behind_Details_label_3 As image:
+                        Image_behind_Details_label_2 As image:
                             Height: =220
                             Image: ='image (2)'
                             Visible: =false
@@ -251,20 +251,20 @@
                             Y: =81
                             ZIndex: =2
 
-                        Details_label_3 As label:
+                        Details_label_2 As label:
                             Align: =Align.Center
                             Color: =RGBA(255, 255, 255, 1)
                             Fill: =ColorScheme.primary
                             Font: =Font.Georgia
-                            Height: =38
-                            Size: =24
+                            Height: =30
+                            Size: =16
                             Text: ="Details"
-                            Width: =Parent.Width*.90
-                            X: =Rectangle_behind_details_3.X
-                            Y: =Rectangle_behind_details_3.Y
+                            Width: =378
+                            X: =Rectangle_behind_details_2.X
+                            Y: =Rectangle_behind_details_2.Y
                             ZIndex: =3
 
-                        TextInput1_7 As text:
+                        TextInput1_6 As text:
                             BorderThickness: =3
                             Default: =//Search(If(filterStatus.Selected.Result = "All", CurrentTicketInfo, Filter(CurrentTicketInfo, status = filterStatus.Selected.Result)), searchTicketQuery, "title", "description")
                             DisplayMode: =DisplayMode.View
@@ -277,57 +277,52 @@
                             Y: =142
                             ZIndex: =4
 
-                        Title_Label_1 As label:
-                            Height: =58
-                            Text: =""
-                            Width: =93
-                            Y: =84
-                            ZIndex: =5
-
                         Tags_Label_1 As label:
                             Font: =Font.Georgia
                             Height: =37
-                            Size: =16
+                            PaddingLeft: =10
+                            Size: =12
                             Text: |-
                                 ="Tags:"
                             Width: =127
-                            X: =34
-                            Y: =328
+                            X: =Rectangle_behind_details_2.X
+                            Y: =Rectangle_behind_details_2.Y + 261
                             ZIndex: =6
 
-                        ComboBox1_3 As combobox:
+                        ComboBox1_2 As combobox:
                             ChevronBackground: =ColorScheme.primary
                             DefaultSelectedItems: =If(tags = "", Blank(), Filter(Tags, name in tags))
                             DisplayFields: =["name"]
-                            Height: =37
+                            Height: =32
                             Items: =Tags
                             SearchFields: =["name"]
-                            SearchItems: =Search(Tags,ComboBox1_3.SearchText,"name")
-                            Width: =254
-                            X: =Rectangle_behind_details_3.X+142
-                            Y: =328
+                            SearchItems: =Search(Tags,ComboBox1_2.SearchText,"name")
+                            Width: =180
+                            X: =Rectangle_behind_details_2.X+142
+                            Y: =Rectangle_behind_details_2.Y + 261
                             ZIndex: =7
 
                         Save_Button_1 As button:
                             Fill: =ColorScheme.primary
+                            Height: =30
                             OnSelect: |-
                                 =If(AssigneeId_1.Text = "0",
                                     Patch(
                                         Tickets_1,
                                         LookUp(
                                             Tickets_1,
-                                            id = ticketInfo.ID
+                                            id = ticket
                                         ),
-                                        {tags: Label4_3.Text},
+                                        {tags: Label4_2.Text},
                                         {assignedTO: 0}
                                     ),
                                     Patch(
                                         Tickets_1,
                                         LookUp(
                                             Tickets_1,
-                                            id = ticketInfo.ID
+                                            id = ticket
                                         ),
-                                        {tags: Label4_3.Text},
+                                        {tags: Label4_2.Text},
                                         {assignedTO: Value(AssigneeId_1.Text)},
                                         {addAssignees: Additional_Assign_Value_Label_1.Text}
                                         )
@@ -337,13 +332,18 @@
                                 //Patch(Tickets_1,ticketRec, {addAssignees: Label4_1.Text});
                                 Refresh(Tickets_1)
                             Text: ="Save"
-                            X: =(Parent.Width-Self.Width)/2
-                            Y: =(Rectangle_behind_details_3.Height-Self.Height)+20
+                            Width: =120
+                            X: |-
+                                =(Parent.Width-Self.Width)/2
+                                //(Rectangle_behind_details_2.Width-Self.Width)/2
+                            Y: |-
+                                =//(Rectangle_behind_details_2.Height-Self.Height)+80
+                                Rectangle_behind_details_2.Y + 343
                             ZIndex: =8
 
-                        Label4_3 As label:
+                        Label4_2 As label:
                             Height: =0
-                            Text: =Concat(ComboBox1_3.SelectedItems, Concatenate(name, ","))
+                            Text: =Concat(ComboBox1_2.SelectedItems, Concatenate(name, ","))
                             Visible: =false
                             Width: =0
                             X: =40
@@ -354,45 +354,47 @@
                             Align: =Align.Center
                             DisplayMode: =DisplayMode.View
                             Font: =Font.Georgia
-                            Height: =38
-                            Size: =16
-                            Text: =ticketInfo.DateCreated
-                            Width: =247
-                            X: =Rectangle_behind_details_3.X+142
-                            Y: =372
+                            Height: =37
+                            Size: =12
+                            Text: =dateCreated
+                            Width: =180
+                            X: =Rectangle_behind_details_2.X+142
+                            Y: =Rectangle_behind_details_2.Y + 301
                             ZIndex: =10
 
                         Created_Label_1 As label:
                             Font: =Font.Georgia
                             Height: =37
-                            Size: =16
+                            PaddingLeft: =10
+                            Size: =12
                             Text: |-
                                 ="Created:"
                             Width: =127
-                            X: =Rectangle_behind_details_3.X
-                            Y: =372
+                            X: =Rectangle_behind_details_2.X
+                            Y: =Rectangle_behind_details_2.Y + 303
                             ZIndex: =11
 
                         Status_Value_Label_1 As label:
                             Align: =Align.Center
                             Font: =Font.Georgia
-                            Height: =38
-                            Size: =16
+                            Height: =37
+                            Size: =12
                             Text: =status
-                            Width: =247
-                            X: =Rectangle_behind_details_3.X+142
-                            Y: =240
+                            Width: =180
+                            X: =Rectangle_behind_details_2.X+142
+                            Y: =Rectangle_behind_details_2.Y + 177
                             ZIndex: =12
 
                         Status_Label_1 As label:
                             Font: =Font.Georgia
                             Height: =37
-                            Size: =16
+                            PaddingLeft: =10
+                            Size: =12
                             Text: |-
                                 ="Status:"
                             Width: =127
-                            X: =Rectangle_behind_details_3.X
-                            Y: =240
+                            X: =Rectangle_behind_details_2.X
+                            Y: =Rectangle_behind_details_2.Y + 177
                             ZIndex: =13
 
                         Assignee_ComboBox_1 As combobox:
@@ -401,7 +403,7 @@
                                 =
                             DefaultSelectedItems: =If(IsBlank(assigneeId), Blank(), Filter(Users,id = assigneeId))
                             DisplayFields: =["fullName"]
-                            Height: =37
+                            Height: =32
                             InputTextPlaceholder: ="Unassigned"
                             IsSearchable: =false
                             Items: |-
@@ -411,11 +413,14 @@
                             SearchFields: =["fullName"]
                             SearchItems: =[]
                             SelectMultiple: =false
+                            Size: =12
                             Visible: |
                                 =true
-                            Width: =248
-                            X: =Rectangle_behind_details_3.X+142
-                            Y: =Reporter_Label_1.Y+Reporter_Label_1.Height+5
+                            Width: =180
+                            X: =Rectangle_behind_details_2.X+142
+                            Y: |-
+                                =//Reporter_Label_1.Y+Reporter_Label_1.Height+5
+                                Rectangle_behind_details_2.Y + 72
                             ZIndex: =14
 
                         Assignee_Value_Label_1 As label:
@@ -426,7 +431,7 @@
                             Text: =Concat(Assignee_ComboBox_1.SelectedItems, Concatenate(fullName, ""))
                             Visible: |
                                 =false
-                            Width: =248
+                            Width: =200
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Assignee_Label_1.Y 
                             ZIndex: =15
@@ -434,12 +439,13 @@
                         Assignee_Label_1 As label:
                             Font: =Font.Georgia
                             Height: =37
-                            Size: =16
+                            PaddingLeft: =10
+                            Size: =12
                             Text: |-
                                 ="Assignee:"
                             Width: =127
-                            X: =Rectangle_behind_details_3.X
-                            Y: =Reporter_Label_1.Y+Reporter_Label_1.Height+5
+                            X: =Rectangle_behind_details_2.X
+                            Y: =Rectangle_behind_details_2.Y + 72
                             ZIndex: =16
 
                         AssigneeId_1 As label:
@@ -461,79 +467,82 @@
                             Size: =12
                             Text: ="Assign to me"
                             Underline: =
-                            Visible: =If(Value(AssigneeId_1.Text) = userData.id,false, true)
+                            Visible: =false//If(Value(AssigneeId_1.Text) = userData.id,false, true)
                             Width: =250
-                            X: =171
-                            Y: =195
+                            X: =269
+                            Y: =216
                             ZIndex: =18
 
                         Category_Value_Label_1 As label:
                             Align: =Align.Center
                             DisplayMode: =DisplayMode.View
                             Font: =Font.Georgia
-                            Height: =38
-                            Size: =16
-                            Text: =LookUp(Category_1, ID = ticketInfo.MainCategory, name)
-                            Width: =247
-                            X: =Rectangle_behind_details_3.X+142
-                            Y: =283
+                            Height: =37
+                            Size: =12
+                            Text: =LookUp(Category, category = id, name)
+                            Width: =180
+                            X: =Rectangle_behind_details_2.X+142
+                            Y: =Rectangle_behind_details_2.Y + 219
                             ZIndex: =19
 
                         Category_Label_1 As label:
                             Font: =Font.Georgia
                             Height: =37
-                            Size: =16
+                            PaddingLeft: =10
+                            Size: =12
                             Text: |-
                                 ="Category:"
                             Width: =127
-                            X: =Rectangle_behind_details_3.X
-                            Y: =283
+                            X: =Rectangle_behind_details_2.X
+                            Y: =Rectangle_behind_details_2.Y + 219
                             ZIndex: =20
 
                         Reporter_Value_Label_1 As label:
                             Align: =Align.Center
                             Font: =Font.Georgia
-                            Height: =38
-                            Size: =16
-                            Text: =LookUp(Users, id = ticketInfo.CreatorId, fullName)
-                            Width: =247
-                            X: =Rectangle_behind_details_3.X+142
-                            Y: =Rectangle_behind_details_3.Y+50
+                            Height: =37
+                            Size: =12
+                            Text: =LookUp(Users, id = reporting_person, fullName)
+                            Width: =180
+                            X: =Rectangle_behind_details_2.X+142
+                            Y: =Rectangle_behind_details_2.Y + 30
                             ZIndex: =21
 
                         Reporter_Label_1 As label:
                             Font: =Font.Georgia
                             Height: =37
-                            Size: =16
+                            PaddingLeft: =10
+                            Size: =12
                             Text: |-
                                 ="Reporter:"
                             Width: =127
-                            X: =Rectangle_behind_details_3.X
-                            Y: =Rectangle_behind_details_3.Y+50
+                            X: =Rectangle_behind_details_2.X
+                            Y: =Rectangle_behind_details_2.Y + 30
                             ZIndex: =22
 
                         Additonal_Assign_Label_1 As label:
                             Font: =Font.Georgia
                             Height: =62
-                            Size: =16
+                            PaddingLeft: =10
+                            Size: =12
                             Text: |-
                                 ="Additional Assignees:"
                             Width: =127
-                            X: =Rectangle_behind_details_3.X
-                            Y: =178
+                            X: =Rectangle_behind_details_2.X
+                            Y: =Rectangle_behind_details_2.Y + 114
                             ZIndex: =23
 
                         Additional_Assign_ComboBox_1 As combobox:
                             DefaultSelectedItems: =If(addAssignees = "", Blank(), Filter(Users, fullName in addAssignees))
                             DisplayFields: =["fullName"]
-                            Height: =37
+                            Height: =32
                             IsSearchable: =false
                             Items: =Filter(Users, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label_1.Text)
                             SearchFields: =["fullName"]
                             SearchItems: =[]
-                            Width: =250
-                            X: =Rectangle_behind_details_3.X+142
-                            Y: =191
+                            Width: =180
+                            X: =Rectangle_behind_details_2.X+142
+                            Y: =Rectangle_behind_details_2.Y + 132
                             ZIndex: =24
 
                         Additional_Assign_Value_Label_1 As label:
@@ -1409,7 +1418,7 @@
                     LayoutOverflowY: =LayoutOverflow.Scroll
                     Visible: ='Single Ticket Info'.Size>1
                     Width: =If('Single Ticket Info'.Size>2, Parent.Width/2, Parent.Width)
-                    ZIndex: =5
+                    ZIndex: =4
 
                     Container18_2 As groupContainer.manualLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
@@ -2351,7 +2360,7 @@
                     LayoutMode: =LayoutMode.Auto
                     Visible: ='Single Ticket Info'.Size>1
                     Width: =If('Single Ticket Info'.Size>1,Parent.Width/2,Parent.Width)
-                    ZIndex: =6
+                    ZIndex: =5
 
                     Container17_3 As groupContainer.manualLayoutContainer:
                         AlignInContainer: =AlignInContainer.Start
