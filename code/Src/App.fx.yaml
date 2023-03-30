@@ -3,7 +3,7 @@ App As appinfo:
     OnStart: |+
         =If(
             LookUp(
-                Users,
+                Users_1,
                 email = User().Email,
                 userRole
             ) = "admin",
@@ -21,25 +21,25 @@ App As appinfo:
             userData,
             {
                 firstName: LookUp(
-                    Users,
+                    Users_1,
                     email = User().Email,
                     firstName
                 ),
                 lastName: LookUp(
-                    Users,
+                    Users_1,
                     email = User().Email,
                     lastName
                 ),
                 email: User().Email,
                 role: LookUp(
-                    Users,
+                    Users_1,
                     email = User().Email,
                     userRole
                 ),
                 id: LookUp(
-                    Users,
+                    Users_1,
                     email = User().Email,
-                    id
+                    ID
                 )
             }
         );
@@ -128,7 +128,7 @@ App As appinfo:
             secondaryPressedColor:  RGBA(126,149,180,.35)
         });
         
-        Set(MainCategory, Filter(Category, parentId = Blank())); //only main categories. those that dont rely on a parent
+        Set(MainCategory, Filter(Category_1, parentId = Blank())); //only main categories. those that dont rely on a parent
         
         // Passed to filter component to check if filter is visible
         Set(varFilterVisible, false);

@@ -5,30 +5,7 @@ Home As screen:
     OnVisible: |-
         =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false,CloseAlertRibbon:false});
 
-    HtmlText2 As htmlViewer:
-        Height: =Parent.Height
-        HtmlText: |-
-            ="<img src='https://rare-gallery.com/mocahbig/1338830-Minimalist-White-GreyAbstract-Hexagon-HD-Wallpaper.png' height="&HtmlText2.Height -15&" width="&HtmlText2.Width&"px>"
-        Visible: =false
-        Width: =Parent.Width
-        ZIndex: =1
-
-    Image2 As image:
-        Image: =Untitled_Artwork
-        Visible: =is_admin
-        X: =142
-        Y: =40
-        ZIndex: =2
-
-    Label8 As label:
-        Align: =Align.Center
-        Text: ="CREATE TICKET"
-        Visible: =is_admin
-        X: =106
-        Y: =147
-        ZIndex: =3
-
-    HomeMainContainer As groupContainer.horizontalAutoLayoutContainer:
+    HomeMainContainer_2 As groupContainer.horizontalAutoLayoutContainer:
         Height: =Home.Height
         LayoutMode: =LayoutMode.Auto
         Visible: |-
@@ -37,54 +14,7 @@ Home As screen:
         Width: =Home.Width
         ZIndex: =4
 
-        HomeMobileNavLinks As groupContainer.horizontalAutoLayoutContainer:
-            FillPortions: =0
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            Visible: |-
-                =MGallery && Home.Size<=1
-                //This is a side panel that is visible when the user selects the hamburger menu
-            Width: =100
-            ZIndex: =1
-
-            HomeMobileNavButtonGallery As gallery.galleryVertical:
-                AlignInContainer: =AlignInContainer.Center
-                FillPortions: =0
-                Height: =Parent.Height
-                Items: =navCol
-                Layout: =Layout.Vertical
-                LayoutMinHeight: =287
-                LayoutMinWidth: =320
-                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
-                ShowScrollbar: =false
-                TemplateSize: =Parent.Width
-                Width: =Parent.Width
-                ZIndex: =1
-
-                MobileNavGalleryNameLabel As label:
-                    Align: =Align.Center
-                    FontWeight: =FontWeight.Semibold
-                    Height: =74
-                    OnSelect: =Select(Parent)
-                    Size: =15
-                    Text: =ThisItem.NavName
-                    Width: =Parent.TemplateWidth
-                    Y: =(Parent.TemplateHeight-Self.Height)/2
-                    ZIndex: =1
-
-                MobileNavButton As button:
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =Parent.TemplateHeight
-                    HoverFill: =ColorFade(RGBA(105,105,105, .25), -20%)
-                    OnSelect: =Select(Parent)
-                    PressedColor: =RGBA(105,105,105,.35)
-                    PressedFill: =RGBA(105,105,105,.35)
-                    Text: =""
-                    Width: =Parent.TemplateWidth
-                    ZIndex: =2
-
-        HomeVericalLayoutContainer As groupContainer.verticalAutoLayoutContainer:
+        HomeVericalLayoutContainer_2 As groupContainer.verticalAutoLayoutContainer:
             FillPortions: =9
             Height: =Parent.Height
             LayoutDirection: =LayoutDirection.Vertical
@@ -97,7 +27,7 @@ Home As screen:
             Width: =Parent.Width
             ZIndex: =2
 
-            HomeHeaderContainer1 As groupContainer.verticalAutoLayoutContainer:
+            HomeHeaderContainer1_2 As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(255,255,255, 1)
                 FillPortions: =0
                 Height: =Parent.Height/11
@@ -113,16 +43,16 @@ Home As screen:
                 Width: =Parent.Width
                 ZIndex: =1
 
-                NotificationsDropdownContainer As groupContainer.manualLayoutContainer:
+                NotificationsDropdownContainer_4 As groupContainer.manualLayoutContainer:
                     FillPortions: =0
                     Height: =Parent.Height
                     LayoutMinHeight: =50
                     LayoutMinWidth: =250
                     Visible: =false
                     Width: =75
-                    ZIndex: =1
+                    ZIndex: =2
 
-                    "'profile pic + drop down_1' As icon.Person":
+                    "'profile pic + drop down_3' As icon.Person":
                         AutoDisableOnSelect: =false
                         BorderColor: =RGBA(0, 0, 0, 1)
                         Color: =RGBA(0, 0, 0, 1)
@@ -133,16 +63,16 @@ Home As screen:
                         Y: =Parent.Height-Self.Height 
                         ZIndex: =1
 
-                    "'new notification in dropdown_1' As circle":
+                    "'new notification in dropdown_3' As circle":
                         BorderColor: =RGBA(168, 0, 0, 1)
                         Fill: =RGBA(168, 0, 0, 1)
                         Height: =10
                         Width: =10
-                        X: ='profile pic + drop down_1'.X
-                        Y: ='profile pic + drop down_1'.Y
+                        X: ='profile pic + drop down_3'.X
+                        Y: ='profile pic + drop down_3'.Y
                         ZIndex: =2
 
-                    UserNotificationsDropdownSymbolIcon As icon.ChevronDown:
+                    UserNotificationsDropdownSymbolIcon_5 As icon.ChevronDown:
                         Color: =RGBA(255, 255, 255, 1)
                         Height: =14
                         HoverBorderColor: =ColorFade(Color.DimGrey, 20%)
@@ -155,7 +85,7 @@ Home As screen:
                         Y: =41
                         ZIndex: =3
 
-                HomeNavContainer As groupContainer.horizontalAutoLayoutContainer:
+                HomeNavContainer_2 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.Center
                     FillPortions: =7
                     Height: =Parent.Height
@@ -165,9 +95,9 @@ Home As screen:
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     Width: =Parent.Width
-                    ZIndex: =7
+                    ZIndex: =3
 
-                    compWebHeader_11 As compWebHeader_2:
+                    compWebHeader_23 As compWebHeader_2:
                         AlignInContainer: =AlignInContainer.Center
                         CompScreenSize: =Home.Size
                         Height: =Parent.Height
@@ -175,7 +105,7 @@ Home As screen:
                         LayoutMinWidth: =640
                         Width: =Parent.Width
 
-                    HomeNavLinkGallery As gallery.galleryHorizontal:
+                    HomeNavLinkGallery_2 As gallery.galleryHorizontal:
                         AlignInContainer: =AlignInContainer.Center
                         DelayItemLoading: =true
                         Height: =Parent.Height
@@ -190,7 +120,7 @@ Home As screen:
                         Width: =Parent.Width
                         ZIndex: =1
 
-                        HomeNavLinkGalleryLabel As label:
+                        HomeNavLinkGalleryLabel_3 As label:
                             Align: =Align.Center
                             DisplayMode: =DisplayMode.View
                             FontWeight: =FontWeight.Bold
@@ -201,7 +131,7 @@ Home As screen:
                             Width: =Parent.TemplateWidth
                             ZIndex: =1
 
-                        HomeNavLinkGalleryButton As button:
+                        HomeNavLinkGalleryButton_3 As button:
                             Fill: =RGBA(0, 0, 0, 0)
                             Height: =Parent.TemplateHeight
                             HoverFill: =ColorFade(RGBA(105,105,105,.5), -20%)
@@ -211,31 +141,7 @@ Home As screen:
                             Width: =Parent.TemplateWidth
                             ZIndex: =2
 
-            HomeMoblieHeaderContainer As groupContainer.verticalAutoLayoutContainer:
-                Fill: =RGBA(118, 173, 149, 1)
-                Height: =200 //Parent.Height/5
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                PaddingLeft: =50
-                Visible: |-
-                    =//Home.Size=1
-                    //This container is visible when the screen is in mobile view and the topmost is invisible
-                    false
-                Width: =Parent.Width
-                ZIndex: =2
-
-                MoblieHamburgerMenu As icon.Hamburger:
-                    AlignInContainer: =AlignInContainer.Center
-                    Color: =RGBA(0, 0, 0, 1)
-                    Icon: =If(HambIconChange, Icon.ChevronLeft, Icon.Hamburger)
-                    OnSelect: |-
-                        =UpdateContext({HambIconChange:!HambIconChange});
-                        UpdateContext({MGallery:!MGallery});
-                    ZIndex: =1
-
-            Container10 As groupContainer.manualLayoutContainer:
+            Container10_3 As groupContainer.manualLayoutContainer:
                 Fill: =ColorScheme.primary
                 FillPortions: =0
                 Height: =Parent.Height/12
@@ -244,7 +150,7 @@ Home As screen:
                 Width: =Parent.Width
                 ZIndex: =3
 
-                UserNameLabel As label:
+                UserNameLabel_3 As label:
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
                     Height: =Parent.Height
@@ -256,7 +162,7 @@ Home As screen:
                     X: =(Parent.Width - Self.Width)/2
                     ZIndex: =1
 
-                HomeUserImage As image:
+                HomeUserImage_2 As image:
                     Height: =Parent.Height
                     Image: =User().Image
                     Visible: =Home.Size>2
@@ -264,7 +170,7 @@ Home As screen:
                     X: =Parent.Width -Self.Width
                     ZIndex: =2
 
-            HomeMainContentContainer As groupContainer.verticalAutoLayoutContainer:
+            HomeMainContentContainer_3 As groupContainer.verticalAutoLayoutContainer:
                 FillPortions: =10
                 Height: =Parent.Height
                 LayoutDirection: =LayoutDirection.Vertical
@@ -277,65 +183,47 @@ Home As screen:
                 Width: =Parent.Width
                 ZIndex: =4
 
-                SearchBarContainer As groupContainer.verticalAutoLayoutContainer:
-                    Fill: =ColorScheme.primary
-                    Height: =Parent.Height
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutJustifyContent: =LayoutJustifyContent.Center
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    Width: =Parent.Width
-                    ZIndex: =1
-
-                    "'Search Knowledgebase_1' As text":
-                        BorderColor: =RGBA(140, 140, 140, 1)
-                        BorderThickness: =5
-                        Color: =RGBA(204, 204, 204, 1)
-                        Default: ="Search Knowledgebase"
-                        Font: =Font.'Segoe UI'
-                        Height: =Parent.Height/2
-                        Width: =If(Home.Size >1 , Parent.Width/2 , Parent.Width*.8)
-                        X: =443
-                        Y: =40
-                        ZIndex: =1
-
-                AlertRibbonContainerTest As groupContainer.verticalAutoLayoutContainer:
+                AlertRibbonContainerTest_2 As groupContainer.verticalAutoLayoutContainer:
                     Fill: =RGBA(232, 244, 217, 1)
                     FillPortions: =0
-                    Height: =CountRows(Alerts_1) * 10
-                    LayoutAlignItems: =LayoutAlignItems.Center
+                    Height: =Parent.Height/16
                     LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =40
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     Visible: =!CloseAlertRibbon
                     Width: =Parent.Width
                     ZIndex: =2
 
-                    Gallery7 As gallery.galleryVertical:
-                        DelayItemLoading: =true
+                    AlertContianer_2 As groupContainer.horizontalAutoLayoutContainer:
                         FillPortions: =0
-                        Height: =CountRows(Alerts_1) * 2
-                        Items: =Filter(Alerts_1, dateExpired >= Today())
-                        Layout: =Layout.Vertical
+                        Height: =Parent.Height
                         LayoutMinHeight: =100
-                        LayoutMinWidth: =320
-                        LoadingSpinner: =LoadingSpinner.Data
-                        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
-                        Width: =Parent.Width
-                        ZIndex: =1
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        ZIndex: =3
 
-                        Label12 As label:
-                            DisplayMode: =DisplayMode.View
-                            OnSelect: =Select(Parent)
-                            Size: =15
-                            Text: =ThisItem.titleText
-                            Underline: =true
-                            X: =522
+                        Label12_2 As label:
+                            Align: =Align.Center
+                            AlignInContainer: =AlignInContainer.Stretch
+                            Color: =RGBA(168, 0, 0, 1)
+                            FillPortions: =1
+                            Height: =Parent.Height
+                            LayoutMinHeight: =Parent.Height
+                            Size: =If(Home.Size=1, 8, 15)
+                            Text: |
+                                =If(IsBlank(AlertMessage), "", AlertMessage)
                             ZIndex: =1
 
-                ButtonsContainer As groupContainer.verticalAutoLayoutContainer:
+                        Icon12_2 As icon.Cancel:
+                            Color: =RGBA(176, 176, 176, 1)
+                            Height: =Parent.Height
+                            Icon: =Icon.Cancel
+                            OnSelect: |-
+                                =UpdateContext({CloseAlertRibbon:true})
+                            ZIndex: =2
+
+                ButtonsContainer_3 As groupContainer.verticalAutoLayoutContainer:
                     FillPortions: =8
                     Height: =Parent.Height
                     LayoutDirection: =LayoutDirection.Vertical
@@ -346,7 +234,7 @@ Home As screen:
                     Width: =Parent.Width
                     ZIndex: =3
 
-                    ButtonGallery As gallery.galleryVertical:
+                    ButtonGallery_1 As gallery.galleryVertical:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         Height: =Parent.Height
                         Items: =navCol
@@ -355,135 +243,78 @@ Home As screen:
                         LayoutMinWidth: =320
                         OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Category Select'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
                         ShowScrollbar: =false
-                        TemplateSize: =Parent.Height/2
-                        Visible: =Home.Size>1
+                        TemplateSize: =Parent.Height/2.67
                         Width: =Parent.Width
                         WrapCount: =Switch(Home.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
                         ZIndex: =1
 
-                        HtmlText1 As htmlViewer:
+                        HtmlText1_1 As htmlViewer:
                             DisplayMode: =DisplayMode.View
-                            Height: =Parent.TemplateHeight+5
+                            Height: =ButtonGalleryBackgroundButton_1.Height
                             HtmlText: |-
                                 ="<div style='box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
                                 -webkit-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
-                                -moz-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05); height:"&ButtonGalleryBackgroundButton.Height-11&"px; width:"&ButtonGalleryBackgroundButton.Width-11&"px; border-style:none; border-radius:10px'></div>"
+                                -moz-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05); height:"&ButtonGalleryBackgroundButton_1.Height-11&"px; width:"&ButtonGalleryBackgroundButton_1.Width-11&"px; border-style:none; border-radius:10px'></div>"
                             OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth+10
-                            X: =5
-                            Y: =5
+                            Width: =ButtonGalleryBackgroundButton_1.Width
+                            X: =ButtonGalleryBackgroundButton_1.X
+                            Y: |
+                                =ButtonGalleryBackgroundButton_1.Y
                             ZIndex: =1
 
-                        ButtonGalleryBackgroundButton As button:
+                        ButtonGalleryBackgroundButton_1 As button:
                             BorderStyle: =BorderStyle.Dashed
                             BorderThickness: =0
                             Color: =ColorScheme.secondary
                             Fill: =ColorScheme.secondary
-                            Height: =Parent.TemplateHeight - 20
+                            Height: =If ( Home.Size =1 , Parent.TemplateHeight/1.5,Parent.TemplateHeight/1.1)
                             OnSelect: =Select(Parent)
                             Text: =""
-                            Width: =Parent.TemplateWidth - 20
+                            Width: =If( Home.Size =1, Parent.TemplateWidth / 1.5, Parent.TemplateWidth/1.2)
                             X: =(Parent.TemplateWidth - Self.Width)/2
                             Y: =(Parent.TemplateHeight - Self.Height)/2
                             ZIndex: =2
 
-                        ButtonGalleryNavLabel As label:
+                        ButtonGalleryNavLabel_1 As label:
                             Align: =Align.Center
                             Color: =ColorScheme.primary
                             FontWeight: =FontWeight.Semibold
+                            Height: =If(Home.Size >1,ButtonGalleryBackgroundButton_1.Height/4.5,15)
                             OnSelect: =Select(Parent)
-                            Size: =15
+                            Size: =If(Home.Size =1,11,15)
                             Text: =ThisItem.NavName
+                            Width: =ButtonGalleryBackgroundButton_1.Width
                             X: =(Parent.TemplateWidth-Self.Width)/2
-                            Y: =ButtonGalleryNavIcon.Y+ButtonGalleryNavIcon.Height
+                            Y: =ButtonGalleryNavIcon_2.Y+ButtonGalleryNavIcon_2.Height
                             ZIndex: =3
 
-                        ButtonGalleryNavIcon As icon.Add:
+                        ButtonGalleryNavIcon_2 As icon.Add:
                             Color: =ColorScheme.primary
-                            Height: =Switch(Home.Size,4,100,3,100,2,64)
+                            Height: |-
+                                =
+                                
+                                If(Home.Size >1, Parent.TemplateHeight/2.5,Parent.TemplateHeight/3)
                             Icon: =ThisItem.NavIcon
                             OnSelect: =Select(Parent)
-                            Width: =Switch(Home.Size,4,100,3,100,2,64)
+                            Width: =Parent.TemplateWidth/2
                             X: =(Parent.TemplateWidth-Self.Width)/2
-                            Y: =(ButtonGalleryBackgroundButton.Height-Self.Height)/2
+                            Y: =If( Home.Size = 1, (ButtonGalleryBackgroundButton_1.Height-Self.Height)/1.2,(ButtonGalleryBackgroundButton_1.Height-Self.Height)/2)
                             ZIndex: =4
 
-                        Overlapbtn As button:
+                        Overlapbtn_2 As button:
                             Fill: =RGBA(255, 255, 255, 0)
-                            Height: =ButtonGalleryBackgroundButton.Height
+                            Height: =ButtonGalleryBackgroundButton_1.Height
                             HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
                             OnSelect: =Select(Parent)
                             PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
                             Text: =""
-                            Width: =ButtonGalleryBackgroundButton.Width
-                            X: =10
-                            Y: =ButtonGalleryBackgroundButton.Y
+                            Width: =ButtonGalleryBackgroundButton_1.Width
+                            X: =ButtonGalleryBackgroundButton_1.X
+                            Y: |
+                                =ButtonGalleryBackgroundButton_1.Y
                             ZIndex: =5
 
-                    HomeMobileNavButtonGallery_1 As gallery.galleryVertical:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        FillPortions: =0
-                        Height: =Parent.Height
-                        Items: =navCol
-                        Layout: =Layout.Vertical
-                        LayoutMinHeight: =287
-                        LayoutMinWidth: =320
-                        OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
-                        ShowScrollbar: =false
-                        TemplatePadding: =0
-                        TemplateSize: =Parent.Width
-                        Visible: =Home.Size=1
-                        Width: =Parent.Width
-                        ZIndex: =2
-
-                        MobileNavButton_1 As button:
-                            Fill: =ColorScheme.secondary
-                            Height: =Parent.TemplateHeight/1.5
-                            HoverFill: =ColorFade(RGBA(105,105,105, .25), -20%)
-                            OnSelect: =Select(Parent)
-                            PressedColor: =RGBA(105,105,105,.35)
-                            PressedFill: =RGBA(105,105,105,.35)
-                            Text: =""
-                            Width: =Parent.TemplateWidth/1.5
-                            X: =(Parent.TemplateWidth-Self.Width)/2
-                            Y: =(Parent.TemplateHeight-Self.Height)/2
-                            ZIndex: =1
-
-                        NavGalleryNameLabel_1 As label:
-                            Align: =Align.Center
-                            Color: =ColorScheme.primary
-                            Height: =If(Home.Size>1, Parent.TemplateHeight/4, 75)
-                            OnSelect: =Select(Parent)
-                            Size: =20
-                            Text: =ThisItem.NavName
-                            Width: =Parent.TemplateWidth
-                            Y: =ButtonGalleryNavIcon_1.Y+ButtonGalleryNavIcon_1.Height
-                            ZIndex: =2
-
-                        ButtonGalleryNavIcon_1 As icon.Add:
-                            Color: =ColorScheme.primary
-                            DisplayMode: =DisplayMode.View
-                            Height: =100
-                            Icon: =ThisItem.NavIcon
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =
-                            Width: =Parent.TemplateWidth
-                            Y: =(Parent.TemplateHeight-Self.Height)/2
-                            ZIndex: =3
-
-                        Overlapbtn_1 As button:
-                            Fill: =RGBA(0, 0, 0, 0)
-                            Height: =MobileNavButton_1.Height
-                            HoverFill: =ColorFade(RGBA(105,105,105, .25), -20%)
-                            OnSelect: =Select(Parent)
-                            PressedFill: =ColorFade(RGBA(105,105,105, .35), -20%)
-                            Text: =""
-                            Width: =MobileNavButton_1.Width
-                            X: =MobileNavButton_1.X
-                            Y: =MobileNavButton_1.Y
-                            ZIndex: =4
-
-                compMobileMenu_3 As compMobileMenu:
+                compMobileMenu_13 As compMobileMenu:
                     Height: =Parent.Height/5
                     LayoutMinHeight: =640
                     LayoutMinWidth: =640
@@ -491,259 +322,4 @@ Home As screen:
                     Width: =Parent.Width
                     Y: =Parent.Height-Self.Height
                     ZIndex: =4
-
-    ScreenSizeLabel As label:
-        Align: =Align.Center
-        FontWeight: =FontWeight.Bold
-        Height: =56
-        Size: =20
-        Text: |-
-            =Concatenate("ScreenSize: ",Text(Home.Size))
-        Visible: =false
-        Width: =184
-        Y: =712
-        ZIndex: =5
-
-    OldElements As groupContainer.manualLayoutContainer:
-        Height: =100
-        Visible: =false
-        Width: =Parent.Width
-        Y: =668
-        ZIndex: =6
-
-        "'Create Ticket' As button":
-            BorderColor: =ColorFade(Self.Fill, 15%)
-            BorderThickness: =10
-            Fill: =RGBA(232, 244, 217, 1)
-            Height: =100
-            OnSelect: =Navigate('Create A Ticket')
-            Text: =""
-            Visible: =is_admin
-            Width: =200
-            X: =124
-            ZIndex: =2
-
-        "'My Tickets' As button":
-            BorderColor: =ColorFade(Self.Fill, 15%)
-            BorderThickness: =10
-            Fill: =RGBA(232, 244, 217, 1)
-            Height: =100
-            OnSelect: =Navigate(MyTickets)
-            Text: =""
-            Width: =200
-            X: =396
-            ZIndex: =3
-
-        Tutorials As button:
-            BorderColor: =ColorFade(Self.Fill, 15%)
-            BorderThickness: =10
-            Fill: =RGBA(232, 244, 217, 1)
-            Height: =100
-            Text: =""
-            Width: =200
-            X: =671
-            ZIndex: =4
-
-        "'Forward Scroll_1' As icon.NextArrow":
-            Color: =RGBA(99, 139, 44, 1)
-            Icon: =Icon.NextArrow
-            X: =1213
-            Y: =36
-            ZIndex: =6
-
-        "'Back Scroll_2' As icon.BackArrow":
-            Color: =RGBA(232, 244, 217, 1)
-            Icon: =Icon.BackArrow
-            X: =40
-            Y: =36
-            ZIndex: =7
-
-        "'Popular Articles_1' As label":
-            Text: ="Popular Articles"
-            X: =63
-            Y: =60
-            ZIndex: =8
-
-        line_1 As rectangle:
-            BorderColor: =RGBA(0, 0, 0, 1)
-            Fill: =RGBA(0, 0, 0, 1)
-            Height: =2
-            Width: =1150
-            X: =63
-            Y: =98
-            ZIndex: =9
-
-        Label9 As label:
-            Align: =Align.Center
-            Text: ="MY TICKETS"
-            X: =398
-            Y: =60
-            ZIndex: =10
-
-        Label11 As label:
-            Align: =Align.Center
-            Text: ="TUTORIALS"
-            X: =696
-            Y: =60
-            ZIndex: =11
-
-        Label11_1 As label:
-            Align: =Align.Center
-            Text: ="FAQ"
-            X: =995
-            Y: =60
-            ZIndex: =12
-
-        Image5 As image:
-            Image: ='my tickets'
-            Width: =177
-            X: =407
-            ZIndex: =13
-
-        Image12 As image:
-            Image: =tutorials
-            Width: =136
-            X: =676
-            ZIndex: =14
-
-        Image14 As image:
-            Height: =95
-            Image: =faq
-            Width: =123
-            X: =1
-            ZIndex: =15
-
-        FAQ As button:
-            BorderColor: =ColorFade(Self.Fill, 15%)
-            BorderThickness: =10
-            Fill: =RGBA(232, 244, 217, 1)
-            Height: =100
-            Text: =""
-            Width: =132
-            X: =139
-            ZIndex: =16
-
-    NotificationsDropdownContent As groupContainer.manualLayoutContainer:
-        Height: =72
-        Visible: |
-            =Home.Size>1
-        Width: =164
-        X: =59
-        Y: =56
-        ZIndex: =7
-
-        UserNotificationsRoundedBorder As image:
-            Height: =71
-            Image: ='image (4)'
-            ImagePosition: =ImagePosition.Stretch
-            Visible: =NDrop
-            Width: =164
-            ZIndex: =1
-
-        ProfileButtonContainer As groupContainer.manualLayoutContainer:
-            Height: =Parent.Height/2
-            Width: =164
-            ZIndex: =8
-
-            UserNotificationsProfileLabel As label:
-                Font: =Font.'Open Sans Condensed'
-                Height: =16
-                PaddingLeft: =0
-                Size: =15
-                Text: ="Profile"
-                Visible: =NDrop
-                Width: =59
-                X: =33
-                Y: =11
-                ZIndex: =1
-
-            UserProfileDropdownIcon As icon.Person:
-                Color: =RGBA(0, 0, 0, 1)
-                FocusedBorderThickness: =1
-                Height: =34
-                Icon: =Icon.Person
-                Visible: =NDrop
-                Width: =33
-                Y: =2
-                ZIndex: =2
-
-            ProfileDropdownbtn As button:
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =34
-                HoverFill: =ColorFade(RGBA(105,105,105,.25), -20%)
-                PressedColor: =RGBA(105,105,105,.25)
-                PressedFill: =RGBA(105,105,105,.25)
-                Text: =""
-                Visible: =NDrop
-                Width: =164
-                Y: =2
-                ZIndex: =3
-
-        NotificationsButtonContainer As groupContainer.manualLayoutContainer:
-            Height: =Parent.Height/2
-            Width: =164
-            Y: =35
-            ZIndex: =9
-
-            UserNotificationRedCircle As circle:
-                BorderColor: =RGBA(220, 153, 153, 1)
-                BorderThickness: =1
-                Fill: =RGBA(255, 235, 235, 1)
-                Height: =14
-                Visible: =NDrop
-                Width: =15
-                X: =112
-                ZIndex: =1
-
-            UserNotificationNumberLabel As label:
-                Align: =Align.Center
-                BorderColor: =RGBA(0, 0, 0, 0)
-                Height: =14
-                OnSelect: =
-                PaddingLeft: =3
-                PaddingTop: =4
-                Size: =8
-                Text: ="2"
-                Visible: =NDrop
-                Width: =15
-                X: =112
-                ZIndex: =2
-
-            UserNotificationsDropdownIcon As icon.Bell:
-                Color: =RGBA(0, 0, 0, 1)
-                Height: =34
-                Icon: =Icon.Bell
-                OnSelect: |
-                    =
-                Visible: =NDrop
-                Width: =33
-                ZIndex: =3
-
-            UserNotificationsLabel As label:
-                Font: =Font.'Open Sans Condensed'
-                Height: =18
-                OnSelect: =
-                PaddingLeft: =0
-                Size: =15
-                Text: ="Notifications"
-                Visible: =NDrop
-                Width: =111
-                X: =33
-                Y: =8
-                ZIndex: =4
-
-            NotificationsDropdownbtn As button:
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =34
-                HoverFill: =ColorFade(RGBA(105,105,105,.25), -20%)
-                PressedColor: =RGBA(0,0,0,0)
-                PressedFill: =RGBA(105,105,105,.35)
-                Text: =""
-                Visible: =NDrop
-                Width: =164
-                ZIndex: =5
-
-    compWebMenu_19 As compWebMenu:
-        Visible: =If(Home.Size > 1, true, false)
-        ZIndex: =10
 
