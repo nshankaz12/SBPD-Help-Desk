@@ -282,6 +282,7 @@
                             ZIndex: =4
 
                         Dropdown5_2 As dropdown:
+                            Default: =LookUp(Category_1, ID = FirstCategory, name)
                             Height: =Parent.Height/3.5
                             Items: =Filter(Category_1, parentId = Blank())
                             Width: =Parent.Width/1.25
