@@ -568,7 +568,7 @@
                                     //If(!IsBlank(LookUp(Users, id = ThisItem.assignedTO, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.assignedTO, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.assignedTO, email)), 'blank-profile-pic')
                                     
                                     // Sharepoint
-                                    If(!IsBlank(LookUp(Users, id = ThisItem.AssignedTo, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.AssignedTo, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.AssignedTo, email)), 'blank-profile-pic')
+                                    If(!IsBlank(LookUp(Users_1, ID = ThisItem.AssignedTo, email)) && Office365Users.UserPhotoMetadata(LookUp(Users_1, ID = ThisItem.AssignedTo, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users_1, ID = ThisItem.AssignedTo, email)), 'blank-profile-pic')
                                 ImagePosition: =ImagePosition.Fill
                                 RadiusBottomLeft: =256
                                 RadiusBottomRight: =256
@@ -588,7 +588,7 @@
                                     //If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
                                     
                                     // Sharepoint
-                                    If(IsBlank(ThisItem.AssignedTo) || ThisItem.AssignedTo = 0, "Unassigned", LookUp(Users, id = ThisItem.AssignedTo, fullName))
+                                    If(IsBlank(ThisItem.AssignedTo) || ThisItem.AssignedTo = 0, "Unassigned", LookUp(Users_1, ID = ThisItem.AssignedTo, fullName))
                                 Visible: =is_admin
                                 Width: =154
                                 X: =67
