@@ -564,6 +564,22 @@
                         ZIndex: =1
 
                         submitBtn1 As button:
+                            OnSelect: |-
+                                =
+                                //false
+                                Patch(
+                                    Tickets,
+                                    {
+                                        title: TextInput3_1.Text,
+                                        description: TextInput5_1.Text,
+                                        creatorId:  userData.id,
+                                        mainCategory: Dropdown5_2.Selected.ID,
+                                        category: Dropdown5_1.Selected.ID,
+                                        subCategory: Dropdown7_2.Selected.ID,
+                                        locationId: Dropdown1_1.Selected.ID,
+                                        status: "open"
+                                    }
+                                );
                             Text: ="Submit"
                             Width: =Parent.Width/3
                             X: =cancelBtn1.X + (Self.Width*1.3)
