@@ -308,29 +308,29 @@
                             OnSelect: |-
                                 =If(AssigneeId_1.Text = "0",
                                     Patch(
-                                        Tickets_1,
+                                        Tickets,
                                         LookUp(
-                                            Tickets_1,
-                                            id = ticket
+                                            Tickets,
+                                            ID = ticketInfo.ID
                                         ),
                                         {tags: Label4_2.Text},
-                                        {assignedTO: 0}
+                                        {assignedTo: 0}
                                     ),
                                     Patch(
-                                        Tickets_1,
+                                        Tickets,
                                         LookUp(
-                                            Tickets_1,
-                                            id = ticket
+                                            Tickets,
+                                            ID = ticketInfo.ID
                                         ),
                                         {tags: Label4_2.Text},
-                                        {assignedTO: Value(AssigneeId_1.Text)},
+                                        {assignedTo: Value(AssigneeId_1.Text)},
                                         {addAssignees: Additional_Assign_Value_Label_1.Text}
                                         )
                                 );
                                 
                                 
                                 //Patch(Tickets_1,ticketRec, {addAssignees: Label4_1.Text});
-                                Refresh(Tickets_1)
+                                Refresh(Tickets)
                             Text: ="Save"
                             Width: =120
                             X: |-
@@ -356,7 +356,7 @@
                             Font: =Font.Georgia
                             Height: =37
                             Size: =12
-                            Text: =dateCreated
+                            Text: =ticketInfo.DateCreated
                             Width: =180
                             X: =Rectangle_behind_details_2.X+142
                             Y: =Rectangle_behind_details_2.Y + 301
@@ -401,16 +401,16 @@
                             ChevronBackground: =ColorScheme.primary
                             Default: |
                                 =
-                            DefaultSelectedItems: =If(IsBlank(assigneeId), Blank(), Filter(Users,id = assigneeId))
-                            DisplayFields: =["fullName"]
+                            DefaultSelectedItems: =If(IsBlank(assigneeId), Blank(), Filter(Users_1,ID = ticketInfo.AssignedTo))
+                            DisplayFields: =["ComplianceAssetId"]
                             Height: =32
                             InputTextPlaceholder: ="Unassigned"
                             IsSearchable: =false
                             Items: |-
-                                =Filter(Users, userRole = "tech" || userRole = "admin")
+                                =Filter(Users_1, userRole = "tech" || userRole = "admin")
                                 //Users
                             NoSelectionText: ="Unassigned"
-                            SearchFields: =["fullName"]
+                            SearchFields: =["ComplianceAssetId"]
                             SearchItems: =[]
                             SelectMultiple: =false
                             Size: =12
@@ -479,7 +479,7 @@
                             Font: =Font.Georgia
                             Height: =37
                             Size: =12
-                            Text: =LookUp(Category, category = id, name)
+                            Text: =LookUp(Category_1, ID = ticketInfo.MainCategory, name)
                             Width: =180
                             X: =Rectangle_behind_details_2.X+142
                             Y: =Rectangle_behind_details_2.Y + 219
@@ -1636,7 +1636,7 @@
                                         PaddingLeft: =10
                                         PaddingTop: =0
                                         Size: =If(CountRows(Filter(MatchAll(CommentContentLabel.Text, "\S*(\s|\n?)"), !IsBlank(FullMatch)))>=20, 10, 15)
-                                        Text: =ThisItem.title
+                                        Text: =ThisItem.message
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =Parent.TemplateWidth
                                         X: =1
@@ -1899,7 +1899,7 @@
                                         HoverBorderColor: =
                                         HoverColor: =Color.Gray
                                         HoverFill: =
-                                        OnSelect: =Remove(Comments, ThisItem);
+                                        OnSelect: =Remove(Comments_1, ThisItem);
                                         PressedBorderColor: =
                                         PressedColor: =Color.Gray
                                         PressedFill: =
@@ -2326,11 +2326,11 @@
                         ComboBox1_1 As combobox:
                             ChevronBackground: =ColorScheme.primary
                             DefaultSelectedItems: =If(ticketInfo.Tags = "", Blank(), Filter(Tags_1, name in ticketInfo.Tags))
-                            DisplayFields: =["ComplianceAssetId"]
+                            DisplayFields: =["field_2"]
                             Height: =37
                             Items: =Tags_1
-                            SearchFields: =["ComplianceAssetId"]
-                            SearchItems: =Search(Tags_1,ComboBox1_1.SearchText,"ComplianceAssetId")
+                            SearchFields: =["field_2"]
+                            SearchItems: =Search(Tags_1,ComboBox1_1.SearchText,"field_2")
                             Width: =254
                             X: =291
                             Y: =403
@@ -2422,7 +2422,7 @@
                             Font: =Font.Georgia
                             Height: =57
                             Size: =16
-                            Text: =status
+                            Text: =ticketInfo.Status
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Status_Label.Y
@@ -2444,13 +2444,13 @@
                             Default: |
                                 =
                             DefaultSelectedItems: =If(IsBlank(assigneeId), Blank(), Filter(Users_1,ID = assigneeId))
-                            DisplayFields: =["ComplianceAssetId"]
+                            DisplayFields: =["field_4"]
                             Height: =37
                             InputTextPlaceholder: ="Unassigned"
                             IsSearchable: =false
                             Items: =Filter(Users_1, userRole = "tech" || userRole = "admin")
                             NoSelectionText: ="Unassigned"
-                            SearchFields: =["ComplianceAssetId"]
+                            SearchFields: =["field_4"]
                             SearchItems: =[]
                             SelectMultiple: =false
                             Visible: |
@@ -2567,11 +2567,11 @@
 
                         Additional_Assign_ComboBox As combobox:
                             DefaultSelectedItems: =If(ticketInfo.AddAssignees = "", Blank(), Filter(Users_1, fullName in ticketInfo.AddAssignees))
-                            DisplayFields: =["ComplianceAssetId"]
+                            DisplayFields: =["field_4"]
                             Height: =37
                             IsSearchable: =false
                             Items: =Filter(Users_1, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label.Text)
-                            SearchFields: =["ComplianceAssetId"]
+                            SearchFields: =["field_4"]
                             SearchItems: =[]
                             Width: =250
                             X: =291
