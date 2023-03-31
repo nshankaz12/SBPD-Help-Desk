@@ -2330,6 +2330,15 @@
                             DisplayFields: =["field_2"]
                             Height: =37
                             Items: =Tags_1
+                            OnChange: |-
+                                =Patch(
+                                    Tickets,
+                                    LookUp(
+                                        Tickets,
+                                        ID = ticketInfo.ID
+                                    ),
+                                    {tags: Label4_1.Text}
+                                );
                             SearchFields: =["field_2"]
                             SearchItems: =Search(Tags_1,ComboBox1_1.SearchText,"field_2")
                             Width: =254
@@ -2499,7 +2508,17 @@
                             Height: =24
                             HoverColor: =ColorScheme.primary
                             OnSelect: |+
-                                =UpdateContext({assigneeId:userData.id})
+                                =UpdateContext({assigneeId:userData.id});
+                                Patch(
+                                    Tickets,
+                                    LookUp(
+                                        Tickets,
+                                        ID = ticketInfo.ID
+                                    ),
+                                    {
+                                        assignedTo: userData.id
+                                    }
+                                );
                                 
                             Size: =12
                             Text: ="Assign to me"
@@ -2572,6 +2591,15 @@
                             Height: =37
                             IsSearchable: =false
                             Items: =Filter(Users_1, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label.Text)
+                            OnChange: |-
+                                =Patch(
+                                    Tickets,
+                                    LookUp(
+                                        Tickets,
+                                        ID = ticketInfo.ID
+                                    ),
+                                    {addAssignees: Additional_Assign_Value_Label.Text}
+                                );
                             SearchFields: =["field_4"]
                             SearchItems: =[]
                             Width: =250
