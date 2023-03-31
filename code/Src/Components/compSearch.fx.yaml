@@ -161,7 +161,9 @@ compSearch As CanvasComponent:
         Color: =RGBA(255, 255, 255, 1)
         Fill: =Color.Transparent
         Height: =Parent.Height
-        HoverFill: =RGBA(0, 18, 107, 1)
+        HoverFill: |-
+            =//RGBA(0, 18, 107, 1)
+            ColorFade(ColorScheme.secondary, 30%)
         Icon: =Icon.ArrowRight
         OnSelect: |-
             =Set(
@@ -212,7 +214,9 @@ compSearch As CanvasComponent:
     cancelIcon_1 As icon.Cancel:
         Color: =RGBA(116, 116, 116, 1)
         Height: =36
-        HoverColor: =RGBA(0, 18, 107, 1)
+        HoverColor: |-
+            =//RGBA(0, 18, 107, 1)
+            ColorScheme.secondaryPressedColor
         Icon: =Icon.Cancel
         OnSelect: |-
             =Set(

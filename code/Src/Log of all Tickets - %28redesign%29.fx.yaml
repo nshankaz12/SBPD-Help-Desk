@@ -67,27 +67,39 @@
 
             compFilterMenu_5 As compFilterMenu:
                 AlignInContainer: =AlignInContainer.End
+                FontSize: |-
+                    =//If(App.Height > 560, 18, 13)
+                    
+                    If(App.Height - compFilterMenu_5.HeightOffset > 340, 16, 13)
                 Height: =If(compFilterMenu_5.FilterVisible, compFilterMenu_5.NewHeight, compFilterMenu_5.FilterIconSize)
+                IconSize: |-
+                    =//If(App.Height > 560, 40, 30)
+                    
+                    If(App.Height - compFilterMenu_5.HeightOffset > 560, 40, 30)
                 LayoutMinHeight: =640
                 LayoutMinWidth: =640
                 NewHeight: |-
-                    =If(
+                    =//If(compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",If(App.Height>560,400,320),!compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",150,If(App.Height>560,420,320))
+                    
+                    If(
                         compFilterMenu_5.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
                         If(
-                            App.Height > 560,
+                            App.Height - compFilterMenu_5.HeightOffset > 560,
                             400,
                             320
                         ),
                         !compFilterMenu_5.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
                         150,
                         If(
-                            App.Height > 560,
+                            App.Height - compFilterMenu_5.HeightOffset > 560,
                             420,
                             320
                         )
                     )
                 Visible: =App.Width > 600 || (App.Width <= 600 && !compSearch_1.SearchVisible)
-                Width: =If(compFilterMenu_5.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu_5.FilterIconSize)
+                Width: |-
+                    =//If(compFilterMenu.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu.FilterIconSize)
+                    If(compFilterMenu_5.FilterVisible, If(App.Width > 600 && App.Height - compFilterMenu_5.HeightOffset > 400, 220, 185), compFilterMenu_5.FilterIconSize)
                 X: =Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
                 Y: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + ((SearchFilterContainer.Height - compFilterMenu_5.FilterIconSize) / 2)
                 ZIndex: =2
