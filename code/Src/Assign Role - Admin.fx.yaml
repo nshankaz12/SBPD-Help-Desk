@@ -96,7 +96,7 @@
                     ZIndex: =3
 
                 RoleDropdown As dropdown:
-                    Default: =""
+                    Default: =LookUp(Users_1, ID = UserDropdown.Selected.ID, userRole)
                     Height: =59
                     Items: |-
                         =ForAll(Distinct(Users_1, userRole), {Result: If(ThisRecord.Value = "client", "staff", ThisRecord.Value)})
