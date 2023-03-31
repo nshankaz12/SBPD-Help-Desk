@@ -51,10 +51,10 @@
             DataField: ="name"
             Default: =ThisItem.name
             DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Tags_1],DataSourceInfo.DisplayName,"name")
+            DisplayName: =DataSourceInfo([@Tags_1],DataSourceInfo.DisplayName, "{Name}")
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
-            MaxLength: =DataSourceInfo([@Tags], DataSourceInfo.MaxLength, "name")
+            MaxLength: =DataSourceInfo([@Tags_1], DataSourceInfo.MaxLength, "field_2")
             Required: =false
             Update: =DataCardValue1.Text
             Width: =495

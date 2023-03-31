@@ -755,7 +755,7 @@
                                         PaddingLeft: =10
                                         PaddingTop: =0
                                         Size: =If(CountRows(Filter(MatchAll(CommentContentLabel_1.Text, "\S*(\s|\n?)"), !IsBlank(FullMatch)))>=20, 10, 15)
-                                        Text: =ThisItem.title
+                                        Text: =ThisItem.message
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =Parent.TemplateWidth
                                         Y: =CommentOwnerNameLabel_1.Y+CommentOwnerNameLabel_1.Height+5
@@ -963,7 +963,7 @@
                                         PaddingRight: =0
                                         PaddingTop: =0
                                         Size: =15
-                                        Text: =ThisItem.title
+                                        Text: =ThisItem.message
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =776
                                         X: =93
@@ -1719,6 +1719,7 @@
                                         BorderThickness: =2
                                         Fill: =Color.Transparent
                                         Height: =32
+                                        Visible: =If(IsEmpty(Filter(Comments_1, ticketId = ticketInfo.ID)), false, true)
                                         Width: =32
                                         X: =10
                                         Y: =10
