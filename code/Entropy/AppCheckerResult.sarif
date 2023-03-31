@@ -1578,43 +1578,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.Items"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.Items",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 5,
-                  "charOffset": 27,
-                  "snippet": {
-                    "text": ".name"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Items",
-                "module": "MainCategoryBody",
-                "type": "MainCategoryBody.Gallery6"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrTypeError",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "MainCategoryBody.Gallery6.Button14.Text"
                 }
               ],
@@ -1649,7 +1612,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
-          "ruleIndex": 4
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1690,7 +1653,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleRulePropTypes-PropKind-RuleKind",
-          "ruleIndex": 5
+          "ruleIndex": 4
         },
         {
           "locations": [
@@ -1884,7 +1847,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1964,7 +1927,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -2011,46 +1974,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Tag Manager'.TagTextfield.DataSource"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Tag Manager'.TagTextfield.DataSource",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 4,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "Tags"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DataSource",
-                "module": "Tag Manager",
-                "type": "'Tag Manager'.TagTextfield"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Tags"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Tag Manager'.TagTextfield.TagNameField.DisplayName"
                 }
               ],
@@ -2060,10 +1983,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 4,
-                  "charOffset": 17,
+                  "charLength": 6,
+                  "charOffset": 52,
                   "snippet": {
-                    "text": "Tags"
+                    "text": "\"name\""
                   }
                 }
               },
@@ -2076,15 +1999,16 @@
           ],
           "message": {
             "arguments": [
-              "Tags"
+              "name",
+              "{Name}"
             ],
             "id": "issue"
           },
           "properties": {
             "level": "High"
           },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
+          "ruleId": "app-ErrColumnDoesNotExist-Name-Similar",
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -2100,10 +2024,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 57,
+                  "charLength": 59,
                   "charOffset": 0,
                   "snippet": {
-                    "text": "DataSourceInfo([@Tags],DataSourceInfo.DisplayName,\"name\")"
+                    "text": "DataSourceInfo([@Tags_1],DataSourceInfo.DisplayName,\"name\")"
                   }
                 }
               },
@@ -2124,7 +2048,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -2204,84 +2128,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Tag Manager'.TagTextfield.TagNameField.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Tag Manager'.TagTextfield.TagNameField.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Tag Manager",
-                "type": "'Tag Manager'.TagTextfield.TagNameField"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ThisItem"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Tag Manager'.TagTextfield.TagNameField.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Tag Manager'.TagTextfield.TagNameField.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 5,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".name"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Tag Manager",
-                "type": "'Tag Manager'.TagTextfield.TagNameField"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -3217,7 +3064,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -3297,7 +3144,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -3338,1148 +3185,6 @@
           },
           "ruleId": "app-ErrInvalidName",
           "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.DataSource"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.DataSource",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "Tickets_1"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DataSource",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Tickets_1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.MaxLength"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.MaxLength",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 17,
-                  "snippet": {
-                    "text": "Tickets_1"
-                  }
-                }
-              },
-              "properties": {
-                "member": "MaxLength",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Tickets_1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.MaxLength"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.MaxLength",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 63,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, \"title\")"
-                  }
-                }
-              },
-              "properties": {
-                "member": "MaxLength",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "DataSourceInfo"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 17,
-                  "snippet": {
-                    "text": "Tickets_1"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Tickets_1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 63,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,\"title\")"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "DataSourceInfo"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ThisItem"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 6,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".title"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ThisItem"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 13,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".mainCategory"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 17,
-                  "snippet": {
-                    "text": "Tickets_1"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Tickets_1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 70,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,\"mainCategory\")"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.mainCategory_DataCard3"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "DataSourceInfo"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ThisItem"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".category"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 17,
-                  "snippet": {
-                    "text": "Tickets_1"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Tickets_1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 66,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,\"category\")"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.category_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "DataSourceInfo"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ThisItem"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 12,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".subCategory"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 17,
-                  "snippet": {
-                    "text": "Tickets_1"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Tickets_1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 69,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,\"subCategory\")"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.subCategory_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "DataSourceInfo"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.MaxLength"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.MaxLength",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 17,
-                  "snippet": {
-                    "text": "Tickets_1"
-                  }
-                }
-              },
-              "properties": {
-                "member": "MaxLength",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Tickets_1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.MaxLength"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.MaxLength",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 69,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, \"description\")"
-                  }
-                }
-              },
-              "properties": {
-                "member": "MaxLength",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "DataSourceInfo"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 17,
-                  "snippet": {
-                    "text": "Tickets_1"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Tickets_1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 69,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,\"description\")"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "DataSourceInfo"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ThisItem"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 12,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".description"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ThisItem"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 11,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".locationId"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 17,
-                  "snippet": {
-                    "text": "Tickets_1"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Tickets_1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1.DisplayName"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1.DisplayName",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 68,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,\"locationId\")"
-                  }
-                }
-              },
-              "properties": {
-                "member": "DisplayName",
-                "module": "Create A Ticket",
-                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.locationId_DataCard1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "DataSourceInfo"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
         },
         {
           "locations": [
@@ -4599,7 +3304,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -4756,7 +3461,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -4913,7 +3618,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -5070,7 +3775,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -5227,7 +3932,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -5621,7 +4326,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -5701,7 +4406,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -5858,7 +4563,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -6403,47 +5108,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label27.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label27.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Log of All Tickets - Admin Tech",
-                "type": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label27"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ThisItem"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -6474,45 +5139,8 @@
             }
           ],
           "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label28.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label28.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Log of All Tickets - Admin Tech",
-                "type": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label28"
-              }
-            }
-          ],
-          "message": {
             "arguments": [
-              "ThisItem"
+              "id"
             ],
             "id": "issue"
           },
@@ -6551,45 +5179,8 @@
             }
           ],
           "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label29.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label29.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Log of All Tickets - Admin Tech",
-                "type": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label29"
-              }
-            }
-          ],
-          "message": {
             "arguments": [
-              "ThisItem"
+              "title"
             ],
             "id": "issue"
           },
@@ -6628,45 +5219,8 @@
             }
           ],
           "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Button10.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Button10.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Log of All Tickets - Admin Tech",
-                "type": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Button10"
-              }
-            }
-          ],
-          "message": {
             "arguments": [
-              "ThisItem"
+              "description"
             ],
             "id": "issue"
           },
@@ -6705,45 +5259,8 @@
             }
           ],
           "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label30.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label30.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 0,
-                  "snippet": {
-                    "text": "ThisItem"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Log of All Tickets - Admin Tech",
-                "type": "'Log of All Tickets - Admin Tech'.TicketLogMainContainer.TicketLogVerticalLayoutContainer.TicketLogMainContentContainer.Gallery11.Label30"
-              }
-            }
-          ],
-          "message": {
             "arguments": [
-              "ThisItem"
+              "status"
             ],
             "id": "issue"
           },
@@ -6782,13 +5299,16 @@
             }
           ],
           "message": {
+            "arguments": [
+              "resolution"
+            ],
             "id": "issue"
           },
           "properties": {
             "level": "High"
           },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 1
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -6949,7 +5469,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
-          "ruleIndex": 4
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -7029,7 +5549,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -7350,7 +5870,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
-          "ruleIndex": 4
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -7430,7 +5950,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -17706,23 +16226,6 @@
               }
             },
             {
-              "id": "app-ErrTypeError",
-              "messageStrings": {
-                "issue": {
-                  "text": "Incompatible type. We can't evaluate your formula because of a type error."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "Check the types of the values involved in the formula and ensure the types match."
-                ],
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
               "id": "app-ErrIncompatibleTypesForEquality-Left-Right",
               "messageStrings": {
                 "issue": {
@@ -17762,6 +16265,20 @@
               "messageStrings": {
                 "issue": {
                   "text": "The function '{0}' has some invalid arguments."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-ErrColumnDoesNotExist-Name-Similar",
+              "messageStrings": {
+                "issue": {
+                  "text": "The specified column '{0}' does not exist. The column with the most similar name is '{1}'."
                 }
               },
               "properties": {

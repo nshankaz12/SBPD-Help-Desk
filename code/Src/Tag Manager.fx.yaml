@@ -37,7 +37,7 @@
     TagTextfield As form:
         BorderColor: =RGBA(0, 0, 0, 1)
         BorderThickness: =2
-        DataSource: =Tags
+        DataSource: =Tags_1
         DefaultMode: =FormMode.New
         Height: =158
         NumberOfColumns: =1
@@ -51,7 +51,7 @@
             DataField: ="name"
             Default: =ThisItem.name
             DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Tags],DataSourceInfo.DisplayName,"name")
+            DisplayName: =DataSourceInfo([@Tags_1],DataSourceInfo.DisplayName,"name")
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             MaxLength: =DataSourceInfo([@Tags], DataSourceInfo.MaxLength, "name")

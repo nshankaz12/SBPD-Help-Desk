@@ -161,7 +161,7 @@
 
                 CreateATicketForm As form:
                     AlignInContainer: =AlignInContainer.SetByContainer
-                    DataSource: =Tickets_1
+                    DataSource: =Tickets
                     DefaultMode: =FormMode.New
                     Height: =Parent.Height/1.21
                     LayoutMinHeight: =250
@@ -175,10 +175,10 @@
                         DataField: ="title"
                         Default: =ThisItem.title
                         DisplayMode: =Parent.DisplayMode
-                        DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"title")
+                        DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName, "field_2")
                         Fill: =RGBA(0, 0, 0, 0)
                         Height: =Parent.Height/4
-                        MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "title")
+                        MaxLength: =DataSourceInfo([@Tickets], DataSourceInfo.MaxLength, "field_2")
                         Required: =false
                         Update: =
                         Width: =If( 'Create A Ticket'.Size = 1, Parent.Width, Parent.Width/3)
@@ -235,7 +235,7 @@
                         DataField: ="mainCategory"
                         Default: =ThisItem.mainCategory
                         DisplayMode: =Parent.DisplayMode
-                        DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"mainCategory")
+                        DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName, "{Name}")
                         Fill: =RGBA(0, 0, 0, 0)
                         Height: =Parent.Height/4
                         Required: =true
@@ -295,7 +295,7 @@
                         DataField: ="category"
                         Default: =ThisItem.category
                         DisplayMode: =Parent.DisplayMode
-                        DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"category")
+                        DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName,"{Name}")
                         Fill: =RGBA(0, 0, 0, 0)
                         Height: =Parent.Height/4
                         Required: =true
@@ -354,7 +354,7 @@
                         DataField: ="subCategory"
                         Default: =ThisItem.subCategory
                         DisplayMode: =Parent.DisplayMode
-                        DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"subCategory")
+                        DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName,"{Name}")
                         Fill: =RGBA(0, 0, 0, 0)
                         Height: =Parent.Height/4
                         Required: =false
@@ -413,10 +413,10 @@
                         DataField: ="description"
                         Default: =ThisItem.description
                         DisplayMode: =Parent.DisplayMode
-                        DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"description")
+                        DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName, "{Name}")
                         Fill: =RGBA(0, 0, 0, 0)
                         Height: =Parent.Height/4
-                        MaxLength: =DataSourceInfo([@Tickets_1], DataSourceInfo.MaxLength, "description")
+                        MaxLength: =DataSourceInfo([@Tickets], DataSourceInfo.MaxLength, "{Name}")
                         Required: =false
                         Update: =
                         Width: =If( 'Create A Ticket'.Size = 1, Parent.Width, Parent.Width/3)
@@ -428,7 +428,7 @@
                         DataCardKey5 As label:
                             AutoHeight: =true
                             Height: =34
-                            Text: =Parent.DisplayName
+                            Text: ="Description"
                             Width: =Parent.Width - 60
                             Wrap: =false
                             X: =30
@@ -475,7 +475,7 @@
                         DataField: ="locationId"
                         Default: =ThisItem.locationId
                         DisplayMode: =Parent.DisplayMode
-                        DisplayName: =DataSourceInfo([@Tickets_1],DataSourceInfo.DisplayName,"locationId")
+                        DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName,"{Name}")
                         Fill: =RGBA(0, 0, 0, 0)
                         Height: =Parent.Height/4
                         Required: =false
