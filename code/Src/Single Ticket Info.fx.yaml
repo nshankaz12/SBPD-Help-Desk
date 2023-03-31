@@ -2457,7 +2457,6 @@
                             DisplayFields: =["field_4"]
                             Height: =37
                             InputTextPlaceholder: ="Unassigned"
-                            IsSearchable: =false
                             Items: =Filter(Users_1, userRole = "tech" || userRole = "admin")
                             NoSelectionText: ="Unassigned"
                             OnChange: |-
@@ -2476,7 +2475,7 @@
                                     }
                                 );
                             SearchFields: =["field_4"]
-                            SearchItems: =[]
+                            SearchItems: =Search(Filter(Users_1, userRole = "tech" || userRole = "admin"),Assignee_ComboBox.SearchText,"field_4")
                             SelectMultiple: =false
                             Visible: |
                                 =true
@@ -2513,8 +2512,7 @@
                             Text: |-
                                 =//Concat(Assignee_ComboBox.SelectedItems, id)
                                 If(CountRows(Assignee_ComboBox.SelectedItems) = 0, "0",Concat(Assignee_ComboBox.SelectedItems, ID) )
-                            Visible: |
-                                =true
+                            Visible: =false
                             X: =299
                             Y: =80
                             ZIndex: =17
