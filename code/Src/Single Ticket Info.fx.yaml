@@ -2460,6 +2460,21 @@
                             IsSearchable: =false
                             Items: =Filter(Users_1, userRole = "tech" || userRole = "admin")
                             NoSelectionText: ="Unassigned"
+                            OnChange: |-
+                                =Patch(
+                                    Tickets,
+                                    LookUp(
+                                        Tickets,
+                                        ID = ticketInfo.ID
+                                    ),
+                                    {
+                                        assignedTo: If(
+                                            IsBlank(AssigneeId),
+                                            Blank(),
+                                            Value(AssigneeId.Text)
+                                        )
+                                    }
+                                );
                             SearchFields: =["field_4"]
                             SearchItems: =[]
                             SelectMultiple: =false
@@ -2467,7 +2482,7 @@
                                 =true
                             Width: =248
                             X: =291
-                            Y: =140
+                            Y: =134
                             ZIndex: =14
 
                         Assignee_Value_Label As label:
