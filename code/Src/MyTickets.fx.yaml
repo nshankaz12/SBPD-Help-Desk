@@ -28,17 +28,17 @@
                 ),
                 {
                     ID: Value(Value.ID),
-                    title: Text(Value.title),
-                    description: Text(Value.description),
-                    mainCategory: Value(Value.mainCategory),
-                    dateCreated: DateValue(Value.dateCreated),
-                    creatorId: Value(Value.creatorId),
-                    status: Text(Value.status),
-                    assignedTo: Value(Value.assignedTo),
-                    lastUpdated: DateValue(Value.lastUpdated),
-                    locationId: Value(Value.locationId),
-                    tags: Text(Value.tags),
-                    addAssignees: Text(Value.addAssignees)
+                    Title: Text(Value.title),
+                    Description: Text(Value.description),
+                    MainCategory: Value(Value.mainCategory),
+                    DateCreated: DateValue(Value.dateCreated),
+                    CreatorId: Value(Value.creatorId),
+                    Status: Text(Value.status),
+                    AssignedTo: Value(Value.assignedTo),
+                    LastUpdated: DateValue(Value.lastUpdated),
+                    LocationId: Value(Value.locationId),
+                    Tags: Text(Value.tags),
+                    AddAssignees: Text(Value.addAssignees)
                 }
             )
         )
@@ -394,7 +394,7 @@
                             // Test
                             //colTickets
                             
-                            Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, creatorId = userData.id), "My Assigned", Filter(colTickets, assignedTo = userData.id))
+                            Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedTo = userData.id))
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320
@@ -525,7 +525,7 @@
                             Height: =54
                             OnSelect: =Select(Parent)
                             Size: =12
-                            Text: =ThisItem.title
+                            Text: =ThisItem.Title
                             Width: |-
                                 =//208
                                 Parent.TemplateWidth - IdLabel.Width - 47
@@ -537,7 +537,7 @@
                             Height: =37
                             OnSelect: =Select(Parent)
                             Size: =10
-                            Text: =ThisItem.description
+                            Text: =ThisItem.Description
                             Width: |-
                                 =//282
                                 Parent.TemplateWidth - 48
@@ -566,7 +566,7 @@
                                 34
                             OnSelect: =Select(Parent)
                             Size: =10
-                            Text: =DateValue(ThisItem.dateCreated)
+                            Text: =DateValue(ThisItem.DateCreated)
                             Width: =75
                             X: |-
                                 =//231
@@ -618,7 +618,7 @@
                                     //If(!IsBlank(LookUp(Users, id = ThisItem.assignedTO, email)) && Office365Users.UserPhotoMetadata(LookUp(Users, id = ThisItem.assignedTO, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users, id = ThisItem.assignedTO, email)), 'blank-profile-pic')
                                     
                                     // Sharepoint
-                                    If(!IsBlank(LookUp(Users_1, ID = ThisItem.assignedTo, email)) && Office365Users.UserPhotoMetadata(LookUp(Users_1, ID = ThisItem.assignedTo, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users_1, ID = ThisItem.assignedTo, email)), 'blank-profile-pic')
+                                    If(!IsBlank(LookUp(Users_1, ID = ThisItem.AssignedTo, email)) && Office365Users.UserPhotoMetadata(LookUp(Users_1, ID = ThisItem.AssignedTo, email)).HasPhoto, Office365Users.UserPhotoV2(LookUp(Users_1, ID = ThisItem.AssignedTo, email)), 'blank-profile-pic')
                                 ImagePosition: =ImagePosition.Fill
                                 RadiusBottomLeft: =256
                                 RadiusBottomRight: =256
@@ -640,7 +640,7 @@
                                     //If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
                                     
                                     // Sharepoint
-                                    If(IsBlank(ThisItem.assignedTo) || ThisItem.assignedTo = 0, "Unassigned", LookUp(Users_1, ID = ThisItem.assignedTo, fullName))
+                                    If(IsBlank(ThisItem.AssignedTo) || ThisItem.AssignedTo = 0, "Unassigned", LookUp(Users_1, ID = ThisItem.AssignedTo, fullName))
                                 Visible: =is_admin
                                 Width: |-
                                     =//154
@@ -699,7 +699,7 @@
                                     //ThisItem.status
                                     
                                     // Sharepoint
-                                    ThisItem.status
+                                    ThisItem.Status
                                 Width: =65
                                 X: |-
                                     =//241
@@ -741,7 +741,7 @@
                                     //LookUp(Category, id = ThisItem.mainCategory, name)
                                     
                                     // Sharepoint
-                                    LookUp(Category_1, ID = ThisItem.mainCategory, name)
+                                    LookUp(Category_1, ID = ThisItem.MainCategory, name)
                                 Width: |-
                                     =//143
                                     Parent.TemplateWidth - CategoryLabelText.Width - StatusLabel.Width - StatusColor.Width - 47

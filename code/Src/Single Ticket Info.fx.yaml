@@ -209,7 +209,7 @@
                         Title_label_8 As label:
                             Font: =Font.Georgia
                             Size: =If('Single Ticket Info'.Size=1,12,24)
-                            Text: =ticketInfo.Title
+                            Text: =
                             Width: =Parent.Width
                             Y: =10
                             ZIndex: =15
@@ -1462,7 +1462,7 @@
                                 Height: =100
                                 LayoutMinHeight: =100
                                 Size: =If('Single Ticket Info'.Size<2,10,16)
-                                Text: =ticketInfo.description
+                                Text: =ticketInfo.Description
                                 Width: =Parent.Width
                                 X: =127
                                 Y: =11
@@ -1887,7 +1887,7 @@
                         Title_label_3 As label:
                             Font: =Font.Georgia
                             Size: =If('Single Ticket Info'.Size=1,12,24)
-                            Text: =ticketInfo.metricDate
+                            Text: =ticketInfo.Title
                             Width: =Parent.Width
                             Y: =10
                             ZIndex: =15
@@ -2277,7 +2277,7 @@
 
                         ComboBox1_1 As combobox:
                             ChevronBackground: =ColorScheme.primary
-                            DefaultSelectedItems: =If(ticketInfo.tags = "", Blank(), Filter(Tags_1, name in ticketInfo.tags))
+                            DefaultSelectedItems: =If(ticketInfo.Tags = "", Blank(), Filter(Tags_1, name in ticketInfo.Tags))
                             DisplayFields: =["field_2"]
                             Height: =37
                             Items: =Tags_1
@@ -2361,7 +2361,7 @@
                             Font: =Font.Georgia
                             Height: =58
                             Size: =16
-                            Text: =ticketInfo.dateCreated
+                            Text: =ticketInfo.DateCreated
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Created_Label.Y
@@ -2383,7 +2383,7 @@
                             Font: =Font.Georgia
                             Height: =57
                             Size: =16
-                            Text: =ticketInfo.status
+                            Text: =ticketInfo.Status
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Status_Label.Y
@@ -2404,7 +2404,7 @@
                             ChevronBackground: =ColorScheme.primary
                             Default: |
                                 =
-                            DefaultSelectedItems: =If(IsBlank(ticketInfo.assignedTo), Blank(), Filter(Users_1,ID = ticketInfo.assignedTo))
+                            DefaultSelectedItems: =If(IsBlank(ticketInfo.AssignedTo), Blank(), Filter(Users_1,ID = ticketInfo.AssignedTo))
                             DisplayFields: =["field_4"]
                             Height: =37
                             InputTextPlaceholder: ="Unassigned"
@@ -2502,7 +2502,7 @@
                             Font: =Font.Georgia
                             Height: =58
                             Size: =16
-                            Text: =LookUp(Category_1, ID = ticketInfo.mainCategory, name)
+                            Text: =LookUp(Category_1, ID = ticketInfo.MainCategory, name)
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Category_Label.Y
@@ -2524,7 +2524,7 @@
                             Font: =Font.Georgia
                             Height: =56
                             Size: =16
-                            Text: =LookUp(Users_1, ID = ticketInfo.creatorId, fullName)
+                            Text: =LookUp(Users_1, ID = ticketInfo.CreatorId, fullName)
                             Width: =247
                             X: =289
                             Y: =82
@@ -2652,7 +2652,7 @@
             ZIndex: =5
 
         Button4_6 As button:
-            OnSelect: |
+            OnSelect: |-
                 =Patch(
                     Tickets,
                     LookUp(
@@ -2672,8 +2672,8 @@
                     false
                 );
                 Reset(TextInput1_3);
-                Set(tickID,ticketInfo.ID);
-                UpdateContext({ticketInfo:LookUp(Tickets, ID = tickID)})
+                Set(tickID, ticketInfo.ID);
+                UpdateContext({ticketInfo: LookUp(colTickets, ID = tickID)});
             Text: |-
                 ="Close Ticket
                 "
