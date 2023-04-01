@@ -1653,58 +1653,6 @@
                                         Y: =CommentOwnerNameLabel.Y
                                         ZIndex: =3
 
-                                    Button11_8 As button:
-                                        BorderStyle: =BorderStyle.None
-                                        Color: =Color.DarkGray
-                                        DisabledBorderColor: =
-                                        DisabledColor: =
-                                        Fill: =Color.Transparent
-                                        Height: =30
-                                        HoverBorderColor: =
-                                        HoverColor: =Color.Gray
-                                        HoverFill: =
-                                        OnSelect: |-
-                                            =Set(editMessage, true);
-                                            Set(addMessage, false);
-                                            Set(editableRec, ThisItem);
-                                        PressedBorderColor: =
-                                        PressedColor: =Color.Gray
-                                        PressedFill: =
-                                        RadiusBottomLeft: =0
-                                        RadiusBottomRight: =0
-                                        RadiusTopLeft: =0
-                                        RadiusTopRight: =0
-                                        Text: ="Edit"
-                                        Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                        Width: =105
-                                        Y: =Parent.TemplateHeight-Self.Height-5
-                                        ZIndex: =4
-
-                                    Button11_9 As button:
-                                        BorderStyle: =BorderStyle.None
-                                        Color: =Color.DarkGray
-                                        DisabledBorderColor: =
-                                        DisabledColor: =
-                                        Fill: =Color.Transparent
-                                        Height: =30
-                                        HoverBorderColor: =
-                                        HoverColor: =Color.Gray
-                                        HoverFill: =
-                                        OnSelect: =Remove(Comments_1, ThisItem);
-                                        PressedBorderColor: =
-                                        PressedColor: =Color.Gray
-                                        PressedFill: =
-                                        RadiusBottomLeft: =0
-                                        RadiusBottomRight: =0
-                                        RadiusTopLeft: =0
-                                        RadiusTopRight: =0
-                                        Text: ="Delete"
-                                        Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                        Width: =105
-                                        X: =Button11_8.X+Button11_8.Width+5
-                                        Y: =Parent.TemplateHeight-Self.Height-5
-                                        ZIndex: =5
-
                                     InitialsImage As image:
                                         Height: =32
                                         Image: |-
@@ -1936,7 +1884,7 @@
                         Title_label_3 As label:
                             Font: =Font.Georgia
                             Size: =If('Single Ticket Info'.Size=1,12,24)
-                            Text: =title
+                            Text: =ticketInfo.Title
                             Width: =Parent.Width
                             Y: =10
                             ZIndex: =15
