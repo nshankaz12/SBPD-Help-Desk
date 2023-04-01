@@ -241,7 +241,7 @@ Home As screen:
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
-                        OnSelect: =Switch(ThisItem.NavName, "Create A Ticket", Navigate('Category Select'), "My Tickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Ticket Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
+                        OnSelect: =Switch(ThisItem.NavName, "Create Ticket", Navigate('Category Select'), "My Tickets", Navigate(MyTickets), "Ticket Log", Navigate('Log of All Tickets - Admin Tech'), "Ticket Metrics", Navigate('Ticket Metrics - Admin Tech'), "Assign Role", Navigate('Assign Role - Admin'))
                         ShowScrollbar: =false
                         TemplateSize: =Parent.Height/2.67
                         Width: =Parent.Width
