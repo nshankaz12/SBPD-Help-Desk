@@ -1598,7 +1598,7 @@
                                                 "Close Ticket"
                                             )
                                         )
-                                    Visible: =If(ticketInfo.Status = "open", true, false)
+                                    Visible: =If(LookUp(Tickets,ID = ticketInfo.ID, status) = "open", true, false)
                                     X: =Button1_5.X + Button1_5.Width+50
                                     Y: =Parent.Height-Self.Height-5
                                     ZIndex: =5
@@ -2383,7 +2383,7 @@
                             Font: =Font.Georgia
                             Height: =57
                             Size: =16
-                            Text: =ticketInfo.Status
+                            Text: =LookUp(Tickets,ID = ticketInfo.ID, status)
                             Width: =248
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Status_Label.Y
@@ -2672,8 +2672,7 @@
                     false
                 );
                 Reset(TextInput1_3);
-                Set(tickID, ticketInfo.ID);
-                UpdateContext({ticketInfo: LookUp(colTickets, ID = tickID)});
+                Refresh(Tickets);
             Text: |-
                 ="Close Ticket
                 "
