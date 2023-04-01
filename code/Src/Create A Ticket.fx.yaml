@@ -190,7 +190,7 @@
                         DataCardKey1_1 As label:
                             AutoHeight: =true
                             Height: =34
-                            Text: =Parent.DisplayName
+                            Text: ="Title"
                             Width: =Parent.Width - 60
                             Wrap: =false
                             X: =30
@@ -566,8 +566,7 @@
 
                         submitBtn1 As button:
                             OnSelect: |-
-                                =
-                                //false
+                                =//false
                                 Patch(
                                     Tickets,
                                     {
@@ -578,9 +577,13 @@
                                         category: Dropdown5_1.Selected.ID,
                                         subCategory: Dropdown7_2.Selected.ID,
                                         locationId: Dropdown1_1.Selected.ID,
-                                        status: "open"
+                                        status: "open",
+                                        metricDate: Concatenate(Month(Today()), "/", Year(Today())),
+                                        hasAttachment: If(IsEmpty(AttachmentControl_3.Attachments), 0, 1)
                                     }
                                 );
+                                Navigate(MyTickets);
+                                ResetForm(CreateATicketForm);
                             Text: ="Submit"
                             Width: =Parent.Width/3
                             X: =cancelBtn1.X + (Self.Width*1.3)
