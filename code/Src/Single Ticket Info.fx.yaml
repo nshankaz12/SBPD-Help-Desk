@@ -2390,7 +2390,7 @@
                                     {addAssignees: Additional_Assign_Value_Label.Text}
                                 );
                                 Refresh(Tickets)
-                            Text: ="Save"
+                            Text: ="Save Changes"
                             X: =(Parent.Width-Self.Width)/2
                             Y: =Rectangle_behind_details_1.Height-Self.Height
                             ZIndex: =8
@@ -2453,7 +2453,7 @@
                             ChevronBackground: =ColorScheme.primary
                             Default: |
                                 =
-                            DefaultSelectedItems: =If(IsBlank(assigneeId), Blank(), Filter(Users_1,ID = assigneeId))
+                            DefaultSelectedItems: =If(IsBlank(ticketInfo.AssignedTo), Blank(), Filter(Users_1,ID = ticketInfo.AssignedTo))
                             DisplayFields: =["field_4"]
                             Height: =37
                             InputTextPlaceholder: ="Unassigned"
@@ -2522,8 +2522,9 @@
                             Height: =24
                             HoverColor: =ColorScheme.primary
                             OnSelect: |+
-                                =UpdateContext({assigneeId:userData.id});
-                                Patch(
+                                =UpdateContext({assigneeTo:userData.id}); 
+                                Reset(Assignee_ComboBox);
+                                /* Patch(
                                     Tickets,
                                     LookUp(
                                         Tickets,
@@ -2533,6 +2534,7 @@
                                         assignedTo: userData.id
                                     }
                                 );
+                                */
                                 
                             Size: =12
                             Text: ="Assign to me"
