@@ -48,37 +48,57 @@ App As appinfo:
         
         ClearCollect(colStatus, {Result:"open"}, {Result:"closed"});
         
+        //split admin tech later
         ClearCollect(
             navCol,
             {
                 ID: 1,
-                NavName: "Create Ticket",
-                NavIcon: Icon.AddDocument,
-                NavScreen: "Create A Ticket"
+                NavName: "Home",
+                NavIcon: Icon.Home,
+                ScreenToGoTo: 'Home',
+                AdminTech: true,
+                Staff: true
             },
             {
                 ID: 2,
-                NavName: "My Tickets",
-                NavIcon: Icon.Folder,
-                NavScreen: "MyTickets"
+                NavName: "Create Ticket",
+                NavIcon: Icon.AddDocument,
+                ScreenToGoTo: 'Create A Ticket',
+                AdminTech: true,
+                Staff: true
             },
             {
                 ID: 3,
-                NavName: "Ticket Log",
-                NavIcon: Icon.DocumentWithContent,
-                NavScreen: "Log of All Tickets - Admin Tech"
+                NavName: "My Tickets",
+                NavIcon: Icon.Folder,
+                ScreenToGoTo: MyTickets,
+                AdminTech: true,
+                Staff: true
             },
             {
                 ID: 4,
-                NavName: "Ticket Metrics",
-                NavIcon: Icon.Trending,
-                NavScreen: "Metrics - Admin Tech"
+                NavName: "All Tickets",
+                NavIcon: Icon.DocumentWithContent,
+                ScreenToGoTo: 'Log of All Tickets - Admin Tech',
+                AdminTech: true,
+                Staff: false
             },
             {
                 ID: 5,
-                NavName: "Assign Role",
-                NavIcon: Icon.People,
-                NavScreen: "Assign Role - Admin"
+                NavName: "Admin Manager",
+                NavIcon: Icon.ComputerDesktop,
+                ScreenToGoTo: 'Admin Manager',
+                AdminTech: true,
+                Staff: false
+            }
+            ,
+            {
+                ID: 6,
+                NavName: "Knowledge Base",
+                NavIcon: Icon.QuestionMark,
+                ScreenToGoTo: 'Knowledge Base',
+                AdminTech: true,
+                Staff: true
             }
         );
         
@@ -160,7 +180,6 @@ App As appinfo:
             }
         
         );
-        
         
         
         

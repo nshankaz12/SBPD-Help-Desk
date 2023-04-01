@@ -3,7 +3,7 @@ Home As screen:
     Fill: =RGBA(227, 234, 243, 1)
     ImagePosition: =ImagePosition.Stretch
     OnVisible: |-
-        =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false,CloseAlertRibbon:false});
+        =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false,CloseAlertRibbon:false, buttonText:""});
 
     HomeMainContainer_2 As groupContainer.horizontalAutoLayoutContainer:
         Height: =Home.Height
@@ -237,7 +237,7 @@ Home As screen:
                     ButtonGallery_1 As gallery.galleryVertical:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         Height: =Parent.Height
-                        Items: =navCol
+                        Items: =userNav
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
@@ -305,7 +305,7 @@ Home As screen:
                             Fill: =RGBA(255, 255, 255, 0)
                             Height: =ButtonGalleryBackgroundButton_1.Height
                             HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
-                            OnSelect: =Select(Parent)
+                            OnSelect: =Navigate(ThisItem.ScreenToGoTo)
                             PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
                             Text: =""
                             Width: =ButtonGalleryBackgroundButton_1.Width
