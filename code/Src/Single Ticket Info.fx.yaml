@@ -140,7 +140,7 @@
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="Attachments"
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), false, true)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), false, true)
                                 Width: =Parent.Width
                                 ZIndex: =1
 
@@ -148,7 +148,7 @@
                                 Height: =If('Single Ticket Info'.Size<3, 20, 40)
                                 Size: =If('Single Ticket Info'.Size>1,13, 8)
                                 Text: ="No Attachments Found."
-                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticket)), true, false)
+                                Visible: =If(IsEmpty(Filter('Ticket Attachments', ticketID=ticketInfo.ID)), true, false)
                                 Width: |
                                     =300
                                 ZIndex: =2
@@ -601,11 +601,11 @@
                             DefaultSelectedItems: |-
                                 =//If(addAssignees = "", Blank(), Filter(Users, fullName in addAssignees))
                                 If(ticketInfo.AddAssignees = "", Blank(), Filter(Users_1, fullName in ticketInfo.AddAssignees))
-                            DisplayFields: =["fullName"]
+                            DisplayFields: =["ComplianceAssetId"]
                             Height: =32
                             IsSearchable: =false
-                            Items: =Filter(Users, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label_2.Text)
-                            SearchFields: =["fullName"]
+                            Items: =Filter(Users_1, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label_2.Text)
+                            SearchFields: =["ComplianceAssetId"]
                             SearchItems: =[]
                             Width: =180
                             X: =Rectangle_behind_details_3.X+142
@@ -1454,7 +1454,7 @@
                                     ZIndex: =2
 
                                 TextInput9_9 As text:
-                                    Default: =If(editMessage, Gallery2_10.Selected.message, Blank())
+                                    Default: =//If(editMessage, Gallery2_10.Selected.message, Blank())
                                     Height: =If('Single Ticket Info'.Size=1,25, 36)
                                     OnSelect: =editMessage
                                     Visible: =editMessage
@@ -1470,10 +1470,10 @@
                                         =If(
                                             addMessage,
                                             Patch(
-                                                Comments,
-                                                Defaults(Comments),
+                                                Comments_1,
+                                                Defaults(Comments_1),
                                                 {
-                                                    ticketId: ticket,
+                                                    ticketId: ticketInfo.ID,
                                                     message: TextInput2_9.Text,
                                                     creatorId: userData.id
                                                 }
@@ -1483,13 +1483,13 @@
                                                 userData.role = "admin" || userData.role = "tech",
                                                 Office365Outlook.SendEmailV2(
                                                     LookUp(
-                                                        Users,
-                                                        id = reporting_person,
+                                                        Users_1,
+                                                        ID = ticketInfo.AssignedTo,
                                                         email
                                                     ),
                                                     Concatenate(
                                                         "Update on Ticket # ",
-                                                        ticket
+                                                        ticketInfo.ID
                                                     ),
                                                     Concatenate(
                                                         "A comment has been added by ",
@@ -1508,10 +1508,10 @@
                                         If(
                                             editMessage,
                                             Patch(
-                                                Comments,
+                                                Comments_1,
                                                 LookUp(
-                                                    Comments,
-                                                    id = editableRec.id
+                                                    Comments_1,
+                                                    ID = editableRec.ID
                                                 ),
                                                 {
                                                     message: TextInput9_9.Text,
@@ -1581,9 +1581,9 @@
                                 "Gallery2_10 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                     AccessibleLabel: =
                                     BorderColor: =RGBA(0, 0, 0, 1)
-                                    Default: =Last(Filter(Comments, ticketId = ticket))
+                                    Default: =Last(Filter(Comments_1, ticketId = ticketInfo.ID))
                                     Height: =Parent.Height*.75
-                                    Items: =Filter(Comments, ticketId = ticket)
+                                    Items: =Filter(Comments_1, ticketId = ticketInfo.ID)
                                     Layout: =Layout.Vertical
                                     ShowScrollbar: =false
                                     TabIndex: =1
@@ -1598,7 +1598,7 @@
                                         PaddingBottom: =0
                                         PaddingTop: =0
                                         Size: =13
-                                        Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                        Text: =LookUp(Users_1, ID = ThisItem.creatorId, fullName)
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =Parent.TemplateWidth-DateAndTimeStamp_2.Width - InitialsCircle_2.Width
                                         X: =InitialsCircle_2.X+InitialsCircle_2.Width+5
@@ -1614,7 +1614,7 @@
                                         PaddingLeft: =10
                                         PaddingTop: =0
                                         Size: =If(CountRows(Filter(MatchAll(CommentContentLabel_2.Text, "\S*(\s|\n?)"), !IsBlank(FullMatch)))>=20, 10, 15)
-                                        Text: =ThisItem.message
+                                        Text: =ThisItem.title
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =Parent.TemplateWidth
                                         Y: =CommentOwnerNameLabel_2.Y+CommentOwnerNameLabel_2.Height+5
@@ -1685,7 +1685,7 @@
                                         Height: =32
                                         Image: |-
                                             =
-                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users_1, ID = ticketInfo.CreatorId, firstName),1) & "+" & Left(LookUp(Users_1, ID = ticketInfo.CreatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
                                         Width: =32
                                         X: =InitialsCircle_2.X
                                         Y: =10
@@ -1744,32 +1744,16 @@
                                         =If(
                                             addMessage,
                                             Patch(
-                                                Comments,
-                                                Defaults(Comments),
+                                                Comments_1,
+                                                Defaults(Comments_1),
                                                 {
-                                                    ticketId: ticket,
+                                                    ticketId: ticketInfo.ID,
                                                     message: TextInput2_10.Text,
                                                     creatorId: userData.id
                                                 }
                                             );
                                             Reset(TextInput2_10);
                                             
-                                        );
-                                        If(
-                                            editMessage,
-                                            Patch(
-                                                Comments,
-                                                LookUp(
-                                                    Comments,
-                                                    id = editableRec.id
-                                                ),
-                                                {
-                                                    message: TextInput9_10.Text,
-                                                    lastUpdated: Now()
-                                                }
-                                            );
-                                            Set(editMessage, false);
-                                            Set(addMessage, true);
                                         );
                                     Text: |-
                                         =If(
@@ -1796,7 +1780,7 @@
                                     ZIndex: =3
 
                                 TextInput9_8 As text:
-                                    Default: =If(editMessage, Gallery2_11.Selected.message, Blank())
+                                    Default: =//If(editMessage, Gallery2_11.Selected.message, Blank())
                                     Height: =72
                                     OnSelect: =editMessage
                                     Visible: =editMessage
@@ -1807,9 +1791,9 @@
                                 "Gallery2_9 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                     AccessibleLabel: =
                                     BorderStyle: =BorderStyle.None
-                                    Default: =Last(Filter(Comments, ticketId = ticket))
+                                    Default: =//Last(Filter(Comments, ticketId = ticket))
                                     Height: =186
-                                    Items: =Filter(Comments, ticketId = ticket)
+                                    Items: =Filter(Comments_1, ticketId = ticketInfo.ID)
                                     Layout: =Layout.Vertical
                                     TabIndex: =1
                                     TemplateSize: =184
@@ -1823,7 +1807,7 @@
                                         PaddingLeft: =0
                                         PaddingRight: =0
                                         PaddingTop: =0
-                                        Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                        Text: =LookUp(Users_1, ID = ThisItem.creatorId, fullName)
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =268
                                         X: =102
@@ -1838,7 +1822,7 @@
                                         PaddingRight: =0
                                         PaddingTop: =0
                                         Size: =15
-                                        Text: =ThisItem.message
+                                        Text: =ThisItem.title
                                         VerticalAlign: =VerticalAlign.Top
                                         Width: =776
                                         X: =93
@@ -1911,7 +1895,7 @@
                                         Height: =76
                                         Image: |-
                                             =
-                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                            "https://ui-avatars.com/api/?name=" & Left(LookUp(Users_1, ID = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users_1, ID = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
                                         Width: =91
                                         X: =4
                                         Y: =8
@@ -1971,32 +1955,16 @@
                                     =If(
                                         addMessage,
                                         Patch(
-                                            Comments,
-                                            Defaults(Comments),
+                                            Comments_1,
+                                            Defaults(Comments_1),
                                             {
-                                                ticketId: ticket,
+                                                ticketId: ticketInfo.ID,
                                                 message: TextInput2_10.Text,
                                                 creatorId: userData.id
                                             }
                                         );
                                         Reset(TextInput2_10);
                                         
-                                    );
-                                    If(
-                                        editMessage,
-                                        Patch(
-                                            Comments,
-                                            LookUp(
-                                                Comments,
-                                                id = editableRec.id
-                                            ),
-                                            {
-                                                message: TextInput9_10.Text,
-                                                lastUpdated: Now()
-                                            }
-                                        );
-                                        Set(editMessage, false);
-                                        Set(addMessage, true);
                                     );
                                 Text: |-
                                     =If(
@@ -2049,9 +2017,9 @@
                             "Gallery2_11 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                 AccessibleLabel: =
                                 BorderStyle: =BorderStyle.None
-                                Default: =Last(Filter(Comments, ticketId = ticket))
+                                Default: =Last(Filter(Comments_1, ticketId = ticketInfo.ID))
                                 Height: =185
-                                Items: =Filter(Comments, ticketId = ticket)
+                                Items: =Filter(Comments_1, ticketId = ticketInfo.ID)
                                 Layout: =Layout.Vertical
                                 TabIndex: =1
                                 TemplateSize: =184
@@ -2068,7 +2036,7 @@
                                     PaddingLeft: =0
                                     PaddingRight: =0
                                     PaddingTop: =0
-                                    Text: =LookUp(Users, ThisItem.creatorId = id, fullName)
+                                    Text: =LookUp(Users_1, ID = ThisItem.creatorId, fullName)
                                     VerticalAlign: =VerticalAlign.Top
                                     Width: =268
                                     X: =102
@@ -2137,7 +2105,7 @@
                                     HoverBorderColor: =
                                     HoverColor: =Color.Gray
                                     HoverFill: =
-                                    OnSelect: =Remove(Comments, ThisItem);
+                                    OnSelect: =Remove(Comments_1, ThisItem);
                                     PressedBorderColor: =
                                     PressedColor: =Color.Gray
                                     PressedFill: =
@@ -2156,7 +2124,7 @@
                                     Height: =76
                                     Image: |-
                                         =
-                                        "https://ui-avatars.com/api/?name=" & Left(LookUp(Users, id = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users, id = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
+                                        "https://ui-avatars.com/api/?name=" & Left(LookUp(Users_1, ID = ThisItem.creatorId, firstName),1) & "+" & Left(LookUp(Users_1, ID = ThisItem.creatorId, lastName),1) & "&background=ffffff&color=000000&size=128"
                                     Width: =91
                                     X: =4
                                     Y: =8
@@ -2172,7 +2140,7 @@
 
                             Description_value_3 As text:
                                 BorderColor: =RGBA(0, 0, 0, 1)
-                                Default: =description & " There once was a ship that put to sea The name of the ship was the Billy O' Tea The winds blew up, her bow dipped down Oh blow, my bully boys, blow (huh) Soon may the Wellerman come To bring us sugar and tea and rum One day, when the tonguing is done We'll take our leave and go"
+                                Default: =ticketInfo.Description & " There once was a ship that put to sea The name of the ship was the Billy O' Tea The winds blew up, her bow dipped down Oh blow, my bully boys, blow (huh) Soon may the Wellerman come To bring us sugar and tea and rum One day, when the tonguing is done We'll take our leave and go"
                                 DisplayMode: =DisplayMode.View
                                 Font: =Font.Georgia
                                 Height: =88
