@@ -3,7 +3,9 @@ compFilterMenu As CanvasComponent:
     CheckAdmin: |-
         =//is_admin
         
-        If(App.ActiveScreen.Name = "MyTickets", is_admin, true)
+        //If(App.ActiveScreen.Name = "MyTickets", is_admin, true)
+        
+        !(App.ActiveScreen.Name = "MyTickets") || (App.ActiveScreen.Name = "MyTickets" && (userData.role = "admin" || userData.role = "tech"))
     CloseFilter: =Set(varFilterVisible, false)
     ColorOrange: =ColorScheme.orange
     Fill: =RGBA(0, 0, 0, 0)
@@ -316,7 +318,10 @@ compFilterMenu As CanvasComponent:
 
         TagSelection As groupContainer.manualLayoutContainer:
             Height: =If(App.ActiveScreen.Name = "MyTickets" && compFilterMenu.CheckAdmin, Parent.Height - FilterHeader.Height - TicketsSelection.Height, Parent.Height - FilterHeader.Height)
-            LayoutMinHeight: =If(App.Height > 560, 100, 80)
+            LayoutMinHeight: |-
+                =//If(App.Height > 560, 100, 80)
+                
+                If(App.Height - compFilterMenu.HeightOffset > 560, 100, 80)
             LayoutMinWidth: =Parent.Width
             Visible: =compFilterMenu.CheckAdmin
             Width: =Parent.Width

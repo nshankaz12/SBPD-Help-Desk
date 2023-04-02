@@ -101,7 +101,7 @@
                     =//If(compFilterMenu.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu.FilterIconSize)
                     If(compFilterMenu_5.FilterVisible, If(App.Width > 600 && App.Height - compFilterMenu_5.HeightOffset > 400, 220, 185), compFilterMenu_5.FilterIconSize)
                 X: =Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
-                Y: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + ((SearchFilterContainer.Height - compFilterMenu_5.FilterIconSize) / 2)
+                Y: =MyTicketsHeaderContainer.Height + MyTicketsHeaderContainer2.Height + ((SearchFilterContainer.Height - compFilterMenu_5.FilterIconSize) / 2)
                 ZIndex: =2
 
         Container10_2 As groupContainer.verticalAutoLayoutContainer:

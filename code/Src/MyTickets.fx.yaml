@@ -47,55 +47,7 @@
         Height: =Parent.Height
         LayoutMode: =LayoutMode.Auto
         Width: =Parent.Width
-        ZIndex: =2
-
-        MyTicketsMobileNavLinks As groupContainer.horizontalAutoLayoutContainer:
-            FillPortions: =0
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            Visible: |-
-                =//MobileGallery
-                //This is a side panel that is visible when the user selects the hamburger menu
-                false
-            Width: =100
-            ZIndex: =1
-
-            MyTicketsNavButtonGallery As gallery.galleryVertical:
-                AlignInContainer: =AlignInContainer.Center
-                FillPortions: =0
-                Height: =Parent.Height
-                Items: =navCol
-                Layout: =Layout.Vertical
-                LayoutMinHeight: =287
-                LayoutMinWidth: =320
-                OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
-                ShowScrollbar: =false
-                TemplateSize: =Parent.Width
-                Width: =Parent.Width
-                ZIndex: =1
-
-                MobileNavGalleryNameLabel_1 As label:
-                    Align: =Align.Center
-                    FontWeight: =FontWeight.Semibold
-                    Height: =74
-                    OnSelect: =Select(Parent)
-                    Size: =15
-                    Text: =ThisItem.NavName
-                    Width: =Parent.TemplateWidth
-                    Y: =(Parent.TemplateHeight-Self.Height)/2
-                    ZIndex: =1
-
-                MobileNavButton_2 As button:
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =Parent.TemplateHeight
-                    HoverFill: =ColorFade(RGBA(105,105,105, .25), -20%)
-                    OnSelect: =Select(Parent)
-                    PressedColor: =RGBA(105,105,105,.35)
-                    PressedFill: =RGBA(105,105,105,.35)
-                    Text: =""
-                    Width: =Parent.TemplateWidth
-                    ZIndex: =2
+        ZIndex: =1
 
         MyTicketsLayoutContainer As groupContainer.verticalAutoLayoutContainer:
             Height: =Parent.Height
@@ -106,9 +58,12 @@
             Width: =Parent.Width
             ZIndex: =2
 
-            MyTicketsHeaderContainer1 As groupContainer.horizontalAutoLayoutContainer:
+            MyTicketsHeaderContainer As groupContainer.horizontalAutoLayoutContainer:
                 Fill: =RGBA(255,255,255,1)
+                FillPortions: =0
+                Height: =130
                 LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
                 LayoutJustifyContent: =LayoutJustifyContent.Center
                 LayoutMinHeight: |-
                     =//MyTickets.Height / 8
@@ -120,198 +75,28 @@
                     true
                 ZIndex: =1
 
-                NotificationsDropdownContainer_1 As groupContainer.manualLayoutContainer:
-                    FillPortions: =0
-                    Height: =Parent.Height
-                    LayoutMinHeight: =Parent.Height
-                    LayoutMinWidth: =Parent.Width
-                    Visible: =false
-                    Width: =75
-                    ZIndex: =1
-
-                    "'profile pic + drop down_8' As icon.Person":
-                        AutoDisableOnSelect: =false
-                        BorderColor: =RGBA(0, 0, 0, 1)
-                        Color: =RGBA(0, 0, 0, 1)
-                        Height: =Parent.Height / 4 * 3
-                        Icon: =Icon.Person
-                        Width: =Parent.Height / 4 * 3
-                        X: =(Parent.Width - Self.Width) / 2
-                        Y: =(Parent.Height - Self.Height) / 2
-                        ZIndex: =1
-
-                    "'new notification in dropdown_8' As circle":
-                        BorderColor: =RGBA(168, 0, 0, 1)
-                        Fill: =RGBA(168, 0, 0, 1)
-                        Height: ='profile pic + drop down_8'.Width / 5
-                        Width: ='profile pic + drop down_8'.Width / 5
-                        X: =(Parent.Width - Self.Width) / 2 - Self.Width
-                        Y: =(('profile pic + drop down_8'.Height - Self.Height) / 2) - (Self.Height * 0.75)
-                        ZIndex: =2
-
-                    UserNotificationsDropdownSymbolIcon_1 As icon.ChevronDown:
-                        Color: =RGBA(255, 255, 255, 1)
-                        Height: ='profile pic + drop down_8'.Height / 4
-                        HoverBorderColor: =ColorFade(Color.DimGrey, 20%)
-                        HoverFill: =Color.DimGrey
-                        Icon: =Icon.ChevronDown
-                        OnSelect: |-
-                            =UpdateContext({NDrop:!NDrop})
-                        Width: ='profile pic + drop down_8'.Width / 4
-                        X: =(Parent.Width - Self.Width) / 2 + (Self.Width * 1.5)
-                        Y: ='profile pic + drop down_8'.Y + 'profile pic + drop down_8'.Height - (Self.Height)
-                        ZIndex: =3
-
-                MyTicketsNavContainer As groupContainer.horizontalAutoLayoutContainer:
-                    FillPortions: =7
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutJustifyContent: =LayoutJustifyContent.Center
-                    LayoutMinHeight: =Parent.Height
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    Visible: =false
-                    ZIndex: =2
-
-                    MyTicketsNavLinkGallery As gallery.galleryHorizontal:
-                        AlignInContainer: =AlignInContainer.Center
-                        DelayItemLoading: =true
-                        Height: =Parent.Height
-                        Items: =navCol
-                        LayoutMinHeight: =Parent.Height
-                        LayoutMinWidth: =320
-                        LoadingSpinner: =LoadingSpinner.Data
-                        OnSelect: =Switch(ThisItem.NavScreen, "Create A Ticket", Navigate('Create A Ticket'), "MyTickets", Navigate(MyTickets), "Log of All Tickets - Admin Tech", Navigate('Log of All Tickets - Admin Tech'), "Metrics - Admin Tech", Navigate('Metrics - Admin Tech'), "Assign Role - Admin", Navigate('Assign Role - Admin'))
-                        ShowScrollbar: =false
-                        TemplateSize: =Parent.Width/5
-                        Width: =Parent.Width
-                        ZIndex: =6
-
-                        MyTicketsNavLinkGalleryLabel As label:
-                            Align: =Align.Center
-                            DisplayMode: =DisplayMode.View
-                            FontWeight: =FontWeight.Semibold
-                            Height: =Parent.TemplateHeight
-                            OnSelect: =Select(Parent)
-                            Size: =15
-                            Text: =ThisItem.NavName
-                            Width: =Parent.TemplateWidth
-                            ZIndex: =1
-
-                        MyTicketsNavLinkGalleryButton As button:
-                            Fill: =RGBA(0, 0, 0, 0)
-                            Height: =Parent.TemplateHeight
-                            HoverFill: =ColorFade(RGBA(105,105,105,.5), -20%)
-                            OnSelect: =Select(Parent)
-                            PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
-                            Text: =""
-                            Width: =Parent.TemplateWidth
-                            ZIndex: =2
-
                 compWebHeader_6 As compWebHeader:
-                    AlignInContainer: =AlignInContainer.Center
                     CompScreenSize: =MyTickets.Size
-                    Height: =Parent.Height
                     LayoutMinHeight: =640
                     LayoutMinWidth: =640
                     ZIndex: =3
 
-            MyTicketsMoblieHeaderContainer As groupContainer.verticalAutoLayoutContainer:
-                Fill: =RGBA(118, 173, 149, 1)
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutMinHeight: =Parent.Height / 8
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                PaddingLeft: =50
-                Visible: |-
-                    =//MyTickets.Size=1
-                    //This container is visible when the screen is in mobile view and the topmost is invisible
-                    false
-                ZIndex: =2
-
-                MoblieHamburgerMenu_1 As icon.Hamburger:
-                    Color: =RGBA(0, 0, 0, 1)
-                    Icon: =If(HamburgerIconChange, Icon.ChevronLeft, Icon.Hamburger)
-                    OnSelect: |-
-                        =UpdateContext({HamburgerIconChange:!HamburgerIconChange});
-                        UpdateContext({MobileGallery:!MobileGallery});
-                    ZIndex: =1
-
-            MyTicketsHeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
-                Fill: =ColorScheme.primary
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutGap: =10
-                LayoutJustifyContent: =LayoutJustifyContent.Center
-                LayoutMinHeight: =Parent.Height / 8 
-                LayoutMinWidth: =Parent.Width
-                LayoutMode: =LayoutMode.Auto
-                PaddingLeft: =If (MyTickets.Size <> 1, 40, 15)
-                PaddingRight: =If (MyTickets.Size <> 1, 40, 15)
-                ZIndex: =3
-
-                "'Back Scroll_5' As icon.BackArrow":
-                    Color: |-
-                        =//RGBA(232, 244, 217, 1)
-                        ColorScheme.secondary
-                    Height: =Parent.Height / 5 * 4
-                    HoverColor: |-
-                        =//ColorFade(Self.Color, 20%)
-                        ColorScheme.secondaryPressedColor
-                    Icon: =Icon.BackArrow
-                    OnSelect: =Back(ScreenTransition.Fade)
-                    Width: =Parent.Height / 5 * 4
-                    X: =59
-                    Y: =72
-                    ZIndex: =1
-
                 HeaderLabel As label:
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
-                    FillPortions: =1
-                    Height: =Parent.Height
+                    Fill: =ColorScheme.primary
+                    Height: =Parent.Height - compWebHeader_6.Height
                     LayoutMinHeight: =Parent.Height
-                    Size: =If (MyTickets.Size <> 1, 32, 24)
+                    Size: =If(MyTickets.Size = 1, 19, 25)
                     Text: =compFilterMenu_1.TicketsChoice
                     Width: =Parent.Width
                     Y: =15
-                    ZIndex: =2
-
-                NewTicketButton As button:
-                    AutoDisableOnSelect: =false
-                    Fill: |-
-                        =//RGBA(232, 244, 217, 1)
-                        ColorScheme.secondary
-                    HoverColor: =RGBA(0, 0, 0, 1)
-                    HoverFill: |-
-                        =//ColorFade(RGBA(56, 96, 178, 1), -20%)
-                        ColorScheme.secondaryPressedColor
-                    OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-                    PressedBorderColor: =RGBA(0, 0, 0, 0)
-                    PressedColor: =
-                    PressedFill: =RGBA(0, 0, 0, 0)
-                    Text: ="New Ticket"
-                    Visible: =MyTickets.Size > 2
-                    X: =1150
-                    Y: =84
-                    ZIndex: =3
-
-                NewTicketIcon As icon.Add:
-                    Color: |-
-                        =//RGBA(232, 244, 217, 1)
-                        ColorScheme.secondary
-                    Height: =Parent.Height / 5 * 4
-                    HoverColor: |-
-                        =//ColorFade(Self.Color, 20%)
-                        ColorScheme.secondaryPressedColor
-                    Icon: =Icon.Add
-                    OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-                    Visible: =MyTickets.Size < 3
-                    Width: =Parent.Height / 5 * 4
                     ZIndex: =4
 
             MyTicketsMainContentContainer As groupContainer.verticalAutoLayoutContainer:
                 FillPortions: =10
                 LayoutDirection: =LayoutDirection.Vertical
-                LayoutMinHeight: =Parent.Height / 8 * 6
+                LayoutMinHeight: =Parent.Height / 8 * 4
                 LayoutMinWidth: =Parent.Width
                 LayoutMode: =LayoutMode.Auto
                 ZIndex: =4
@@ -625,7 +410,10 @@
                                 RadiusBottomRight: =256
                                 RadiusTopLeft: =256
                                 RadiusTopRight: =256
-                                Visible: =is_admin
+                                Visible: |-
+                                    =//is_admin
+                                    
+                                    userData.role = "admin" || userData.role = "tech"
                                 Width: =Parent.TemplateHeight / 6
                                 X: =24
                                 Y: |-
@@ -642,7 +430,10 @@
                                     
                                     // Sharepoint
                                     If(IsBlank(ThisItem.AssignedTo) || ThisItem.AssignedTo = 0, "Unassigned", LookUp(Users_1, ID = ThisItem.AssignedTo, fullName))
-                                Visible: =is_admin
+                                Visible: |-
+                                    =//is_admin
+                                    
+                                    userData.role = "admin" || userData.role = "tech"
                                 Width: |-
                                     =//154
                                     Parent.TemplateWidth - Image7_3.Width - StatusLabel.Width - StatusColor.Width - 47
@@ -726,9 +517,11 @@
                                 Text: ="Category"
                                 Width: =67
                                 X: =24
-                                Y: |-
+                                Y: |
                                     =//If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
-                                    If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
+                                    //If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
+                                    
+                                    If(userData.role = "admin" || userData.role = "tech", ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
                                 ZIndex: =11
 
                             CategoryLabelText_1 As label:
@@ -749,9 +542,11 @@
                                 X: |-
                                     =//89
                                     CategoryLabelText.X + CategoryLabelText.Width
-                                Y: |-
+                                Y: |
                                     =//If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
-                                    If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
+                                    //If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
+                                    
+                                    If(userData.role = "admin" || userData.role = "tech", ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
                                 ZIndex: =12
 
                     EmptyState As groupContainer.verticalAutoLayoutContainer:
@@ -793,20 +588,71 @@
                             Y: =99
                             ZIndex: =2
 
-                MyTicketsMobileComp As groupContainer.verticalAutoLayoutContainer:
-                    FillPortions: =0
-                    Height: =90
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    Visible: =MyTickets.Size=1
-                    ZIndex: =3
+            MyTicketsFooterContainer As groupContainer.verticalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =90
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Visible: =MyTickets.Size=1
+                Width: =Parent.Width
+                ZIndex: =5
 
-                    compMobileMenu_5 As compMobileMenu:
-                        LayoutMinHeight: =640
-                        LayoutMinWidth: =640
-                        Width: =Parent.Width
+                compMobileMenu_5 As compMobileMenu:
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    Width: =Parent.Width
+
+    "'Back Scroll_5' As icon.BackArrow":
+        Color: |-
+            =//RGBA(232, 244, 217, 1)
+            ColorScheme.secondary
+        Height: =50
+        HoverColor: |-
+            =//ColorFade(Self.Color, 20%)
+            ColorScheme.secondaryPressedColor
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.Fade)
+        Width: =50
+        X: =15
+        Y: =compWebHeader_6.Height + ((HeaderLabel.Height - Self.Height) / 2)
+        ZIndex: =2
+
+    NewTicketButton As button:
+        AutoDisableOnSelect: =false
+        Fill: |-
+            =//RGBA(232, 244, 217, 1)
+            ColorScheme.secondary
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: |-
+            =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+            ColorScheme.secondaryPressedColor
+        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =
+        PressedFill: =RGBA(0, 0, 0, 0)
+        Text: ="New Ticket"
+        Visible: =MyTickets.Size > 2
+        X: =Parent.Width - Self.Width - 15
+        Y: =compWebHeader_6.Height + ((HeaderLabel.Height - Self.Height) / 2)
+        ZIndex: =3
+
+    NewTicketIcon As icon.Add:
+        Color: |-
+            =//RGBA(232, 244, 217, 1)
+            ColorScheme.secondary
+        Height: =50
+        HoverColor: |-
+            =//ColorFade(Self.Color, 20%)
+            ColorScheme.secondaryPressedColor
+        Icon: =Icon.Add
+        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        Visible: =MyTickets.Size < 3
+        Width: =50
+        X: =Parent.Width - Self.Width - 15
+        Y: =compWebHeader_6.Height + ((HeaderLabel.Height - Self.Height) / 2)
+        ZIndex: =4
 
     compFilterMenu_1 As compFilterMenu:
         FontSize: |-
@@ -814,7 +660,7 @@
             
             If(App.Height - compFilterMenu_1.HeightOffset > 340, 16, 13)
         Height: =If(compFilterMenu_1.FilterVisible, compFilterMenu_1.NewHeight, compFilterMenu_1.FilterIconSize)
-        HeightOffset: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + ((SearchFilterContainer.Height - compFilterMenu_1.FilterIconSize) / 2)
+        HeightOffset: =MyTicketsHeaderContainer.Height + ((SearchFilterContainer.Height - compFilterMenu_1.FilterIconSize) / 2)
         IconSize: |-
             =//If(App.Height > 560, 40, 30)
             
@@ -842,11 +688,12 @@
             =//If(compFilterMenu.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu.FilterIconSize)
             If(compFilterMenu_1.FilterVisible, If(App.Width > 600 && App.Height - compFilterMenu_1.HeightOffset > 400, 220, 185), compFilterMenu_1.FilterIconSize)
         X: =Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
-        Y: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + ((SearchFilterContainer.Height - compFilterMenu_1.FilterIconSize) / 2)
-        ZIndex: =3
+        Y: =MyTicketsHeaderContainer.Height + ((SearchFilterContainer.Height - compFilterMenu_1.FilterIconSize) / 2)
+        ZIndex: =5
 
     compWebMenu_3 As compWebMenu:
-        ZIndex: =4
+        Visible: =MyTickets.Size > 1
+        ZIndex: =6
 
     SearchBlocker As group:
         Height: =5
@@ -859,20 +706,20 @@
             Fill: |-
                 =//Color.Transparent
                 RGBA(0, 0, 0, 0.25)
-            Height: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height
+            Height: =MyTicketsHeaderContainer.Height
             OnSelect: =Set(varSearchVisible, false)
             Visible: =App.Width <= 600 && compSearch_1.SearchVisible
             Width: =Parent.Width
-            ZIndex: =5
+            ZIndex: =7
 
         SearchBlockerBottom As rectangle:
             Fill: |-
                 =//Color.Transparent
                 RGBA(0, 0, 0, 0.25)
-            Height: =Parent.Height - (MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + SearchFilterContainer.Height)
+            Height: =Parent.Height - (MyTicketsHeaderContainer.Height + SearchFilterContainer.Height)
             OnSelect: =Set(varSearchVisible, false)
             Visible: =App.Width <= 600 && compSearch_1.SearchVisible
             Width: =Parent.Width
-            Y: =MyTicketsHeaderContainer1.Height + MyTicketsHeaderContainer2.Height + SearchFilterContainer.Height
-            ZIndex: =6
+            Y: =MyTicketsHeaderContainer.Height + SearchFilterContainer.Height
+            ZIndex: =8
 
