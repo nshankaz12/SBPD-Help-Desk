@@ -39,6 +39,7 @@
         
         UpdateContext({contextLoadingStatus: "Validating User..."});
         Switch(userData.role,"tech",ClearCollect(userNav,Filter(navCol,AdminTech = true)),"admin",ClearCollect(userNav,Filter(navCol,AdminTech = true)),"staff",ClearCollect(userNav,Filter(navCol,Staff = true)),Set(InvalidUser,true));
+        If(IsEmpty(Filter(Users_1, email = User().Email)), Set(InvalidUser,true));
         //Can use a button to navigate to another screen if needed
         //enable if initialization takes place on this screen, and timer is disabled
         //If(splashNavigate,Select(SplashNavigate))
