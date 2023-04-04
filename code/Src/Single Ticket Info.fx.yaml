@@ -47,7 +47,7 @@
                 Visible: ='Single Ticket Info'.Size=1
                 ZIndex: =1
 
-                Container17_4 As groupContainer.manualLayoutContainer:
+                NewMobileDetails As groupContainer.manualLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
                     Height: =If(userData.role = "staff",400,450)
@@ -156,6 +156,7 @@
                             Refresh(Tickets)
                         Size: =8
                         Text: ="Apply"
+                        Visible: =If(userData.role = "staff", false,true)
                         Width: =80
                         X: =(Parent.Width-Self.Width)/2
                         Y: =Rectangle_behind_details_2.Height-Self.Height
@@ -192,7 +193,7 @@
                         Text: ="Created"
                         Width: =Reporter_Label_1.Width
                         X: =Reporter_Label_1.X
-                        Y: =ComboBox1_2.Y+ComboBox1_2.Height+10
+                        Y: =If(Tags_Label_1.Visible,ComboBox1_2.Y+ComboBox1_2.Height+30, Category_Label_1.Y+Category_Label_1.Height+30)
                         ZIndex: =9
 
                     ComboBox1_2 As combobox:
@@ -213,6 +214,7 @@
                         SearchFields: =["field_2"]
                         SearchItems: =Search(Tags_1,ComboBox1_2.SearchText,"field_2")
                         Size: =Assignee_ComboBox_1.Size
+                        Visible: =Tags_Label_1.Visible
                         Width: =Assignee_ComboBox_1.Width
                         X: =Assignee_ComboBox_1.X
                         Y: =Tags_Label_1.Y
@@ -226,6 +228,7 @@
                         PaddingLeft: =20
                         Size: =Reporter_Label_1.Size
                         Text: ="Tags"
+                        Visible: =If(userData.role = "staff", false,true)
                         Width: =Reporter_Label_1.Width
                         X: =Reporter_Label_1.X
                         Y: =Category_Value_Label_1.Y+Category_Value_Label_1.Height+10
@@ -254,7 +257,7 @@
                         Text: ="Category"
                         Width: =Reporter_Label_1.Width
                         X: =Reporter_Label_1.X
-                        Y: =Status_Value_Label_1.Y+Status_Value_Label_1.Height+10
+                        Y: =Status_Value_Label_1.Y+Status_Value_Label_1.Height+30
                         ZIndex: =13
 
                     Status_Value_Label_1 As label:
@@ -278,7 +281,7 @@
                         Text: ="Status"
                         Width: =Reporter_Label_1.Width
                         X: =Reporter_Label_1.X
-                        Y: =If(Additonal_Assign_Label_1.Visible, Additonal_Assign_Label_1.Height+Additonal_Assign_Label_1.Y+10, Reporter_Label_1.Height+Reporter_Label_1.Y+10)
+                        Y: =If(Additonal_Assign_Label_1.Visible,If(AssignMe_1.Visible,AssignMe_1.Y+AssignMe_1.Height, Additonal_Assign_Label_1.Height+Additonal_Assign_Label_1.Y+30), Reporter_Label_1.Height+Reporter_Label_1.Y+30)
                         ZIndex: =15
 
                     Additional_Assign_ComboBox_1 As combobox:
@@ -410,13 +413,13 @@
                             );
                             */
                             
-                        Size: =12
+                        Size: =10
                         Text: ="Assign to me"
                         Underline: =
-                        Visible: =If(Value(AssigneeId_1.Text) = userData.id,false, true)
-                        Width: =250
-                        X: =289
-                        Y: =177
+                        Visible: =If(Value(AssigneeId_1.Text) = userData.id || userData.role="staff",false, true)
+                        Width: =Reporter_Label.Width
+                        X: =Reporter_Value_Label_1.X
+                        Y: =Additional_Assign_ComboBox_1.Y+Additional_Assign_ComboBox_1.Height+20
                         ZIndex: =22
 
                     Reporter_Value_Label_1 As label:
@@ -450,7 +453,7 @@
                         Y: =60
                         ZIndex: =25
 
-                Container18_4 As groupContainer.manualLayoutContainer:
+                NewMobileActivity As groupContainer.manualLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
                     Height: =700
@@ -685,7 +688,7 @@
                                             "Close Ticket"
                                         )
                                     )
-                                Visible: =If(LookUp(Tickets,ID = ticketInfo.ID, status) = "open", true, false)
+                                Visible: =If(LookUp(Tickets,ID = ticketInfo.ID, status) = "open", If(userData.role = "staff",false,true), false)
                                 Width: =100
                                 X: =Button1_13.X + Button1_13.Width+50
                                 Y: =Parent.Height-Self.Height-5
@@ -3391,7 +3394,7 @@
             SingleticketInfoActivityHistoryContainer_2 As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
-                Height: =Parent.Height
+                Height: =Parent.Height+100
                 LayoutMinHeight: =Parent.Height
                 LayoutMinWidth: =100
                 LayoutMode: =LayoutMode.Auto
@@ -3636,7 +3639,7 @@
                                             "Close Ticket"
                                         )
                                     )
-                                Visible: =If(LookUp(Tickets,ID = ticketInfo.ID, status) = "open", true, false)
+                                Visible: =If(LookUp(Tickets,ID = ticketInfo.ID, status) = "open", If(userData.role = "staff",false,true), false)
                                 X: =Button1_5.X + Button1_5.Width+50
                                 Y: =Parent.Height-Self.Height-5
                                 ZIndex: =5
@@ -4262,7 +4265,7 @@
                     Rectangle_behind_details_1 As rectangle:
                         BorderThickness: =3
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =Parent.Height*.90
+                        Height: =If(userData.role = "staff",Parent.Height*.60 , Parent.Height*.90)
                         Visible: |-
                             =
                             true
@@ -4357,6 +4360,7 @@
                             );
                             Refresh(Tickets)
                         Text: ="Save Changes"
+                        Visible: =If(userData.role = "staff", false,true)
                         X: =(Parent.Width-Self.Width)/2
                         Y: =Rectangle_behind_details_1.Height-Self.Height
                         ZIndex: =6
@@ -4392,7 +4396,7 @@
                         Text: ="Created"
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =ComboBox1_1.Y+ComboBox1_1.Height+10
+                        Y: =If(Tags_Label.Visible,ComboBox1_1.Y+ComboBox1_1.Height+30, Category_Label.Y+Category_Label.Height+30)
                         ZIndex: =9
 
                     ComboBox1_1 As combobox:
@@ -4413,6 +4417,7 @@
                         SearchFields: =["field_2"]
                         SearchItems: =Search(Tags_1,ComboBox1_1.SearchText,"field_2")
                         Size: =Assignee_ComboBox.Size
+                        Visible: =Tags_Label.Visible
                         Width: =Assignee_ComboBox.Width
                         X: =Assignee_ComboBox.X
                         Y: =Tags_Label.Y
@@ -4426,9 +4431,10 @@
                         PaddingLeft: =20
                         Size: =Reporter_Label.Size
                         Text: ="Tags"
+                        Visible: =If(userData.role = "staff", false,true)
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =Category_Value_Label.Y+Category_Value_Label.Height+10
+                        Y: =Category_Value_Label.Y+Category_Value_Label.Height+30
                         ZIndex: =11
 
                     Category_Value_Label As label:
@@ -4454,7 +4460,7 @@
                         Text: ="Category"
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =Status_Value_Label.Y+Status_Value_Label.Height+10
+                        Y: =Status_Value_Label.Y+Status_Value_Label.Height+30
                         ZIndex: =13
 
                     Status_Value_Label As label:
@@ -4478,7 +4484,7 @@
                         Text: ="Status"
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =If(Additonal_Assign_Label.Visible, Additonal_Assign_Label.Height+Additonal_Assign_Label.Y+10, Reporter_Label.Height+Reporter_Label.Y+10)
+                        Y: =If(Additonal_Assign_Label.Visible,If(AssignMe.Visible,AssignMe.Y+AssignMe.Height, Additonal_Assign_Label.Height+Additonal_Assign_Label.Y+30), Reporter_Label.Height+Reporter_Label.Y+30)
                         ZIndex: =15
 
                     Additional_Assign_ComboBox As combobox:
@@ -4517,7 +4523,7 @@
                         Visible: =If(userData.role = "staff",false,true)
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =Assignee_ComboBox.Height+Assignee_ComboBox.Y+10
+                        Y: =Assignee_ComboBox.Height+Assignee_ComboBox.Y+30
                         ZIndex: =17
 
                     Assignee_ComboBox As combobox:
@@ -4578,7 +4584,7 @@
                         Visible: =If(userData.role = "staff",false,true)
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =Reporter_Value_Label.Y+Reporter_Value_Label.Height+10
+                        Y: =Reporter_Value_Label.Y+Reporter_Value_Label.Height+30
                         ZIndex: =20
 
                     AssigneeId As label:
@@ -4613,10 +4619,10 @@
                         Size: =12
                         Text: ="Assign to me"
                         Underline: =
-                        Visible: =If(Value(AssigneeId.Text) = userData.id,false, true)
-                        Width: =214
-                        X: =217
-                        Y: =Additional_Assign_ComboBox.Y+Additional_Assign_ComboBox.Height
+                        Visible: =If(Value(AssigneeId.Text) = userData.id || userData.role="staff",false, true)
+                        Width: =Reporter_Label.Width
+                        X: =Reporter_Value_Label.X
+                        Y: =Additional_Assign_ComboBox.Y+Additional_Assign_ComboBox.Height+20
                         ZIndex: =22
 
                     Reporter_Value_Label As label:
