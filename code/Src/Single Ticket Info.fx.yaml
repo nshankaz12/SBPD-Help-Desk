@@ -4593,7 +4593,7 @@
 
                     AssignMe As label:
                         Align: =Align.Center
-                        Height: =30
+                        Height: =28
                         HoverColor: =ColorScheme.primary
                         OnSelect: |+
                             =UpdateContext({assigneeTo:userData.id}); 
@@ -4614,9 +4614,9 @@
                         Text: ="Assign to me"
                         Underline: =
                         Visible: =If(Value(AssigneeId.Text) = userData.id,false, true)
-                        Width: =250
-                        X: =289
-                        Y: =177
+                        Width: =214
+                        X: =217
+                        Y: =Additional_Assign_ComboBox.Y+Additional_Assign_ComboBox.Height
                         ZIndex: =22
 
                     Reporter_Value_Label As label:
@@ -4783,7 +4783,6 @@
         ZIndex: =8
 
     compPageTextSizeFormatter_1 As compPageTextSizeFormatter:
-        FinalTextSize: =Switch(compPageTextSizeFormatter_1.PageSizeVariable, 4,compPageTextSizeFormatter_1.TextSize4,3,compPageTextSizeFormatter_1.TextSize3,2,compPageTextSizeFormatter_1.TextSize2,1,compPageTextSizeFormatter_1.TextSize1)
         PageSizeVariable: ='Single Ticket Info'.Size
         ZIndex: =9
 
