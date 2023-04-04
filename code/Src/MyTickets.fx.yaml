@@ -179,8 +179,8 @@
                             // Test
                             //colTickets
                             
-                            //Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedTo = userData.id))
-                            Switch(userData.role,"staff", Filter(colTickets,CreatorId = userData.id),"tech", Filter(colTickets,AssignedTo = userData.id),"admin", Filter(colTickets,AssignedTo = userData.id))
+                            Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedTo = userData.id))
+                            //Switch(userData.role,"staff", Filter(colTickets,CreatorId = userData.id),"tech", Filter(colTickets,AssignedTo = userData.id),"admin", Filter(colTickets,AssignedTo = userData.id))
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320
