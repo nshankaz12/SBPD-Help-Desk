@@ -55,7 +55,7 @@
         Form3 As form:
             DataSource: =Alerts_1
             DefaultMode: =FormMode.New
-            Item: =Gallery2.Selected
+            Item: =Gallery4.Selected
             LayoutMinHeight: =250
             LayoutMinWidth: =400
             NumberOfColumns: =2
@@ -694,7 +694,7 @@
     Button6 As button:
         Height: =60
         OnSelect: |
-            =Patch(Alerts_1, Gallery2.Selected, {title: DataCardValue23.Text, messageText: DataCardValue27.Text, dateExpired: DateValue14.SelectedDate});
+            =Patch(Alerts_1, Gallery4.Selected, {title: DataCardValue23.Text, messageText: DataCardValue27.Text, dateExpired: DateValue14.SelectedDate});
             Navigate('Alert Manager')
         Text: ="Update Alert"
         Width: =204
@@ -706,7 +706,7 @@
         Height: =60
         OnSelect: |
             =ResetForm(Form3);
-            Navigate(Gallery2, ScreenTransition.None)
+            Navigate(Gallery4, ScreenTransition.None)
         Text: ="Cancel"
         Visible: =!(Form3.Mode = FormMode.View)
         Width: =204

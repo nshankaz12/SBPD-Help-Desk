@@ -2,102 +2,6 @@
     Fill: =
     OnVisible: =true
 
-    Container1 As groupContainer.manualLayoutContainer:
-        Height: =588
-        Width: =1366
-        Y: =180
-        ZIndex: =21
-
-        Gallery2 As gallery.galleryVertical:
-            DelayItemLoading: =true
-            Height: =462
-            Items: =Filter(Alerts_1, dateExpired >= Today())
-            Layout: =Layout.Vertical
-            LoadingSpinner: =LoadingSpinner.Data
-            TemplateSize: =157
-            Width: =1366
-            Y: =86
-            ZIndex: =1
-
-            Label1 As label:
-                DisplayMode: =DisplayMode.View
-                Height: =54
-                OnSelect: =Select(Parent)
-                Size: =20
-                Text: =ThisItem.dateExpired
-                Width: =302
-                X: =678
-                ZIndex: =1
-
-            Label2 As label:
-                Height: =56
-                OnSelect: =Select(Parent)
-                Size: =20
-                Text: =ThisItem.messageText
-                Width: =364
-                X: =314
-                Y: =1
-                ZIndex: =2
-
-            Label5 As label:
-                Height: =57
-                OnSelect: =Select(Parent)
-                Size: =20
-                Text: =ThisItem.titleText
-                Width: =294
-                ZIndex: =3
-
-            Button1 As button:
-                Height: =50
-                OnSelect: |+
-                    =EditForm(Form3);
-                    Navigate(Form3, ScreenTransition.None);
-                    
-                    
-                Text: ="Edit Alert"
-                Width: =200
-                X: =1126
-                Y: =7
-                ZIndex: =4
-
-            Icon3 As icon.Trash:
-                Height: =54
-                Icon: =Icon.Trash
-                OnSelect: |
-                    =Remove(Alerts_1, Gallery2.Selected)
-                Width: =44
-                X: =1004
-                ZIndex: =5
-
-        Label7 As label:
-            FontWeight: =FontWeight.Bold
-            Height: =56
-            Size: =24
-            Text: ="Title"
-            Width: =294
-            Y: =3
-            ZIndex: =2
-
-        Label22 As label:
-            FontWeight: =FontWeight.Bold
-            Height: =56
-            Size: =25
-            Text: ="Description"
-            Width: =318
-            X: =306
-            Y: =3
-            ZIndex: =3
-
-        Label24 As label:
-            FontWeight: =FontWeight.Bold
-            Height: =42
-            Size: =25
-            Text: ="Expiration Date"
-            Width: =412
-            X: =668
-            Y: =3
-            ZIndex: =4
-
     Container6 As groupContainer.verticalAutoLayoutContainer:
         Height: =768
         LayoutDirection: =LayoutDirection.Vertical
@@ -147,6 +51,93 @@
                 Text: ="Alert Manager"
                 Width: =500
                 ZIndex: =2
+
+        Container1 As groupContainer.verticalAutoLayoutContainer:
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =3
+
+            Gallery4 As gallery.galleryVertical:
+                DelayItemLoading: =true
+                FillPortions: =0
+                Height: =Parent.Height
+                Items: =Alerts_1
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =287
+                LayoutMinWidth: =320
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
+                ZIndex: =2
+
+                Label1 As label:
+                    Height: =64
+                    OnSelect: =Select(Parent)
+                    Size: =25
+                    Text: =ThisItem.titleText
+                    Width: =312
+                    X: =86
+                    Y: =28
+                    ZIndex: =1
+
+                Label2 As label:
+                    AutoHeight: =true
+                    Height: =38
+                    OnSelect: =Select(Parent)
+                    Size: =20
+                    Text: =ThisItem.messageText
+                    Width: =281
+                    X: =416
+                    Y: =42
+                    ZIndex: =2
+
+                Label3 As label:
+                    Height: =44
+                    OnSelect: =Select(Parent)
+                    Size: =20
+                    Text: =ThisItem.dateExpired
+                    Width: =294
+                    X: =697
+                    Y: =38
+                    ZIndex: =3
+
+                Label4 As label:
+                    Height: =42
+                    OnSelect: =Select(Parent)
+                    Size: =20
+                    Text: =ThisItem.creatorId
+                    Width: =74
+                    Y: =40
+                    ZIndex: =4
+
+                Button1 As button:
+                    OnSelect: |+
+                        =EditForm(Form3);
+                        Navigate(Form3, ScreenTransition.None);
+                        
+                        
+                        
+                    Text: ="Edit Alert"
+                    X: =1051
+                    Y: =40
+                    ZIndex: =5
+
+                Icon7 As icon.CancelBadge:
+                    Icon: =Icon.CancelBadge
+                    OnSelect: |-
+                        =Select(Parent);
+                        Remove(Alerts_1, Gallery4.Selected)
+                    X: =1292
+                    Y: =16
+                    ZIndex: =6
+
+                Rectangle14 As rectangle:
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Width: =1356
+                    Y: =40+Label2.Height
+                    ZIndex: =7
 
     compWebMenu_20 As compWebMenu:
         ZIndex: =23

@@ -186,42 +186,60 @@ Home As screen:
                 AlertRibbonContainerTest_2 As groupContainer.verticalAutoLayoutContainer:
                     Fill: =RGBA(232, 244, 217, 1)
                     FillPortions: =0
-                    Height: =Parent.Height/16
+                    Height: =CountRows(Gallery4.AllItems) * 10
                     LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =100
+                    LayoutMinHeight: =240
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     Visible: =!CloseAlertRibbon
                     Width: =Parent.Width
                     ZIndex: =2
 
-                    AlertContianer_2 As groupContainer.horizontalAutoLayoutContainer:
+                    "Gallery3 As gallery.'BrowseLayout_Flexible_SocialFeed_ver4.0'":
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        DelayItemLoading: =true
                         FillPortions: =0
-                        Height: =Parent.Height
+                        Height: =CountRows(Gallery4.AllItems) * 10
+                        Items: =Alerts_1
+                        Layout: =Layout.Vertical
                         LayoutMinHeight: =100
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        ZIndex: =3
+                        LayoutMinWidth: =320
+                        LoadingSpinner: =LoadingSpinner.Data
+                        TemplateFill: =RGBA(0,0,0,0)
+                        TemplatePadding: =10
+                        TemplateSize: =40
+                        ZIndex: =1
 
-                        Label12_2 As label:
-                            Align: =Align.Center
-                            AlignInContainer: =AlignInContainer.Stretch
-                            Color: =RGBA(168, 0, 0, 1)
-                            FillPortions: =1
-                            Height: =Parent.Height
-                            LayoutMinHeight: =Parent.Height
-                            Size: =If(Home.Size=1, 8, 15)
-                            Text: |
-                                =If(IsBlank(AlertMessage), "", AlertMessage)
-                            ZIndex: =1
+                        Title1 As label:
+                            AutoHeight: =true
+                            Color: =RGBA(39, 67, 125, 1)
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =ThisItem.titleText
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =1132
+                            X: =96
+                            Y: =ThisItem.titleText
+                            ZIndex: =2
 
-                        Icon12_2 As icon.Cancel:
-                            Color: =RGBA(176, 176, 176, 1)
-                            Height: =Parent.Height
+                        Icon2 As icon.Cancel:
+                            Height: =40
                             Icon: =Icon.Cancel
                             OnSelect: |-
-                                =UpdateContext({CloseAlertRibbon:true})
-                            ZIndex: =2
+                                =UpdateContext({hideItem: true})
+                            X: =1270
+                            ZIndex: =3
+
+                        Rectangle11 As rectangle:
+                            Height: =1
+                            OnSelect: =Select(Parent)
+                            Width: =1294
+                            X: =40
+                            Y: =Title1.Height
+                            ZIndex: =4
 
                 ButtonsContainer_3 As groupContainer.verticalAutoLayoutContainer:
                     FillPortions: =8
@@ -246,6 +264,7 @@ Home As screen:
                         TemplateSize: =Parent.Height/2.67
                         Width: =Parent.Width
                         WrapCount: =Switch(Home.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
+                        Y: =Gallery3.Y + Gallery3.Height
                         ZIndex: =1
 
                         HtmlText1_1 As htmlViewer:
