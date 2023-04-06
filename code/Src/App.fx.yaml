@@ -164,6 +164,10 @@ App As appinfo:
         Set(TagChoice, "None");
         Set(SearchQuery, "");
         
+        // Variables to check if navigate to (reset) ticket screens
+        Set(varResetMyTickets, false);
+        Set(varResetAllTickets, false);
+        
         ClearCollect(
             dummyArticles,
             {

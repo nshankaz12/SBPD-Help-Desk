@@ -1,4 +1,4 @@
-compSearch As CanvasComponent:
+compSearchTickets As CanvasComponent:
     BackgroundColor: =ColorScheme.backgroundDark
     CloseSearch: =Set(varSearchVisible, false)
     Fill: =RGBA(0, 0, 0, 0)
@@ -17,7 +17,7 @@ compSearch As CanvasComponent:
             varSearchText,
             ""
         );
-        compSearch.CloseSearch();
+        compSearchTickets.CloseSearch();
         
         ClearCollect(
             colTickets,
@@ -77,43 +77,43 @@ compSearch As CanvasComponent:
         ZIndex: =1
 
     IconSearchOpen As icon.Search:
-        Color: =compSearch.SecondaryColor
+        Color: =compSearchTickets.SecondaryColor
         Height: =Parent.Height
         HoverColor: =RGBA(0, 18, 107, 1)
         Icon: =Icon.Search
-        OnSelect: =compSearch.OpenSearch(); SetFocus(searchBox_1)
+        OnSelect: =compSearchTickets.OpenSearch(); SetFocus(searchBox_1)
         Rotation: =90
         Tooltip: ="Open Search Bar"
         Visible: =App.Width <= 600
         Width: =40
-        X: =If(IsBlank(compSearch.IconSearchOpenNewX), If(App.Width < 500, searchBox_1.Width - Self.Width * 2, searchBox_1.Width - Self.Width * 2.5), compSearch.IconSearchOpenNewX)
+        X: =If(IsBlank(compSearchTickets.IconSearchOpenNewX), If(App.Width < 500, searchBox_1.Width - Self.Width * 2, searchBox_1.Width - Self.Width * 2.5), compSearchTickets.IconSearchOpenNewX)
         Y: =(Parent.Height - Self.Height) / 2
         ZIndex: =2
 
     searchBox_1 As text:
         Default: =varSearchText
         Height: =Parent.Height
-        HintText: =If(IsBlank(compSearch.NewHintText), If(searchBox_1.Width < 450, "Search", "Search by ticket title or exact ticket id"), compSearch.NewHintText)
+        HintText: =If(IsBlank(compSearchTickets.NewHintText), If(searchBox_1.Width < 450, "Search", "Search by ticket title or exact ticket id"), compSearchTickets.NewHintText)
         Mode: =TextMode.MultiLine
         PaddingLeft: =45
         PaddingRight: =80
         PaddingTop: =10
         Tooltip: ="Search"
-        Visible: =If(App.Width > 600, true, compSearch.SearchVisible)
+        Visible: =If(App.Width > 600, true, compSearchTickets.SearchVisible)
         Width: =Parent.Width
         X: =(Parent.Width - Self.Width) / 2
         Y: =(Parent.Height - Self.Height) / 2
         ZIndex: =3
 
     bgSearch As button:
-        Fill: =compSearch.SecondaryColor
+        Fill: =compSearchTickets.SecondaryColor
         Height: =38
         OnSelect: |-
             =Set(
                 SearchQuery,
                 searchBox_1.Text
             );
-            compSearch.CloseSearch();
+            compSearchTickets.CloseSearch();
             
             ClearCollect(
                 colTickets,
@@ -151,7 +151,7 @@ compSearch As CanvasComponent:
         RadiusTopRight: =5
         Text: =
         Tooltip: ="Search"
-        Visible: =!IsBlank(searchBox_1.Text) && (App.Width > 600 || compSearch.SearchVisible)
+        Visible: =!IsBlank(searchBox_1.Text) && (App.Width > 600 || compSearchTickets.SearchVisible)
         Width: =38
         X: =searchBox_1.X + searchBox_1.Width - Self.Width
         Y: =(Parent.Height - Self.Height) / 2
@@ -170,7 +170,7 @@ compSearch As CanvasComponent:
                 SearchQuery,
                 searchBox_1.Text
             );
-            compSearch.CloseSearch();
+            compSearchTickets.CloseSearch();
             
             ClearCollect(
                 colTickets,
@@ -205,7 +205,7 @@ compSearch As CanvasComponent:
         PaddingLeft: =5
         PaddingRight: =5
         Tooltip: ="Search"
-        Visible: =!IsBlank(searchBox_1.Text) && (App.Width > 600 || compSearch.SearchVisible)
+        Visible: =!IsBlank(searchBox_1.Text) && (App.Width > 600 || compSearchTickets.SearchVisible)
         Width: =38
         X: =searchBox_1.X + searchBox_1.Width - Self.Width
         Y: =(Parent.Height - Self.Height) / 2
@@ -261,19 +261,19 @@ compSearch As CanvasComponent:
                 )
             )
         Tooltip: ="Cancel"
-        Visible: =!IsBlank(searchBox_1.Text) && (App.Width > 600 || compSearch.SearchVisible)
+        Visible: =!IsBlank(searchBox_1.Text) && (App.Width > 600 || compSearchTickets.SearchVisible)
         Width: =38
         X: =If(searchIcon_1.Visible, searchBox_1.X + searchBox_1.Width - searchIcon_1.Width - Self.Width, searchBox_1.X + searchBox_1.Width - Self.Width)
         Y: =(Parent.Height - Self.Height) / 2
         ZIndex: =6
 
     IconSearch As icon.Search:
-        Color: =compSearch.PrimaryColor
+        Color: =compSearchTickets.PrimaryColor
         DisplayMode: =DisplayMode.View
         Height: =36
         Icon: =Icon.Search
         Rotation: =90
-        Visible: =App.Width > 600 || compSearch.SearchVisible
+        Visible: =App.Width > 600 || compSearchTickets.SearchVisible
         Width: =38
         X: =searchBox_1.X + 5
         Y: =(Parent.Height - Self.Height) / 2

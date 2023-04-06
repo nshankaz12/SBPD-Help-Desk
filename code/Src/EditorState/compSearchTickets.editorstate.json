@@ -218,11 +218,6 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
           "PropertyName": "X",
           "RuleProviderType": "Unknown"
         },
@@ -263,7 +258,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
         },
         {
@@ -328,7 +323,12 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Visible",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Y",
           "RuleProviderType": "Unknown"
         },
         {
@@ -453,7 +453,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
+          "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
         },
         {
@@ -568,7 +568,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Visible",
+          "PropertyName": "Y",
           "RuleProviderType": "Unknown"
         },
         {
@@ -580,7 +580,7 @@
       "StyleName": "defaultIconStyle",
       "Type": "ControlInfo"
     },
-    "compSearch": {
+    "compSearchTickets": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -700,38 +700,13 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "compSearch",
+      "Name": "compSearchTickets",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "PrimaryColor",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "SecondaryColor",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "OffColor",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "BackgroundColor",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "NewHintText",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "SearchVisible",
+          "PropertyName": "GetIconSearchOpenWidth",
           "RuleProviderType": "System"
         },
         {
@@ -741,23 +716,43 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "GetIconSearchOpenWidth",
+          "PropertyName": "SearchVisible",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "NewHintText",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BackgroundColor",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "OffColor",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "SecondaryColor",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "PrimaryColor",
           "RuleProviderType": "System"
         },
         {
           "Category": "Design",
-          "PropertyName": "ZIndex",
-          "RuleProviderType": "Unknown"
+          "PropertyName": "Fill",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "X",
-          "RuleProviderType": "Unknown"
+          "PropertyName": "Height",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
@@ -766,12 +761,17 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
-          "RuleProviderType": "Unknown"
+          "PropertyName": "X",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "Y",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ZIndex",
           "RuleProviderType": "System"
         },
         {
@@ -781,12 +781,12 @@
         },
         {
           "Category": "Behavior",
-          "PropertyName": "CloseSearch",
+          "PropertyName": "OnReset",
           "RuleProviderType": "System"
         },
         {
           "Category": "Behavior",
-          "PropertyName": "OnReset",
+          "PropertyName": "CloseSearch",
           "RuleProviderType": "System"
         }
       ],
@@ -893,7 +893,7 @@
       "Properties": [
         {
           "Category": "Design",
-          "PropertyName": "Y",
+          "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1013,7 +1013,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Visible",
+          "PropertyName": "Y",
           "RuleProviderType": "Unknown"
         }
       ],
@@ -1141,12 +1141,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "X",
+          "PropertyName": "Height",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1231,7 +1226,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "X",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1262,6 +1257,11 @@
         {
           "Category": "Design",
           "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Y",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1431,12 +1431,17 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "HintText",
+          "PropertyName": "Tooltip",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "Tooltip",
+          "PropertyName": "HintText",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1486,22 +1491,17 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
           "PropertyName": "Strikethrough",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
+          "PropertyName": "X",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
+          "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1511,7 +1511,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "X",
+          "PropertyName": "Width",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1636,7 +1636,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Visible",
+          "PropertyName": "Y",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1791,11 +1791,6 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
           "PropertyName": "X",
           "RuleProviderType": "Unknown"
         },
@@ -1881,7 +1876,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1916,7 +1911,12 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Visible",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Y",
           "RuleProviderType": "Unknown"
         },
         {
@@ -2121,5 +2121,5 @@
       "Type": "ControlInfo"
     }
   },
-  "TopParentName": "compSearch"
+  "TopParentName": "compSearchTickets"
 }

@@ -4,44 +4,23 @@
         =//LoadingSpinner.None
         LoadingSpinner.Controls
     OnHidden: |-
-        =Reset(compFilterMenu_1);
-        Reset(MyTicketsGallery);
-        Reset(compSearch_1);
-    OnVisible: |-
-        =// Create local variables for mobile view property on this screen using UpdateContext
-        UpdateContext({MobileGallery: false});
-        UpdateContext({HamburgerIconChange: false});
+        =//Reset(MyTicketsGallery);
+        //Reset(compFilterMenu_1);
+        //Reset(compSearch_1);
         
-        ClearCollect(
-            colTickets,
-            ForAll(
-                Table(
-                    ParseJSON(
-                        SearchFilterTicketsSPList.Run(
-                            If(
-                                IsBlank(SearchQuery),
-                                "___",
-                                SearchQuery
-                            ), StatusChoice, TagChoice
-                        ).searchresults
-                    )
-                ),
-                {
-                    ID: Value(Value.ID),
-                    Title: Text(Value.title),
-                    Description: Text(Value.description),
-                    MainCategory: Value(Value.mainCategory),
-                    DateCreated: DateValue(Value.dateCreated),
-                    CreatorId: Value(Value.creatorId),
-                    Status: Text(Value.status),
-                    AssignedTo: Value(Value.assignedTo),
-                    LastUpdated: DateValue(Value.lastUpdated),
-                    LocationId: Value(Value.locationId),
-                    Tags: Text(Value.tags),
-                    AddAssignees: Text(Value.addAssignees)
-                }
-            )
-        )
+        Set(varResetMyTickets, false);
+    OnVisible: |-
+        =// Resets the screen when navigated to using the navigation menus and back button is not used
+        // This code will also get the tickets from SharePoint List when screen is navigated to for the first time
+        If(varResetMyTickets, 
+        Reset(MyTicketsGallery);
+        Reset(compFilterMenu_1);
+        Reset(compSearch_1);
+        );
+        
+        
+        // Code only used in development process when not using the navigation menus. Gets the tickets when screen is loaded for the first time 
+        If(IsEmpty(MyTicketsGallery.AllItems),ClearCollect(colTickets,ForAll(Table(ParseJSON(SearchFilterTicketsSPList.Run(If(IsBlank(SearchQuery),"___",SearchQuery),StatusChoice,TagChoice).searchresults)),{ID:Value(Value.ID),Title:Text(Value.title),Description:Text(Value.description),MainCategory:Value(Value.mainCategory),DateCreated:DateValue(Value.dateCreated),CreatorId:Value(Value.creatorId),Status:Text(Value.status),AssignedTo:Value(Value.assignedTo),LastUpdated:DateValue(Value.lastUpdated),LocationId:Value(Value.locationId),Tags:Text(Value.tags),AddAssignees:Text(Value.addAssignees)})))
 
     MyTicketsMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
@@ -110,7 +89,7 @@
                     Width: =Parent.Width
                     ZIndex: =1
 
-                    compSearch_1 As compSearch:
+                    compSearch_1 As compSearchTickets:
                         X: =(Parent.Width - Self.Width) / 2
                         Y: =(Parent.Height - Self.Height) / 2
 
@@ -124,7 +103,7 @@
                     ZIndex: =2
 
                     MyTicketsGallery As gallery.galleryVertical:
-                        Default: =First(MyTicketsGallery.AllItems)
+                        Default: =//First(MyTicketsGallery.AllItems)
                         DelayItemLoading: |-
                             =//false
                             true
@@ -323,7 +302,9 @@
                             Height: =37
                             OnSelect: =Select(Parent)
                             Size: =10
-                            Text: =ThisItem.Description
+                            Text: |-
+                                =//ThisItem.Description
+                                If(Len(ThisItem.Description)>45, Concatenate(Left(ThisItem.Description,45),"..."),ThisItem.Description)
                             Width: |-
                                 =//282
                                 Parent.TemplateWidth - 48
@@ -654,7 +635,7 @@
         Y: =compWebHeader_6.Height + ((HeaderLabel.Height - Self.Height) / 2)
         ZIndex: =4
 
-    compFilterMenu_1 As compFilterMenu:
+    compFilterMenu_1 As compFilterTicketsMenu:
         FontSize: |-
             =//If(App.Height > 560, 18, 13)
             

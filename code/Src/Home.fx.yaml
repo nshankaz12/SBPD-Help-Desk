@@ -324,7 +324,7 @@ Home As screen:
                             Fill: =RGBA(255, 255, 255, 0)
                             Height: =ButtonGalleryBackgroundButton_1.Height
                             HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
-                            OnSelect: =Navigate(ThisItem.ScreenToGoTo)
+                            OnSelect: =If(ThisItem.ScreenToGoTo.Name = "MyTickets", Set(varResetMyTickets, true)); Navigate(ThisItem.ScreenToGoTo)
                             PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
                             Text: =""
                             Width: =ButtonGalleryBackgroundButton_1.Width

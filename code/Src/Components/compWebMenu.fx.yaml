@@ -104,6 +104,7 @@ compWebMenu As CanvasComponent:
             HoverFill: =Color.Transparent
             OnSelect: |-
                 =Set(showMenu, false);
+                If(ThisItem.ScreenToGoTo.Name = "MyTickets", Set(varResetMyTickets, true));
                 Navigate(ThisItem.ScreenToGoTo);
             PressedFill: =Color.Transparent
             Text: =""

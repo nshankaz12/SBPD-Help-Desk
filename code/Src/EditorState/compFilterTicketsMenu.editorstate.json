@@ -78,7 +78,7 @@
       "Properties": [
         {
           "Category": "Design",
-          "PropertyName": "Width",
+          "PropertyName": "Color",
           "RuleProviderType": "Unknown"
         },
         {
@@ -128,7 +128,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Color",
+          "PropertyName": "Width",
           "RuleProviderType": "Unknown"
         },
         {
@@ -168,11 +168,6 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
           "PropertyName": "PressedFill",
           "RuleProviderType": "Unknown"
         },
@@ -192,6 +187,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Behavior",
           "PropertyName": "OnSelect",
           "RuleProviderType": "Unknown"
@@ -200,7 +200,7 @@
       "StyleName": "defaultIconStyle",
       "Type": "ControlInfo"
     },
-    "compFilterMenu": {
+    "compFilterTicketsMenu": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -360,63 +360,13 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "compFilterMenu",
+      "Name": "compFilterTicketsMenu",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "FilterVisible",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "FontSize",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "IconSize",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "CheckAdmin",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "NewHeight",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "TicketsChoice",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "FilterIconSize",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "PrimaryColor",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "SecondaryColor",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "BackgroundColor",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "OffColor",
+          "PropertyName": "HeightOffset",
           "RuleProviderType": "System"
         },
         {
@@ -426,23 +376,73 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "HeightOffset",
+          "PropertyName": "OffColor",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BackgroundColor",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "SecondaryColor",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "PrimaryColor",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "FilterIconSize",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "TicketsChoice",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "CheckAdmin",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "FilterVisible",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "IconSize",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "FontSize",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "NewHeight",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Y",
           "RuleProviderType": "System"
         },
         {
           "Category": "Design",
           "PropertyName": "ZIndex",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "X",
-          "RuleProviderType": "Unknown"
+          "PropertyName": "Fill",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
@@ -456,7 +456,12 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "X",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Behavior",
+          "PropertyName": "OnReset",
           "RuleProviderType": "System"
         },
         {
@@ -467,11 +472,6 @@
         {
           "Category": "Behavior",
           "PropertyName": "CloseFilter",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Behavior",
-          "PropertyName": "OnReset",
           "RuleProviderType": "System"
         }
       ],
@@ -648,7 +648,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Size",
+          "PropertyName": "Fill",
           "RuleProviderType": "Unknown"
         },
         {
@@ -673,7 +673,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "ChevronBackground",
           "RuleProviderType": "Unknown"
         },
         {
@@ -733,7 +733,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "Size",
           "RuleProviderType": "Unknown"
         },
         {
@@ -788,7 +788,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "ChevronBackground",
+          "PropertyName": "Height",
           "RuleProviderType": "Unknown"
         },
         {
@@ -991,7 +991,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "ChevronBackground",
+          "PropertyName": "Height",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1046,7 +1046,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "Size",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1106,7 +1106,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "ChevronBackground",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1131,7 +1131,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Size",
+          "PropertyName": "Fill",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1523,7 +1523,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "X",
+          "PropertyName": "Color",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1568,12 +1568,12 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Color",
+          "PropertyName": "X",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Icon",
+          "PropertyName": "Height",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1608,7 +1608,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "Icon",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1785,12 +1785,12 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "BorderColor",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
+          "PropertyName": "Fill",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1805,7 +1805,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "Width",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1815,7 +1815,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "BorderColor",
+          "PropertyName": "Height",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1995,7 +1995,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Size",
+          "PropertyName": "Fill",
           "RuleProviderType": "Unknown"
         },
         {
@@ -2105,7 +2105,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "Size",
           "RuleProviderType": "Unknown"
         },
         {
@@ -2425,7 +2425,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Size",
+          "PropertyName": "Fill",
           "RuleProviderType": "Unknown"
         },
         {
@@ -2470,7 +2470,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "Size",
           "RuleProviderType": "Unknown"
         },
         {
@@ -2645,7 +2645,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Size",
+          "PropertyName": "Fill",
           "RuleProviderType": "Unknown"
         },
         {
@@ -2755,7 +2755,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "Size",
           "RuleProviderType": "Unknown"
         },
         {
@@ -2980,7 +2980,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "Size",
           "RuleProviderType": "Unknown"
         },
         {
@@ -3090,7 +3090,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Size",
+          "PropertyName": "Fill",
           "RuleProviderType": "Unknown"
         },
         {
@@ -3279,13 +3279,18 @@
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "Default",
+          "NameMap": "{\"Value\":\"Value\"}",
+          "PropertyName": "Items",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "NameMap": "{\"Value\":\"Value\"}",
-          "PropertyName": "Items",
+          "PropertyName": "Default",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "RadioSize",
           "RuleProviderType": "Unknown"
         },
         {
@@ -3315,7 +3320,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Size",
+          "PropertyName": "RadioBackgroundFill",
           "RuleProviderType": "Unknown"
         },
         {
@@ -3326,11 +3331,6 @@
         {
           "Category": "Design",
           "PropertyName": "BorderThickness",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "RadioSize",
           "RuleProviderType": "Unknown"
         },
         {
@@ -3440,7 +3440,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "RadioBackgroundFill",
+          "PropertyName": "Size",
           "RuleProviderType": "Unknown"
         },
         {
@@ -3564,7 +3564,7 @@
       "Properties": [
         {
           "Category": "Design",
-          "PropertyName": "Width",
+          "PropertyName": "Color",
           "RuleProviderType": "Unknown"
         },
         {
@@ -3614,7 +3614,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Color",
+          "PropertyName": "Width",
           "RuleProviderType": "Unknown"
         },
         {
@@ -4611,6 +4611,11 @@
       "Properties": [
         {
           "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
           "PropertyName": "Fill",
           "RuleProviderType": "Unknown"
         },
@@ -4687,11 +4692,6 @@
         {
           "Category": "Design",
           "PropertyName": "Width",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Height",
           "RuleProviderType": "Unknown"
         },
         {
@@ -4894,7 +4894,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
         },
         {
@@ -4929,7 +4929,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Visible",
+          "PropertyName": "Height",
           "RuleProviderType": "Unknown"
         },
         {
@@ -4957,5 +4957,5 @@
       "Type": "ControlInfo"
     }
   },
-  "TopParentName": "compFilterMenu"
+  "TopParentName": "compFilterTicketsMenu"
 }
