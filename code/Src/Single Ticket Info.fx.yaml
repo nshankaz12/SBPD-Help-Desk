@@ -52,7 +52,7 @@
                 NewMobileDetails As groupContainer.manualLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
-                    Height: =If(userData.role = "staff",400,450)
+                    Height: =If(userData.role = "staff",400,475)
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     Width: =Parent.Width
@@ -161,7 +161,7 @@
                         Visible: =If(userData.role = "staff", false,true)
                         Width: =80
                         X: =(Parent.Width-Self.Width)/2
-                        Y: =Rectangle_behind_details_2.Height-Self.Height
+                        Y: =Created_Label_1.Height+ Created_Label_1.Y
                         ZIndex: =6
 
                     Label4_2 As label:
@@ -237,7 +237,6 @@
                         ZIndex: =11
 
                     Category_Value_Label_1 As label:
-                        Align: =Align.Center
                         DisplayMode: =DisplayMode.View
                         Font: =Font.Georgia
                         Height: =30
@@ -397,7 +396,6 @@
                         ZIndex: =21
 
                     AssignMe_1 As label:
-                        Align: =Align.Center
                         Height: =30
                         HoverColor: =ColorScheme.primary
                         OnSelect: |+
@@ -4440,7 +4438,6 @@
                         ZIndex: =11
 
                     Category_Value_Label As label:
-                        Align: =Align.Center
                         DisplayMode: =DisplayMode.View
                         Font: =Font.Georgia
                         Height: =30
@@ -4608,7 +4605,6 @@
                         ZIndex: =21
 
                     AssignMe As label:
-                        Align: =Align.Center
                         Height: =28
                         HoverColor: =ColorScheme.primary
                         OnSelect: |+
