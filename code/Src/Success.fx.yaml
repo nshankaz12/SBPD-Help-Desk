@@ -152,24 +152,9 @@ Success As screen:
 
             Container10_4 As groupContainer.manualLayoutContainer:
                 Fill: =ColorScheme.primary
-                FillPortions: =0
                 Height: =Parent.Height/12
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
                 Width: =Parent.Width
                 ZIndex: =3
-
-                UserNameLabel_4 As label:
-                    Align: =Align.Center
-                    Color: =RGBA(255, 255, 255, 1)
-                    Height: =Parent.Height
-                    PaddingBottom: =10
-                    PaddingTop: =0
-                    Size: =If(Home.Size= 1 , 13,Parent.Width/40)
-                    Text: =User().FullName
-                    Width: =Parent.Width
-                    X: =(Parent.Width - Self.Width)/2
-                    ZIndex: =1
 
             HomeMainContentContainer_1 As groupContainer.verticalAutoLayoutContainer:
                 FillPortions: =10
@@ -183,46 +168,6 @@ Success As screen:
                     //Main Content container this houses certian elements such as the searchbar, and 2 button galleries, one for desktop, and another for mobile
                 Width: =Parent.Width
                 ZIndex: =4
-
-                AlertRibbonContainerTest_1 As groupContainer.verticalAutoLayoutContainer:
-                    Fill: =RGBA(232, 244, 217, 1)
-                    FillPortions: =0
-                    Height: =Parent.Height/16
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    Visible: =!CloseAlertRibbon
-                    Width: =Parent.Width
-                    ZIndex: =2
-
-                    AlertContianer_1 As groupContainer.horizontalAutoLayoutContainer:
-                        FillPortions: =0
-                        Height: =Parent.Height
-                        LayoutMinHeight: =100
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        ZIndex: =3
-
-                        Label12_1 As label:
-                            Align: =Align.Center
-                            AlignInContainer: =AlignInContainer.Stretch
-                            Color: =RGBA(168, 0, 0, 1)
-                            FillPortions: =1
-                            Height: =Parent.Height
-                            LayoutMinHeight: =Parent.Height
-                            Size: =If(Success.Size=1, 8, 15)
-                            Text: |
-                                =If(IsBlank(AlertMessage), "", AlertMessage)
-                            ZIndex: =1
-
-                        Icon12_1 As icon.Cancel:
-                            Color: =RGBA(176, 176, 176, 1)
-                            Height: =Parent.Height
-                            Icon: =Icon.Cancel
-                            OnSelect: |-
-                                =UpdateContext({CloseAlertRibbon:true})
-                            ZIndex: =2
 
                 ButtonsContainer_1 As groupContainer.verticalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer

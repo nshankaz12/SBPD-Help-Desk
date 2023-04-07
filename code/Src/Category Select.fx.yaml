@@ -159,48 +159,6 @@
                 Width: =Parent.Width
                 ZIndex: =6
 
-                AlertRibbonContainerTest_3 As groupContainer.verticalAutoLayoutContainer:
-                    Fill: =RGBA(232, 244, 217, 1)
-                    FillPortions: =0
-                    Height: =Parent.Height/16
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    Visible: |-
-                        =false
-                        //!CloseAlertRibbon
-                    Width: =Parent.Width
-                    ZIndex: =2
-
-                    AlertContianer_3 As groupContainer.horizontalAutoLayoutContainer:
-                        FillPortions: =0
-                        Height: =Parent.Height
-                        LayoutMinHeight: =100
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        ZIndex: =3
-
-                        Label12_3 As label:
-                            Align: =Align.Center
-                            AlignInContainer: =AlignInContainer.Stretch
-                            Color: =RGBA(168, 0, 0, 1)
-                            FillPortions: =1
-                            Height: =Parent.Height
-                            LayoutMinHeight: =Parent.Height
-                            Size: =If(Home.Size=1, 8, 15)
-                            Text: |
-                                =If(IsBlank(AlertMessage), "", AlertMessage)
-                            ZIndex: =1
-
-                        Icon12_3 As icon.Cancel:
-                            Color: =RGBA(176, 176, 176, 1)
-                            Height: =Parent.Height
-                            Icon: =Icon.Cancel
-                            OnSelect: |-
-                                =UpdateContext({CloseAlertRibbon:true})
-                            ZIndex: =2
-
                 ButtonsContainer_2 As groupContainer.verticalAutoLayoutContainer:
                     FillPortions: =8
                     Height: =Parent.Height
