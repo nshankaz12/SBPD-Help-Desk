@@ -21,7 +21,6 @@
             ZIndex: =2
 
             AllTicketsHeaderFinal As groupContainer.verticalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
                 Height: =Parent.Height/11
                 LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -30,10 +29,12 @@
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 Width: =Parent.Width
-                ZIndex: =1
+                ZIndex: =2
 
-                compWebHeader_38 As compWebHeader_37:
-                    CompScreenSize: ='All Tickets'.Size
+                compWebHeader_40 As compWebHeader_3:
+                    AlignInContainer: =AlignInContainer.Stretch
+                    CompScreenSize: |
+                        ='All Tickets'.Size
                     Height: =Parent.Height
                     LayoutMinHeight: =//640
                     LayoutMinWidth: =640
@@ -48,7 +49,7 @@
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 Width: =Parent.Width
-                ZIndex: =2
+                ZIndex: =3
 
                 TagName_2 As label:
                     Align: =Align.Center
@@ -74,7 +75,7 @@
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 Width: =Parent.Width
-                ZIndex: =3
+                ZIndex: =4
 
                 AddTagsBar_2 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
@@ -102,7 +103,7 @@
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                ZIndex: =4
+                ZIndex: =5
 
                 Container23 As groupContainer.verticalAutoLayoutContainer:
                     LayoutDirection: =LayoutDirection.Vertical
@@ -236,51 +237,22 @@
                             Width: =1
                             ZIndex: =6
 
-                        Button11 As button:
-                            Color: =Color.Transparent
-                            Fill: |-
-                                =RGBA(255,255,255,0)
-                                //Color.Transparent
-                                //ColorScheme.orange
-                            Height: =Parent.TemplateHeight
-                            HoverBorderColor: =//ColorFade(ColorScheme.primary, 20%)
-                            HoverColor: =Self.Fill
-                            HoverFill: =ColorFade(ColorScheme.primary,0.2)
-                            OnSelect: =Select(Parent)
-                            Text: =
-                            Visible: =false
-                            Width: =Parent.TemplateWidth
-                            X: |
-                                =0
-                            ZIndex: =7
-
-                        Rectangle5_1 As rectangle:
-                            Fill: =Color.Transparent
-                            Height: =Parent.TemplateHeight
-                            HoverFill: |-
-                                =//Self.Fill
-                                ColorFade(Self.Fill,-0.2)
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            ZIndex: =8
-
             AllTicketsMobileNav_1 As groupContainer.verticalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
-                Height: =compMobileMenu_19.Height
+                Height: =compMobileMenu_20.Height
                 LayoutDirection: =LayoutDirection.Vertical
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 Visible: =If('All Tickets'.Size = 1, true, false)
                 Width: =Parent.Width
-                ZIndex: =5
+                ZIndex: =6
 
-                compMobileMenu_20 As compMobileMenu_4:
+                compMobileMenu_20 As compMobileMenu_3:
                     LayoutMinHeight: =640
                     LayoutMinWidth: =640
                     Width: =Parent.Width
-                    ZIndex: =3
 
     compWebMenu_9 As compWebMenu:
         ZIndex: =2
