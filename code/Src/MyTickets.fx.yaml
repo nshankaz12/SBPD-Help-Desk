@@ -20,7 +20,7 @@
         
         
         // Code only used in development process when not using the navigation menus. Gets the tickets when screen is loaded for the first time 
-        If(IsEmpty(MyTicketsGallery.AllItems),ClearCollect(colTickets,ForAll(Table(ParseJSON(SearchFilterTicketsSPList.Run(If(IsBlank(SearchQuery),"___",SearchQuery),StatusChoice,TagChoice).searchresults)),{ID:Value(Value.ID),Title:Text(Value.title),Description:Text(Value.description),MainCategory:Value(Value.mainCategory),DateCreated:DateValue(Value.dateCreated),CreatorId:Value(Value.creatorId),Status:Text(Value.status),AssignedTo:Value(Value.assignedTo),LastUpdated:DateValue(Value.lastUpdated),LocationId:Value(Value.locationId),Tags:Text(Value.tags),AddAssignees:Text(Value.addAssignees)})))
+        /*If(IsEmpty(MyTicketsGallery.AllItems),ClearCollect(colTickets,ForAll(Table(ParseJSON(SearchFilterTicketsSPList.Run(If(IsBlank(SearchQuery),"___",SearchQuery),StatusChoice,TagChoice).searchresults)),{ID:Value(Value.ID),Title:Text(Value.title),Description:Text(Value.description),MainCategory:Value(Value.mainCategory),DateCreated:DateValue(Value.dateCreated),CreatorId:Value(Value.creatorId),Status:Text(Value.status),AssignedTo:Value(Value.assignedTo),LastUpdated:DateValue(Value.lastUpdated),LocationId:Value(Value.locationId),Tags:Text(Value.tags),AddAssignees:Text(Value.addAssignees)})))*/
 
     MyTicketsMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height

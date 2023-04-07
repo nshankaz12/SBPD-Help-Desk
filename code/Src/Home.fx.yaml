@@ -97,13 +97,11 @@ Home As screen:
                     Width: =Parent.Width
                     ZIndex: =3
 
-                    compWebHeader_23 As compWebHeader_2:
-                        AlignInContainer: =AlignInContainer.Center
+                    compWebHeader_1 As compWebHeader:
                         CompScreenSize: =Home.Size
                         Height: =Parent.Height
                         LayoutMinHeight: =640
                         LayoutMinWidth: =640
-                        Width: =Parent.Width
 
                     HomeNavLinkGallery_2 As gallery.galleryHorizontal:
                         AlignInContainer: =AlignInContainer.Center
@@ -156,19 +154,11 @@ Home As screen:
                     Height: =Parent.Height
                     PaddingBottom: =10
                     PaddingTop: =0
-                    Size: =If(Home.Size= 1 , 13,Parent.Width/40)
+                    Size: =If(Home.Size= 1 , 13, headerText.desktopSize)
                     Text: =User().FullName
                     Width: =Parent.Width
                     X: =(Parent.Width - Self.Width)/2
                     ZIndex: =1
-
-                HomeUserImage_2 As image:
-                    Height: =Parent.Height
-                    Image: =User().Image
-                    Visible: =Home.Size>2
-                    Width: =Parent.Width/10
-                    X: =Parent.Width -Self.Width
-                    ZIndex: =2
 
             HomeMainContentContainer_3 As groupContainer.verticalAutoLayoutContainer:
                 FillPortions: =10
@@ -196,6 +186,7 @@ Home As screen:
                     ZIndex: =2
 
                     "Gallery3 As gallery.'BrowseLayout_Flexible_SocialFeed_ver4.0'":
+                        AlignInContainer: =AlignInContainer.Center
                         BorderColor: =RGBA(0, 0, 0, 0)
                         DelayItemLoading: =true
                         FillPortions: =0
@@ -253,7 +244,7 @@ Home As screen:
                     ZIndex: =3
 
                     ButtonGallery_1 As gallery.galleryVertical:
-                        AlignInContainer: =AlignInContainer.SetByContainer
+                        AlignInContainer: =AlignInContainer.Start
                         Height: =Parent.Height
                         Items: =userNav
                         Layout: =Layout.Vertical

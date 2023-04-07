@@ -20,6 +20,7 @@
             ZIndex: =2
 
             compWebHeader_10 As compWebHeader_9:
+                CompScreenSize: ='Admin Manager'.Size
                 Height: |
                     =82
                 LayoutMinHeight: =640
@@ -31,7 +32,7 @@
                 Align: =Align.Center
                 Color: =Color.White
                 Fill: =ColorScheme.primary
-                Size: =19
+                Size: =20
                 Text: ="Admin Manager"
                 Width: =Parent.Width
                 ZIndex: =2
@@ -78,7 +79,7 @@
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
                 LayoutMinWidth: =320
-                OnSelect: =Switch(ThisItem.MenuText, "All Tickets", Navigate('All Tickets'), "Tag Manager", Navigate('Tag Manager (Redesign)'), "Alert Manager", Navigate('Alert Manager'), "Ticket Metrics", Navigate('Ticket Metrics - Admin Tech'), "Assign Role", Navigate('Assign Role - Admin'))
+                OnSelect: =Switch(ThisItem.MenuText, "All Tickets", Navigate('All Tickets'), "Tag Manager", Navigate('Tag Manager'), "Alert Manager", Navigate('Alert Manager'), "Ticket Metrics", Navigate('Ticket Metrics - Admin Tech'), "Assign Role", Navigate('Assign Role - Admin'))
                 ShowScrollbar: =false
                 TemplateSize: =200
                 Width: =Parent.Width

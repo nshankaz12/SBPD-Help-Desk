@@ -2,9 +2,11 @@
     OnHidden: |-
         =Set(editMessage, false);
         Set(addMessage, true);
-    OnVisible: |-
-        =Refresh(Comments_1);
+    OnVisible: |
+        =UpdateContext({primAssignee:Blank()});
+        Refresh(Comments_1);
         If(ticketInfo.Status = "open", Set(closeTicketButtonVis, true), Set(closeTicketButtonVis, false));
+        Set(primAssignee, If(IsBlank(ticketInfo.AssignedTo), Blank(), Filter(Users_1,ID = ticketInfo.AssignedTo)));
 
     SingleTicketInfoMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
@@ -4304,8 +4306,8 @@
                         Visible: |
                             =false
                         Width: =396
-                        X: =(Parent.Width-Self.Width)/2
-                        Y: =142
+                        X: =36
+                        Y: =117
                         ZIndex: =4
 
                     Title_Label As label:
@@ -4406,14 +4408,14 @@
                         Height: =30
                         Items: =Tags_1
                         OnChange: |-
-                            =Patch(
+                            =/*Patch(
                                 Tickets,
                                 LookUp(
                                     Tickets,
                                     ID = ticketInfo.ID
                                 ),
                                 {tags: Label4_1.Text}
-                            );
+                            );*/
                         SearchFields: =["field_2"]
                         SearchItems: =Search(Tags_1,ComboBox1_1.SearchText,"field_2")
                         Size: =Assignee_ComboBox.Size
@@ -4495,14 +4497,14 @@
                         IsSearchable: =false
                         Items: =Filter(Users_1, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label.Text)
                         OnChange: |-
-                            =Patch(
+                            =/*Patch(
                                 Tickets,
                                 LookUp(
                                     Tickets,
                                     ID = ticketInfo.ID
                                 ),
                                 {addAssignees: Additional_Assign_Value_Label.Text}
-                            );
+                            );*/
                         SearchFields: =["field_4"]
                         SearchItems: =[]
                         Size: =Assignee_ComboBox.Size
@@ -4530,14 +4532,22 @@
                         ChevronBackground: =ColorScheme.primary
                         Default: |
                             =
-                        DefaultSelectedItems: =If(IsBlank(ticketInfo.AssignedTo), Blank(), Filter(Users_1,ID = ticketInfo.AssignedTo))
+                        DefaultSelectedItems: |-
+                            =//If(IsBlank(ticketInfo.AssignedTo), Blank(), Filter(Users_1,ID = ticketInfo.AssignedTo))
+                            
+                            If(
+                               !IsBlank(
+                                  primAssignee),
+                                  primAssignee,
+                                  LookUp(Users_1,ID = ticketInfo.AssignedTo)
+                            )
                         DisplayFields: =["field_4"]
                         Height: =30
                         InputTextPlaceholder: ="Unassigned"
                         Items: =Filter(Users_1, userRole = "tech" || userRole = "admin")
                         NoSelectionText: ="Unassigned"
                         OnChange: |-
-                            =Patch(
+                            =/*Patch(
                                 Tickets,
                                 LookUp(
                                     Tickets,
@@ -4550,7 +4560,7 @@
                                         Value(AssigneeId.Text)
                                     )
                                 }
-                            );
+                            );*/
                         SearchFields: =["field_4"]
                         SearchItems: =Search(Filter(Users_1, userRole = "tech" || userRole = "admin"),Assignee_ComboBox.SearchText,"field_4")
                         SelectMultiple: =false
@@ -4602,8 +4612,10 @@
                         Height: =28
                         HoverColor: =ColorScheme.primary
                         OnSelect: |+
-                            =UpdateContext({assigneeTo:userData.id}); 
-                            Reset(Assignee_ComboBox);
+                            =UpdateContext({primAssignee: LookUp(Users_1, ID = userData.id)});
+                            Reset(Assignee_ComboBox)
+                            
+                            //Reset(Assignee_ComboBox);
                             /* Patch(
                                 Tickets,
                                 LookUp(

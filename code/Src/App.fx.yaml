@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =false
-    OnStart: |+
+    OnStart: |-
         =If(
             LookUp(
                 Users_1,
@@ -16,7 +16,6 @@ App As appinfo:
                 false
             )
         );
-        
         Set(
             userData,
             {
@@ -45,25 +44,19 @@ App As appinfo:
         );
         //Enable for non timer based navigation for Splash Screen
         //Set(splashNavigate,true)
-        
-        ClearCollect(colStatus, {Result:"open"}, {Result:"closed"});
-        
+        ClearCollect(
+            colStatus,
+            {Result: "open"},
+            {Result: "closed"}
+        );
         //split admin tech later
         ClearCollect(
             navCol,
             {
-                ID: 1,
-                NavName: "Home",
-                NavIcon: Icon.Home,
-                ScreenToGoTo: Home,
-                AdminTech: true,
-                Staff: true
-            },
-            {
                 ID: 2,
                 NavName: "Create Ticket",
                 NavIcon: Icon.AddDocument,
-                ScreenToGoTo: 'Create A Ticket',
+                ScreenToGoTo: 'Category Select',
                 AdminTech: true,
                 Staff: true
             },
@@ -76,22 +69,13 @@ App As appinfo:
                 Staff: true
             },
             {
-                ID: 4,
-                NavName: "All Tickets",
-                NavIcon: Icon.DocumentWithContent,
-                ScreenToGoTo: 'Log of All Tickets - Admin Tech',
-                AdminTech: true,
-                Staff: false
-            },
-            {
                 ID: 5,
                 NavName: "Admin Manager",
                 NavIcon: Icon.ComputerDesktop,
                 ScreenToGoTo: 'Admin Manager',
                 AdminTech: true,
                 Staff: false
-            }
-            ,
+            },
             {
                 ID: 6,
                 NavName: "Knowledge Base",
@@ -101,95 +85,176 @@ App As appinfo:
                 Staff: true
             }
         );
-        
-        Set(NDrop,false);
-        Set(MGallery,false);
-        Set(HambIconChange,false);
-        Set(CloseAlertRibbon,false);
-        
-        
-        Set(gblNavItems, 
-        Table(
-            {
-                MenuText: "Home",
-                MenuIcon: Icon.Home,
-                ScreenToGoTo: Home
-            },
-            {
-                MenuText: "Create Ticket",
-                MenuIcon: Icon.AddDocument,
-                ScreenToGoTo: 'Create A Ticket'
-            },
-            {
-                MenuText: "My Tickets",
-                MenuIcon: Icon.Folder,
-                ScreenToGoTo: MyTickets
-            },
-            {
-                MenuText: "Ticket Log",
-                MenuIcon: Icon.DocumentWithContent,
-                ScreenToGoTo: 'Log of All Tickets - Admin Tech'
-            },
-            {
-                MenuText: "Settings",
-                MenuIcon: Icon.Settings,
-                ScreenToGoTo: 'Assign Role - Admin'
-            }
+        Set(
+            NDrop,
+            false
+        );
+        Set(
+            MGallery,
+            false
+        );
+        Set(
+            HambIconChange,
+            false
+        );
+        Set(
+            CloseAlertRibbon,
+            false
+        );
+        Set(
+            gblNavItems,
+            Table(
+                {
+                    MenuText: "Home",
+                    MenuIcon: Icon.Home,
+                    ScreenToGoTo: Home
+                },
+                {
+                    MenuText: "Create Ticket",
+                    MenuIcon: Icon.AddDocument,
+                    ScreenToGoTo: 'Create A Ticket'
+                },
+                {
+                    MenuText: "My Tickets",
+                    MenuIcon: Icon.Folder,
+                    ScreenToGoTo: MyTickets
+                },
+                {
+                    MenuText: "Ticket Log",
+                    MenuIcon: Icon.DocumentWithContent,
+                    ScreenToGoTo: 'Log of All Tickets - Admin Tech'
+                },
+                {
+                    MenuText: "Settings",
+                    MenuIcon: Icon.Settings,
+                    ScreenToGoTo: 'Assign Role - Admin'
+                }
             )
         );
-        
-        Set(ColorScheme,{
-            primary: RGBA(53,89,137, 1),
-            secondary: RGBA(126,149,180,1),
-            backgroundDark: RGBA(124,134,137, 1),
-            offColor: RGBA(219,199,175, 1),
-            orange: RGBA(246,149,43, 1),
-            screenBackground: RGBA(227, 234, 243, 1),
-            secondaryPressedColor:  RGBA(126,149,180,.35)
-        });
-        
-        Set(MainCategory, Filter(Category_1, parentId = Blank())); //only main categories. those that dont rely on a parent
-        
+        Set(
+            ColorScheme,
+            {
+                primary: RGBA(
+                    53,
+                    89,
+                    137,
+                    1
+                ),
+                secondary: RGBA(
+                    126,
+                    149,
+                    180,
+                    1
+                ),
+                backgroundDark: RGBA(
+                    124,
+                    134,
+                    137,
+                    1
+                ),
+                offColor: RGBA(
+                    219,
+                    199,
+                    175,
+                    1
+                ),
+                orange: RGBA(
+                    246,
+                    149,
+                    43,
+                    1
+                ),
+                screenBackground: RGBA(
+                    227,
+                    234,
+                    243,
+                    1
+                ),
+                secondaryPressedColor: RGBA(
+                    126,
+                    149,
+                    180,
+                    .35
+                )
+            }
+        );
+        Set(
+            MainCategory,
+            Filter(
+                Category_1,
+                parentId = Blank()
+            )
+        );
+        //only main categories. those that dont rely on a parent
         // Passed to filter component to check if filter is visible
-        Set(varFilterVisible, false);
-        
-        ClearCollect(colTags, {Value: "None"});
-        Collect(colTags, ForAll(Sort(Tags_1, name, SortOrder.Ascending), {Value: ThisRecord.name}));
-        
+        Set(
+            varFilterVisible,
+            false
+        );
+        ClearCollect(
+            colTags,
+            {Value: "None"}
+        );
+        Collect(
+            colTags,
+            ForAll(
+                Sort(
+                    Tags_1,
+                    name,
+                    SortOrder.Ascending
+                ),
+                {Value: ThisRecord.name}
+            )
+        );
         // Passed variable to check if search bar should be visible
-        Set(varSearchVisible, false);
-        
+        Set(
+            varSearchVisible,
+            false
+        );
         // Variables used for searching and filtering in components for the power automate flow
-        Set(StatusChoice, "open");
-        Set(TagChoice, "None");
-        Set(SearchQuery, "");
-        
+        Set(
+            StatusChoice,
+            "open"
+        );
+        Set(
+            TagChoice,
+            "None"
+        );
+        Set(
+            SearchQuery,
+            ""
+        );
         // Variables to check if navigate to (reset) ticket screens
-        Set(varResetMyTickets, false);
-        Set(varResetAllTickets, false);
-        
+        Set(
+            varResetMyTickets,
+            false
+        );
+        Set(
+            varResetAllTickets,
+            false
+        );
         ClearCollect(
             dummyArticles,
             {
-                ArticleFileName:"1021203.txt",
-                ArticleTags:"Hardware, Mobile"
+                ArticleFileName: "1021203.txt",
+                ArticleTags: "Hardware, Mobile"
             },
             {
-                ArticleFileName:"EDefender_Intro.docx",
-                ArticleTags:"EDefender"
+                ArticleFileName: "EDefender_Intro.docx",
+                ArticleTags: "EDefender"
             },
             {
-                ArticleFileName:"RemoteLogin.PDF",
-                ArticleTags:"Software, Login, Remote"
+                ArticleFileName: "RemoteLogin.PDF",
+                ArticleTags: "Software, Login, Remote"
             }
-        
         );
-        
-        
-        
-        
-        
-        
-        
+        Set(
+            headerText,
+            {
+                desktopSize: 20,
+                mobileSize: 13,
+                boldness: FontWeight.Normal
+            }
+        )
     StartScreen: ='Splash Screen'
 
