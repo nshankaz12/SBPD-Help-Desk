@@ -155,7 +155,7 @@ Home As screen:
                     Height: =Parent.Height
                     PaddingBottom: =10
                     PaddingTop: =0
-                    Size: =If(Home.Size= 1 , 13, headerText.desktopSize)
+                    Size: =If(Home.Size= 1, titleText.mobileSize, titleText.desktopSize)
                     Text: =User().FullName
                     Width: =Parent.Width
                     X: =(Parent.Width - Self.Width)/2
