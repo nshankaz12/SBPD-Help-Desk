@@ -177,7 +177,7 @@
                         DisplayMode: =Parent.DisplayMode
                         DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName, "field_2")
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =Parent.Height/4
+                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/7, Parent.Height/5)
                         MaxLength: =DataSourceInfo([@Tickets], DataSourceInfo.MaxLength, "field_2")
                         Required: =false
                         Update: =
@@ -237,7 +237,7 @@
                         DisplayMode: =Parent.DisplayMode
                         DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName, "{Name}")
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =Parent.Height/4
+                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/7, Parent.Height/5)
                         Required: =true
                         Update: =
                         Width: =If( 'Create A Ticket'.Size = 1, Parent.Width, Parent.Width/3)
@@ -297,7 +297,7 @@
                         DisplayMode: =Parent.DisplayMode
                         DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName,"{Name}")
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =Parent.Height/4
+                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/7, Parent.Height/5)
                         Required: =true
                         Update: =
                         Width: =If( 'Create A Ticket'.Size = 1, Parent.Width, Parent.Width/3)
@@ -356,7 +356,7 @@
                         DisplayMode: =Parent.DisplayMode
                         DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName,"{Name}")
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =Parent.Height/4
+                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/7, Parent.Height/5)
                         Required: =false
                         Update: =
                         Width: =If( 'Create A Ticket'.Size = 1, Parent.Width, Parent.Width/3)
@@ -415,7 +415,7 @@
                         DisplayMode: =Parent.DisplayMode
                         DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName, "{Name}")
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =Parent.Height/4
+                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/7, Parent.Height/5)
                         MaxLength: =DataSourceInfo([@Tickets], DataSourceInfo.MaxLength, "{Name}")
                         Required: =false
                         Update: =
@@ -477,7 +477,7 @@
                         DisplayMode: =Parent.DisplayMode
                         DisplayName: =DataSourceInfo([@Tickets],DataSourceInfo.DisplayName,"{Name}")
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =Parent.Height/4
+                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/7, Parent.Height/5)
                         Required: =false
                         Update: =//Value(DataCardValue6.Text)
                         Width: =If( 'Create A Ticket'.Size = 1, Parent.Width, Parent.Width/3)
@@ -532,7 +532,7 @@
                         BorderStyle: =BorderStyle.Solid
                         DisplayMode: =DisplayMode.Edit
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =Parent.Height/3.5
+                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/4, Parent.Height/3.5)
                         Width: =If( 'Create A Ticket'.Size = 1, Parent.Width/1.25, Parent.Width/3)
                         WidthFit: =true
                         X: =0
@@ -558,7 +558,7 @@
                         BorderStyle: =BorderStyle.Solid
                         DisplayMode: =DisplayMode.Edit
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =Parent.Height/4
+                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/7, Parent.Height/5)
                         Width: =If( 'Create A Ticket'.Size = 1, Parent.Width, Parent.Width/3)
                         X: =1
                         Y: =2
