@@ -4,6 +4,7 @@ Home As screen:
     ImagePosition: =ImagePosition.Stretch
     OnVisible: |-
         =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false,CloseAlertRibbon:false, buttonText:""});
+        Set(galleryVisible, true)
 
     HomeMainContainer_2 As groupContainer.horizontalAutoLayoutContainer:
         Height: =Home.Height
@@ -184,15 +185,6 @@ Home As screen:
                     Width: =Parent.Width
                     ZIndex: =3
 
-                    Icon16 As icon.Cancel:
-                        AlignInContainer: =AlignInContainer.End
-                        Height: =50
-                        Icon: =Icon.Cancel
-                        OnSelect: =Set(galleryVisible, !galleryVisible)
-                        Visible: |
-                            =galleryVisible
-                        ZIndex: =1
-
                     "Gallery8 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
                         Fill: =RGBA(255, 255, 66, 1)
                         FillPortions: =0
@@ -207,7 +199,7 @@ Home As screen:
                         TemplatePadding: =0
                         TemplateSize: =40
                         Transition: =Transition.Push
-                        Visible: |
+                        Visible: |-
                             =galleryVisible
                             //If(CountRows(Alerts_1) > 0, true, false)
                         WrapCount: =0
@@ -224,7 +216,7 @@ Home As screen:
                             PaddingTop: =0
                             Text: =ThisItem.titleText
                             VerticalAlign: =VerticalAlign.Top
-                            Width: =1304
+                            Width: =Parent.Width
                             ZIndex: =2
 
                         Separator1 As rectangle:
@@ -233,6 +225,13 @@ Home As screen:
                             Width: =Parent.TemplateWidth
                             Y: =Title1.Height+3
                             ZIndex: =5
+
+                        Icon2 As icon.Cancel:
+                            Height: =40
+                            Icon: =Icon.Cancel
+                            OnSelect: =Set(galleryVisible, !galleryVisible)
+                            X: =Parent.Width - 75
+                            ZIndex: =6
 
                     ButtonGallery_1 As gallery.galleryVertical:
                         AlignInContainer: =AlignInContainer.Start
