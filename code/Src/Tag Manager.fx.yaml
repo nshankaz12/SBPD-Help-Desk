@@ -2,13 +2,18 @@
 
     MainBodyTagManager As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
         LayoutMode: =LayoutMode.Auto
         Width: =Parent.Width
         ZIndex: =1
 
         VerticalLayoutTag As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
             Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -16,21 +21,25 @@
             ZIndex: =2
 
             TagHeaderFinal As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
                 Height: |-
                     =//compWebHeader_20.Height + TagScreenName.Height
                     Parent.Height/11
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 Width: =Parent.Width
                 ZIndex: =2
 
-                compWebHeader_36 As compWebHeader_22:
+                compWebHeader_36 As compWebHeader_2:
+                    AlignInContainer: =AlignInContainer.Stretch
+                    CompScreenSize: |
+                        ='Tag Manager'.Size
                     Height: =Parent.Height
-                    LayoutMinHeight: =640
+                    LayoutMinHeight: =//640
                     LayoutMinWidth: =640
                     Width: =Parent.Width
                     ZIndex: =1
@@ -47,26 +56,13 @@
                 Width: =Parent.Width
                 ZIndex: =3
 
-                TagName_1 As label:
-                    Align: =Align.Center
-                    Color: =RGBA(255, 255, 255, 1)
-                    Height: =Parent.Height
-                    PaddingBottom: =10
-                    PaddingTop: =0
-                    Size: =If('Tag Manager'.Size= 1 , 30,Parent.Height/2.5)
-                    Text: ="Tag Manager"
-                    Visible: =false
-                    Width: =Parent.Width
-                    X: =(Parent.Width - Self.Width)/2
-                    ZIndex: =1
-
                 UserNameLabel_6 As label:
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
                     Height: =Parent.Height
                     PaddingBottom: =10
                     PaddingTop: =0
-                    Size: =If(Home.Size= 1 , 13,Parent.Width/40)
+                    Size: =If('Tag Manager'.Size= 1 , 13,Parent.Width/40)
                     Text: ="Tag Manager"
                     Width: =Parent.Width
                     X: =(Parent.Width - Self.Width)/2
@@ -142,6 +138,7 @@
                         ZIndex: =10
 
             TagBody As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                 LayoutMinHeight: =100
