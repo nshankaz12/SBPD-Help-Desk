@@ -115,6 +115,7 @@
                     OnSelect: |+
                         =EditForm(Form3);
                         Navigate(Form3, ScreenTransition.None);
+                        Set(Editing, true)
                         
                         
                         
@@ -136,7 +137,7 @@
                     Height: =1
                     OnSelect: =Select(Parent)
                     Width: =1356
-                    Y: =40+Label2.Height
+                    Y: =Label1.Height*1.5
                     ZIndex: =7
 
     compWebMenu_20 As compWebMenu:
