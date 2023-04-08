@@ -3,24 +3,11 @@
     LoadingSpinner: |-
         =//LoadingSpinner.None
         LoadingSpinner.Controls
-    OnHidden: |-
-        =//Reset(MyTicketsGallery);
-        //Reset(compFilterMenu_1);
-        //Reset(compSearch_1);
-        
-        Set(varResetMyTickets, false);
+    OnHidden: =
     OnVisible: |-
-        =// Resets the screen when navigated to using the navigation menus and back button is not used
-        // This code will also get the tickets from SharePoint List when screen is navigated to for the first time
-        If(varResetMyTickets, 
-        Reset(MyTicketsGallery);
+        =Reset(MyTicketsGallery);
         Reset(compFilterMenu_1);
         Reset(compSearch_1);
-        );
-        
-        
-        // Code only used in development process when not using the navigation menus. Gets the tickets when screen is loaded for the first time 
-        /*If(IsEmpty(MyTicketsGallery.AllItems),ClearCollect(colTickets,ForAll(Table(ParseJSON(SearchFilterTicketsSPList.Run(If(IsBlank(SearchQuery),"___",SearchQuery),StatusChoice,TagChoice).searchresults)),{ID:Value(Value.ID),Title:Text(Value.title),Description:Text(Value.description),MainCategory:Value(Value.mainCategory),DateCreated:DateValue(Value.dateCreated),CreatorId:Value(Value.creatorId),Status:Text(Value.status),AssignedTo:Value(Value.assignedTo),LastUpdated:DateValue(Value.lastUpdated),LocationId:Value(Value.locationId),Tags:Text(Value.tags),AddAssignees:Text(Value.addAssignees)})))*/
 
     MyTicketsMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
@@ -158,8 +145,11 @@
                             // Test
                             //colTickets
                             
-                            Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedTo = userData.id))
-                            //Switch(userData.role,"staff", Filter(colTickets,CreatorId = userData.id),"tech", Filter(colTickets,AssignedTo = userData.id),"admin", Filter(colTickets,AssignedTo = userData.id))
+                            // Filter that doesn't check additional assignees
+                            //Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedTo = userData.id))
+                            
+                            // Filter that includes additional assignees
+                            Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedTo = userData.id || Concatenate(userData.firstName, " ", userData.lastName) in AddAssignees))
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320
@@ -560,7 +550,7 @@
                             HoverFill: |-
                                 =//ColorFade(RGBA(56, 96, 178, 1), -20%)
                                 ColorScheme.secondaryPressedColor
-                            OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+                            OnSelect: =Navigate('Category Select', ScreenTransition.Fade);
                             Text: ="New Ticket"
                             Visible: |-
                                 =//Button should only appears when user is not viewing their assigned tickets
@@ -609,7 +599,7 @@
         HoverFill: |-
             =//ColorFade(RGBA(56, 96, 178, 1), -20%)
             ColorScheme.secondaryPressedColor
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        OnSelect: =Navigate('Category Select', ScreenTransition.Fade);
         PressedBorderColor: =RGBA(0, 0, 0, 0)
         PressedColor: =
         PressedFill: =RGBA(0, 0, 0, 0)
