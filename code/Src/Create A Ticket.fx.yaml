@@ -4,7 +4,7 @@
         Height: ='Create A Ticket'.Height
         LayoutMode: =LayoutMode.Auto
         Width: ='Create A Ticket'.Width
-        ZIndex: =3
+        ZIndex: =1
 
         CreateATicketVerticalLayoutContainer_1 As groupContainer.verticalAutoLayoutContainer:
             LayoutDirection: =LayoutDirection.Vertical
@@ -598,6 +598,16 @@
                             Y: =Parent.Height - (Self.Height *2)
                             ZIndex: =3
 
+    Icon1_30 As icon.BackArrow:
+        Color: =ColorScheme.secondary
+        Height: =49
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate('Category Select', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        Width: =49
+        X: =15
+        Y: =Ticket_Title_1.Y
+        ZIndex: =2
+
     compWebMenu_7 As compWebMenu:
-        ZIndex: =4
+        ZIndex: =3
 

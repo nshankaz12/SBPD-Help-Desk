@@ -9,7 +9,7 @@ Success As screen:
         Visible: =is_admin
         X: =142
         Y: =40
-        ZIndex: =10
+        ZIndex: =1
 
     Label8_1 As label:
         Align: =Align.Center
@@ -17,7 +17,7 @@ Success As screen:
         Visible: =is_admin
         X: =106
         Y: =147
-        ZIndex: =11
+        ZIndex: =2
 
     HomeMainContainer_1 As groupContainer.horizontalAutoLayoutContainer:
         Height: =Success.Height
@@ -26,7 +26,7 @@ Success As screen:
             =true
             //This is the Main container
         Width: =Success.Width
-        ZIndex: =18
+        ZIndex: =3
 
         HomeVericalLayoutContainer_1 As groupContainer.verticalAutoLayoutContainer:
             FillPortions: =9
@@ -259,7 +259,7 @@ Success As screen:
         Visible: =false
         Width: =184
         Y: =712
-        ZIndex: =19
+        ZIndex: =4
 
     NotificationsDropdownContent_3 As groupContainer.manualLayoutContainer:
         Height: =72
@@ -268,7 +268,7 @@ Success As screen:
         Width: =164
         X: =59
         Y: =56
-        ZIndex: =22
+        ZIndex: =5
 
         UserNotificationsRoundedBorder_3 As image:
             Height: =71
@@ -381,6 +381,16 @@ Success As screen:
                 Width: =164
                 ZIndex: =5
 
+    Icon1_28 As icon.BackArrow:
+        Color: =ColorScheme.secondary
+        Height: =49
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate('Home', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        Width: =49
+        X: =15
+        Y: =Ticket_Title_1.Y
+        ZIndex: =6
+
     compWebMenu_13 As compWebMenu:
-        ZIndex: =23
+        ZIndex: =7
 

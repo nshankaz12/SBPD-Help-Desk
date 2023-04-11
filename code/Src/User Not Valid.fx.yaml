@@ -23,3 +23,13 @@
     compWebHeader_30 As compWebHeader:
         ZIndex: =3
 
+    Icon1_35 As icon.BackArrow:
+        Color: =ColorScheme.secondary
+        Height: =49
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate('Home', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        Width: =49
+        X: =15
+        Y: =10//Ticket_Title_1.Y
+        ZIndex: =4
+

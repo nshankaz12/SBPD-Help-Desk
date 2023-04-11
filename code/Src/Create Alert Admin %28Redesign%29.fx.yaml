@@ -33,10 +33,7 @@
                 AlignInContainer: =AlignInContainer.Center
                 Color: =RGBA(232, 244, 217, 1)
                 Icon: =Icon.BackArrow
-                OnSelect: |-
-                    =
-                    
-                    Back(ScreenTransition.Fade)
+                OnSelect: =Navigate('Admin Manager', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
                 Width: =65
                 X: =59
                 Y: =87

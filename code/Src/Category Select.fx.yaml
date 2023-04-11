@@ -7,7 +7,7 @@
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         Width: =Parent.Width
-        ZIndex: =10
+        ZIndex: =1
 
         MobileNavLinks As groupContainer.horizontalAutoLayoutContainer:
             FillPortions: =0
@@ -269,6 +269,16 @@
                     Y: =Parent.Height-Self.Height
                     ZIndex: =4
 
+    Icon1_25 As icon.BackArrow:
+        Color: =ColorScheme.secondary
+        Height: =49
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate('Home', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        Width: =49
+        X: =15
+        Y: =Ticket_Title_1.Y
+        ZIndex: =2
+
     compWebMenu_2 As compWebMenu:
-        ZIndex: =11
+        ZIndex: =3
 

@@ -161,8 +161,18 @@
                 Width: =Parent.Width
                 Y: =Parent.Height-Self.Height
 
+    Icon1_31 As icon.BackArrow:
+        Color: =ColorScheme.secondary
+        Height: =49
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate('Home', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        Width: =49
+        X: =15
+        Y: =Ticket_Title_1.Y
+        ZIndex: =2
+
     compWebMenu_8 As compWebMenu:
         Height: =If(showMenu, Parent.Height, 80)
         Width: =If(showMenu, Parent.Width, 80)
-        ZIndex: =2
+        ZIndex: =3
 

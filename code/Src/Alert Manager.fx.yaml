@@ -7,7 +7,7 @@
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         Width: =1366
-        ZIndex: =22
+        ZIndex: =1
 
         Container7_1 As groupContainer.horizontalAutoLayoutContainer:
             FillPortions: =0
@@ -140,6 +140,16 @@
                     Y: =Label1.Height*1.5
                     ZIndex: =7
 
+    Icon1_34 As icon.BackArrow:
+        Color: =ColorScheme.secondary
+        Height: =49
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate('Admin Manager', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        Width: =49
+        X: =80
+        Y: =16//Ticket_Title_1.Y
+        ZIndex: =2
+
     compWebMenu_20 As compWebMenu:
-        ZIndex: =23
+        ZIndex: =3
 

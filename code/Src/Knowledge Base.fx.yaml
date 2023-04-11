@@ -365,8 +365,18 @@
         Height: =70
         ZIndex: =4
 
+    Icon1_33 As icon.BackArrow:
+        Color: =ColorScheme.secondary
+        Height: =49
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate('Home', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        Width: =49
+        X: =15
+        Y: =Ticket_Title_1.Y
+        ZIndex: =5
+
     compWebMenu_17 As compWebMenu_15:
         Height: =If(showMenu, App.Height, KnowledgeBaseHeaderContainer.Height)
         Visible: ='Knowledge Base'.Size>1
-        ZIndex: =5
+        ZIndex: =6
 

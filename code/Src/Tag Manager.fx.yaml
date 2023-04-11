@@ -1,6 +1,7 @@
 "'Tag Manager' As screen":
 
     MainBodyTagManager As groupContainer.horizontalAutoLayoutContainer:
+        ContentLanguage: =Navi
         Height: =Parent.Height
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
@@ -459,10 +460,20 @@
             
             false
         TrueFill: =RGBA(54, 176, 75, 1)
-        X: =21
+        X: =80// was originally in position X 21
         Y: =80
         ZIndex: =2
 
-    compWebMenu_6 As compWebMenu:
+    Icon1_29 As icon.BackArrow:
+        Color: =ColorScheme.secondary
+        Height: =49
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate('Admin Manager', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        Width: =49
+        X: =15
+        Y: =Ticket_Title_1.Y
         ZIndex: =3
+
+    compWebMenu_6 As compWebMenu:
+        ZIndex: =4
 
