@@ -354,25 +354,25 @@
         Color: =RGBA(255, 255, 255, 1)
         Fill: =ColorScheme.primary
         Height: =If('Knowledge Base'.Size=1,35,70)
-        Size: =If('Knowledge Base'.Size=1, 13, 25)
+        Size: =If('Knowledge Base'.Size=1, titleText.mobileSize, titleText.desktopSize)
         Text: ="Knowledge Base"
         Width: =Parent.Width
-        Y: =compWebHeader_29.Height
+        Y: =compWebHeader_14.Height
         ZIndex: =3
-
-    compWebHeader_29 As compWebHeader_20:
-        CompScreenSize: ='Knowledge Base'.Size
-        Height: =70
-        ZIndex: =4
 
     Icon1_33 As icon.BackArrow:
         Color: =ColorScheme.secondary
         Height: =49
         Icon: =Icon.BackArrow
-        OnSelect: =Navigate('Home', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        OnSelect: =Navigate(Home, ScreenTransition.Fade)//Back(ScreenTransition.Fade)
         Width: =49
         X: =15
         Y: =Ticket_Title_1.Y
+        ZIndex: =4
+
+    compWebHeader_14 As compWebHeader:
+        CompScreenSize: ='Knowledge Base'.Size
+        Height: =70
         ZIndex: =5
 
     compWebMenu_17 As compWebMenu_15:

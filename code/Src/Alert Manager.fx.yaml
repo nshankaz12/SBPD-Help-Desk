@@ -3,51 +3,44 @@
     OnVisible: =true
 
     Container6 As groupContainer.verticalAutoLayoutContainer:
-        Height: =768
+        Height: =Parent.Height
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
-        Width: =1366
+        Width: =Parent.Width
         ZIndex: =1
 
         Container7_1 As groupContainer.horizontalAutoLayoutContainer:
             FillPortions: =0
-            Height: =80
+            Height: =82
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             ZIndex: =1
 
-            compWebHeader_34 As compWebHeader_9:
+            compWebHeader_10 As compWebHeader:
+                CompScreenSize: ='Alert Manager'.Size
                 LayoutMinHeight: =640
                 LayoutMinWidth: =640
                 ZIndex: =1
 
         Container13_1 As groupContainer.horizontalAutoLayoutContainer:
-            Fill: =RGBA(39, 67, 125, 1)
+            Fill: |-
+                =ColorScheme.primary
+                //RGBA(39, 67, 125, 1)
             FillPortions: =0
-            Height: =100
+            Height: =48
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             ZIndex: =2
-
-            "'Back Scroll_12' As icon.BackArrow":
-                AlignInContainer: =AlignInContainer.Center
-                Color: =RGBA(232, 244, 217, 1)
-                Icon: =Icon.BackArrow
-                OnSelect: =ResetForm(Form3); Navigate('Create Alert Admin (Redesign)', ScreenTransition.None)
-                Width: =65
-                X: =59
-                Y: =87
-                ZIndex: =1
 
             Label15_1 As label:
                 Align: =Align.Center
                 AlignInContainer: =AlignInContainer.Center
                 Color: =RGBA(255, 255, 255, 1)
                 FillPortions: =1
-                Height: =55
-                Size: =35
+                Height: =Parent.Height
+                Size: =If('Alert Manager'.Size=1, titleText.mobileSize, titleText.desktopSize)
                 Text: ="Alert Manager"
                 Width: =500
                 ZIndex: =2
@@ -150,6 +143,19 @@
         Y: =16//Ticket_Title_1.Y
         ZIndex: =2
 
-    compWebMenu_20 As compWebMenu:
+    "'Back Scroll_12' As icon.BackArrow":
+        Color: |-
+            =ColorScheme.secondary
+            //RGBA(232, 244, 217, 1)
+        Height: =49
+        Icon: =Icon.BackArrow
+        OnSelect: =ResetForm(Form3); Navigate('Create Alert Admin (Redesign)', ScreenTransition.Fade)
+        Width: =49
+        X: =15
+        Y: =Ticket_Title_1.Y
         ZIndex: =3
+
+    compWebMenu_20 As compWebMenu:
+        Visible: ='Alert Manager'.Size > 1
+        ZIndex: =4
 

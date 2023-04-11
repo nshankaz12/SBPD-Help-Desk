@@ -28,7 +28,7 @@
         SingleTicketInfoMainContent_2 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             FillPortions: =0
-            Height: =Parent.Height-Ticket_Title_1.Height-compWebHeader_21.Height
+            Height: =Parent.Height-Ticket_Title_1.Height-compWebHeader_4.Height
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -4765,10 +4765,8 @@
             Y: =(Parent.Height/2 - Self.Height/2) + 120
             ZIndex: =6
 
-    compWebHeader_21 As compWebHeader_17:
+    compWebHeader_4 As compWebHeader:
         CompScreenSize: ='Single Ticket Info'.Size
-        Height: =70
-        Width: =Parent.Width
         ZIndex: =5
 
     Ticket_Title_1 As label:
@@ -4776,10 +4774,10 @@
         Color: =RGBA(255, 255, 255, 1)
         Fill: =ColorScheme.primary
         Height: =50
-        Size: =If('Single Ticket Info'.Size=1, 13, 25)
+        Size: =If('Single Ticket Info'.Size=1, titleText.mobileSize, titleText.desktopSize)
         Text: ="Ticket Details"
         Width: =Parent.Width
-        Y: =compWebHeader_21.Height
+        Y: =compWebHeader_4.Height
         ZIndex: =6
 
     Icon1 As icon.BackArrow:
@@ -4793,7 +4791,8 @@
         ZIndex: =7
 
     compWebMenu_10 As compWebMenu:
-        Height: =If(showMenu, App.Height, compWebHeader_21.Height)
+        Height: =If(showMenu, App.Height, compWebHeader_4.Height)
+        Visible: ='Single Ticket Info'.Size > 1
         ZIndex: =8
 
     compPageTextSizeFormatter_1 As compPageTextSizeFormatter:

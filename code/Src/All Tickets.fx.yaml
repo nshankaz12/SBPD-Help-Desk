@@ -31,14 +31,10 @@
                 Width: =Parent.Width
                 ZIndex: =2
 
-                compWebHeader_40 As compWebHeader_3:
-                    AlignInContainer: =AlignInContainer.Stretch
-                    CompScreenSize: |
-                        ='All Tickets'.Size
-                    Height: =Parent.Height
-                    LayoutMinHeight: =//640
+                compWebHeader_13 As compWebHeader:
+                    CompScreenSize: ='All Tickets'.Size
+                    LayoutMinHeight: =Parent.Height
                     LayoutMinWidth: =640
-                    Width: =Parent.Width
                     ZIndex: =1
 
             AllTicketsScreenName As groupContainer.manualLayoutContainer:
@@ -57,7 +53,7 @@
                     Height: =Parent.Height
                     PaddingBottom: =10
                     PaddingTop: =0
-                    Size: =If('All Tickets'.Size= 1 , 30,Parent.Height/2.5)
+                    Size: =If('All Tickets'.Size= 1 , titleText.mobileSize, titleText.desktopSize)
                     Text: ="All Tickets"& 'All Tickets'.Size
                     Width: =Parent.Width
                     X: =(Parent.Width - Self.Width)/2
@@ -68,7 +64,7 @@
                 FillPortions: =0
                 Height: |-
                     =//Parent.Height
-                    compWebHeader_28.Height
+                    compWebHeader_13.Height
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                 LayoutMinHeight: =//compWebHeader_28.Height
@@ -265,5 +261,6 @@
         ZIndex: =2
 
     compWebMenu_9 As compWebMenu:
+        Visible: ='All Tickets'.Size > 1
         ZIndex: =3
 

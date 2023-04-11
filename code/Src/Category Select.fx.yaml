@@ -87,12 +87,12 @@
                     LayoutMode: =LayoutMode.Auto
                     ZIndex: =2
 
-                    compWebHeader_14 As compWebHeader_13:
-                        AlignInContainer: =AlignInContainer.Center
-                        CompScreenSize: =Home.Size
+                    compWebHeader_3 As compWebHeader:
+                        CompScreenSize: ='Category Select'.Size
                         Height: =Parent.Height
                         LayoutMinHeight: =640
                         LayoutMinWidth: =640
+                        ZIndex: =1
 
             HomeMoblieHeaderContainer_3 As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
@@ -128,7 +128,8 @@
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 Visible: |-
-                    =Home.Size>1
+                    =true
+                    //Home.Size>1
                     //Second header container housing the dropdown for the notifications button, user name, and picture, the picture and notifications icon disappear after a screen breakpoint has been reached
                 Width: =Parent.Width
                 ZIndex: =4
@@ -138,9 +139,8 @@
                     Color: =RGBA(255, 255, 255, 1)
                     Fill: =ColorScheme.primary
                     FillPortions: =1
-                    FontWeight: =FontWeight.Bold
                     Height: =Parent.Height
-                    Size: =28
+                    Size: =If('Category Select'.Size=1, titleText.mobileSize, titleText.desktopSize)
                     Text: ="Select a Category"
                     Width: =App.Width
                     Y: =114
@@ -273,12 +273,13 @@
         Color: =ColorScheme.secondary
         Height: =49
         Icon: =Icon.BackArrow
-        OnSelect: =Navigate('Home', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        OnSelect: =Navigate(Home, ScreenTransition.Fade)//Back(ScreenTransition.Fade)
         Width: =49
         X: =15
         Y: =Ticket_Title_1.Y
         ZIndex: =2
 
     compWebMenu_2 As compWebMenu:
+        Visible: ='Category Select'.Size > 1
         ZIndex: =3
 

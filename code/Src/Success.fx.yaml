@@ -44,14 +44,17 @@ Success As screen:
             HomeHeaderContainer1_1 As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(118, 173, 149, 1)
                 FillPortions: =0
-                Height: =82
+                Height: |-
+                    =Parent.Height/11
+                    //82
                 LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutJustifyContent: =LayoutJustifyContent.Center
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 Visible: |-
-                    =Success.Size<>1
+                    =true
+                    //Success.Size<>1
                     //This is the top most header container that houses the navbar links
                 Width: =Parent.Width
                 ZIndex: =1
@@ -146,6 +149,10 @@ Success As screen:
                             ZIndex: =2
 
                 compWebHeader_18 As compWebHeader:
+                    CompScreenSize: =Success.Size
+                    Height: |-
+                        =Parent.Height
+                        //82
                     LayoutMinHeight: =640
                     LayoutMinWidth: =640
                     ZIndex: =8
@@ -385,12 +392,13 @@ Success As screen:
         Color: =ColorScheme.secondary
         Height: =49
         Icon: =Icon.BackArrow
-        OnSelect: =Navigate('Home', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        OnSelect: =Navigate(Home, ScreenTransition.Fade)//Back(ScreenTransition.Fade)
         Width: =49
         X: =15
         Y: =Ticket_Title_1.Y
         ZIndex: =6
 
     compWebMenu_13 As compWebMenu:
+        Visible: =Success.Size > 1
         ZIndex: =7
 

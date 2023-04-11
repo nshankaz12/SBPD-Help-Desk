@@ -19,20 +19,19 @@
             Width: =Parent.Width
             ZIndex: =2
 
-            compWebHeader_10 As compWebHeader_9:
+            compWebHeader_12 As compWebHeader:
                 CompScreenSize: ='Admin Manager'.Size
-                Height: |
-                    =82
                 LayoutMinHeight: =640
                 LayoutMinWidth: =640
-                Width: =Parent.Width
                 ZIndex: =1
 
             Label26 As label:
                 Align: =Align.Center
                 Color: =Color.White
                 Fill: =ColorScheme.primary
-                Size: =20
+                FillPortions: =1
+                Height: =48
+                Size: =If('Admin Manager'.Size=1, titleText.mobileSize, titleText.desktopSize)
                 Text: ="Admin Manager"
                 Width: =Parent.Width
                 ZIndex: =2
@@ -165,7 +164,7 @@
         Color: =ColorScheme.secondary
         Height: =49
         Icon: =Icon.BackArrow
-        OnSelect: =Navigate('Home', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+        OnSelect: =Navigate(Home, ScreenTransition.Fade)//Back(ScreenTransition.Fade)
         Width: =49
         X: =15
         Y: =Ticket_Title_1.Y
@@ -173,6 +172,7 @@
 
     compWebMenu_8 As compWebMenu:
         Height: =If(showMenu, Parent.Height, 80)
+        Visible: ='Admin Manager'.Size > 1
         Width: =If(showMenu, Parent.Width, 80)
         ZIndex: =3
 

@@ -1736,7 +1736,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "compWebHeader_14": {
+    "compWebHeader_3": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -1767,7 +1767,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "CompScreenSize"
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "1",
+          "InvariantPropertyName": "CompScreenSize",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        }
       ],
       "DynamicProperties": [
         {
@@ -1780,14 +1787,7 @@
           "PropertyName": "FillPortions"
         },
         {
-          "ControlPropertyState": {
-            "AFDDataSourceName": "",
-            "AutoRuleBindingEnabled": false,
-            "AutoRuleBindingString": "",
-            "InvariantPropertyName": "AlignInContainer",
-            "IsLockable": false,
-            "NameMapSourceSchema": "?"
-          },
+          "ControlPropertyState": "AlignInContainer",
           "Property": {
             "Category": "Design",
             "PropertyName": "AlignInContainer",
@@ -1828,7 +1828,7 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "compWebHeader_14",
+      "Name": "compWebHeader_3",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1937,6 +1937,14 @@
           "InvariantPropertyName": "HamburgerColor",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "true",
+          "InvariantPropertyName": "Visible",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "HasDynamicProperties": false,
@@ -2001,6 +2009,11 @@
           "Category": "Design",
           "PropertyName": "Fill",
           "RuleProviderType": "System"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Behavior",

@@ -439,7 +439,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "compWebHeader_33": {
+    "compWebHeader_2": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -470,18 +470,18 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "CompScreenSize"
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "1",
+          "InvariantPropertyName": "CompScreenSize",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        }
       ],
       "DynamicProperties": [
         {
-          "ControlPropertyState": {
-            "AFDDataSourceName": "",
-            "AutoRuleBindingEnabled": false,
-            "AutoRuleBindingString": "",
-            "InvariantPropertyName": "FillPortions",
-            "IsLockable": false,
-            "NameMapSourceSchema": "?"
-          },
+          "ControlPropertyState": "FillPortions",
           "Property": {
             "Category": "Design",
             "PropertyName": "FillPortions",
@@ -531,7 +531,7 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "compWebHeader_33",
+      "Name": "compWebHeader_2",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -543,7 +543,7 @@
         {
           "Category": "Data",
           "PropertyName": "CompScreenSize",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -563,7 +563,7 @@
         {
           "Category": "Design",
           "PropertyName": "Width",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
@@ -1891,7 +1891,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%FooterContainer.ID%",
       "Name": "TemplateFooter",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2306,7 +2306,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%MainSectionContainer.ID%",
       "Name": "TemplateMain",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

@@ -777,7 +777,7 @@
       },
       "MetaDataIDKey": "",
       "Name": "compMobileMenu_12",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -973,7 +973,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "compWebHeader_32": {
+    "compWebHeader_8": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -1004,18 +1004,18 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "CompScreenSize"
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "1",
+          "InvariantPropertyName": "CompScreenSize",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        }
       ],
       "DynamicProperties": [
         {
-          "ControlPropertyState": {
-            "AFDDataSourceName": "",
-            "AutoRuleBindingEnabled": false,
-            "AutoRuleBindingString": "",
-            "InvariantPropertyName": "FillPortions",
-            "IsLockable": false,
-            "NameMapSourceSchema": "?"
-          },
+          "ControlPropertyState": "FillPortions",
           "Property": {
             "Category": "Design",
             "PropertyName": "FillPortions",
@@ -1065,7 +1065,7 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "compWebHeader_32",
+      "Name": "compWebHeader_8",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1077,7 +1077,7 @@
         {
           "Category": "Data",
           "PropertyName": "CompScreenSize",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -1096,12 +1096,12 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
-          "RuleProviderType": "Unknown"
+          "PropertyName": "Width",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
+          "PropertyName": "Height",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1174,6 +1174,14 @@
           "InvariantPropertyName": "HamburgerColor",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "true",
+          "InvariantPropertyName": "Visible",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "HasDynamicProperties": false,
@@ -1238,6 +1246,11 @@
           "Category": "Design",
           "PropertyName": "Fill",
           "RuleProviderType": "System"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Behavior",
@@ -1369,7 +1382,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Container1_1",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

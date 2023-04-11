@@ -53,7 +53,7 @@
                     Fill: =ColorScheme.primary
                     Height: =Parent.Height - compWebHeader_6.Height
                     LayoutMinHeight: =Parent.Height
-                    Size: =If(MyTickets.Size = 1, 19, 25)
+                    Size: =If(MyTickets.Size = 1, titleText.mobileSize, titleText.desktopSize)
                     Text: =compFilterMenu_1.TicketsChoice
                     Width: =Parent.Width
                     Y: =15
@@ -68,7 +68,7 @@
                 ZIndex: =4
 
                 SearchFilterContainer As groupContainer.manualLayoutContainer:
-                    Fill: =ColorScheme.primary
+                    Fill: =ColorScheme.secondaryPressedColor
                     FillPortions: =0
                     Height: =60
                     LayoutMinHeight: =60
@@ -579,14 +579,14 @@
         Color: |-
             =//RGBA(232, 244, 217, 1)
             ColorScheme.secondary
-        Height: =50
+        Height: =46
         HoverColor: |-
             =//ColorFade(Self.Color, 20%)
             ColorScheme.secondaryPressedColor
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
         Width: =50
-        X: =15
+        X: =If(App.Width > 500, 15, 10)
         Y: =compWebHeader_6.Height + ((HeaderLabel.Height - Self.Height) / 2)
         ZIndex: =2
 
@@ -604,7 +604,7 @@
         PressedColor: =
         PressedFill: =RGBA(0, 0, 0, 0)
         Text: ="New Ticket"
-        Visible: =MyTickets.Size > 2
+        Visible: =MyTickets.Size > 1
         X: =Parent.Width - Self.Width - 15
         Y: =compWebHeader_6.Height + ((HeaderLabel.Height - Self.Height) / 2)
         ZIndex: =3
@@ -619,9 +619,11 @@
             ColorScheme.secondaryPressedColor
         Icon: =Icon.Add
         OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
-        Visible: =MyTickets.Size < 3
+        Visible: =MyTickets.Size = 1
         Width: =50
-        X: =Parent.Width - Self.Width - 15
+        X: |-
+            =//Parent.Width - Self.Width - 15
+            Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
         Y: =compWebHeader_6.Height + ((HeaderLabel.Height - Self.Height) / 2)
         ZIndex: =4
 

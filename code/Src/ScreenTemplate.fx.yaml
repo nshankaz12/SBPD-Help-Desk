@@ -19,12 +19,10 @@
             Width: =Parent.Width
             ZIndex: =2
 
-            compWebHeader_33 As compWebHeader_9:
-                Height: |
-                    =82
+            compWebHeader_2 As compWebHeader:
+                CompScreenSize: =ScreenTemplate.Size
                 LayoutMinHeight: =640
                 LayoutMinWidth: =640
-                Width: =Parent.Width
                 ZIndex: =1
 
             Label26_2 As label:
@@ -32,7 +30,7 @@
                 Color: =Color.White
                 Fill: =ColorScheme.primary
                 Height: =Parent.Height/2.4
-                Size: =19
+                Size: =If(ScreenTemplate.Size = 1, titleText.mobileSize, titleText.desktopSize)
                 Text: ="Title"
                 Width: =Parent.Width
                 ZIndex: =2

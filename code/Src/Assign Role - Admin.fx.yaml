@@ -34,12 +34,10 @@
                 Width: =250
                 ZIndex: =1
 
-                compWebHeader_32 As compWebHeader_31:
-                    Height: |
-                        =82
+                compWebHeader_8 As compWebHeader:
+                    CompScreenSize: ='Assign Role - Admin'.Size
                     LayoutMinHeight: =640
                     LayoutMinWidth: =640
-                    Width: =Parent.Width
                     ZIndex: =1
 
                 Label26_4 As label:
@@ -48,7 +46,7 @@
                     Color: =Color.White
                     Fill: =ColorScheme.primary
                     FillPortions: =1
-                    Size: =19
+                    Size: =If('Assign Role - Admin'.Size=1, titleText.mobileSize, titleText.desktopSize)
                     Text: ="Assign a Role"
                     Width: =Parent.Width
                     ZIndex: =2
@@ -151,6 +149,7 @@
         ZIndex: =3
 
     compWebMenu_5 As compWebMenu:
+        Visible: ='Assign Role - Admin'.Size > 1
         ZIndex: =4
 
     buttonTest As label:

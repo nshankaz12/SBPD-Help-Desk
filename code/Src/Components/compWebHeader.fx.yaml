@@ -25,19 +25,21 @@ compWebHeader As CanvasComponent:
             PUBLIC DEFENDER"
         Width: =332
         X: =(Parent.Width-Self.Width)/2
-        Y: =4
+        Y: =(Parent.Height - Self.Height) / 2
         ZIndex: =2
 
     Image3_1 As image:
-        Height: =77
+        Height: =Parent.Height * 0.85
         Image: =PUBDEF_IT__LOGO_Vector
         OnSelect: =//Select(Parent)
         PaddingBottom: =2
         PaddingLeft: =3
         PaddingRight: =2
         PaddingTop: =2
-        Width: =86
-        X: =Parent.Width - Self.Width
-        Y: =5
+        Width: =Self.Height
+        X: |-
+            =//Parent.Width - Self.Width
+            Parent.Width - Self.Width - If(App.Width > 500, 10, 0)
+        Y: =(Parent.Height - Self.Height) / 2
         ZIndex: =3
 

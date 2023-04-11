@@ -35,14 +35,10 @@
                 Width: =Parent.Width
                 ZIndex: =2
 
-                compWebHeader_36 As compWebHeader_2:
-                    AlignInContainer: =AlignInContainer.Stretch
-                    CompScreenSize: |
-                        ='Tag Manager'.Size
-                    Height: =Parent.Height
-                    LayoutMinHeight: =//640
+                compWebHeader_11 As compWebHeader:
+                    CompScreenSize: ='Tag Manager'.Size
+                    LayoutMinHeight: =Parent.Height
                     LayoutMinWidth: =640
-                    Width: =Parent.Width
                     ZIndex: =1
 
             TagScreenName_1 As groupContainer.manualLayoutContainer:
@@ -63,7 +59,7 @@
                     Height: =Parent.Height
                     PaddingBottom: =10
                     PaddingTop: =0
-                    Size: =If('Tag Manager'.Size= 1 , 13,Parent.Width/40)
+                    Size: =If('Tag Manager'.Size= 1 , titleText.mobileSize, titleText.desktopSize)
                     Text: ="Tag Manager"
                     Width: =Parent.Width
                     X: =(Parent.Width - Self.Width)/2
@@ -475,5 +471,6 @@
         ZIndex: =3
 
     compWebMenu_6 As compWebMenu:
+        Visible: ='Tag Manager'.Size > 1
         ZIndex: =4
 

@@ -83,13 +83,11 @@
                     Width: =Parent.Width
                     ZIndex: =7
 
-                    compWebHeader_12 As compWebHeader_2:
-                        AlignInContainer: =AlignInContainer.Center
-                        CompScreenSize: =Home.Size
+                    compWebHeader_15 As compWebHeader:
+                        CompScreenSize: ='Create A Ticket'.Size
                         Height: =Parent.Height
                         LayoutMinHeight: =640
                         LayoutMinWidth: =640
-                        Width: =Parent.Width
 
                     HomeNavLinkGallery_3 As gallery.galleryHorizontal:
                         AlignInContainer: =AlignInContainer.Center
@@ -140,7 +138,7 @@
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
                     Height: =Parent.Height
-                    Size: =If('Create A Ticket'.Size>=3, 40, 25)
+                    Size: =If('Create A Ticket'.Size=1, titleText.mobileSize, titleText.desktopSize)
                     Text: ="Create A Ticket"
                     Width: =Parent.Width
                     ZIndex: =4
@@ -609,5 +607,6 @@
         ZIndex: =2
 
     compWebMenu_7 As compWebMenu:
+        Visible: ='Create A Ticket'.Size > 1
         ZIndex: =3
 
