@@ -621,6 +621,13 @@
                                     )
                                 );
                                 
+                                Office365Outlook.SendEmailV2(
+                                    userData.email,
+                                    "Help Desk Ticket Received",
+                                    "Hello, this is an automated response. An IT Help Desk ticket "
+                                );
+                                
+                                
                                 Navigate(MyTickets);
                                 ResetForm(CreateATicketForm);
                             Text: ="Submit"
