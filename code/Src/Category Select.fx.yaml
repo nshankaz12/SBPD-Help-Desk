@@ -184,15 +184,20 @@
                         Width: =Parent.Width
                         WrapCount: =Switch('Category Select'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 3, ScreenSize.Large, 3, 4)
                         Y: =215
-                        ZIndex: =1
+                        ZIndex: =2
 
                         ButtonGalleryBackgroundButton_3 As button:
                             BorderColor: =ColorScheme.secondary
                             Color: =ColorScheme.secondary
+                            DisabledFill: =RGBA(0, 0, 0, 0)
                             Fill: =ColorScheme.secondary
                             Height: =Parent.TemplateHeight - 20
+                            HoverColor: =ColorScheme.primary
+                            HoverFill: =RGBA(0, 0, 0, 0)
                             OnSelect: |-
                                 =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
+                            PressedColor: =RGBA(0, 0, 0,0)
+                            PressedFill: =
                             Text: =""
                             Width: =Parent.TemplateWidth - 20
                             X: =(Parent.TemplateWidth - Self.Width)/2
@@ -204,6 +209,7 @@
                             Color: =ColorScheme.primary
                             FontWeight: =FontWeight.Semibold
                             Height: =Parent.TemplateHeight - 20
+                            HoverColor: =
                             OnSelect: |-
                                 =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                             Size: =15
@@ -212,6 +218,25 @@
                             X: =(Parent.TemplateWidth-Self.Width)/2
                             Y: =(Parent.TemplateHeight - Self.Height)/2
                             ZIndex: =2
+
+                        borderButtonHover As button:
+                            BorderColor: =ColorScheme.secondary
+                            Color: =RGBA(0, 0, 0,0)
+                            DisabledFill: =RGBA(0, 0, 0, 0)
+                            Fill: =RGBA(0, 0, 0,0)
+                            Height: =Parent.TemplateHeight - 20
+                            HoverBorderColor: =ColorScheme.primary
+                            HoverColor: =RGBA(0, 0, 0,0)
+                            HoverFill: =RGBA(0, 0, 0, 0)
+                            OnSelect: |-
+                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
+                            PressedColor: =RGBA(0, 0, 0,0)
+                            PressedFill: =
+                            Text: =""
+                            Width: =Parent.TemplateWidth - 20
+                            X: =(Parent.TemplateWidth - Self.Width)/2
+                            Y: =(Parent.TemplateHeight - Self.Height)/2
+                            ZIndex: =4
 
                 compMobileMenu_11 As compMobileMenu_10:
                     Height: =Parent.Height/5
