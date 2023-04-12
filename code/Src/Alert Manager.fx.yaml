@@ -52,6 +52,48 @@
             LayoutMode: =LayoutMode.Auto
             ZIndex: =3
 
+            ColAllTicket_1 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =SearchTickets.Height/1.5
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                ZIndex: =1
+
+                id_1 As label:
+                    Align: =Align.Center
+                    BorderThickness: =2
+                    LayoutMinWidth: =25
+                    Text: ="ID"
+                    X: =608
+                    ZIndex: =1
+
+                status_1 As label:
+                    Align: =Align.Center
+                    BorderThickness: =2
+                    FillPortions: =1
+                    Text: ="Title"
+                    X: =608
+                    ZIndex: =2
+
+                title_1 As label:
+                    Align: =Align.Center
+                    BorderThickness: =2
+                    FillPortions: =1
+                    Text: ="Date Created"
+                    X: =608
+                    ZIndex: =3
+
+                date_created_1 As label:
+                    Align: =Align.Center
+                    BorderThickness: =2
+                    FillPortions: =1
+                    Text: ="Expiration Date"
+                    X: =608
+                    ZIndex: =4
+
             Gallery4 As gallery.galleryVertical:
                 DelayItemLoading: =true
                 FillPortions: =0
@@ -70,19 +112,18 @@
                     Size: =25
                     Text: =ThisItem.titleText
                     Width: =316
-                    X: =86
-                    Y: =28
+                    X: =214
                     ZIndex: =1
 
                 Label2 As label:
                     Align: =Align.Justify
-                    Height: =138
+                    Height: =162
                     OnSelect: =Select(Parent)
                     Size: =20
                     Text: =ThisItem.messageText
-                    Width: =1251
+                    Width: =985
                     X: =66
-                    Y: =125
+                    Y: =102
                     ZIndex: =2
 
                 Label3 As label:
@@ -91,8 +132,8 @@
                     Size: =20
                     Text: =ThisItem.dateExpired
                     Width: =294
-                    X: =727
-                    Y: =36
+                    X: =1023
+                    Y: =9
                     ZIndex: =3
 
                 Label4 As label:
@@ -101,8 +142,8 @@
                     Size: =20
                     Text: =ThisItem.creatorId
                     Width: =74
-                    X: =12
-                    Y: =40
+                    X: =28
+                    Y: =20
                     ZIndex: =4
 
                 Button1 As button:
@@ -114,23 +155,25 @@
                         
                         
                     Text: ="Edit Alert"
-                    X: =1051
-                    Y: =40
+                    X: =1176
+                    Y: =207
                     ZIndex: =5
 
                 Icon7 As icon.CancelBadge:
+                    Height: =44
                     Icon: =Icon.CancelBadge
                     OnSelect: |-
                         =Select(Parent);
                         Remove(Alerts_1, Gallery4.Selected)
-                    X: =1273
-                    Y: =26
+                    Width: =38
+                    X: =1317
+                    Y: =8
                     ZIndex: =6
 
                 Rectangle14 As rectangle:
-                    Height: =1
+                    Height: =2
                     Width: =1356
-                    Y: =Label2.Height*2
+                    Y: =Label2.Height + 110
                     ZIndex: =7
 
                 Label5 As label:
@@ -139,19 +182,9 @@
                     Size: =20
                     Text: =ThisItem.dateCreated
                     Width: =306
-                    X: =391
-                    Y: =50
+                    X: =623
+                    Y: =30
                     ZIndex: =8
-
-    Icon1_34 As icon.BackArrow:
-        Color: =ColorScheme.secondary
-        Height: =49
-        Icon: =Icon.BackArrow
-        OnSelect: =Navigate('Admin Manager', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
-        Width: =49
-        X: =80
-        Y: =16//Ticket_Title_1.Y
-        ZIndex: =2
 
     "'Back Scroll_12' As icon.BackArrow":
         Color: |-
@@ -162,7 +195,7 @@
         OnSelect: =ResetForm(Form3); Navigate('Create Alert Admin (Redesign)', ScreenTransition.Fade)
         Width: =49
         X: =15
-        Y: =Ticket_Title_1.Y
+        Y: =66
         ZIndex: =3
 
     compWebMenu_20 As compWebMenu:

@@ -1,6 +1,6 @@
 Home As screen:
     BackgroundImage: =
-    Fill: =RGBA(227, 234, 243, 1)
+    Fill: =
     ImagePosition: =ImagePosition.Stretch
     OnVisible: |-
         =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false,CloseAlertRibbon:false, buttonText:""});
@@ -229,9 +229,7 @@ Home As screen:
                         Icon2 As icon.Cancel:
                             Height: =40
                             Icon: =Icon.Cancel
-                            OnSelect: |-
-                                =Set(varItemToDelete, Gallery8.Selected);
-                                Remove(Alerts_1, varItemToDelete)
+                            OnSelect: =Set(galleryVisible, false)
                             X: =Parent.Width - 75
                             ZIndex: =6
 
