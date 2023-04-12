@@ -1,4 +1,5 @@
 "'Create A Ticket' As screen":
+    OnVisible: =ResetForm(CreateATicketForm);
 
     CreateATicketMainContainer_1 As groupContainer.horizontalAutoLayoutContainer:
         Height: ='Create A Ticket'.Height
@@ -565,43 +566,61 @@
                         submitBtn1 As button:
                             OnSelect: |
                                 =//false
-                                Patch(
-                                    Tickets,
-                                    {
-                                        title: TextInput3_1.Text,
-                                        description: TextInput5_1.Text,
-                                        creatorId: userData.id,
-                                        mainCategory: Dropdown5_2.Selected.ID,
-                                        category: Dropdown5_1.Selected.ID,
-                                        subCategory: Dropdown7_2.Selected.ID,
-                                        locationId: Dropdown1_1.Selected.ID,
-                                        status: "open",
-                                        metricDate: Concatenate(
-                                            Month(Today()),
-                                            "/",
-                                            Year(Today())
-                                        ),
-                                        hasAttachment: If(
-                                            IsEmpty(AttachmentControl_3.Attachments),
-                                            0,
-                                            1
-                                        ),
-                                        assignedTo: If(
-                                            IsEmpty(
-                                                Filter(
-                                                    'Ticket Automation Rules',
-                                                    categoryId = Dropdown5_2.Selected.ID && locationId = Dropdown1_1.Selected.ID
-                                                )
+                                Set(
+                                    recID,
+                                    Patch(
+                                        Tickets,
+                                        Defaults(Tickets),
+                                        {
+                                            title: TextInput3_1.Text,
+                                            description: TextInput5_1.Text,
+                                            creatorId: userData.id,
+                                            mainCategory: Dropdown5_2.Selected.ID,
+                                            category: Dropdown5_1.Selected.ID,
+                                            subCategory: Dropdown7_2.Selected.ID,
+                                            locationId: Dropdown1_1.Selected.ID,
+                                            status: "open",
+                                            metricDate: Concatenate(
+                                                Month(Today()),
+                                                "/",
+                                                Year(Today())
                                             ),
-                                            0,
-                                            LookUp(
-                                                'Ticket Automation Rules',
-                                                categoryId = Dropdown5_2.Selected.ID && locationId = Dropdown1_1.Selected.ID,
-                                                userID
+                                            hasAttachment: If(
+                                                IsEmpty(AttachmentControl_3.Attachments),
+                                                0,
+                                                1
+                                            ),
+                                            assignedTo: If(
+                                                IsEmpty(
+                                                    Filter(
+                                                        'Ticket Automation Rules',
+                                                        categoryId = Dropdown5_2.Selected.ID && locationId = Dropdown1_1.Selected.ID
+                                                    )
+                                                ),
+                                                0,
+                                                LookUp(
+                                                    'Ticket Automation Rules',
+                                                    categoryId = Dropdown5_2.Selected.ID && locationId = Dropdown1_1.Selected.ID,
+                                                    userID
+                                                )
                                             )
-                                        )
-                                    }
+                                        }
+                                    ).ID
                                 );
+                                
+                                ForAll(
+                                    AttachmentControl_3.Attachments,
+                                    AttachFiles.Run(
+                                        recID, 
+                                        {
+                                            file:{
+                                                contentBytes: Value,
+                                                name: Name
+                                            }
+                                        }
+                                    )
+                                );
+                                
                                 Navigate(MyTickets);
                                 ResetForm(CreateATicketForm);
                             Text: ="Submit"
