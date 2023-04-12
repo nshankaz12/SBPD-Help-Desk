@@ -563,21 +563,43 @@
                         ZIndex: =1
 
                         submitBtn1 As button:
-                            OnSelect: |-
+                            OnSelect: |
                                 =//false
                                 Patch(
                                     Tickets,
                                     {
                                         title: TextInput3_1.Text,
                                         description: TextInput5_1.Text,
-                                        creatorId:  userData.id,
+                                        creatorId: userData.id,
                                         mainCategory: Dropdown5_2.Selected.ID,
                                         category: Dropdown5_1.Selected.ID,
                                         subCategory: Dropdown7_2.Selected.ID,
                                         locationId: Dropdown1_1.Selected.ID,
                                         status: "open",
-                                        metricDate: Concatenate(Month(Today()), "/", Year(Today())),
-                                        hasAttachment: If(IsEmpty(AttachmentControl_3.Attachments), 0, 1)
+                                        metricDate: Concatenate(
+                                            Month(Today()),
+                                            "/",
+                                            Year(Today())
+                                        ),
+                                        hasAttachment: If(
+                                            IsEmpty(AttachmentControl_3.Attachments),
+                                            0,
+                                            1
+                                        ),
+                                        assignedTo: If(
+                                            IsEmpty(
+                                                Filter(
+                                                    'Ticket Automation Rules',
+                                                    categoryId = Dropdown5_2.Selected.ID && locationId = Dropdown1_1.Selected.ID
+                                                )
+                                            ),
+                                            0,
+                                            LookUp(
+                                                'Ticket Automation Rules',
+                                                categoryId = Dropdown5_2.Selected.ID && locationId = Dropdown1_1.Selected.ID,
+                                                userID
+                                            )
+                                        )
                                     }
                                 );
                                 Navigate(MyTickets);
