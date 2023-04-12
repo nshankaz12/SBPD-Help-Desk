@@ -211,7 +211,7 @@
                             HoverColor: =
                             OnSelect: |-
                                 =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
-                            Size: =15
+                            Size: =If('Category Select'.Size =1,11,15)
                             Text: =ThisItem.name
                             Width: =Parent.TemplateWidth - 20
                             X: =(Parent.TemplateWidth-Self.Width)/2
