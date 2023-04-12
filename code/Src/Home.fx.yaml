@@ -229,7 +229,9 @@ Home As screen:
                         Icon2 As icon.Cancel:
                             Height: =40
                             Icon: =Icon.Cancel
-                            OnSelect: =Set(galleryVisible, !galleryVisible)
+                            OnSelect: |-
+                                =Set(varItemToDelete, Gallery8.Selected);
+                                Remove(Alerts_1, varItemToDelete)
                             X: =Parent.Width - 75
                             ZIndex: =6
 

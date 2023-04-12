@@ -65,24 +65,24 @@
                 ZIndex: =2
 
                 Label1 As label:
-                    Height: =64
+                    Height: =85
                     OnSelect: =Select(Parent)
                     Size: =25
                     Text: =ThisItem.titleText
-                    Width: =312
+                    Width: =316
                     X: =86
                     Y: =28
                     ZIndex: =1
 
                 Label2 As label:
-                    AutoHeight: =true
-                    Height: =38
+                    Align: =Align.Justify
+                    Height: =138
                     OnSelect: =Select(Parent)
                     Size: =20
                     Text: =ThisItem.messageText
-                    Width: =281
-                    X: =416
-                    Y: =42
+                    Width: =1251
+                    X: =66
+                    Y: =125
                     ZIndex: =2
 
                 Label3 As label:
@@ -91,8 +91,8 @@
                     Size: =20
                     Text: =ThisItem.dateExpired
                     Width: =294
-                    X: =697
-                    Y: =38
+                    X: =727
+                    Y: =36
                     ZIndex: =3
 
                 Label4 As label:
@@ -101,6 +101,7 @@
                     Size: =20
                     Text: =ThisItem.creatorId
                     Width: =74
+                    X: =12
                     Y: =40
                     ZIndex: =4
 
@@ -122,16 +123,25 @@
                     OnSelect: |-
                         =Select(Parent);
                         Remove(Alerts_1, Gallery4.Selected)
-                    X: =1292
-                    Y: =16
+                    X: =1273
+                    Y: =26
                     ZIndex: =6
 
                 Rectangle14 As rectangle:
                     Height: =1
-                    OnSelect: =Select(Parent)
                     Width: =1356
-                    Y: =Label1.Height*1.5
+                    Y: =Label2.Height*2
                     ZIndex: =7
+
+                Label5 As label:
+                    Height: =22
+                    OnSelect: =Select(Parent)
+                    Size: =20
+                    Text: =ThisItem.dateCreated
+                    Width: =306
+                    X: =391
+                    Y: =50
+                    ZIndex: =8
 
     Icon1_34 As icon.BackArrow:
         Color: =ColorScheme.secondary
