@@ -132,6 +132,66 @@ App As appinfo:
             )
         );
         Set(
+            gblNavItemsTech,
+            Table(
+                {
+                    MenuText: "Home",
+                    MenuIcon: Icon.Home,
+                    ScreenToGoTo: Home
+                },
+                {
+                    MenuText: "Create Ticket",
+                    MenuIcon: Icon.AddDocument,
+                    ScreenToGoTo: 'Category Select'
+                },
+                {
+                    MenuText: "My Tickets",
+                    MenuIcon: Icon.Folder,
+                    ScreenToGoTo: MyTickets
+                },
+                {
+                    MenuText: "Settings",
+                    MenuIcon: Icon.Settings,
+                    ScreenToGoTo: 'Admin Manager'
+                },        
+                {
+                    MenuText: "Knowledge",
+                    MenuIcon: Icon.QuestionMark,
+                    ScreenToGoTo: 'Knowledge Base'
+                }
+            )
+        );
+        Set(
+            gblNavItemsStaff,
+            Table(
+                {
+                    MenuText: "Home",
+                    MenuIcon: Icon.Home,
+                    ScreenToGoTo: Home
+                },
+                {
+                    MenuText: "Create Ticket",
+                    MenuIcon: Icon.AddDocument,
+                    ScreenToGoTo: 'Category Select'
+                },
+                {
+                    MenuText: "My Tickets",
+                    MenuIcon: Icon.Folder,
+                    ScreenToGoTo: MyTickets
+                },
+                {
+                    MenuText: "Settings",
+                    MenuIcon: Icon.Settings,
+                    ScreenToGoTo: 'Admin Manager'
+                },        
+                {
+                    MenuText: "Knowledge",
+                    MenuIcon: Icon.QuestionMark,
+                    ScreenToGoTo: 'Knowledge Base'
+                }
+            )
+        );
+        Set(
             ColorScheme,
             {
                 primary: RGBA(
