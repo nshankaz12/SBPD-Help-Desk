@@ -101,7 +101,43 @@ App As appinfo:
             CloseAlertRibbon,
             false
         );
-        Set(
+        
+        
+        If(userData.role = "admin" || userData.role = "tech",
+            Set(
+                gblNavItems,
+                Table(
+                    {
+                        MenuText: "Home",
+                        MenuIcon: Icon.Home,
+                        ScreenToGoTo: Home
+                    },
+                    {
+                        MenuText: "Create Ticket",
+                        MenuIcon: Icon.AddDocument,
+                        ScreenToGoTo: 'Category Select'
+                    },
+                    {
+                        MenuText: "My Tickets",
+                        MenuIcon: Icon.Folder,
+                        ScreenToGoTo: MyTickets
+                    },
+                    {
+                        MenuText: "Settings",
+                        MenuIcon: Icon.Settings,
+                        ScreenToGoTo: 'Admin Manager'
+                    },        
+                    {
+                        MenuText: "Knowledge",
+                        MenuIcon: Icon.QuestionMark,
+                        ScreenToGoTo: 'Knowledge Base'
+                    }
+                )
+            );
+        );
+        
+        If(userData.role = "staff",
+            Set(
             gblNavItems,
             Table(
                 {
@@ -130,67 +166,10 @@ App As appinfo:
                     ScreenToGoTo: 'Knowledge Base'
                 }
             )
+            );
         );
-        Set(
-            gblNavItemsTech,
-            Table(
-                {
-                    MenuText: "Home",
-                    MenuIcon: Icon.Home,
-                    ScreenToGoTo: Home
-                },
-                {
-                    MenuText: "Create Ticket",
-                    MenuIcon: Icon.AddDocument,
-                    ScreenToGoTo: 'Category Select'
-                },
-                {
-                    MenuText: "My Tickets",
-                    MenuIcon: Icon.Folder,
-                    ScreenToGoTo: MyTickets
-                },
-                {
-                    MenuText: "Settings",
-                    MenuIcon: Icon.Settings,
-                    ScreenToGoTo: 'Admin Manager'
-                },        
-                {
-                    MenuText: "Knowledge",
-                    MenuIcon: Icon.QuestionMark,
-                    ScreenToGoTo: 'Knowledge Base'
-                }
-            )
-        );
-        Set(
-            gblNavItemsStaff,
-            Table(
-                {
-                    MenuText: "Home",
-                    MenuIcon: Icon.Home,
-                    ScreenToGoTo: Home
-                },
-                {
-                    MenuText: "Create Ticket",
-                    MenuIcon: Icon.AddDocument,
-                    ScreenToGoTo: 'Category Select'
-                },
-                {
-                    MenuText: "My Tickets",
-                    MenuIcon: Icon.Folder,
-                    ScreenToGoTo: MyTickets
-                },
-                {
-                    MenuText: "Settings",
-                    MenuIcon: Icon.Settings,
-                    ScreenToGoTo: 'Admin Manager'
-                },        
-                {
-                    MenuText: "Knowledge",
-                    MenuIcon: Icon.QuestionMark,
-                    ScreenToGoTo: 'Knowledge Base'
-                }
-            )
-        );
+        
+        
         Set(
             ColorScheme,
             {
