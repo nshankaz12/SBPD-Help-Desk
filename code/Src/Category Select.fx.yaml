@@ -192,8 +192,7 @@
                             DisabledFill: =RGBA(0, 0, 0, 0)
                             Fill: =ColorScheme.secondary
                             Height: =Parent.TemplateHeight - 20
-                            HoverColor: =ColorScheme.primary
-                            HoverFill: =RGBA(0, 0, 0, 0)
+                            HoverColor: =RGBA(0, 0, 0,0)
                             OnSelect: |-
                                 =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                             PressedColor: =RGBA(0, 0, 0,0)
@@ -220,14 +219,13 @@
                             ZIndex: =2
 
                         borderButtonHover As button:
-                            BorderColor: =ColorScheme.secondary
+                            BorderColor: =RGBA(0,0,0,0)
                             Color: =RGBA(0, 0, 0,0)
                             DisabledFill: =RGBA(0, 0, 0, 0)
                             Fill: =RGBA(0, 0, 0,0)
                             Height: =Parent.TemplateHeight - 20
-                            HoverBorderColor: =ColorScheme.primary
                             HoverColor: =RGBA(0, 0, 0,0)
-                            HoverFill: =RGBA(0, 0, 0, 0)
+                            HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
                             OnSelect: |-
                                 =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                             PressedColor: =RGBA(0, 0, 0,0)
