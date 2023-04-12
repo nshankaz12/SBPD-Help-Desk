@@ -181,9 +181,8 @@
                             =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                         ShowScrollbar: =false
                         TemplateSize: =Parent.Height/3
-                        Visible: ='Category Select'.Size>1
                         Width: =Parent.Width
-                        WrapCount: =If('Category Select'.Size=4,CountRows(navCol),3)
+                        WrapCount: =Switch('Category Select'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 3, ScreenSize.Large, 3, 4)
                         Y: =215
                         ZIndex: =1
 
@@ -210,52 +209,6 @@
                             Size: =15
                             Text: =ThisItem.name
                             Width: =Parent.TemplateWidth - 20
-                            X: =(Parent.TemplateWidth-Self.Width)/2
-                            Y: =(Parent.TemplateHeight - Self.Height)/2
-                            ZIndex: =2
-
-                    MOBILEButtonGallery_Category As gallery.galleryVertical:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        FillPortions: =0
-                        Height: =Parent.Height
-                        Items: =Filter(Category_1, parentId = Blank())
-                        Layout: =Layout.Vertical
-                        LayoutMinHeight: =287
-                        LayoutMinWidth: =320
-                        OnSelect: |-
-                            =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
-                        ShowScrollbar: =false
-                        TemplatePadding: =0
-                        TemplateSize: =Parent.Width
-                        Visible: ='Category Select'.Size=1
-                        Width: =Parent.Width
-                        WrapCount: =2
-                        Y: =215
-                        ZIndex: =3
-
-                        ButtonGalleryBackgroundButton_5 As button:
-                            BorderColor: =ColorScheme.secondary
-                            Color: =ColorScheme.secondary
-                            Fill: =ColorScheme.secondary
-                            Height: =Parent.TemplateHeight/2.5
-                            OnSelect: |-
-                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
-                            Text: =""
-                            Width: =Parent.TemplateWidth/1.2
-                            X: =(Parent.TemplateWidth - Self.Width)/2
-                            Y: =(Parent.TemplateHeight - Self.Height)/2
-                            ZIndex: =1
-
-                        Label22_3 As label:
-                            Align: =Align.Center
-                            Color: =ColorScheme.primary
-                            FontWeight: =FontWeight.Semibold
-                            Height: =ButtonGalleryBackgroundButton_5.Height
-                            OnSelect: |-
-                                =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
-                            Size: =15
-                            Text: =ThisItem.name
-                            Width: =ButtonGalleryBackgroundButton_5.Width
                             X: =(Parent.TemplateWidth-Self.Width)/2
                             Y: =(Parent.TemplateHeight - Self.Height)/2
                             ZIndex: =2
