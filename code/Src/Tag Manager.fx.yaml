@@ -1,7 +1,6 @@
 "'Tag Manager' As screen":
 
     MainBodyTagManager As groupContainer.horizontalAutoLayoutContainer:
-        ContentLanguage: =Navi
         Height: =Parent.Height
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
@@ -165,7 +164,7 @@
                         TemplateSize: =Parent.Height/3
                         Visible: =If(Toggle1.Value=true, true,If('Tag Manager'.Size>1, true,false))
                         Width: =Parent.Width
-                        WrapCount: =Switch('Tag Manager'.Size,4,4,3,3,2,2,1)
+                        WrapCount: =Switch('Tag Manager'.Size,4,4,3,3,2,2,2)
                         ZIndex: =3
 
                         HtmlText2 As htmlViewer:
@@ -200,7 +199,7 @@
                             Width: |-
                                 =//If(Screen2.Size =1,Gallery16.TemplateWidth/2,Gallery16.TemplateWidth/1.15)
                                 //AllTags.TemplateWidth/1.15
-                                If('Tag Manager'.Size=1,AllTags.TemplateWidth/1.75,AllTags.TemplateWidth/1.15)
+                                If('Tag Manager'.Size=1,AllTags.TemplateWidth/1.15,AllTags.TemplateWidth/1.15)
                             X: |-
                                 =//If(Screen2.Size =1,Gallery16.TemplateWidth/4,Gallery16.TemplateWidth/18)
                                 //Gallery16.TemplateWidth/18
