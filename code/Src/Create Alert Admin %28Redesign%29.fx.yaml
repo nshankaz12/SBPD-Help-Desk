@@ -686,6 +686,7 @@
         OnSelect: |-
             =Patch(Alerts_1, Defaults(Alerts_1), {titleText: DataCardValue23.Text, messageText: DataCardValue27.Text,  dateExpired: DateValue14.SelectedDate, creatorId:userData.id});
             Set(galleryVisible, true);
+            'PowerAppV2->SendanHTTPrequesttoSharePoint'.Run(userData.email,DataCardValue27.Text, DataCardValue23.Text);
             Notify("Alert Successfully created!", NotificationType.Success);
             Navigate('Alert Manager');
         Text: ="Create Alert"
@@ -714,7 +715,7 @@
         Height: =60
         OnSelect: |
             =ResetForm(Form3);
-            Navigate(Gallery4, ScreenTransition.None)
+            Set(Editing, false);
         Text: ="Cancel"
         Visible: =!(Form3.Mode = FormMode.View)
         Width: =204

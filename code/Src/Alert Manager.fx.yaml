@@ -94,96 +94,115 @@
                     X: =608
                     ZIndex: =4
 
-            Gallery4 As gallery.galleryVertical:
+            "Gallery4 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
                 DelayItemLoading: =true
-                FillPortions: =0
                 Height: =Parent.Height
                 Items: =Alerts_1
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
-                LayoutMinWidth: =320
                 LoadingSpinner: =LoadingSpinner.Data
-                TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
-                ZIndex: =2
+                TemplatePadding: =0
+                TemplateSize: =Min(168, Self.Height - 60)
+                ZIndex: =1
 
-                Label1 As label:
-                    Height: =85
+                Title4 As label:
+                    Height: =54
                     OnSelect: =Select(Parent)
-                    Size: =25
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =22
                     Text: =ThisItem.titleText
-                    Width: =316
-                    X: =214
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =1106
+                    X: =260
+                    Y: =18
                     ZIndex: =1
 
-                Label2 As label:
-                    Align: =Align.Justify
-                    Height: =162
+                Description As label:
+                    Height: =68
                     OnSelect: =Select(Parent)
-                    Size: =20
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
                     Text: =ThisItem.messageText
-                    Width: =985
-                    X: =66
-                    Y: =102
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =1050
+                    X: =132
+                    Y: =100
                     ZIndex: =2
 
-                Label3 As label:
-                    Height: =44
+                Body2 As label:
+                    Height: =34
                     OnSelect: =Select(Parent)
-                    Size: =20
-                    Text: =ThisItem.dateExpired
-                    Width: =294
-                    X: =1023
-                    Y: =9
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =ThisItem.ID
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =32
+                    X: =42
+                    Y: =25
                     ZIndex: =3
 
-                Label4 As label:
-                    Height: =42
-                    OnSelect: =Select(Parent)
-                    Size: =20
-                    Text: =ThisItem.creatorId
-                    Width: =74
-                    X: =28
-                    Y: =20
-                    ZIndex: =4
-
-                Button1 As button:
-                    OnSelect: |+
+                NextArrow3 As icon.ChevronRight:
+                    AccessibleLabel: =Self.Tooltip
+                    Height: =60
+                    Icon: =Icon.Edit
+                    OnSelect: |
                         =EditForm(Form3);
                         Navigate(Form3, ScreenTransition.None);
                         Set(Editing, true)
-                        
-                        
-                        
-                    Text: ="Edit Alert"
-                    X: =1176
-                    Y: =207
+                    PaddingBottom: =10
+                    PaddingLeft: =10
+                    PaddingRight: =10
+                    PaddingTop: =10
+                    TabIndex: =0
+                    Tooltip: ="View item details"
+                    Width: =60
+                    X: =1287
+                    Y: =45
+                    ZIndex: =4
+
+                Separator4 As rectangle:
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Description.Y + Description.Height + 10
                     ZIndex: =5
 
-                Icon7 As icon.CancelBadge:
-                    Height: =44
-                    Icon: =Icon.CancelBadge
-                    OnSelect: |-
-                        =Select(Parent);
-                        Remove(Alerts_1, Gallery4.Selected)
-                    Width: =38
-                    X: =1317
-                    Y: =8
+                Label1 As label:
+                    Height: =52
+                    OnSelect: =Select(Parent)
+                    Size: =17
+                    Text: =ThisItem.dateCreated
+                    Width: =270
+                    X: =662
+                    Y: =9
                     ZIndex: =6
 
-                Rectangle14 As rectangle:
-                    Height: =2
-                    Width: =1356
-                    Y: =Label2.Height + 110
+                Label2 As label:
+                    Height: =54
+                    OnSelect: =Select(Parent)
+                    Size: =17
+                    Text: =ThisItem.dateExpired
+                    Width: =281
+                    X: =1006
+                    Y: =15
                     ZIndex: =7
 
-                Label5 As label:
-                    Height: =22
-                    OnSelect: =Select(Parent)
-                    Size: =20
-                    Text: =ThisItem.dateCreated
-                    Width: =306
-                    X: =623
-                    Y: =30
+                Icon5 As icon.Trash:
+                    Height: =38
+                    Icon: =Icon.Trash
+                    OnSelect: |-
+                        =Select(Parent);
+                        Remove(Alerts_1, ThisItem);
+                    Width: =42
+                    X: =1324
+                    Y: =122
                     ZIndex: =8
 
     "'Back Scroll_12' As icon.BackArrow":
