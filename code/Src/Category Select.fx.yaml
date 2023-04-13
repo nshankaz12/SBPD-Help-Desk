@@ -173,7 +173,7 @@
                     ButtonGallery_Category As gallery.galleryVertical:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         Height: =553
-                        Items: =Filter(Category_1, parentId = Blank())
+                        Items: =If(is_admin, Filter(Category_1, parentId = Blank()), Filter(Category_1, parentId = Blank(),technicianOnly=0))
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
