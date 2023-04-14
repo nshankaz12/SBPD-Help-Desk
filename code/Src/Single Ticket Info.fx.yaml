@@ -601,45 +601,43 @@
                             Button1_13 As button:
                                 Fill: =ColorScheme.primary
                                 Height: =30
-                                OnSelect: |
-                                    =If(
-                                        addMessage,
-                                        Patch(
-                                            Comments_1,
-                                            Defaults(Comments_1),
+                                OnSelect: |-
+                                    =Patch(
+                                        Comments_1,
+                                        Defaults(Comments_1),
+                                        {
+                                            ticketId: ticketInfo.ID,
+                                            message: TextInput2_12.Text,
+                                            creatorId: userData.id
+                                        }
+                                    );
+                                    Reset(TextInput2_12);
+                                    If(
+                                        userData.role = "admin" || userData.role = "tech",
+                                        Office365Outlook.SendEmailV2(
+                                            LookUp(
+                                                Users_1,
+                                                ID = ticketInfo.CreatorId,
+                                                email
+                                            ),
+                                            Concatenate(
+                                                "Update on Ticket # ",
+                                                ticketInfo.ID
+                                            ),
+                                            Concatenate(
+                                                "A comment has been added by ",
+                                                userData.firstName
+                                            ),
                                             {
-                                                ticketId: ticketInfo.ID,
-                                                message: TextInput9_4.Text,
-                                                creatorId: userData.id
+                                                Cc: Concat(
+                                                    Additional_Assign_ComboBox_1.SelectedItems,
+                                                    email,
+                                                    ";"
+                                                )
                                             }
                                         );
-                                        Reset(TextInput9_4);
-                                        If(
-                                            userData.role = "admin" || userData.role = "tech",
-                                            Office365Outlook.SendEmailV2(
-                                                LookUp(
-                                                    Users_1,
-                                                    ID = ticketInfo.CreatorId,
-                                                    email
-                                                ),
-                                                Concatenate(
-                                                    "Update on Ticket # ",
-                                                    ticketInfo.ID
-                                                ),
-                                                Concatenate(
-                                                    "A comment has been added by ",
-                                                    userData.firstName
-                                                ),
-                                                {
-                                                    Cc: Concat(
-                                                        Additional_Assign_ComboBox_1.SelectedItems,
-                                                        email,
-                                                        ";"
-                                                    )
-                                                }
-                                            );
-                                        )
-                                    );
+                                        
+                                    )
                                 Size: =8
                                 Text: ="Add Comment"
                                 Width: =100
@@ -651,22 +649,9 @@
                                 Fill: =RGBA(151, 0, 0, 1)
                                 Height: =30
                                 OnSelect: |-
-                                    =If(
-                                        addMessage,
-                                        Set(
-                                            varShowResPopup,
-                                            true
-                                        ),
-                                        If(
-                                            editMessage,
-                                            Set(
-                                                addMessage,
-                                                true
-                                            ) && Set(
-                                                editMessage,
-                                                false
-                                            )
-                                        )
+                                    =Set(
+                                        varShowResPopup,
+                                        true
                                     )
                                 Size: =8
                                 Text: ="Close Ticket"
@@ -774,20 +759,16 @@
 
                             Button1_12 As button:
                                 OnSelect: |
-                                    =If(
-                                        addMessage,
-                                        Patch(
-                                            Comments_1,
-                                            Defaults(Comments_1),
-                                            {
-                                                ticketId: ticketInfo.ID,
-                                                message: TextInput2_13.Text,
-                                                creatorId: userData.id
-                                            }
-                                        );
-                                        Reset(TextInput2_13);
-                                        
+                                    =Patch(
+                                        Comments_1,
+                                        Defaults(Comments_1),
+                                        {
+                                            ticketId: ticketInfo.ID,
+                                            message: TextInput2_12.Text,
+                                            creatorId: userData.id
+                                        }
                                     );
+                                    Reset(TextInput2_12);
                                 Text: ="Add Comment"
                                 Width: =200
                                 X: =12
@@ -2026,20 +2007,12 @@
                                         Defaults(Comments_1),
                                         {
                                             ticketId: ticketInfo.ID,
-                                            message: TextInput1.Text,
+                                            message: "Test",
                                             creatorId: userData.id
                                         }
                                     );
-                                    Reset(TextInput9_6);
-                                Text: |-
-                                    =If(
-                                        addMessage,
-                                        "Add Comment",
-                                        If(
-                                            editMessage,
-                                            "Update Comment"
-                                        )
-                                    )
+                                    Reset(TextInput2_12);
+                                Text: ="Add Comment"
                                 Width: =200
                                 X: =12
                                 Y: =298
@@ -2775,20 +2748,16 @@
 
                             Button1_9 As button:
                                 OnSelect: |
-                                    =If(
-                                        addMessage,
-                                        Patch(
-                                            Comments_1,
-                                            Defaults(Comments_1),
-                                            {
-                                                ticketId: ticketInfo.ID,
-                                                message: TextInput2_10.Text,
-                                                creatorId: userData.id
-                                            }
-                                        );
-                                        Reset(TextInput2_10);
-                                        
+                                    =Patch(
+                                        Comments_1,
+                                        Defaults(Comments_1),
+                                        {
+                                            ticketId: ticketInfo.ID,
+                                            message: TextInput2_12.Text,
+                                            creatorId: userData.id
+                                        }
                                     );
+                                    Reset(TextInput2_12);
                                 Text: |-
                                     =If(
                                         addMessage,
