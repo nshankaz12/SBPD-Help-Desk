@@ -46,7 +46,7 @@
         Form3 As form:
             DataSource: =Alerts_1
             DefaultMode: =FormMode.New
-            Item: =Gallery4.Selected
+            Item: =recordVar
             LayoutMinHeight: =250
             LayoutMinWidth: =400
             NumberOfColumns: =2
@@ -686,7 +686,6 @@
         OnSelect: |-
             =Patch(Alerts_1, Defaults(Alerts_1), {titleText: DataCardValue23.Text, messageText: DataCardValue27.Text,  dateExpired: DateValue14.SelectedDate, creatorId:userData.id});
             Set(galleryVisible, true);
-            'PowerAppV2->SendanHTTPrequesttoSharePoint'.Run(userData.email,DataCardValue27.Text, DataCardValue23.Text);
             Notify("Alert Successfully created!", NotificationType.Success);
             Navigate('Alert Manager');
         Text: ="Create Alert"

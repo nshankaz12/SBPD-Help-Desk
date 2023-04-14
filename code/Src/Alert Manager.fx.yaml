@@ -45,54 +45,96 @@
                 Width: =500
                 ZIndex: =2
 
+        Container6_4 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =SearchTickets.Height/1.5
+            LayoutMinHeight: =//100
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =3
+
+            Container7_5 As groupContainer.manualLayoutContainer:
+                Fill: =ColorScheme.primary
+                Height: =Parent.Height
+                Width: =Parent.Width
+                ZIndex: =1
+
+                Rectangle6_3 As rectangle:
+                    Fill: =ColorScheme.primary
+                    Height: =Parent.Height
+                    Width: =Parent.Width
+                    X: |
+                        =
+                        0
+                    ZIndex: =1
+
+            ColAllTicket_5 As groupContainer.horizontalAutoLayoutContainer:
+                Height: =SearchTickets.Height/1.5
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: |
+                    =
+                ZIndex: =2
+
+                id_5 As label:
+                    Align: =Align.Center
+                    Color: =ColorScheme.screenBackground
+                    Text: ="Creator ID"
+                    Width: |
+                        =Parent.Width/9
+                    X: =608
+                    ZIndex: =1
+
+                title_5 As label:
+                    Align: =Align.Center
+                    Color: =ColorScheme.screenBackground
+                    Text: ="Title"
+                    Width: =Parent.Width/5
+                    X: =608
+                    ZIndex: =2
+
+                date_created_5 As label:
+                    Align: =Align.Center
+                    Color: =ColorScheme.screenBackground
+                    Text: ="Date Created"
+                    Width: =Parent.Width/7
+                    X: =608
+                    ZIndex: =4
+
+                attachments_4 As label:
+                    Align: =Align.Center
+                    Color: =ColorScheme.screenBackground
+                    Text: ="Expiration Date"
+                    Width: =Parent.Width/7
+                    X: =608
+                    ZIndex: =5
+
+                status_5 As label:
+                    Align: =Align.Center
+                    Color: =ColorScheme.screenBackground
+                    Text: ="Status"
+                    Width: |
+                        =Parent.Width/9
+                    X: =608
+                    ZIndex: =6
+
+                tags_4 As label:
+                    Align: =Align.Center
+                    Color: =ColorScheme.screenBackground
+                    Text: ="Edit/Remove"
+                    Width: |
+                        =Parent.Width/10
+                    X: =608
+                    ZIndex: =7
+
         Container1 As groupContainer.verticalAutoLayoutContainer:
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            ZIndex: =3
-
-            ColAllTicket_1 As groupContainer.horizontalAutoLayoutContainer:
-                FillPortions: =0
-                Height: =SearchTickets.Height/1.5
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                ZIndex: =1
-
-                id_1 As label:
-                    Align: =Align.Center
-                    BorderThickness: =2
-                    LayoutMinWidth: =25
-                    Text: ="ID"
-                    X: =608
-                    ZIndex: =1
-
-                status_1 As label:
-                    Align: =Align.Center
-                    BorderThickness: =2
-                    FillPortions: =1
-                    Text: ="Title"
-                    X: =608
-                    ZIndex: =2
-
-                title_1 As label:
-                    Align: =Align.Center
-                    BorderThickness: =2
-                    FillPortions: =1
-                    Text: ="Date Created"
-                    X: =608
-                    ZIndex: =3
-
-                date_created_1 As label:
-                    Align: =Align.Center
-                    BorderThickness: =2
-                    FillPortions: =1
-                    Text: ="Expiration Date"
-                    X: =608
-                    ZIndex: =4
+            ZIndex: =4
 
             "Gallery4 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
                 DelayItemLoading: =true
@@ -102,12 +144,15 @@
                 LayoutMinHeight: =287
                 LayoutMinWidth: =320
                 LoadingSpinner: =LoadingSpinner.Data
+                TemplateFill: =Color.WhiteSmoke
                 TemplatePadding: =0
                 TemplateSize: =Min(168, Self.Height - 60)
+                Transition: =Transition.Push
                 ZIndex: =1
 
                 Title4 As label:
-                    Height: =54
+                    Align: =Align.Center
+                    Height: =47
                     OnSelect: =Select(Parent)
                     PaddingBottom: =0
                     PaddingLeft: =0
@@ -116,13 +161,13 @@
                     Size: =22
                     Text: =ThisItem.titleText
                     VerticalAlign: =VerticalAlign.Top
-                    Width: =1106
-                    X: =260
-                    Y: =18
+                    Width: =375
+                    X: =82
+                    Y: =15
                     ZIndex: =1
 
                 Description As label:
-                    Height: =68
+                    Height: =93
                     OnSelect: =Select(Parent)
                     PaddingBottom: =0
                     PaddingLeft: =0
@@ -130,9 +175,9 @@
                     PaddingTop: =0
                     Text: =ThisItem.messageText
                     VerticalAlign: =VerticalAlign.Top
-                    Width: =1050
-                    X: =132
-                    Y: =100
+                    Width: =1078
+                    X: =82
+                    Y: =73
                     ZIndex: =2
 
                 Body2 As label:
@@ -142,11 +187,11 @@
                     PaddingLeft: =0
                     PaddingRight: =0
                     PaddingTop: =0
-                    Text: =ThisItem.ID
+                    Text: =ThisItem.creatorId
                     VerticalAlign: =VerticalAlign.Top
                     Width: =32
-                    X: =42
-                    Y: =25
+                    X: =22
+                    Y: =28
                     ZIndex: =3
 
                 NextArrow3 As icon.ChevronRight:
@@ -155,7 +200,7 @@
                     Icon: =Icon.Edit
                     OnSelect: |
                         =EditForm(Form3);
-                        Navigate(Form3, ScreenTransition.None);
+                        Navigate(Form3, ScreenTransition.None, {recordVar: ThisItem});
                         Set(Editing, true)
                     PaddingBottom: =10
                     PaddingLeft: =10
@@ -164,8 +209,8 @@
                     TabIndex: =0
                     Tooltip: ="View item details"
                     Width: =60
-                    X: =1287
-                    Y: =45
+                    X: =1306
+                    Y: =15
                     ZIndex: =4
 
                 Separator4 As rectangle:
@@ -181,8 +226,8 @@
                     Size: =17
                     Text: =ThisItem.dateCreated
                     Width: =270
-                    X: =662
-                    Y: =9
+                    X: =555
+                    Y: =15
                     ZIndex: =6
 
                 Label2 As label:
@@ -191,7 +236,7 @@
                     Size: =17
                     Text: =ThisItem.dateExpired
                     Width: =281
-                    X: =1006
+                    X: =797
                     Y: =15
                     ZIndex: =7
 
@@ -205,6 +250,14 @@
                     X: =1324
                     Y: =122
                     ZIndex: =8
+
+                Label3 As label:
+                    OnSelect: =Select(Parent)
+                    Size: =15
+                    Text: =If(ThisItem.dateExpired >= Today(), "Active", "Expired")
+                    X: =1078
+                    Y: =22
+                    ZIndex: =9
 
     "'Back Scroll_12' As icon.BackArrow":
         Color: |-
