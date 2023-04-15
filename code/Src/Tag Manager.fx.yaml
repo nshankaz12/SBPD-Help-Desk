@@ -24,10 +24,12 @@
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
                 Height: |-
-                    =//compWebHeader_20.Height + TagScreenName.Height
-                    Parent.Height/11
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    =130
+                    //compWebHeader_20.Height + TagScreenName.Height
+                    //Parent.Height/11
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.Center
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
@@ -40,24 +42,12 @@
                     LayoutMinWidth: =640
                     ZIndex: =1
 
-            TagScreenName_1 As groupContainer.manualLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                Fill: =ColorScheme.primary
-                FillPortions: =0
-                Height: |-
-                    =//compWebHeader_20.Height
-                    Parent.Height/12
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                Width: =Parent.Width
-                ZIndex: =3
-
                 UserNameLabel_6 As label:
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
+                    Fill: =ColorScheme.primary
+                    FillPortions: =1
                     Height: =Parent.Height
-                    PaddingBottom: =10
-                    PaddingTop: =0
                     Size: =If('Tag Manager'.Size= 1 , titleText.mobileSize, titleText.desktopSize)
                     Text: ="Tag Manager"
                     Width: =Parent.Width
@@ -68,8 +58,9 @@
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
                 Height: |-
-                    =//Parent.Height
-                    TagHeaderFinal.Height
+                    =60
+                    //Parent.Height
+                    //TagHeaderFinal.Height
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                 LayoutMinHeight: =//compWebHeader_28.Height
@@ -456,7 +447,7 @@
             false
         TrueFill: =RGBA(54, 176, 75, 1)
         X: =80// was originally in position X 21
-        Y: =80
+        Y: =compWebHeader_11.Height + (UserNameLabel_6.Height - Self.Height) / 2
         ZIndex: =2
 
     Icon1_29 As icon.BackArrow:

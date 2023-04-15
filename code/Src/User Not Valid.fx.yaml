@@ -22,7 +22,9 @@
 
     Container10_5 As groupContainer.manualLayoutContainer:
         Fill: =ColorScheme.primary
-        Height: =Parent.Height/12
+        Height: |-
+            =48
+            //Parent.Height/12
         Width: =Parent.Width
         Y: =compWebHeader_30.Height
         ZIndex: =3

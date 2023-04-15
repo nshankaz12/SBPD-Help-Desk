@@ -9,9 +9,10 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        Container7_1 As groupContainer.horizontalAutoLayoutContainer:
+        Alert_Manager_Header_Container As groupContainer.horizontalAutoLayoutContainer:
             FillPortions: =0
-            Height: =82
+            Height: =130
+            LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -23,26 +24,16 @@
                 LayoutMinWidth: =640
                 ZIndex: =1
 
-        Container13_1 As groupContainer.horizontalAutoLayoutContainer:
-            Fill: |-
-                =ColorScheme.primary
-                //RGBA(39, 67, 125, 1)
-            FillPortions: =0
-            Height: =48
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            ZIndex: =2
-
             Label15_1 As label:
                 Align: =Align.Center
                 AlignInContainer: =AlignInContainer.Center
                 Color: =RGBA(255, 255, 255, 1)
+                Fill: =ColorScheme.primary
                 FillPortions: =1
                 Height: =Parent.Height
                 Size: =If('Alert Manager'.Size=1, titleText.mobileSize, titleText.desktopSize)
                 Text: ="Alert Manager"
-                Width: =500
+                Width: =Parent.Width
                 ZIndex: =2
 
         Container6_4 As groupContainer.manualLayoutContainer:
@@ -268,7 +259,7 @@
         OnSelect: =ResetForm(Form3); Navigate('Create Alert Admin (Redesign)', ScreenTransition.Fade)
         Width: =49
         X: =15
-        Y: =66
+        Y: =Ticket_Title_1.Y
         ZIndex: =3
 
     compWebMenu_20 As compWebMenu:

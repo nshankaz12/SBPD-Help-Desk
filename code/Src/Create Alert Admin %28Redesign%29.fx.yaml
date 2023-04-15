@@ -7,9 +7,10 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        Container7 As groupContainer.horizontalAutoLayoutContainer:
+        Create_Alert_Header_Container As groupContainer.horizontalAutoLayoutContainer:
             FillPortions: =0
-            Height: =82
+            Height: =130
+            LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -21,26 +22,16 @@
                 LayoutMinWidth: =640
                 ZIndex: =1
 
-        Container13 As groupContainer.horizontalAutoLayoutContainer:
-            Fill: |-
-                =ColorScheme.primary
-                //RGBA(39, 67, 125, 1)
-            FillPortions: =0
-            Height: =48
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            ZIndex: =2
-
             Label15 As label:
                 Align: =Align.Center
                 AlignInContainer: =AlignInContainer.Center
                 Color: =RGBA(255, 255, 255, 1)
+                Fill: =ColorScheme.primary
                 FillPortions: =1
                 Height: =Parent.Height
                 Size: =If('Create Alert Admin (Redesign)'.Size=1, titleText.mobileSize, titleText.desktopSize)
                 Text: ="Create Alert"
-                Width: =500
+                Width: =Parent.Width
                 ZIndex: =2
 
         Form3 As form:

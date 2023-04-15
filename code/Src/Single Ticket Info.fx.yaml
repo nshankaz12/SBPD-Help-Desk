@@ -4586,7 +4586,9 @@
         Align: =Align.Center
         Color: =RGBA(255, 255, 255, 1)
         Fill: =ColorScheme.primary
-        Height: =50
+        Height: |-
+            =48
+            //50
         Size: =If('Single Ticket Info'.Size=1, titleText.mobileSize, titleText.desktopSize)
         Text: ="Ticket Details"
         Width: =Parent.Width

@@ -22,9 +22,12 @@
 
             AllTicketsHeaderFinal As groupContainer.verticalAutoLayoutContainer:
                 FillPortions: =0
-                Height: =Parent.Height/11
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                Height: |-
+                    =130
+                    //Parent.Height/11
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.Center
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
@@ -37,27 +40,17 @@
                     LayoutMinWidth: =640
                     ZIndex: =1
 
-            AllTicketsScreenName As groupContainer.manualLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                Fill: =ColorScheme.primary
-                FillPortions: =0
-                Height: =Parent.Height/12
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                Width: =Parent.Width
-                ZIndex: =2
-
                 TagName_2 As label:
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
+                    Fill: =ColorScheme.primary
+                    FillPortions: =1
                     Height: =Parent.Height
-                    PaddingBottom: =10
-                    PaddingTop: =0
                     Size: =If('All Tickets'.Size= 1 , titleText.mobileSize, titleText.desktopSize)
                     Text: ="All Tickets"& 'All Tickets'.Size
                     Width: =Parent.Width
                     X: =(Parent.Width - Self.Width)/2
-                    ZIndex: =1
+                    ZIndex: =2
 
             SearchTickets As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
