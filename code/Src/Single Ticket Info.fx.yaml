@@ -33,12 +33,12 @@
         LayoutOverflowY: =LayoutOverflow.Scroll
         PaddingTop: =120
         Width: =Parent.Width
-        ZIndex: =2
+        ZIndex: =1
 
         SingleTicketInfoMainContent_2 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             FillPortions: =0
-            Height: =Parent.Height-SingleTicketInfo_Title.Height-compWebHeader_4.Height
+            Height: =Parent.Height-compWebHeader_4.Height-SingleTicketInfo_Title.Height
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -55,6 +55,7 @@
                 LayoutMode: =LayoutMode.Auto
                 LayoutOverflowY: =LayoutOverflow.Scroll
                 LayoutWrap: =true
+                PaddingBottom: =90
                 PaddingTop: =20
                 Visible: |
                     ='Single Ticket Info'.Size=1
@@ -440,7 +441,7 @@
                 NewMobileActivity As groupContainer.manualLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
-                    Height: =700
+                    Height: =700+(compMobileMenu_22.Height*2)
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     Width: =Parent.Width
@@ -543,7 +544,7 @@
                                 HintText: ="Add a comment..."
                                 OnSelect: =
                                 Width: =Parent.Width *.95
-                                X: =CommentContentLabel_3.X
+                                X: =CommentContentLabel_1.X
                                 Y: =Comment_Gallery_1.Height
                                 ZIndex: =2
 
@@ -630,8 +631,8 @@
                                 Size: =8
                                 Text: ="Add Comment"
                                 Width: =100
-                                X: =Add_Comment_Text_Input_1.X
-                                Y: =Parent.Height-Self.Height-5
+                                X: =Add_Comment_Text_Input_1.Width/6
+                                Y: =Close_Ticket_Button_1.Y
                                 ZIndex: =4
 
                             Close_Ticket_Button_1 As button:
@@ -647,7 +648,7 @@
                                 Visible: =If(LookUp(Tickets,ID = ticketInfo.ID, status) = "open", If(userData.role = "staff",false,true), false)
                                 Width: =100
                                 X: =Add_Comment_Button_1.X + Add_Comment_Button_1.Width+50
-                                Y: =Parent.Height-Self.Height-5
+                                Y: =Add_Comment_Text_Input_1.Y+ Add_Comment_Text_Input_1.Height+15
                                 ZIndex: =5
 
                             "Comment_Gallery_1 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
@@ -859,9 +860,10 @@
                                 Height: =If('Single Ticket Info'.Size=1,25, 36)
                                 HintText: ="Add a comment..."
                                 OnSelect: =
+                                PaddingLeft: =15
                                 Width: =Parent.Width *.95
                                 X: =CommentContentLabel.X
-                                Y: =Comment_Gallery.Height
+                                Y: =Comment_Gallery.Height+10
                                 ZIndex: =2
 
                             Add_Comment_Button As button:
@@ -908,8 +910,8 @@
                                 Size: =12
                                 Text: ="Add Comment"
                                 Width: =200
-                                X: =Add_Comment_Text_Input.X
-                                Y: =Parent.Height-Self.Height-5
+                                X: =Add_Comment_Text_Input.Width/4
+                                Y: =Add_Comment_Text_Input.Y+Add_Comment_Text_Input.Height+30
                                 ZIndex: =4
 
                             Close_Ticket_Button As button:
@@ -924,7 +926,7 @@
                                 Text: ="Close Ticket"
                                 Visible: =If(LookUp(Tickets,ID = ticketInfo.ID, status) = "open", If(userData.role = "staff",false,true), false)
                                 X: =Add_Comment_Button.X + Add_Comment_Button.Width+50
-                                Y: =Parent.Height-Self.Height-5
+                                Y: =Add_Comment_Button.Y
                                 ZIndex: =5
 
                             "Comment_Gallery As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
@@ -1009,7 +1011,7 @@
 
                     Ticket_Title As label:
                         Font: =Font.Georgia
-                        Height: =29
+                        Height: =30
                         PaddingLeft: =20
                         Size: =If('Single Ticket Info'.Size=1,12,30)
                         Text: =ticketInfo.Title
@@ -1405,6 +1407,12 @@
                         Y: =80
                         ZIndex: =32
 
+    compMobileMenu_22 As compMobileMenu:
+        Visible: ='Single Ticket Info'.Size=1
+        Width: =Parent.Width
+        Y: =Parent.Height-Self.Height
+        ZIndex: =2
+
     PopUp_Background As rectangle:
         Fill: =RGBA(56, 96, 178, 0.5)
         Height: =Parent.Height
@@ -1420,6 +1428,90 @@
         X: =(Parent.Width/2 - Self.Width/2)
         Y: =(Parent.Height/2 - Self.Height/2)
         ZIndex: =4
+
+        Rectangle_Resolution As rectangle:
+            Fill: =RGBA(241, 244, 249, 1)
+            Height: =368
+            Visible: =varShowResPopup
+            Width: =648
+            X: =Parent.Width/2 - Self.Width/2
+            Y: =Parent.Height/2 - Self.Height/2
+            ZIndex: =1
+
+        Title_Resolution As label:
+            Align: =Align.Center
+            Fill: =RGBA(255, 191, 0, 1)
+            Text: ="Close Current Ticket"
+            Visible: =varShowResPopup
+            Width: =649
+            X: =Parent.Width/2 - Self.Width/2
+            Y: =(Parent.Height/2 - Self.Height/2) - 200
+            ZIndex: =2
+
+        Prompt_Resolution As label:
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =96
+            Text: |-
+                ="Are you sure you want to close this ticket?
+                If yes, please fill out the resolution to this ticket.
+                "
+            Visible: =varShowResPopup
+            Width: =648
+            X: =Parent.Width/2 - Self.Width/2
+            Y: =(Parent.Height/2 - Self.Height/2) - 130
+            ZIndex: =3
+
+        Text_Input_Resolution As text:
+            Default: =""
+            Height: =155
+            HintText: ="Please fill out a description for the resolution."
+            Mode: =TextMode.MultiLine
+            Visible: =varShowResPopup
+            Width: =442
+            X: =(Parent.Width/2 - Self.Width/2)
+            Y: =Parent.Height/2 - Self.Height/2
+            ZIndex: =4
+
+        Cancel_Resolution_Button As button:
+            OnSelect: =Set(varShowResPopup, false)
+            Text: |-
+                ="Cancel
+                "
+            Visible: =varShowResPopup
+            X: =(Parent.Width/2 - Self.Width/2) - 100
+            Y: =(Parent.Height/2 - Self.Height/2) + 120
+            ZIndex: =5
+
+        Close_Ticket_Resolution_Button As button:
+            OnSelect: |-
+                =Patch(
+                    Tickets,
+                    LookUp(
+                        Tickets,
+                        ID = ticketInfo.ID
+                    ),
+                    {
+                        resolution: Text_Input_Resolution.Text,
+                        lastUpdated: Now(),
+                        dateClosed: Now(),
+                        status: "closed",
+                        updatedBy: userData.id
+                    }
+                );
+                Set(
+                    varShowResPopup,
+                    false
+                );
+                Reset(Text_Input_Resolution);
+                Refresh(Tickets);
+            Text: |-
+                ="Close Ticket
+                "
+            Visible: =varShowResPopup
+            X: =(Parent.Width/2 - Self.Width/2) + 100
+            Y: =(Parent.Height/2 - Self.Height/2) + 120
+            ZIndex: =6
 
     compWebHeader_4 As compWebHeader:
         CompScreenSize: ='Single Ticket Info'.Size
@@ -1455,5 +1547,6 @@
 
     compPageTextSizeFormatter_1 As compPageTextSizeFormatter:
         PageSizeVariable: ='Single Ticket Info'.Size
+        Visible: =false
         ZIndex: =9
 
