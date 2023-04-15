@@ -19,7 +19,44 @@ compSearchTickets As CanvasComponent:
         );
         compSearchTickets.CloseSearch();
         
+        // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
         ClearCollect(
+            colTickets,
+            ForAll(
+                Table(
+                    ParseJSON(
+                        SearchFilterTicketsSPListV2.Run(
+                        If(
+                            IsBlank(SearchQuery),
+                            "___",
+                            SearchQuery
+                            ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
+                        ).searchresults
+                    )
+                ),
+                {
+                    ID: Value(Value.ID),
+                    Title: Text(Value.title),
+                    Description: Text(Value.description),
+                    MainCategory: Value(Value.mainCategory),
+                    Category: Value(Value.category),
+                    SubCategory: Value(Value.subCategory),
+                    DateCreated: DateTimeValue(Value.dateCreated),
+                    DateClosed: DateTimeValue(Value.dateClosed),
+                    CreatorId: Value(Value.creatorId),
+                    Status: Text(Value.status),
+                    AssignedTo: Value(Value.assignedTo),
+                    LastUpdated: DateTimeValue(Value.lastUpdated),
+                    UpdatedBy: Value(Value.updatedBy),
+                    ParentId: Value(Value.parentId),
+                    LocationId: Value(Value.locationId),
+                    Tags: Text(Value.tags),
+                    AddAssignees: Text(Value.addAssignees)
+                }
+            )
+        )
+        
+        /*ClearCollect(
             colTickets,
             ForAll(
                 Table(
@@ -48,7 +85,7 @@ compSearchTickets As CanvasComponent:
                     AddAssignees: Text(Value.addAssignees)
                 }
             )
-        )
+        )*/
     OpenSearch: =Set(varSearchVisible, true)
     PrimaryColor: =ColorScheme.primary
     SearchVisible: =varSearchVisible
@@ -115,7 +152,44 @@ compSearchTickets As CanvasComponent:
             );
             compSearchTickets.CloseSearch();
             
+            // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
             ClearCollect(
+                colTickets,
+                ForAll(
+                    Table(
+                        ParseJSON(
+                            SearchFilterTicketsSPListV2.Run(
+                            If(
+                                IsBlank(SearchQuery),
+                                "___",
+                                SearchQuery
+                                ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
+                            ).searchresults
+                        )
+                    ),
+                    {
+                        ID: Value(Value.ID),
+                        Title: Text(Value.title),
+                        Description: Text(Value.description),
+                        MainCategory: Value(Value.mainCategory),
+                        Category: Value(Value.category),
+                        SubCategory: Value(Value.subCategory),
+                        DateCreated: DateTimeValue(Value.dateCreated),
+                        DateClosed: DateTimeValue(Value.dateClosed),
+                        CreatorId: Value(Value.creatorId),
+                        Status: Text(Value.status),
+                        AssignedTo: Value(Value.assignedTo),
+                        LastUpdated: DateTimeValue(Value.lastUpdated),
+                        UpdatedBy: Value(Value.updatedBy),
+                        ParentId: Value(Value.parentId),
+                        LocationId: Value(Value.locationId),
+                        Tags: Text(Value.tags),
+                        AddAssignees: Text(Value.addAssignees)
+                    }
+                )
+            )
+            
+            /*ClearCollect(
                 colTickets,
                 ForAll(
                     Table(
@@ -144,7 +218,7 @@ compSearchTickets As CanvasComponent:
                         AddAssignees: Text(Value.addAssignees)
                     }
                 )
-            )
+            )*/
         RadiusBottomLeft: =0
         RadiusBottomRight: =5
         RadiusTopLeft: =0
@@ -172,7 +246,44 @@ compSearchTickets As CanvasComponent:
             );
             compSearchTickets.CloseSearch();
             
+            // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
             ClearCollect(
+                colTickets,
+                ForAll(
+                    Table(
+                        ParseJSON(
+                            SearchFilterTicketsSPListV2.Run(
+                            If(
+                                IsBlank(SearchQuery),
+                                "___",
+                                SearchQuery
+                                ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
+                            ).searchresults
+                        )
+                    ),
+                    {
+                        ID: Value(Value.ID),
+                        Title: Text(Value.title),
+                        Description: Text(Value.description),
+                        MainCategory: Value(Value.mainCategory),
+                        Category: Value(Value.category),
+                        SubCategory: Value(Value.subCategory),
+                        DateCreated: DateTimeValue(Value.dateCreated),
+                        DateClosed: DateTimeValue(Value.dateClosed),
+                        CreatorId: Value(Value.creatorId),
+                        Status: Text(Value.status),
+                        AssignedTo: Value(Value.assignedTo),
+                        LastUpdated: DateTimeValue(Value.lastUpdated),
+                        UpdatedBy: Value(Value.updatedBy),
+                        ParentId: Value(Value.parentId),
+                        LocationId: Value(Value.locationId),
+                        Tags: Text(Value.tags),
+                        AddAssignees: Text(Value.addAssignees)
+                    }
+                )
+            )
+            
+            /*ClearCollect(
                 colTickets,
                 ForAll(
                     Table(
@@ -201,7 +312,7 @@ compSearchTickets As CanvasComponent:
                         AddAssignees: Text(Value.addAssignees)
                     }
                 )
-            )
+            )*/
         PaddingLeft: =5
         PaddingRight: =5
         Tooltip: ="Search"
@@ -230,7 +341,44 @@ compSearchTickets As CanvasComponent:
             );
             SetFocus(searchBox_1);
             
+            // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
             ClearCollect(
+                colTickets,
+                ForAll(
+                    Table(
+                        ParseJSON(
+                            SearchFilterTicketsSPListV2.Run(
+                            If(
+                                IsBlank(SearchQuery),
+                                "___",
+                                SearchQuery
+                                ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
+                            ).searchresults
+                        )
+                    ),
+                    {
+                        ID: Value(Value.ID),
+                        Title: Text(Value.title),
+                        Description: Text(Value.description),
+                        MainCategory: Value(Value.mainCategory),
+                        Category: Value(Value.category),
+                        SubCategory: Value(Value.subCategory),
+                        DateCreated: DateTimeValue(Value.dateCreated),
+                        DateClosed: DateTimeValue(Value.dateClosed),
+                        CreatorId: Value(Value.creatorId),
+                        Status: Text(Value.status),
+                        AssignedTo: Value(Value.assignedTo),
+                        LastUpdated: DateTimeValue(Value.lastUpdated),
+                        UpdatedBy: Value(Value.updatedBy),
+                        ParentId: Value(Value.parentId),
+                        LocationId: Value(Value.locationId),
+                        Tags: Text(Value.tags),
+                        AddAssignees: Text(Value.addAssignees)
+                    }
+                )
+            )
+            
+            /*ClearCollect(
                 colTickets,
                 ForAll(
                     Table(
@@ -259,7 +407,7 @@ compSearchTickets As CanvasComponent:
                         AddAssignees: Text(Value.addAssignees)
                     }
                 )
-            )
+            )*/
         Tooltip: ="Cancel"
         Visible: =!IsBlank(searchBox_1.Text) && (App.Width > 600 || compSearchTickets.SearchVisible)
         Width: =38

@@ -141,15 +141,14 @@
                             //)
                             
                             // Filter for Sharepoint List
-                            
-                            // Test
-                            //colTickets
+                            // Uses SearchFilterTicketsSPListV2
+                            colTickets
                             
                             // Filter that doesn't check additional assignees
                             //Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedTo = userData.id))
                             
-                            // Filter that includes additional assignees
-                            Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedTo = userData.id || Concatenate(userData.firstName, " ", userData.lastName) in AddAssignees))
+                            // Filter that includes additional assignees (only for SearchFilterTicketsSPList
+                            //Switch(compFilterMenu_1.TicketsChoice, "My Tickets", Filter(colTickets, CreatorId = userData.id), "My Assigned", Filter(colTickets, AssignedTo = userData.id || Concatenate(userData.firstName, " ", userData.lastName) in AddAssignees))
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =Parent.Height
                         LayoutMinWidth: =320

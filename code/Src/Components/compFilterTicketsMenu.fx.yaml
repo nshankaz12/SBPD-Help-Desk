@@ -46,6 +46,9 @@ compFilterTicketsMenu As CanvasComponent:
         =Reset(RadioTickets);
         Reset(DropdownStatus);
         Reset(DropdownTag);
+        Set(TicketsChoice,
+            If(userData.role = "admin" || userData.role = "tech", "My Assigned", "My Tickets")
+        );
         Set(
             StatusChoice,
             "open"
@@ -106,6 +109,9 @@ compFilterTicketsMenu As CanvasComponent:
                     =Reset(RadioTickets);
                     Reset(DropdownStatus);
                     Reset(DropdownTag);
+                    Set(TicketsChoice,
+                        If(userData.role = "admin" || userData.role = "tech", "My Assigned", "My Tickets")
+                    );
                     Set(
                         StatusChoice,
                         "open"
@@ -115,7 +121,44 @@ compFilterTicketsMenu As CanvasComponent:
                         "None"
                     );
                     
+                    // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
                     ClearCollect(
+                        colTickets,
+                        ForAll(
+                            Table(
+                                ParseJSON(
+                                    SearchFilterTicketsSPListV2.Run(
+                                    If(
+                                        IsBlank(SearchQuery),
+                                        "___",
+                                        SearchQuery
+                                        ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
+                                    ).searchresults
+                                )
+                            ),
+                            {
+                                ID: Value(Value.ID),
+                                Title: Text(Value.title),
+                                Description: Text(Value.description),
+                                MainCategory: Value(Value.mainCategory),
+                                Category: Value(Value.category),
+                                SubCategory: Value(Value.subCategory),
+                                DateCreated: DateTimeValue(Value.dateCreated),
+                                DateClosed: DateTimeValue(Value.dateClosed),
+                                CreatorId: Value(Value.creatorId),
+                                Status: Text(Value.status),
+                                AssignedTo: Value(Value.assignedTo),
+                                LastUpdated: DateTimeValue(Value.lastUpdated),
+                                UpdatedBy: Value(Value.updatedBy),
+                                ParentId: Value(Value.parentId),
+                                LocationId: Value(Value.locationId),
+                                Tags: Text(Value.tags),
+                                AddAssignees: Text(Value.addAssignees)
+                            }
+                        )
+                    )
+                    
+                    /*ClearCollect(
                         colTickets,
                         ForAll(
                             Table(
@@ -144,7 +187,7 @@ compFilterTicketsMenu As CanvasComponent:
                                 AddAssignees: Text(Value.addAssignees)
                             }
                         )
-                    )
+                    )*/
                 Width: =compFilterTicketsMenu.IconSize
                 X: =LabelTitle.Width / 2
                 Y: =(LabelTitle.Height - Self.Height) / 2
@@ -198,9 +241,50 @@ compFilterTicketsMenu As CanvasComponent:
 
             RadioTickets As radio:
                 Color: =Color.White
-                Default: =If(App.ActiveScreen.Name = "MyTickets" && compFilterTicketsMenu.CheckAdmin, "My Assigned", App.ActiveScreen.Name = "MyTickets" && !compFilterTicketsMenu.CheckAdmin, "My Tickets", "Tickets")
+                Default: |-
+                    =//If(App.ActiveScreen.Name = "MyTickets" && compFilterTicketsMenu.CheckAdmin, "My Assigned", App.ActiveScreen.Name = "MyTickets" && !compFilterTicketsMenu.CheckAdmin, "My Tickets", "Tickets")
+                    TicketsChoice
                 Height: =Parent.Height - LabelTickets.Height - Separator_1.Height
                 Items: =If(App.ActiveScreen.Name = "MyTickets", ["My Assigned", "My Tickets"], ["Tickets", "Unassigned", "My Assigned"])
+                OnChange: |-
+                    =Set(TicketsChoice, RadioTickets.SelectedText.Value);
+                    
+                    // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
+                    ClearCollect(
+                        colTickets,
+                        ForAll(
+                            Table(
+                                ParseJSON(
+                                    SearchFilterTicketsSPListV2.Run(
+                                    If(
+                                        IsBlank(SearchQuery),
+                                        "___",
+                                        SearchQuery
+                                        ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
+                                    ).searchresults
+                                )
+                            ),
+                            {
+                                ID: Value(Value.ID),
+                                Title: Text(Value.title),
+                                Description: Text(Value.description),
+                                MainCategory: Value(Value.mainCategory),
+                                Category: Value(Value.category),
+                                SubCategory: Value(Value.subCategory),
+                                DateCreated: DateTimeValue(Value.dateCreated),
+                                DateClosed: DateTimeValue(Value.dateClosed),
+                                CreatorId: Value(Value.creatorId),
+                                Status: Text(Value.status),
+                                AssignedTo: Value(Value.assignedTo),
+                                LastUpdated: DateTimeValue(Value.lastUpdated),
+                                UpdatedBy: Value(Value.updatedBy),
+                                ParentId: Value(Value.parentId),
+                                LocationId: Value(Value.locationId),
+                                Tags: Text(Value.tags),
+                                AddAssignees: Text(Value.addAssignees)
+                            }
+                        )
+                    )
                 RadioBackgroundFill: =compFilterTicketsMenu.BackgroundColor
                 RadioSize: =compFilterTicketsMenu.IconSize - 5
                 Size: =compFilterTicketsMenu.FontSize - 2
@@ -250,7 +334,45 @@ compFilterTicketsMenu As CanvasComponent:
                 OnChange: |-
                     =Set(StatusChoice, DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult');
                     
+                    // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
                     ClearCollect(
+                        colTickets,
+                        ForAll(
+                            Table(
+                                ParseJSON(
+                                    SearchFilterTicketsSPListV2.Run(
+                                    If(
+                                        IsBlank(SearchQuery),
+                                        "___",
+                                        SearchQuery
+                                        ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
+                                    ).searchresults
+                                )
+                            ),
+                            {
+                                ID: Value(Value.ID),
+                                Title: Text(Value.title),
+                                Description: Text(Value.description),
+                                MainCategory: Value(Value.mainCategory),
+                                Category: Value(Value.category),
+                                SubCategory: Value(Value.subCategory),
+                                DateCreated: DateTimeValue(Value.dateCreated),
+                                DateClosed: DateTimeValue(Value.dateClosed),
+                                CreatorId: Value(Value.creatorId),
+                                Status: Text(Value.status),
+                                AssignedTo: Value(Value.assignedTo),
+                                LastUpdated: DateTimeValue(Value.lastUpdated),
+                                UpdatedBy: Value(Value.updatedBy),
+                                ParentId: Value(Value.parentId),
+                                LocationId: Value(Value.locationId),
+                                Tags: Text(Value.tags),
+                                AddAssignees: Text(Value.addAssignees)
+                            }
+                        )
+                    )
+                    
+                    // Used with SearchFilterTicketsSPList
+                    /*ClearCollect(
                         colTickets,
                         ForAll(
                             Table(
@@ -279,7 +401,7 @@ compFilterTicketsMenu As CanvasComponent:
                                 AddAssignees: Text(Value.addAssignees)
                             }
                         )
-                    )
+                    )*/
                 Size: =compFilterTicketsMenu.FontSize
                 Width: =Parent.Width - 20
                 X: =(Parent.Width - Self.Width) / 2
@@ -328,7 +450,44 @@ compFilterTicketsMenu As CanvasComponent:
                 OnChange: |-
                     =Set(TagChoice, DropdownTag.SelectedText.Value);
                     
+                    // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
                     ClearCollect(
+                        colTickets,
+                        ForAll(
+                            Table(
+                                ParseJSON(
+                                    SearchFilterTicketsSPListV2.Run(
+                                    If(
+                                        IsBlank(SearchQuery),
+                                        "___",
+                                        SearchQuery
+                                        ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
+                                    ).searchresults
+                                )
+                            ),
+                            {
+                                ID: Value(Value.ID),
+                                Title: Text(Value.title),
+                                Description: Text(Value.description),
+                                MainCategory: Value(Value.mainCategory),
+                                Category: Value(Value.category),
+                                SubCategory: Value(Value.subCategory),
+                                DateCreated: DateTimeValue(Value.dateCreated),
+                                DateClosed: DateTimeValue(Value.dateClosed),
+                                CreatorId: Value(Value.creatorId),
+                                Status: Text(Value.status),
+                                AssignedTo: Value(Value.assignedTo),
+                                LastUpdated: DateTimeValue(Value.lastUpdated),
+                                UpdatedBy: Value(Value.updatedBy),
+                                ParentId: Value(Value.parentId),
+                                LocationId: Value(Value.locationId),
+                                Tags: Text(Value.tags),
+                                AddAssignees: Text(Value.addAssignees)
+                            }
+                        )
+                    )
+                    
+                    /*ClearCollect(
                         colTickets,
                         ForAll(
                             Table(
@@ -357,7 +516,7 @@ compFilterTicketsMenu As CanvasComponent:
                                 AddAssignees: Text(Value.addAssignees)
                             }
                         )
-                    )
+                    )*/
                 Size: =compFilterTicketsMenu.FontSize
                 Width: =Parent.Width - 20
                 X: =(Parent.Width - Self.Width) / 2

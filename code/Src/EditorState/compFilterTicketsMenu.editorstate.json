@@ -73,7 +73,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "CancelIcon",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2950,7 +2950,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "LabelTitle",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3262,6 +3262,14 @@
           "InvariantPropertyName": "RadioSize",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "false",
+          "InvariantPropertyName": "OnChange",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "HasDynamicProperties": false,
@@ -3466,6 +3474,11 @@
         {
           "Category": "Design",
           "PropertyName": "FocusedBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Behavior",
+          "PropertyName": "OnChange",
           "RuleProviderType": "Unknown"
         }
       ],

@@ -245,7 +245,10 @@ App As appinfo:
             varSearchVisible,
             false
         );
-        // Variables used for searching and filtering in components for the power automate flow
+        // Variables used for searching and filtering in the 'SearchFilterTicketsSPList' power automate flows
+        Set(TicketsChoice,
+            If(userData.role = "admin" || userData.role = "tech", "My Assigned", "My Tickets")
+        );
         Set(
             StatusChoice,
             "open"
@@ -258,6 +261,11 @@ App As appinfo:
             SearchQuery,
             ""
         );
+        // Set date to start pulling tickets for My Tickets from
+        // Sets the number of days, months, or years to subtract from today's date
+        Set(varSubtractDate, 6);
+        // Sets the time units subtracting by
+        Set(varTimeUnits, TimeUnit.Months);
         
         ClearCollect(
             dummyArticles,
