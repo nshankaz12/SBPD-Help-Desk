@@ -88,7 +88,6 @@ Home As screen:
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    LayoutWrap: =true
                     Width: =Parent.Width
                     ZIndex: =3
 
@@ -109,6 +108,7 @@ Home As screen:
                         Visible: |-
                             =galleryVisible
                             //If(CountRows(Alerts_1) > 0, true, false)
+                        Width: =Parent.Width
                         WrapCount: =0
                         ZIndex: =2
 
@@ -121,6 +121,7 @@ Home As screen:
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
+                            Size: =If(Home.Size =1,11,15)
                             Text: =ThisItem.titleText
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Parent.Width
@@ -134,7 +135,7 @@ Home As screen:
                             ZIndex: =5
 
                         Icon2 As icon.Cancel:
-                            Height: =40
+                            Height: =If(Home.Size =1, 15, 26)
                             Icon: =Icon.Cancel
                             OnSelect: =Set(galleryVisible, false)
                             X: =Parent.Width - 75
