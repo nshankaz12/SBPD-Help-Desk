@@ -1,10 +1,30 @@
 "'Single Ticket Info' As screen":
     OnHidden: =
     OnVisible: |
-        =UpdateContext({primAssignee:Blank()});
+        =UpdateContext({primAssignee: Blank()});
         Refresh(Comments_1);
-        If(ticketInfo.Status = "open", Set(closeTicketButtonVis, true), Set(closeTicketButtonVis, false));
-        Set(primAssignee, If(IsBlank(ticketInfo.AssignedTo), Blank(), Filter(Users_1,ID = ticketInfo.AssignedTo)));
+        If(
+            ticketInfo.Status = "open",
+            Set(
+                closeTicketButtonVis,
+                true
+            ),
+            Set(
+                closeTicketButtonVis,
+                false
+            )
+        );
+        Set(
+            primAssignee,
+            If(
+                IsBlank(ticketInfo.AssignedTo),
+                Blank(),
+                Filter(
+                    Users_1,
+                    ID = ticketInfo.AssignedTo
+                )
+            )
+        );
 
     SingleTicketInfoMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
@@ -489,8 +509,8 @@
                             Overflow: =Overflow.Scroll
                             Size: =If('Single Ticket Info'.Size<2,10,16)
                             Text: |-
-                                =//ticketInfo.Description
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque viverra justo nec ultrices. In nulla posuere sollicitudin aliquam. Et netus et malesuada fames ac. Pharetra magna ac placerat vestibulum lectus. Sem integer vitae justo eget magna fermentum iaculis eu non. Ac placerat vestibulum lectus mauris. Mattis nunc sed blandit libero volutpat sed cras ornare arcu. Massa ultricies mi quis hendrerit dolor. Nibh nisl condimentum id venenatis a condimentum vitae sapien pellentesque."
+                                =ticketInfo.Description
+                                //"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque viverra justo nec ultrices. In nulla posuere sollicitudin aliquam. Et netus et malesuada fames ac. Pharetra magna ac placerat vestibulum lectus. Sem integer vitae justo eget magna fermentum iaculis eu non. Ac placerat vestibulum lectus mauris. Mattis nunc sed blandit libero volutpat sed cras ornare arcu. Massa ultricies mi quis hendrerit dolor. Nibh nisl condimentum id venenatis a condimentum vitae sapien pellentesque."
                             Width: =Parent.Width-20
                             X: =127
                             Y: =11
@@ -582,21 +602,10 @@
                                 Height: =If('Single Ticket Info'.Size=1,25, 36)
                                 HintText: ="Add a comment..."
                                 OnSelect: =
-                                Visible: =addMessage
                                 Width: =Parent.Width *.95
                                 X: =CommentContentLabel_3.X
                                 Y: =Gallery2_13.Height
                                 ZIndex: =2
-
-                            TextInput9_12 As text:
-                                Default: =//If(editMessage, Gallery2_13.Selected.message, Blank())
-                                Height: =If('Single Ticket Info'.Size=1,25, 36)
-                                OnSelect: =
-                                Visible: =false
-                                Width: =Parent.Width *.95
-                                X: =CommentContentLabel_3.X
-                                Y: =Gallery2_13.Height
-                                ZIndex: =3
 
                             Button1_13 As button:
                                 Fill: =ColorScheme.primary
@@ -780,19 +789,9 @@
                                 Height: =72
                                 HintText: ="Add a comment..."
                                 OnSelect: =
-                                Visible: =addMessage
                                 Width: =879
                                 Y: =201
                                 ZIndex: =3
-
-                            TextInput9_11 As text:
-                                Default: =//If(editMessage, Gallery2_14.Selected.message, Blank())
-                                Height: =72
-                                OnSelect: =//editMessage
-                                Visible: =//editMessage
-                                Width: =Parent.Width - 100
-                                Y: =199
-                                ZIndex: =4
 
                             "Gallery2_12 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                 AccessibleLabel: =
@@ -956,32 +955,18 @@
                             Y: =496
                             ZIndex: =2
 
-                        TextInput9_13 As text:
-                            Default: =If(editMessage, Gallery2_14.Selected.message, Blank())
-                            Height: =72
-                            OnSelect: =editMessage
-                            Visible: =false //editMessage
-                            Width: =Parent.Width - 100
-                            X: =32
-                            Y: =467
-                            ZIndex: =3
-
                         Button1_14 As button:
                             OnSelect: |
-                                =If(
-                                    addMessage,
-                                    Patch(
-                                        Comments_1,
-                                        Defaults(Comments_1),
-                                        {
-                                            ticketId: ticketInfo.ID,
-                                            message: TextInput2_13.Text,
-                                            creatorId: userData.id
-                                        }
-                                    );
-                                    Reset(TextInput2_13);
-                                    
+                                =Patch(
+                                    Comments_1,
+                                    Defaults(Comments_1),
+                                    {
+                                        ticketId: ticketInfo.ID,
+                                        message: TextInput2_13.Text,
+                                        creatorId: userData.id
+                                    }
                                 );
+                                Reset(TextInput2_13);
                             Text: ="Add Comment"
                             Visible: =false
                             Width: =200
@@ -1191,7 +1176,7 @@
                             Font: =Font.Georgia
                             Height: =70
                             Size: =24
-                            Text: =title
+                            Text: =ticketInfo.Title
                             Visible: =false
                             Width: =444
                             X: =32
@@ -1793,64 +1778,52 @@
                                 Height: =If('Single Ticket Info'.Size=1,25, 36)
                                 HintText: ="Add a comment..."
                                 OnSelect: =
-                                Visible: =addMessage
+                                Visible: =false
                                 Width: =Parent.Width *.95
                                 X: =CommentContentLabel_1.X
                                 Y: =Gallery2_6.Height
                                 ZIndex: =2
 
-                            TextInput9_5 As text:
-                                Default: =If(editMessage, Gallery2_6.Selected.message, Blank())
-                                Height: =If('Single Ticket Info'.Size=1,25, 36)
-                                OnSelect: =editMessage
-                                Visible: =editMessage
-                                Width: =Parent.Width *.95
-                                X: =CommentContentLabel_1.X
-                                Y: =Gallery2_6.Height
-                                ZIndex: =3
-
                             Button1_6 As button:
                                 Fill: =ColorScheme.primary
                                 Height: =30
-                                OnSelect: |
-                                    =If(
-                                        addMessage,
-                                        Patch(
-                                            Comments_1,
-                                            Defaults(Comments_1),
+                                OnSelect: |-
+                                    =Patch(
+                                        Comments_1,
+                                        Defaults(Comments_1),
+                                        {
+                                            ticketId: ticketInfo.ID,
+                                            message: TextInput2_5.Text,
+                                            creatorId: userData.id
+                                        }
+                                    );
+                                    Reset(TextInput2_5);
+                                    If(
+                                        userData.role = "admin" || userData.role = "tech",
+                                        Office365Outlook.SendEmailV2(
+                                            LookUp(
+                                                Users_1,
+                                                ID = ticketInfo.CreatorId,
+                                                email
+                                            ),
+                                            Concatenate(
+                                                "Update on Ticket # ",
+                                                ticketInfo.ID
+                                            ),
+                                            Concatenate(
+                                                "A comment has been added by ",
+                                                userData.firstName
+                                            ),
                                             {
-                                                ticketId: ticketInfo.ID,
-                                                message: TextInput2_5.Text,
-                                                creatorId: userData.id
+                                                Cc: Concat(
+                                                    Additional_Assign_ComboBox.SelectedItems,
+                                                    email,
+                                                    ";"
+                                                )
                                             }
                                         );
-                                        Reset(TextInput2_5);
-                                        If(
-                                            userData.role = "admin" || userData.role = "tech",
-                                            Office365Outlook.SendEmailV2(
-                                                LookUp(
-                                                    Users_1,
-                                                    ID = ticketInfo.CreatorId,
-                                                    email
-                                                ),
-                                                Concatenate(
-                                                    "Update on Ticket # ",
-                                                    ticketInfo.ID
-                                                ),
-                                                Concatenate(
-                                                    "A comment has been added by ",
-                                                    userData.firstName
-                                                ),
-                                                {
-                                                    Cc: Concat(
-                                                        Additional_Assign_ComboBox.SelectedItems,
-                                                        email,
-                                                        ";"
-                                                    )
-                                                }
-                                            );
-                                        )
-                                    );
+                                        
+                                    )
                                 Size: =12
                                 Text: |-
                                     =If(
@@ -1870,33 +1843,12 @@
                                 Fill: =ColorScheme.primary
                                 Height: =30
                                 OnSelect: |-
-                                    =If(
-                                        addMessage,
-                                        Set(
-                                            varShowResPopup,
-                                            true
-                                        ),
-                                        If(
-                                            editMessage,
-                                            Set(
-                                                addMessage,
-                                                true
-                                            ) && Set(
-                                                editMessage,
-                                                false
-                                            )
-                                        )
+                                    =Set(
+                                        varShowResPopup,
+                                        true
                                     )
                                 Size: =12
-                                Text: |-
-                                    =If(
-                                        editMessage,
-                                        "Cancel Update",
-                                        If(
-                                            addMessage,
-                                            "Close Ticket"
-                                        )
-                                    )
+                                Text: ="Close Ticket"
                                 Visible: =If(LookUp(Tickets,ID = ticketInfo.ID, status) = "open", true, false)
                                 X: =Button1_6.X + Button1_6.Width+50
                                 Y: =Parent.Height-Self.Height-5
@@ -1987,15 +1939,7 @@
                                         varShowResPopup,
                                         true
                                     )
-                                Text: |-
-                                    =If(
-                                        editMessage,
-                                        "Cancel Update",
-                                        If(
-                                            addMessage,
-                                            "Close Ticket"
-                                        )
-                                    )
+                                Text: ="Close Ticket"
                                 X: =250
                                 Y: =298
                                 ZIndex: =1
@@ -2023,19 +1967,10 @@
                                 Height: =72
                                 HintText: ="Add a comment..."
                                 OnSelect: =
-                                Visible: =addMessage
+                                Visible: =false
                                 Width: =879
                                 Y: =201
                                 ZIndex: =3
-
-                            TextInput9_6 As text:
-                                Default: =//If(editMessage, Gallery2_8.Selected.message, Blank())
-                                Height: =72
-                                OnSelect: =editMessage
-                                Visible: =editMessage
-                                Width: =Parent.Width - 100
-                                Y: =199
-                                ZIndex: =4
 
                             "Gallery2_7 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                 AccessibleLabel: =
@@ -2135,32 +2070,18 @@
                             Y: =496
                             ZIndex: =2
 
-                        TextInput9_7 As text:
-                            Default: =If(editMessage, Gallery2_8.Selected.message, Blank())
-                            Height: =72
-                            OnSelect: =editMessage
-                            Visible: =false //editMessage
-                            Width: =Parent.Width - 100
-                            X: =32
-                            Y: =467
-                            ZIndex: =3
-
                         Button1_8 As button:
                             OnSelect: |
-                                =If(
-                                    addMessage,
-                                    Patch(
-                                        Comments_1,
-                                        Defaults(Comments_1),
-                                        {
-                                            ticketId: ticketInfo.ID,
-                                            message: TextInput2_7.Text,
-                                            creatorId: userData.id
-                                        }
-                                    );
-                                    Reset(TextInput2_7);
-                                    
+                                =Patch(
+                                    Comments_1,
+                                    Defaults(Comments_1),
+                                    {
+                                        ticketId: ticketInfo.ID,
+                                        message: TextInput2_7.Text,
+                                        creatorId: userData.id
+                                    }
                                 );
+                                Reset(TextInput2_7);
                             Text: |-
                                 =If(
                                     addMessage,
@@ -2178,32 +2099,11 @@
 
                         Close_Ticket_Button_7 As button:
                             OnSelect: |-
-                                =If(
-                                    addMessage,
-                                    Set(
-                                        varShowResPopup,
-                                        true
-                                    ),
-                                    If(
-                                        editMessage,
-                                        Set(
-                                            addMessage,
-                                            true
-                                        ) && Set(
-                                            editMessage,
-                                            false
-                                        )
-                                    )
+                                =Set(
+                                    varShowResPopup,
+                                    true
                                 )
-                            Text: |-
-                                =If(
-                                    editMessage,
-                                    "Cancel Update",
-                                    If(
-                                        addMessage,
-                                        "Close Ticket"
-                                    )
-                                )
+                            Text: ="Close Ticket"
                             Visible: =false
                             X: =407
                             Y: =578
@@ -2260,59 +2160,6 @@
                                 X: =356
                                 Y: =22
                                 ZIndex: =3
-
-                            Button11_10 As button:
-                                BorderStyle: =BorderStyle.None
-                                Color: =Color.DarkGray
-                                DisabledBorderColor: =
-                                DisabledColor: =
-                                Fill: =Color.Transparent
-                                Height: =30
-                                HoverBorderColor: =
-                                HoverColor: =Color.Gray
-                                HoverFill: =
-                                OnSelect: |-
-                                    =Set(editMessage, true);
-                                    Set(addMessage, false);
-                                    Set(editableRec, ThisItem);
-                                PressedBorderColor: =
-                                PressedColor: =Color.Gray
-                                PressedFill: =
-                                RadiusBottomLeft: =0
-                                RadiusBottomRight: =0
-                                RadiusTopLeft: =0
-                                RadiusTopRight: =0
-                                Text: ="Edit"
-                                Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                Width: =62
-                                X: =93
-                                Y: =145
-                                ZIndex: =4
-
-                            Button11_11 As button:
-                                BorderStyle: =BorderStyle.None
-                                Color: =Color.DarkGray
-                                DisabledBorderColor: =
-                                DisabledColor: =
-                                Fill: =Color.Transparent
-                                Height: =30
-                                HoverBorderColor: =
-                                HoverColor: =Color.Gray
-                                HoverFill: =
-                                OnSelect: =Remove(Comments_1, ThisItem);
-                                PressedBorderColor: =
-                                PressedColor: =Color.Gray
-                                PressedFill: =
-                                RadiusBottomLeft: =0
-                                RadiusBottomRight: =0
-                                RadiusTopLeft: =0
-                                RadiusTopRight: =0
-                                Text: ="Delete"
-                                Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                Width: =105
-                                X: =159
-                                Y: =145
-                                ZIndex: =5
 
                             Image7_8 As image:
                                 Height: =76
@@ -2399,7 +2246,7 @@
                             Font: =Font.Georgia
                             Height: =70
                             Size: =24
-                            Text: =title
+                            Text: =ticketInfo.Title
                             Visible: =false
                             Width: =444
                             X: =32
@@ -3358,21 +3205,10 @@
                                 Height: =If('Single Ticket Info'.Size=1,25, 36)
                                 HintText: ="Add a comment..."
                                 OnSelect: =
-                                Visible: =addMessage
                                 Width: =Parent.Width *.95
                                 X: =CommentContentLabel.X
                                 Y: =Gallery2_5.Height
                                 ZIndex: =2
-
-                            TextInput9_4 As text:
-                                Default: =""
-                                Height: =If('Single Ticket Info'.Size=1,25, 36)
-                                OnSelect: =editMessage
-                                Visible: =editMessage
-                                Width: =Parent.Width *.95
-                                X: =CommentContentLabel.X
-                                Y: =Gallery2_5.Height
-                                ZIndex: =3
 
                             Button1_5 As button:
                                 Fill: =ColorScheme.primary
@@ -3425,33 +3261,12 @@
                                 Fill: =RGBA(151, 0, 0, 1)
                                 Height: =30
                                 OnSelect: |-
-                                    =If(
-                                        addMessage,
-                                        Set(
-                                            varShowResPopup,
-                                            true
-                                        ),
-                                        If(
-                                            editMessage,
-                                            Set(
-                                                addMessage,
-                                                true
-                                            ) && Set(
-                                                editMessage,
-                                                false
-                                            )
-                                        )
+                                    =Set(
+                                        varShowResPopup,
+                                        true
                                     )
                                 Size: =12
-                                Text: |-
-                                    =If(
-                                        editMessage,
-                                        "Cancel Update",
-                                        If(
-                                            addMessage,
-                                            "Close Ticket"
-                                        )
-                                    )
+                                Text: ="Close Ticket"
                                 Visible: =If(LookUp(Tickets,ID = ticketInfo.ID, status) = "open", If(userData.role = "staff",false,true), false)
                                 X: =Button1_5.X + Button1_5.Width+50
                                 Y: =Parent.Height-Self.Height-5
@@ -3546,61 +3361,28 @@
 
                             Close_Ticket_Button_3 As button:
                                 OnSelect: |-
-                                    =If(
-                                        addMessage,
-                                        Set(
-                                            varShowResPopup,
-                                            true
-                                        ),
-                                        If(
-                                            editMessage,
-                                            Set(
-                                                addMessage,
-                                                true
-                                            ) && Set(
-                                                editMessage,
-                                                false
-                                            )
-                                        )
+                                    =Set(
+                                        varShowResPopup,
+                                        true
                                     )
-                                Text: |-
-                                    =If(
-                                        editMessage,
-                                        "Cancel Update",
-                                        If(
-                                            addMessage,
-                                            "Close Ticket"
-                                        )
-                                    )
+                                Text: ="Close Ticket"
                                 X: =250
                                 Y: =298
                                 ZIndex: =1
 
                             Button1_4 As button:
                                 OnSelect: |
-                                    =If(
-                                        addMessage,
-                                        Patch(
-                                            Comments_1,
-                                            Defaults(Comments_1),
-                                            {
-                                                ticketId: ticketInfo.ID,
-                                                message: TextInput2_2.Text,
-                                                creatorId: userData.id
-                                            }
-                                        );
-                                        Reset(TextInput2_2);
-                                        
+                                    =Patch(
+                                        Comments_1,
+                                        Defaults(Comments_1),
+                                        {
+                                            ticketId: ticketInfo.ID,
+                                            message: TextInput2_2.Text,
+                                            creatorId: userData.id
+                                        }
                                     );
-                                Text: |-
-                                    =If(
-                                        addMessage,
-                                        "Add Comment",
-                                        If(
-                                            editMessage,
-                                            "Update Comment"
-                                        )
-                                    )
+                                    Reset(TextInput2_2);
+                                Text: ="Add Comment"
                                 Width: =200
                                 X: =12
                                 Y: =298
@@ -3611,19 +3393,9 @@
                                 Height: =72
                                 HintText: ="Add a comment..."
                                 OnSelect: =
-                                Visible: =addMessage
                                 Width: =879
                                 Y: =201
                                 ZIndex: =3
-
-                            TextInput9_3 As text:
-                                Default: =If(editMessage, Gallery2_3.Selected.message, Blank())
-                                Height: =72
-                                OnSelect: =editMessage
-                                Visible: =editMessage
-                                Width: =Parent.Width - 100
-                                Y: =199
-                                ZIndex: =4
 
                             "Gallery2_4 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver4.0'":
                                 AccessibleLabel: =
@@ -3673,59 +3445,6 @@
                                     X: =356
                                     Y: =22
                                     ZIndex: =3
-
-                                Button11_6 As button:
-                                    BorderStyle: =BorderStyle.None
-                                    Color: =Color.DarkGray
-                                    DisabledBorderColor: =
-                                    DisabledColor: =
-                                    Fill: =Color.Transparent
-                                    Height: =30
-                                    HoverBorderColor: =
-                                    HoverColor: =Color.Gray
-                                    HoverFill: =
-                                    OnSelect: |-
-                                        =Set(editMessage, true);
-                                        Set(addMessage, false);
-                                        Set(editableRec, ThisItem);
-                                    PressedBorderColor: =
-                                    PressedColor: =Color.Gray
-                                    PressedFill: =
-                                    RadiusBottomLeft: =0
-                                    RadiusBottomRight: =0
-                                    RadiusTopLeft: =0
-                                    RadiusTopRight: =0
-                                    Text: ="Edit"
-                                    Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                    Width: =62
-                                    X: =93
-                                    Y: =145
-                                    ZIndex: =4
-
-                                Button11_7 As button:
-                                    BorderStyle: =BorderStyle.None
-                                    Color: =Color.DarkGray
-                                    DisabledBorderColor: =
-                                    DisabledColor: =
-                                    Fill: =Color.Transparent
-                                    Height: =30
-                                    HoverBorderColor: =
-                                    HoverColor: =Color.Gray
-                                    HoverFill: =
-                                    OnSelect: =Remove(Comments_1, ThisItem);
-                                    PressedBorderColor: =
-                                    PressedColor: =Color.Gray
-                                    PressedFill: =
-                                    RadiusBottomLeft: =0
-                                    RadiusBottomRight: =0
-                                    RadiusTopLeft: =0
-                                    RadiusTopRight: =0
-                                    Text: ="Delete"
-                                    Visible: =If(ThisItem.creatorId = userData.id, true, false)
-                                    Width: =105
-                                    X: =159
-                                    Y: =145
-                                    ZIndex: =5
 
                                 Image7_6 As image:
                                     Height: =76
@@ -3780,38 +3499,24 @@
                             Height: =72
                             HintText: ="Add a comment..."
                             OnSelect: =
-                            Visible: =false //addMessage
+                            Visible: =false
                             Width: =879
                             X: =21
                             Y: =496
                             ZIndex: =2
 
-                        TextInput9_2 As text:
-                            Default: =If(editMessage, Gallery2_3.Selected.message, Blank())
-                            Height: =72
-                            OnSelect: =editMessage
-                            Visible: =false //editMessage
-                            Width: =Parent.Width - 100
-                            X: =32
-                            Y: =467
-                            ZIndex: =3
-
                         Button1_3 As button:
                             OnSelect: |
-                                =If(
-                                    addMessage,
-                                    Patch(
-                                        Comments_1,
-                                        Defaults(Comments_1),
-                                        {
-                                            ticketId: ticketInfo.ID,
-                                            message: TextInput2_2.Text,
-                                            creatorId: userData.id
-                                        }
-                                    );
-                                    Reset(TextInput2_2);
-                                    
+                                =Patch(
+                                    Comments_1,
+                                    Defaults(Comments_1),
+                                    {
+                                        ticketId: ticketInfo.ID,
+                                        message: TextInput2_2.Text,
+                                        creatorId: userData.id
+                                    }
                                 );
+                                Reset(TextInput2_2);
                             Text: |-
                                 =If(
                                     addMessage,
@@ -3829,32 +3534,11 @@
 
                         Close_Ticket_Button_2 As button:
                             OnSelect: |-
-                                =If(
-                                    addMessage,
-                                    Set(
-                                        varShowResPopup,
-                                        true
-                                    ),
-                                    If(
-                                        editMessage,
-                                        Set(
-                                            addMessage,
-                                            true
-                                        ) && Set(
-                                            editMessage,
-                                            false
-                                        )
-                                    )
+                                =Set(
+                                    varShowResPopup,
+                                    true
                                 )
-                            Text: |-
-                                =If(
-                                    editMessage,
-                                    "Cancel Update",
-                                    If(
-                                        addMessage,
-                                        "Close Ticket"
-                                    )
-                                )
+                            Text: ="Close Ticket"
                             Visible: =false
                             X: =407
                             Y: =578
@@ -4050,7 +3734,7 @@
                             Font: =Font.Georgia
                             Height: =70
                             Size: =24
-                            Text: =title
+                            Text: =ticketInfo.Title
                             Visible: =false
                             Width: =444
                             X: =32
