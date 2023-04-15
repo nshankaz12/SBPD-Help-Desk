@@ -9,6 +9,7 @@ Home As screen:
     HomeMainContainer_2 As groupContainer.horizontalAutoLayoutContainer:
         Height: =Home.Height
         LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
         Visible: |-
             =true
             //This is the Main container
@@ -22,6 +23,7 @@ Home As screen:
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
             Visible: |-
                 =true
                 // This is the main Vertical container of the screen
@@ -40,6 +42,7 @@ Home As screen:
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                LayoutOverflowY: =LayoutOverflow.Scroll
                 Visible: |-
                     =//Home.Size<>1
                     //This is the top most header container that houses the navbar links
@@ -75,6 +78,7 @@ Home As screen:
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                LayoutOverflowY: =LayoutOverflow.Scroll
                 Visible: |-
                     =true
                     //Main Content container this houses certian elements such as the searchbar, and 2 button galleries, one for desktop, and another for mobile
@@ -88,6 +92,7 @@ Home As screen:
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    LayoutOverflowY: =LayoutOverflow.Scroll
                     Width: =Parent.Width
                     ZIndex: =3
 
