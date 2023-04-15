@@ -27,40 +27,6 @@
     "dependents": [],
     "id": "09b1aa80-ea59-4eaf-875c-de5761158dbf"
   },
-  "347e52c0-ae09-4843-9f64-cafa4de2b6cf": {
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "f7aef8e6-faea-42d9-be4a-90b317bfa5b1": {
-          "value": "shared_sharepointonline"
-        },
-        "workflowEntityId": {},
-        "workflowName": {
-          "value": "aaff22eb-624a-450a-8492-15c126a8ccff"
-        }
-      },
-      "parameterHintsV2": {
-        "shared_sharepointonline": {
-          "value": "f7aef8e6-faea-42d9-be4a-90b317bfa5b1"
-        },
-        "workflowEntityId": {},
-        "workflowName": {
-          "value": "aaff22eb-624a-450a-8492-15c126a8ccff"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "PowerAppV2->SendanHTTPrequesttoSharePoint"
-    ],
-    "dependencies": {
-      "shared_sharepointonline": "f7aef8e6-faea-42d9-be4a-90b317bfa5b1"
-    },
-    "dependents": [],
-    "id": "347e52c0-ae09-4843-9f64-cafa4de2b6cf"
-  },
   "4972e642-edd4-4913-b9e7-cdc780274621": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -162,6 +128,21 @@
     },
     "dependents": [],
     "id": "911e2c89-ea47-4749-846e-132a41154633"
+  },
+  "b161f7c4-6044-476d-8832-885a68df6f2e": {
+    "connectionRef": {
+      "displayName": "SMTP",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1626/1.0.1626.3238/smtp/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_smtp",
+      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_smtp/connections/17c2629b1450414b8a91fcfd76f360ab"
+    },
+    "datasets": {},
+    "dataSources": [
+      "SMTP"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "b161f7c4-6044-476d-8832-885a68df6f2e"
   },
   "e6e65363-82ae-4e1f-9aff-e3535812542e": {
     "connectionRef": {
