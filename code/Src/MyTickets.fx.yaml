@@ -578,15 +578,23 @@
         Color: |-
             =//RGBA(232, 244, 217, 1)
             ColorScheme.secondary
-        Height: =46
+        Height: |-
+            =49
+            //46
         HoverColor: |-
             =//ColorFade(Self.Color, 20%)
             ColorScheme.secondaryPressedColor
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
-        Width: =50
-        X: =If(App.Width > 500, 15, 10)
-        Y: =compWebHeader_6.Height + ((HeaderLabel.Height - Self.Height) / 2)
+        Width: |-
+            =49
+            //50
+        X: |-
+            =15
+            //If(App.Width > 500, 15, 10)
+        Y: |-
+            =SingleTicketInfo_Title.Y
+            //compWebHeader_6.Height + ((HeaderLabel.Height - Self.Height) / 2)
         ZIndex: =2
 
     NewTicketButton As button:

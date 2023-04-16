@@ -12,7 +12,9 @@
         KnowledgeBaseHeaderContainer As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             FillPortions: =0
-            Height: =70
+            Height: |-
+                =82
+                //70
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -22,7 +24,9 @@
             AlignInContainer: =AlignInContainer.SetByContainer
             Fill: =ColorScheme.primary
             FillPortions: =0
-            Height: =70
+            Height: |-
+                =48
+                //70
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -353,7 +357,9 @@
         Align: =Align.Center
         Color: =RGBA(255, 255, 255, 1)
         Fill: =ColorScheme.primary
-        Height: =If('Knowledge Base'.Size=1,35,70)
+        Height: |-
+            =48
+            //If('Knowledge Base'.Size=1,35,70)
         Size: =If('Knowledge Base'.Size=1, titleText.mobileSize, titleText.desktopSize)
         Text: ="Knowledge Base"
         Width: =Parent.Width
@@ -372,7 +378,9 @@
 
     compWebHeader_14 As compWebHeader:
         CompScreenSize: ='Knowledge Base'.Size
-        Height: =70
+        Height: |-
+            =82
+            //70
         ZIndex: =5
 
     compWebMenu_17 As compWebMenu_15:
