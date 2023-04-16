@@ -495,20 +495,24 @@
     Button3 As button:
         Height: =60
         OnSelect: |
-            =Patch(
-                Alerts_1,
-                Defaults(Alerts_1),
-                {
-                    titleText: DataCardValue23.Text,
-                    messageText: DataCardValue27.Text,
-                    dateExpired: DateValue14.SelectedDate,
-                    creatorId: userData.id
-                }
+            =/*Set(
+                newAlert,
+                Patch(
+                    Alerts_1,
+                    Defaults(Alerts_1),
+                    {
+                        titleText: DataCardValue23.Text,
+                        messageText: DataCardValue27.Text,
+                        dateExpired: DateValue14.SelectedDate,
+                        creatorId: userData.id
+                    }
+                )
             );
             Set(
                 galleryVisible,
                 true
             );
+            */
             Notify(
                 "Alert Successfully created!",
                 NotificationType.Success
@@ -518,8 +522,14 @@
                     From: "sbpdhelpdesk@outlook.com",
                     To: "<Do Not Reply> sbpdhelpdesk@outlook.com",
                     Bcc: allEmails,
-                    Subject: "Test Alert Subject Line",
-                    Body: "This is an alert test"
+                    Subject: "Service Outage",
+                    Body: "<div>Please be advised, " & DataCardValue23.Text & " is down. IT is responding and will notify all users when full functionality is restored. Thank you for your patience.</div> <br> <div> Do NOT email or respond to this automated message. This is an automated message created by our notification system. </div>"
+                    /*Concatenate(
+                        "Please be advised, ",
+                        DataCardValue23.Text,
+                        " is down. IT is responding and will notify all users when full functionality is restored. Thank you for your patience.",
+                        " Do NOT email or respond to this automated message. This is an automated message created by our notification system."
+                    )*/
                 }
             );
             Navigate('Alert Manager');
