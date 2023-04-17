@@ -170,7 +170,7 @@
                     Height: =Rectangle6_4.Width
                     OnSelect: =Select(Parent)
                     Size: =If('Ticket Metrics - Admin Tech'.Size =1,30,55)
-                    Text: ="999"
+                    Text: =ThisItem.metricNumber
                     Width: =Rectangle6_4.Width
                     X: =Rectangle6_4.X
                     Y: =Rectangle6_4.Y
@@ -222,7 +222,7 @@
                     Height: =Rectangle6_5.Height
                     OnSelect: =Select(Parent)
                     Size: =If('Ticket Metrics - Admin Tech'.Size =1,30,55)
-                    Text: ="999"
+                    Text: =ThisItem.metricNumber
                     Width: =Rectangle6_5.Width
                     X: =Parent.Width/2 - Rectangle6_5.Width/2
                     ZIndex: =2
