@@ -67,6 +67,7 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
+            Visible: =false
             Width: =Parent.Width
             ZIndex: =2
 
@@ -122,6 +123,119 @@
                     Y: =40
                     ZIndex: =4
 
+        MainSectionContainer_2 As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Height: =Parent.Height - 145
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width
+            ZIndex: =3
+
+            Gallery1_10 As gallery.galleryHorizontal:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =5
+                DelayItemLoading: =true
+                Height: =Parent.Height
+                Items: =ticketMetrics
+                LayoutMinHeight: =Parent.Height
+                LayoutMinWidth: =Parent.Width
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplatePadding: =10
+                TemplateSize: =334//If(Self.Layout = Layout.Horizontal, Min(320, Self.Width - 60), Min(320, Self.Height - 60))
+                Visible: ='Ticket Metrics - Admin Tech'.Size > 1
+                Width: =Parent.Width
+                WrapCount: =If('Ticket Metrics - Admin Tech'.Size=2, 2, 1
+                ZIndex: =3
+
+                MonthlyLabel As label:
+                    Align: =Align.Center
+                    AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.metricTitle
+                    Width: =Rectangle6_4.Width
+                    X: =Rectangle6_4.X
+                    Y: =Rectangle6_4.Y
+                    ZIndex: =1
+
+                NumberLabel As label:
+                    Align: =Align.Center
+                    Color: =RGBA(56, 96, 178, 1)
+                    FontWeight: =FontWeight.Bold
+                    Height: =Rectangle6_4.Width
+                    OnSelect: =Select(Parent)
+                    Size: =If('Ticket Metrics - Admin Tech'.Size =1,30,55)
+                    Text: ="999"
+                    Width: =Rectangle6_4.Width
+                    X: =Rectangle6_4.X
+                    Y: =Rectangle6_4.Y
+                    ZIndex: =2
+
+                Rectangle6_4 As rectangle:
+                    BorderThickness: =2
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =Rectangle6_4.Width //to make it a square
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth - 20
+                    X: =Parent.Width/2 - Rectangle6_4.Width*2 - 50
+                    Y: =(Parent.Height - Rectangle6_4.Height)/2
+                    ZIndex: =4
+
+            Gallery1_11 As gallery.galleryHorizontal:
+                AlignInContainer: =AlignInContainer.Center
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =5
+                DelayItemLoading: =true
+                Height: =Parent.Height
+                Items: =ticketMetrics
+                LayoutMinHeight: =Parent.Height
+                LayoutMinWidth: =Parent.Width
+                LoadingSpinner: =LoadingSpinner.Data
+                ShowNavigation: =true
+                TemplatePadding: |
+                    =5
+                TemplateSize: =334//If(Self.Layout = Layout.Horizontal, Min(320, Self.Width - 60), Min(320, Self.Height - 60))
+                Visible: ='Ticket Metrics - Admin Tech'.Size = 1
+                Width: =Parent.Width
+                WrapCount: =4
+                ZIndex: =4
+
+                MonthlyLabel_1 As label:
+                    Align: =Align.Center
+                    FontWeight: =FontWeight.Bold
+                    Height: =Rectangle6_5.Height/4
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.metricTitle
+                    Width: =Rectangle6_5.Width
+                    X: =Parent.Width/2 - Rectangle6_5.Width/2
+                    ZIndex: =1
+
+                NumberLabel_1 As label:
+                    Align: =Align.Center
+                    Color: =RGBA(56, 96, 178, 1)
+                    FontWeight: =FontWeight.Bold
+                    Height: =Rectangle6_5.Height
+                    OnSelect: =Select(Parent)
+                    Size: =If('Ticket Metrics - Admin Tech'.Size =1,30,55)
+                    Text: ="999"
+                    Width: =Rectangle6_5.Width
+                    X: =Parent.Width/2 - Rectangle6_5.Width/2
+                    ZIndex: =2
+
+                Rectangle6_5 As rectangle:
+                    BorderThickness: =2
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =Rectangle6_5.Width/2
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth -20
+                    X: =Parent.Width/2 - Rectangle6_5.Width/2
+                    ZIndex: =4
+
         FooterContainer_1 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             FillPortions: =0
@@ -130,7 +244,7 @@
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             Visible: =If('Admin Manager'.Size > 1, false, true)
-            ZIndex: =3
+            ZIndex: =4
 
             compMobileMenu_15 As compMobileMenu:
                 Height: =Parent.Height
