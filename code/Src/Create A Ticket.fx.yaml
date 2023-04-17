@@ -5,7 +5,7 @@
         Height: ='Create A Ticket'.Height
         LayoutMode: =LayoutMode.Auto
         Width: ='Create A Ticket'.Width
-        ZIndex: =1
+        ZIndex: =2
 
         CreateATicketVerticalLayoutContainer_1 As groupContainer.verticalAutoLayoutContainer:
             LayoutDirection: =LayoutDirection.Vertical
@@ -441,7 +441,7 @@
                         BorderStyle: =BorderStyle.Solid
                         DisplayMode: =DisplayMode.Edit
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/4, Parent.Height/3.5)
+                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/2, Parent.Height/3.5)
                         Width: =If( 'Create A Ticket'.Size = 1, Parent.Width/1.25, Parent.Width/3)
                         WidthFit: =true
                         X: =0
@@ -450,7 +450,7 @@
 
                         AttachmentControl_3 As attachments:
                             BorderColor: =Color.Black
-                            Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/1.5, Parent.Height/2)
+                            Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/1.5, Parent.Height/1.5)
                             IsInDataCard: =true
                             Items: =
                             MaxAttachments: =10
@@ -467,7 +467,7 @@
                         BorderStyle: =BorderStyle.Solid
                         DisplayMode: =DisplayMode.Edit
                         Fill: =RGBA(0, 0, 0, 0)
-                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/7, Parent.Height/5)
+                        Height: =If( 'Create A Ticket'.Size = 1, Parent.Height/3, Parent.Height/5)
                         Width: =If( 'Create A Ticket'.Size = 1, Parent.Width, Parent.Width/3)
                         X: =1
                         Y: =2
@@ -554,6 +554,33 @@
                             Y: =Parent.Height - (Self.Height *2)
                             ZIndex: =3
 
+            CreateATicketFooter As groupContainer.verticalAutoLayoutContainer:
+                Fill: =RGBA(255,255,255, 1)
+                FillPortions: =0
+                Height: |-
+                    =130
+                    //Parent.Height/11
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Visible: |-
+                    =//Home.Size<>1
+                    //This is the top most header container that houses the navbar links
+                    true
+                Width: =Parent.Width
+                ZIndex: =5
+
+                compMobileMenu_23 As compMobileMenu:
+                    AlignInContainer: =AlignInContainer.Center
+                    Height: =Parent.Height
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    Visible: ='Create A Ticket'.Size =1
+                    Width: =Parent.Width
+
     Icon1_30 As icon.BackArrow:
         Color: =ColorScheme.secondary
         Height: =49
@@ -562,9 +589,9 @@
         Width: =49
         X: =15
         Y: =SingleTicketInfo_Title.Y
-        ZIndex: =2
+        ZIndex: =3
 
     compWebMenu_7 As compWebMenu:
         Visible: ='Create A Ticket'.Size > 1
-        ZIndex: =3
+        ZIndex: =4
 
