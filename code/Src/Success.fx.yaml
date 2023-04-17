@@ -316,3 +316,11 @@ Success As screen:
         Visible: =Success.Size > 1
         ZIndex: =7
 
+    NavigateTimer As timer:
+        AutoStart: =true
+        Duration: =3000
+        OnTimerEnd: =Navigate(MyTickets);
+        Visible: =false
+        Y: =131
+        ZIndex: =8
+
