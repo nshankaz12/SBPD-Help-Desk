@@ -149,7 +149,7 @@
                 TemplateSize: =334//If(Self.Layout = Layout.Horizontal, Min(320, Self.Width - 60), Min(320, Self.Height - 60))
                 Visible: ='Ticket Metrics - Admin Tech'.Size > 1
                 Width: =Parent.Width
-                WrapCount: =If('Ticket Metrics - Admin Tech'.Size=2, 2, 1
+                WrapCount: =Switch('Ticket Metrics - Admin Tech'.Size,ScreenSize.Medium,2, ScreenSize.Large, 1, 1)
                 ZIndex: =3
 
                 MonthlyLabel As label:
