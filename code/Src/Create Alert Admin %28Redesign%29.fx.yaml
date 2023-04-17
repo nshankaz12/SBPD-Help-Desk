@@ -294,188 +294,6 @@
                     Y: =DataCardKey42.Y
                     ZIndex: =7
 
-            lastUpdated_DataCard4 As typedDataCard.dateTimeEditCard:
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="field_5"
-                Default: =ThisItem.lastUpdated
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@Alerts_1],DataSourceInfo.DisplayName,"field_5")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =false
-                Update: =DateValue13.SelectedDate + Time(Value(HourValue13.Selected.Value), Value(MinuteValue13.Selected.Value), 0)
-                Visible: =If(Editing, true)
-                Width: =1366
-                X: =0
-                Y: =3
-                ZIndex: =4
-
-                DataCardKey41 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                DateValue13 As datepicker:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    DefaultDate: =Parent.Default
-                    DisplayMode: =Parent.DisplayMode
-                    EndYear: =Year(Today())+100
-                    IsEditable: =true
-                    PaddingBottom: =0
-                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                    StartYear: =1899
-                    Tooltip: =ThisItem.lastUpdated
-                    Width: =(Parent.Width - 60) / 2
-                    X: =30
-                    Y: =DataCardKey41.Y + DataCardKey41.Height + 5
-                    ZIndex: =2
-
-                HourValue13 As dropdown:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    Default: =Text(Hour(Parent.Default),"00")
-                    DisplayMode: =Parent.DisplayMode
-                    Height: =DateValue13.Height
-                    Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
-                    PaddingBottom: =5
-                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                    PaddingRight: =5
-                    PaddingTop: =5
-                    Tooltip: =Parent.DisplayName
-                    Width: =DateValue13.Width / 2 - 10
-                    X: =DateValue13.X + DateValue13.Width + 10
-                    Y: =DateValue13.Y
-                    ZIndex: =3
-
-                Separator14 As label:
-                    Align: =Align.Center
-                    FontWeight: =FontWeight.Bold
-                    Height: =HourValue13.Height
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: |-
-                        =":"
-                    Width: =10
-                    Wrap: =false
-                    X: =HourValue13.X + HourValue13.Width
-                    Y: =HourValue13.Y
-                    ZIndex: =4
-
-                MinuteValue13 As dropdown:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    Default: =Text(Minute(Parent.Default),"00")
-                    DisplayMode: =Parent.DisplayMode
-                    Height: =HourValue13.Height
-                    Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
-                    PaddingBottom: =5
-                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                    PaddingRight: =5
-                    PaddingTop: =5
-                    Tooltip: =Parent.DisplayName
-                    Width: =HourValue13.Width
-                    X: =HourValue13.X + HourValue13.Width + Separator14.Width
-                    Y: =HourValue13.Y
-                    ZIndex: =5
-
-                ErrorMessage41 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =HourValue13.Y + HourValue13.Height
-                    ZIndex: =6
-
-                StarVisible41 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey41.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey41.Y
-                    ZIndex: =7
-
-            updatedBy_DataCard4 As typedDataCard.numberEditCard:
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="updatedBy"
-                Default: =ThisItem.updatedBy
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@Alerts_1],DataSourceInfo.DisplayName,"updatedBy")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =false
-                Update: =Value(DataCardValue25.Text)
-                Visible: =If(Editing, true)
-                Width: =1366
-                X: =0
-                Y: =4
-                ZIndex: =4
-
-                DataCardKey44 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                DataCardValue25 As text:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    Default: =ThisItem.updatedBy
-                    DelayOutput: =true
-                    DisplayMode: =Parent.DisplayMode
-                    Format: =TextFormat.Number
-                    PaddingLeft: =5
-                    RadiusBottomLeft: =0
-                    RadiusBottomRight: =0
-                    RadiusTopLeft: =0
-                    RadiusTopRight: =0
-                    Tooltip: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =DataCardKey44.Y + DataCardKey44.Height + 5
-                    ZIndex: =2
-
-                ErrorMessage44 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =DataCardValue25.Y + DataCardValue25.Height
-                    ZIndex: =3
-
-                StarVisible44 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey44.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey44.Y
-                    ZIndex: =4
-
     "'Back Scroll_11' As icon.BackArrow":
         Color: |-
             =ColorScheme.secondary
@@ -495,7 +313,7 @@
     Button3 As button:
         Height: =60
         OnSelect: |
-            =/*Set(
+            =Set(
                 newAlert,
                 Patch(
                     Alerts_1,
@@ -512,7 +330,6 @@
                 galleryVisible,
                 true
             );
-            */
             Notify(
                 "Alert Successfully created!",
                 NotificationType.Success
