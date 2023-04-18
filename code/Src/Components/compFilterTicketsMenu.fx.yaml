@@ -43,7 +43,8 @@ compFilterTicketsMenu As CanvasComponent:
         )
     OffColor: =ColorScheme.offColor
     OnReset: |+
-        =Reset(RadioTickets);
+        =Reset(CheckboxAssignment);
+        Reset(RadioTickets);
         Reset(DropdownStatus);
         Reset(DropdownTag);
         Set(TicketsChoice,
@@ -56,6 +57,10 @@ compFilterTicketsMenu As CanvasComponent:
         Set(
             TagChoice,
             "None"
+        );
+        Set(
+            AssignmentChoice,
+            true
         );
         compFilterTicketsMenu.CloseFilter();
         
@@ -106,11 +111,17 @@ compFilterTicketsMenu As CanvasComponent:
                 Height: =compFilterTicketsMenu.IconSize * 0.80
                 Icon: =Icon.Reload
                 OnSelect: |-
-                    =Reset(RadioTickets);
+                    =Reset(CheckboxAssignment);
+                    Reset(RadioTickets);
                     Reset(DropdownStatus);
                     Reset(DropdownTag);
-                    Set(TicketsChoice,
-                        If(userData.role = "admin" || userData.role = "tech", "My Assigned", "My Tickets")
+                    Set(
+                        TicketsChoice,
+                        If(
+                            userData.role = "admin" || userData.role = "tech",
+                            "My Assigned",
+                            "My Tickets"
+                        )
                     );
                     Set(
                         StatusChoice,
@@ -120,74 +131,101 @@ compFilterTicketsMenu As CanvasComponent:
                         TagChoice,
                         "None"
                     );
-                    
+                    Set(
+                        AssignmentChoice,
+                        true
+                    );
+                    If(
+                        App.ActiveScreen.Name = "MyTickets",
                     // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
-                    ClearCollect(
-                        colTickets,
-                        ForAll(
-                            Table(
-                                ParseJSON(
-                                    SearchFilterTicketsSPListV2.Run(
-                                    If(
-                                        IsBlank(SearchQuery),
-                                        "___",
-                                        SearchQuery
-                                        ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
-                                    ).searchresults
-                                )
-                            ),
-                            {
-                                ID: Value(Value.ID),
-                                Title: Text(Value.title),
-                                Description: Text(Value.description),
-                                MainCategory: Value(Value.mainCategory),
-                                Category: Value(Value.category),
-                                SubCategory: Value(Value.subCategory),
-                                DateCreated: DateTimeValue(Value.dateCreated),
-                                DateClosed: DateTimeValue(Value.dateClosed),
-                                CreatorId: Value(Value.creatorId),
-                                Status: Text(Value.status),
-                                AssignedTo: Value(Value.assignedTo),
-                                LastUpdated: DateTimeValue(Value.lastUpdated),
-                                UpdatedBy: Value(Value.updatedBy),
-                                ParentId: Value(Value.parentId),
-                                LocationId: Value(Value.locationId),
-                                Tags: Text(Value.tags),
-                                AddAssignees: Text(Value.addAssignees)
-                            }
+                        ClearCollect(
+                            colTickets,
+                            ForAll(
+                                Table(
+                                    ParseJSON(
+                                        SearchFilterTicketsSPListV2.Run(
+                                            If(
+                                                IsBlank(SearchQuery),
+                                                "___",
+                                                SearchQuery
+                                            ),
+                                            StatusChoice,
+                                            TagChoice,
+                                            userData.id,
+                                            TicketsChoice,
+                                            DateAdd(
+                                                Today(),
+                                                -varSubtractDate,
+                                                varTimeUnits
+                                            )
+                                        ).searchresults
+                                    )
+                                ),
+                                {
+                                    ID: Value(Value.ID),
+                                    Title: Text(Value.title),
+                                    Description: Text(Value.description),
+                                    MainCategory: Value(Value.mainCategory),
+                                    Category: Value(Value.category),
+                                    SubCategory: Value(Value.subCategory),
+                                    DateCreated: DateTimeValue(Value.dateCreated),
+                                    DateClosed: DateTimeValue(Value.dateClosed),
+                                    CreatorId: Value(Value.creatorId),
+                                    Status: Text(Value.status),
+                                    AssignedTo: Value(Value.assignedTo),
+                                    LastUpdated: DateTimeValue(Value.lastUpdated),
+                                    UpdatedBy: Value(Value.updatedBy),
+                                    ParentId: Value(Value.parentId),
+                                    LocationId: Value(Value.locationId),
+                                    Tags: Text(Value.tags),
+                                    AddAssignees: Text(Value.addAssignees)
+                                }
+                            )
+                        ),
+                    // Used with RecentTicketsSPListV2
+                        ClearCollect(
+                            colAllTickets,
+                            ForAll(
+                                Table(
+                                    ParseJSON(
+                                        RecentTicketsSPListV2.Run(
+                                            DateAdd(
+                                                Today(),
+                                                -1,
+                                                TimeUnit.Months
+                                            ),
+                                            If(
+                                                IsBlank(SearchAllTicketsQuery),
+                                                "___",
+                                                SearchAllTicketsQuery
+                                            ),
+                                            StatusChoice,
+                                            AssignmentChoice
+                                        ).searchresults
+                                    )
+                                ),
+                                {
+                                    ID: Value(Value.ID),
+                                    Title: Text(Value.title),
+                                    Description: Text(Value.description),
+                                    MainCategory: Value(Value.mainCategory),
+                                    Category: Value(Value.category),
+                                    SubCategory: Value(Value.subCategory),
+                                    DateCreated: DateTimeValue(Value.dateCreated),
+                                    DateClosed: DateTimeValue(Value.dateClosed),
+                                    CreatorId: Value(Value.creatorId),
+                                    Status: Text(Value.status),
+                                    AssignedTo: Value(Value.assignedTo),
+                                    LastUpdated: DateTimeValue(Value.lastUpdated),
+                                    UpdatedBy: Value(Value.updatedBy),
+                                    ParentId: Value(Value.parentId),
+                                    LocationId: Value(Value.locationId),
+                                    Tags: Text(Value.tags),
+                                    AddAssignees: Text(Value.addAssignees)
+                                }
+                            )
                         )
                     )
-                    
-                    /*ClearCollect(
-                        colTickets,
-                        ForAll(
-                            Table(
-                                ParseJSON(
-                                    SearchFilterTicketsSPList.Run(
-                                        If(
-                                            IsBlank(SearchQuery),
-                                            "___",
-                                            SearchQuery
-                                        ), StatusChoice, TagChoice
-                                    ).searchresults
-                                )
-                            ),
-                            {
-                                ID: Value(Value.ID),
-                                Title: Text(Value.title),
-                                Description: Text(Value.description),
-                                MainCategory: Value(Value.mainCategory),
-                                DateCreated: DateValue(Value.dateCreated),
-                                CreatorId: Value(Value.creatorId),
-                                Status: Text(Value.status),
-                                AssignedTo: Value(Value.assignedTo),
-                                LastUpdated: DateValue(Value.lastUpdated),
-                                LocationId: Value(Value.locationId),
-                                Tags: Text(Value.tags),
-                                AddAssignees: Text(Value.addAssignees)
-                            }
-                        )
-                    )*/
                 Width: =compFilterTicketsMenu.IconSize
                 X: =LabelTitle.Width / 2
                 Y: =(LabelTitle.Height - Self.Height) / 2
@@ -211,10 +249,7 @@ compFilterTicketsMenu As CanvasComponent:
 
         TicketsSelection As groupContainer.manualLayoutContainer:
             FillPortions: =0
-            Height: |-
-                =//If(App.ActiveScreen.Name = "MyTickets", If(App.Height > 560, 150, 110), If(App.Height > 560, 170, 130))
-                
-                If(App.ActiveScreen.Name = "MyTickets", If(App.Height - compFilterTicketsMenu.HeightOffset > 560, 150, 110), If(App.Height - compFilterTicketsMenu.HeightOffset > 560, 170, 130))
+            Height: =If(App.ActiveScreen.Name = "MyTickets", If(App.Height - compFilterTicketsMenu.HeightOffset > 560, 150, 110), If(App.Height - compFilterTicketsMenu.HeightOffset > 560, 100, 70))
             LayoutMinHeight: =100
             LayoutMinWidth: =Parent.Width
             Visible: =compFilterTicketsMenu.CheckAdmin
@@ -245,7 +280,8 @@ compFilterTicketsMenu As CanvasComponent:
                     =//If(App.ActiveScreen.Name = "MyTickets" && compFilterTicketsMenu.CheckAdmin, "My Assigned", App.ActiveScreen.Name = "MyTickets" && !compFilterTicketsMenu.CheckAdmin, "My Tickets", "Tickets")
                     TicketsChoice
                 Height: =Parent.Height - LabelTickets.Height - Separator_1.Height
-                Items: =If(App.ActiveScreen.Name = "MyTickets", ["My Assigned", "My Tickets"], ["Tickets", "Unassigned", "My Assigned"])
+                HoverColor: =RGBA(0, 0, 0, 1)
+                Items: =["My Assigned", "My Tickets"]
                 OnChange: |-
                     =Set(TicketsChoice, RadioTickets.SelectedText.Value);
                     
@@ -288,9 +324,112 @@ compFilterTicketsMenu As CanvasComponent:
                 RadioBackgroundFill: =compFilterTicketsMenu.BackgroundColor
                 RadioSize: =compFilterTicketsMenu.IconSize - 5
                 Size: =compFilterTicketsMenu.FontSize - 2
+                Visible: =App.ActiveScreen.Name = "MyTickets"
                 Width: =Parent.Width
                 Y: =Separator_1.Y + Separator_1.Height
                 ZIndex: =3
+
+            CheckboxAssignment As checkbox:
+                CheckboxBackgroundFill: =compFilterTicketsMenu.BackgroundColor
+                Color: =Color.White
+                Default: =AssignmentChoice
+                Height: =Parent.Height - LabelTickets.Height - Separator_1.Height
+                HoverColor: =RGBA(0, 0, 0, 1)
+                OnCheck: |-
+                    =Set(AssignmentChoice, CheckboxAssignment.Value);
+                    
+                    // Used with RecentTicketsSPListV2
+                    ClearCollect(
+                        colAllTickets,
+                        ForAll(
+                            Table(
+                                ParseJSON(
+                                    RecentTicketsSPListV2.Run(
+                                    DateAdd(
+                                            Today(),
+                                            -1,
+                                            TimeUnit.Months
+                                        ),
+                                        If(
+                                            IsBlank(SearchAllTicketsQuery),
+                                            "___",
+                                            SearchAllTicketsQuery
+                                        ), StatusChoice, AssignmentChoice
+                                    ).searchresults
+                                )
+                            ),
+                            {
+                                ID: Value(Value.ID),
+                                Title: Text(Value.title),
+                                Description: Text(Value.description),
+                                MainCategory: Value(Value.mainCategory),
+                                Category: Value(Value.category),
+                                SubCategory: Value(Value.subCategory),
+                                DateCreated: DateTimeValue(Value.dateCreated),
+                                DateClosed: DateTimeValue(Value.dateClosed),
+                                CreatorId: Value(Value.creatorId),
+                                Status: Text(Value.status),
+                                AssignedTo: Value(Value.assignedTo),
+                                LastUpdated: DateTimeValue(Value.lastUpdated),
+                                UpdatedBy: Value(Value.updatedBy),
+                                ParentId: Value(Value.parentId),
+                                LocationId: Value(Value.locationId),
+                                Tags: Text(Value.tags),
+                                AddAssignees: Text(Value.addAssignees)
+                            }
+                        )
+                    )
+                OnUncheck: |-
+                    =Set(AssignmentChoice, CheckboxAssignment.Value);
+                    
+                    // Used with RecentTicketsSPListV2
+                    ClearCollect(
+                        colAllTickets,
+                        ForAll(
+                            Table(
+                                ParseJSON(
+                                    RecentTicketsSPListV2.Run(
+                                    DateAdd(
+                                            Today(),
+                                            -1,
+                                            TimeUnit.Months
+                                        ),
+                                        If(
+                                            IsBlank(SearchAllTicketsQuery),
+                                            "___",
+                                            SearchAllTicketsQuery
+                                        ), StatusChoice, AssignmentChoice
+                                    ).searchresults
+                                )
+                            ),
+                            {
+                                ID: Value(Value.ID),
+                                Title: Text(Value.title),
+                                Description: Text(Value.description),
+                                MainCategory: Value(Value.mainCategory),
+                                Category: Value(Value.category),
+                                SubCategory: Value(Value.subCategory),
+                                DateCreated: DateTimeValue(Value.dateCreated),
+                                DateClosed: DateTimeValue(Value.dateClosed),
+                                CreatorId: Value(Value.creatorId),
+                                Status: Text(Value.status),
+                                AssignedTo: Value(Value.assignedTo),
+                                LastUpdated: DateTimeValue(Value.lastUpdated),
+                                UpdatedBy: Value(Value.updatedBy),
+                                ParentId: Value(Value.parentId),
+                                LocationId: Value(Value.locationId),
+                                Tags: Text(Value.tags),
+                                AddAssignees: Text(Value.addAssignees)
+                            }
+                        )
+                    )
+                Size: =compFilterTicketsMenu.FontSize
+                Text: ="Unassigned"
+                Visible: =!(App.ActiveScreen.Name = "MyTickets")
+                Width: =Parent.Width - 10
+                X: =(Parent.Width - Self.Width) / 2
+                Y: =(Parent.Height - Self.Height + Separator_1.Y + Separator_1.Height) / 2
+                ZIndex: =4
 
         StatusSelection As groupContainer.manualLayoutContainer:
             FillPortions: =0
@@ -332,76 +471,101 @@ compFilterTicketsMenu As CanvasComponent:
                 Height: =compFilterTicketsMenu.IconSize
                 Items: =colStatus
                 OnChange: |-
-                    =Set(StatusChoice, DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult');
-                    
+                    =Set(
+                        StatusChoice,
+                        DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult'
+                    );
+                    If(
+                        App.ActiveScreen.Name = "MyTickets",
                     // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
-                    ClearCollect(
-                        colTickets,
-                        ForAll(
-                            Table(
-                                ParseJSON(
-                                    SearchFilterTicketsSPListV2.Run(
-                                    If(
-                                        IsBlank(SearchQuery),
-                                        "___",
-                                        SearchQuery
-                                        ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
-                                    ).searchresults
-                                )
-                            ),
-                            {
-                                ID: Value(Value.ID),
-                                Title: Text(Value.title),
-                                Description: Text(Value.description),
-                                MainCategory: Value(Value.mainCategory),
-                                Category: Value(Value.category),
-                                SubCategory: Value(Value.subCategory),
-                                DateCreated: DateTimeValue(Value.dateCreated),
-                                DateClosed: DateTimeValue(Value.dateClosed),
-                                CreatorId: Value(Value.creatorId),
-                                Status: Text(Value.status),
-                                AssignedTo: Value(Value.assignedTo),
-                                LastUpdated: DateTimeValue(Value.lastUpdated),
-                                UpdatedBy: Value(Value.updatedBy),
-                                ParentId: Value(Value.parentId),
-                                LocationId: Value(Value.locationId),
-                                Tags: Text(Value.tags),
-                                AddAssignees: Text(Value.addAssignees)
-                            }
+                        ClearCollect(
+                            colTickets,
+                            ForAll(
+                                Table(
+                                    ParseJSON(
+                                        SearchFilterTicketsSPListV2.Run(
+                                            If(
+                                                IsBlank(SearchQuery),
+                                                "___",
+                                                SearchQuery
+                                            ),
+                                            StatusChoice,
+                                            TagChoice,
+                                            userData.id,
+                                            TicketsChoice,
+                                            DateAdd(
+                                                Today(),
+                                                -varSubtractDate,
+                                                varTimeUnits
+                                            )
+                                        ).searchresults
+                                    )
+                                ),
+                                {
+                                    ID: Value(Value.ID),
+                                    Title: Text(Value.title),
+                                    Description: Text(Value.description),
+                                    MainCategory: Value(Value.mainCategory),
+                                    Category: Value(Value.category),
+                                    SubCategory: Value(Value.subCategory),
+                                    DateCreated: DateTimeValue(Value.dateCreated),
+                                    DateClosed: DateTimeValue(Value.dateClosed),
+                                    CreatorId: Value(Value.creatorId),
+                                    Status: Text(Value.status),
+                                    AssignedTo: Value(Value.assignedTo),
+                                    LastUpdated: DateTimeValue(Value.lastUpdated),
+                                    UpdatedBy: Value(Value.updatedBy),
+                                    ParentId: Value(Value.parentId),
+                                    LocationId: Value(Value.locationId),
+                                    Tags: Text(Value.tags),
+                                    AddAssignees: Text(Value.addAssignees)
+                                }
+                            )
+                        ),
+                    // Used with RecentTicketsSPListV2
+                        ClearCollect(
+                            colAllTickets,
+                            ForAll(
+                                Table(
+                                    ParseJSON(
+                                        RecentTicketsSPListV2.Run(
+                                            DateAdd(
+                                                Today(),
+                                                -1,
+                                                TimeUnit.Months
+                                            ),
+                                            If(
+                                                IsBlank(SearchAllTicketsQuery),
+                                                "___",
+                                                SearchAllTicketsQuery
+                                            ),
+                                            StatusChoice,
+                                            AssignmentChoice
+                                        ).searchresults
+                                    )
+                                ),
+                                {
+                                    ID: Value(Value.ID),
+                                    Title: Text(Value.title),
+                                    Description: Text(Value.description),
+                                    MainCategory: Value(Value.mainCategory),
+                                    Category: Value(Value.category),
+                                    SubCategory: Value(Value.subCategory),
+                                    DateCreated: DateTimeValue(Value.dateCreated),
+                                    DateClosed: DateTimeValue(Value.dateClosed),
+                                    CreatorId: Value(Value.creatorId),
+                                    Status: Text(Value.status),
+                                    AssignedTo: Value(Value.assignedTo),
+                                    LastUpdated: DateTimeValue(Value.lastUpdated),
+                                    UpdatedBy: Value(Value.updatedBy),
+                                    ParentId: Value(Value.parentId),
+                                    LocationId: Value(Value.locationId),
+                                    Tags: Text(Value.tags),
+                                    AddAssignees: Text(Value.addAssignees)
+                                }
+                            )
                         )
                     )
-                    
-                    // Used with SearchFilterTicketsSPList
-                    /*ClearCollect(
-                        colTickets,
-                        ForAll(
-                            Table(
-                                ParseJSON(
-                                    SearchFilterTicketsSPList.Run(
-                                        If(
-                                            IsBlank(SearchQuery),
-                                            "___",
-                                            SearchQuery
-                                        ), StatusChoice, TagChoice
-                                    ).searchresults
-                                )
-                            ),
-                            {
-                                ID: Value(Value.ID),
-                                Title: Text(Value.title),
-                                Description: Text(Value.description),
-                                MainCategory: Value(Value.mainCategory),
-                                DateCreated: DateValue(Value.dateCreated),
-                                CreatorId: Value(Value.creatorId),
-                                Status: Text(Value.status),
-                                AssignedTo: Value(Value.assignedTo),
-                                LastUpdated: DateValue(Value.lastUpdated),
-                                LocationId: Value(Value.locationId),
-                                Tags: Text(Value.tags),
-                                AddAssignees: Text(Value.addAssignees)
-                            }
-                        )
-                    )*/
                 Size: =compFilterTicketsMenu.FontSize
                 Width: =Parent.Width - 20
                 X: =(Parent.Width - Self.Width) / 2
@@ -415,7 +579,7 @@ compFilterTicketsMenu As CanvasComponent:
                 
                 If(App.Height - compFilterTicketsMenu.HeightOffset > 560, 100, 80)
             LayoutMinWidth: =Parent.Width
-            Visible: =compFilterTicketsMenu.CheckAdmin
+            Visible: =compFilterTicketsMenu.CheckAdmin && App.ActiveScreen.Name = "MyTickets"
             Width: =Parent.Width
             Y: =45
             ZIndex: =4
@@ -532,7 +696,7 @@ compFilterTicketsMenu As CanvasComponent:
             ColorScheme.secondaryPressedColor
         Icon: |-
             =If(
-                App.ActiveScreen.Name = "MyTickets" && (!compFilterTicketsMenu.CheckAdmin && (!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Tickets") || !(DropdownTag.SelectedText.Value = "None")) || compFilterTicketsMenu.CheckAdmin && (!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Assigned") || !(DropdownTag.SelectedText.Value = "None"))) || !(App.ActiveScreen.Name = "MyTickets") && (!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "Tickets") || !(DropdownTag.SelectedText.Value = "None")),
+                App.ActiveScreen.Name = "MyTickets" && (!compFilterTicketsMenu.CheckAdmin && (!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Tickets") || !(DropdownTag.SelectedText.Value = "None")) || compFilterTicketsMenu.CheckAdmin && (!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Assigned") || !(DropdownTag.SelectedText.Value = "None"))) || !(App.ActiveScreen.Name = "MyTickets") && (!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(CheckboxAssignment.Value = true)),
                 Icon.FilterFlatFilled,
                 Icon.FilterFlat
             )

@@ -1,25 +1,30 @@
 "'All Tickets' As screen":
     OnVisible: |-
         =Reset(TextInput1_9);
+        Set(SearchAllTicketsQuery,
+             ""
+        );
+        Reset(compFilterMenu_6);
         Reset(Gallery4_2);
-        // Used with RecentTicketsSPList to pass date to get tickets starting from and the string to search by.
-        // Returns open tickets from the last 30 days if not searching. If searching return any open tickets that match the query
+        
+        
+        /// Used with RecentTicketsSPListV2
         ClearCollect(
-            colTickets,
+            colAllTickets,
             ForAll(
                 Table(
                     ParseJSON(
-                        RecentTicketsSPList.Run(
-                            DateAdd(
+                        RecentTicketsSPListV2.Run(
+                        DateAdd(
                                 Today(),
                                 -1,
                                 TimeUnit.Months
                             ),
                             If(
-                                IsBlank(TextInput1_9.Text),
+                                IsBlank(SearchAllTicketsQuery),
                                 "___",
-                                TextInput1_9.Text
-                            )
+                                SearchAllTicketsQuery
+                            ), StatusChoice, AssignmentChoice
                         ).searchresults
                     )
                 ),
@@ -124,29 +129,31 @@
 
                     TextInput1_9 As text:
                         Align: =Align.Center
+                        Clear: =true
                         Default: =""
                         Height: |
                             =Parent.Height/2
                         HintText: ="Search Tickets"
                         OnChange: |-
-                            =// Used with RecentTicketsSPList to pass date to get tickets starting from and the string to search by.
-                            // Returns open tickets from the last 30 days if not searching. If searching return any open tickets that match the query
+                            =Set(SearchAllTicketsQuery, TextInput1_9.Text);
+                            
+                            // Used with RecentTicketsSPListV2
                             ClearCollect(
-                                colTickets,
+                                colAllTickets,
                                 ForAll(
                                     Table(
                                         ParseJSON(
-                                            RecentTicketsSPList.Run(
-                                                DateAdd(
+                                            RecentTicketsSPListV2.Run(
+                                            DateAdd(
                                                     Today(),
                                                     -1,
                                                     TimeUnit.Months
                                                 ),
                                                 If(
-                                                    IsBlank(TextInput1_9.Text),
+                                                    IsBlank(SearchAllTicketsQuery),
                                                     "___",
-                                                    TextInput1_9.Text
-                                                )
+                                                    SearchAllTicketsQuery
+                                                ), StatusChoice, AssignmentChoice
                                             ).searchresults
                                         )
                                     ),
@@ -567,7 +574,7 @@
                             
                             //Sort(Filter(colTickets,Status = "open"),DateCreated,SortOrder.Descending)
                             
-                            Sort(colTickets, DateCreated, SortOrder.Descending)
+                            Sort(colAllTickets, DateCreated, SortOrder.Descending)
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
@@ -709,34 +716,36 @@
             
             If(App.Height - compFilterMenu_6.HeightOffset > 340, 16, 13)
         Height: =If(compFilterMenu_6.FilterVisible, compFilterMenu_6.NewHeight, compFilterMenu_6.FilterIconSize)
-        HeightOffset: =MyTicketsHeaderContainer.Height + ((SearchFilterContainer.Height - compFilterMenu_6.FilterIconSize) / 2)
+        HeightOffset: =AllTicketsHeaderFinal.Height + ((SearchTickets.Height - compFilterMenu_6.FilterIconSize) / 2)
         IconSize: |-
             =//If(App.Height > 560, 40, 30)
             
             If(App.Height - compFilterMenu_6.HeightOffset > 560, 40, 30)
         NewHeight: |-
-            =//If(compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",If(App.Height>560,400,320),!compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",150,If(App.Height>560,420,320))
-            
-            If(
+            =If(
                 compFilterMenu_6.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
                 If(
                     App.Height - compFilterMenu_6.HeightOffset > 560,
                     400,
-                    320
+                    310
                 ),
                 !compFilterMenu_6.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
-                150,
                 If(
                     App.Height - compFilterMenu_6.HeightOffset > 560,
-                    420,
-                    320
+                    150,
+                    120
+                ),
+                If(
+                    App.Height - compFilterMenu_6.HeightOffset > 560,
+                    250,
+                    190
                 )
             )
-        Visible: =//App.Width > 600 || (App.Width <= 600 && !compSearch_1.SearchVisible)
+        Visible: =true
         Width: |-
             =//If(compFilterMenu.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu.FilterIconSize)
             If(compFilterMenu_6.FilterVisible, If(App.Width > 600 && App.Height - compFilterMenu_6.HeightOffset > 400, 220, 185), compFilterMenu_6.FilterIconSize)
         X: =Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
-        Y: =MyTicketsHeaderContainer.Height + ((SearchFilterContainer.Height - compFilterMenu_6.FilterIconSize) /0.9 )
+        Y: =AllTicketsHeaderFinal.Height + ((SearchTickets.Height - compFilterMenu_6.FilterIconSize) / 2)
         ZIndex: =5
 

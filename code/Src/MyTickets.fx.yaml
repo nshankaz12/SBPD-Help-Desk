@@ -646,21 +646,23 @@
             
             If(App.Height - compFilterMenu_1.HeightOffset > 560, 40, 30)
         NewHeight: |-
-            =//If(compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",If(App.Height>560,400,320),!compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",150,If(App.Height>560,420,320))
-            
-            If(
+            =If(
                 compFilterMenu_1.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
                 If(
                     App.Height - compFilterMenu_1.HeightOffset > 560,
                     400,
-                    320
+                    310
                 ),
                 !compFilterMenu_1.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
-                150,
                 If(
                     App.Height - compFilterMenu_1.HeightOffset > 560,
-                    420,
-                    320
+                    150,
+                    120
+                ),
+                If(
+                    App.Height - compFilterMenu_1.HeightOffset > 560,
+                    250,
+                    190
                 )
             )
         Visible: =App.Width > 600 || (App.Width <= 600 && !compSearch_1.SearchVisible)

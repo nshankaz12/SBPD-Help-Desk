@@ -267,6 +267,14 @@ App As appinfo:
         // Sets the time units subtracting by
         Set(varTimeUnits, TimeUnit.Months);
         
+        // Variables used for searching and filtering in the 'RecentTicketsSPList' power automate flows
+        Set(AssignmentChoice,
+            true
+        );
+        Set(SearchAllTicketsQuery,
+            ""
+        );
+        
         ClearCollect(
             dummyArticles,
             {
