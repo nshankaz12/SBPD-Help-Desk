@@ -236,23 +236,26 @@
                     X: =Parent.Width/2 - Rectangle6_5.Width/2
                     ZIndex: =4
 
-        FooterContainer_1 As groupContainer.horizontalAutoLayoutContainer:
-            AlignInContainer: =AlignInContainer.SetByContainer
+        TicketMetricsFooter As groupContainer.verticalAutoLayoutContainer:
+            Fill: =RGBA(255,255,255, 1)
             FillPortions: =0
-            Height: =100
+            Height: =Parent.Height/8
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutJustifyContent: =LayoutJustifyContent.Center
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            Visible: =If('Admin Manager'.Size > 1, false, true)
+            Visible: |
+                ='Ticket Metrics - Admin Tech'.Size =1
+            Width: =Parent.Width
             ZIndex: =4
 
-            compMobileMenu_15 As compMobileMenu:
+            compMobileMenu_8 As compMobileMenu_7:
                 Height: =Parent.Height
                 LayoutMinHeight: =640
                 LayoutMinWidth: =640
-                Visible: =Home.Size=1
                 Width: =Parent.Width
-                Y: =Parent.Height-Self.Height
 
     compWebMenu_12 As compWebMenu:
         Height: =If(showMenu, Parent.Height, 80)

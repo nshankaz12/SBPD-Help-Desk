@@ -558,18 +558,23 @@
                             Y: =99
                             ZIndex: =2
 
-            MyTicketsFooterContainer As groupContainer.verticalAutoLayoutContainer:
+            MyTicketsFooter As groupContainer.verticalAutoLayoutContainer:
+                Fill: =RGBA(255,255,255, 1)
                 FillPortions: =0
-                Height: =90
+                Height: =Parent.Height/8
+                LayoutAlignItems: =LayoutAlignItems.Center
                 LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.Center
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                Visible: =MyTickets.Size=1
+                Visible: |
+                    =MyTickets.Size = 1
                 Width: =Parent.Width
                 ZIndex: =5
 
                 compMobileMenu_5 As compMobileMenu:
+                    Height: =Parent.Height
                     LayoutMinHeight: =640
                     LayoutMinWidth: =640
                     Width: =Parent.Width

@@ -126,6 +126,26 @@
                         =
                     ZIndex: =5
 
+            AssignRoleFooter As groupContainer.verticalAutoLayoutContainer:
+                Fill: =RGBA(255,255,255, 1)
+                FillPortions: =0
+                Height: =Parent.Height/8
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Visible: ='Assign Role - Admin'.Size = 1
+                Width: =Parent.Width
+                ZIndex: =4
+
+                compMobileMenu_10 As compMobileMenu_9:
+                    Height: =Parent.Height
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    Width: =Parent.Width
+
     Icon1_27 As icon.BackArrow:
         Color: =ColorScheme.secondary
         Height: =49
