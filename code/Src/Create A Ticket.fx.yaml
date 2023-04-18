@@ -562,6 +562,9 @@
 
                         cancelBtn1 As button:
                             Fill: =RGBA(149, 149, 149, 1)
+                            OnSelect: |-
+                                =ResetForm(CreateATicketForm);
+                                Navigate(Home);
                             Text: ="Cancel"
                             Width: =Parent.Width/3
                             X: =If('Create A Ticket'.Size =1, Parent.Width - (Self.Width *2.73),Parent.Width - (Self.Width *2.5))
