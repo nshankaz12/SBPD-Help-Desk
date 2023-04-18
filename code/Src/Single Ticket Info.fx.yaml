@@ -1,6 +1,6 @@
 "'Single Ticket Info' As screen":
     OnHidden: =
-    OnVisible: |
+    OnVisible: |-
         =UpdateContext({showComboBox: If(ticketInfo.Status = "open", true, false)});
         UpdateContext({primAssignee: Blank()});
         Refresh(Comments_1);
@@ -50,7 +50,7 @@
 
             SingleTicketInfoMobileViewContainer As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.Start
-                Height: =Parent.Height
+                Height: =Parent.Height+Ticket_Attachment_Gallery_1.Height
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
@@ -188,8 +188,8 @@
                         DisplayMode: =DisplayMode.View
                         Font: =Font.Georgia
                         Height: =30
-                        Overflow: =Overflow.Scroll
                         Text: =Concat(Tags_ComboBox.SelectedItems, Concatenate(name, " "))
+                        Visible: =Assignee_Value_CloseTicket_1.Visible
                         Width: =Assignee_ComboBox_1.Width
                         X: =Rectangle_behind_details_2.X+Reporter_Label_1.Width
                         Y: =Tags_Label_1.Y
@@ -289,6 +289,7 @@
                         Font: =Font.Georgia
                         Height: =30
                         Text: =Concat(Additional_Assign_ComboBox.SelectedItems, Concatenate(fullName, ""))
+                        Visible: =Assignee_Value_CloseTicket_1.Visible
                         Width: =Assignee_ComboBox_1.Width
                         X: =Rectangle_behind_details_2.X+Reporter_Label_1.Width
                         Y: =Additonal_Assign_Label_1.Y
@@ -340,6 +341,7 @@
                         Font: =Font.Georgia
                         Height: =30
                         Text: =Concat(Assignee_ComboBox.SelectedItems, Concatenate(fullName, ""))
+                        Visible: =If(userData.role = "staff",false,true)
                         Width: =Rectangle_behind_details_2.Width/2
                         X: =Rectangle_behind_details_2.X+Reporter_Label_1.Width
                         Y: =Assignee_Label_1.Y
@@ -441,7 +443,7 @@
                         Underline: =
                         Visible: |-
                             =
-                            If(Value(AssigneeId_1.Text) = userData.id || userData.role="staff",false, true)
+                            If(Value(AssigneeId_1.Text) = userData.id || userData.role="staff" || Status_Value_Label_1.Text = "closed",false, true)
                         Width: =Reporter_Label.Width
                         X: =Reporter_Value_Label_1.X
                         Y: =Assignee_ComboBox_1.Y+Assignee_ComboBox_1.Height+10
@@ -534,14 +536,15 @@
                         Ticket_Attachment_Gallery_1 As gallery.variableTemplateHeightGallery:
                             BorderThickness: =1
                             DelayItemLoading: =true
-                            Height: =If('Single Ticket Info'.Size>1, 50, 30)
+                            FillPortions: =0
+                            Height: =CountRows(Ticket_Attachment_Gallery.AllItems)*30
                             Items: |-
                                 =Filter(
                                     'Ticket Attachments',
                                     ticketID = ticketInfo.ID
                                 )
                             Layout: =Layout.Vertical
-                            LayoutMinHeight: =287
+                            LayoutMinHeight: =50
                             LayoutMinWidth: =320
                             LoadingSpinner: =LoadingSpinner.Data
                             TemplateSize: =25
@@ -786,7 +789,7 @@
             SingleticketInfoActivityHistoryContainer_2 As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
-                Height: =Parent.Height+100
+                Height: =Parent.Height+100+Ticket_Attachment_Gallery.Height
                 LayoutMinHeight: =Parent.Height
                 LayoutMinWidth: =100
                 LayoutMode: =LayoutMode.Auto
@@ -851,14 +854,15 @@
                         Ticket_Attachment_Gallery As gallery.variableTemplateHeightGallery:
                             BorderThickness: =1
                             DelayItemLoading: =true
-                            Height: =If('Single Ticket Info'.Size>1, 50, 30)
+                            FillPortions: =0
+                            Height: =If('Single Ticket Info'.Size>1, CountRows(Ticket_Attachment_Gallery.AllItems)*40, CountRows(Ticket_Attachment_Gallery.AllItems)*30)
                             Items: |-
                                 =Filter(
                                     'Ticket Attachments',
                                     ticketID = ticketInfo.ID
                                 )
                             Layout: =Layout.Vertical
-                            LayoutMinHeight: =287
+                            LayoutMinHeight: =50
                             LayoutMinWidth: =320
                             LoadingSpinner: =LoadingSpinner.Data
                             TemplateSize: =25
@@ -1239,9 +1243,9 @@
                         DisplayMode: =DisplayMode.View
                         Font: =Font.Georgia
                         Height: =30
-                        Overflow: =Overflow.Scroll
                         Size: =15
                         Text: =Concat(Tags_ComboBox.SelectedItems, Concatenate(name, " "))
+                        Visible: =Assignee_Value_CloseTicket.Visible
                         Width: =Reporter_Label.Width
                         X: =Rectangle_behind_details.X+Reporter_Label.Width
                         Y: =Tags_Label.Y
@@ -1342,6 +1346,7 @@
                         Height: =30
                         Size: =15
                         Text: =Concat(Additional_Assign_ComboBox.SelectedItems, Concatenate(fullName, ""))
+                        Visible: =Assignee_Value_CloseTicket.Visible
                         Width: =Reporter_Label.Width
                         X: =Rectangle_behind_details.X+Reporter_Label.Width
                         Y: =Additonal_Assign_Label.Y
@@ -1394,6 +1399,7 @@
                         Height: =30
                         Size: =15
                         Text: =Concat(Assignee_ComboBox.SelectedItems, Concatenate(fullName, ""))
+                        Visible: =If(userData.role = "staff",false,true)
                         Width: =Reporter_Label.Width
                         X: =Rectangle_behind_details.X+Reporter_Label.Width
                         Y: =Assignee_Label.Y
@@ -1495,7 +1501,7 @@
                         Underline: =
                         Visible: |-
                             =
-                            If(Value(AssigneeId.Text) = userData.id || userData.role="staff",false, true)
+                            If((Value(AssigneeId.Text) = userData.id || userData.role="staff") ||  Status_Value_Label.Text ="closed",false, true)
                         Width: =Reporter_Label.Width
                         X: =Reporter_Value_Label.X
                         Y: =Assignee_ComboBox.Y+Assignee_ComboBox.Height+10
@@ -1631,6 +1637,7 @@
                 );
                 Reset(Text_Input_Resolution);
                 Refresh(Tickets);
+                UpdateContext({showComboBox:false});
             Text: |-
                 ="Close Ticket
                 "
