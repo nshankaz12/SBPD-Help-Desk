@@ -908,6 +908,7 @@
 
                             Add_Comment_Button As button:
                                 Fill: =ColorScheme.primary
+                                FontWeight: =FontWeight.Bold
                                 Height: =30
                                 OnSelect: |-
                                     =If(
@@ -955,6 +956,7 @@
                                                                 <div>" & Add_Comment_Text_Input.Text & "</div>"
                                                     }
                                                 );
+                                                Reset(Add_Comment_Text_Input);
                                                 /*Office365Outlook.SendEmailV2(
                                                     LookUp(
                                                         Users_1,

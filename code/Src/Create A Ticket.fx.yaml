@@ -475,9 +475,8 @@
 
                         submitBtn1 As button:
                             OnSelect: |
-                                =//false
-                                Set(
-                                    recID,
+                                =Set(
+                                    rec,
                                     Patch(
                                         Tickets,
                                         Defaults(Tickets),
@@ -515,29 +514,44 @@
                                                 )
                                             )
                                         }
-                                    ).ID
+                                    )
                                 );
-                                
                                 ForAll(
                                     AttachmentControl_3.Attachments,
                                     AttachFiles.Run(
-                                        recID, 
+                                        rec.ID,
                                         {
-                                            file:{
+                                            file: {
                                                 contentBytes: Value,
                                                 name: Name
                                             }
                                         }
                                     )
                                 );
-                                
-                                Office365Outlook.SendEmailV2(
-                                    userData.email,
-                                    "Help Desk Ticket Received",
-                                    "Hello, this is an automated response. An IT Help Desk ticket "
+                                SMTP.SendEmailV3(
+                                    {
+                                        From: "sbpdhelpdesk@outlook.com",
+                                        To: userData.email,
+                                        Subject: "Help Desk Ticket Received",
+                                        Body: "<div>Hello, this is an automated response. An IT Help Desk ticket # " & rec.ID & " was created on your behalf. A technician will contact you soon to begin troubleshooting.</div>"
+                                    }
                                 );
-                                
-                                
+                                If(
+                                    rec.assignedTo > 0,
+                                    SMTP.SendEmailV3(
+                                        {
+                                            From: "sbpdhelpdesk@outlook.com",
+                                            To: LookUp(
+                                                Users_1,
+                                                ID = rec.assignedTo,
+                                                email
+                                            ),
+                                            Subject: "Help Desk Ticket Assigned",
+                                            Body: "<div>Hello, this is an automated response. An IT Help Desk ticket # " & rec.ID & " was assigned to you. Please click the link below to view more details for the ticket.</div>"
+                                        }
+                                    );
+                                    
+                                );
                                 Navigate(Success);
                                 ResetForm(CreateATicketForm);
                             Text: ="Submit"
