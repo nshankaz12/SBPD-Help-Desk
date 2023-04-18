@@ -341,12 +341,6 @@
                     Bcc: allEmails,
                     Subject: "Service Outage",
                     Body: "<div>Please be advised, " & DataCardValue23.Text & " is down. IT is responding and will notify all users when full functionality is restored. Thank you for your patience.</div> <br> <div> Do NOT email or respond to this automated message. This is an automated message created by our notification system. </div>"
-                    /*Concatenate(
-                        "Please be advised, ",
-                        DataCardValue23.Text,
-                        " is down. IT is responding and will notify all users when full functionality is restored. Thank you for your patience.",
-                        " Do NOT email or respond to this automated message. This is an automated message created by our notification system."
-                    )*/
                 }
             );
             Navigate('Alert Manager');

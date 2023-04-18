@@ -910,42 +910,75 @@
                                 Fill: =ColorScheme.primary
                                 Height: =30
                                 OnSelect: |-
-                                    =If(Status_Value_Label.Text = "open", If(IsBlank(Trim(Add_Comment_Text_Input.Text)),false,Patch(
-                                        Comments_1,
-                                        Defaults(Comments_1),
-                                        {
-                                            ticketId: ticketInfo.ID,
-                                            message: Add_Comment_Text_Input.Text,
-                                            creatorId: userData.id
-                                        }
-                                        );
-                                        Reset(Add_Comment_Text_Input);
+                                    =If(
+                                        Status_Value_Label.Text = "open",
                                         If(
-                                            userData.role = "admin" || userData.role = "tech",
-                                            Office365Outlook.SendEmailV2(
-                                                LookUp(
-                                                    Users_1,
-                                                    ID = ticketInfo.CreatorId,
-                                                    email
-                                                ),
-                                            Concatenate(
-                                                "Update on Ticket # ",
-                                                ticketInfo.ID
-                                            ),
-                                            Concatenate(
-                                                "A comment has been added by ",
-                                                userData.firstName
-                                            ),
-                                            {
-                                                Cc: Concat(
-                                                    Additional_Assign_ComboBox.SelectedItems,
-                                                    email,
-                                                    ";"
-                                                )
-                                            }
-                                        );
-                                        
-                                        ))
+                                            IsBlank(Trim(Add_Comment_Text_Input.Text)),
+                                            false,
+                                            Patch(
+                                                Comments_1,
+                                                Defaults(Comments_1),
+                                                {
+                                                    ticketId: ticketInfo.ID,
+                                                    message: Add_Comment_Text_Input.Text,
+                                                    creatorId: userData.id
+                                                }
+                                            );
+                                            If(
+                                                userData.role = "admin" || userData.role = "tech",
+                                                SMTP.SendEmailV3(
+                                                    {
+                                                        From: "sbpdhelpdesk@outlook.com",
+                                                        To: LookUp(
+                                                            Users_1,
+                                                            ID = ticketInfo.CreatorId,
+                                                            email
+                                                        ),
+                                                        Subject: ticketInfo.Title & " - Ticket #" & ticketInfo.ID,
+                                                        Body: "<h2> A Comment was added to your request item. </h2>
+                                                                <div> Reply From: " & userData.email & "</div>
+                                                                <div>" & Add_Comment_Text_Input.Text & "</div>"
+                                                    }
+                                                );
+                                                Reset(Add_Comment_Text_Input),
+                                                SMTP.SendEmailV3(
+                                                    {
+                                                        From: "sbpdhelpdesk@outlook.com",
+                                                        To: LookUp(
+                                                            Users_1,
+                                                            ID = ticketInfo.AssignedTo,
+                                                            email
+                                                        ),
+                                                        Subject: ticketInfo.Title & " - Ticket #" & ticketInfo.ID,
+                                                        Body: "<h2> A Comment was added to a ticket you are assigned. </h2>
+                                                                <div> Reply From: " & userData.email & "</div>
+                                                                <div>" & Add_Comment_Text_Input.Text & "</div>"
+                                                    }
+                                                );
+                                                /*Office365Outlook.SendEmailV2(
+                                                    LookUp(
+                                                        Users_1,
+                                                        ID = ticketInfo.CreatorId,
+                                                        email
+                                                    ),
+                                                    Concatenate(
+                                                        "Update on Ticket # ",
+                                                        ticketInfo.ID
+                                                    ),
+                                                    Concatenate(
+                                                        "A comment has been added by ",
+                                                        userData.firstName
+                                                    ),
+                                                    {
+                                                        Cc: Concat(
+                                                            Additional_Assign_ComboBox.SelectedItems,
+                                                            email,
+                                                            ";"
+                                                        )
+                                                    }
+                                                );*/
+                                            )
+                                        )
                                     )
                                 Size: =12
                                 Text: ="Add Comment"
