@@ -912,7 +912,6 @@
 
                             Add_Comment_Button As button:
                                 Fill: =ColorScheme.primary
-                                FontWeight: =FontWeight.Bold
                                 Height: =30
                                 OnSelect: |-
                                     =If(
@@ -1000,15 +999,6 @@
                                     =Set(
                                         varShowResPopup,
                                         true
-                                    );
-                                    SMTP.SendEmailV3(
-                                        {
-                                            From: "sbpdhelpdesk@outlook.com",
-                                            To: "<Do Not Reply> sbpdhelpdesk@outlook.com",
-                                            Bcc: allEmails,
-                                            Subject: "Ticket Closed",
-                                            Body: "<div>Please be advised that the ticket " & Ticket_Title.Text & " is now closed.</div> <br> <div> Do NOT email or respond to this automated message. This is an automated message created by our notification system. </div>"
-                                        }
                                     );
                                 Size: =12
                                 Text: ="Close Ticket"
@@ -1616,7 +1606,7 @@
             ZIndex: =5
 
         Close_Ticket_Resolution_Button As button:
-            OnSelect: |-
+            OnSelect: |
                 =Patch(
                     Tickets,
                     LookUp(
@@ -1635,9 +1625,25 @@
                     varShowResPopup,
                     false
                 );
+                SMTP.SendEmailV3(
+                    {
+                        From: "sbpdhelpdesk@outlook.com",
+                        To: LookUp(
+                            Users_1,
+                            ID = ticketInfo.CreatorId,
+                            email
+                        ),
+                        Subject: "Ticket Closed",
+                        Body: "<div>Hello, your ticket #" & ticketInfo.ID & " was closed by " & LookUp(
+                            Users_1,
+                            ID = userData.id,
+                            fullName
+                        ) & ".</div><br><div> <b>Resolution</b>: " & Text_Input_Resolution.Text & "</div>"
+                    }
+                );
                 Reset(Text_Input_Resolution);
                 Refresh(Tickets);
-                UpdateContext({showComboBox:false});
+                UpdateContext({showComboBox: false});
             Text: |-
                 ="Close Ticket
                 "
