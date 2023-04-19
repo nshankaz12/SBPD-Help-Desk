@@ -1,54 +1,12 @@
 "'All Tickets' As screen":
-    OnVisible: |-
+    OnHidden: |-
         =Reset(TextInput1_9);
         Set(SearchAllTicketsQuery,
              ""
         );
-        Reset(compFilterMenu_6);
         Reset(Gallery4_2);
-        
-        
-        /// Used with RecentTicketsSPListV2
-        ClearCollect(
-            colAllTickets,
-            ForAll(
-                Table(
-                    ParseJSON(
-                        RecentTicketsSPListV2.Run(
-                        DateAdd(
-                                Today(),
-                                -1,
-                                TimeUnit.Months
-                            ),
-                            If(
-                                IsBlank(SearchAllTicketsQuery),
-                                "___",
-                                SearchAllTicketsQuery
-                            ), StatusChoice, AssignmentChoice
-                        ).searchresults
-                    )
-                ),
-                {
-                    ID: Value(Value.ID),
-                    Title: Text(Value.title),
-                    Description: Text(Value.description),
-                    MainCategory: Value(Value.mainCategory),
-                    Category: Value(Value.category),
-                    SubCategory: Value(Value.subCategory),
-                    DateCreated: DateTimeValue(Value.dateCreated),
-                    DateClosed: DateTimeValue(Value.dateClosed),
-                    CreatorId: Value(Value.creatorId),
-                    Status: Text(Value.status),
-                    AssignedTo: Value(Value.assignedTo),
-                    LastUpdated: DateTimeValue(Value.lastUpdated),
-                    UpdatedBy: Value(Value.updatedBy),
-                    ParentId: Value(Value.parentId),
-                    LocationId: Value(Value.locationId),
-                    Tags: Text(Value.tags),
-                    AddAssignees: Text(Value.addAssignees)
-                }
-            )
-        )
+    OnVisible: |
+        =Reset(compFilterMenu_6);
 
     MainAllTickets As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
