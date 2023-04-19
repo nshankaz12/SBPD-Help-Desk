@@ -149,85 +149,88 @@ Home As screen:
                             Y: =Title1.Height+3
                             ZIndex: =5
 
-                    ButtonGallery_1 As gallery.galleryVertical:
-                        AlignInContainer: =AlignInContainer.Start
-                        Height: =Parent.Height
-                        Items: =userNav
-                        Layout: =Layout.Vertical
-                        LayoutMinHeight: =287
-                        LayoutMinWidth: =320
-                        OnSelect: =Switch(ThisItem.NavName, "Create Ticket", Navigate('Category Select'), "My Tickets", Navigate(MyTickets), "Ticket Log", Navigate('Log of All Tickets - Admin Tech'), "Ticket Metrics", Navigate('Ticket Metrics - Admin Tech'), "Assign Role", Navigate('Assign Role - Admin'))
-                        ShowScrollbar: =false
-                        TemplateSize: =Parent.Height/2.67
-                        Width: =Parent.Width
-                        WrapCount: =Switch(Home.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
-                        ZIndex: =3
+                    Container3 As groupContainer.manualLayoutContainer:
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        ZIndex: =4
 
-                        HtmlText1_1 As htmlViewer:
-                            DisplayMode: =DisplayMode.View
-                            Height: =ButtonGalleryBackgroundButton_1.Height
-                            HtmlText: |-
-                                ="<div style='box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
-                                -webkit-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
-                                -moz-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05); height:"&ButtonGalleryBackgroundButton_1.Height-11&"px; width:"&ButtonGalleryBackgroundButton_1.Width-11&"px; border-style:none; border-radius:10px'></div>"
-                            OnSelect: =Select(Parent)
-                            Width: =ButtonGalleryBackgroundButton_1.Width
-                            X: =ButtonGalleryBackgroundButton_1.X
-                            Y: |
-                                =ButtonGalleryBackgroundButton_1.Y
+                        ButtonGallery_1 As gallery.galleryVertical:
+                            Height: =If(Home.Size>1,Parent.Height/2.5, Parent.Height)
+                            Items: =userNav
+                            Layout: =Layout.Vertical
+                            OnSelect: =Switch(ThisItem.NavName, "Create Ticket", Navigate('Category Select'), "My Tickets", Navigate(MyTickets), "Ticket Log", Navigate('Log of All Tickets - Admin Tech'), "Ticket Metrics", Navigate('Ticket Metrics - Admin Tech'), "Assign Role", Navigate('Assign Role - Admin'))
+                            ShowScrollbar: =false
+                            TemplateSize: =Parent.Height/2.67
+                            Width: =Parent.Width
+                            WrapCount: =Switch(Home.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
+                            Y: =If(Home.Size=1, 0 ,Parent.Height/4)
                             ZIndex: =1
 
-                        ButtonGalleryBackgroundButton_1 As button:
-                            BorderStyle: =BorderStyle.Dashed
-                            BorderThickness: =0
-                            Color: =ColorScheme.secondary
-                            Fill: =ColorScheme.secondary
-                            Height: =If ( Home.Size =1 , Parent.TemplateHeight/1.5,Parent.TemplateHeight/1.1)
-                            OnSelect: =Select(Parent)
-                            Text: =""
-                            Width: =If( Home.Size =1, Parent.TemplateWidth / 1.5, Parent.TemplateWidth/1.2)
-                            X: =(Parent.TemplateWidth - Self.Width)/2
-                            Y: =(Parent.TemplateHeight - Self.Height)/2
-                            ZIndex: =2
+                            HtmlText1_1 As htmlViewer:
+                                DisplayMode: =DisplayMode.View
+                                Height: =ButtonGalleryBackgroundButton_1.Height
+                                HtmlText: |-
+                                    ="<div style='box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
+                                    -webkit-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05);
+                                    -moz-box-shadow: 23px 21px 33px 5px rgba(0,0,0,0.05); height:"&ButtonGalleryBackgroundButton_1.Height-11&"px; width:"&ButtonGalleryBackgroundButton_1.Width-11&"px; border-style:none; border-radius:10px'></div>"
+                                OnSelect: =Select(Parent)
+                                Width: =ButtonGalleryBackgroundButton_1.Width
+                                X: =ButtonGalleryBackgroundButton_1.X
+                                Y: |
+                                    =ButtonGalleryBackgroundButton_1.Y
+                                ZIndex: =1
 
-                        ButtonGalleryNavLabel_1 As label:
-                            Align: =Align.Center
-                            Color: =ColorScheme.primary
-                            FontWeight: =FontWeight.Semibold
-                            Height: =If(Home.Size >1,ButtonGalleryBackgroundButton_1.Height/4.5,15)
-                            OnSelect: =Select(Parent)
-                            Size: =If(Home.Size =1,11,15)
-                            Text: =ThisItem.NavName
-                            Width: =ButtonGalleryBackgroundButton_1.Width
-                            X: =(Parent.TemplateWidth-Self.Width)/2
-                            Y: =ButtonGalleryNavIcon_2.Y+ButtonGalleryNavIcon_2.Height
-                            ZIndex: =3
+                            ButtonGalleryBackgroundButton_1 As button:
+                                BorderStyle: =BorderStyle.Dashed
+                                BorderThickness: =0
+                                Color: =ColorScheme.secondary
+                                Fill: =ColorScheme.secondary
+                                Height: =If ( Home.Size =1 , Parent.TemplateHeight/1.5,Parent.TemplateHeight/1.1)
+                                OnSelect: =Select(Parent)
+                                Text: =""
+                                Width: =If( Home.Size =1, Parent.TemplateWidth / 1.5, Parent.TemplateWidth/1.2)
+                                X: =(Parent.TemplateWidth - Self.Width)/2
+                                Y: =(Parent.TemplateHeight - Self.Height)/2
+                                ZIndex: =2
 
-                        ButtonGalleryNavIcon_2 As icon.Add:
-                            Color: =ColorScheme.primary
-                            Height: |-
-                                =
-                                
-                                If(Home.Size >1, Parent.TemplateHeight/2.5,Parent.TemplateHeight/3)
-                            Icon: =ThisItem.NavIcon
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth/2
-                            X: =(Parent.TemplateWidth-Self.Width)/2
-                            Y: =If( Home.Size = 1, (ButtonGalleryBackgroundButton_1.Height-Self.Height)/1.2,(ButtonGalleryBackgroundButton_1.Height-Self.Height)/2)
-                            ZIndex: =4
+                            ButtonGalleryNavLabel_1 As label:
+                                Align: =Align.Center
+                                Color: =ColorScheme.primary
+                                FontWeight: =FontWeight.Semibold
+                                Height: =If(Home.Size >1,ButtonGalleryBackgroundButton_1.Height/4.5,15)
+                                OnSelect: =Select(Parent)
+                                Size: =If(Home.Size =1,11,15)
+                                Text: =ThisItem.NavName
+                                Width: =ButtonGalleryBackgroundButton_1.Width
+                                X: =(Parent.TemplateWidth-Self.Width)/2
+                                Y: =ButtonGalleryNavIcon_2.Y+ButtonGalleryNavIcon_2.Height
+                                ZIndex: =3
 
-                        Overlapbtn_2 As button:
-                            Fill: =RGBA(255, 255, 255, 0)
-                            Height: =ButtonGalleryBackgroundButton_1.Height
-                            HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
-                            OnSelect: =Navigate(ThisItem.ScreenToGoTo)
-                            PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
-                            Text: =""
-                            Width: =ButtonGalleryBackgroundButton_1.Width
-                            X: =ButtonGalleryBackgroundButton_1.X
-                            Y: |
-                                =ButtonGalleryBackgroundButton_1.Y
-                            ZIndex: =5
+                            ButtonGalleryNavIcon_2 As icon.Add:
+                                Color: =ColorScheme.primary
+                                Height: |-
+                                    =
+                                    
+                                    If(Home.Size >1, Parent.TemplateHeight/2.5,Parent.TemplateHeight/3)
+                                Icon: =ThisItem.NavIcon
+                                OnSelect: =Select(Parent)
+                                Width: =Parent.TemplateWidth/2
+                                X: =(Parent.TemplateWidth-Self.Width)/2
+                                Y: =If( Home.Size = 1, (ButtonGalleryBackgroundButton_1.Height-Self.Height)/1.2,(ButtonGalleryBackgroundButton_1.Height-Self.Height)/2)
+                                ZIndex: =4
+
+                            Overlapbtn_2 As button:
+                                Fill: =RGBA(255, 255, 255, 0)
+                                Height: =ButtonGalleryBackgroundButton_1.Height
+                                HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
+                                OnSelect: =Navigate(ThisItem.ScreenToGoTo)
+                                PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
+                                Text: =""
+                                Width: =ButtonGalleryBackgroundButton_1.Width
+                                X: =ButtonGalleryBackgroundButton_1.X
+                                Y: |
+                                    =ButtonGalleryBackgroundButton_1.Y
+                                ZIndex: =5
 
             HomeFooter As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(255,255,255, 1)
