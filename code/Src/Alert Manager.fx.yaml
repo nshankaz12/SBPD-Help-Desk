@@ -127,7 +127,7 @@
                     Size: =15
                     Text: =If(ThisItem.dateExpired >= Today(), "Active", "Expired")
                     Width: =125
-                    X: =(Parent.TemplateWidth - Self.Width) -200
+                    X: =1054
                     Y: =1
                     ZIndex: =12
 
@@ -180,8 +180,8 @@
                     Size: =17
                     Text: =ThisItem.dateCreated
                     Width: =270
-                    X: =(Parent.TemplateWidth - Self.Width)/2
-                    Y: =1
+                    X: =547
+                    Y: =3
                     ZIndex: =17
 
                 Label2 As label:
@@ -190,7 +190,7 @@
                     Size: =17
                     Text: =ThisItem.dateExpired
                     Width: =281
-                    X: =(Parent.TemplateWidth - Self.Width)-300
+                    X: =773
                     Y: =1
                     ZIndex: =18
 
