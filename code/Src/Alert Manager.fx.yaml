@@ -46,10 +46,12 @@
             ZIndex: =2
 
             Label5 As label:
+                Align: =Align.Center
                 BorderColor: =RGBA(50, 86, 160, 1)
                 Color: =RGBA(255, 255, 255, 1)
                 Fill: =ColorScheme.primary
                 FocusedBorderThickness: =1
+                Size: =compPageTextSizeFormatter_2.FinalTextSize
                 Text: ="Creator ID"
                 Width: =Parent.Width/5
                 ZIndex: =1
@@ -57,6 +59,7 @@
             Label7 As label:
                 Align: =Align.Center
                 Color: =RGBA(255, 255, 255, 1)
+                Size: =Label5.Size
                 Text: ="Title"
                 Width: =Parent.Width/5
                 ZIndex: =2
@@ -64,6 +67,7 @@
             Label9 As label:
                 Align: =Align.Center
                 Color: =RGBA(255, 255, 255, 1)
+                Size: =Label5.Size
                 Text: ="Date Created"
                 Width: =Parent.Width/5
                 ZIndex: =3
@@ -71,12 +75,15 @@
             Label10 As label:
                 Align: =Align.Center
                 Color: =RGBA(255, 255, 255, 1)
+                Size: =Label5.Size
                 Text: ="Expiration Date"
                 Width: =Parent.Width/5
                 ZIndex: =4
 
             Label11 As label:
+                Align: =Align.Center
                 Color: =RGBA(255, 255, 255, 1)
+                Size: =Label5.Size
                 Text: ="Status"
                 Width: =Parent.Width/5
                 ZIndex: =5
@@ -89,6 +96,7 @@
             ZIndex: =3
 
             "Gallery4 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
+                AlignInContainer: =AlignInContainer.Start
                 DelayItemLoading: =true
                 Height: =Parent.Height
                 Items: =Filter(Alerts_1, dateExpired >= Today())
@@ -103,7 +111,6 @@
                 ZIndex: =1
 
                 Rectangle1 As rectangle:
-                    BorderThickness: =1
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =168
                     OnSelect: =Select(Parent)
@@ -121,93 +128,123 @@
                     Y: =64
                     ZIndex: =11
 
-                Label3 As label:
-                    Height: =39
-                    OnSelect: =Select(Parent)
-                    Size: =15
-                    Text: =If(ThisItem.dateExpired >= Today(), "Active", "Expired")
-                    Width: =125
-                    X: =1054
-                    Y: =1
-                    ZIndex: =12
-
-                Title4 As label:
-                    Align: =Align.Center
-                    Height: =47
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =22
-                    Text: =ThisItem.titleText
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =375
-                    X: =172
-                    Y: =12
-                    ZIndex: =13
-
                 Description As label:
-                    Align: =Align.Justify
-                    Height: =95
+                    Height: =120
                     OnSelect: =Select(Parent)
                     PaddingBottom: =0
-                    PaddingLeft: =0
                     PaddingRight: =0
                     PaddingTop: =0
+                    Size: |-
+                        =//If there are more than 20 words, make it size 10, else make it 15
+                        If(CountRows(Filter(MatchAll(Description.Text, "\S*(\s|\n?)"), !IsBlank(FullMatch)))>=20, 10, 15)
                     Text: =ThisItem.messageText
-                    Width: =1238
-                    Y: =59
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.Width-Button2.Width-20
+                    Y: =48
                     ZIndex: =14
 
-                Body2 As label:
-                    Height: =34
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =ThisItem.creatorId
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =32
-                    X: =38
-                    Y: =16
-                    ZIndex: =15
-
-                Label1 As label:
-                    Height: =52
-                    OnSelect: =Select(Parent)
-                    Size: =17
-                    Text: =ThisItem.dateCreated
-                    Width: =270
-                    X: =547
-                    Y: =3
-                    ZIndex: =17
-
-                Label2 As label:
-                    Height: =54
-                    OnSelect: =Select(Parent)
-                    Size: =17
-                    Text: =ThisItem.dateExpired
-                    Width: =281
-                    X: =773
-                    Y: =1
-                    ZIndex: =18
-
                 Separator4 As rectangle:
-                    Height: =1
+                    Height: =5
                     OnSelect: =Select(Parent)
                     Width: =Parent.TemplateWidth
-                    Y: =Description.Y + Description.Height + 10
+                    Y: =Parent.TemplateHeight-5
                     ZIndex: =19
 
-                Label4 As label:
+                Alert_Details_Label As label:
                     OnSelect: =Select(Parent)
                     Size: =18
                     Text: |-
                         ="Details: "
+                    Visible: =false
                     Y: =36
                     ZIndex: =20
+
+                Gallery_Vertical_Container As groupContainer.verticalAutoLayoutContainer:
+                    Height: =168
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =21
+
+                    Gallery_Column_Container As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =50
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingTop: =1
+                        Width: =Parent.Width
+                        ZIndex: =1
+
+                        Alert_CreatorId_Label As label:
+                            Align: =Align.Center
+                            BorderThickness: =1
+                            Height: =Parent.Height-10
+                            PaddingBottom: =0
+                            PaddingLeft: =
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =compPageTextSizeFormatter_2.FinalTextSize
+                            Text: =ThisItem.creatorId
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =Parent.Width/5
+                            X: =38
+                            Y: =16
+                            ZIndex: =1
+
+                        Alert_Title_Label As label:
+                            Align: =Align.Center
+                            BorderThickness: =1
+                            Height: =Parent.Height-10
+                            OnSelect: |
+                                =false
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =Switch('Alert Manager'.Size, 4,22,3,18,2,14,1,12)
+                            Text: =ThisItem.titleText
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =Parent.Width/5
+                            X: =172
+                            Y: =12
+                            ZIndex: =2
+
+                        Alert_Date_Time_Created_Label As label:
+                            Align: =Align.Center
+                            BorderThickness: =1
+                            Height: =Parent.Height-10
+                            OnSelect: |
+                                =false
+                            Size: =Alert_CreatorId_Label.Size
+                            Text: =ThisItem.dateCreated
+                            Width: =Parent.Width/5
+                            X: =547
+                            Y: =3
+                            ZIndex: =3
+
+                        Alert_Day_Time_Expire_Label As label:
+                            Align: =Align.Center
+                            BorderThickness: =1
+                            Height: =Parent.Height-10
+                            Size: =Alert_CreatorId_Label.Size
+                            Text: =ThisItem.dateExpired
+                            Width: =Parent.Width/5
+                            X: =773
+                            Y: =1
+                            ZIndex: =4
+
+                        Alert_Status_Label As label:
+                            Align: =Align.Center
+                            BorderThickness: =1
+                            Height: =Parent.Height-10
+                            Size: =Alert_CreatorId_Label.Size
+                            Text: =If(ThisItem.dateExpired >= Today(), "Active", "Expired")
+                            Width: =Parent.Width/5
+                            X: =1054
+                            Y: =1
+                            ZIndex: =5
 
         AlertManagerFooter As groupContainer.verticalAutoLayoutContainer:
             Fill: =RGBA(255,255,255, 1)
@@ -245,4 +282,13 @@
     compWebMenu_20 As compWebMenu:
         Visible: ='Alert Manager'.Size > 1
         ZIndex: =4
+
+    compPageTextSizeFormatter_2 As compPageTextSizeFormatter:
+        FinalTextSize: =Switch(compPageTextSizeFormatter_2.PageSizeVariable, 4,compPageTextSizeFormatter_2.TextSize4,3,compPageTextSizeFormatter_2.TextSize3,2,compPageTextSizeFormatter_2.TextSize2,1,compPageTextSizeFormatter_2.TextSize1)
+        PageSizeVariable: ='Alert Manager'.Size
+        TextSize1: =9
+        TextSize2: =12
+        TextSize3: =15
+        TextSize4: =17
+        ZIndex: =5
 
