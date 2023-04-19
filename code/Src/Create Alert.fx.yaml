@@ -141,8 +141,13 @@
                         FontWeight: =FontWeight.Bold
                         Height: =CancelBtn.Height
                         OnSelect: |
-                            =Patch(Alerts_1, Gallery4.Selected, {titleText: DataCardValue23.Text, messageText: DataCardValue27.Text, dateExpired: DateValue14.SelectedDate});
-                            ResetForm(Form3);
+                            =Patch
+                                (Alerts_1, Gallery4.Selected, 
+                                    {titleText: DataCardValue23_1.Text, 
+                                    messageText: DataCardValue27_1.Text, 
+                                    dateExpired: DateValue14_1.SelectedDate}
+                                );
+                            ResetForm(Form3_1);
                             Set(Editing, false);
                             Navigate('Alert Manager');
                         Text: ="Update Alert"
@@ -155,7 +160,7 @@
                     CancelBtn As button:
                         Height: =CreateAlertBtn.Height
                         OnSelect: |
-                            =ResetForm(Form3);
+                            =ResetForm(Form3_1);
                             Set(Editing, false);
                         Text: ="Cancel"
                         Visible: =!(Form3.Mode = FormMode.View)
@@ -173,9 +178,9 @@
                                     Alerts_1,
                                     Defaults(Alerts_1),
                                     {
-                                        titleText: DataCardValue23.Text,
-                                        messageText: DataCardValue27.Text,
-                                        dateExpired: DateValue14.SelectedDate,
+                                        titleText: DataCardValue23_1.Text,
+                                        messageText: DataCardValue27_1.Text,
+                                        dateExpired: DateValue14_1.SelectedDate,
                                         creatorId: userData.id
                                     }
                                 )
