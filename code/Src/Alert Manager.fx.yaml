@@ -36,87 +36,12 @@
                 Width: =Parent.Width
                 ZIndex: =2
 
-        Container6_4 As groupContainer.manualLayoutContainer:
-            FillPortions: =0
-            Height: =SearchTickets.Height/1.5
-            LayoutMinHeight: =//100
-            LayoutMinWidth: =250
-            Width: =Parent.Width
-            ZIndex: =3
-
-            Container7_5 As groupContainer.manualLayoutContainer:
-                Fill: =ColorScheme.primary
-                Height: =Parent.Height
-                Width: =Parent.Width
-                ZIndex: =1
-
-                Rectangle6_3 As rectangle:
-                    Fill: =ColorScheme.primary
-                    Height: =Parent.Height
-                    Width: =Parent.Width
-                    X: |
-                        =
-                        0
-                    ZIndex: =1
-
-            ColAllTicket_5 As groupContainer.horizontalAutoLayoutContainer:
-                Height: =SearchTickets.Height/1.5
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                LayoutMode: =LayoutMode.Auto
-                Width: =Parent.Width
-                Y: |
-                    =
-                ZIndex: =2
-
-                id_5 As label:
-                    Align: =Align.Center
-                    Color: =ColorScheme.screenBackground
-                    Text: ="Creator ID"
-                    Width: |
-                        =Parent.Width/9
-                    X: =608
-                    ZIndex: =1
-
-                title_5 As label:
-                    Align: =Align.Center
-                    Color: =ColorScheme.screenBackground
-                    Text: ="Title"
-                    Width: =Parent.Width/5
-                    X: =608
-                    ZIndex: =2
-
-                date_created_5 As label:
-                    Align: =Align.Center
-                    Color: =ColorScheme.screenBackground
-                    Text: ="Date Created"
-                    Width: =Parent.Width/7
-                    X: =608
-                    ZIndex: =4
-
-                attachments_4 As label:
-                    Align: =Align.Center
-                    Color: =ColorScheme.screenBackground
-                    Text: ="Expiration Date"
-                    Width: =Parent.Width/7
-                    X: =608
-                    ZIndex: =5
-
-                status_5 As label:
-                    Align: =Align.Center
-                    Color: =ColorScheme.screenBackground
-                    Text: ="Status"
-                    Width: |
-                        =Parent.Width/9
-                    X: =608
-                    ZIndex: =6
-
         Container1 As groupContainer.verticalAutoLayoutContainer:
             LayoutDirection: =If(ScreenSize<600, LayoutDirection.Vertical, LayoutDirection.Horizontal)
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            ZIndex: =4
+            ZIndex: =3
 
             "Gallery4 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
                 DelayItemLoading: =true
@@ -253,7 +178,7 @@
             Visible: |
                 ='Alert Manager'.Size =1
             Width: =Parent.Width
-            ZIndex: =5
+            ZIndex: =4
 
             compMobileMenu_8 As compMobileMenu:
                 Height: =Parent.Height
