@@ -151,6 +151,7 @@
                             Set(Editing, false);
                             Navigate('Alert Manager');
                         Text: ="Update Alert"
+                        Underline: =true
                         Visible: =If(Editing, true, false)
                         Width: =CancelBtn.Width
                         X: =CancelBtn.X + Self.Width + Self.Width/5
@@ -206,7 +207,7 @@
                         Text: ="Create Alert"
                         Visible: =If(Editing, false, true)
                         Width: = If( 'Create Alert'.Size =1, Parent.Width/4.5 ,Parent.Width/7)
-                        X: =If ('Create Alert'.Size =1 , Parent.Width/10 ,Parent.Width/3.5)
+                        X: =If('Create Alert'.Size = 1,(If (UpdateAlertBtn.Visible = false,  Parent.Width/4.5 ,Parent.Width/11)),(If (UpdateAlertBtn.Visible = false,  Parent.Width/3 ,Parent.Width/11)))
                         Y: =Parent.Height/3
                         ZIndex: =3
 
