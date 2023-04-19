@@ -88,7 +88,9 @@
                         OnSelect: |-
                             =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                         ShowScrollbar: =false
-                        TemplateSize: =Parent.Height/3
+                        TemplateSize: |-
+                            =//Parent.Height/3
+                            If('Category Select'.Size > 1, Parent.Height/3, 200)
                         Width: =Parent.Width
                         WrapCount: =Switch('Category Select'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 3, ScreenSize.Large, 3, 4)
                         Y: =215
@@ -99,14 +101,18 @@
                             Color: =ColorScheme.secondary
                             DisabledFill: =RGBA(0, 0, 0, 0)
                             Fill: =ColorScheme.secondary
-                            Height: =Parent.TemplateHeight - 20
+                            Height: |-
+                                =//Parent.TemplateHeight - 20
+                                If('Category Select'.Size > 1, Parent.TemplateHeight *.8, Parent.TemplateHeight - 50)
                             HoverColor: =RGBA(0, 0, 0,0)
                             OnSelect: |-
                                 =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                             PressedColor: =RGBA(0, 0, 0,0)
                             PressedFill: =
                             Text: =""
-                            Width: =Parent.TemplateWidth - 20
+                            Width: |-
+                                =//Parent.TemplateWidth - 20
+                                If('Category Select'.Size > 1, Parent.TemplateWidth *.8, Parent.TemplateWidth - 50)
                             X: =(Parent.TemplateWidth - Self.Width)/2
                             Y: =(Parent.TemplateHeight - Self.Height)/2
                             ZIndex: =1
@@ -115,13 +121,21 @@
                             Align: =Align.Center
                             Color: =ColorScheme.primary
                             FontWeight: =FontWeight.Semibold
-                            Height: =Parent.TemplateHeight - 20
+                            Height: |-
+                                =//Parent.TemplateHeight - 20
+                                If('Category Select'.Size > 1, Parent.TemplateHeight * .8, Parent.TemplateHeight - 50)
                             HoverColor: =
                             OnSelect: |-
                                 =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})
                             Size: =If('Category Select'.Size =1,11,15)
-                            Text: =ThisItem.name
-                            Width: =Parent.TemplateWidth - 20
+                            Text: |-
+                                =//ThisItem.name
+                                
+                                // If Screen is in mobile view and string contains / and cannot fit on one line, then move the second half to another line
+                                If('Category Select'.Size > 2, ThisItem.name, If(Len(ThisItem.name) > 15 && "/" in ThisItem.name , Left(ThisItem.name, Find("/", ThisItem.name)) & Char(10) & Right(ThisItem.name, Len(ThisItem.name) - Find("/", ThisItem.name)), ThisItem.name))
+                            Width: |-
+                                =//Parent.TemplateWidth - 20
+                                If('Category Select'.Size > 1, Parent.TemplateWidth * .8, Parent.TemplateWidth - 50)
                             X: =(Parent.TemplateWidth-Self.Width)/2
                             Y: =(Parent.TemplateHeight - Self.Height)/2
                             ZIndex: =2
@@ -131,7 +145,9 @@
                             Color: =RGBA(0, 0, 0,0)
                             DisabledFill: =RGBA(0, 0, 0, 0)
                             Fill: =RGBA(0, 0, 0,0)
-                            Height: =Parent.TemplateHeight - 20
+                            Height: |-
+                                =//Parent.TemplateHeight - 20
+                                If('Category Select'.Size > 1, Parent.TemplateHeight *.8, Parent.TemplateHeight - 50)
                             HoverColor: =RGBA(0, 0, 0,0)
                             HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
                             OnSelect: |-
@@ -139,7 +155,9 @@
                             PressedColor: =RGBA(0, 0, 0,0)
                             PressedFill: =
                             Text: =""
-                            Width: =Parent.TemplateWidth - 20
+                            Width: |-
+                                =//Parent.TemplateWidth - 20
+                                If('Category Select'.Size > 1, Parent.TemplateWidth *.8, Parent.TemplateWidth - 50)
                             X: =(Parent.TemplateWidth - Self.Width)/2
                             Y: =(Parent.TemplateHeight - Self.Height)/2
                             ZIndex: =4
