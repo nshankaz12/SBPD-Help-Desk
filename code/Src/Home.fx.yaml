@@ -162,7 +162,7 @@ Home As screen:
                             ShowScrollbar: =false
                             TemplateSize: =Parent.Height/2.67
                             Width: =Parent.Width
-                            WrapCount: =Switch(Home.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
+                            WrapCount: =Switch(Home.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, If(userData.role ="staff", 3, 4))
                             Y: =If(Home.Size=1, 0 ,Parent.Height/4)
                             ZIndex: =1
 
