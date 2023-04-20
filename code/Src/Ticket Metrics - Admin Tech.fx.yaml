@@ -55,7 +55,7 @@
                 Fill: =ColorScheme.primary
                 FillPortions: =1
                 Size: =If('Ticket Metrics - Admin Tech'.Size=1, titleText.mobileSize, titleText.desktopSize)
-                Text: ="Ticket Metrics"&'Ticket Metrics - Admin Tech'.Size
+                Text: ="Ticket Metrics"
                 Width: =Parent.Width
                 ZIndex: =2
 
@@ -70,75 +70,6 @@
             LayoutMode: =LayoutMode.Auto
             Width: =Parent.Width
             ZIndex: =3
-
-            Gallery1_10 As gallery.galleryHorizontal:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                BorderStyle: =BorderStyle.None
-                BorderThickness: =5
-                DelayItemLoading: =true
-                Height: =Parent.Height
-                Items: =ticketMetrics
-                LayoutMinHeight: =Parent.Height
-                LayoutMinWidth: =Parent.Width
-                LoadingSpinner: =LoadingSpinner.Data
-                TemplatePadding: =10
-                TemplateSize: |-
-                    =Parent.Height/2
-                    
-                    //If('Category Select'.Size > 1, Parent.Height/2, 200)
-                    
-                    //If(Self.Layout = Layout.Horizontal, Min(320, Self.Width - 60), Min(320, Self.Height - 60))
-                Visible: |-
-                    =//'Ticket Metrics - Admin Tech'.Size > 1
-                    false
-                Width: =Parent.Width
-                WrapCount: |-
-                    =//Switch('Ticket Metrics - Admin Tech'.Size,ScreenSize.Medium,2, ScreenSize.Large, 1, 1)
-                    
-                    Switch('Ticket Metrics - Admin Tech'.Size,4,1,3,2,2,4,1)
-                X: = //Parent.Width/2 - Rectangle6_4.Width*2 - 50
-                ZIndex: =3
-
-                MonthlyLabel As label:
-                    Align: =Align.Center
-                    AutoHeight: =true
-                    FontWeight: =FontWeight.Bold
-                    OnSelect: =Select(Parent)
-                    Text: =ThisItem.metricTitle
-                    Width: =Rectangle6_4.Width
-                    X: =Rectangle6_4.X
-                    Y: =Rectangle6_4.Y
-                    ZIndex: =1
-
-                NumberLabel As label:
-                    Align: =Align.Center
-                    Color: =RGBA(56, 96, 178, 1)
-                    FontWeight: =FontWeight.Bold
-                    Height: =Rectangle6_4.Width
-                    OnSelect: =Select(Parent)
-                    Size: =Switch('Ticket Metrics - Admin Tech'.Size,1,30,2,35,3,40,55)
-                    Text: =ThisItem.metricNumber
-                    Width: =Rectangle6_4.Width
-                    X: =Rectangle6_4.X
-                    Y: =Rectangle6_4.Y
-                    ZIndex: =2
-
-                Rectangle6_4 As rectangle:
-                    BorderThickness: =2
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: |-
-                        =//Rectangle6_4.Width //to make it a square
-                        Parent.TemplateHeight/2
-                    OnSelect: =Select(Parent)
-                    Width: =Parent.TemplateWidth
-                    X: |-
-                        =//If(ScreenSize.Medium, Parent.Width/2 - Rectangle6_4.Width, Parent.Width/2 - Rectangle6_4.Width*2 - 50)
-                        
-                        //Parent.Width/2 - Rectangle6_4.Width*2 - 50
-                        
-                        (Parent.TemplateWidth - Self.Width)/2
-                    Y: =(Parent.Height - Rectangle6_4.Height)/2
-                    ZIndex: =4
 
             Gallery1_11 As gallery.galleryHorizontal:
                 AlignInContainer: =AlignInContainer.Center
@@ -355,6 +286,6 @@
         OnSelect: =Navigate('Admin Manager', ScreenTransition.Fade)//Back(ScreenTransition.Fade)
         Width: =49
         X: =15
-        Y: =SingleTicketInfo_Title.Y
+        Y: =73
         ZIndex: =3
 
