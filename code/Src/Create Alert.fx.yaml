@@ -55,14 +55,14 @@
                 NumberOfColumns: =1
                 ZIndex: =2
 
-                title_DataCard2_1 As typedDataCard.textualEditCard:
+                DescriptionDataCard As typedDataCard.textualEditCard:
                     BorderStyle: =BorderStyle.Solid
                     DataField: ="Description"
                     Default: =ThisItem.messageText
                     DisplayMode: =Parent.DisplayMode
                     DisplayName: =DataSourceInfo([@Alerts_1],DataSourceInfo.DisplayName,"Title")
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =50
+                    Height: =Parent.Height/3
                     MaxLength: =DataSourceInfo([@Alerts_1], DataSourceInfo.MaxLength, "Description")
                     Required: =false
                     Update: =DataCardValue27_1.Text
@@ -83,10 +83,12 @@
 
                     DataCardValue27_1 As text:
                         BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                        Default: =ThisItem.messageText
+                        Default: ="Please Describe Your Issue"
                         DelayOutput: =true
                         DisplayMode: =Parent.DisplayMode
+                        Height: =Parent.Height/2
                         MaxLength: =Parent.MaxLength
+                        Mode: =TextMode.MultiLine
                         PaddingLeft: =5
                         RadiusBottomLeft: =0
                         RadiusBottomRight: =0
@@ -211,14 +213,14 @@
                         Y: =Parent.Height/3
                         ZIndex: =3
 
-                messageText_DataCard4_1 As typedDataCard.textualEditCard:
+                TitleDataCard As typedDataCard.textualEditCard:
                     BorderStyle: =BorderStyle.Solid
                     DataField: ="Title"
                     Default: =ThisItem.titleText
                     DisplayMode: =Parent.DisplayMode
                     DisplayName: =DataSourceInfo([@Alerts_1],DataSourceInfo.DisplayName,"field_2")
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =50
+                    Height: =Parent.Height/6
                     MaxLength: =DataSourceInfo([@Alerts_1], DataSourceInfo.MaxLength, "Title")
                     Required: =true
                     Update: =DataCardValue23_1.Text
@@ -294,7 +296,7 @@
                     DisplayMode: =Parent.DisplayMode
                     DisplayName: =DataSourceInfo([@Alerts_1],DataSourceInfo.DisplayName,"field_7")
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =50
+                    Height: =Parent.Height/6
                     Required: =false
                     Update: =DateValue14_1.SelectedDate + Time(Value(HourValue14_1.Selected.Value), Value(MinuteValue14_1.Selected.Value), 0)
                     Visible: =true
