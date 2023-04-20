@@ -84,7 +84,7 @@
                     Label6_3 As label:
                         Align: =Align.Center
                         Height: =Parent.Height/1.5
-                        Size: =Switch('Tag Manager'.Size,4,14,3,14,2,14,1,13)
+                        Size: =Switch('Tag Manager'.Size,4,14,3,14,2,14,1,10)
                         Text: ="Tag Name"
                         Width: |-
                             =//Parent.Width/4
@@ -420,10 +420,9 @@
                             Y: =(Parent.TemplateHeight - Self.Height)/2
                             ZIndex: =5
 
-            TagMobileNav As groupContainer.verticalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
+            TagManagerFooter As groupContainer.verticalAutoLayoutContainer:
                 FillPortions: =0
-                Height: =compMobileMenu_19.Height
+                Height: =Parent.Height/8
                 LayoutDirection: =LayoutDirection.Vertical
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
@@ -431,6 +430,12 @@
                 Visible: =If('Tag Manager'.Size = 1, true, false)
                 Width: =Parent.Width
                 ZIndex: =6
+
+                compMobileMenu_12 As compMobileMenu:
+                    Height: =Parent.Height
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    Width: =Parent.Width
 
     Toggle1 As toggleSwitch:
         Default: =true
@@ -440,6 +445,7 @@
             
             false
         TrueFill: =RGBA(54, 176, 75, 1)
+        Visible: =false
         X: =80// was originally in position X 21
         Y: =compWebHeader_11.Height + (UserNameLabel_6.Height - Self.Height) / 2
         ZIndex: =2
