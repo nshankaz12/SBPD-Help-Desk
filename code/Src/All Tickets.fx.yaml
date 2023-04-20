@@ -196,57 +196,46 @@
                             id_2 As label:
                                 Align: =Align.Center
                                 Color: =ColorScheme.screenBackground
+                                Size: =If ('All Tickets'.Size =1, 10, 13)
                                 Text: ="ID"
-                                Width: =Parent.Width/7
+                                Width: =Parent.Width/5
                                 X: =608
                                 ZIndex: =1
 
                             status_2 As label:
                                 Align: =Align.Center
                                 Color: =ColorScheme.screenBackground
+                                Size: =If ('All Tickets'.Size =1, 10, 13)
                                 Text: ="Status"
-                                Width: =Parent.Width/7
+                                Width: =Parent.Width/5
                                 X: =608
                                 ZIndex: =2
 
                             title_2 As label:
                                 Align: =Align.Center
                                 Color: =ColorScheme.screenBackground
+                                Size: =If ('All Tickets'.Size =1, 10, 13)
                                 Text: ="Title"
-                                Width: =Parent.Width/7
+                                Width: =Parent.Width/5
                                 X: =608
                                 ZIndex: =3
-
-                            description_2 As label:
-                                Align: =Align.Center
-                                Color: =ColorScheme.screenBackground
-                                Text: ="Description"
-                                Width: =Parent.Width/7
-                                ZIndex: =4
 
                             date_created_2 As label:
                                 Align: =Align.Center
                                 Color: =ColorScheme.screenBackground
+                                Size: =If ('All Tickets'.Size =1, 10, 13)
                                 Text: ="Date Created"
-                                Width: =Parent.Width/7
+                                Width: =Parent.Width/5
                                 X: =608
                                 ZIndex: =5
-
-                            attachments_2 As label:
-                                Align: =Align.Center
-                                Color: =ColorScheme.screenBackground
-                                Text: |-
-                                    ="# of Attachments"
-                                Width: =Parent.Width/7
-                                X: =608
-                                ZIndex: =6
 
                             tags_2 As label:
                                 Align: =Align.Center
                                 Color: =ColorScheme.screenBackground
+                                Size: =If ('All Tickets'.Size =1, 10, 13)
                                 Text: |-
                                     ="# of Tags"
-                                Width: =Parent.Width/7
+                                Width: =Parent.Width/5
                                 X: =608
                                 ZIndex: =7
 
@@ -284,17 +273,6 @@
                             X: =tags_2.X
                             ZIndex: =1
 
-                        Label37_1 As label:
-                            Align: =Align.Center
-                            BorderThickness: =2
-                            FontWeight: =FontWeight.Lighter
-                            Height: =Parent.TemplateHeight
-                            OnSelect: =Select(Parent)
-                            Text: =ThisItem.IsSelected
-                            Width: =id_2.Width
-                            X: =attachments_2.X
-                            ZIndex: =2
-
                         Label38_1 As label:
                             Align: =Align.Center
                             BorderThickness: =2
@@ -304,18 +282,6 @@
                             Width: =id_2.Width
                             X: =date_created_2.X
                             ZIndex: =3
-
-                        Label39_1 As label:
-                            Align: =Align.Center
-                            BorderThickness: =2
-                            Height: =Parent.TemplateHeight
-                            OnSelect: =Select(Parent)
-                            Text: |-
-                                =//ThisItem.description
-                                If(Len(ThisItem.Description)>45, Concatenate(Left(ThisItem.Description,45),"..."),ThisItem.Description)
-                            Width: =id_2.Width
-                            X: =description_2.X
-                            ZIndex: =4
 
                         Label8 As label:
                             Align: =Align.Center
