@@ -115,19 +115,6 @@
                         Y: =DataCardValue27_1.Y + DataCardValue27_1.Height
                         ZIndex: =3
 
-                    StarVisible46_1 As label:
-                        Align: =Align.Center
-                        Height: =DataCardKey46_1.Height
-                        PaddingBottom: =0
-                        PaddingLeft: =0
-                        PaddingRight: =0
-                        PaddingTop: =0
-                        Text: ="*"
-                        Width: =30
-                        Wrap: =false
-                        Y: =DataCardKey46_1.Y
-                        ZIndex: =4
-
                 DataCard3 As typedDataCard.blankCard:
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
@@ -140,7 +127,7 @@
 
                     UpdateAlertBtn As button:
                         FontWeight: =FontWeight.Bold
-                        Height: =CancelBtn.Height
+                        Height: =CreateAlertBtn.Height
                         OnSelect: |
                             =Patch
                                 (Alerts_1, Gallery4.Selected, 
@@ -154,9 +141,9 @@
                         Text: ="Update Alert"
                         Underline: =true
                         Visible: =If(Editing, true, false)
-                        Width: =CancelBtn.Width
-                        X: =CancelBtn.X + Self.Width + Self.Width/5
-                        Y: =CancelBtn.Y
+                        Width: =CreateAlertBtn.Width
+                        X: =CreateAlertBtn.X
+                        Y: =CreateAlertBtn.Y
                         ZIndex: =1
 
                     CancelBtn As button:
@@ -207,8 +194,8 @@
                             Navigate('Alert Manager');
                         Text: ="Create Alert"
                         Visible: =If(Editing, false, true)
-                        Width: = If( 'Create Alert'.Size =1, Parent.Width/4.5 ,Parent.Width/7)
-                        X: =If('Create Alert'.Size = 1,(If (UpdateAlertBtn.Visible = false,  Parent.Width/4.5 ,Parent.Width/11)),(If (UpdateAlertBtn.Visible = false,  Parent.Width/3 ,Parent.Width/11)))
+                        Width: = If( 'Create Alert'.Size =1, Parent.Width/3 ,Parent.Width/7)
+                        X: =If('Create Alert'.Size = 1, Parent.Width/10 ,Parent.Width/3)
                         Y: =Parent.Height/3
                         ZIndex: =3
 
@@ -396,20 +383,6 @@
                         X: =30
                         Y: =HourValue14_1.Y + HourValue14_1.Height
                         ZIndex: =6
-
-                    StarVisible42_1 As label:
-                        Align: =Align.Center
-                        Height: =DataCardKey42_1.Height
-                        PaddingBottom: =0
-                        PaddingLeft: =0
-                        PaddingRight: =0
-                        PaddingTop: =0
-                        Text: ="*"
-                        Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                        Width: =30
-                        Wrap: =false
-                        Y: =DataCardKey42_1.Y
-                        ZIndex: =7
 
         CreateAlertFooter As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
