@@ -92,7 +92,7 @@
                             =//Parent.Height/3
                             If('Category Select'.Size > 1, Parent.Height/3, 200)
                         Width: =Parent.Width
-                        WrapCount: =Switch('Category Select'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 3, ScreenSize.Large, 3, 4)
+                        WrapCount: =Switch('Category Select'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 3, ScreenSize.Large, 3, If(userData.role ="staff", 3, 4))
                         Y: =215
                         ZIndex: =2
 

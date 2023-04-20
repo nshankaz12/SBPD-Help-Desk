@@ -115,18 +115,7 @@
                     Height: =168
                     OnSelect: =Select(Parent)
                     Width: =Parent.Width
-                    ZIndex: =10
-
-                Button2 As button:
-                    OnSelect: |
-                        =EditForm(Form3_1);
-                        Navigate(Form3_1, ScreenTransition.None, {recordVar: ThisItem});
-                        Set(Editing, true)
-                    Text: ="Edit Alert"
-                    Width: =100
-                    X: =(Parent.TemplateWidth - Self.Width) -20
-                    Y: =64
-                    ZIndex: =11
+                    ZIndex: =1
 
                 Description As label:
                     Height: =120
@@ -141,14 +130,14 @@
                     VerticalAlign: =VerticalAlign.Top
                     Width: =Parent.Width-Button2.Width-20
                     Y: =48
-                    ZIndex: =14
+                    ZIndex: =2
 
                 Separator4 As rectangle:
                     Height: =5
                     OnSelect: =Select(Parent)
                     Width: =Parent.TemplateWidth
                     Y: =Parent.TemplateHeight-5
-                    ZIndex: =19
+                    ZIndex: =3
 
                 Alert_Details_Label As label:
                     OnSelect: =Select(Parent)
@@ -157,14 +146,14 @@
                         ="Details: "
                     Visible: =false
                     Y: =36
-                    ZIndex: =20
+                    ZIndex: =4
 
                 Gallery_Vertical_Container As groupContainer.verticalAutoLayoutContainer:
                     Height: =168
                     LayoutDirection: =LayoutDirection.Vertical
                     LayoutMode: =LayoutMode.Auto
                     Width: =Parent.Width
-                    ZIndex: =21
+                    ZIndex: =5
 
                     Gallery_Column_Container As groupContainer.horizontalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
@@ -245,6 +234,17 @@
                             X: =1054
                             Y: =1
                             ZIndex: =5
+
+                Button2 As button:
+                    OnSelect: |
+                        =EditForm(Form3_1);
+                        Navigate(Form3_1, ScreenTransition.None, {recordVar: ThisItem});
+                        Set(Editing, true)
+                    Text: ="Edit Alert"
+                    Width: =100
+                    X: =(Parent.TemplateWidth - Self.Width) -20
+                    Y: =64
+                    ZIndex: =6
 
         AlertManagerFooter As groupContainer.verticalAutoLayoutContainer:
             Fill: =RGBA(255,255,255, 1)
