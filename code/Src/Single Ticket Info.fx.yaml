@@ -1333,7 +1333,7 @@
                                                 }
                                             );
                                             If(
-                                                userData.role = "admin" || userData.role = "tech",
+                                                (userData.role = "admin" || userData.role = "tech") && User().FullName <> LookUp(Users_1, ID = ticketInfo.CreatorId,fullName),
                                                 SMTP.SendEmailV3(
                                                     {
                                                         From: "sbpdhelpdesk@outlook.com",
@@ -1526,30 +1526,27 @@
                         Fill: =ColorScheme.primary
                         Height: =30
                         OnSelect: |-
-                            =// sql
-                            /*
-                            If(AssigneeId.Text = "0",
-                                Patch(
-                                    Tickets_1,
-                                    LookUp(
-                                        Tickets_1,
-                                        id = ticketInfo.ID
-                                    ),
-                                    {tags: Label4_1.Text},
-                                    {assignedTO: 0}
+                            =// sharepoint
+                            If(
+                                Assignee_Value_Label.Text <> User().FullName && Assignee_Value_Label.Text <> LookUp(
+                                    Users_1,
+                                    ID = ticketInfo.AssignedTo,
+                                    fullName
                                 ),
-                                Patch(
-                                    Tickets_1,
-                                    LookUp(
-                                        Tickets_1,
-                                        id = ticketInfo.ID
-                                    ),
-                                    {tags: Label4_1.Text},
-                                    {assignedTO: Value(AssigneeId.Text)},
-                                    {addAssignees: Additional_Assign_Value_Label.Text}
-                                    )
-                            );*/
-                            // sharepoint
+                                SMTP.SendEmailV3(
+                                    {
+                                        From: "sbpdhelpdesk@outlook.com",
+                                        To: LookUp(
+                                            Users_1,
+                                            fullName = Assignee_Value_Label.Text,
+                                            email
+                                        ),
+                                        Subject: "Help Desk Ticket Assigned",
+                                        Body: "<div>Hello, this is an automated response. An IT Help Desk ticket # " & rec.ID & " was assigned to you. Please click the link below to view more details for the ticket.</div>"
+                                    }
+                                );
+                                
+                            );
                             Patch(
                                 Tickets,
                                 LookUp(
@@ -1573,8 +1570,8 @@
                             =//If(userData.role = "staff", false,true)
                             If(userData.role = "staff",false,showComboBox)
                         Width: =120
-                        X: =(Parent.Width-Self.Width)/2
-                        Y: =Created_Label.Height+ Created_Label.Y+30
+                        X: =161
+                        Y: =430
                         ZIndex: =3
 
                     Tags_ComboBox_Value As label:
@@ -1630,14 +1627,14 @@
                         Height: =30
                         Items: =Tags_1
                         OnChange: |-
-                            =Patch(
+                            =/*Patch(
                                 Tickets,
                                 LookUp(
                                     Tickets,
                                     ID = ticketInfo.ID
                                 ),
                                 {tags: Tags_ComboBox_Value.Text}
-                            );
+                            );*/
                         SearchFields: =["field_2"]
                         SearchItems: =Search(Tags_1,Tags_ComboBox.SearchText,"field_2")
                         Size: =Assignee_ComboBox.Size
@@ -1732,14 +1729,14 @@
                         IsSearchable: =false
                         Items: =Filter(Users_1, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label.Text)
                         OnChange: |-
-                            =Patch(
+                            =/*Patch(
                                 Tickets,
                                 LookUp(
                                     Tickets,
                                     ID = ticketInfo.ID
                                 ),
                                 {addAssignees: Additional_Assign_Value_Label.Text}
-                            );
+                            );*/
                         SearchFields: =["field_4"]
                         SearchItems: =[]
                         Size: =Assignee_ComboBox.Size
@@ -1788,7 +1785,7 @@
                         Items: =Filter(Users_1, userRole = "tech" || userRole = "admin")
                         NoSelectionText: ="Unassigned"
                         OnChange: |-
-                            =Patch(
+                            =/*Patch(
                                 Tickets,
                                 LookUp(
                                     Tickets,
@@ -1801,7 +1798,7 @@
                                         Value(AssigneeId.Text)
                                     )
                                 }
-                            );
+                            );*/
                         SearchFields: =["field_4"]
                         SearchItems: =Search(Filter(Users_1, userRole = "tech" || userRole = "admin"),Assignee_ComboBox.SearchText,"field_4")
                         SelectMultiple: =false
@@ -1822,8 +1819,8 @@
                         Text: =Concat(Assignee_ComboBox.SelectedItems, Concatenate(fullName, ""))
                         Visible: =false
                         Width: =Rectangle_behind_details.Width
-                        X: =(Parent.Width-Self.Width)/2
-                        Y: =Assignee_Label.Y 
+                        X: =25
+                        Y: =129
                         ZIndex: =19
 
                     Assignee_Label As label:
@@ -1854,7 +1851,7 @@
                         Height: =30
                         HoverColor: =ColorScheme.primary
                         OnSelect: |+
-                            =UpdateContext({assigneeTo:userData.id}); 
+                            =UpdateContext({primAssignee:userData.id}); 
                             Reset(Assignee_ComboBox);
                             /* Patch(
                                 Tickets,
@@ -1907,8 +1904,8 @@
                         Height: =30
                         Text: =Concat(Additional_Assign_ComboBox.SelectedItems, Concatenate(fullName, ","))
                         Visible: =false
-                        X: =45.5
-                        Y: =80
+                        X: =152
+                        Y: =500
                         ZIndex: =25
 
     compMobileMenu_22 As compMobileMenu:
