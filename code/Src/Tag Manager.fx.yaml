@@ -49,7 +49,7 @@
                     FillPortions: =1
                     Height: =Parent.Height
                     Size: =If('Tag Manager'.Size= 1 , titleText.mobileSize, titleText.desktopSize)
-                    Text: ="Tag Manager"
+                    Text: ="Tag Manager"&'Tag Manager'.Size&Label6_3.Size
                     Width: =Parent.Width
                     X: =(Parent.Width - Self.Width)/2
                     ZIndex: =2
@@ -83,12 +83,13 @@
 
                     Label6_3 As label:
                         Align: =Align.Center
+                        BorderThickness: =2
                         Height: =Parent.Height/1.5
-                        Size: =Switch('Tag Manager'.Size,4,14,3,14,2,14,1,10)
+                        Size: =Switch('Tag Manager'.Size,4,14,3,14,2,14,1,8)
                         Text: ="Tag Name"
                         Width: |-
                             =//Parent.Width/4
-                            If('Tag Manager'.Size = 1,TextInput1_8.Width/4,Parent.Width/8)
+                            If('Tag Manager'.Size = 1,TextInput1_8.Width/1.5,Parent.Width/8)
                         Y: |
                             =0
                         ZIndex: =8
