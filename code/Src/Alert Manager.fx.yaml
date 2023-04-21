@@ -1,6 +1,6 @@
 "'Alert Manager' As screen":
     Fill: =
-    OnVisible: =true
+    OnVisible: =Refresh(Alerts_1)
 
     Container6 As groupContainer.verticalAutoLayoutContainer:
         Height: =Parent.Height
@@ -99,7 +99,7 @@
                 AlignInContainer: =AlignInContainer.Start
                 DelayItemLoading: =true
                 Height: =Parent.Height
-                Items: =Filter(Alerts_1, dateExpired >= Today())
+                Items: =Filter(Alerts_1, dateExpired >= Today() || IsBlank(dateExpired))
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =250
                 LayoutMinWidth: =250
