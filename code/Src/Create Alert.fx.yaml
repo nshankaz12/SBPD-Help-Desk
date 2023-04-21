@@ -148,9 +148,10 @@
 
                     CancelBtn As button:
                         Height: =CreateAlertBtn.Height
-                        OnSelect: |
+                        OnSelect: |-
                             =ResetForm(Form3_1);
                             Set(Editing, false);
+                            Navigate('Alert Manager',ScreenTransition.None);
                         Text: ="Cancel"
                         Visible: =!(Form3.Mode = FormMode.View)
                         Width: =CreateAlertBtn.Width

@@ -96,17 +96,24 @@ Home As screen:
                     Width: =Parent.Width
                     ZIndex: =3
 
-                    Icon1 As icon.CancelBadge:
-                        AlignInContainer: =AlignInContainer.Stretch
-                        BorderThickness: =1
-                        Color: =RGBA(0, 0, 0, 1)
-                        Fill: =RGBA(255, 255, 140, 1)
-                        Height: =29
-                        Icon: =Icon.CancelBadge
-                        OnSelect: =Set(galleryVisible, false)
-                        PaddingLeft: =1330
+                    Container5 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.End
+                        FillPortions: =0
+                        Height: =35
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
                         Visible: =If(galleryVisible, true, false)
                         ZIndex: =1
+
+                        Icon1 As icon.Cancel:
+                            AlignInContainer: =AlignInContainer.Start
+                            FillPortions: =1
+                            Height: =30
+                            Icon: =Icon.Cancel
+                            OnSelect: =Set(galleryVisible, false)
+                            PaddingLeft: =450
+                            ZIndex: =1
 
                     "Gallery8 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
                         Fill: =RGBA(255, 255, 128, 1)
@@ -152,7 +159,7 @@ Home As screen:
                     Container3 As groupContainer.manualLayoutContainer:
                         LayoutMinHeight: =100
                         LayoutMinWidth: =250
-                        ZIndex: =4
+                        ZIndex: =3
 
                         ButtonGallery_1 As gallery.galleryVertical:
                             Height: =If(Home.Size>1,Parent.Height/2.5, Parent.Height)

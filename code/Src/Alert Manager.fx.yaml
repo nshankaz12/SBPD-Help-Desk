@@ -45,21 +45,10 @@
             LayoutMode: =LayoutMode.Auto
             ZIndex: =2
 
-            Label5 As label:
-                Align: =Align.Center
-                BorderColor: =RGBA(50, 86, 160, 1)
-                Color: =RGBA(255, 255, 255, 1)
-                Fill: =ColorScheme.primary
-                FocusedBorderThickness: =1
-                Size: =compPageTextSizeFormatter_2.FinalTextSize
-                Text: ="Creator ID"
-                Width: =Parent.Width/5
-                ZIndex: =1
-
             Label7 As label:
                 Align: =Align.Center
                 Color: =RGBA(255, 255, 255, 1)
-                Size: =Label5.Size
+                Size: =compPageTextSizeFormatter_2.FinalTextSize
                 Text: ="Title"
                 Width: =Parent.Width/5
                 ZIndex: =2
@@ -67,7 +56,7 @@
             Label9 As label:
                 Align: =Align.Center
                 Color: =RGBA(255, 255, 255, 1)
-                Size: =Label5.Size
+                Size: =Label7.Size
                 Text: ="Date Created"
                 Width: =Parent.Width/5
                 ZIndex: =3
@@ -75,7 +64,7 @@
             Label10 As label:
                 Align: =Align.Center
                 Color: =RGBA(255, 255, 255, 1)
-                Size: =Label5.Size
+                Size: =Label7.Size
                 Text: ="Expiration Date"
                 Width: =Parent.Width/5
                 ZIndex: =4
@@ -83,10 +72,21 @@
             Label11 As label:
                 Align: =Align.Center
                 Color: =RGBA(255, 255, 255, 1)
-                Size: =Label5.Size
+                Size: =Label7.Size
                 Text: ="Status"
                 Width: =Parent.Width/5
                 ZIndex: =5
+
+            Button1 As button:
+                AlignInContainer: =AlignInContainer.Center
+                OnSelect: |
+                    =NewForm(Form3_1);
+                    Navigate('Create Alert', ScreenTransition.Fade)
+                Size: =Label7.Size
+                Text: ="New Alert"
+                Width: =Parent.Width/5
+                X: =
+                ZIndex: =6
 
         Container1 As groupContainer.verticalAutoLayoutContainer:
             LayoutDirection: =If(ScreenSize<600, LayoutDirection.Vertical, LayoutDirection.Horizontal)
@@ -140,11 +140,13 @@
                     ZIndex: =3
 
                 Alert_Details_Label As label:
+                    Height: =127
                     OnSelect: =Select(Parent)
                     Size: =18
                     Text: |-
                         ="Details: "
                     Visible: =false
+                    Width: =1186
                     Y: =36
                     ZIndex: =4
 
@@ -166,25 +168,28 @@
                         Width: =Parent.Width
                         ZIndex: =1
 
-                        Alert_CreatorId_Label As label:
+                        Alert_TitleText_Label As label:
                             Align: =Align.Center
                             BorderThickness: =1
+                            FontWeight: =FontWeight.Semibold
                             Height: =Parent.Height-10
                             PaddingBottom: =0
                             PaddingLeft: =
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =compPageTextSizeFormatter_2.FinalTextSize
-                            Text: =ThisItem.creatorId
+                            Text: |
+                                =ThisItem.titleText
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Parent.Width/5
                             X: =38
                             Y: =16
                             ZIndex: =1
 
-                        Alert_Title_Label As label:
+                        Alert_Date_Time_created_Label As label:
                             Align: =Align.Center
                             BorderThickness: =1
+                            FontWeight: =FontWeight.Normal
                             Height: =Parent.Height-10
                             OnSelect: |
                                 =false
@@ -193,47 +198,36 @@
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =Switch('Alert Manager'.Size, 4,22,3,18,2,14,1,12)
-                            Text: =ThisItem.titleText
+                            Text: =ThisItem.dateCreated
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Parent.Width/5
                             X: =172
                             Y: =12
                             ZIndex: =2
 
-                        Alert_Date_Time_Created_Label As label:
+                        Alert_Date_Time_Expire_Label As label:
                             Align: =Align.Center
                             BorderThickness: =1
                             Height: =Parent.Height-10
                             OnSelect: |
                                 =false
-                            Size: =Alert_CreatorId_Label.Size
-                            Text: =ThisItem.dateCreated
+                            Size: =Alert_TitleText_Label.Size
+                            Text: =ThisItem.dateExpired
                             Width: =Parent.Width/5
                             X: =547
                             Y: =3
                             ZIndex: =3
 
-                        Alert_Day_Time_Expire_Label As label:
-                            Align: =Align.Center
-                            BorderThickness: =1
-                            Height: =Parent.Height-10
-                            Size: =Alert_CreatorId_Label.Size
-                            Text: =ThisItem.dateExpired
-                            Width: =Parent.Width/5
-                            X: =773
-                            Y: =1
-                            ZIndex: =4
-
                         Alert_Status_Label As label:
                             Align: =Align.Center
                             BorderThickness: =1
                             Height: =Parent.Height-10
-                            Size: =Alert_CreatorId_Label.Size
+                            Size: =Alert_TitleText_Label.Size
                             Text: =If(ThisItem.dateExpired >= Today(), "Active", "Expired")
                             Width: =Parent.Width/5
-                            X: =1054
+                            X: =773
                             Y: =1
-                            ZIndex: =5
+                            ZIndex: =4
 
                 Button2 As button:
                     OnSelect: |
