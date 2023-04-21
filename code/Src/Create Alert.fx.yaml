@@ -196,8 +196,8 @@
                             Navigate('Alert Manager');
                         Text: ="Create Alert"
                         Visible: =If(Editing, false, true)
-                        Width: = If( 'Create Alert'.Size =1, Parent.Width/3 ,Parent.Width/7)
-                        X: =If('Create Alert'.Size = 1, Parent.Width/10 ,Parent.Width/3)
+                        Width: =Parent.Width/3 // If( 'Create Alert'.Size =1 || 'Create Alert'.Size =2,  Parent.Width/3 ,Parent.Width/7)
+                        X: =Parent.Width/8 //If('Create Alert'.Size = 1, Parent.Width/10 ,Parent.Width/3)
                         Y: =Parent.Height/3
                         ZIndex: =3
 
