@@ -265,7 +265,7 @@
                             //Sort(Filter(colTickets,Status = "open"),DateCreated,SortOrder.Descending)
                             
                             //Sort(colAllTickets, DateCreated, SortOrder.Descending)
-                            If(varPageNumber=1, FirstN(colAllTickets,10*varPageNumber), LastN(FirstN(colAllTickets,10*varPageNumber),10*1))
+                            If(varPageNumber=1, FirstN(Tickets,10*varPageNumber), LastN(FirstN(Tickets,10*varPageNumber),10*1))
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
@@ -372,7 +372,7 @@
                             ZIndex: =1
 
                             Icon3 As icon.ArrowRight:
-                                DisplayMode: =If(10*varPageNumber<CountRows(colAllTickets), DisplayMode.Edit,DisplayMode.Disabled)
+                                DisplayMode: =If(10*varPageNumber<CountRows(Tickets), DisplayMode.Edit,DisplayMode.Disabled)
                                 Icon: =Icon.ArrowRight
                                 OnSelect: |-
                                     =UpdateContext({varPageNumber:varPageNumber+1})
@@ -381,7 +381,7 @@
                                 ZIndex: =1
 
                             Label1 As label:
-                                Text: =varPageNumber & " of " & RoundUp(CountRows(colAllTickets)/10,0)
+                                Text: =varPageNumber & " of " & RoundUp(CountRows(Tickets)/10,0)
                                 X: =489
                                 Y: =28
                                 ZIndex: =2
