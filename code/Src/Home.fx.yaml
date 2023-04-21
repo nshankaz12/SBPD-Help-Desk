@@ -106,12 +106,9 @@ Home As screen:
 
                         "Gallery8 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
                             Fill: =RGBA(255, 255, 128, 1)
-                            Height: =If(CountRows(Gallery8.AllItems) *Gallery8.TemplateHeight > 400, 400,(CountRows(Gallery8.AllItems) *Gallery8.TemplateHeight))
-                            Items: |+
-                                =Filter(Alerts_1, dateExpired >= Today())
-                                
+                            Height: =Parent.Height//If(CountRows(Gallery8.AllItems) *Gallery8.TemplateHeight > 400, 400,(CountRows(Gallery8.AllItems) *Gallery8.TemplateHeight))
+                            Items: =Filter(Alerts_1, dateExpired >= Today() || IsBlank(dateExpired))
                             Layout: =Layout.Vertical
-                            ShowScrollbar: =false
                             TemplatePadding: =0
                             TemplateSize: =40
                             Visible: |-

@@ -83,10 +83,11 @@
 
                     DataCardValue27_1 As text:
                         BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                        Default: ="Please Describe Your Issue"
+                        Default: =recordVar.messageText
                         DelayOutput: =true
                         DisplayMode: =Parent.DisplayMode
                         Height: =Parent.Height/1.5
+                        HintText: ="Please Describe Your Issue"
                         MaxLength: =Parent.MaxLength
                         Mode: =TextMode.MultiLine
                         PaddingLeft: =5

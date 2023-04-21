@@ -1010,15 +1010,7 @@
                         Height: =30
                         IsSearchable: =false
                         Items: =Filter(Users_1, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label_2.Text)
-                        OnChange: |-
-                            =Patch(
-                                Tickets,
-                                LookUp(
-                                    Tickets,
-                                    ID = ticketInfo.ID
-                                ),
-                                {addAssignees: Additional_Assign_Value_Label_2.Text}
-                            );
+                        OnChange: =
                         SearchFields: =["field_4"]
                         SearchItems: =[]
                         Size: =Assignee_ComboBox_2.Size
