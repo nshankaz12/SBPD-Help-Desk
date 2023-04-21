@@ -50,7 +50,7 @@
 
     TransitionTimer As timer:
         AutoStart: =true
-        Duration: =5000
+        Duration: =10000
         OnTimerEnd: |-
             =//If(IsEmpty(Filter(Users_1, email = User().Email)), Navigate('User Not Valid', ScreenTransition.Fade),Navigate(Home, ScreenTransition.Fade))
             //Navigate(Home,ScreenTransition.Fade)
