@@ -280,8 +280,10 @@
 
                         Label3 As label:
                             Align: =Align.Center
+                            BorderThickness: =2
+                            Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
-                            Text: =If(ThisItem.AssignedTo = 0 || IsBlank(ThisItem.AssignedTo), "Unassigned", LookUp(Users_1, ID = ThisItem.AssignedTo, fullName))
+                            Text: =If(ThisItem.assignedTo = 0 || IsBlank(ThisItem.assignedTo), "Unassigned", LookUp(Users_1, ID = ThisItem.assignedTo, fullName))
                             Width: =id.Width
                             X: =assignee.X
                             ZIndex: =1
@@ -291,7 +293,9 @@
                             BorderThickness: =2
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
-                            Text: =LookUp(Category_1, ID= ThisItem.MainCategory, name)
+                            Text: |-
+                                =//LookUp(Category_1, ID= ThisItem.mainCategory, name)
+                                If(ThisItem.mainCategory = 0 || IsBlank(ThisItem.mainCategory), "No Main Category", LookUp(Category_1, ID = ThisItem.mainCategory, name))
                             Width: =id.Width
                             X: =main_category.X
                             ZIndex: =2
@@ -301,7 +305,9 @@
                             BorderThickness: =2
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
-                            Text: =DateValue(ThisItem.DateCreated)
+                            Text: |-
+                                =//DateValue(ThisItem.dateCreated)
+                                ThisItem.dateCreated
                             Width: =id.Width
                             X: =date_created.X
                             ZIndex: =3
@@ -311,7 +317,7 @@
                             BorderThickness: =2
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
-                            Text: =ThisItem.Title
+                            Text: =ThisItem.title
                             Width: =id.Width
                             X: =title.X
                             ZIndex: =4
@@ -346,10 +352,10 @@
                             Fill: =Color.Transparent
                             Height: =Parent.TemplateHeight
                             HoverBorderColor: =RGBA(53, 89, 137, 0)
-                            HoverFill: =RGBA(53,89,137, 0.2)
+                            HoverFill: =RGBA(53,89,137, 0.35)
                             OnSelect: |-
                                 =//Select(Parent)
-                                Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo: ThisItem})
+                                Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo: {Title: ThisItem.title,Description:ThisItem.description,ID:ThisItem.ID,CreatorId:ThisItem.creatorId,DateCreated: ThisItem.dateCreated,MainCategory: ThisItem.mainCategory,AddAssignees:ThisItem.addAssignees}})
                             Text: =""
                             Width: =Parent.TemplateWidth
                             X: |
