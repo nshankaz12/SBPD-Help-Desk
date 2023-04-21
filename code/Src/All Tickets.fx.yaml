@@ -279,8 +279,9 @@
                         ZIndex: =3
 
                         Label3 As label:
+                            Align: =Align.Center
                             OnSelect: =Select(Parent)
-                            Text: =LookUp(Users_1, ID = ThisItem.AssignedTo, fullName)
+                            Text: =If(ThisItem.AssignedTo = 0 || IsBlank(ThisItem.AssignedTo), "Unassigned", LookUp(Users_1, ID = ThisItem.AssignedTo, fullName))
                             Width: =id.Width
                             X: =assignee.X
                             ZIndex: =1
@@ -290,7 +291,7 @@
                             BorderThickness: =2
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
-                            Text: =ThisItem.MainCategory
+                            Text: =LookUp(Category_1, ID= ThisItem.MainCategory, name)
                             Width: =id.Width
                             X: =main_category.X
                             ZIndex: =2
@@ -340,6 +341,7 @@
                             ZIndex: =6
 
                         Label6_1 As label:
+                            Align: =Align.Center
                             Color: =Color.Transparent
                             Fill: =Color.Transparent
                             Height: =Parent.TemplateHeight
