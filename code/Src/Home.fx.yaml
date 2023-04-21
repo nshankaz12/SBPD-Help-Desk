@@ -96,59 +96,6 @@ Home As screen:
                     Width: =Parent.Width
                     ZIndex: =3
 
-                    Container5 As groupContainer.manualLayoutContainer:
-                        FillPortions: =0
-                        Height: =120
-                        LayoutMinHeight: =100
-                        LayoutMinWidth: =250
-                        Visible: =galleryVisible
-                        ZIndex: =1
-
-                        "Gallery8 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
-                            Fill: =RGBA(255, 255, 128, 1)
-                            Height: =Parent.Height//If(CountRows(Gallery8.AllItems) *Gallery8.TemplateHeight > 400, 400,(CountRows(Gallery8.AllItems) *Gallery8.TemplateHeight))
-                            Items: =Filter(Alerts_1, dateExpired >= Today() || IsBlank(dateExpired))
-                            Layout: =Layout.Vertical
-                            TemplatePadding: =0
-                            TemplateSize: =40
-                            Visible: |-
-                                =galleryVisible
-                                //If(CountRows(Alerts_1) > 0, true, false)
-                            Width: =Parent.Width
-                            WrapCount: =0
-                            ZIndex: =1
-
-                            Title1 As label:
-                                Align: =Align.Center
-                                AutoHeight: =true
-                                Height: =35
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =If(Home.Size =1,11,15)
-                                Text: =ThisItem.titleText
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.Width
-                                ZIndex: =2
-
-                            Separator1 As rectangle:
-                                Height: =1
-                                OnSelect: =Select(Parent)
-                                Width: =Parent.TemplateWidth
-                                Y: =Title1.Height+3
-                                ZIndex: =5
-
-                        Icon1 As icon.Cancel:
-                            Color: =RGBA(0, 0, 0, 1)
-                            Height: =30
-                            Icon: =Icon.Cancel
-                            OnSelect: =Set(galleryVisible, false)
-                            Visible: =galleryVisible
-                            Width: =30
-                            X: =Parent.Width-Self.Width
-                            ZIndex: =2
-
                     Container3 As groupContainer.manualLayoutContainer:
                         LayoutMinHeight: =100
                         LayoutMinWidth: =250
@@ -231,6 +178,56 @@ Home As screen:
                                 Y: |
                                     =ButtonGalleryBackgroundButton_1.Y
                                 ZIndex: =5
+
+                        Container5_1 As groupContainer.manualLayoutContainer:
+                            Height: =Gallery8_1.Height
+                            Visible: =galleryVisible
+                            Width: =Parent.Width
+                            ZIndex: =2
+
+                            "Gallery8_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+                                Fill: =RGBA(255, 255, 128, 1)
+                                Height: =If(CountRows(Gallery8_1.AllItems) *Gallery8_1.TemplateHeight > 400, 400,(CountRows(Gallery8_1.AllItems) *Gallery8_1.TemplateHeight))
+                                Items: =Filter(Alerts_1, dateExpired >= Today() || IsBlank(dateExpired))
+                                Layout: =Layout.Vertical
+                                TemplatePadding: =0
+                                TemplateSize: =35
+                                Visible: |-
+                                    =galleryVisible
+                                    //If(CountRows(Alerts_1) > 0, true, false)
+                                Width: =Parent.Width
+                                WrapCount: =0
+                                ZIndex: =1
+
+                                Title1_1 As label:
+                                    Align: =Align.Center
+                                    Height: =Parent.TemplateHeight
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =Parent.TemplateHeight / 4
+                                    Size: =If(Home.Size =1,11,15)
+                                    Text: =ThisItem.titleText
+                                    VerticalAlign: =VerticalAlign.Top
+                                    Width: =Parent.Width
+                                    ZIndex: =2
+
+                                Separator1_1 As rectangle:
+                                    Height: =1
+                                    OnSelect: =Select(Parent)
+                                    Width: =Parent.TemplateWidth
+                                    Y: =Title1_1.Height+3
+                                    ZIndex: =5
+
+                            Icon1_2 As icon.Cancel:
+                                Color: =RGBA(0, 0, 0, 1)
+                                Height: =30
+                                Icon: =Icon.Cancel
+                                OnSelect: =Set(galleryVisible, false)
+                                Visible: =galleryVisible
+                                Width: =30
+                                X: =Parent.Width-Self.Width
+                                ZIndex: =2
 
             HomeFooter As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(255,255,255, 1)
