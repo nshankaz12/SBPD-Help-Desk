@@ -107,7 +107,7 @@
                         HoverColor: =ColorScheme.screenBackground
                         HoverFill: =ColorFade(ColorScheme.primary, -20%)
                         OnSelect: |-
-                            =Patch(Tags_1,Defaults(Tags_1),{ name : TextInput1_8.Text })
+                            =Patch(Tags_1,Defaults(Tags_1),{ name : TextInput1_8.Text }); Reset(TextInput1_8);
                         PressedBorderColor: =ColorFade(ColorScheme.primary, -20%)
                         PressedColor: =ColorScheme.screenBackground
                         PressedFill: =ColorFade(ColorScheme.primary, -20%)
