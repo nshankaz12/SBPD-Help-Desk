@@ -227,7 +227,7 @@
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =Parent.TemplateHeight
                     HoverBorderColor: =
-                    HoverFill: =ColorScheme.secondary
+                    HoverFill: =RGBA(126,149,180,.35)
                     OnSelect: |
                         =EditForm(Form3_1);
                         Navigate(Form3_1, ScreenTransition.None, {recordVar: ThisItem});
