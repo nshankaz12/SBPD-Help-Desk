@@ -1,12 +1,14 @@
 "'All Tickets' As screen":
     OnHidden: |-
-        =Reset(TextInput1_9);
+        =//Reset(TextInput1_9);
+        Reset(compSearchTickets_1);
         Set(SearchAllTicketsQuery,
              ""
         );
         Reset(Gallery4_2);
     OnVisible: |
-        =Reset(compFilterMenu_6);
+        =//Reset(compFilterMenu_6);
+        Reset(compFilterTicketsMenu_1);
         UpdateContext({varPageNumber:1})
 
     MainAllTickets As groupContainer.horizontalAutoLayoutContainer:
@@ -66,7 +68,8 @@
                 FillPortions: =0
                 Height: |-
                     =//Parent.Height
-                    compWebHeader_13.Height
+                    //compWebHeader_13.Height
+                    Parent.Height/11
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                 LayoutMinHeight: =//compWebHeader_28.Height
@@ -86,33 +89,33 @@
                     Width: =Parent.Width
                     ZIndex: =1
 
-                    TextInput1_9 As text:
-                        Align: =Align.Center
-                        Clear: =true
-                        Default: =""
-                        Height: |
-                            =Parent.Height/2
-                        HintText: ="Search Tickets"
-                        OnChange: |-
-                            =Set(SearchAllTicketsQuery, TextInput1_9.Text);
+                    compSearchTickets_1 As compSearchTickets:
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        OnReset: |-
+                            =Set(
+                                SearchQuery,
+                                ""
+                            );
+                            Reset(searchBox_1);
+                            Set(
+                                varSearchText,
+                                ""
+                            );
+                            compSearchTickets_1.CloseSearch();
                             
-                            // Used with RecentTicketsSPListV2
+                            // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
                             ClearCollect(
-                                colAllTickets,
+                                colTickets,
                                 ForAll(
                                     Table(
                                         ParseJSON(
-                                            RecentTicketsSPListV2.Run(
-                                            DateAdd(
-                                                    Today(),
-                                                    -1,
-                                                    TimeUnit.Months
-                                                ),
-                                                If(
-                                                    IsBlank(SearchAllTicketsQuery),
-                                                    "___",
-                                                    SearchAllTicketsQuery
-                                                ), StatusChoice, AssignmentChoice
+                                            SearchFilterTicketsSPListV2.Run(
+                                            If(
+                                                IsBlank(SearchQuery),
+                                                "___",
+                                                SearchQuery
+                                                ), StatusChoice, TagChoice, userData.id, TicketsChoice, DateAdd(Today(), -varSubtractDate, varTimeUnits)
                                             ).searchresults
                                         )
                                     ),
@@ -137,57 +140,70 @@
                                     }
                                 )
                             )
-                        Width: |-
-                            =Parent.Width/1.5
-                            //If(Screen2.Size=1, Button6_1.Width,Parent.Width/1.5)
-                        ZIndex: =9
+                            
+                            /*ClearCollect(
+                                colTickets,
+                                ForAll(
+                                    Table(
+                                        ParseJSON(
+                                            SearchFilterTicketsSPList.Run(
+                                                If(
+                                                    IsBlank(SearchQuery),
+                                                    "___",
+                                                    SearchQuery
+                                                ), StatusChoice, TagChoice
+                                            ).searchresults
+                                        )
+                                    ),
+                                    {
+                                        ID: Value(Value.ID),
+                                        Title: Text(Value.title),
+                                        Description: Text(Value.description),
+                                        MainCategory: Value(Value.mainCategory),
+                                        DateCreated: DateValue(Value.dateCreated),
+                                        CreatorId: Value(Value.creatorId),
+                                        Status: Text(Value.status),
+                                        AssignedTo: Value(Value.assignedTo),
+                                        LastUpdated: DateValue(Value.lastUpdated),
+                                        LocationId: Value(Value.locationId),
+                                        Tags: Text(Value.tags),
+                                        AddAssignees: Text(Value.addAssignees)
+                                    }
+                                )
+                            )*/
 
             MainAllTicketLayout_1 As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.Center
                 Height: =Parent.Height
-                LayoutMinHeight: =100
+                LayoutMinHeight: =0
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 PaddingBottom: =25
                 Width: =Parent.Width/1.06
                 ZIndex: =5
 
-                Container23_1 As groupContainer.verticalAutoLayoutContainer:
+                MainContainer As groupContainer.verticalAutoLayoutContainer:
                     Height: =Parent.Height
                     LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: |-
-                        =
-                        
-                        0
+                    LayoutMinHeight: =0
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     Width: =Parent.Width
                     ZIndex: =1
 
-                    Container6_2 As groupContainer.manualLayoutContainer:
-                        Height: =SearchTickets.Height/1.5
+                    ColAllTicket As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =Parent.Height/11
                         LayoutMinHeight: =//100
                         LayoutMinWidth: =250
                         Width: =Parent.Width
                         ZIndex: =1
 
-                        Container7_2 As groupContainer.manualLayoutContainer:
-                            Fill: =ColorScheme.primary
-                            Height: =Parent.Height
-                            Width: =Parent.Width
-                            ZIndex: =1
-
-                            Rectangle6_1 As rectangle:
-                                Fill: =ColorScheme.primary
-                                Height: =Parent.Height
-                                Width: =Parent.Width
-                                X: |
-                                    =
-                                    0
-                                ZIndex: =1
-
-                        ColAllTicket_2 As groupContainer.horizontalAutoLayoutContainer:
-                            Height: =SearchTickets.Height/1.7
+                        MainColAllTicket As groupContainer.horizontalAutoLayoutContainer:
+                            Height: |-
+                                =//SearchTickets.Height/1.7
+                                Parent.Height
                             LayoutAlignItems: =LayoutAlignItems.Stretch
                             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                             LayoutMode: =LayoutMode.Auto
@@ -255,17 +271,20 @@
                                 ZIndex: =8
 
                     Gallery4_2 As gallery.galleryVertical:
+                        AlignInContainer: =AlignInContainer.SetByContainer
                         BorderThickness: =4
                         DelayItemLoading: =true
                         FillPortions: =0
-                        Height: =Parent.Height/1.4
-                        Items: |
+                        Height: =Parent.Height/1.25
+                        Items: |-
                             =//Tickets
                             
                             //Sort(Filter(colTickets,Status = "open"),DateCreated,SortOrder.Descending)
                             
                             //Sort(colAllTickets, DateCreated, SortOrder.Descending)
-                            If(varPageNumber=1, FirstN(Tickets,10*varPageNumber), LastN(FirstN(Tickets,10*varPageNumber),10*1))
+                            /*If(varPageNumber=1, FirstN(Sort(Tickets,dateCreated,SortOrder.Descending),10*varPageNumber), LastN(FirstN(Sort(Tickets,dateCreated,SortOrder.Descending),10*varPageNumber),10*1))*/
+                            
+                            If(varPageNumber=1, FirstN(Sort(colAllTickets,DateCreated,SortOrder.Descending),10*varPageNumber), LastN(FirstN(Sort(colAllTickets,DateCreated,SortOrder.Descending),10*varPageNumber),10*1))
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
@@ -275,54 +294,54 @@
                             =//If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
                             Parent.Height/10
                         Width: =Parent.Width
-                        Y: =ColAllTicket_2.Y
+                        Y: =MainColAllTicket.Y
                         ZIndex: =3
 
-                        Label3 As label:
+                        alltassignedto As label:
                             Align: =Align.Center
                             BorderThickness: =2
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
-                            Text: =If(ThisItem.assignedTo = 0 || IsBlank(ThisItem.assignedTo), "Unassigned", LookUp(Users_1, ID = ThisItem.assignedTo, fullName))
-                            Width: =id.Width
+                            Text: =If(ThisItem.AssignedTo = 0 || IsBlank(ThisItem.AssignedTo), "Unassigned", LookUp(Users_1, ID = ThisItem.AssignedTo, fullName))
+                            Width: =assignee.Width
                             X: =assignee.X
                             ZIndex: =1
 
-                        Label36_1 As label:
+                        alltmaincategory As label:
                             Align: =Align.Center
                             BorderThickness: =2
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
                             Text: |-
                                 =//LookUp(Category_1, ID= ThisItem.mainCategory, name)
-                                If(ThisItem.mainCategory = 0 || IsBlank(ThisItem.mainCategory), "No Main Category", LookUp(Category_1, ID = ThisItem.mainCategory, name))
-                            Width: =id.Width
+                                If(ThisItem.MainCategory = 0 || IsBlank(ThisItem.MainCategory), "No Main Category", LookUp(Category_1, ID = ThisItem.MainCategory, name))
+                            Width: =main_category.Width
                             X: =main_category.X
                             ZIndex: =2
 
-                        Label38_1 As label:
+                        alltdatecreated As label:
                             Align: =Align.Center
                             BorderThickness: =2
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
                             Text: |-
                                 =//DateValue(ThisItem.dateCreated)
-                                ThisItem.dateCreated
-                            Width: =id.Width
+                                ThisItem.DateCreated
+                            Width: =date_created.Width
                             X: =date_created.X
                             ZIndex: =3
 
-                        Label8 As label:
+                        allttitle As label:
                             Align: =Align.Center
                             BorderThickness: =2
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
-                            Text: =ThisItem.title
-                            Width: =id.Width
+                            Text: =ThisItem.Title
+                            Width: =title.Width
                             X: =title.X
                             ZIndex: =4
 
-                        Label40_1 As label:
+                        alltstatus As label:
                             Align: =Align.Center
                             BorderThickness: =2
                             Color: =ColorScheme.screenBackground
@@ -331,12 +350,12 @@
                                 ColorScheme.secondary
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
-                            Text: =ThisItem.status
-                            Width: =id.Width
+                            Text: =ThisItem.Status
+                            Width: =status.Width
                             X: =status.X
                             ZIndex: =5
 
-                        Label41_1 As label:
+                        alltid As label:
                             Align: =Align.Center
                             BorderThickness: =2
                             Height: =Parent.TemplateHeight
@@ -346,7 +365,7 @@
                             X: =id.X
                             ZIndex: =6
 
-                        Label6_1 As label:
+                        hoverTicket As label:
                             Align: =Align.Center
                             Color: =Color.Transparent
                             Fill: =Color.Transparent
@@ -355,7 +374,9 @@
                             HoverFill: =RGBA(53,89,137, 0.35)
                             OnSelect: |-
                                 =//Select(Parent)
-                                Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo: {Title: ThisItem.title,Description:ThisItem.description,ID:ThisItem.ID,CreatorId:ThisItem.creatorId,DateCreated: ThisItem.dateCreated,MainCategory: ThisItem.mainCategory,AddAssignees:ThisItem.addAssignees}})
+                                /*Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo: {Title: ThisItem.title,Description:ThisItem.description,ID:ThisItem.ID,CreatorId:ThisItem.creatorId,DateCreated: ThisItem.dateCreated,MainCategory: ThisItem.mainCategory,AddAssignees:ThisItem.addAssignees,Status: ThisItem.status}})*/
+                                
+                                Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo:ThisItem})
                             Text: =""
                             Width: =Parent.TemplateWidth
                             X: |
@@ -363,43 +384,52 @@
                             ZIndex: =7
 
                     Container7 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
                         FillPortions: =0
-                        Height: =Parent.Height/5
-                        LayoutMinHeight: =100
+                        Height: =Parent.Height/9
+                        LayoutMinHeight: |+
+                            =0
+                            
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
                         ZIndex: =4
 
                         Container8 As groupContainer.manualLayoutContainer:
+                            FillPortions: =0
                             Height: =Parent.Height
-                            LayoutMinHeight: =100
-                            LayoutMinWidth: =250
+                            LayoutMinHeight: =0
+                            LayoutMinWidth: |
+                                =0
                             Width: =Parent.Width
                             ZIndex: =1
 
                             Icon3 As icon.ArrowRight:
-                                DisplayMode: =If(10*varPageNumber<CountRows(Tickets), DisplayMode.Edit,DisplayMode.Disabled)
+                                DisplayMode: =If(10*varPageNumber<CountRows(colAllTickets), DisplayMode.Edit,DisplayMode.Disabled)
+                                Height: =Label1.Height
                                 Icon: =Icon.ArrowRight
                                 OnSelect: |-
                                     =UpdateContext({varPageNumber:varPageNumber+1})
-                                X: =608
-                                Y: =16
+                                X: =(Label1.X+Label1.Width)
+                                Y: =Parent.Height/4
                                 ZIndex: =1
 
                             Label1 As label:
-                                Text: =varPageNumber & " of " & RoundUp(CountRows(Tickets)/10,0)
-                                X: =489
-                                Y: =28
+                                Align: =Align.Center
+                                Text: =varPageNumber & " of " & RoundUp(CountRows(colAllTickets)/10,0)
+                                X: =(Parent.Width/2)-Self.Width/2
+                                Y: =Parent.Height/4
                                 ZIndex: =2
 
                             Icon5 As icon.ArrowLeft:
                                 DisplayMode: |
                                     =If(varPageNumber<=1,DisplayMode.Disabled,DisplayMode.Edit)
+                                Height: =Label1.Height
                                 Icon: =Icon.ArrowLeft
                                 OnSelect: |-
                                     =UpdateContext({varPageNumber:varPageNumber-1})
-                                X: =350
-                                Y: =16
+                                X: =Label1.X - Self.Width
+                                Y: =Parent.Height/4
                                 ZIndex: =3
 
             AllTicketsMobileNav_1 As groupContainer.verticalAutoLayoutContainer:
@@ -449,42 +479,118 @@
         Visible: ='All Tickets'.Size > 1
         ZIndex: =3
 
-    compFilterMenu_6 As compFilterTicketsMenu:
+    compFilterTicketsMenu_1 As compFilterTicketsMenu:
+        CheckAdmin: |-
+            =//is_admin
+            
+            //If(App.ActiveScreen.Name = "MyTickets", is_admin, true)
+            
+            !(App.ActiveScreen.Name = "AllTickets") || (App.ActiveScreen.Name = "AllTickets" && (userData.role = "admin" || userData.role = "tech"))
         FontSize: |-
             =//If(App.Height > 560, 18, 13)
             
-            If(App.Height - compFilterMenu_6.HeightOffset > 340, 16, 13)
-        Height: =If(compFilterMenu_6.FilterVisible, compFilterMenu_6.NewHeight, compFilterMenu_6.FilterIconSize)
-        HeightOffset: =AllTicketsHeaderFinal.Height + ((SearchTickets.Height - compFilterMenu_6.FilterIconSize) / 2)
+            If(App.Height - compFilterTicketsMenu_1.HeightOffset > 340, 16, 13)
+        Height: =If(compFilterTicketsMenu_1.FilterVisible, compFilterTicketsMenu_1.NewHeight, compFilterTicketsMenu_1.FilterIconSize)
         IconSize: |-
             =//If(App.Height > 560, 40, 30)
             
-            If(App.Height - compFilterMenu_6.HeightOffset > 560, 40, 30)
+            If(App.Height - compFilterTicketsMenu_1.HeightOffset > 560, 40, 30)
         NewHeight: |-
-            =If(
-                compFilterMenu_6.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
+            =//If(compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",If(App.Height>560,400,320),!compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",150,If(App.Height>560,420,320))
+            
+            If(
+                compFilterTicketsMenu_1.CheckAdmin && App.ActiveScreen.Name = "AllTickets",
                 If(
-                    App.Height - compFilterMenu_6.HeightOffset > 560,
+                    App.Height - compFilterTicketsMenu_1.HeightOffset > 560,
                     400,
-                    310
+                    320
                 ),
-                !compFilterMenu_6.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
+                !compFilterTicketsMenu_1.CheckAdmin && App.ActiveScreen.Name = "AllTickets",
+                150,
                 If(
-                    App.Height - compFilterMenu_6.HeightOffset > 560,
-                    150,
-                    120
-                ),
-                If(
-                    App.Height - compFilterMenu_6.HeightOffset > 560,
-                    250,
-                    190
+                    App.Height - compFilterTicketsMenu_1.HeightOffset > 560,
+                    420,
+                    320
                 )
             )
-        Visible: =true
+        OnReset: |-
+            =Reset(CheckboxAssignment);
+            Reset(RadioTickets);
+            Reset(DropdownStatus);
+            Reset(DropdownTag);
+            Set(
+                TicketsChoice,
+                If(
+                    userData.role = "admin" || userData.role = "tech",
+                    "My Assigned",
+                    "My Tickets"
+                )
+            );
+            Set(
+                StatusChoice,
+                "open"
+            );
+            Set(
+                TagChoice,
+                "None"
+            );
+            Set(
+                AssignmentChoice,
+                true
+            );
+            compFilterTicketsMenu_1.CloseFilter();
+            If(
+                !(App.ActiveScreen.Name = "MyTickets"),
+                // Used with RecentTicketsSPListV2
+                ClearCollect(
+                    colAllTickets,
+                    ForAll(
+                        Table(
+                            ParseJSON(
+                                RecentTicketsSPListV2.Run(
+                                    DateAdd(
+                                        Today(),
+                                        -1,
+                                        TimeUnit.Months
+                                    ),
+                                    If(
+                                        IsBlank(SearchAllTicketsQuery),
+                                        "___",
+                                        SearchAllTicketsQuery
+                                    ),
+                                    StatusChoice,
+                                    AssignmentChoice
+                                ).searchresults
+                            )
+                        ),
+                        {
+                            ID: Value(Value.ID),
+                            Title: Text(Value.title),
+                            Description: Text(Value.description),
+                            MainCategory: Value(Value.mainCategory),
+                            Category: Value(Value.category),
+                            SubCategory: Value(Value.subCategory),
+                            DateCreated: DateTimeValue(Value.dateCreated),
+                            DateClosed: DateTimeValue(Value.dateClosed),
+                            CreatorId: Value(Value.creatorId),
+                            Status: Text(Value.status),
+                            AssignedTo: Value(Value.assignedTo),
+                            LastUpdated: DateTimeValue(Value.lastUpdated),
+                            UpdatedBy: Value(Value.updatedBy),
+                            ParentId: Value(Value.parentId),
+                            LocationId: Value(Value.locationId),
+                            Tags: Text(Value.tags),
+                            AddAssignees: Text(Value.addAssignees)
+                        }
+                    )
+                )
+            )
         Width: |-
             =//If(compFilterMenu.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu.FilterIconSize)
-            If(compFilterMenu_6.FilterVisible, If(App.Width > 600 && App.Height - compFilterMenu_6.HeightOffset > 400, 220, 185), compFilterMenu_6.FilterIconSize)
-        X: =Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
-        Y: =AllTicketsHeaderFinal.Height + ((SearchTickets.Height - compFilterMenu_6.FilterIconSize) / 2)
-        ZIndex: =5
+            If(compFilterTicketsMenu_1.FilterVisible, If(App.Width > 600 && App.Height - compFilterTicketsMenu_1.HeightOffset > 400, 220, 185), compFilterTicketsMenu_1.FilterIconSize)
+        X: |-
+            =//Parent.Width/1.2
+            Parent.Width - compSearchTickets_1.X/1.2
+        Y: =Parent.Height/5.7
+        ZIndex: =4
 
