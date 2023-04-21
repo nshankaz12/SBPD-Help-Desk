@@ -96,65 +96,61 @@ Home As screen:
                     Width: =Parent.Width
                     ZIndex: =3
 
-                    Container5 As groupContainer.horizontalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.End
+                    Container5 As groupContainer.manualLayoutContainer:
                         FillPortions: =0
-                        Height: =35
+                        Height: =120
                         LayoutMinHeight: =100
                         LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        Visible: =If(galleryVisible, true, false)
+                        Visible: =galleryVisible
                         ZIndex: =1
 
+                        "Gallery8 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+                            Fill: =RGBA(255, 255, 128, 1)
+                            Height: =If(CountRows(Gallery8.AllItems) *Gallery8.TemplateHeight > 400, 400,(CountRows(Gallery8.AllItems) *Gallery8.TemplateHeight))
+                            Items: |+
+                                =Filter(Alerts_1, dateExpired >= Today())
+                                
+                            Layout: =Layout.Vertical
+                            ShowScrollbar: =false
+                            TemplatePadding: =0
+                            TemplateSize: =40
+                            Visible: |-
+                                =galleryVisible
+                                //If(CountRows(Alerts_1) > 0, true, false)
+                            Width: =Parent.Width
+                            WrapCount: =0
+                            ZIndex: =1
+
+                            Title1 As label:
+                                Align: =Align.Center
+                                AutoHeight: =true
+                                Height: =35
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =If(Home.Size =1,11,15)
+                                Text: =ThisItem.titleText
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Parent.Width
+                                ZIndex: =2
+
+                            Separator1 As rectangle:
+                                Height: =1
+                                OnSelect: =Select(Parent)
+                                Width: =Parent.TemplateWidth
+                                Y: =Title1.Height+3
+                                ZIndex: =5
+
                         Icon1 As icon.Cancel:
-                            AlignInContainer: =AlignInContainer.Start
-                            FillPortions: =1
+                            Color: =RGBA(0, 0, 0, 1)
                             Height: =30
                             Icon: =Icon.Cancel
                             OnSelect: =Set(galleryVisible, false)
-                            PaddingLeft: =450
-                            ZIndex: =1
-
-                    "Gallery8 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
-                        Fill: =RGBA(255, 255, 128, 1)
-                        FillPortions: =0
-                        Height: =If(CountRows(Gallery8.AllItems) *Gallery8.TemplateHeight > 400, 400,(CountRows(Gallery8.AllItems) *Gallery8.TemplateHeight))
-                        Items: |+
-                            =Filter(Alerts_1, dateExpired >= Today())
-                            
-                        Layout: =Layout.Vertical
-                        LayoutMinHeight: =287
-                        LayoutMinWidth: =320
-                        ShowScrollbar: =false
-                        TemplatePadding: =0
-                        TemplateSize: =40
-                        Visible: |-
-                            =galleryVisible
-                            //If(CountRows(Alerts_1) > 0, true, false)
-                        Width: =Parent.Width
-                        WrapCount: =0
-                        ZIndex: =2
-
-                        Title1 As label:
-                            Align: =Align.Center
-                            AutoHeight: =true
-                            Height: =35
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =If(Home.Size =1,11,15)
-                            Text: =ThisItem.titleText
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Parent.Width
+                            Visible: =galleryVisible
+                            Width: =30
+                            X: =Parent.Width-Self.Width
                             ZIndex: =2
-
-                        Separator1 As rectangle:
-                            Height: =1
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            Y: =Title1.Height+3
-                            ZIndex: =5
 
                     Container3 As groupContainer.manualLayoutContainer:
                         LayoutMinHeight: =100
