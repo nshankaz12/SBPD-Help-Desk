@@ -1,7 +1,7 @@
 App As appinfo:
     BackEnabled: =false
     OnStart: |-
-        =If(
+        =/*If(
             LookUp(
                 Users_1,
                 email = User().Email,
@@ -297,6 +297,6 @@ App As appinfo:
                 mobileSize: 13,
                 boldness: FontWeight.Normal
             }
-        )
+        )*/
     StartScreen: ='Splash Screen'
 
