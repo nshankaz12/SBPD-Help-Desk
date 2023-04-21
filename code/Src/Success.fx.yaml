@@ -4,21 +4,6 @@ Success As screen:
     OnVisible: |-
         =UpdateContext({NDrop:false,MGallery:false,HambIconChange:false,CloseAlertRibbon:false});
 
-    Image2_1 As image:
-        Image: =Untitled_Artwork
-        Visible: =is_admin
-        X: =142
-        Y: =40
-        ZIndex: =1
-
-    Label8_1 As label:
-        Align: =Align.Center
-        Text: ="CREATE TICKET"
-        Visible: =is_admin
-        X: =106
-        Y: =147
-        ZIndex: =2
-
     HomeMainContainer_1 As groupContainer.horizontalAutoLayoutContainer:
         Height: =Success.Height
         LayoutMode: =LayoutMode.Auto
