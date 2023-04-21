@@ -416,14 +416,15 @@
 
                             Label1 As label:
                                 Align: =Align.Center
-                                Text: =varPageNumber & " of " & RoundUp(CountRows(colAllTickets)/10,0)
+                                Text: =If(RoundUp(CountRows(colAllTickets)/10,0) = 1,1 & " of " & RoundUp(CountRows(colAllTickets)/10,0),varPageNumber & " of " & RoundUp(CountRows(colAllTickets)/10,0))
                                 X: =(Parent.Width/2)-Self.Width/2
                                 Y: =Parent.Height/4
                                 ZIndex: =2
 
                             Icon5 As icon.ArrowLeft:
-                                DisplayMode: |
+                                DisplayMode: |-
                                     =If(varPageNumber<=1,DisplayMode.Disabled,DisplayMode.Edit)
+                                    //If(RoundUp(CountRows(colAllTickets)/10,0) = 1,DisplayMode.Disabled,DisplayMode.Edit)
                                 Height: =Label1.Height
                                 Icon: =Icon.ArrowLeft
                                 OnSelect: |-
