@@ -153,15 +153,18 @@
                 ZIndex: =5
 
                 Container23_1 As groupContainer.verticalAutoLayoutContainer:
+                    Height: =Parent.Height
                     LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMinHeight: =100
+                    LayoutMinHeight: |-
+                        =
+                        
+                        0
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    Width: =//
+                    Width: =Parent.Width
                     ZIndex: =1
 
                     Container6_2 As groupContainer.manualLayoutContainer:
-                        FillPortions: =0
                         Height: =SearchTickets.Height/1.5
                         LayoutMinHeight: =//100
                         LayoutMinWidth: =250
@@ -184,7 +187,7 @@
                                 ZIndex: =1
 
                         ColAllTicket_2 As groupContainer.horizontalAutoLayoutContainer:
-                            Height: =SearchTickets.Height/1.5
+                            Height: =SearchTickets.Height/1.7
                             LayoutAlignItems: =LayoutAlignItems.Stretch
                             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                             LayoutMode: =LayoutMode.Auto
@@ -193,51 +196,63 @@
                                 =
                             ZIndex: =2
 
-                            id_2 As label:
+                            id As label:
                                 Align: =Align.Center
                                 Color: =ColorScheme.screenBackground
+                                Fill: =ColorScheme.primary
                                 Size: =If ('All Tickets'.Size =1, 10, 13)
                                 Text: ="ID"
-                                Width: =Parent.Width/5
+                                Width: =Parent.Width/6
                                 X: =608
                                 ZIndex: =1
 
-                            status_2 As label:
+                            status As label:
                                 Align: =Align.Center
                                 Color: =ColorScheme.screenBackground
+                                Fill: =ColorScheme.primary
                                 Size: =If ('All Tickets'.Size =1, 10, 13)
                                 Text: ="Status"
-                                Width: =Parent.Width/5
+                                Width: =Parent.Width/6
                                 X: =608
                                 ZIndex: =2
 
-                            title_2 As label:
+                            title As label:
                                 Align: =Align.Center
                                 Color: =ColorScheme.screenBackground
+                                Fill: =ColorScheme.primary
                                 Size: =If ('All Tickets'.Size =1, 10, 13)
                                 Text: ="Title"
-                                Width: =Parent.Width/5
+                                Width: =Parent.Width/6
                                 X: =608
                                 ZIndex: =3
 
-                            date_created_2 As label:
+                            date_created As label:
                                 Align: =Align.Center
                                 Color: =ColorScheme.screenBackground
+                                Fill: =ColorScheme.primary
                                 Size: =If ('All Tickets'.Size =1, 10, 13)
                                 Text: ="Date Created"
-                                Width: =Parent.Width/5
+                                Width: =Parent.Width/6
                                 X: =608
                                 ZIndex: =5
 
-                            tags_2 As label:
+                            main_category As label:
                                 Align: =Align.Center
                                 Color: =ColorScheme.screenBackground
+                                Fill: =ColorScheme.primary
                                 Size: =If ('All Tickets'.Size =1, 10, 13)
-                                Text: |-
-                                    ="# of Tags"
-                                Width: =Parent.Width/5
+                                Text: ="Main Category"
+                                Width: =Parent.Width/6
                                 X: =608
                                 ZIndex: =7
+
+                            assignee As label:
+                                Align: =Align.Center
+                                Color: =ColorScheme.screenBackground
+                                Fill: =ColorScheme.primary
+                                Text: ="Assignee"
+                                Width: =Parent.Width/6
+                                ZIndex: =8
 
                     Gallery4_2 As gallery.galleryVertical:
                         BorderThickness: =4
@@ -263,15 +278,22 @@
                         Y: =ColAllTicket_2.Y
                         ZIndex: =3
 
+                        Label3 As label:
+                            OnSelect: =Select(Parent)
+                            Text: =LookUp(Users_1, ID = ThisItem.AssignedTo, fullName)
+                            Width: =id.Width
+                            X: =assignee.X
+                            ZIndex: =1
+
                         Label36_1 As label:
                             Align: =Align.Center
                             BorderThickness: =2
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
-                            Text: =ThisItem.Tags
-                            Width: =id_2.Width
-                            X: =tags_2.X
-                            ZIndex: =1
+                            Text: =ThisItem.MainCategory
+                            Width: =id.Width
+                            X: =main_category.X
+                            ZIndex: =2
 
                         Label38_1 As label:
                             Align: =Align.Center
@@ -279,8 +301,8 @@
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
                             Text: =DateValue(ThisItem.DateCreated)
-                            Width: =id_2.Width
-                            X: =date_created_2.X
+                            Width: =id.Width
+                            X: =date_created.X
                             ZIndex: =3
 
                         Label8 As label:
@@ -289,9 +311,9 @@
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
                             Text: =ThisItem.Title
-                            Width: =id_2.Width
-                            X: =title_2.X
-                            ZIndex: =5
+                            Width: =id.Width
+                            X: =title.X
+                            ZIndex: =4
 
                         Label40_1 As label:
                             Align: =Align.Center
@@ -303,9 +325,9 @@
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
                             Text: =ThisItem.Status
-                            Width: =id_2.Width
-                            X: =status_2.X
-                            ZIndex: =6
+                            Width: =id.Width
+                            X: =status.X
+                            ZIndex: =5
 
                         Label41_1 As label:
                             Align: =Align.Center
@@ -313,9 +335,9 @@
                             Height: =Parent.TemplateHeight
                             OnSelect: =Select(Parent)
                             Text: =ThisItem.ID
-                            Width: =id_2.Width
-                            X: =id_2.X
-                            ZIndex: =7
+                            Width: =id.Width
+                            X: =id.X
+                            ZIndex: =6
 
                         Label6_1 As label:
                             Color: =Color.Transparent
@@ -330,7 +352,7 @@
                             Width: =Parent.TemplateWidth
                             X: |
                                 =0
-                            ZIndex: =8
+                            ZIndex: =7
 
                     Container7 As groupContainer.horizontalAutoLayoutContainer:
                         FillPortions: =0
