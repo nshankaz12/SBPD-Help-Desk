@@ -1,14 +1,9 @@
 "'All Tickets' As screen":
-    OnHidden: |-
-        =//Reset(TextInput1_9);
-        Reset(compSearchTickets_1);
-        Set(SearchAllTicketsQuery,
-             ""
-        );
-        Reset(Gallery4_2);
+    OnHidden: =
     OnVisible: |
-        =//Reset(compFilterMenu_6);
+        =Reset(Gallery4_2);
         Reset(compFilterTicketsMenu_1);
+        Reset(compSearchTickets_1);
         UpdateContext({varPageNumber:1})
 
     MainAllTickets As groupContainer.horizontalAutoLayoutContainer:
@@ -402,17 +397,12 @@
         ZIndex: =3
 
     compFilterTicketsMenu_1 As compFilterTicketsMenu:
-        CheckAdmin: |-
-            =//is_admin
-            
-            //If(App.ActiveScreen.Name = "MyTickets", is_admin, true)
-            
-            !(App.ActiveScreen.Name = "AllTickets") || (App.ActiveScreen.Name = "AllTickets" && (userData.role = "admin" || userData.role = "tech"))
         FontSize: |-
             =//If(App.Height > 560, 18, 13)
             
             If(App.Height - compFilterTicketsMenu_1.HeightOffset > 340, 16, 13)
         Height: =If(compFilterTicketsMenu_1.FilterVisible, compFilterTicketsMenu_1.NewHeight, compFilterTicketsMenu_1.FilterIconSize)
+        HeightOffset: =AllTicketsHeaderFinal.Height + ((SearchTickets.Height - compFilterTicketsMenu_1.FilterIconSize) / 2)
         IconSize: |-
             =//If(App.Height > 560, 40, 30)
             
@@ -421,26 +411,61 @@
             =//If(compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",If(App.Height>560,400,320),!compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",150,If(App.Height>560,420,320))
             
             If(
-                compFilterTicketsMenu_1.CheckAdmin && App.ActiveScreen.Name = "AllTickets",
+                compFilterTicketsMenu_1.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
                 If(
                     App.Height - compFilterTicketsMenu_1.HeightOffset > 560,
                     400,
-                    320
+                    310
                 ),
-                !compFilterTicketsMenu_1.CheckAdmin && App.ActiveScreen.Name = "AllTickets",
-                150,
+                !compFilterTicketsMenu_1.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
                 If(
                     App.Height - compFilterTicketsMenu_1.HeightOffset > 560,
-                    420,
-                    320
+                    150,
+                    120
+                ),
+                If(
+                    App.Height - compFilterTicketsMenu_1.HeightOffset > 560,
+                    250,
+                    190
                 )
             )
+        Visible: =App.Width > 600 || (App.Width <= 600 && !compSearchTickets_1.SearchVisible)
         Width: |-
             =//If(compFilterMenu.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu.FilterIconSize)
             If(compFilterTicketsMenu_1.FilterVisible, If(App.Width > 600 && App.Height - compFilterTicketsMenu_1.HeightOffset > 400, 220, 185), compFilterTicketsMenu_1.FilterIconSize)
         X: |-
             =//Parent.Width/1.2
-            Parent.Width - compSearchTickets_1.X/1.2
-        Y: =Parent.Height/5.7
+            If('All Tickets'.Size > 1, Parent.Width - compSearchTickets_1.X/1.2, Parent.Width - Self.Width - 10)
+        Y: |-
+            =//Parent.Height/5.7
+            AllTicketsHeaderFinal.Height + ((SearchTickets.Height - compFilterTicketsMenu_1.FilterIconSize) / 2)
         ZIndex: =4
+
+    SearchBlocker_1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =7
+
+        SearchBlockerTop_1 As rectangle:
+            Fill: |-
+                =//Color.Transparent
+                RGBA(0, 0, 0, 0.25)
+            Height: =AllTicketsHeaderFinal.Height
+            OnSelect: =Set(varSearchVisible, false)
+            Visible: =App.Width <= 600 && compSearchTickets_1.SearchVisible
+            Width: =Parent.Width
+            ZIndex: =5
+
+        SearchBlockerBottom_1 As rectangle:
+            Fill: |-
+                =//Color.Transparent
+                RGBA(0, 0, 0, 0.25)
+            Height: =Parent.Height - (AllTicketsHeaderFinal.Height + SearchTickets.Height)
+            OnSelect: =Set(varSearchVisible, false)
+            Visible: =App.Width <= 600 && compSearchTickets_1.SearchVisible
+            Width: =Parent.Width
+            Y: =AllTicketsHeaderFinal.Height + SearchTickets.Height
+            ZIndex: =6
 
