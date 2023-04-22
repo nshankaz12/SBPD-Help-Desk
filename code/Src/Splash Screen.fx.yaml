@@ -384,7 +384,35 @@
                     ZIndex: =2
 
         SplashNavigate As button:
-            OnSelect: =If(InvalidUser,Navigate('User Not Valid',ScreenTransition.Fade),Navigate(Home,ScreenTransition.Fade));
+            OnSelect: |
+                =//If(InvalidUser,Navigate('User Not Valid',ScreenTransition.Fade),Navigate(Home,ScreenTransition.Fade));
+                Set(
+                    varTickID,
+                    Value(Param("TickID"))
+                );
+                If(
+                    InvalidUser,
+                    Navigate(
+                        'User Not Valid',
+                        ScreenTransition.Fade
+                    ),
+                    If(
+                        varTickID <> 0,
+                        Set(
+                            ticketInfo,
+                            LookUp(
+                                Tickets,
+                                ID = varTickID
+                            )
+                        );
+                        Navigate('Single Ticket Info'),
+                        Navigate(
+                            Home,
+                            ScreenTransition.Fade
+                        )
+                    );
+                    
+                );
             Text: ="Button"
             Visible: =false
             ZIndex: =4
