@@ -4,6 +4,7 @@
         =UpdateContext({showComboBox: If(ticketInfo.Status = "open", true, false)});
         UpdateContext({primAssignee: Blank()});
         Refresh(Comments_1);
+        Refresh(Tickets);
         If(
             ticketInfo.Status = "open",
             Set(

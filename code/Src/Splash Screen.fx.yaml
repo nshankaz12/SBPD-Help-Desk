@@ -399,13 +399,13 @@
                     If(
                         varTickID <> 0,
                         Set(
-                            ticket,
+                            ticketRec,
                             LookUp(
                                 Tickets,
                                 ID = varTickID
                             )
                         );
-                        Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo: ticket}),
+                        Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo: ticketRec}),
                         Navigate(
                             Home,
                             ScreenTransition.Fade
