@@ -122,6 +122,7 @@
                                     )
                             );*/
                             // sharepoint
+                            Refresh(Tickets);
                             Patch(
                                 Tickets,
                                 LookUp(
@@ -200,15 +201,7 @@
                         DisplayFields: =["field_2"]
                         Height: =30
                         Items: =Tags_1
-                        OnChange: |-
-                            =Patch(
-                                Tickets,
-                                LookUp(
-                                    Tickets,
-                                    ID = ticketInfo.ID
-                                ),
-                                {tags: Tags_ComboBox_Value_1.Text}
-                            );
+                        OnChange: =
                         SearchFields: =["field_2"]
                         SearchItems: =Search(Tags_1,Tags_ComboBox_1.SearchText,"field_2")
                         Size: =Assignee_ComboBox_1.Size
@@ -301,15 +294,7 @@
                         Height: =30
                         IsSearchable: =false
                         Items: =Filter(Users_1, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label_1.Text)
-                        OnChange: |-
-                            =Patch(
-                                Tickets,
-                                LookUp(
-                                    Tickets,
-                                    ID = ticketInfo.ID
-                                ),
-                                {addAssignees: Additional_Assign_Value_Label_1.Text}
-                            );
+                        OnChange: =
                         SearchFields: =["field_4"]
                         SearchItems: =[]
                         Size: =Assignee_ComboBox_1.Size
@@ -356,21 +341,7 @@
                         InputTextPlaceholder: ="Unassigned"
                         Items: =Filter(Users_1, userRole = "tech" || userRole = "admin")
                         NoSelectionText: ="Unassigned"
-                        OnChange: |-
-                            =Patch(
-                                Tickets,
-                                LookUp(
-                                    Tickets,
-                                    ID = ticketInfo.ID
-                                ),
-                                {
-                                    assignedTo: If(
-                                        IsBlank(AssigneeId_1),
-                                        Blank(),
-                                        Value(AssigneeId_1.Text)
-                                    )
-                                }
-                            );
+                        OnChange: =
                         SearchFields: =["field_4"]
                         SearchItems: =Search(Filter(Users_1, userRole = "tech" || userRole = "admin"),Assignee_ComboBox_1.SearchText,"field_4")
                         SelectMultiple: =false
@@ -829,6 +800,7 @@
                                     )
                             );*/
                             // sharepoint
+                            Refresh(Tickets);
                             Patch(
                                 Tickets,
                                 LookUp(
@@ -908,15 +880,7 @@
                         DisplayFields: =["field_2"]
                         Height: =30
                         Items: =Tags_1
-                        OnChange: |-
-                            =Patch(
-                                Tickets,
-                                LookUp(
-                                    Tickets,
-                                    ID = ticketInfo.ID
-                                ),
-                                {tags: Tags_ComboBox_Value_2.Text}
-                            );
+                        OnChange: =
                         SearchFields: =["field_2"]
                         SearchItems: =Search(Tags_1,Tags_ComboBox_2.SearchText,"field_2")
                         Size: =Assignee_ComboBox_2.Size
@@ -1054,25 +1018,12 @@
                             =
                         DefaultSelectedItems: =If(IsBlank(ticketInfo.AssignedTo), Blank(), Filter(Users_1,ID = ticketInfo.AssignedTo))
                         DisplayFields: =["field_4"]
+                        Font: =Font.Georgia
                         Height: =30
                         InputTextPlaceholder: ="Unassigned"
                         Items: =Filter(Users_1, userRole = "tech" || userRole = "admin")
                         NoSelectionText: ="Unassigned"
-                        OnChange: |-
-                            =Patch(
-                                Tickets,
-                                LookUp(
-                                    Tickets,
-                                    ID = ticketInfo.ID
-                                ),
-                                {
-                                    assignedTo: If(
-                                        IsBlank(AssigneeId_2),
-                                        Blank(),
-                                        Value(AssigneeId_2.Text)
-                                    )
-                                }
-                            );
+                        OnChange: =
                         SearchFields: =["field_4"]
                         SearchItems: =Search(Filter(Users_1, userRole = "tech" || userRole = "admin"),Assignee_ComboBox_2.SearchText,"field_4")
                         SelectMultiple: =false
@@ -1539,6 +1490,7 @@
                                 );
                                 
                             );
+                            Refresh(Tickets);
                             Patch(
                                 Tickets,
                                 LookUp(
@@ -1618,15 +1570,7 @@
                         DisplayFields: =["field_2"]
                         Height: =30
                         Items: =Tags_1
-                        OnChange: |-
-                            =/*Patch(
-                                Tickets,
-                                LookUp(
-                                    Tickets,
-                                    ID = ticketInfo.ID
-                                ),
-                                {tags: Tags_ComboBox_Value.Text}
-                            );*/
+                        OnChange: =
                         SearchFields: =["field_2"]
                         SearchItems: =Search(Tags_1,Tags_ComboBox.SearchText,"field_2")
                         Size: =Assignee_ComboBox.Size
@@ -1720,15 +1664,7 @@
                         Height: =30
                         IsSearchable: =false
                         Items: =Filter(Users_1, (userRole = "admin" || userRole = "tech") && fullName <> Assignee_Value_Label.Text)
-                        OnChange: |-
-                            =/*Patch(
-                                Tickets,
-                                LookUp(
-                                    Tickets,
-                                    ID = ticketInfo.ID
-                                ),
-                                {addAssignees: Additional_Assign_Value_Label.Text}
-                            );*/
+                        OnChange: =
                         SearchFields: =["field_4"]
                         SearchItems: =[]
                         Size: =Assignee_ComboBox.Size
@@ -1776,21 +1712,7 @@
                         InputTextPlaceholder: ="Unassigned"
                         Items: =Filter(Users_1, userRole = "tech" || userRole = "admin")
                         NoSelectionText: ="Unassigned"
-                        OnChange: |-
-                            =/*Patch(
-                                Tickets,
-                                LookUp(
-                                    Tickets,
-                                    ID = ticketInfo.ID
-                                ),
-                                {
-                                    assignedTo: If(
-                                        IsBlank(AssigneeId),
-                                        Blank(),
-                                        Value(AssigneeId.Text)
-                                    )
-                                }
-                            );*/
+                        OnChange: =
                         SearchFields: =["field_4"]
                         SearchItems: =Search(Filter(Users_1, userRole = "tech" || userRole = "admin"),Assignee_ComboBox.SearchText,"field_4")
                         SelectMultiple: =false
