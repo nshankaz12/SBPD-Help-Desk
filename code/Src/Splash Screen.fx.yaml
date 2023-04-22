@@ -1,7 +1,7 @@
 "'Splash Screen' As screen":
     Fill: =RGBA(53,89,137, 1)
     ImagePosition: =ImagePosition.Center
-    OnVisible: |-
+    OnVisible: |
         =//UpdateContext will update a variable on this screen, contextLoading status is the text at the bottom
         UpdateContext({contextLoadingStatus: "Processing Records..."});
         If(
@@ -104,9 +104,8 @@
             CloseAlertRibbon,
             false
         );
-        
-        
-        If(userData.role = "admin" || userData.role = "tech",
+        If(
+            userData.role = "admin" || userData.role = "tech",
             Set(
                 gblNavItems,
                 Table(
@@ -129,7 +128,7 @@
                         MenuText: "Manager",
                         MenuIcon: Icon.Settings,
                         ScreenToGoTo: 'Admin Manager'
-                    },        
+                    },
                     {
                         MenuText: "Knowledge",
                         MenuIcon: Icon.QuestionMark,
@@ -137,37 +136,37 @@
                     }
                 )
             );
+            
         );
-        
-        If(userData.role = "staff",
+        If(
+            userData.role = "staff",
             Set(
-            gblNavItems,
-            Table(
-                {
-                    MenuText: "Home",
-                    MenuIcon: Icon.Home,
-                    ScreenToGoTo: Home
-                },
-                {
-                    MenuText: "Create Ticket",
-                    MenuIcon: Icon.AddDocument,
-                    ScreenToGoTo: 'Category Select'
-                },
-                {
-                    MenuText: "My Tickets",
-                    MenuIcon: Icon.Folder,
-                    ScreenToGoTo: MyTickets
-                },       
-                {
-                    MenuText: "Knowledge",
-                    MenuIcon: Icon.QuestionMark,
-                    ScreenToGoTo: 'Knowledge Base'
-                }
-            )
+                gblNavItems,
+                Table(
+                    {
+                        MenuText: "Home",
+                        MenuIcon: Icon.Home,
+                        ScreenToGoTo: Home
+                    },
+                    {
+                        MenuText: "Create Ticket",
+                        MenuIcon: Icon.AddDocument,
+                        ScreenToGoTo: 'Category Select'
+                    },
+                    {
+                        MenuText: "My Tickets",
+                        MenuIcon: Icon.Folder,
+                        ScreenToGoTo: MyTickets
+                    },
+                    {
+                        MenuText: "Knowledge",
+                        MenuIcon: Icon.QuestionMark,
+                        ScreenToGoTo: 'Knowledge Base'
+                    }
+                )
             );
+            
         );
-        
-        
         Set(
             ColorScheme,
             {
@@ -249,8 +248,13 @@
             false
         );
         // Variables used for searching and filtering in the 'SearchFilterTicketsSPList' power automate flows
-        Set(TicketsChoice,
-            If(userData.role = "admin" || userData.role = "tech", "My Assigned", "My Tickets")
+        Set(
+            TicketsChoice,
+            If(
+                userData.role = "admin" || userData.role = "tech",
+                "My Assigned",
+                "My Tickets"
+            )
         );
         Set(
             StatusChoice,
@@ -266,18 +270,24 @@
         );
         // Set date to start pulling tickets for My Tickets from
         // Sets the number of days, months, or years to subtract from today's date
-        Set(varSubtractDate, 6);
+        Set(
+            varSubtractDate,
+            6
+        );
         // Sets the time units subtracting by
-        Set(varTimeUnits, TimeUnit.Months);
-        
+        Set(
+            varTimeUnits,
+            TimeUnit.Months
+        );
         // Variables used for searching and filtering in the 'RecentTicketsSPList' power automate flows
-        Set(AssignmentChoice,
+        Set(
+            AssignmentChoice,
             true
         );
-        Set(SearchAllTicketsQuery,
+        Set(
+            SearchAllTicketsQuery,
             ""
         );
-        
         ClearCollect(
             dummyArticles,
             {
@@ -302,20 +312,113 @@
             }
         );
         //Put variables and other code to initialize here
-        Set(buttonText,"");
-        UpdateContext({buttonText:""});
-        Set(InvalidUser,false);
-        
+        Set(
+            buttonText,
+            ""
+        );
+        UpdateContext({buttonText: ""});
+        Set(
+            InvalidUser,
+            false
+        );
         UpdateContext({contextLoadingStatus: "Validating User..."});
-        Switch(userData.role,"tech",ClearCollect(userNav,Filter(navCol,AdminTech = true)),"admin",ClearCollect(userNav,Filter(navCol,AdminTech = true)),"staff",ClearCollect(userNav,Filter(navCol,Staff = true)),Set(InvalidUser,true));
-        If(IsEmpty(Filter(Users_1, email = User().Email)), Set(InvalidUser,true));
+        Switch(
+            userData.role,
+            "tech",
+            ClearCollect(
+                userNav,
+                Filter(
+                    navCol,
+                    AdminTech = true
+                )
+            ),
+            "admin",
+            ClearCollect(
+                userNav,
+                Filter(
+                    navCol,
+                    AdminTech = true
+                )
+            ),
+            "staff",
+            ClearCollect(
+                userNav,
+                Filter(
+                    navCol,
+                    Staff = true
+                )
+            ),
+            Set(
+                InvalidUser,
+                true
+            )
+        );
+        If(
+            IsEmpty(
+                Filter(
+                    Users_1,
+                    email = User().Email
+                )
+            ),
+            Set(
+                InvalidUser,
+                true
+            )
+        );
+        ClearCollect(
+            colAllTickets,
+            ForAll(
+                Table(
+                    ParseJSON(
+                        RecentTicketsSPListV2.Run(
+                            DateAdd(
+                                Today(),
+                                -1,
+                                TimeUnit.Months
+                            ),
+                            If(
+                                IsBlank(SearchAllTicketsQuery),
+                                "___",
+                                SearchAllTicketsQuery
+                            ),
+                            StatusChoice,
+                            AssignmentChoice
+                        ).searchresults
+                    )
+                ),
+                {
+                    ID: Value(Value.ID),
+                    Title: Text(Value.title),
+                    Description: Text(Value.description),
+                    MainCategory: Value(Value.mainCategory),
+                    Category: Value(Value.category),
+                    SubCategory: Value(Value.subCategory),
+                    DateCreated: DateTimeValue(Value.dateCreated),
+                    DateClosed: DateTimeValue(Value.dateClosed),
+                    CreatorId: Value(Value.creatorId),
+                    Status: Text(Value.status),
+                    AssignedTo: Value(Value.assignedTo),
+                    LastUpdated: DateTimeValue(Value.lastUpdated),
+                    UpdatedBy: Value(Value.updatedBy),
+                    ParentId: Value(Value.parentId),
+                    LocationId: Value(Value.locationId),
+                    Tags: Text(Value.tags),
+                    AddAssignees: Text(Value.addAssignees)
+                }
+            )
+        );
         //Can use a button to navigate to another screen if needed
         //enable if initialization takes place on this screen, and timer is disabled
         Select(SplashNavigate);
-        
         //Set(userID, LookUp(userInfo, email = User().Email, id));
-        
-        UpdateContext({NDrop:false,MGallery:false,HambIconChange:false,CloseAlertRibbon:false});
+        UpdateContext(
+            {
+                NDrop: false,
+                MGallery: false,
+                HambIconChange: false,
+                CloseAlertRibbon: false
+            }
+        );
 
     TransitionTimer As timer:
         Duration: =5000
@@ -401,7 +504,7 @@
                         Set(
                             ticketRec,
                             LookUp(
-                                colTickets,
+                                colAllTickets,
                                 ID = varTickID
                             )
                         );
