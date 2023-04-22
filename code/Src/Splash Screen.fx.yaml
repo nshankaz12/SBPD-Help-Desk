@@ -365,48 +365,32 @@
                 true
             )
         );
+        
         ClearCollect(
-            colAllTickets,
+            AllTickets,
             ForAll(
-                Table(
-                    ParseJSON(
-                        RecentTicketsSPListV2.Run(
-                            DateAdd(
-                                Today(),
-                                -1,
-                                TimeUnit.Months
-                            ),
-                            If(
-                                IsBlank(SearchAllTicketsQuery),
-                                "___",
-                                SearchAllTicketsQuery
-                            ),
-                            StatusChoice,
-                            AssignmentChoice
-                        ).searchresults
-                    )
-                ),
+                Tickets,
                 {
-                    ID: Value(Value.ID),
-                    Title: Text(Value.title),
-                    Description: Text(Value.description),
-                    MainCategory: Value(Value.mainCategory),
-                    Category: Value(Value.category),
-                    SubCategory: Value(Value.subCategory),
-                    DateCreated: DateTimeValue(Value.dateCreated),
-                    DateClosed: DateTimeValue(Value.dateClosed),
-                    CreatorId: Value(Value.creatorId),
-                    Status: Text(Value.status),
-                    AssignedTo: Value(Value.assignedTo),
-                    LastUpdated: DateTimeValue(Value.lastUpdated),
-                    UpdatedBy: Value(Value.updatedBy),
-                    ParentId: Value(Value.parentId),
-                    LocationId: Value(Value.locationId),
-                    Tags: Text(Value.tags),
-                    AddAssignees: Text(Value.addAssignees)
+                    ID: ID,
+                    Title: title,
+                    Description: description,
+                    MainCategory: mainCategory,
+                    Category: category,
+                    SubCategory: subCategory,
+                    DateCreated: dateCreated,
+                    DateClosed: dateClosed,
+                    CreatorId: creatorId,
+                    Status: status,
+                    AssignedTo: assignedTo,
+                    LastUpdated: lastUpdated,
+                    UpdatedBy: updatedBy,
+                    LocationId: locationId,
+                    Tags: tags,
+                    AddAssignees: addAssignees
                 }
             )
         );
+        
         //Can use a button to navigate to another screen if needed
         //enable if initialization takes place on this screen, and timer is disabled
         Select(SplashNavigate);
@@ -487,7 +471,7 @@
                     ZIndex: =2
 
         SplashNavigate As button:
-            OnSelect: |
+            OnSelect: |-
                 =//If(InvalidUser,Navigate('User Not Valid',ScreenTransition.Fade),Navigate(Home,ScreenTransition.Fade));
                 Set(
                     varTickID,
@@ -504,7 +488,7 @@
                         Set(
                             ticketRec,
                             LookUp(
-                                colAllTickets,
+                                AllTickets,
                                 ID = varTickID
                             )
                         );
