@@ -2010,12 +2010,12 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Items"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Items"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Items",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Items",
                   "relativeAddress": 0
                 },
                 "region": {
@@ -2029,7 +2029,7 @@
               "properties": {
                 "member": "Items",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4"
               }
             }
           ],
@@ -2050,12 +2050,12 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Items"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Items"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Items",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Items",
                   "relativeAddress": 0
                 },
                 "region": {
@@ -2069,7 +2069,7 @@
               "properties": {
                 "member": "Items",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4"
               }
             }
           ],
@@ -2090,12 +2090,12 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Items"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Items"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Items",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Items",
                   "relativeAddress": 0
                 },
                 "region": {
@@ -2109,7 +2109,7 @@
               "properties": {
                 "member": "Items",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4"
               }
             }
           ],
@@ -2241,126 +2241,6 @@
           },
           "ruleId": "app-ErrInvalidName",
           "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "MainCategoryBody",
-                "type": "MainCategoryBody.Gallery6"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "MainCategoryBody",
-                "type": "MainCategoryBody.Gallery6"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 11
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compWebHeader.Image3_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compWebHeader.Image3_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "compWebHeader",
-                "type": "compWebHeader.Image3_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compWebHeader.Image3_1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compWebHeader.Image3_1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "compWebHeader",
-                "type": "compWebHeader.Image3_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 11
         },
         {
           "locations": [
@@ -2620,6 +2500,66 @@
                 "member": "TabIndex",
                 "module": "compFilterTicketsMenu",
                 "type": "compFilterTicketsMenu.FilterIcon"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 11
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "MainCategoryBody",
+                "type": "MainCategoryBody.Gallery6"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "MainCategoryBody",
+                "type": "MainCategoryBody.Gallery6"
               }
             }
           ],
@@ -3460,6 +3400,66 @@
                 "member": "TabIndex",
                 "module": "compMobileMenu",
                 "type": "compMobileMenu.Gallery1_1.Icon1_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 11
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compWebHeader.Image3_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compWebHeader.Image3_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compWebHeader",
+                "type": "compWebHeader.Image3_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compWebHeader.Image3_1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compWebHeader.Image3_1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "compWebHeader",
+                "type": "compWebHeader.Image3_1"
               }
             }
           ],
@@ -7257,19 +7257,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.AccessibleLabel"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.AccessibleLabel",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4"
               }
             }
           ],
@@ -7287,19 +7287,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.TabIndex"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.TabIndex",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4"
               }
             }
           ],
@@ -7317,19 +7317,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label.FocusedBorderThickness"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label.FocusedBorderThickness"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label.FocusedBorderThickness",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label.FocusedBorderThickness",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "FocusedBorderThickness",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label"
               }
             }
           ],
@@ -7347,19 +7347,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label.TabIndex"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label.TabIndex",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label"
               }
             }
           ],
@@ -7377,19 +7377,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label.FocusedBorderThickness"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label.FocusedBorderThickness"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label.FocusedBorderThickness",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label.FocusedBorderThickness",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "FocusedBorderThickness",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label"
               }
             }
           ],
@@ -7407,19 +7407,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label.TabIndex"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label.TabIndex",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label"
               }
             }
           ],
@@ -7437,19 +7437,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label.FocusedBorderThickness"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label.FocusedBorderThickness"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label.FocusedBorderThickness",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label.FocusedBorderThickness",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "FocusedBorderThickness",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label"
               }
             }
           ],
@@ -7467,19 +7467,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label.TabIndex"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label.TabIndex",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_Expire_Label"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Date_Time_created_Label"
               }
             }
           ],
@@ -7497,19 +7497,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label.FocusedBorderThickness"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label.FocusedBorderThickness"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label.FocusedBorderThickness",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label.FocusedBorderThickness",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "FocusedBorderThickness",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label"
               }
             }
           ],
@@ -7527,19 +7527,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label.TabIndex"
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label.TabIndex",
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Alert Manager",
-                "type": "'Alert Manager'.Container6.Container1.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_Status_Label"
+                "type": "'Alert Manager'.Container6.Container1.Container5.Gallery4.Gallery_Vertical_Container.Gallery_Column_Container.Alert_TitleText_Label"
               }
             }
           ],
@@ -8817,6 +8817,126 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container9.AlertsGalleryMobile.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container9.AlertsGalleryMobile.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Alert Manager",
+                "type": "'Alert Manager'.Container6.Container1.Container9.AlertsGalleryMobile"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container9.AlertsGalleryMobile.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container9.AlertsGalleryMobile.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Alert Manager",
+                "type": "'Alert Manager'.Container6.Container1.Container9.AlertsGalleryMobile"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 11
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create Alert'.Icon1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create Alert'.Icon1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Create Alert",
+                "type": "'Create Alert'.Icon1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create Alert'.Icon1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create Alert'.Icon1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Create Alert",
+                "type": "'Create Alert'.Icon1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 11
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.showHamIcon"
                 }
               ],
@@ -9297,6 +9417,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Alert Manager'.OnVisible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Alert Manager'.OnVisible",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "OnVisible",
+                "module": "Alert Manager",
+                "type": "'Alert Manager'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-CollectDelegatableDataSource",
+          "ruleIndex": 16
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Knowledge Base'.OnVisible"
                 }
               ],
@@ -9560,6 +9710,36 @@
           },
           "ruleId": "app-UnusedVariables",
           "ruleIndex": 14
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Home.HomeMainContainer_2.HomeVericalLayoutContainer_2.HomeMainContentContainer_3.ButtonsContainer_3.Container3.ButtonGallery_1.ButtonGalleryNavIcon_2.Y"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "Home.HomeMainContainer_2.HomeVericalLayoutContainer_2.HomeMainContentContainer_3.ButtonsContainer_3.Container3.ButtonGallery_1.ButtonGalleryNavIcon_2.Y",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Y",
+                "module": "Home",
+                "type": "Home.HomeMainContainer_2.HomeVericalLayoutContainer_2.HomeMainContentContainer_3.ButtonsContainer_3.Container3.ButtonGallery_1.ButtonGalleryNavIcon_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 18
         },
         {
           "locations": [
@@ -10250,6 +10430,36 @@
           },
           "ruleId": "app-InefficientDelayLoading",
           "ruleIndex": 18
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container9.AlertsGalleryMobile.TemplateSize"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Alert Manager'.Container6.Container1.Container9.AlertsGalleryMobile.TemplateSize",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TemplateSize",
+                "module": "Alert Manager",
+                "type": "'Alert Manager'.Container6.Container1.Container9.AlertsGalleryMobile"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 18
         }
       ],
       "tool": {
@@ -10544,7 +10754,7 @@
               "properties": {
                 "componentType": "app",
                 "howToFix": [
-                  "Limit the data collected from the data source by updating the formula \"ClearCollect(Articles, KBArticles)\" to include a filtering function, such as 'Filter' or 'Search'."
+                  "Limit the data collected from the data source by updating the formula \"ClearCollect(FilteredAlerts, Alerts_1)\" to include a filtering function, such as 'Filter' or 'Search'."
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",

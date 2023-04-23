@@ -1,6 +1,8 @@
 "'Alert Manager' As screen":
     Fill: =
-    OnVisible: =Refresh(Alerts_1)
+    OnVisible: |-
+        =Refresh(Alerts_1);
+        ClearCollect(FilteredAlerts,Alerts_1);
 
     compPageTextSizeFormatter_2 As compPageTextSizeFormatter:
         PageSizeVariable: ='Alert Manager'.Size
@@ -50,6 +52,7 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
+            Visible: =false
             ZIndex: =2
 
             Label7 As label:
@@ -92,153 +95,559 @@
             LayoutMode: =LayoutMode.Auto
             ZIndex: =3
 
-            "Gallery4 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
-                AlignInContainer: =AlignInContainer.Start
-                DelayItemLoading: =true
+            Container5 As groupContainer.manualLayoutContainer:
+                FillPortions: =0
                 Height: =Parent.Height
-                Items: =Filter(Alerts_1, dateExpired >= Today() || IsBlank(dateExpired))
-                Layout: =Layout.Vertical
-                LayoutMinHeight: =250
+                LayoutMinHeight: =100
                 LayoutMinWidth: =250
-                LoadingSpinner: =LoadingSpinner.Data
-                TemplateFill: =Color.WhiteSmoke
-                TemplatePadding: =0
-                TemplateSize: =Min(168, Self.Height - 60)
+                Visible: ='Alert Manager'.Size>1
                 Width: =Parent.Width
-                ZIndex: =1
+                ZIndex: =2
 
-                Rectangle1 As rectangle:
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =168
-                    OnSelect: =Select(Parent)
-                    Width: =Parent.Width
+                "Gallery4 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
+                    BorderThickness: =1
+                    DelayItemLoading: =true
+                    Height: =Parent.Height*.80
+                    Items: =Filter(Alerts_1, dateExpired >= Today() || IsBlank(dateExpired))
+                    Layout: =Layout.Vertical
+                    LoadingSpinner: =LoadingSpinner.Data
+                    ShowScrollbar: =false
+                    TemplateFill: =Color.WhiteSmoke
+                    TemplatePadding: =0
+                    TemplateSize: =150
+                    Width: =Parent.Width*.90
+                    X: =(Parent.Width-Self.Width)/2
+                    Y: =(Parent.Height-Self.Height)/1.5
                     ZIndex: =1
 
-                Description As label:
-                    Height: =120
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: |-
-                        =//If there are more than 20 words, make it size 10, else make it 15
-                        If(CountRows(Filter(MatchAll(Description.Text, "\S*(\s|\n?)"), !IsBlank(FullMatch)))>=20, 10, 15)
-                    Text: =ThisItem.messageText
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =Parent.TemplateWidth
-                    Y: =48
-                    ZIndex: =2
-
-                Separator4 As rectangle:
-                    Height: =5
-                    OnSelect: =Select(Parent)
-                    Width: =Parent.TemplateWidth
-                    Y: =Parent.TemplateHeight-5
-                    ZIndex: =3
-
-                Alert_Details_Label As label:
-                    Height: =127
-                    OnSelect: =Select(Parent)
-                    Size: =18
-                    Text: |-
-                        ="Details: "
-                    Visible: =false
-                    Width: =1186
-                    Y: =36
-                    ZIndex: =4
-
-                Gallery_Vertical_Container As groupContainer.verticalAutoLayoutContainer:
-                    Height: =168
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutMode: =LayoutMode.Auto
-                    Width: =Parent.Width
-                    ZIndex: =5
-
-                    Gallery_Column_Container As groupContainer.horizontalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        FillPortions: =0
-                        Height: =50
-                        LayoutMinHeight: =100
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingTop: =1
+                    Rectangle1 As rectangle:
+                        Fill: =RGBA(227, 234, 243, 1)
+                        Height: =Parent.TemplateHeight-Gallery_Vertical_Container.Height
+                        OnSelect: =Select(Parent)
                         Width: =Parent.Width
+                        Y: =Gallery_Vertical_Container.Height
                         ZIndex: =1
 
-                        Alert_TitleText_Label As label:
-                            Align: =Align.Center
-                            FontWeight: =FontWeight.Semibold
-                            Height: =Parent.Height-10
-                            PaddingBottom: =0
-                            PaddingLeft: =
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =compPageTextSizeFormatter_2.FinalTextSize
-                            Text: |
-                                =ThisItem.titleText
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Parent.Width/3
-                            X: =38
-                            Y: =16
+                    Description As label:
+                        Height: =120
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =10
+                        PaddingRight: =0
+                        Size: |-
+                            =//If there are more than 20 words, make it size 10, else make it 15
+                            If(CountRows(Filter(MatchAll(Description.Text, "\S*(\s|\n?)"), !IsBlank(FullMatch)))>=20, 10, 15)
+                        Text: =ThisItem.messageText
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth
+                        Y: =48
+                        ZIndex: =2
+
+                    Separator4 As rectangle:
+                        Height: =5
+                        OnSelect: =Select(Parent)
+                        Visible: =false
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight-5
+                        ZIndex: =3
+
+                    Alert_Details_Label As label:
+                        Height: =127
+                        OnSelect: =Select(Parent)
+                        Size: =18
+                        Text: |-
+                            ="Details: "
+                        Visible: =false
+                        Width: =1186
+                        Y: =36
+                        ZIndex: =4
+
+                    Gallery_Vertical_Container As groupContainer.verticalAutoLayoutContainer:
+                        Height: =50
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =5
+
+                        Gallery_Column_Container As groupContainer.horizontalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            FillPortions: =0
+                            Height: =Parent.Height
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            PaddingTop: =1
+                            Width: =Parent.Width
                             ZIndex: =1
 
-                        Alert_Date_Time_created_Label As label:
-                            Align: =Align.Center
-                            FontWeight: =FontWeight.Normal
-                            Height: =Parent.Height-10
-                            OnSelect: |
-                                =false
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =Alert_TitleText_Label.Size
-                            Text: =ThisItem.dateCreated
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Parent.Width/3
-                            X: =172
-                            Y: =12
-                            ZIndex: =2
+                            Alert_TitleText_Label As label:
+                                Align: =Align.Center
+                                AlignInContainer: =AlignInContainer.Start
+                                BorderThickness: =1
+                                FontWeight: =FontWeight.Semibold
+                                Height: =Parent.Height-5
+                                Size: =compPageTextSizeFormatter_2.FinalTextSize
+                                Text: |
+                                    =ThisItem.titleText
+                                Width: =Parent.Width/3
+                                X: =38
+                                Y: =16
+                                ZIndex: =1
 
-                        Alert_Date_Time_Expire_Label As label:
-                            Align: =Align.Center
-                            Height: =Parent.Height-10
-                            OnSelect: |
-                                =false
-                            Size: =Alert_TitleText_Label.Size
-                            Text: =ThisItem.dateExpired
-                            Width: =Parent.Width/3
-                            X: =547
-                            Y: =3
-                            ZIndex: =3
+                            Alert_Date_Time_created_Label As label:
+                                Align: =Align.Center
+                                AlignInContainer: =AlignInContainer.Start
+                                BorderThickness: =1
+                                Fill: =RGBA(0, 127, 187, .09)
+                                FontWeight: =FontWeight.Normal
+                                Height: =Parent.Height-5
+                                OnSelect: |
+                                    =false
+                                Size: =Alert_TitleText_Label.Size
+                                Text: =ThisItem.dateCreated
+                                Width: =Parent.Width/3
+                                X: =172
+                                Y: =12
+                                ZIndex: =2
 
-                        Alert_Status_Label As label:
-                            Align: =Align.Center
-                            Height: =Parent.Height-10
-                            Size: =Alert_TitleText_Label.Size
-                            Text: =If(ThisItem.dateExpired >= Today(), "Active", "Expired")
-                            Visible: =false
-                            Width: =Parent.Width/5
-                            X: =773
-                            Y: =1
-                            ZIndex: =4
+                            Alert_Date_Time_Expire_Label As label:
+                                Align: =Align.Center
+                                AlignInContainer: =AlignInContainer.Start
+                                BorderThickness: =1
+                                Fill: |
+                                    =RGBA(221, 79, 14,.09)
+                                Height: =Parent.Height-5
+                                OnSelect: |
+                                    =false
+                                Size: =Alert_TitleText_Label.Size
+                                Text: =ThisItem.dateExpired
+                                Width: =Parent.Width/3
+                                X: =547
+                                Y: =3
+                                ZIndex: =3
 
-                Button2 As button:
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =Parent.TemplateHeight
-                    HoverBorderColor: =
-                    HoverFill: =RGBA(126,149,180,.35)
-                    OnSelect: |
-                        =EditForm(Form3_1);
-                        Navigate(Form3_1, ScreenTransition.None, {recordVar: ThisItem});
-                        Set(Editing, true)
-                    PressedFill: =ColorFade(ColorScheme.secondaryPressedColor, -30%)
-                    Text: ="Edit Alert"
-                    Width: =Parent.TemplateWidth
-                    X: |-
-                        =//(Parent.TemplateWidth - Self.Width) -20
-                        0
-                    ZIndex: =6
+                            Alert_Status_Label As label:
+                                Align: =Align.Center
+                                Height: =Parent.Height-5
+                                Size: =Alert_TitleText_Label.Size
+                                Text: =If(ThisItem.dateExpired >= Today(), "Active", "Expired")
+                                Visible: =false
+                                Width: =Parent.Width/5
+                                X: =773
+                                Y: =1
+                                ZIndex: =4
+
+                    Button2 As button:
+                        Color: =RGBA(0, 0, 0, 0)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =Parent.TemplateHeight
+                        HoverBorderColor: =
+                        HoverFill: =RGBA(126,149,180,.35)
+                        OnSelect: |
+                            =EditForm(Form3_1);
+                            Navigate(Form3_1, ScreenTransition.None, {recordVar: ThisItem});
+                            Set(Editing, true)
+                        PressedFill: =ColorFade(ColorScheme.secondaryPressedColor, -30%)
+                        Text: ="Edit Alert"
+                        Tooltip: ="Edit Alert"
+                        Width: =Parent.TemplateWidth
+                        X: |-
+                            =//(Parent.TemplateWidth - Self.Width) -20
+                            0
+                        ZIndex: =6
+
+                Rectangle2 As rectangle:
+                    Height: =40
+                    Width: =Gallery4.Width
+                    X: =Gallery4.X
+                    Y: =Gallery4.Y-Self.Height
+                    ZIndex: =2
+
+                Gallery_Title_label As label:
+                    Align: =Align.Center
+                    BorderThickness: =1
+                    Color: =RGBA(255, 255, 255, 1)
+                    Size: =17
+                    Text: ="Title"
+                    Width: =Rectangle2.Width/3
+                    X: =Rectangle2.X
+                    Y: =Rectangle2.Y
+                    ZIndex: =3
+
+                Gallery_Title_label_1 As label:
+                    Align: =Align.Center
+                    BorderThickness: =1
+                    Color: =RGBA(255, 255, 255, 1)
+                    Size: =17
+                    Text: ="Started"
+                    Width: =Rectangle2.Width/3
+                    X: =Rectangle2.X+Gallery_Title_label.Width
+                    Y: =Rectangle2.Y
+                    ZIndex: =4
+
+                Gallery_Title_label_2 As label:
+                    Align: =Align.Center
+                    BorderThickness: =1
+                    Color: =RGBA(255, 255, 255, 1)
+                    Size: =17
+                    Text: ="Expires"
+                    Width: =Rectangle2.Width/3
+                    X: =Rectangle2.X+Gallery_Title_label.Width+Gallery_Title_label_1.Width
+                    Y: =Rectangle2.Y
+                    ZIndex: =5
+
+            Container9 As groupContainer.manualLayoutContainer:
+                FillPortions: =0
+                Height: =Parent.Height
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                Visible: ='Alert Manager'.Size=1
+                Width: =Parent.Width
+                ZIndex: =3
+
+                AlertsGalleryMobile As gallery.galleryVertical:
+                    Default: =//First(MyTicketsGallery.AllItems)
+                    DelayItemLoading: |-
+                        =//false
+                        true
+                    Height: =Parent.Height
+                    Items: =SortByColumns(FilteredAlerts,"field_7",SortOrder.Descending)
+                    Layout: =Layout.Vertical
+                    LoadingSpinner: |-
+                        =//LoadingSpinner.None
+                        LoadingSpinner.Controls
+                    TemplatePadding: =10
+                    TemplateSize: |-
+                        =//If(Self.Layout = Layout.Horizontal, Min(250, Self.Width - 60), Min(250, Self.Height - 60))
+                        //If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(260, Self.Height - 60))
+                        
+                        If(MyTickets.Size > 1, 250, 240)
+                    Transition: =Transition.Push
+                    Visible: =!IsEmpty(AlertsGalleryMobile.AllItems)
+                    Width: =Parent.Width
+                    WrapCount: =RoundDown((Parent.Width / 320), 0)
+                    ZIndex: =1
+
+                    Image6_1 As image:
+                        Height: |-
+                            =//250
+                            Parent.TemplateHeight
+                        Image: |-
+                            ="data:image/svg+xml," & EncodeUrl(
+                                "<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+                            <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+                            <svg version='1.1'
+                                xmlns='http://www.w3.org/2000/svg'
+                                xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid meet' viewBox='0 0 " & Self.Width & " " & Self.Height & "' width='" & Self.Width & "' height='" & Self.Height & "'>
+                                <defs>" &
+                                // ----- Box for fill
+                             "<path d='" &
+                             // Upper left
+                             "M" & Max(5 * 3 - 0, 0) & " " & Max(5 * 3 - 0,0) &
+                                // Upper right
+                             "L" & Self.Width - Max(5 * 3 + 0, 0) & " " & Max(5 * 3 - 0, 0) &
+                                // Lower right
+                             "L" & Self.Width - Max(5 * 3 + 0, 0) & " " & Self.Height - Max(5 * 3 + 0, 0) &
+                                // Lower left
+                             "L" & Max(5 * 3 - 0, 0) & " " & Self.Height - Max(5 * 3 + 0, 0) & 
+                             "Z' id='box' stroke='" & "#ff0000" & "' stroke-width='" & 0 & "'></path>
+                                </defs>
+                                <g>
+                                    <g>
+                                        <filter id='shadow' x='-20%' y='-20%' width='200%' height='200%' filterUnits='userSpaceOnUse' primitiveUnits='userSpaceOnUse'>
+                                            <feFlood></feFlood>
+                                            <feComposite in2='SourceAlpha' operator='in'></feComposite>
+                                            <feGaussianBlur stdDeviation='" & 5 & "'></feGaussianBlur>
+                                            <feOffset dx='" & 0 & "' dy='" & 0 & "' result='afterOffset'></feOffset>
+                                            <feFlood flood-color='" & "#000000" & "' flood-opacity='" & Substitute(Text(0.5), ",", ".") & "'></feFlood>
+                                            <feComposite in2='afterOffset' operator='in'></feComposite>
+                                            <feMorphology operator='dilate' radius='1'></feMorphology>
+                                            <feComposite in2='SourceAlpha' operator='out'></feComposite>
+                                        </filter>" &
+                                        // ----- Box for shadow
+                             "<path d='" &
+                             // Upper left
+                             "M" & Max(5 * 3 - 0, 0) & " " & Max(5 * 3 - 0, 0) &
+                                // Upper right
+                             "L" & Self.Width - Max(5 * 3 + 0, 0) & " " & Max(5 * 3 - 0, 0) &
+                                // Lower right
+                             "L" & Self.Width - Max(5 * 3 + 0, 0) & " " & Self.Height - Max(5 * 3 + 0, 0) &
+                                // Lower left
+                             "L" & Max(5 * 3 - 0, 0) & " " & Self.Height - Max(5 * 3 + 0, 0) & 
+                             "Z' id='Component1' filter='url(#shadow)'></path>
+                                    </g>
+                                    <use xlink:href='#box' opacity='1' fill='" & "#ffffff" & "' fill-opacity='" & Substitute(Text(0), ",", ".") & "'></use>
+                                </g>
+                                <g>
+                                    " &
+                                    // ----- Edge
+                             If(
+                                    true,
+                                    Switch(
+                                        "left",
+                                        "left",// -- Position: left
+                                        "<path d='" &
+                                    // Upper left
+                             "M" & Max(5 * 3 - 0, 0) + 0 & " " & Max(5 * 3 - 0, 0) + 0 &
+                                    // Upper right
+                             "L" & Max(5 * 3 - 0, 0) + 0 + 8 & " " & Max(5 * 3 - 0, 0) + 0 &
+                                    // Lower right
+                             "L" & Max(5 * 3 - 0, 0) + 0 + 8 & " " & Self.Height - Max(5 * 3 + 0, 0) - 0 &
+                                    // Lower left
+                             "L" & Max(5 * 3 - 0, 0) + 0 & " " & Self.Height - Max(5 * 3 + 0, 0) - 0 & 
+                             "Z' id='box' stroke-width='0' fill='" & "#ffffff" & "'></path>",
+                                         "right",// -- Position: right
+                                        "<path d='" &
+                                    // Upper left
+                             "M" & Self.Width - Max(5 * 3 + 0, 0) - 0 - 8 & " " & Max(5 * 3 - 0, 0) + 0 &
+                                    // Upper right
+                             "L" & Self.Width - Max(5 * 3 + 0, 0) - 0 & " " & Max(5 * 3 - 0, 0) + 0 &
+                                    // Lower right
+                             "L" & Self.Width - Max(5 * 3 + 0, 0) - 0 & " " & Self.Height - Max(5 * 3 + 0, 0) - 0 &
+                                    // Lower left
+                             "L" & Self.Width - Max(5 * 3 + 0, 0) - 0 - 8 & " " & Self.Height - Max(5 * 3 + 0, 0) - 0 & 
+                             "Z' id='box' stroke-width='0' fill='" & "#ffffff" & "'></path>"
+                                       
+                                    )
+                                ) & "
+                                </g>
+                            </svg>"
+                            )
+                        OnSelect: =Select(Parent)
+                        Width: |-
+                            =//329
+                            Parent.TemplateWidth
+                        ZIndex: =1
+
+                    btnBkg_1 As button:
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =Parent.TemplateHeight
+                        HoverFill: =Self.Fill
+                        OnSelect: =Select(Parent)
+                        PressedFill: =Self.Fill
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Text: =""
+                        Visible: =false
+                        Width: =Parent.TemplateWidth
+                        ZIndex: =2
+
+                    TitleLabel_1 As label:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =54
+                        OnSelect: =Select(Parent)
+                        Size: =12
+                        Text: =ThisItem.titleText
+                        Width: |-
+                            =//208
+                            Parent.TemplateWidth - IdLabel_1.Width - 47
+                        X: =24
+                        Y: =27
+                        ZIndex: =3
+
+                    DescriptionLabel_1 As label:
+                        Height: =37
+                        OnSelect: =Select(Parent)
+                        Size: =10
+                        Text: |-
+                            =//ThisItem.Description
+                            If(Len(ThisItem.Description)>45, Concatenate(Left(ThisItem.Description,45),"..."),ThisItem.Description)
+                        Width: |-
+                            =//282
+                            Parent.TemplateWidth - 48
+                        Wrap: =false
+                        X: =24
+                        Y: =TitleLabel_1.Y + TitleLabel_1.Height
+                        ZIndex: =4
+
+                    IdLabel_1 As label:
+                        Align: =Align.Center
+                        Color: =Color.Black
+                        Fill: =RGBA(241, 244, 249, 1)
+                        Height: =34
+                        OnSelect: =Select(Parent)
+                        Text: =ThisItem.ID
+                        Width: =74
+                        X: |-
+                            =//232
+                            Parent.TemplateWidth - Self.Width - 23
+                        Y: =27
+                        ZIndex: =5
+
+                    DateExpiredLabel_1 As label:
+                        Height: |-
+                            =//25
+                            34
+                        OnSelect: =Select(Parent)
+                        Size: =10
+                        Text: =DateValue(ThisItem.dateExpired)
+                        Width: =StartedLabelTextValue.Width
+                        X: =ExpiresLabelText.X+ExpiresLabelText.Width
+                        Y: =189
+                        ZIndex: =6
+
+                    ExpiresLabelText As label:
+                        Height: =Parent.TemplateHeight / 6
+                        OnSelect: =Select(Parent)
+                        Size: =10
+                        Text: |-
+                            =// SQL
+                            //If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
+                            
+                            // Sharepoint
+                            "Expires"
+                        Visible: |-
+                            =//is_admin
+                            true
+                        Width: |-
+                            =//154
+                            StaratedLabelText.Width
+                        X: |-
+                            =//67
+                            StaratedLabelText.X
+                        Y: |-
+                            =//180
+                            Parent.TemplateHeight - Self.Height - 27
+                        ZIndex: =7
+
+                    OverlapButton As button:
+                        BorderThickness: =0
+                        Fill: =Color.Transparent
+                        Height: |-
+                            =//220
+                            Parent.TemplateHeight
+                        HoverFill: =Self.Fill
+                        OnSelect: |-
+                            =
+                            
+                            // Sharepoint List
+                            EditForm(Form3_1);
+                            Navigate(Form3_1, ScreenTransition.None, {recordVar: ThisItem});
+                            Set(Editing, true)
+                        PressedFill: =Self.Fill
+                        Text: =""
+                        Width: |-
+                            =//303
+                            Parent.TemplateWidth
+                        X: |-
+                            =//24
+                            (Parent.TemplateWidth - Self.Width) / 2
+                        Y: |-
+                            =//15
+                            (Parent.TemplateHeight - Self.Height) / 2
+                        ZIndex: =12
+
+                    "'Status Group_1' As group":
+                        Height: =5
+                        Width: =5
+                        X: =40
+                        Y: =40
+                        ZIndex: =13
+
+                        StatusColor_1 As rectangle:
+                            DisplayMode: =DisplayMode.View
+                            Fill: |-
+                                =Switch(
+                                    StatusLabel_1.Text,
+                                    "Active", RGBA(0, 127, 187, 1),
+                                    "Expired", RGBA(221, 79, 14, 1),
+                                    RGBA(155,155,155,.50)
+                                    
+                                )
+                            Height: =41
+                            OnSelect: =Select(Parent)
+                            Width: =9
+                            X: |-
+                                =//232
+                                StatusLabel_1.X - Self.Width
+                            Y: |-
+                                =//180
+                                Parent.TemplateHeight - Self.Height - 27
+                            ZIndex: =8
+
+                        StatusLabel_1 As label:
+                            Align: =Align.Center
+                            Color: |-
+                                =Switch(
+                                    StatusLabel_1.Text,
+                                    "Active", RGBA(0, 127, 187, 1),
+                                    "Expired", RGBA(221, 79, 14, 1),
+                                    RGBA(155,155,155,.50)
+                                    
+                                )
+                            DisplayMode: =DisplayMode.View
+                            Fill: |-
+                                =Switch(
+                                    StatusLabel_1.Text,
+                                    "Active", RGBA(0, 127, 187, .20),
+                                    "Expired", RGBA(221, 79, 14,.20),
+                                    RGBA(155,155,155,.20)
+                                    
+                                )
+                            FontWeight: =FontWeight.Semibold
+                            Height: =41
+                            OnSelect: =Select(Parent)
+                            Size: =11
+                            Text: |-
+                                =// SQL
+                                //ThisItem.status
+                                
+                                // Sharepoint
+                                If(DateDiff(Today(),DateValue(ThisItem.dateExpired))>0, "Active","Expired")
+                            Width: =65
+                            X: |-
+                                =//241
+                                Parent.TemplateWidth - Self.Width - 23
+                            Y: |-
+                                =//180
+                                Parent.TemplateHeight - Self.Height - 27
+                            ZIndex: =9
+
+                    StartedLabelGroup As group:
+                        Height: =5
+                        Width: =5
+                        X: =40
+                        Y: =40
+                        ZIndex: =14
+
+                        StartedLabelTextValue As label:
+                            Height: |-
+                                =//25
+                                34
+                            OnSelect: =Select(Parent)
+                            Size: =10
+                            Text: =DateValue(ThisItem.dateCreated)
+                            Width: |-
+                                =//143
+                                Parent.TemplateWidth - StaratedLabelText.Width - StatusLabel_1.Width - StatusColor_1.Width - 47
+                            Wrap: =false
+                            X: |-
+                                =//89
+                                StaratedLabelText.X + StaratedLabelText.Width
+                            Y: |
+                                =//If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
+                                //If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
+                                
+                                If(userData.role = "admin" || userData.role = "tech", ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel_1.Y + StatusLabel_1.Height - Self.Height)
+                            ZIndex: =10
+
+                        StaratedLabelText As label:
+                            Height: |-
+                                =//25
+                                34
+                            OnSelect: =Select(Parent)
+                            Size: =10
+                            Text: ="Started"
+                            Width: =67
+                            X: =24
+                            Y: |
+                                =//If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
+                                //If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
+                                
+                                If(userData.role = "admin" || userData.role = "tech", ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel_1.Y + StatusLabel_1.Height - Self.Height)
+                            ZIndex: =11
 
         AlertManagerFooter As groupContainer.verticalAutoLayoutContainer:
             Fill: =RGBA(255,255,255, 1)
@@ -267,7 +676,9 @@
             //RGBA(232, 244, 217, 1)
         Height: =49
         Icon: =Icon.BackArrow
-        OnSelect: =ResetForm(Form3); Navigate('Create Alert Admin (Redesign)', ScreenTransition.Fade)
+        OnSelect: |-
+            =//ResetForm(Form3); Navigate('Create Alert Admin (Redesign)', ScreenTransition.Fade)
+            ResetForm(Form3); Back(ScreenTransition.Fade)
         Width: =49
         X: =15
         Y: =SingleTicketInfo_Title.Y

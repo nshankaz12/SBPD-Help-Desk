@@ -1519,8 +1519,8 @@
                             =//If(userData.role = "staff", false,true)
                             If(userData.role = "staff",false,showComboBox)
                         Width: =120
-                        X: =161
-                        Y: =430
+                        X: =(Parent.Width-Self.Width)/2
+                        Y: =Created_Label.Y+Created_Label.Height+20
                         ZIndex: =3
 
                     Tags_ComboBox_Value As label:
@@ -1535,7 +1535,6 @@
                     Created_Date_Stamp_Label As label:
                         DisplayMode: =DisplayMode.View
                         Font: =Font.Georgia
-                        Height: =30
                         PaddingBottom: =10
                         Size: =Reporter_Label.Size
                         Text: =ticketInfo.DateCreated
@@ -1598,13 +1597,13 @@
                         Visible: =If(userData.role = "staff", false,true)
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =Category_Value_Label.Y+Category_Value_Label.Height+10
+                        Y: =Category_Value_Label.Y+Category_Value_Label.Height+30
                         ZIndex: =9
 
                     Category_Value_Label As label:
                         DisplayMode: =DisplayMode.View
                         Font: =Font.Georgia
-                        Height: =30
+                        Height: =45
                         PaddingBottom: =10
                         Size: =Reporter_Label.Size
                         Text: =LookUp(Category_1, ID = ticketInfo.MainCategory, name)
@@ -1647,7 +1646,7 @@
                         Text: ="Status"
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =If(Additonal_Assign_Label.Visible, Additonal_Assign_Label.Height+Additonal_Assign_Label.Y+10, Reporter_Label.Height+Reporter_Label.Y+30)
+                        Y: =If(Additonal_Assign_Label.Visible, Additonal_Assign_Label.Height+Additonal_Assign_Label.Y+30, Reporter_Label.Height+Reporter_Label.Y+30)
                         ZIndex: =13
 
                     Additional_Assign_CloseTicket As label:
@@ -1692,7 +1691,7 @@
                         Visible: =If(userData.role = "staff",false,true)
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =If(AssignMe.Visible, AssignMe.Height+AssignMe.Y+10, Assignee_Label.Height+Assignee_Label.Y+10)
+                        Y: =If(AssignMe.Visible, AssignMe.Height+AssignMe.Y+10, Assignee_Label.Height+Assignee_Label.Y+20)
                         ZIndex: =16
 
                     Assignee_Value_CloseTicket As label:
@@ -1753,7 +1752,7 @@
                         Visible: =If(userData.role = "staff",false,true)
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =Reporter_Value_Label.Y+Reporter_Value_Label.Height+10
+                        Y: =Reporter_Value_Label.Y+Reporter_Value_Label.Height+30
                         ZIndex: =20
 
                     AssigneeId As label:

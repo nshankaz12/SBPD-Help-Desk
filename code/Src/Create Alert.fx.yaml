@@ -407,3 +407,11 @@
                 Width: =Parent.Width
                 Y: =Parent.Height-Self.Height
 
+    Icon1 As icon.BackArrow:
+        Height: =44
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.Fade)
+        Width: =61
+        Y: =compWebHeader_17.Height+1
+        ZIndex: =2
+

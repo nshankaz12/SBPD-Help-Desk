@@ -107,7 +107,7 @@ Home As screen:
                             Layout: =Layout.Vertical
                             OnSelect: =Switch(ThisItem.NavName, "Create Ticket", Navigate('Category Select'), "My Tickets", Navigate(MyTickets), "Ticket Log", Navigate('Log of All Tickets - Admin Tech'), "Ticket Metrics", Navigate('Ticket Metrics - Admin Tech'), "Assign Role", Navigate('Assign Role - Admin'))
                             ShowScrollbar: =false
-                            TemplateSize: =Parent.Height/2.67
+                            TemplateSize: =200
                             Width: =Parent.Width
                             WrapCount: =Switch(Home.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, If(userData.role ="staff", 3, 4))
                             Y: =If(Home.Size=1, 0 ,Parent.Height/4)
@@ -132,10 +132,14 @@ Home As screen:
                                 BorderThickness: =0
                                 Color: =ColorScheme.secondary
                                 Fill: =ColorScheme.secondary
-                                Height: =If ( Home.Size =1 , Parent.TemplateHeight/1.5,Parent.TemplateHeight/1.1)
+                                Height: |-
+                                    =//If ( Home.Size =1 , Parent.TemplateHeight/1.5,Parent.TemplateHeight/1.1)
+                                    Parent.TemplateHeight-50
                                 OnSelect: =Select(Parent)
                                 Text: =""
-                                Width: =If( Home.Size =1, Parent.TemplateWidth / 1.5, Parent.TemplateWidth/1.2)
+                                Width: |-
+                                    =//If( Home.Size =1, Parent.TemplateWidth / 1.5, Parent.TemplateWidth/1.2)
+                                    Parent.TemplateWidth-50
                                 X: =(Parent.TemplateWidth - Self.Width)/2
                                 Y: =(Parent.TemplateHeight - Self.Height)/2
                                 ZIndex: =2
@@ -144,11 +148,15 @@ Home As screen:
                                 Align: =Align.Center
                                 Color: =ColorScheme.primary
                                 FontWeight: =FontWeight.Semibold
-                                Height: =If(Home.Size >1,ButtonGalleryBackgroundButton_1.Height/4.5,15)
+                                Height: |-
+                                    =//If(Home.Size >1,ButtonGalleryBackgroundButton_1.Height/4.5,15)
+                                    40
                                 OnSelect: =Select(Parent)
-                                Size: =If(Home.Size =1,11,15)
+                                Size: |-
+                                    =//If(Home.Size =1,11,15)
+                                    15
                                 Text: =ThisItem.NavName
-                                Width: =ButtonGalleryBackgroundButton_1.Width
+                                Width: =Parent.TemplateWidth
                                 X: =(Parent.TemplateWidth-Self.Width)/2
                                 Y: =ButtonGalleryNavIcon_2.Y+ButtonGalleryNavIcon_2.Height
                                 ZIndex: =3
@@ -158,12 +166,15 @@ Home As screen:
                                 Height: |-
                                     =
                                     
-                                    If(Home.Size >1, Parent.TemplateHeight/2.5,Parent.TemplateHeight/3)
+                                    //If(Home.Size >1, Parent.TemplateHeight/2.5,Parent.TemplateHeight/3)
+                                    Parent.TemplateHeight-150
                                 Icon: =ThisItem.NavIcon
                                 OnSelect: =Select(Parent)
                                 Width: =Parent.TemplateWidth/2
                                 X: =(Parent.TemplateWidth-Self.Width)/2
-                                Y: =If( Home.Size = 1, (ButtonGalleryBackgroundButton_1.Height-Self.Height)/1.2,(ButtonGalleryBackgroundButton_1.Height-Self.Height)/2)
+                                Y: |-
+                                    =//If( Home.Size = 1, (ButtonGalleryBackgroundButton_1.Height-Self.Height)/1.2,(ButtonGalleryBackgroundButton_1.Height-Self.Height)/2)
+                                    (ButtonGalleryBackgroundButton_4.Height-Self.Height)/2
                                 ZIndex: =4
 
                             Overlapbtn_2 As button:
