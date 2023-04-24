@@ -362,11 +362,6 @@
             //70
         ZIndex: =5
 
-    compWebMenu_17 As compWebMenu_15:
-        Height: =If(showMenu, App.Height, KnowledgeBaseHeaderContainer.Height)
-        Visible: ='Knowledge Base'.Size>1
-        ZIndex: =6
-
     Icon1_34 As icon.BackArrow:
         Color: =ColorScheme.secondary
         Height: =40
@@ -387,4 +382,12 @@
         X: =70
         Y: =40
         ZIndex: =8
+
+    compWebMenu_14 As compWebMenu:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_14.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_14.ExpandMenu)
+        Visible: ='Knowledge Base'.Size > 1
+        ZIndex: =9
 

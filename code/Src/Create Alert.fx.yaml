@@ -415,3 +415,11 @@
         Y: =compWebHeader_17.Height+1
         ZIndex: =2
 
+    compWebMenu_1 As compWebMenu:
+        OnReset: |-
+            =Set(showMenu, compWebMenu_1.ExpandMenu);
+            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
+            Set(showHamIcon, !compWebMenu_1.ExpandMenu)
+        Visible: ='Create Alert'.Size > 1
+        ZIndex: =3
+
