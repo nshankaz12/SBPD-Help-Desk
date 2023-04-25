@@ -99,30 +99,26 @@
                         Fill: =ColorScheme.primary
                         Height: =20
                         OnSelect: |-
-                            =// sql
-                            /*
-                            If(AssigneeId.Text = "0",
-                                Patch(
-                                    Tickets_1,
-                                    LookUp(
-                                        Tickets_1,
-                                        id = ticketInfo.ID
-                                    ),
-                                    {tags: Label4_1.Text},
-                                    {assignedTO: 0}
+                            =If(
+                                Assignee_Value_Label_1.Text <> User().FullName && Assignee_Value_Label_1.Text <> LookUp(
+                                    Users_1,
+                                    ID = ticketInfo.AssignedTo,
+                                    fullName
                                 ),
-                                Patch(
-                                    Tickets_1,
-                                    LookUp(
-                                        Tickets_1,
-                                        id = ticketInfo.ID
-                                    ),
-                                    {tags: Label4_1.Text},
-                                    {assignedTO: Value(AssigneeId.Text)},
-                                    {addAssignees: Additional_Assign_Value_Label.Text}
-                                    )
-                            );*/
-                            // sharepoint
+                                SMTP.SendEmailV3(
+                                    {
+                                        From: "sbpdhelpdesk@outlook.com",
+                                        To: LookUp(
+                                            Users_1,
+                                            fullName = Assignee_Value_Label_1.Text,
+                                            email
+                                        ),
+                                        Subject: "Help Desk Ticket Assigned",
+                                        Body: "<div>Hello, this is an automated response. An IT Help Desk ticket # " & ticketInfo.ID & " was assigned to you. Please click <a href='https://apps.powerapps.com/play/e/default-ce8a2002-448f-4f58-82b1-d86f73e3afdd/a/a370d8a4-8906-4ac3-bff0-0a588e959ea7?tenantId=ce8a2002-448f-4f58-82b1-d86f73e3afdd&TickID=" & ticketInfo.ID & "'>here</a> to view more details for the ticket.</div>"
+                                    }
+                                );
+                                
+                            );
                             Refresh(Tickets);
                             Patch(
                                 Tickets,
@@ -1916,6 +1912,15 @@
                         dateClosed: Now(),
                         status: "closed",
                         updatedBy: userData.id
+                    }
+                );
+                Patch(
+                    Comments_1,
+                    Defaults(Comments_1),
+                    {
+                        ticketId: ticketInfo.ID,
+                        message: Concatenate("Ticket Resolution: ", Text_Input_Resolution),
+                        creatorId: userData.id
                     }
                 );
                 Set(

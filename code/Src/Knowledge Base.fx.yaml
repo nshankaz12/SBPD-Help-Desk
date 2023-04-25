@@ -384,10 +384,6 @@
         ZIndex: =8
 
     compWebMenu_14 As compWebMenu:
-        OnReset: |-
-            =Set(showMenu, compWebMenu_14.ExpandMenu);
-            //Set(showHamIcon, compWebMenu.showHamburgerIcon);
-            Set(showHamIcon, !compWebMenu_14.ExpandMenu)
         Visible: ='Knowledge Base'.Size > 1
         ZIndex: =9
 
