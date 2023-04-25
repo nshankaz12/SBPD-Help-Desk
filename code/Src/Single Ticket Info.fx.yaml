@@ -59,7 +59,7 @@
                 LayoutWrap: =true
                 PaddingBottom: =90
                 PaddingTop: =20
-                Visible: ='Single Ticket Info'.Size=1
+                Visible: ='Single Ticket Info'.Size<=2
                 ZIndex: =1
 
                 NewMobileDetails As groupContainer.manualLayoutContainer:
@@ -733,7 +733,7 @@
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                Visible: ='Single Ticket Info'.Size=2
+                Visible: =
                 Width: =Parent.Width
                 ZIndex: =2
 
@@ -1133,12 +1133,12 @@
             SingleticketInfoActivityHistoryContainer_2 As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
-                Height: =Parent.Height+100+Ticket_Attachment_Gallery.Height
+                Height: =Parent.Height+Ticket_Attachment_Gallery.Height+ Comment_Gallery.Height
                 LayoutMinHeight: =Parent.Height
                 LayoutMinWidth: =100
                 LayoutMode: =LayoutMode.Auto
                 LayoutOverflowY: =LayoutOverflow.Scroll
-                Visible: ='Single Ticket Info'.Size>1
+                Visible: ='Single Ticket Info'.Size>2
                 Width: =If('Single Ticket Info'.Size>2, 2*(Parent.Width)/3, Parent.Width)
                 ZIndex: =3
 
@@ -1159,7 +1159,7 @@
                         LayoutMode: =LayoutMode.Auto
                         PaddingLeft: =20
                         PaddingRight: =10
-                        PaddingTop: =50
+                        PaddingTop: =Ticket_Title.Height+10
                         Width: =Parent.Width
                         ZIndex: =14
 
@@ -1237,7 +1237,8 @@
 
                         Comment_History_Container As groupContainer.manualLayoutContainer:
                             AlignInContainer: =AlignInContainer.SetByContainer
-                            Height: =Parent.Height/2
+                            FillPortions: =0
+                            Height: =Comment_Gallery.Height+Close_Ticket_Button.Height+Add_Comment_Button.Height+100
                             LayoutMinHeight: =200
                             LayoutMinWidth: =250
                             Width: =Parent.Width
@@ -1337,7 +1338,9 @@
                                 AccessibleLabel: =
                                 BorderColor: =RGBA(0, 0, 0, 1)
                                 Default: =//Last(Filter(Comments, ticketId = ticket))
-                                Height: =If('Single Ticket Info'.Height<700, Parent.Height*.50, Parent.Height*.60)
+                                Height: |-
+                                    =//If('Single Ticket Info'.Height<700, Parent.Height*.50, Parent.Height*.60)
+                                    If(CountRows(Filter(Comments_1, ticketId = ticketInfo.ID))*Comment_Gallery.TemplateHeight>300, 300, CountRows(Filter(Comments_1, ticketId = ticketInfo.ID))*Comment_Gallery.TemplateHeight)
                                 Items: =Filter(Comments_1, ticketId = ticketInfo.ID)
                                 Layout: =Layout.Vertical
                                 ShowScrollbar: =false
@@ -1414,8 +1417,8 @@
                                     ZIndex: =8
 
                     Ticket_Title As label:
+                        AutoHeight: =true
                         Font: =Font.Georgia
-                        Height: =30
                         PaddingLeft: =20
                         Size: =If('Single Ticket Info'.Size=1,12,30)
                         Text: =ticketInfo.Title
@@ -1516,7 +1519,7 @@
                             If(userData.role = "staff",false,showComboBox)
                         Width: =120
                         X: =(Parent.Width-Self.Width)/2
-                        Y: =Created_Label.Y+Created_Label.Height+20
+                        Y: =Last_Updated_Label.Y+Last_Updated_Label.Height+20
                         ZIndex: =3
 
                     Tags_ComboBox_Value As label:
@@ -1528,6 +1531,30 @@
                         Y: =60
                         ZIndex: =4
 
+                    Created_Date_Stamp_Label_3 As label:
+                        DisplayMode: =DisplayMode.View
+                        Font: =Font.Georgia
+                        PaddingBottom: =10
+                        Size: =Reporter_Label.Size
+                        Text: =ticketInfo.LastUpdated
+                        Width: =Reporter_Label.Width
+                        X: =Last_Updated_Label.Width+Last_Updated_Label.X
+                        Y: =Last_Updated_Label.Y
+                        ZIndex: =5
+
+                    Last_Updated_Label As label:
+                        Font: =Font.Georgia
+                        FontWeight: =FontWeight.Semibold
+                        Height: =30
+                        LineHeight: =1
+                        PaddingLeft: =20
+                        Size: =Reporter_Label.Size
+                        Text: ="Updated"
+                        Width: =Reporter_Label.Width
+                        X: =Reporter_Label.X
+                        Y: =Created_Label.Height+Created_Label.Y+10
+                        ZIndex: =6
+
                     Created_Date_Stamp_Label As label:
                         DisplayMode: =DisplayMode.View
                         Font: =Font.Georgia
@@ -1537,7 +1564,7 @@
                         Width: =Reporter_Label.Width
                         X: =Created_Label.Width+Created_Label.X
                         Y: =Created_Label.Y
-                        ZIndex: =5
+                        ZIndex: =7
 
                     Created_Label As label:
                         Font: =Font.Georgia
@@ -1549,8 +1576,8 @@
                         Text: ="Created"
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =If(Tags_Label.Visible,Tags_ComboBox.Y+Tags_ComboBox.Height+30, Category_Label.Y+Category_Label.Height+30)
-                        ZIndex: =6
+                        Y: =If(Tags_Label.Visible,Tags_ComboBox.Y+Tags_ComboBox.Height+10, Category_Label.Y+Category_Label.Height+10)
+                        ZIndex: =8
 
                     Tags_ComboBox_CloseTicket As label:
                         DisplayMode: =DisplayMode.View
@@ -1562,7 +1589,7 @@
                         Width: =Reporter_Label.Width
                         X: =Rectangle_behind_details.X+Reporter_Label.Width
                         Y: =Tags_Label.Y
-                        ZIndex: =7
+                        ZIndex: =9
 
                     Tags_ComboBox As combobox:
                         ChevronBackground: =ColorScheme.primary
@@ -1580,7 +1607,7 @@
                         Width: =Assignee_ComboBox.Width
                         X: =Assignee_ComboBox.X
                         Y: =Tags_Label.Y
-                        ZIndex: =8
+                        ZIndex: =10
 
                     Tags_Label As label:
                         Font: =Font.Georgia
@@ -1593,8 +1620,8 @@
                         Visible: =If(userData.role = "staff", false,true)
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =Category_Value_Label.Y+Category_Value_Label.Height+30
-                        ZIndex: =9
+                        Y: =Category_Value_Label.Y+Category_Value_Label.Height+10
+                        ZIndex: =11
 
                     Category_Value_Label As label:
                         DisplayMode: =DisplayMode.View
@@ -1606,7 +1633,7 @@
                         Width: =Reporter_Label.Width
                         X: =Category_Label.Width+Category_Label.X
                         Y: =Category_Label.Y
-                        ZIndex: =10
+                        ZIndex: =12
 
                     Category_Label As label:
                         Font: =Font.Georgia
@@ -1618,8 +1645,8 @@
                         Text: ="Category"
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =Status_Value_Label.Y+Status_Value_Label.Height+30
-                        ZIndex: =11
+                        Y: =Status_Value_Label.Y+Status_Value_Label.Height+10
+                        ZIndex: =13
 
                     Status_Value_Label As label:
                         Font: =Font.Georgia
@@ -1630,7 +1657,7 @@
                         Width: =Reporter_Label.Width
                         X: =Status_Label.Width+Status_Label.X
                         Y: =Status_Label.Y
-                        ZIndex: =12
+                        ZIndex: =14
 
                     Status_Label As label:
                         Font: =Font.Georgia
@@ -1642,8 +1669,8 @@
                         Text: ="Status"
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =If(Additonal_Assign_Label.Visible, Additonal_Assign_Label.Height+Additonal_Assign_Label.Y+30, Reporter_Label.Height+Reporter_Label.Y+30)
-                        ZIndex: =13
+                        Y: =If(Additonal_Assign_Label.Visible, Additonal_Assign_Label.Height+Additonal_Assign_Label.Y+10, Assignee_Label.Height+Assignee_Label.Y+10)
+                        ZIndex: =15
 
                     Additional_Assign_CloseTicket As label:
                         DisplayMode: =DisplayMode.View
@@ -1655,7 +1682,7 @@
                         Width: =Reporter_Label.Width
                         X: =Rectangle_behind_details.X+Reporter_Label.Width
                         Y: =Additonal_Assign_Label.Y
-                        ZIndex: =14
+                        ZIndex: =16
 
                     Additional_Assign_ComboBox As combobox:
                         ChevronBackground: =ColorScheme.primary
@@ -1674,7 +1701,7 @@
                         Width: =Assignee_ComboBox.Width
                         X: =Assignee_ComboBox.X
                         Y: =Additonal_Assign_Label.Y
-                        ZIndex: =15
+                        ZIndex: =17
 
                     Additonal_Assign_Label As label:
                         Font: =Font.Georgia
@@ -1688,7 +1715,7 @@
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
                         Y: =If(AssignMe.Visible, AssignMe.Height+AssignMe.Y+10, Assignee_Label.Height+Assignee_Label.Y+20)
-                        ZIndex: =16
+                        ZIndex: =18
 
                     Assignee_Value_CloseTicket As label:
                         DisplayMode: =DisplayMode.View
@@ -1696,11 +1723,13 @@
                         Height: =30
                         Size: =15
                         Text: =Concat(Assignee_ComboBox.SelectedItems, Concatenate(fullName, ""))
-                        Visible: =If(userData.role = "staff",false,true)
+                        Visible: |-
+                            =//If(userData.role = "staff",false,true)
+                            true
                         Width: =Reporter_Label.Width
                         X: =Rectangle_behind_details.X+Reporter_Label.Width
                         Y: =Assignee_Label.Y
-                        ZIndex: =17
+                        ZIndex: =19
 
                     Assignee_ComboBox As combobox:
                         ChevronBackground: =ColorScheme.primary
@@ -1723,7 +1752,7 @@
                         Width: =Rectangle_behind_details.Width/2
                         X: =Assignee_Label.X+Assignee_Label.Width-10
                         Y: =Assignee_Label.Y
-                        ZIndex: =18
+                        ZIndex: =20
 
                     Assignee_Value_Label As label:
                         Align: =Align.Center
@@ -1735,7 +1764,7 @@
                         Width: =Rectangle_behind_details.Width
                         X: =25
                         Y: =129
-                        ZIndex: =19
+                        ZIndex: =21
 
                     Assignee_Label As label:
                         Font: =Font.Georgia
@@ -1745,11 +1774,13 @@
                         PaddingLeft: =20
                         Size: =Reporter_Label.Size
                         Text: ="Assignee"
-                        Visible: =If(userData.role = "staff",false,true)
+                        Visible: |-
+                            =//If(userData.role = "staff",false,true)
+                            true
                         Width: =Reporter_Label.Width
                         X: =Reporter_Label.X
-                        Y: =Reporter_Value_Label.Y+Reporter_Value_Label.Height+30
-                        ZIndex: =20
+                        Y: =Reporter_Value_Label.Y+Reporter_Value_Label.Height+10
+                        ZIndex: =22
 
                     AssigneeId As label:
                         Height: =30
@@ -1759,7 +1790,7 @@
                         Visible: =false
                         X: =284.5
                         Y: =100
-                        ZIndex: =21
+                        ZIndex: =23
 
                     AssignMe As label:
                         Height: =30
@@ -1788,7 +1819,7 @@
                         Width: =Reporter_Label.Width
                         X: =Reporter_Value_Label.X
                         Y: =Assignee_ComboBox.Y+Assignee_ComboBox.Height+10
-                        ZIndex: =22
+                        ZIndex: =24
 
                     Reporter_Value_Label As label:
                         Font: =Font.Georgia
@@ -1799,7 +1830,7 @@
                         Width: =Reporter_Label.Width
                         X: =Rectangle_behind_details.X+Reporter_Label.Width
                         Y: =Reporter_Label.Y
-                        ZIndex: =23
+                        ZIndex: =25
 
                     Reporter_Label As label:
                         Font: =Font.Georgia
@@ -1812,7 +1843,7 @@
                         Width: =Rectangle_behind_details.Width/2
                         X: =Rectangle_behind_details.X
                         Y: =Rectangle_behind_details.Y+Details_label.Height+20
-                        ZIndex: =24
+                        ZIndex: =26
 
                     Additional_Assign_Value_Label As label:
                         Height: =30
@@ -1820,7 +1851,7 @@
                         Visible: =false
                         X: =152
                         Y: =500
-                        ZIndex: =25
+                        ZIndex: =27
 
     compMobileMenu_22 As compMobileMenu:
         Visible: ='Single Ticket Info'.Size=1

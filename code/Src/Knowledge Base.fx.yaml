@@ -15,6 +15,7 @@
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         LayoutOverflowY: =LayoutOverflow.Scroll
+        PaddingTop: =compWebHeader_14.Height+KBScreenTitle.Height
         Width: =Parent.Width
         ZIndex: =1
 
@@ -25,7 +26,7 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            Visible: =!ResetScreen
+            Visible: =false
             ZIndex: =1
 
         KnowledgeBaseHeaderContainer_1 As groupContainer.horizontalAutoLayoutContainer:
@@ -36,7 +37,7 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            Visible: =!ResetScreen
+            Visible: =false
             ZIndex: =2
 
         KnowledgeBaseSearchContainer As groupContainer.manualLayoutContainer:
@@ -52,12 +53,15 @@
                 Default: =""
                 Height: =If('Knowledge Base'.Size=1,24,40)
                 HintText: ="Type in Keywords, or titles"
-                OnChange: |
-                    =UpdateContext({SearchVisible:true});
-                    ClearCollect(SearchResults,Filter(Articles,TextInput1.Text in Tags || TextInput1.Text in Name || TextInput1.Text in ArticleBlurb));
-                    UpdateContext({SearchText:TextInput1.Text});
-                    Reset(TextInput1);
-                    UpdateContext({ResetScreen:true});
+                OnChange: |-
+                    =If(IsBlank(Trim(TextInput1.Text)), Blank(), 
+                    
+                        UpdateContext({SearchVisible:true});
+                        ClearCollect(SearchResults,Filter(Articles,TextInput1.Text in Tags || TextInput1.Text in Name || TextInput1.Text in ArticleBlurb));
+                        UpdateContext({SearchText:TextInput1.Text});
+                        Reset(TextInput1);
+                        UpdateContext({ResetScreen:true});
+                    )
                 PaddingRight: =Icon4.Width+5
                 RadiusBottomRight: =20
                 RadiusTopRight: =20
@@ -104,12 +108,16 @@
             Button6_2 As button:
                 Fill: =Color.Transparent
                 Height: =TextInput1.Height
+                HoverFill: =ColorFade(RGBA(56, 96, 178, .25), -20%)
                 OnSelect: |-
-                    =UpdateContext({SearchVisible:true});
-                    ClearCollect(SearchResults,Filter(Articles,TextInput1.Text in Tags || TextInput1.Text in Name || TextInput1.Text in ArticleBlurb));
-                    UpdateContext({SearchText:TextInput1.Text});
-                    Reset(TextInput1);
-                    UpdateContext({ResetScreen:true});
+                    =If(IsBlank(Trim(TextInput1.Text)), Blank(), 
+                    
+                        UpdateContext({SearchVisible:true});
+                        ClearCollect(SearchResults,Filter(Articles,TextInput1.Text in Tags || TextInput1.Text in Name || TextInput1.Text in ArticleBlurb));
+                        UpdateContext({SearchText:TextInput1.Text});
+                        Reset(TextInput1);
+                        UpdateContext({ResetScreen:true});
+                    )
                 PressedFill: =ColorScheme.secondaryPressedColor
                 RadiusBottomLeft: =5
                 RadiusBottomRight: =20
@@ -134,9 +142,9 @@
                 ZIndex: =6
 
         KnowledgeBaseResultsContainer As groupContainer.manualLayoutContainer:
-            AlignInContainer: =AlignInContainer.Center
+            AlignInContainer: =AlignInContainer.Start
             FillPortions: =0
-            Height: =1000
+            Height: =If(Rectangle4.Height+100 <768,Rectangle4.Height+100,768)
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             Visible: |
@@ -148,17 +156,19 @@
                 BorderColor: =RGBA(0, 0, 0, 1)
                 BorderThickness: =2
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =Parent.Height*.85
+                Height: |-
+                    =//Parent.Height*.85
+                    CountRows(SearchResults)*Gallery2_1.TemplateHeight
                 Width: =Parent.Width*.90
                 X: =(Parent.Width-Self.Width)/2
-                Y: =Parent.Height/12
+                Y: =Parent.Height/(4*CountRows(SearchResults))
                 ZIndex: =1
 
             Gallery2_1 As gallery.galleryVertical:
                 Height: =Rectangle4.Height
                 Items: =SearchResults
                 Layout: =Layout.Vertical
-                TemplateSize: =Parent.Height/6
+                TemplateSize: =150
                 Width: =Rectangle4.Width
                 X: =Rectangle4.X
                 Y: =Rectangle4.Y
@@ -173,7 +183,7 @@
                     ZIndex: =1
 
                 Label5_1 As label:
-                    Height: =30
+                    Height: =20
                     OnSelect: =Select(Parent)
                     Size: =If('Knowledge Base'.Size>1, 13, 8)
                     Text: =ThisItem.Tags
@@ -183,13 +193,13 @@
                     ZIndex: =2
 
                 Label4_4 As label:
-                    Height: =72
+                    Height: =60
                     OnSelect: =Select(Parent)
                     Size: =If('Knowledge Base'.Size>1, 13, 8)
                     Text: =ThisItem.ArticleBlurb
                     Width: =Parent.TemplateWidth-Self.X
                     X: =Label1_1.X
-                    Y: =40
+                    Y: =Label1_1.Height
                     ZIndex: =3
 
                 Label1_1 As label:
@@ -209,13 +219,13 @@
                     Height: =7
                     OnSelect: =Select(Parent)
                     Width: =Parent.TemplateWidth
-                    Y: =159.66666666666666
+                    Y: =Parent.TemplateHeight
                     ZIndex: =5
 
                 Button1_1 As button:
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =Parent.TemplateHeight
-                    HoverFill: =RGBA(0, 0, 0, 0)
+                    HoverFill: =RGBA(214, 223, 238, 1)
                     OnSelect: =Launch(ThisItem.'Link to item');
                     PressedFill: =ColorFade(ColorScheme.secondaryPressedColor,79%)
                     Text: =""
@@ -233,7 +243,7 @@
                 Visible: =SearchVisible
                 Width: =Rectangle4.Width
                 X: =Rectangle4.X
-                Y: =17
+                Y: =Rectangle4.Y -Self.Height
                 ZIndex: =5
 
         ButtonGallery_2 As gallery.galleryVertical:
@@ -312,78 +322,73 @@
             Visible: ='Knowledge Base'.Size=1 && !ResetScreen
             ZIndex: =7
 
-        KnowledgeBaseMainContentContainer As groupContainer.verticalAutoLayoutContainer:
-            AlignInContainer: =AlignInContainer.Center
-            FillPortions: =7
-            LayoutDirection: =LayoutDirection.Vertical
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            LayoutOverflowY: =LayoutOverflow.Scroll
-            Visible: =false
+    StickyScreenElements As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =10
+
+        compMobileMenu_21 As compMobileMenu:
+            Height: =Parent.Height/8
+            Visible: ='Knowledge Base'.Size=1
             Width: =Parent.Width
+            Y: =Parent.Height-Self.Height
+            ZIndex: =2
+
+        KBScreenTitle As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            Fill: =ColorScheme.primary
+            Height: |-
+                =48
+                //If('Knowledge Base'.Size=1,35,70)
+            Size: =If('Knowledge Base'.Size=1, titleText.mobileSize, titleText.desktopSize)
+            Text: ="Knowledge Base"
+            Width: =Parent.Width
+            Y: =compWebHeader_14.Height
+            ZIndex: =3
+
+        NormalViewBackButton As icon.BackArrow:
+            Color: =ColorScheme.secondary
+            Height: =49
+            Icon: =Icon.BackArrow
+            OnSelect: =Navigate(Home, ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+            Visible: ='Knowledge Base'.Size>1
+            Width: =49
+            X: =15
+            Y: =SingleTicketInfo_Title.Y
+            ZIndex: =4
+
+        compWebHeader_14 As compWebHeader:
+            CompScreenSize: ='Knowledge Base'.Size
+            Height: |-
+                =82
+                //70
+            ZIndex: =5
+
+        MobileBackButton As icon.BackArrow:
+            Color: =ColorScheme.secondary
+            Height: =40
+            Icon: =Icon.BackArrow
+            OnSelect: =Navigate(Home, ScreenTransition.Fade)//Back(ScreenTransition.Fade)
+            Visible: ='Knowledge Base'.Size=1
+            Width: =40
+            X: =40
+            Y: =KBScreenTitle.Y/1.27
+            ZIndex: =7
+
+        SearchEffectTimer As timer:
+            Duration: =999
+            OnTimerEnd: |-
+                =UpdateContext({ResetScreen:false});
+            Start: =ResetScreen
+            Visible: =false
+            X: =70
+            Y: =40
             ZIndex: =8
 
-    compMobileMenu_21 As compMobileMenu:
-        Height: =Parent.Height/8
-        Visible: ='Knowledge Base'.Size=1
-        Width: =Parent.Width
-        Y: =Parent.Height-Self.Height
-        ZIndex: =2
-
-    Label6 As label:
-        Align: =Align.Center
-        Color: =RGBA(255, 255, 255, 1)
-        Fill: =ColorScheme.primary
-        Height: |-
-            =48
-            //If('Knowledge Base'.Size=1,35,70)
-        Size: =If('Knowledge Base'.Size=1, titleText.mobileSize, titleText.desktopSize)
-        Text: ="Knowledge Base"
-        Width: =Parent.Width
-        Y: =compWebHeader_14.Height
-        ZIndex: =3
-
-    Icon1_33 As icon.BackArrow:
-        Color: =ColorScheme.secondary
-        Height: =49
-        Icon: =Icon.BackArrow
-        OnSelect: =Navigate(Home, ScreenTransition.Fade)//Back(ScreenTransition.Fade)
-        Visible: ='Knowledge Base'.Size>1
-        Width: =49
-        X: =15
-        Y: =SingleTicketInfo_Title.Y
-        ZIndex: =4
-
-    compWebHeader_14 As compWebHeader:
-        CompScreenSize: ='Knowledge Base'.Size
-        Height: |-
-            =82
-            //70
-        ZIndex: =5
-
-    Icon1_34 As icon.BackArrow:
-        Color: =ColorScheme.secondary
-        Height: =40
-        Icon: =Icon.BackArrow
-        OnSelect: =Navigate(Home, ScreenTransition.Fade)//Back(ScreenTransition.Fade)
-        Visible: ='Knowledge Base'.Size=1
-        Width: =40
-        X: =40
-        Y: =Label6.Y/1.27
-        ZIndex: =7
-
-    Timer1 As timer:
-        Duration: =999
-        OnTimerEnd: |-
-            =UpdateContext({ResetScreen:false});
-        Start: =ResetScreen
-        Visible: =false
-        X: =70
-        Y: =40
-        ZIndex: =8
-
-    compWebMenu_14 As compWebMenu:
-        Visible: ='Knowledge Base'.Size > 1
-        ZIndex: =9
+        compWebMenu_14 As compWebMenu:
+            Visible: ='Knowledge Base'.Size > 1
+            ZIndex: =9
 
