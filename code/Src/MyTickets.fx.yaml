@@ -279,7 +279,9 @@
                             Height: =54
                             OnSelect: =Select(Parent)
                             Size: =12
-                            Text: =ThisItem.Title
+                            Text: |-
+                                =//ThisItem.Title
+                                If(Len(ThisItem.Title)>60, Concatenate(Left(ThisItem.Title,60),"..."),ThisItem.Title)
                             Width: |-
                                 =//208
                                 Parent.TemplateWidth - IdLabel.Width - 47
@@ -321,15 +323,15 @@
                                 =//25
                                 34
                             OnSelect: =Select(Parent)
+                            PaddingLeft: =If(Len(DateCreatedLabel.Text) <= 9, 5,0)
+                            PaddingRight: =If(Len(DateCreatedLabel.Text) <= 9, 5,0)
                             Size: =10
                             Text: =DateValue(ThisItem.DateCreated)
                             Width: =75
                             X: |-
                                 =//231
                                 Parent.TemplateWidth - Self.Width - 23
-                            Y: |-
-                                =//147
-                                ((Parent.TemplateHeight - Self.Height) / 2) + 20
+                            Y: =((Parent.TemplateHeight - Self.Height) / 2) + 30
                             ZIndex: =6
 
                         btnTemplate As button:
@@ -366,7 +368,7 @@
                             ZIndex: =13
 
                             Image7_3 As image:
-                                Height: =Parent.TemplateHeight / 6
+                                Height: =40
                                 Image: |-
                                     =// Get assignee's profile pic if they have one
                                     
@@ -380,11 +382,8 @@
                                 RadiusBottomRight: =256
                                 RadiusTopLeft: =256
                                 RadiusTopRight: =256
-                                Visible: |-
-                                    =//is_admin
-                                    
-                                    userData.role = "admin" || userData.role = "tech"
-                                Width: =Parent.TemplateHeight / 6
+                                Visible: =userData.role = "admin" || userData.role = "tech" || (userData.role = "staff" && !(IsBlank(ThisItem.AssignedTo) || ThisItem.AssignedTo = 0))
+                                Width: =40
                                 X: =24
                                 Y: |-
                                     =//180
@@ -394,19 +393,12 @@
                             AssigneeLabel As label:
                                 Height: =Parent.TemplateHeight / 6
                                 OnSelect: =Select(Parent)
+                                Size: =12
                                 Text: |-
-                                    =// SQL
-                                    //If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName))
-                                    
-                                    // Sharepoint
+                                    =// Sharepoint
                                     If(IsBlank(ThisItem.AssignedTo) || ThisItem.AssignedTo = 0, "Unassigned", LookUp(Users_1, ID = ThisItem.AssignedTo, fullName))
-                                Visible: |-
-                                    =//is_admin
-                                    
-                                    userData.role = "admin" || userData.role = "tech"
-                                Width: |-
-                                    =//154
-                                    Parent.TemplateWidth - Image7_3.Width - StatusLabel.Width - StatusColor.Width - 47
+                                Visible: =userData.role = "admin" || userData.role = "tech" || (userData.role = "staff" && !(IsBlank(ThisItem.AssignedTo) || ThisItem.AssignedTo = 0))
+                                Width: =Parent.TemplateWidth - Image7_3.Width - StatusLabel.Width - StatusColor.Width - 47
                                 X: |-
                                     =//67
                                     Image7_3.X + Image7_3.Width
@@ -428,8 +420,7 @@
                                     =Switch(
                                         ThisItem.Status,
                                         "open", RGBA(0, 127, 187, 1),
-                                        "close", RGBA(127, 178, 57, 1),
-                                        RGBA(221, 79, 14, 1)
+                                        "close", RGBA(221, 79, 14, 1)
                                     )
                                 Height: =41
                                 OnSelect: =Select(Parent)
@@ -448,8 +439,7 @@
                                     =Switch(
                                         ThisItem.Status,
                                         "open", RGBA(0, 127, 187, 1),
-                                        "close", RGBA(127, 178, 57, 1),
-                                        RGBA(221, 79, 14, 1)
+                                        "close", RGBA(221, 79, 14, 1)
                                     )
                                 DisplayMode: =DisplayMode.View
                                 Fill: =RGBA(241, 244, 249, 1)
@@ -488,36 +478,21 @@
                                 Width: =67
                                 X: =24
                                 Y: |
-                                    =//If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
-                                    //If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
-                                    
-                                    If(userData.role = "admin" || userData.role = "tech", ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
+                                    =((Parent.TemplateHeight - Self.Height) / 2) + 30
                                 ZIndex: =11
 
                             CategoryLabelText_1 As label:
-                                Height: |-
-                                    =//25
-                                    34
+                                Height: =34
                                 OnSelect: =Select(Parent)
                                 Size: =10
                                 Text: |-
-                                    =// SQL
-                                    //LookUp(Category, id = ThisItem.mainCategory, name)
-                                    
-                                    // Sharepoint
+                                    =// Sharepoint
                                     LookUp(Category_1, ID = ThisItem.MainCategory, name)
-                                Width: |-
-                                    =//143
-                                    Parent.TemplateWidth - CategoryLabelText.Width - StatusLabel.Width - StatusColor.Width - 47
+                                Width: =Parent.TemplateWidth - CategoryLabelText.Width - DateCreatedLabel.Width - 47
                                 Wrap: =false
-                                X: |-
-                                    =//89
-                                    CategoryLabelText.X + CategoryLabelText.Width
+                                X: =CategoryLabelText.X + CategoryLabelText.Width
                                 Y: |
-                                    =//If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
-                                    //If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
-                                    
-                                    If(userData.role = "admin" || userData.role = "tech", ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
+                                    =((Parent.TemplateHeight - Self.Height) / 2) + 30
                                 ZIndex: =12
 
                     EmptyState As groupContainer.verticalAutoLayoutContainer:
@@ -554,10 +529,28 @@
                             Text: ="New Ticket"
                             Visible: |-
                                 =//Button should only appears when user is not viewing their assigned tickets
-                                IsEmpty(MyTicketsGallery.AllItems) && compFilterMenu_1.TicketsChoice = "My Tickets" && (StatusChoice = "All" || StatusChoice = "open")
+                                IsEmpty(MyTicketsGallery.AllItems) && compFilterMenu_1.TicketsChoice = "My Tickets" && StatusChoice = "open" && MyTickets.Size > 1
                             X: =1150
                             Y: =99
                             ZIndex: =2
+
+                        NewTicketIcon_1 As icon.Add:
+                            Color: |-
+                                =//RGBA(232, 244, 217, 1)
+                                ColorScheme.secondary
+                            Height: =50
+                            HoverColor: |-
+                                =//ColorFade(Self.Color, 20%)
+                                ColorScheme.secondaryPressedColor
+                            Icon: =Icon.Add
+                            OnSelect: =Navigate('Category Select', ScreenTransition.Fade);
+                            Visible: =IsEmpty(MyTicketsGallery.AllItems) && compFilterMenu_1.TicketsChoice = "My Tickets" && StatusChoice = "open" && MyTickets.Size = 1
+                            Width: =50
+                            X: |-
+                                =//Parent.Width - Self.Width - 15
+                                Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
+                            Y: =compWebHeader_6.Height + ((HeaderLabel.Height - Self.Height) / 2)
+                            ZIndex: =3
 
             MyTicketsFooter As groupContainer.verticalAutoLayoutContainer:
                 Fill: =RGBA(255,255,255, 1)
@@ -631,7 +624,7 @@
             =//ColorFade(Self.Color, 20%)
             ColorScheme.secondaryPressedColor
         Icon: =Icon.Add
-        OnSelect: =Navigate('Create A Ticket', ScreenTransition.Fade);
+        OnSelect: =Navigate('Category Select', ScreenTransition.Fade);
         Visible: =MyTickets.Size = 1
         Width: =50
         X: |-
