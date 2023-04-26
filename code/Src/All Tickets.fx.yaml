@@ -71,9 +71,8 @@
                     AlignInContainer: =AlignInContainer.Center
                     FillPortions: =0
                     Height: |-
-                        =//Parent.Height
-                        //compWebHeader_13.Height
-                        Parent.Height/11
+                        =
+                        If('All Tickets'.Size = 1, Parent.Height/8, Parent.Height/11)
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutJustifyContent: =LayoutJustifyContent.Center
                     LayoutMinHeight: =//compWebHeader_28.Height
@@ -394,6 +393,8 @@
         ZIndex: =3
 
     compFilterTicketsMenu_1 As compFilterTicketsMenu:
+        FilterIconSize: |
+            =If('All Tickets'.Size =1, Parent.Size * 30, Parent.Size * 12)
         FontSize: =If(App.Height - compFilterTicketsMenu_1.HeightOffset > 340, 16, 13)
         Height: =If(compFilterTicketsMenu_1.FilterVisible, compFilterTicketsMenu_1.NewHeight, compFilterTicketsMenu_1.FilterIconSize)
         HeightOffset: =AllTicketsHeaderContainer.Height + ((compSearchTickets_3.Height - compFilterTicketsMenu_1.FilterIconSize) / 2)
