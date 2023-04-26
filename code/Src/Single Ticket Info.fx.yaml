@@ -1589,7 +1589,9 @@
                         Height: =30
                         Size: =15
                         Text: =Concat(Tags_ComboBox.SelectedItems, Concatenate(name, " "))
-                        Visible: =Assignee_Value_CloseTicket.Visible
+                        Visible: |-
+                            =//Assignee_Value_CloseTicket.Visible
+                            !(userData.role = "staff")
                         Width: =Reporter_Label.Width
                         X: =Rectangle_behind_details.X+Reporter_Label.Width
                         Y: =Tags_Label.Y
