@@ -297,7 +297,7 @@
                                 Align: =Align.Center
                                 Color: =Color.Transparent
                                 Fill: =Color.Transparent
-                                Height: =If('All Tickets'.Size =1,Parent.Height/8,Parent.Height/10)
+                                Height: =Parent.TemplateHeight
                                 HoverBorderColor: =RGBA(53, 89, 137, 0)
                                 HoverFill: =RGBA(53,89,137, 0.35)
                                 OnSelect: |-
@@ -305,6 +305,7 @@
                                     /*Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo: {Title: ThisItem.title,Description:ThisItem.description,ID:ThisItem.ID,CreatorId:ThisItem.creatorId,DateCreated: ThisItem.dateCreated,MainCategory: ThisItem.mainCategory,AddAssignees:ThisItem.addAssignees,Status: ThisItem.status}})*/
                                     
                                     Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo:ThisItem})
+                                Size: =If('All Tickets'.Size = 1,8 ,13)
                                 Text: =""
                                 Width: =Parent.TemplateWidth
                                 X: |
