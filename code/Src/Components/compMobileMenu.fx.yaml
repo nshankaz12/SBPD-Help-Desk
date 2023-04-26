@@ -16,7 +16,32 @@ compMobileMenu As CanvasComponent:
 
     Gallery1_1 As gallery.galleryHorizontal:
         Default: |
-            =LookUp(compMobileMenu.NavigationItems, ScreenToGoTo.Name = App.ActiveScreen.Name)
+            =Switch(
+                true,
+                App.ActiveScreen.Name = "Create A Ticket" || App.ActiveScreen.Name = "Category Select", 
+                LookUp(compMobileMenu.NavigationItems, ScreenToGoTo.Name = "Category Select"),
+            
+                App.ActiveScreen.Name = "Tag Manager" 
+                || App.ActiveScreen.Name = "Alert Manager" 
+                || App.ActiveScreen.Name = "Assign Role - Admin"
+                || App.ActiveScreen.Name = "All Tickets"
+                || App.ActiveScreen.Name = "Admin Manager"
+                || App.ActiveScreen.Name = "Create Alert"
+                || App.ActiveScreen.Name = "Create Alert Admin (Redisgn)"
+                || App.ActiveScreen.Name = "Ticket Metrics - Admin Tech", 
+                LookUp(compMobileMenu.NavigationItems, ScreenToGoTo.Name = "Admin Manager"),
+            
+                App.ActiveScreen.Name = "Knowledge Base", 
+                LookUp(compMobileMenu.NavigationItems, ScreenToGoTo.Name = "Knowledge Base"),
+            
+                App.ActiveScreen.Name = "MyTickets" || App.ActiveScreen.Name = "Single Ticket Info", 
+                LookUp(compMobileMenu.NavigationItems, ScreenToGoTo.Name = "MyTickets"),
+            
+                App.ActiveScreen.Name = "Home", 
+                LookUp(compMobileMenu.NavigationItems, ScreenToGoTo.Name = "Home")
+            )
+            /*  
+            LookUp(compMobileMenu.NavigationItems, ScreenToGoTo.Name = App.ActiveScreen.Name)*/
         DelayItemLoading: =true
         Height: =Parent.Height
         Items: =compMobileMenu.NavigationItems
