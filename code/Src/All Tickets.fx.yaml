@@ -24,6 +24,7 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
             Width: =Parent.Width
             ZIndex: =2
 
@@ -65,6 +66,7 @@
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                LayoutOverflowY: =LayoutOverflow.Scroll
                 ZIndex: =4
 
                 SearchTickets_1 As groupContainer.horizontalAutoLayoutContainer:
@@ -72,7 +74,7 @@
                     FillPortions: =0
                     Height: |-
                         =
-                        If('All Tickets'.Size = 1, Parent.Height/8, Parent.Height/11)
+                        If('All Tickets'.Size = 1, Parent.Height/9, Parent.Height/11)
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutJustifyContent: =LayoutJustifyContent.Center
                     LayoutMinHeight: =//compWebHeader_28.Height
@@ -94,13 +96,14 @@
                     LayoutMinHeight: =0
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    LayoutOverflowY: =LayoutOverflow.Scroll
                     PaddingBottom: =25
                     Width: =Parent.Width/1.06
                     ZIndex: =2
 
                     MainContainer_1 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
-                        Height: =Parent.Height
+                        Height: =Parent.Height/2
                         LayoutDirection: =LayoutDirection.Vertical
                         LayoutMinHeight: =0
                         LayoutMinWidth: =250
@@ -111,7 +114,7 @@
                         ColAllTicket_1 As groupContainer.manualLayoutContainer:
                             AlignInContainer: =AlignInContainer.SetByContainer
                             FillPortions: =0
-                            Height: =Parent.Height/11
+                            Height: =If('All Tickets'.Size =1,Parent.Height/8,Parent.Height/10)
                             LayoutMinHeight: =//100
                             LayoutMinWidth: =250
                             Width: =Parent.Width
@@ -119,7 +122,7 @@
 
                             MainColAllTicket_1 As groupContainer.horizontalAutoLayoutContainer:
                                 Height: |-
-                                    =//SearchTickets.Height/1.7
+                                    =
                                     Parent.Height
                                 LayoutAlignItems: =LayoutAlignItems.Stretch
                                 LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
@@ -133,7 +136,8 @@
                                     Align: =Align.Center
                                     Color: =ColorScheme.screenBackground
                                     Fill: =ColorScheme.primary
-                                    Size: =If ('All Tickets'.Size =1, 10, 13)
+                                    Height: =If('All Tickets'.Size = 1 , 50, 40)
+                                    Size: =If('All Tickets'.Size = 1,8 ,13)
                                     Text: ="ID"
                                     Width: =Parent.Width/6
                                     X: =608
@@ -143,7 +147,7 @@
                                     Align: =Align.Center
                                     Color: =ColorScheme.screenBackground
                                     Fill: =ColorScheme.primary
-                                    Size: =If ('All Tickets'.Size =1, 10, 13)
+                                    Size: =If('All Tickets'.Size = 1,8 ,13)
                                     Text: ="Status"
                                     Width: =Parent.Width/6
                                     X: =608
@@ -153,7 +157,7 @@
                                     Align: =Align.Center
                                     Color: =ColorScheme.screenBackground
                                     Fill: =ColorScheme.primary
-                                    Size: =If ('All Tickets'.Size =1, 10, 13)
+                                    Size: =If('All Tickets'.Size = 1,8 ,13)
                                     Text: ="Title"
                                     Width: =Parent.Width/6
                                     X: =608
@@ -163,7 +167,7 @@
                                     Align: =Align.Center
                                     Color: =ColorScheme.screenBackground
                                     Fill: =ColorScheme.primary
-                                    Size: =If ('All Tickets'.Size =1, 10, 13)
+                                    Size: =If('All Tickets'.Size = 1,8 ,13)
                                     Text: ="Date Created"
                                     Width: =Parent.Width/6
                                     X: =608
@@ -173,7 +177,7 @@
                                     Align: =Align.Center
                                     Color: =ColorScheme.screenBackground
                                     Fill: =ColorScheme.primary
-                                    Size: =If ('All Tickets'.Size =1, 10, 13)
+                                    Size: =If('All Tickets'.Size = 1,8 ,13)
                                     Text: ="Main Category"
                                     Width: =Parent.Width/6
                                     X: =608
@@ -183,6 +187,7 @@
                                     Align: =Align.Center
                                     Color: =ColorScheme.screenBackground
                                     Fill: =ColorScheme.primary
+                                    Size: =If('All Tickets'.Size = 1,8 ,13)
                                     Text: ="Assignee"
                                     Width: =Parent.Width/6
                                     ZIndex: =8
@@ -219,6 +224,7 @@
                                 BorderThickness: =2
                                 Height: =Parent.TemplateHeight
                                 OnSelect: =Select(Parent)
+                                Size: =If('All Tickets'.Size = 1,8 ,13)
                                 Text: =If(ThisItem.AssignedTo = 0 || IsBlank(ThisItem.AssignedTo), "Unassigned", LookUp(Users_1, ID = ThisItem.AssignedTo, fullName))
                                 Width: =assignee_1.Width
                                 X: =assignee_1.X
@@ -229,6 +235,7 @@
                                 BorderThickness: =2
                                 Height: =Parent.TemplateHeight
                                 OnSelect: =Select(Parent)
+                                Size: =If('All Tickets'.Size = 1,8 ,13)
                                 Text: |-
                                     =//LookUp(Category_1, ID= ThisItem.mainCategory, name)
                                     If(ThisItem.MainCategory = 0 || IsBlank(ThisItem.MainCategory), "No Main Category", LookUp(Category_1, ID = ThisItem.MainCategory, name))
@@ -241,6 +248,7 @@
                                 BorderThickness: =2
                                 Height: =Parent.TemplateHeight
                                 OnSelect: =Select(Parent)
+                                Size: =If('All Tickets'.Size = 1,8 ,13)
                                 Text: |-
                                     =//DateValue(ThisItem.dateCreated)
                                     ThisItem.DateCreated
@@ -253,6 +261,7 @@
                                 BorderThickness: =2
                                 Height: =Parent.TemplateHeight
                                 OnSelect: =Select(Parent)
+                                Size: =If('All Tickets'.Size = 1,8 ,13)
                                 Text: =ThisItem.Title
                                 Width: =title_1.Width
                                 X: =title_1.X
@@ -267,6 +276,7 @@
                                     ColorScheme.secondary
                                 Height: =Parent.TemplateHeight
                                 OnSelect: =Select(Parent)
+                                Size: =If('All Tickets'.Size = 1,8 ,13)
                                 Text: =ThisItem.Status
                                 Width: =status_1.Width
                                 X: =status_1.X
@@ -277,6 +287,7 @@
                                 BorderThickness: =2
                                 Height: =Parent.TemplateHeight
                                 OnSelect: =Select(Parent)
+                                Size: =If('All Tickets'.Size = 1,8 ,13)
                                 Text: =ThisItem.ID
                                 Width: =id_1.Width
                                 X: =id_1.X
@@ -286,7 +297,7 @@
                                 Align: =Align.Center
                                 Color: =Color.Transparent
                                 Fill: =Color.Transparent
-                                Height: =Parent.TemplateHeight
+                                Height: =If('All Tickets'.Size =1,Parent.Height/8,Parent.Height/10)
                                 HoverBorderColor: =RGBA(53, 89, 137, 0)
                                 HoverFill: =RGBA(53,89,137, 0.35)
                                 OnSelect: |-
@@ -309,6 +320,7 @@
                                 
                             LayoutMinWidth: =250
                             LayoutMode: =LayoutMode.Auto
+                            LayoutOverflowY: =LayoutOverflow.Scroll
                             Width: =Parent.Width
                             ZIndex: =4
 
@@ -395,7 +407,7 @@
     compFilterTicketsMenu_1 As compFilterTicketsMenu:
         FilterIconSize: |
             =If('All Tickets'.Size =1, Parent.Size * 30, Parent.Size * 12)
-        FontSize: =If(App.Height - compFilterTicketsMenu_1.HeightOffset > 340, 16, 13)
+        FontSize: =If(App.Height - compFilterMenu_1.HeightOffset > 560, 40, 30)
         Height: =If(compFilterTicketsMenu_1.FilterVisible, compFilterTicketsMenu_1.NewHeight, compFilterTicketsMenu_1.FilterIconSize)
         HeightOffset: =AllTicketsHeaderContainer.Height + ((compSearchTickets_3.Height - compFilterTicketsMenu_1.FilterIconSize) / 2)
         IconSize: =If(App.Height - compFilterTicketsMenu_1.HeightOffset > 560, 40, 30)
