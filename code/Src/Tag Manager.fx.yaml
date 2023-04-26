@@ -56,7 +56,8 @@
                     X: =(Parent.Width - Self.Width)/2
                     ZIndex: =2
 
-            TagMangerMainContainer As groupContainer.verticalAutoLayoutContainer:
+            TagMangerMainContentContainer As groupContainer.verticalAutoLayoutContainer:
+                LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutDirection: =LayoutDirection.Vertical
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
@@ -64,6 +65,7 @@
                 ZIndex: =2
 
                 Title_AddTag_2 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
                     Height: |-
                         =60
@@ -127,6 +129,7 @@
                         ZIndex: =4
 
                 TagBody_1 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                     LayoutMinHeight: =100
