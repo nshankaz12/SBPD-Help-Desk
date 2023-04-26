@@ -169,6 +169,15 @@
                         Y: =224
                         ZIndex: =1
 
+                        Rectangle6 As rectangle:
+                            BorderColor: =RGBA(0, 0, 0, 0)
+                            BorderThickness: =25
+                            Fill: =RGBA(255, 255, 255, 1)
+                            Height: =Image6.Height
+                            OnSelect: =Select(Parent)
+                            Width: =Image6.Width
+                            ZIndex: =1
+
                         Image6 As image:
                             Height: |-
                                 =//250
@@ -258,7 +267,7 @@
                             Width: |-
                                 =//329
                                 Parent.TemplateWidth
-                            ZIndex: =1
+                            ZIndex: =2
 
                         btnBkg As button:
                             Fill: =RGBA(255, 255, 255, 1)
@@ -273,7 +282,7 @@
                             Text: =""
                             Visible: =false
                             Width: =Parent.TemplateWidth
-                            ZIndex: =2
+                            ZIndex: =3
 
                         TitleLabel As label:
                             FontWeight: =FontWeight.Semibold
@@ -288,7 +297,7 @@
                                 Parent.TemplateWidth - IdLabel.Width - 47
                             X: =24
                             Y: =27
-                            ZIndex: =3
+                            ZIndex: =4
 
                         DescriptionLabel As label:
                             Height: =37
@@ -303,7 +312,7 @@
                             Wrap: =false
                             X: =24
                             Y: =TitleLabel.Y + TitleLabel.Height
-                            ZIndex: =4
+                            ZIndex: =5
 
                         IdLabel As label:
                             Align: =Align.Center
@@ -317,7 +326,7 @@
                                 =//232
                                 Parent.TemplateWidth - Self.Width - 23
                             Y: =27
-                            ZIndex: =5
+                            ZIndex: =6
 
                         DateCreatedLabel As label:
                             Height: |-
@@ -333,33 +342,7 @@
                                 =//231
                                 Parent.TemplateWidth - Self.Width - 23
                             Y: =((Parent.TemplateHeight - Self.Height) / 2) + 30
-                            ZIndex: =6
-
-                        btnTemplate As button:
-                            BorderThickness: =0
-                            Fill: =Color.Transparent
-                            Height: |-
-                                =//220
-                                Parent.TemplateHeight
-                            HoverFill: =Self.Fill
-                            OnSelect: |-
-                                =// SQL 
-                                //Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.creatorId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO, tags: ThisItem.tags, addAssignees: ThisItem.addAssignees})
-                                
-                                // Sharepoint List
-                                Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo: ThisItem})
-                            PressedFill: =Self.Fill
-                            Text: =""
-                            Width: |-
-                                =//303
-                                Parent.TemplateWidth
-                            X: |-
-                                =//24
-                                (Parent.TemplateWidth - Self.Width) / 2
-                            Y: |-
-                                =//15
-                                (Parent.TemplateHeight - Self.Height) / 2
-                            ZIndex: =13
+                            ZIndex: =7
 
                         "'Assignee Group' As group":
                             Height: =5
@@ -389,7 +372,7 @@
                                 Y: |-
                                     =//180
                                     Parent.TemplateHeight - Self.Height - 27
-                                ZIndex: =7
+                                ZIndex: =8
 
                             AssigneeLabel As label:
                                 Height: =Parent.TemplateHeight / 6
@@ -406,7 +389,7 @@
                                 Y: |-
                                     =//180
                                     Parent.TemplateHeight - Self.Height - 27
-                                ZIndex: =8
+                                ZIndex: =9
 
                         "'Status Group' As group":
                             Height: =5
@@ -432,7 +415,7 @@
                                 Y: |-
                                     =//180
                                     Parent.TemplateHeight - Self.Height - 27
-                                ZIndex: =9
+                                ZIndex: =10
 
                             StatusLabel As label:
                                 Align: =Align.Center
@@ -460,7 +443,33 @@
                                 Y: |-
                                     =//180
                                     Parent.TemplateHeight - Self.Height - 27
-                                ZIndex: =10
+                                ZIndex: =11
+
+                        btnTemplate As button:
+                            BorderThickness: =0
+                            Fill: =Color.Transparent
+                            Height: |-
+                                =//220
+                                Parent.TemplateHeight
+                            HoverFill: =Self.Fill
+                            OnSelect: |-
+                                =// SQL 
+                                //Navigate('Single Ticket Info', ScreenTransition.Fade, {title:ThisItem.title, dateCreated:DateValue(ThisItem.dateCreated), status:ThisItem.status, category:ThisItem.mainCategory, reporting_person:ThisItem.creatorId, assigned_person:If(IsBlank(ThisItem.assignedTO), "Unassigned", LookUp(Users, id = ThisItem.assignedTO, fullName)), description:ThisItem.description, ticket:ThisItem.id, creatorId: ThisItem.creatorId, assigneeId: ThisItem.assignedTO, tags: ThisItem.tags, addAssignees: ThisItem.addAssignees})
+                                
+                                // Sharepoint List
+                                Navigate('Single Ticket Info', ScreenTransition.Fade, {ticketInfo: ThisItem})
+                            PressedFill: =Self.Fill
+                            Text: =""
+                            Width: |-
+                                =//303
+                                Parent.TemplateWidth
+                            X: |-
+                                =//24
+                                (Parent.TemplateWidth - Self.Width) / 2
+                            Y: |-
+                                =//15
+                                (Parent.TemplateHeight - Self.Height) / 2
+                            ZIndex: =14
 
                         "'Category Group' As group":
                             Height: =5
@@ -480,7 +489,7 @@
                                 X: =24
                                 Y: |
                                     =((Parent.TemplateHeight - Self.Height) / 2) + 30
-                                ZIndex: =11
+                                ZIndex: =12
 
                             CategoryLabelText_1 As label:
                                 Height: =34
@@ -494,7 +503,7 @@
                                 X: =CategoryLabelText.X + CategoryLabelText.Width
                                 Y: |
                                     =((Parent.TemplateHeight - Self.Height) / 2) + 30
-                                ZIndex: =12
+                                ZIndex: =13
 
                     EmptyState As groupContainer.verticalAutoLayoutContainer:
                         Height: =544
