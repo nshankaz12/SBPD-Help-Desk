@@ -1,5 +1,5 @@
 "'Alert Manager' As screen":
-    Fill: =
+    Fill: =ColorScheme.screenBackground
     OnVisible: |-
         =Refresh(Alerts_1);
         ClearCollect(FilteredAlerts,Alerts_1);

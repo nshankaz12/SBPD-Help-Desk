@@ -1316,7 +1316,14 @@
     "Create A Ticket": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
-        "Fill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Color.White",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "ImagePosition",
         "Height",
         "Width",
@@ -1895,7 +1902,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "CreateATicketFooter",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2473,7 +2480,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "CreateATicketMainContentContainer_4",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

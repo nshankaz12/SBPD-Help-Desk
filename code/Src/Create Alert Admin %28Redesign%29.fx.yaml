@@ -1,4 +1,5 @@
 "'Create Alert Admin (Redesign)' As screen":
+    Fill: =ColorScheme.screenBackground
     OnVisible: =Set(allEmails, Concat(Users_1, email,";"))
 
     CreateAlertMainContainer As groupContainer.verticalAutoLayoutContainer:

@@ -1,4 +1,5 @@
 "'Create A Ticket' As screen":
+    Fill: =ColorScheme.screenBackground
     OnVisible: =ResetForm(CreateATicketForm);
 
     CreateATicketMainContainer_1 As groupContainer.horizontalAutoLayoutContainer:

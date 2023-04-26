@@ -1,4 +1,5 @@
 "'Knowledge Base' As screen":
+    Fill: =ColorScheme.screenBackground
     OnHidden: |-
         =UpdateContext({SearchVisible:false, SearchText:"", ResetScreen:false})
     OnVisible: |-

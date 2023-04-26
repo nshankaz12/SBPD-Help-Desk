@@ -1,4 +1,5 @@
 "'Tag Manager' As screen":
+    Fill: =ColorScheme.screenBackground
 
     MainBodyTagManager As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
@@ -176,7 +177,7 @@
                             DisabledColor: =RGBA(0, 0, 0, 0)
                             DisabledFill: =RGBA(0, 0, 0, 0)
                             DisplayMode: =DisplayMode.View
-                            Fill: =ColorScheme.screenBackground
+                            Fill: =ColorFade(ColorScheme.screenBackground, -15%)
                             Height: =AllTags.TemplateHeight/1.15
                             HoverColor: |-
                                 =//RGBA(0, 0, 0, 0)
