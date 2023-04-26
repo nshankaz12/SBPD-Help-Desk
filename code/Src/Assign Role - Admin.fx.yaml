@@ -61,7 +61,7 @@
                     Align: =Align.Center
                     FontWeight: =FontWeight.Bold
                     Height: =91
-                    Size: =25
+                    Size: =If('Assign Role - Admin'.Size=1, 20, 25)
                     Text: ="User"
                     Width: =328
                     X: =(Parent.Width-Self.Width)/2
@@ -72,7 +72,7 @@
                     Default: =""
                     Height: =59
                     Items: =Users_1
-                    Width: =340
+                    Width: =If('Assign Role - Admin'.Size=1, 320, 340)
                     X: =(Parent.Width-Self.Width)/2
                     Y: =UserLabel.Y+ UserLabel.Height
                     ZIndex: =2
@@ -81,7 +81,7 @@
                     Align: =Align.Center
                     FontWeight: =FontWeight.Bold
                     Height: =91
-                    Size: =25
+                    Size: =If('Assign Role - Admin'.Size=1, 20, 25)
                     Text: ="Role"
                     Width: =328
                     X: =(Parent.Width-Self.Width)/2
@@ -93,14 +93,14 @@
                     Height: =59
                     Items: |-
                         =ForAll(Distinct(Users_1, userRole), {Result: If(ThisRecord.Value = "client", "staff", ThisRecord.Value)})
-                    Width: =340
+                    Width: =If('Assign Role - Admin'.Size=1, 320, 340)
                     X: =(Parent.Width-Self.Width)/2
                     Y: =RoleLabel.Y+RoleLabel.Height
                     ZIndex: =4
 
                 Button2_5 As button:
                     Fill: =RGBA(184, 0, 0, 1)
-                    Height: =72
+                    Height: =If('Assign Role - Admin'.Size=1, 50, 70)
                     OnSelect: |-
                         =Patch(Users_1, LookUp(Users_1, email = UserDropdown.Selected.email), {userRole: RoleDropdown.Selected.Result});
                         If(
@@ -119,8 +119,10 @@
                             )
                         );
                         Refresh(Users_1)
+                    Size: |
+                        =15
                     Text: ="Assign Role"
-                    Width: =240
+                    Width: =If('Assign Role - Admin'.Size=1, 180, 200) 
                     X: =(Parent.Width-Self.Width)/2
                     Y: |
                         =
