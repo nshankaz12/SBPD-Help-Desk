@@ -598,7 +598,7 @@
         Color: =ColorScheme.secondary
         Height: =45
         Icon: =Icon.BackArrow
-        OnSelect: =Back(ScreenTransition.Fade)
+        OnSelect: =ResetForm(CreateATicketForm); Back(ScreenTransition.Fade)
         Width: =45
         X: =15
         Y: =SingleTicketInfo_Title.Y
