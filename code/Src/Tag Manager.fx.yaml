@@ -1,15 +1,16 @@
 "'Tag Manager' As screen":
     Fill: =ColorScheme.screenBackground
 
-    MainBodyTagManager As groupContainer.horizontalAutoLayoutContainer:
+    TagManagerMainContainer As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height
         LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
         LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
         LayoutMode: =LayoutMode.Auto
         Width: =Parent.Width
         ZIndex: =1
 
-        VerticalLayoutTag As groupContainer.verticalAutoLayoutContainer:
+        TagMangerVerticalLayoutContainer As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             Height: =Parent.Height
             LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -21,7 +22,7 @@
             Width: =Parent.Width
             ZIndex: =2
 
-            TagHeaderFinal As groupContainer.verticalAutoLayoutContainer:
+            TagMangerHeaderContainer As groupContainer.verticalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
                 Height: |-
@@ -35,7 +36,7 @@
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 Width: =Parent.Width
-                ZIndex: =2
+                ZIndex: =1
 
                 compWebHeader_11 As compWebHeader:
                     CompScreenSize: ='Tag Manager'.Size
@@ -43,386 +44,391 @@
                     LayoutMinWidth: =640
                     ZIndex: =1
 
-                UserNameLabel_6 As label:
+                tagMangerTitleHeader As label:
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
                     Fill: =ColorScheme.primary
                     FillPortions: =1
                     Height: =Parent.Height
                     Size: =If('Tag Manager'.Size= 1 , titleText.mobileSize, titleText.desktopSize)
-                    Text: ="Tag Manager"&'Tag Manager'.Size&Label6_3.Size
+                    Text: ="Tag Manager"&'Tag Manager'.Size&tagMangerTitleHeader.Size
                     Width: =Parent.Width
                     X: =(Parent.Width - Self.Width)/2
                     ZIndex: =2
 
-            Title_AddTag_1 As groupContainer.horizontalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                FillPortions: =0
-                Height: |-
-                    =60
-                    //Parent.Height
-                    //TagHeaderFinal.Height
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                LayoutMinHeight: =//compWebHeader_28.Height
+            TagMangerMainContainer As groupContainer.verticalAutoLayoutContainer:
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                Width: =Parent.Width
-                ZIndex: =4
+                ZIndex: =2
 
-                AddTagsBar_1 As groupContainer.horizontalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    Height: =Parent.Height
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutGap: =15
-                    LayoutJustifyContent: =LayoutJustifyContent.Center
-                    LayoutMinHeight: =Parent.Height
+                Title_AddTag_2 As groupContainer.horizontalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: |-
+                        =60
+                        //Parent.Height
+                        //TagHeaderFinal.Height
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =//compWebHeader_28.Height
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     Width: =Parent.Width
                     ZIndex: =1
 
-                    Label6_3 As label:
-                        Align: =Align.Center
-                        BorderThickness: =2
-                        Height: =Parent.Height/1.5
-                        Size: =Switch('Tag Manager'.Size,4,14,3,14,2,14,1,8)
-                        Text: ="Tag Name"
-                        Width: |-
-                            =//Parent.Width/4
-                            If('Tag Manager'.Size = 1,TextInput1_8.Width/1.5,Parent.Width/8)
-                        Y: |
-                            =0
-                        ZIndex: =8
+                    AddTagsBar_3 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =Parent.Height
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutGap: =15
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMinHeight: =Parent.Height
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =1
 
-                    TextInput1_8 As text:
-                        Default: =""
-                        Height: |
-                            =Parent.Height/1.5
-                        Width: =If('Tag Manager'.Size=1, Button6_3.Width,Parent.Width/1.5)
-                        ZIndex: =9
+                        Label6_4 As label:
+                            Align: =Align.Center
+                            BorderThickness: =2
+                            Height: =Parent.Height/1.5
+                            Size: |-
+                                =Switch('Tag Manager'.Size,4,14,3,14,2,14,1,13)
+                                //Switch('Tag Manager'.Size,4,14,3,14,2,14,1,13)
+                            Text: ="Tag Name"
+                            Width: |-
+                                =//Parent.Width/4
+                                If('Tag Manager'.Size = 1,TextInput1_9.Width/1.5,Parent.Width/8)
+                            Y: |
+                                =0
+                            ZIndex: =8
 
-                    Button8_4 As button:
-                        Color: =ColorScheme.screenBackground
-                        Fill: =ColorScheme.primary
-                        Height: =Parent.Height/1.5
-                        HoverColor: =ColorScheme.screenBackground
-                        HoverFill: =ColorFade(ColorScheme.primary, -20%)
-                        OnSelect: |-
-                            =Patch(Tags_1,Defaults(Tags_1),{ name : TextInput1_8.Text }); Reset(TextInput1_8);
-                        PressedBorderColor: =ColorFade(ColorScheme.primary, -20%)
-                        PressedColor: =ColorScheme.screenBackground
-                        PressedFill: =ColorFade(ColorScheme.primary, -20%)
-                        RadiusBottomLeft: =20
-                        RadiusBottomRight: =20
-                        RadiusTopLeft: =20
-                        RadiusTopRight: =20
-                        Size: =Switch('Tag Manager'.Size,4,14,3,14,2,14,1,13)
-                        Text: ="Add"
-                        Width: |-
-                            =//Parent.Width/8
-                            If('Tag Manager'.Size = 1,TextInput1_8.Width/3,Parent.Width/8)
-                        X: |
-                            =0
-                        ZIndex: =10
+                        TextInput1_9 As text:
+                            Default: =""
+                            Height: |
+                                =Parent.Height/1.5
+                            Width: =If('Tag Manager'.Size=1, Button6_7.Width,Parent.Width/1.5)
+                            ZIndex: =9
 
-            TagBody As groupContainer.horizontalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                ZIndex: =5
+                        Button8_5 As button:
+                            Color: =ColorScheme.screenBackground
+                            Fill: =ColorScheme.primary
+                            Height: =Parent.Height/1.5
+                            HoverColor: =ColorScheme.screenBackground
+                            HoverFill: =ColorFade(ColorScheme.primary, -20%)
+                            OnSelect: |-
+                                =Patch(Tags_1,Defaults(Tags_1),{ name : TextInput1_9.Text }); Reset(TextInput1_9);
+                            PressedBorderColor: =ColorFade(ColorScheme.primary, -20%)
+                            PressedColor: =ColorScheme.screenBackground
+                            PressedFill: =ColorFade(ColorScheme.primary, -20%)
+                            RadiusBottomLeft: =20
+                            RadiusBottomRight: =20
+                            RadiusTopLeft: =20
+                            RadiusTopRight: =20
+                            Size: =Switch('Tag Manager'.Size,4,14,3,14,2,14,1,13)
+                            Text: ="Add"
+                            Width: |-
+                                =//Parent.Width/8
+                                If('Tag Manager'.Size = 1,TextInput1_9.Width/3,Parent.Width/8)
+                            X: |
+                                =0
+                            ZIndex: =10
 
-                StackTheTagBodyVertically As groupContainer.verticalAutoLayoutContainer:
-                    LayoutDirection: =LayoutDirection.Vertical
+                TagBody_1 As groupContainer.horizontalAutoLayoutContainer:
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    ZIndex: =1
+                    ZIndex: =2
 
-                    AllTags As gallery.galleryVertical:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        DelayItemLoading: =true
-                        FillPortions: =8
-                        Height: =Parent.Height
-                        Items: =Tags_1
-                        Layout: =Layout.Vertical
-                        LayoutMinHeight: =287
-                        LayoutMinWidth: =320
-                        LoadingSpinner: =LoadingSpinner.Data
-                        ShowScrollbar: =false
-                        TemplatePadding: =0
-                        TemplateSize: =Parent.Height/3
-                        Visible: =If(Toggle1.Value=true, true,If('Tag Manager'.Size>1, true,false))
-                        Width: =Parent.Width
-                        WrapCount: =Switch('Tag Manager'.Size,4,4,3,3,2,2,2)
-                        ZIndex: =3
+                    StackTheTagBodyVertically_1 As groupContainer.verticalAutoLayoutContainer:
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        ZIndex: =1
 
-                        HtmlText2 As htmlViewer:
-                            DisplayMode: =DisplayMode.View
-                            Height: =192.33333333333334
-                            HtmlText: |-
-                                ="<div style='margin:10px;width:" & AllTags.TemplateWidth/5 &"px;height:150px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
-                            OnSelect: =Select(Parent)
-                            Visible: =false
-                            Width: =323.5
-                            X: =18
-                            ZIndex: =1
-
-                        Button6_3 As button:
-                            BorderThickness: =0
-                            Color: =ColorScheme.secondary
-                            DisabledColor: =RGBA(0, 0, 0, 0)
-                            DisabledFill: =RGBA(0, 0, 0, 0)
-                            DisplayMode: =DisplayMode.View
-                            Fill: =ColorFade(ColorScheme.screenBackground, -15%)
-                            Height: =AllTags.TemplateHeight/1.15
-                            HoverColor: |-
-                                =//RGBA(0, 0, 0, 0)
-                                //ColorScheme.primary
-                            OnSelect: =Select(Parent)
-                            PressedBorderColor: =//Self.Fill
-                            RadiusBottomLeft: =20
-                            RadiusBottomRight: =20
-                            RadiusTopLeft: =20
-                            RadiusTopRight: =20
-                            Text: =""
-                            Width: |-
-                                =//If(Screen2.Size =1,Gallery16.TemplateWidth/2,Gallery16.TemplateWidth/1.15)
-                                //AllTags.TemplateWidth/1.15
-                                If('Tag Manager'.Size=1,AllTags.TemplateWidth/1.15,AllTags.TemplateWidth/1.15)
-                            X: |-
-                                =//If(Screen2.Size =1,Gallery16.TemplateWidth/4,Gallery16.TemplateWidth/18)
-                                //Gallery16.TemplateWidth/18
-                                (Parent.TemplateWidth - Self.Width)/2
-                            Y: |-
-                                =//Gallery16.TemplateHeight/22
-                                (Parent.TemplateHeight - Self.Height)/2
-                            ZIndex: =2
-
-                        Button6_4 As button:
-                            BorderColor: =//ColorFade(Self.Fill, -15%)
-                            BorderThickness: =//
-                            Color: |-
-                                =//RGBA(255, 255, 255, 1)
-                                ColorScheme.screenBackground
-                            DisabledBorderColor: =//RGBA(166, 166, 166, 1)
-                            DisabledColor: =//RGBA(166, 166, 166, 1)
-                            DisabledFill: =//RGBA(244, 244, 244, 1)
-                            Fill: |-
-                                =//RGBA(56, 96, 178, 1)
-                                ColorScheme.primary
-                            FocusedBorderColor: =//ColorScheme.secondary
-                            Height: |-
-                                =//Button6_1.Height/5
-                                Parent.TemplateHeight/5
-                            HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
-                            HoverColor: |-
-                                =//RGBA(255, 255, 255, 1)
-                                ColorScheme.screenBackground
-                            HoverFill: =ColorFade(ColorScheme.primary, -20%)
-                            OnSelect: =Remove(Tags_1, ThisItem)
-                            PressedBorderColor: |-
-                                =//Self.Fill
-                                ColorFade(ColorScheme.primary, -20%)
-                            PressedColor: |-
-                                =//Self.Fill
-                                ColorScheme.screenBackground
-                            PressedFill: |-
-                                =//Self.Color
-                                //ColorScheme.primary
-                                ColorFade(ColorScheme.primary, -20%)
-                            RadiusBottomLeft: =20
-                            RadiusBottomRight: =20
-                            RadiusTopLeft: =20
-                            RadiusTopRight: =20
-                            Size: |-
-                                =
-                                Switch('Tag Manager'.Size,4,14,3,14,2,14,1,11)
-                            Text: ="Delete"
-                            Width: =Button6_3.Width/2
-                            X: |-
-                                =//Button6_1.Width/3.2
-                                (Parent.TemplateWidth - Self.Width)/2
-                            Y: |-
-                                =//Button6_1.Height/1.4
-                                (Parent.TemplateHeight - Self.Height)/1.2
+                        AllTags_2 As gallery.galleryVertical:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            DelayItemLoading: =true
+                            FillPortions: =8
+                            Height: =Parent.Height
+                            Items: =Tags_1
+                            Layout: =Layout.Vertical
+                            LayoutMinHeight: =287
+                            LayoutMinWidth: =320
+                            LoadingSpinner: =LoadingSpinner.Data
+                            ShowScrollbar: =false
+                            TemplatePadding: =0
+                            TemplateSize: =Parent.Height/3
+                            Visible: =If(Toggle1.Value=true, true,If('Tag Manager'.Size>1, true,false))
+                            Width: =Parent.Width
+                            WrapCount: =Switch('Tag Manager'.Size,4,4,3,3,2,2,2)
                             ZIndex: =3
 
-                        Label34_1 As label:
-                            Align: =Align.Center
-                            Color: =RGBA(9, 33, 98, 1)
-                            Height: =63
-                            OnSelect: =Select(Parent)
-                            Size: |-
-                                =//If(Home_1.Size= 1, 30,Self.Height/3)
-                                //(Parent.TemplateWidth - Self.Width)/3
-                                Switch('Tag Manager'.Size,4,15,3,15,2,15,1,11)
-                                //If(Home_1.Size =1,11,15)
-                            Text: =ThisItem.name
+                            HtmlText2_2 As htmlViewer:
+                                DisplayMode: =DisplayMode.View
+                                Height: =66.66666666666667
+                                HtmlText: |-
+                                    ="<div style='margin:10px;width:" & AllTags_2.TemplateWidth/5 &"px;height:150px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
+                                OnSelect: =Select(Parent)
+                                Visible: =false
+                                Width: =125
+                                ZIndex: =1
+
+                            Button6_7 As button:
+                                BorderThickness: =0
+                                Color: =ColorScheme.secondary
+                                DisabledColor: =RGBA(0, 0, 0, 0)
+                                DisabledFill: =RGBA(0, 0, 0, 0)
+                                DisplayMode: =DisplayMode.View
+                                Fill: =ColorFade(ColorScheme.screenBackground, -15%)
+                                Height: =AllTags_2.TemplateHeight/1.15
+                                HoverColor: |-
+                                    =//RGBA(0, 0, 0, 0)
+                                    //ColorScheme.primary
+                                OnSelect: =Select(Parent)
+                                PressedBorderColor: =//Self.Fill
+                                RadiusBottomLeft: =20
+                                RadiusBottomRight: =20
+                                RadiusTopLeft: =20
+                                RadiusTopRight: =20
+                                Text: =""
+                                Width: |-
+                                    =//If(Screen2.Size =1,Gallery16.TemplateWidth/2,Gallery16.TemplateWidth/1.15)
+                                    //AllTags.TemplateWidth/1.15
+                                    If('Tag Manager'.Size=1,AllTags_2.TemplateWidth/1.15,AllTags_2.TemplateWidth/1.15)
+                                X: |-
+                                    =//If(Screen2.Size =1,Gallery16.TemplateWidth/4,Gallery16.TemplateWidth/18)
+                                    //Gallery16.TemplateWidth/18
+                                    (Parent.TemplateWidth - Self.Width)/2
+                                Y: |-
+                                    =//Gallery16.TemplateHeight/22
+                                    (Parent.TemplateHeight - Self.Height)/2
+                                ZIndex: =2
+
+                            Button6_8 As button:
+                                BorderColor: =//ColorFade(Self.Fill, -15%)
+                                BorderThickness: =//
+                                Color: |-
+                                    =//RGBA(255, 255, 255, 1)
+                                    ColorScheme.screenBackground
+                                DisabledBorderColor: =//RGBA(166, 166, 166, 1)
+                                DisabledColor: =//RGBA(166, 166, 166, 1)
+                                DisabledFill: =//RGBA(244, 244, 244, 1)
+                                Fill: |-
+                                    =//RGBA(56, 96, 178, 1)
+                                    ColorScheme.primary
+                                FocusedBorderColor: =//ColorScheme.secondary
+                                Height: |-
+                                    =//Button6_1.Height/5
+                                    Parent.TemplateHeight/5
+                                HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                                HoverColor: |-
+                                    =//RGBA(255, 255, 255, 1)
+                                    ColorScheme.screenBackground
+                                HoverFill: =ColorFade(ColorScheme.primary, -20%)
+                                OnSelect: =Remove(Tags_1, ThisItem)
+                                PressedBorderColor: |-
+                                    =//Self.Fill
+                                    ColorFade(ColorScheme.primary, -20%)
+                                PressedColor: |-
+                                    =//Self.Fill
+                                    ColorScheme.screenBackground
+                                PressedFill: |-
+                                    =//Self.Color
+                                    //ColorScheme.primary
+                                    ColorFade(ColorScheme.primary, -20%)
+                                RadiusBottomLeft: =20
+                                RadiusBottomRight: =20
+                                RadiusTopLeft: =20
+                                RadiusTopRight: =20
+                                Size: |-
+                                    =
+                                    Switch('Tag Manager'.Size,4,14,3,14,2,14,1,11)
+                                Text: ="Delete"
+                                Width: =Button6_7.Width/2
+                                X: |-
+                                    =//Button6_1.Width/3.2
+                                    (Parent.TemplateWidth - Self.Width)/2
+                                Y: |-
+                                    =//Button6_1.Height/1.4
+                                    (Parent.TemplateHeight - Self.Height)/1.2
+                                ZIndex: =3
+
+                            Label34_3 As label:
+                                Align: =Align.Center
+                                Color: =RGBA(9, 33, 98, 1)
+                                Height: =63
+                                OnSelect: =Select(Parent)
+                                Size: |-
+                                    =//If(Home_1.Size= 1, 30,Self.Height/3)
+                                    //(Parent.TemplateWidth - Self.Width)/3
+                                    Switch('Tag Manager'.Size,4,15,3,15,2,15,1,11)
+                                    //If(Home_1.Size =1,11,15)
+                                Text: =ThisItem.name
+                                Width: |-
+                                    =//Parent.TemplateWidth/1.15
+                                    Button6_7.Width
+                                X: |-
+                                    =//Button6_1.X
+                                    (Parent.TemplateWidth - Self.Width)/2
+                                Y: |
+                                    =//Button6_1.Y*6.56
+                                    //Button6_1.Height/3
+                                    (Parent.TemplateHeight - Self.Height)/2
+                                ZIndex: =4
+
+                            Icon4_3 As icon.Tag:
+                                DisplayMode: =DisplayMode.View
+                                Height: =Button6_7.Height/4.5
+                                Icon: =Icon.Tag
+                                Width: |-
+                                    =Button6_7.Width/6
+                                    //(Parent.TemplateWidth-Self.Width)/2
+                                X: |-
+                                    =//Button6_1.X *7.8
+                                    //Button6_1.Width/2
+                                    (Parent.TemplateWidth - Self.Width)/2
+                                Y: |-
+                                    =//Button6_1.Height/8
+                                    (Parent.TemplateHeight - Self.Height)/6
+                                ZIndex: =5
+
+                        AllTags_3 As gallery.galleryVertical:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            DelayItemLoading: =true
+                            Height: =Parent.Height
+                            Items: =Tags_1
+                            Layout: =Layout.Vertical
+                            LayoutMinHeight: =287
+                            LayoutMinWidth: =320
+                            LoadingSpinner: =LoadingSpinner.Data
+                            ShowScrollbar: =false
+                            TemplatePadding: =0
+                            TemplateSize: |-
+                                =//If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(200, Self.Height - 60))
+                                //Self.Height/3
+                                Parent.Height/4
+                                //Parent.Height
+                            Visible: =If(Toggle1.Value=false,If('Tag Manager'.Size=1, true,false), false)
                             Width: |-
-                                =//Parent.TemplateWidth/1.15
-                                Button6_3.Width
-                            X: |-
-                                =//Button6_1.X
-                                (Parent.TemplateWidth - Self.Width)/2
-                            Y: |
-                                =//Button6_1.Y*6.56
-                                //Button6_1.Height/3
-                                (Parent.TemplateHeight - Self.Height)/2
+                                =Parent.Width
+                                //If(Screen2.Size = 1, Parent.Width/2, Parent.Width)
+                            WrapCount: |
+                                =1
                             ZIndex: =4
 
-                        Icon4_1 As icon.Tag:
-                            DisplayMode: =DisplayMode.View
-                            Height: =Button6_3.Height/4.5
-                            Icon: =Icon.Tag
-                            Width: |-
-                                =Button6_3.Width/6
-                                //(Parent.TemplateWidth-Self.Width)/2
-                            X: |-
-                                =//Button6_1.X *7.8
-                                //Button6_1.Width/2
-                                (Parent.TemplateWidth - Self.Width)/2
-                            Y: |-
-                                =//Button6_1.Height/8
-                                (Parent.TemplateHeight - Self.Height)/6
-                            ZIndex: =5
+                            HtmlText2_3 As htmlViewer:
+                                DisplayMode: =DisplayMode.View
+                                Height: =50
+                                HtmlText: |-
+                                    ="<div style='margin:10px;width:" & AllTags_3.TemplateWidth/5 &"px;height:150px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
+                                OnSelect: =Select(Parent)
+                                Visible: =false
+                                Width: =323.5
+                                X: =18
+                                ZIndex: =1
 
-                    AllTags_1 As gallery.galleryVertical:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        DelayItemLoading: =true
-                        Height: =Parent.Height
-                        Items: =Tags_1
-                        Layout: =Layout.Vertical
-                        LayoutMinHeight: =287
-                        LayoutMinWidth: =320
-                        LoadingSpinner: =LoadingSpinner.Data
-                        ShowScrollbar: =false
-                        TemplatePadding: =0
-                        TemplateSize: |-
-                            =//If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(200, Self.Height - 60))
-                            //Self.Height/3
-                            Parent.Height/4
-                            //Parent.Height
-                        Visible: =If(Toggle1.Value=false,If('Tag Manager'.Size=1, true,false), false)
-                        Width: |-
-                            =Parent.Width
-                            //If(Screen2.Size = 1, Parent.Width/2, Parent.Width)
-                        WrapCount: |
-                            =1
-                        ZIndex: =4
+                            Button6_9 As button:
+                                BorderColor: =ColorScheme.primary
+                                BorderThickness: =5
+                                Color: =ColorScheme.secondary
+                                DisabledBorderColor: =ColorScheme.primary
+                                DisabledColor: =RGBA(0, 0, 0, 0)
+                                DisabledFill: =ColorScheme.screenBackground
+                                DisplayMode: =DisplayMode.Disabled
+                                Fill: =ColorScheme.screenBackground
+                                Height: =Parent.TemplateHeight
+                                HoverColor: |-
+                                    =//RGBA(0, 0, 0, 0)
+                                    //ColorScheme.primary
+                                OnSelect: =Select(Parent)
+                                PressedBorderColor: =//Self.Fill
+                                RadiusBottomLeft: =0
+                                RadiusBottomRight: =0
+                                RadiusTopLeft: =0
+                                RadiusTopRight: =0
+                                Text: =""
+                                Width: =500
+                                Y: |-
+                                    =//Gallery16.TemplateHeight/22
+                                    (Parent.TemplateHeight - Self.Height)/2
+                                ZIndex: =2
 
-                        HtmlText2_1 As htmlViewer:
-                            DisplayMode: =DisplayMode.View
-                            Height: =50
-                            HtmlText: |-
-                                ="<div style='margin:10px;width:" & AllTags_1.TemplateWidth/5 &"px;height:150px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
-                            OnSelect: =Select(Parent)
-                            Visible: =false
-                            Width: =323.5
-                            X: =18
-                            ZIndex: =1
+                            Label34_4 As label:
+                                Align: =Align.Center
+                                Color: =RGBA(9, 33, 98, 1)
+                                Height: =50
+                                OnSelect: =Select(Parent)
+                                Size: |-
+                                    =//If(Home_1.Size= 1, 30,Self.Height/3)
+                                    //(Parent.TemplateWidth - Self.Width)/3
+                                    Switch('Tag Manager'.Size,4,15,3,15,2,15,1,11)
+                                    //If(Home_1.Size =1,11,15)
+                                Text: =ThisItem.name
+                                Width: =500
+                                ZIndex: =3
 
-                        Button6_5 As button:
-                            BorderColor: =ColorScheme.primary
-                            BorderThickness: =5
-                            Color: =ColorScheme.secondary
-                            DisabledBorderColor: =ColorScheme.primary
-                            DisabledColor: =RGBA(0, 0, 0, 0)
-                            DisabledFill: =ColorScheme.screenBackground
-                            DisplayMode: =DisplayMode.Disabled
-                            Fill: =ColorScheme.screenBackground
-                            Height: =Parent.TemplateHeight
-                            HoverColor: |-
-                                =//RGBA(0, 0, 0, 0)
-                                //ColorScheme.primary
-                            OnSelect: =Select(Parent)
-                            PressedBorderColor: =//Self.Fill
-                            RadiusBottomLeft: =0
-                            RadiusBottomRight: =0
-                            RadiusTopLeft: =0
-                            RadiusTopRight: =0
-                            Text: =""
-                            Width: =1366
-                            Y: |-
-                                =//Gallery16.TemplateHeight/22
-                                (Parent.TemplateHeight - Self.Height)/2
-                            ZIndex: =2
+                            Button6_10 As button:
+                                BorderColor: =//ColorFade(Self.Fill, -15%)
+                                BorderThickness: =//
+                                Color: |-
+                                    =//RGBA(255, 255, 255, 1)
+                                    ColorScheme.screenBackground
+                                DisabledBorderColor: =//RGBA(166, 166, 166, 1)
+                                DisabledColor: =//RGBA(166, 166, 166, 1)
+                                DisabledFill: =//RGBA(244, 244, 244, 1)
+                                Fill: |-
+                                    =//RGBA(56, 96, 178, 1)
+                                    ColorScheme.primary
+                                FocusedBorderColor: =//ColorScheme.secondary
+                                Height: =49
+                                HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                                HoverColor: |-
+                                    =//RGBA(255, 255, 255, 1)
+                                    ColorScheme.screenBackground
+                                HoverFill: =ColorFade(ColorScheme.primary, -20%)
+                                OnSelect: =Remove(Tags_1, ThisItem)
+                                PressedBorderColor: |-
+                                    =//Self.Fill
+                                    ColorFade(ColorScheme.primary, -20%)
+                                PressedColor: |-
+                                    =//Self.Fill
+                                    ColorScheme.screenBackground
+                                PressedFill: |-
+                                    =//Self.Color
+                                    //ColorScheme.primary
+                                    ColorFade(ColorScheme.primary, -20%)
+                                RadiusBottomLeft: =20
+                                RadiusBottomRight: =20
+                                RadiusTopLeft: =20
+                                RadiusTopRight: =20
+                                Size: |-
+                                    =//15
+                                    //(Parent.TemplateWidth - Self.Width)/14
+                                    //If(Home_1.Size =1,11,15)
+                                    
+                                    Switch('Tag Manager'.Size,4,14,3,14,2,14,1,11)
+                                Text: ="Delete"
+                                Width: =Button6_7.Width/3.5
+                                X: =(Parent.TemplateWidth - Self.Width)/1.02
+                                Y: =(Parent.TemplateHeight - Self.Height)/2
+                                ZIndex: =4
 
-                        Label34_2 As label:
-                            Align: =Align.Center
-                            Color: =RGBA(9, 33, 98, 1)
-                            Height: =63
-                            OnSelect: =Select(Parent)
-                            Size: |-
-                                =//If(Home_1.Size= 1, 30,Self.Height/3)
-                                //(Parent.TemplateWidth - Self.Width)/3
-                                Switch('Tag Manager'.Size,4,15,3,15,2,15,1,11)
-                                //If(Home_1.Size =1,11,15)
-                            Text: =ThisItem.name
-                            Width: =Parent.Width+20
-                            Y: =(Parent.TemplateHeight - Self.Height)/2
-                            ZIndex: =3
-
-                        Button6_6 As button:
-                            BorderColor: =//ColorFade(Self.Fill, -15%)
-                            BorderThickness: =//
-                            Color: |-
-                                =//RGBA(255, 255, 255, 1)
-                                ColorScheme.screenBackground
-                            DisabledBorderColor: =//RGBA(166, 166, 166, 1)
-                            DisabledColor: =//RGBA(166, 166, 166, 1)
-                            DisabledFill: =//RGBA(244, 244, 244, 1)
-                            Fill: |-
-                                =//RGBA(56, 96, 178, 1)
-                                ColorScheme.primary
-                            FocusedBorderColor: =//ColorScheme.secondary
-                            Height: =49
-                            HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
-                            HoverColor: |-
-                                =//RGBA(255, 255, 255, 1)
-                                ColorScheme.screenBackground
-                            HoverFill: =ColorFade(ColorScheme.primary, -20%)
-                            OnSelect: =Remove(Tags_1, ThisItem)
-                            PressedBorderColor: |-
-                                =//Self.Fill
-                                ColorFade(ColorScheme.primary, -20%)
-                            PressedColor: |-
-                                =//Self.Fill
-                                ColorScheme.screenBackground
-                            PressedFill: |-
-                                =//Self.Color
-                                //ColorScheme.primary
-                                ColorFade(ColorScheme.primary, -20%)
-                            RadiusBottomLeft: =20
-                            RadiusBottomRight: =20
-                            RadiusTopLeft: =20
-                            RadiusTopRight: =20
-                            Size: |-
-                                =//15
-                                //(Parent.TemplateWidth - Self.Width)/14
-                                //If(Home_1.Size =1,11,15)
-                                
-                                Switch('Tag Manager'.Size,4,14,3,14,2,14,1,11)
-                            Text: ="Delete"
-                            Width: =Button6_3.Width/3.5
-                            X: =(Parent.TemplateWidth - Self.Width)/1.02
-                            Y: =(Parent.TemplateHeight - Self.Height)/2
-                            ZIndex: =4
-
-                        Icon4_2 As icon.Tag:
-                            DisplayMode: =DisplayMode.View
-                            Height: =63
-                            Icon: =Icon.Tag
-                            Width: |
-                                =Button6_3.Width/7
-                            X: =(Parent.TemplateWidth - Self.Width)/15
-                            Y: =(Parent.TemplateHeight - Self.Height)/2
-                            ZIndex: =5
+                            Icon4_4 As icon.Tag:
+                                DisplayMode: =DisplayMode.View
+                                Height: =50
+                                Icon: =Icon.Tag
+                                Width: |
+                                    =Button6_7.Width/7
+                                X: =(Parent.TemplateWidth - Self.Width)/15
+                                ZIndex: =5
 
             TagManagerFooter As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
                 Height: =Parent.Height/8
                 LayoutDirection: =LayoutDirection.Vertical
@@ -431,7 +437,7 @@
                 LayoutMode: =LayoutMode.Auto
                 Visible: =If('Tag Manager'.Size = 1, true, false)
                 Width: =Parent.Width
-                ZIndex: =6
+                ZIndex: =5
 
                 compMobileMenu_12 As compMobileMenu:
                     Height: =Parent.Height
@@ -449,7 +455,7 @@
         TrueFill: =RGBA(54, 176, 75, 1)
         Visible: =false
         X: =80// was originally in position X 21
-        Y: =compWebHeader_11.Height + (UserNameLabel_6.Height - Self.Height) / 2
+        Y: =compWebHeader_11.Height + (tagMangerTitleHeader.Height - Self.Height) / 2
         ZIndex: =2
 
     Icon1_29 As icon.BackArrow:
