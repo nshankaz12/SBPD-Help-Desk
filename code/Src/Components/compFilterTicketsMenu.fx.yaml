@@ -1,32 +1,18 @@
 compFilterTicketsMenu As CanvasComponent:
     BackgroundColor: =ColorScheme.backgroundDark
-    CheckAdmin: |-
-        =//is_admin
-        
-        //If(App.ActiveScreen.Name = "MyTickets", is_admin, true)
-        
-        !(App.ActiveScreen.Name = "MyTickets") || (App.ActiveScreen.Name = "MyTickets" && (userData.role = "admin" || userData.role = "tech"))
+    CheckAdmin: =!(App.ActiveScreen.Name = "MyTickets") || (App.ActiveScreen.Name = "MyTickets" && (userData.role = "admin" || userData.role = "tech"))
     CloseFilter: =Set(varFilterVisible, false)
     ColorOrange: =ColorScheme.orange
     Fill: =RGBA(0, 0, 0, 0)
-    FilterIconSize: |-
+    FilterIconSize: |
         =If(App.Width > 600, 50, 40)
-        //50
     FilterVisible: =varFilterVisible
-    FontSize: |-
-        =//If(App.Height > 560, 18, 13)
-        
-        If(App.Height - compFilterTicketsMenu.HeightOffset > 340, 16, 13)
+    FontSize: =If(App.Height - compFilterTicketsMenu.HeightOffset > 340, 16, 13)
     Height: =If(compFilterTicketsMenu.FilterVisible, compFilterTicketsMenu.NewHeight, compFilterTicketsMenu.FilterIconSize)
     HeightOffset: =0
-    IconSize: |-
-        =//If(App.Height > 560, 40, 30)
-        
-        If(App.Height - compFilterTicketsMenu.HeightOffset > 560, 40, 30)
+    IconSize: =If(App.Height - compFilterTicketsMenu.HeightOffset > 560, 40, 30)
     NewHeight: |-
-        =//If(compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",If(App.Height>560,400,320),!compFilterMenu.CheckAdmin&&App.ActiveScreen.Name="MyTickets",150,If(App.Height>560,420,320))
-        
-        If(
+        =If(
             compFilterTicketsMenu.CheckAdmin && App.ActiveScreen.Name = "MyTickets",
             If(
                 App.Height - compFilterTicketsMenu.HeightOffset > 560,
@@ -72,9 +58,7 @@ compFilterTicketsMenu As CanvasComponent:
     PrimaryColor: =ColorScheme.primary
     SecondaryColor: =ColorScheme.secondary
     TicketsChoice: =RadioTickets.SelectedText.Value
-    Width: |-
-        =//If(compFilterMenu.FilterVisible, If(App.Height > 560, 230, 190), compFilterMenu.FilterIconSize)
-        If(compFilterTicketsMenu.FilterVisible, If(App.Width > 600 && App.Height - compFilterTicketsMenu.HeightOffset > 400, 220, 185), compFilterTicketsMenu.FilterIconSize)
+    Width: =If(compFilterTicketsMenu.FilterVisible, If(App.Width > 600 && App.Height - compFilterTicketsMenu.HeightOffset > 400, 220, 185), compFilterTicketsMenu.FilterIconSize)
     X: =0
     Y: =0
     ZIndex: =1
@@ -280,9 +264,7 @@ compFilterTicketsMenu As CanvasComponent:
 
             RadioTickets As radio:
                 Color: =Color.White
-                Default: |-
-                    =//If(App.ActiveScreen.Name = "MyTickets" && compFilterTicketsMenu.CheckAdmin, "My Assigned", App.ActiveScreen.Name = "MyTickets" && !compFilterTicketsMenu.CheckAdmin, "My Tickets", "Tickets")
-                    TicketsChoice
+                Default: =TicketsChoice
                 Height: =Parent.Height - LabelTickets.Height - Separator_1.Height
                 HoverColor: =RGBA(0, 0, 0, 1)
                 Items: =["My Assigned", "My Tickets"]
@@ -468,9 +450,7 @@ compFilterTicketsMenu As CanvasComponent:
             DropdownStatus As dropdown:
                 ChevronBackground: =compFilterTicketsMenu.PrimaryColor
                 Color: =Color.White
-                Default: |-
-                    =//"open"
-                    StatusChoice
+                Default: =StatusChoice
                 Fill: =compFilterTicketsMenu.BackgroundColor
                 Height: =compFilterTicketsMenu.IconSize
                 Items: =colStatus
@@ -609,13 +589,11 @@ compFilterTicketsMenu As CanvasComponent:
             DropdownTag As dropdown:
                 ChevronBackground: =compFilterTicketsMenu.PrimaryColor
                 Color: =Color.White
-                Default: |-
-                    =//"None"
-                    TagChoice
+                Default: =TagChoice
                 Fill: =compFilterTicketsMenu.BackgroundColor
                 Height: =compFilterTicketsMenu.IconSize
                 Items: =colTags
-                OnChange: |-
+                OnChange: |+
                     =Set(TagChoice, DropdownTag.SelectedText.Value);
                     
                     // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
@@ -655,36 +633,6 @@ compFilterTicketsMenu As CanvasComponent:
                         )
                     )
                     
-                    /*ClearCollect(
-                        colTickets,
-                        ForAll(
-                            Table(
-                                ParseJSON(
-                                    SearchFilterTicketsSPList.Run(
-                                        If(
-                                            IsBlank(SearchQuery),
-                                            "___",
-                                            SearchQuery
-                                        ), StatusChoice, TagChoice
-                                    ).searchresults
-                                )
-                            ),
-                            {
-                                ID: Value(Value.ID),
-                                Title: Text(Value.title),
-                                Description: Text(Value.description),
-                                MainCategory: Value(Value.mainCategory),
-                                DateCreated: DateValue(Value.dateCreated),
-                                CreatorId: Value(Value.creatorId),
-                                Status: Text(Value.status),
-                                AssignedTo: Value(Value.assignedTo),
-                                LastUpdated: DateValue(Value.lastUpdated),
-                                LocationId: Value(Value.locationId),
-                                Tags: Text(Value.tags),
-                                AddAssignees: Text(Value.addAssignees)
-                            }
-                        )
-                    )*/
                 Size: =compFilterTicketsMenu.FontSize
                 Width: =Parent.Width - 20
                 X: =(Parent.Width - Self.Width) / 2
@@ -694,10 +642,7 @@ compFilterTicketsMenu As CanvasComponent:
     FilterIcon As icon.FilterFlat:
         Color: =compFilterTicketsMenu.SecondaryColor
         Height: =compFilterTicketsMenu.FilterIconSize
-        HoverColor: |-
-            =//ColorFade(Self.Color, 20%)
-            //RGBA(0, 18, 107, 1)
-            ColorScheme.secondaryPressedColor
+        HoverColor: =ColorScheme.secondaryPressedColor
         Icon: |-
             =If(
                 App.ActiveScreen.Name = "MyTickets" && (!compFilterTicketsMenu.CheckAdmin && (!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Tickets") || !(DropdownTag.SelectedText.Value = "None")) || compFilterTicketsMenu.CheckAdmin && (!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(RadioTickets.SelectedText.Value = "My Assigned") || !(DropdownTag.SelectedText.Value = "None"))) || !(App.ActiveScreen.Name = "MyTickets") && (!(DropdownStatus.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BResult' = "open") || !(CheckboxAssignment.Value = true)),
