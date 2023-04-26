@@ -432,11 +432,12 @@
             If(compFilterTicketsMenu_1.FilterVisible, If(App.Width > 600 && App.Height - compFilterTicketsMenu_1.HeightOffset > 400, 220, 185), compFilterTicketsMenu_1.FilterIconSize)
         X: |-
             =//Parent.Width/1.2
-            If('All Tickets'.Size > 1, Parent.Width - compSearchTickets_3.X/1.2, Parent.Width - Self.Width - 10)
+            //If('All Tickets'.Size > 1, Parent.Width - compSearchTickets_3.X/1.2, Parent.Width - Self.Width - 10)
+            Parent.Width - Self.Width - If(App.Width > 500, 30, 10)
         Y: |-
             =//Parent.Height/5.7
             //AllTicketsHeaderContainer.Height + ((compSearchTickets_3.Height - compFilterTicketsMenu_1.FilterIconSize))
-            AllTicketsHeaderContainer.Height + (compSearchTickets_3.Height - compFilterTicketsMenu_1.FilterIconSize/1.5)
+            AllTicketsHeaderContainer.Height + ((SearchTickets_1.Height - compFilterTicketsMenu_1.FilterIconSize)/2)
         ZIndex: =4
 
     SearchBlocker_1 As group:
