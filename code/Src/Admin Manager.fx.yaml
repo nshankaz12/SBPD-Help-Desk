@@ -83,7 +83,7 @@
                 ShowScrollbar: =false
                 TemplateSize: =200
                 Width: =Parent.Width
-                WrapCount: =Switch('Admin Manager'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
+                WrapCount: =Switch('Admin Manager'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 3)
                 ZIndex: =1
 
                 HtmlText1_2 As htmlViewer:
@@ -105,7 +105,7 @@
                     Height: =If('Admin Manager'.Size =1 , Parent.Height/2.5, Parent.Height/4)
                     OnSelect: =Select(Parent)
                     Text: =""
-                    Width: =If('Admin Manager'.Size = 1, Parent.Width/3, Parent.Width/5)
+                    Width: =If('Admin Manager'.Size = 1, Parent.Width/3, Parent.Width/3.5)
                     X: =(Parent.TemplateWidth - Self.Width)/2
                     Y: =(Parent.TemplateHeight - Self.Height)/2
                     ZIndex: =2
