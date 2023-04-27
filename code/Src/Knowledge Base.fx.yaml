@@ -352,13 +352,14 @@
 
         NormalViewBackButton As icon.BackArrow:
             Color: =ColorScheme.secondary
-            Height: =49
+            Height: |
+                =TagName_2.Height/1.05
             Icon: =Icon.BackArrow
             OnSelect: =Back(ScreenTransition.Fade)
             Visible: ='Knowledge Base'.Size>1
             Width: =49
-            X: =15
-            Y: =SingleTicketInfo_Title.Y
+            X: =Self.Width/5 
+            Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
             ZIndex: =4
 
         compWebHeader_14 As compWebHeader:

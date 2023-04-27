@@ -2010,12 +2010,13 @@
 
     SingleTicketInfo_Back As icon.BackArrow:
         Color: =ColorScheme.secondary
-        Height: =49
+        Height: |
+            =TagName_2.Height/1.05
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
         Width: =49
-        X: =15
-        Y: =SingleTicketInfo_Title.Y
+        X: =Self.Width/5 
+        Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
         ZIndex: =7
 
     compWebMenu_10 As compWebMenu:

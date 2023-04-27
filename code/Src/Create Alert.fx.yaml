@@ -409,11 +409,13 @@
                 Y: =Parent.Height-Self.Height
 
     Icon1 As icon.BackArrow:
-        Height: =44
+        Color: =ColorScheme.secondary
+        Height: =TagName_2.Height/1.05
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
-        Width: =61
-        Y: =compWebHeader_17.Height+1
+        Width: =49
+        X: =Self.Width/5 
+        Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
         ZIndex: =2
 
     compWebMenu_1 As compWebMenu:

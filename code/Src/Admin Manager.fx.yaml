@@ -53,7 +53,7 @@
                         {
                             MenuText: "All Tickets",
                             MenuIcon: Icon.DocumentWithContent,
-                            ScreenToGoTo: 'Log of All Tickets - Admin Tech'
+                            ScreenToGoTo: 'All Tickets'
                         },
                         {
                             MenuText: "Tag Manager",
@@ -166,12 +166,12 @@
 
     Icon1_31 As icon.BackArrow:
         Color: =ColorScheme.secondary
-        Height: =49
+        Height: =TagName_2.Height/1.05
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
         Width: =49
-        X: =15
-        Y: =SingleTicketInfo_Title.Y
+        X: =Self.Width/5 
+        Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
         ZIndex: =2
 
     compWebMenu_8 As compWebMenu:

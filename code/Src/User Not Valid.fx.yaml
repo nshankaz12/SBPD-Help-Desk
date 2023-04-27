@@ -36,11 +36,11 @@
 
     Icon1_35 As icon.BackArrow:
         Color: =ColorScheme.secondary
-        Height: =49
+        Height: =TagName_2.Height/1.05
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
         Width: =49
-        X: =15
-        Y: =10//Ticket_Title_1.Y
+        X: =Self.Width/5 
+        Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
         ZIndex: =5
 

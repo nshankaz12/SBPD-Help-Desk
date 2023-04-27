@@ -57,7 +57,8 @@ compFilterTicketsMenu As CanvasComponent:
     OpenFilter: =Set(varFilterVisible, true)
     PrimaryColor: =ColorScheme.primary
     SecondaryColor: =ColorScheme.secondary
-    TicketsChoice: =RadioTickets.SelectedText.Value
+    TicketsChoice: |
+        =RadioTickets.SelectedText.Value
     Width: =If(compFilterTicketsMenu.FilterVisible, If(App.Width > 600 && App.Height - compFilterTicketsMenu.HeightOffset > 400, 220, 185), compFilterTicketsMenu.FilterIconSize)
     X: =0
     Y: =0
@@ -595,7 +596,6 @@ compFilterTicketsMenu As CanvasComponent:
                 Items: =colTags
                 OnChange: |+
                     =Set(TagChoice, DropdownTag.SelectedText.Value);
-                    
                     // Used with SearchFilterTicktesSPListV2 (passes string to search, status, tag, user id, tickets selection, date to get tickets starting from to power automate and return the filtered results)
                     ClearCollect(
                         colTickets,
