@@ -1274,6 +1274,13 @@
                                                     creatorId: userData.id
                                                 }
                                             );
+                                            Patch(
+                                                Tickets,
+                                                LookUp(Tickets, ID = ticketInfo.ID),
+                                                {
+                                                    lastUpdated: Now()
+                                                }
+                                            );
                                             If(
                                                 (userData.role = "admin" || userData.role = "tech") && User().FullName <> LookUp(
                                                     Users_1,
@@ -1315,7 +1322,8 @@
                                                 )
                                             );
                                         )
-                                    )
+                                    );
+                                    Refresh(Tickets);
                                 Size: =12
                                 Text: ="Add Comment"
                                 Width: =200
@@ -1540,7 +1548,7 @@
                         Font: =Font.Georgia
                         PaddingBottom: =10
                         Size: =Reporter_Label.Size
-                        Text: =ticketInfo.LastUpdated
+                        Text: =LookUp(Tickets, ID = ticketInfo.ID, lastUpdated)
                         Width: =Reporter_Label.Width
                         X: =Last_Updated_Label.Width+Last_Updated_Label.X
                         Y: =Last_Updated_Label.Y
@@ -1637,6 +1645,7 @@
                         Size: =Reporter_Label.Size
                         Text: =LookUp(Category_1, ID = ticketInfo.MainCategory, name)
                         Width: =Reporter_Label.Width
+                        Wrap: =false
                         X: =Category_Label.Width+Category_Label.X
                         Y: =Category_Label.Y
                         ZIndex: =12
@@ -1799,6 +1808,7 @@
                         ZIndex: =23
 
                     AssignMe As label:
+                        DisplayMode: =DisplayMode.View
                         Height: =30
                         HoverColor: =ColorScheme.primary
                         OnSelect: |+
@@ -1817,11 +1827,9 @@
                             */
                             
                         Size: =Reporter_Label.Size
-                        Text: ="Assign to me"
+                        Text: =""
                         Underline: =
-                        Visible: |-
-                            =
-                            If((Value(AssigneeId.Text) = userData.id || userData.role="staff") ||  Status_Value_Label.Text ="closed",false, true)
+                        Visible: =false
                         Width: =Reporter_Label.Width
                         X: =Reporter_Value_Label.X
                         Y: =Assignee_ComboBox.Y+Assignee_ComboBox.Height+10
@@ -1937,7 +1945,8 @@
 
         Close_Ticket_Resolution_Button As button:
             OnSelect: |
-                =Patch(
+                =ticketInfo.LastUpdated = Now();
+                Patch(
                     Tickets,
                     LookUp(
                         Tickets,
