@@ -199,7 +199,7 @@ Home As screen:
                             "Gallery8_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
                                 Fill: =RGBA(255, 255, 128, 1)
                                 Height: =If(CountRows(Gallery8_1.AllItems) *Gallery8_1.TemplateHeight > 400, 400,(CountRows(Gallery8_1.AllItems) *Gallery8_1.TemplateHeight))
-                                Items: =Filter(Alerts_1, dateExpired >= Today() || IsBlank(dateExpired))
+                                Items: =Filter(Alerts_1, dateExpired >= Now() || IsBlank(dateExpired))
                                 Layout: =Layout.Vertical
                                 TemplatePadding: =0
                                 TemplateSize: =35
