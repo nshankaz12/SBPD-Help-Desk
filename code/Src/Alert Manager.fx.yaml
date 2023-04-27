@@ -98,7 +98,8 @@
                 Height: =Parent.Height
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
-                Visible: ='Alert Manager'.Size>1
+                Visible: |
+                    ='Alert Manager'.Size>1
                 Width: =Parent.Width
                 ZIndex: =2
 
@@ -492,11 +493,11 @@
                         Text: =ThisItem.dateExpired
                         Width: =StartedLabelTextValue.Width
                         X: =ExpiresLabelText.X+ExpiresLabelText.Width
-                        Y: =189
+                        Y: =ExpiresLabelText.Y
                         ZIndex: =7
 
                     ExpiresLabelText As label:
-                        Height: =Parent.TemplateHeight / 6
+                        Height: =34
                         OnSelect: =Select(Parent)
                         Size: =10
                         Text: |-
