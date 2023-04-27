@@ -102,10 +102,10 @@
                     BorderThickness: =0
                     Color: =ColorScheme.secondary
                     Fill: =ColorScheme.secondary
-                    Height: =Parent.TemplateHeight - 50
+                    Height: =If('Admin Manager'.Size =1 , Parent.Height/2.5, Parent.Height/4)
                     OnSelect: =Select(Parent)
                     Text: =""
-                    Width: =Parent.TemplateWidth - 50
+                    Width: =If('Admin Manager'.Size = 1, Parent.Width/3, Parent.Width/5)
                     X: =(Parent.TemplateWidth - Self.Width)/2
                     Y: =(Parent.TemplateHeight - Self.Height)/2
                     ZIndex: =2
@@ -140,8 +140,8 @@
                     OnSelect: =Select(Parent)
                     PressedFill: =ColorFade(RGBA(105,105,105,.7),-50%)
                     Text: =""
-                    Width: =Parent.TemplateWidth - 50
-                    X: =(Parent.TemplateWidth - Self.Width)/2
+                    Width: =ButtonGalleryBackgroundButton_4.Width
+                    X: =ButtonGalleryBackgroundButton_4.X
                     Y: =ButtonGalleryBackgroundButton_4.Y
                     ZIndex: =5
 
