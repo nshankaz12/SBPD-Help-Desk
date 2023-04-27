@@ -630,6 +630,7 @@
     Button1 As button:
         OnSelect: |
             =NewForm(Form3_1);
+            Set(Editing, false);
             Navigate('Create Alert', ScreenTransition.Fade)
         Size: =If('Alert Manager'.Size=1,10,Label7.Size)
         Text: ="New Alert"

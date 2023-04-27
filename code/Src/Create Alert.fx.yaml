@@ -1,5 +1,6 @@
 "'Create Alert' As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
     Fill: =ColorScheme.screenBackground
+    OnVisible: =Set(allEmails, Concat(Users_1, email,";"))
 
     CreateAlertContainer As groupContainer.verticalAutoLayoutContainer:
         Height: =Parent.Height
@@ -84,7 +85,7 @@
 
                     DataCardValue27_1 As text:
                         BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                        Default: =recordVar.messageText
+                        Default: =ThisItem.messageText
                         DelayOutput: =true
                         DisplayMode: =Parent.DisplayMode
                         Height: =Parent.Height/1.5
@@ -178,7 +179,7 @@
                                     {
                                         titleText: DataCardValue23_1.Text,
                                         messageText: DataCardValue27_1.Text,
-                                        dateExpired: DateValue14_1.SelectedDate,
+                                        dateExpired: DateTimeValue(DateValue14_1.SelectedDate & " " & HourValue14_1.SelectedText.Value & ":" & MinuteValue14_1.SelectedText.Value),
                                         creatorId: userData.id
                                     }
                                 )
@@ -201,6 +202,7 @@
                                 }
                             );
                             Navigate('Alert Manager');
+                            ResetForm(Form3_1);
                         Text: ="Create Alert"
                         Visible: =If(Editing, false, true)
                         Width: =Parent.Width/3 // If( 'Create Alert'.Size =1 || 'Create Alert'.Size =2,  Parent.Width/3 ,Parent.Width/7)
