@@ -114,10 +114,12 @@
                     Align: =Align.Center
                     Color: =ColorScheme.primary
                     FontWeight: =FontWeight.Semibold
+                    Height: =50
                     OnSelect: =Select(Parent)
                     Size: =15
                     Text: =ThisItem.MenuText
-                    Width: =Parent.TemplateWidth
+                    Width: =Overlapbtn_5.Width
+                    X: =ButtonGalleryNavIcon_4.X
                     Y: =ButtonGalleryNavIcon_4.Y+ButtonGalleryNavIcon_4.Height
                     ZIndex: =3
 
@@ -126,7 +128,7 @@
                     Height: =Parent.TemplateHeight - 150
                     Icon: =ThisItem.MenuIcon
                     OnSelect: =Select(Parent)
-                    Width: =Parent.TemplateWidth 
+                    Width: =Overlapbtn_5.Width
                     X: =(Parent.TemplateWidth-Self.Width)/2
                     Y: =(ButtonGalleryBackgroundButton_4.Height-Self.Height)/2
                     ZIndex: =4
