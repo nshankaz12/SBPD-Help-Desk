@@ -131,14 +131,20 @@
                         FontWeight: =FontWeight.Bold
                         Height: =CreateAlertBtn.Height
                         OnSelect: |
-                            =Patch
-                                (Alerts_1, Gallery4.Selected, 
-                                    {titleText: DataCardValue23_1.Text, 
-                                    messageText: DataCardValue27_1.Text, 
-                                    dateExpired: DateValue14_1.SelectedDate}
-                                );
+                            =Patch (
+                                Alerts_1,
+                                Gallery4.Selected,
+                                {
+                                    titleText: DataCardValue23_1.Text,
+                                    messageText: DataCardValue27_1.Text,
+                                    dateExpired: DateTimeValue(DateValue14_1.SelectedDate & " " & HourValue14_1.SelectedText.Value & ":" & MinuteValue14_1.SelectedText.Value)
+                                }
+                            );
                             ResetForm(Form3_1);
-                            Set(Editing, false);
+                            Set(
+                                Editing,
+                                false
+                            );
                             Navigate('Alert Manager');
                         Text: ="Update Alert"
                         Underline: =true
