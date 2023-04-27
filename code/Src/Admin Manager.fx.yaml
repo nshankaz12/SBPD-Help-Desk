@@ -83,7 +83,7 @@
                 ShowScrollbar: =false
                 TemplateSize: =200
                 Width: =Parent.Width
-                WrapCount: =Switch('Admin Manager'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 3)
+                WrapCount: =Switch('Admin Manager'.Size, ScreenSize.Small, 2, ScreenSize.Medium, 2, ScreenSize.Large, 3, 4)
                 ZIndex: =1
 
                 HtmlText1_2 As htmlViewer:
@@ -116,7 +116,7 @@
                     FontWeight: =FontWeight.Semibold
                     Height: =50
                     OnSelect: =Select(Parent)
-                    Size: =15
+                    Size: =If('Admin Manager'.Size =1,11,15)
                     Text: =ThisItem.MenuText
                     Width: =Overlapbtn_5.Width
                     X: =ButtonGalleryNavIcon_4.X
