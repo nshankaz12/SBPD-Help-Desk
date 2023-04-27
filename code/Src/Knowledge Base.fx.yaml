@@ -250,7 +250,7 @@
         ButtonGallery_2 As gallery.galleryVertical:
             AlignInContainer: =AlignInContainer.Center
             FillPortions: =0
-            Height: =If('Knowledge Base'.Size>1,450, 400)
+            Height: =Parent.Height/1.59
             Items: =KBTagcol
             Layout: =Layout.Vertical
             LayoutMinHeight: =100
@@ -320,7 +320,7 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            Visible: ='Knowledge Base'.Size=1 && !ResetScreen
+            Visible: ='Knowledge Base'.Size=1
             ZIndex: =7
 
     StickyScreenElements As group:
