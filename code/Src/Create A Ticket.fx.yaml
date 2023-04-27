@@ -100,8 +100,9 @@
                         Y: =0
                         ZIndex: =1
 
-                        DataCardKey1_1 As label:
+                        Title As label:
                             AutoHeight: =true
+                            Color: =If(DataCardKey1_1 = "Title", RGBA(0, 18, 107, 1), Color.Red)
                             Height: =34
                             Text: =DataCardKey1_1
                             Width: =Parent.Width - 60
@@ -127,11 +128,12 @@
 
                         StarVisible1_1 As label:
                             Align: =Align.Center
-                            Height: =DataCardKey1_1.Height
+                            Color: =Title.Color
+                            Height: =Title.Height
                             Text: ="*"
                             Width: =30
                             Wrap: =false
-                            Y: =DataCardKey1_1.Y
+                            Y: =Title.Y
                             ZIndex: =4
 
                         TextInput3_1 As text:
@@ -338,8 +340,9 @@
                         Y: =1
                         ZIndex: =1
 
-                        DataCardKey5 As label:
+                        Desc As label:
                             AutoHeight: =true
+                            Color: =If(DataCardKey5 = "Description", RGBA(0, 18, 107, 1), Color.Red)
                             Height: =34
                             Text: =DataCardKey5
                             Width: =Parent.Width - 60
@@ -365,11 +368,12 @@
 
                         StarVisible5 As label:
                             Align: =Align.Center
-                            Height: =DataCardKey5.Height
+                            Color: =Desc.Color
+                            Height: =Desc.Height
                             Text: ="*"
                             Width: =30
                             Wrap: =false
-                            Y: =DataCardKey5.Y
+                            Y: =Desc.Y
                             ZIndex: =4
 
                         TextInput5_1 As text:

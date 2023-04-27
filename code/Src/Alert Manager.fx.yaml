@@ -617,7 +617,7 @@
         Icon: =Icon.BackArrow
         OnSelect: |-
             =//ResetForm(Form3); Navigate('Create Alert Admin (Redesign)', ScreenTransition.Fade)
-            ResetForm(Form3); Back(ScreenTransition.Fade)
+            ResetForm(Form3_1); Back(ScreenTransition.Fade)
         Width: =49
         X: =Self.Width/5 
         Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
