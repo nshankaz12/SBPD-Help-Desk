@@ -328,6 +328,15 @@
                     WrapCount: =RoundDown((Parent.Width / 320), 0)
                     ZIndex: =1
 
+                    Rectangle6_2 As rectangle:
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        BorderThickness: =25
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =Image6_1.Height
+                        OnSelect: =Select(Parent)
+                        Width: =Image6_1.Width
+                        ZIndex: =1
+
                     Image6_1 As image:
                         Height: |-
                             =//250
@@ -417,7 +426,7 @@
                         Width: |-
                             =//329
                             Parent.TemplateWidth
-                        ZIndex: =1
+                        ZIndex: =2
 
                     btnBkg_1 As button:
                         Fill: =RGBA(255, 255, 255, 1)
@@ -432,7 +441,7 @@
                         Text: =""
                         Visible: =false
                         Width: =Parent.TemplateWidth
-                        ZIndex: =2
+                        ZIndex: =3
 
                     TitleLabel_1 As label:
                         FontWeight: =FontWeight.Semibold
@@ -445,7 +454,7 @@
                             Parent.TemplateWidth - IdLabel_1.Width - 47
                         X: =24
                         Y: =27
-                        ZIndex: =3
+                        ZIndex: =4
 
                     DescriptionLabel_1 As label:
                         Height: =37
@@ -460,7 +469,7 @@
                         Wrap: =false
                         X: =24
                         Y: =TitleLabel_1.Y + TitleLabel_1.Height
-                        ZIndex: =4
+                        ZIndex: =5
 
                     IdLabel_1 As label:
                         Align: =Align.Center
@@ -474,7 +483,7 @@
                             =//232
                             Parent.TemplateWidth - Self.Width - 23
                         Y: =27
-                        ZIndex: =5
+                        ZIndex: =6
 
                     DateExpiredLabel_1 As label:
                         Height: |-
@@ -486,7 +495,7 @@
                         Width: =StartedLabelTextValue.Width
                         X: =ExpiresLabelText.X+ExpiresLabelText.Width
                         Y: =189
-                        ZIndex: =6
+                        ZIndex: =7
 
                     ExpiresLabelText As label:
                         Height: =Parent.TemplateHeight / 6
@@ -510,7 +519,7 @@
                         Y: |-
                             =//180
                             Parent.TemplateHeight - Self.Height - 27
-                        ZIndex: =7
+                        ZIndex: =8
 
                     OverlapButton As button:
                         BorderThickness: =0
@@ -537,7 +546,7 @@
                         Y: |-
                             =//15
                             (Parent.TemplateHeight - Self.Height) / 2
-                        ZIndex: =12
+                        ZIndex: =13
 
                     "'Status Group_1' As group":
                         Height: =5
@@ -565,7 +574,7 @@
                             Y: |-
                                 =//180
                                 Parent.TemplateHeight - Self.Height - 27
-                            ZIndex: =8
+                            ZIndex: =9
 
                         StatusLabel_1 As label:
                             Align: =Align.Center
@@ -603,7 +612,7 @@
                             Y: |-
                                 =//180
                                 Parent.TemplateHeight - Self.Height - 27
-                            ZIndex: =9
+                            ZIndex: =10
 
                     StartedLabelGroup As group:
                         Height: =5
@@ -631,7 +640,7 @@
                                 //If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
                                 
                                 If(userData.role = "admin" || userData.role = "tech", ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel_1.Y + StatusLabel_1.Height - Self.Height)
-                            ZIndex: =10
+                            ZIndex: =11
 
                         StaratedLabelText As label:
                             Height: |-
@@ -647,7 +656,7 @@
                                 //If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
                                 
                                 If(userData.role = "admin" || userData.role = "tech", ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel_1.Y + StatusLabel_1.Height - Self.Height)
-                            ZIndex: =11
+                            ZIndex: =12
 
         AlertManagerFooter As groupContainer.verticalAutoLayoutContainer:
             Fill: =RGBA(255,255,255, 1)
