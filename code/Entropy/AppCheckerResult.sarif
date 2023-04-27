@@ -290,166 +290,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 87,
-                  "charOffset": 108,
-                  "snippet": {
-                    "text": "CountRows(Filter(Tickets, metricDate = Concatenate(Month(Today()),\"/\", Year(Today()))))"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "CountRows"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 108,
-                  "charOffset": 284,
-                  "snippet": {
-                    "text": "CountRows(Filter(Tickets, metricDate = Concatenate(Month(Today()),\"/\", Year(Today())) && status = \"closed\"))"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "CountRows"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 106,
-                  "charOffset": 477,
-                  "snippet": {
-                    "text": "CountRows(Filter(Tickets, metricDate = Concatenate(Month(Today()),\"/\", Year(Today())) && status = \"open\"))"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "CountRows"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 52,
-                  "charOffset": 670,
-                  "snippet": {
-                    "text": "CountRows(Filter(Tickets, assignedTo = userData.id))"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "CountRows"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "Success.HomeMainContainer_1.HomeVericalLayoutContainer_1.HomeMainContentContainer_1.ButtonsContainer_1.HomeMobileNavButtonGallery_3.galleryTemplate4_5.OnSelect"
                 }
               ],
@@ -603,7 +443,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -643,7 +483,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -683,7 +523,155 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.StarVisible1_1.Y"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.StarVisible1_1.Y",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 14,
+                  "snippet": {
+                    "text": ".Y"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Y",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.StarVisible1_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.StarVisible1_1.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.StarVisible1_1.Height",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 7,
+                  "charOffset": 14,
+                  "snippet": {
+                    "text": ".Height"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.title_DataCard1.StarVisible1_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.StarVisible5.Y"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.StarVisible5.Y",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 12,
+                  "snippet": {
+                    "text": ".Y"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Y",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.StarVisible5"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.StarVisible5.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.StarVisible5.Height",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 7,
+                  "charOffset": 12,
+                  "snippet": {
+                    "text": ".Height"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "Create A Ticket",
+                "type": "'Create A Ticket'.CreateATicketMainContainer_1.CreateATicketVerticalLayoutContainer_1.CreateATicketMainContentContainer_4.CreateATicketForm.description_DataCard1.StarVisible5"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 4
         },
         {
           "locations": [
@@ -723,7 +711,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -763,7 +751,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -803,7 +791,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -923,7 +911,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -963,7 +951,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1003,7 +991,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1083,7 +1071,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1123,7 +1111,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1163,7 +1151,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1203,7 +1191,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1283,7 +1271,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1323,7 +1311,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1363,7 +1351,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1403,7 +1391,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1523,7 +1511,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1563,7 +1551,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1603,7 +1591,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1643,7 +1631,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1683,7 +1671,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1723,7 +1711,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1763,7 +1751,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1883,6 +1871,46 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 87,
+                  "charOffset": 108,
+                  "snippet": {
+                    "text": "CountRows(Filter(Tickets, metricDate = Concatenate(Month(Today()),\"/\", Year(Today()))))"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnVisible",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "CountRows"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
           "ruleIndex": 7
         },
         {
@@ -1890,300 +1918,120 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel"
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel",
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible",
                   "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 108,
+                  "charOffset": 284,
+                  "snippet": {
+                    "text": "CountRows(Filter(Tickets, metricDate = Concatenate(Month(Today()),\"/\", Year(Today())) && status = \"closed\"))"
+                  }
                 }
               },
               "properties": {
-                "member": "AccessibleLabel",
-                "module": "MainCategoryBody",
-                "type": "MainCategoryBody.Gallery6"
+                "member": "OnVisible",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'"
               }
             }
           ],
           "message": {
+            "arguments": [
+              "CountRows"
+            ],
             "id": "issue"
           },
           "properties": {
             "level": "Medium"
           },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
+          "ruleIndex": 7
         },
         {
           "locations": [
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex"
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex",
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible",
                   "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 106,
+                  "charOffset": 477,
+                  "snippet": {
+                    "text": "CountRows(Filter(Tickets, metricDate = Concatenate(Month(Today()),\"/\", Year(Today())) && status = \"open\"))"
+                  }
                 }
               },
               "properties": {
-                "member": "TabIndex",
-                "module": "MainCategoryBody",
-                "type": "MainCategoryBody.Gallery6"
+                "member": "OnVisible",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'"
               }
             }
           ],
           "message": {
+            "arguments": [
+              "CountRows"
+            ],
             "id": "issue"
           },
           "properties": {
             "level": "Medium"
           },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
+          "ruleIndex": 7
         },
         {
           "locations": [
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "compSearchTickets.searchBox_1.AccessibleLabel"
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "compSearchTickets.searchBox_1.AccessibleLabel",
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.OnVisible",
                   "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 52,
+                  "charOffset": 670,
+                  "snippet": {
+                    "text": "CountRows(Filter(Tickets, assignedTo = userData.id))"
+                  }
                 }
               },
               "properties": {
-                "member": "AccessibleLabel",
-                "module": "compSearchTickets",
-                "type": "compSearchTickets.searchBox_1"
+                "member": "OnVisible",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'"
               }
             }
           ],
           "message": {
+            "arguments": [
+              "CountRows"
+            ],
             "id": "issue"
           },
           "properties": {
             "level": "Medium"
           },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compSearchTickets.TextInputSlider.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compSearchTickets.TextInputSlider.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "compSearchTickets",
-                "type": "compSearchTickets.TextInputSlider"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compSearchTickets.IconSearchOpen.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compSearchTickets.IconSearchOpen.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "compSearchTickets",
-                "type": "compSearchTickets.IconSearchOpen"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compSearchTickets.IconSearchOpen.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compSearchTickets.IconSearchOpen.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "compSearchTickets",
-                "type": "compSearchTickets.IconSearchOpen"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compSearchTickets.searchIcon_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compSearchTickets.searchIcon_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "compSearchTickets",
-                "type": "compSearchTickets.searchIcon_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compSearchTickets.searchIcon_1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compSearchTickets.searchIcon_1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "compSearchTickets",
-                "type": "compSearchTickets.searchIcon_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compSearchTickets.cancelIcon_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compSearchTickets.cancelIcon_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "compSearchTickets",
-                "type": "compSearchTickets.cancelIcon_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "compSearchTickets.cancelIcon_1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "compSearchTickets.cancelIcon_1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "compSearchTickets",
-                "type": "compSearchTickets.cancelIcon_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -2443,6 +2291,66 @@
                 "member": "TabIndex",
                 "module": "compFilterTicketsMenu",
                 "type": "compFilterTicketsMenu.FilterIcon"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "MainCategoryBody",
+                "type": "MainCategoryBody.Gallery6"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "MainCategoryBody.Gallery6.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "MainCategoryBody",
+                "type": "MainCategoryBody.Gallery6"
               }
             }
           ],
@@ -3000,19 +2908,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.Title_AddTag_2.textInputTagName_1.AccessibleLabel"
+                  "fullyQualifiedName": "compSearchTickets.searchBox_1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.Title_AddTag_2.textInputTagName_1.AccessibleLabel",
+                  "fullyQualifiedName": "compSearchTickets.searchBox_1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "Tag Manager",
-                "type": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.Title_AddTag_2.textInputTagName_1"
+                "module": "compSearchTickets",
+                "type": "compSearchTickets.searchBox_1"
               }
             }
           ],
@@ -3030,19 +2938,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2.AccessibleLabel"
+                  "fullyQualifiedName": "compSearchTickets.TextInputSlider.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2.AccessibleLabel",
+                  "fullyQualifiedName": "compSearchTickets.TextInputSlider.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "Tag Manager",
-                "type": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2"
+                "module": "compSearchTickets",
+                "type": "compSearchTickets.TextInputSlider"
               }
             }
           ],
@@ -3060,19 +2968,49 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2.TabIndex"
+                  "fullyQualifiedName": "compSearchTickets.IconSearchOpen.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2.TabIndex",
+                  "fullyQualifiedName": "compSearchTickets.IconSearchOpen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compSearchTickets",
+                "type": "compSearchTickets.IconSearchOpen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compSearchTickets.IconSearchOpen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compSearchTickets.IconSearchOpen.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "Tag Manager",
-                "type": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2"
+                "module": "compSearchTickets",
+                "type": "compSearchTickets.IconSearchOpen"
               }
             }
           ],
@@ -3090,19 +3028,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.AccessibleLabel"
+                  "fullyQualifiedName": "compSearchTickets.searchIcon_1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.AccessibleLabel",
+                  "fullyQualifiedName": "compSearchTickets.searchIcon_1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "Tag Manager",
-                "type": "'Tag Manager'.Icon1_29"
+                "module": "compSearchTickets",
+                "type": "compSearchTickets.searchIcon_1"
               }
             }
           ],
@@ -3120,19 +3058,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.TabIndex"
+                  "fullyQualifiedName": "compSearchTickets.searchIcon_1.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.TabIndex",
+                  "fullyQualifiedName": "compSearchTickets.searchIcon_1.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "Tag Manager",
-                "type": "'Tag Manager'.Icon1_29"
+                "module": "compSearchTickets",
+                "type": "compSearchTickets.searchIcon_1"
               }
             }
           ],
@@ -3150,19 +3088,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11.AccessibleLabel"
+                  "fullyQualifiedName": "compSearchTickets.cancelIcon_1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11.AccessibleLabel",
+                  "fullyQualifiedName": "compSearchTickets.cancelIcon_1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11"
+                "module": "compSearchTickets",
+                "type": "compSearchTickets.cancelIcon_1"
               }
             }
           ],
@@ -3180,199 +3118,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11.TabIndex"
+                  "fullyQualifiedName": "compSearchTickets.cancelIcon_1.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11.TabIndex",
+                  "fullyQualifiedName": "compSearchTickets.cancelIcon_1.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.Icon1_26"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.Icon1_26"
+                "module": "compSearchTickets",
+                "type": "compSearchTickets.cancelIcon_1"
               }
             }
           ],
@@ -7410,6 +7168,396 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.Title_AddTag_2.textInputTagName_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.Title_AddTag_2.textInputTagName_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Tag Manager",
+                "type": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.Title_AddTag_2.textInputTagName_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Tag Manager",
+                "type": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Tag Manager",
+                "type": "'Tag Manager'.TagManagerMainContainer.TagMangerVerticalLayoutContainer.TagMangerMainContentContainer.TagBody_1.StackTheTagBodyVertically_1.AllTags_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Tag Manager",
+                "type": "'Tag Manager'.Icon1_29"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Tag Manager",
+                "type": "'Tag Manager'.Icon1_29"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery1_11"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Container4.Gallery2_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.Icon1_26"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.Icon1_26"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.showHamIcon"
                 }
               ],
@@ -8003,156 +8151,6 @@
           },
           "ruleId": "app-DataSourceDefaultMaxRowsLimit",
           "ruleIndex": 16
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.Y"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.Y",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Y",
-                "module": "Tag Manager",
-                "type": "'Tag Manager'.Icon1_29"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 17
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.Height",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Height",
-                "module": "Tag Manager",
-                "type": "'Tag Manager'.Icon1_29"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 17
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.Y"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.Y",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Y",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 17
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.Y"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.Y",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Y",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.Icon1_26"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 17
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.Height",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Height",
-                "module": "Ticket Metrics - Admin Tech",
-                "type": "'Ticket Metrics - Admin Tech'.Icon1_26"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 17
         },
         {
           "locations": [
@@ -9533,6 +9531,156 @@
           },
           "ruleId": "app-InefficientDelayLoading",
           "ruleIndex": 17
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.Y"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.Y",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Y",
+                "module": "Tag Manager",
+                "type": "'Tag Manager'.Icon1_29"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 17
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Tag Manager'.Icon1_29.Height",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "Tag Manager",
+                "type": "'Tag Manager'.Icon1_29"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 17
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.Y"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2.Y",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Y",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.TicketMetricsContainer.MainSectionContainer_2.Gallery2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 17
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.Y"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.Y",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Y",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.Icon1_26"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 17
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Ticket Metrics - Admin Tech'.Icon1_26.Height",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "Ticket Metrics - Admin Tech",
+                "type": "'Ticket Metrics - Admin Tech'.Icon1_26"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 17
         }
       ],
       "tool": {
@@ -9625,25 +9773,6 @@
               }
             },
             {
-              "id": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-              "messageStrings": {
-                "issue": {
-                  "text": "Delegation warning. The highlighted part of this formula might not work correctly on large data sets. The \"{0}\" operation is not supported by this connector."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "If your data set exceeds the 500 record limit but contains less than 2,000 records, try resetting the limit.",
-                  "Try simplifying the formula.",
-                  "Try moving your data to a different data source."
-                ],
-                "level": "Medium",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
               "id": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
               "messageStrings": {
                 "issue": {
@@ -9667,6 +9796,25 @@
               "messageStrings": {
                 "issue": {
                   "text": "Delegation warning. The \"{0}\" part of this formula might not work correctly on large data sets."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "If your data set exceeds the 500 record limit but contains less than 2,000 records, try resetting the limit.",
+                  "Try simplifying the formula.",
+                  "Try moving your data to a different data source."
+                ],
+                "level": "Medium",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
+              "messageStrings": {
+                "issue": {
+                  "text": "Delegation warning. The highlighted part of this formula might not work correctly on large data sets. The \"{0}\" operation is not supported by this connector."
                 }
               },
               "properties": {

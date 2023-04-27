@@ -549,7 +549,7 @@
                                     =Switch(
                                         ThisItem.Status,
                                         "open", RGBA(0, 127, 187, 1),
-                                        "close", RGBA(221, 79, 14, 1)
+                                        "closed", RGBA(221, 79, 14, 1)
                                     )
                                 Height: =41
                                 OnSelect: =Select(Parent)
@@ -564,7 +564,7 @@
                                     =Switch(
                                         ThisItem.Status,
                                         "open", RGBA(0, 127, 187, 1),
-                                        "close", RGBA(221, 79, 14, 1)
+                                        "closed", RGBA(221, 79, 14, 1)
                                     )
                                 DisplayMode: =DisplayMode.View
                                 Fill: =RGBA(241, 244, 249, 1)
