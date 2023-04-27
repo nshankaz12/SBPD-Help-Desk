@@ -1,8 +1,6 @@
 "'Alert Manager' As screen":
     Fill: =ColorScheme.screenBackground
-    OnVisible: |-
-        =Refresh(Alerts_1);
-        ClearCollect(FilteredAlerts,Alerts_1);
+    OnVisible: =Refresh(Alerts_1);
 
     compPageTextSizeFormatter_2 As compPageTextSizeFormatter:
         PageSizeVariable: ='Alert Manager'.Size
@@ -108,7 +106,7 @@
                     BorderThickness: =1
                     DelayItemLoading: =true
                     Height: =Parent.Height*.80
-                    Items: =Filter(Alerts_1, dateExpired >= Today() || IsBlank(dateExpired))
+                    Items: =Filter(Alerts_1, dateExpired >= Now() || IsBlank(dateExpired))
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
                     ShowScrollbar: =false
@@ -311,7 +309,7 @@
                         =//false
                         true
                     Height: =Parent.Height
-                    Items: =SortByColumns(FilteredAlerts,"field_7",SortOrder.Descending)
+                    Items: =Filter(Alerts_1, dateExpired >= Now() || IsBlank(dateExpired))
                     Layout: =Layout.Vertical
                     LoadingSpinner: |-
                         =//LoadingSpinner.None
@@ -548,72 +546,6 @@
                             (Parent.TemplateHeight - Self.Height) / 2
                         ZIndex: =13
 
-                    "'Status Group_1' As group":
-                        Height: =5
-                        Width: =5
-                        X: =40
-                        Y: =40
-                        ZIndex: =13
-
-                        StatusColor_1 As rectangle:
-                            DisplayMode: =DisplayMode.View
-                            Fill: |-
-                                =Switch(
-                                    StatusLabel_1.Text,
-                                    "Active", RGBA(0, 127, 187, 1),
-                                    "Expired", RGBA(221, 79, 14, 1),
-                                    RGBA(155,155,155,.50)
-                                    
-                                )
-                            Height: =41
-                            OnSelect: =Select(Parent)
-                            Width: =9
-                            X: |-
-                                =//232
-                                StatusLabel_1.X - Self.Width
-                            Y: |-
-                                =//180
-                                Parent.TemplateHeight - Self.Height - 27
-                            ZIndex: =9
-
-                        StatusLabel_1 As label:
-                            Align: =Align.Center
-                            Color: |-
-                                =Switch(
-                                    StatusLabel_1.Text,
-                                    "Active", RGBA(0, 127, 187, 1),
-                                    "Expired", RGBA(221, 79, 14, 1),
-                                    RGBA(155,155,155,.50)
-                                    
-                                )
-                            DisplayMode: =DisplayMode.View
-                            Fill: |-
-                                =Switch(
-                                    StatusLabel_1.Text,
-                                    "Active", RGBA(0, 127, 187, .20),
-                                    "Expired", RGBA(221, 79, 14,.20),
-                                    RGBA(155,155,155,.20)
-                                    
-                                )
-                            FontWeight: =FontWeight.Semibold
-                            Height: =41
-                            OnSelect: =Select(Parent)
-                            Size: =11
-                            Text: |-
-                                =// SQL
-                                //ThisItem.status
-                                
-                                // Sharepoint
-                                If(DateDiff(Today(),DateValue(ThisItem.dateExpired))>0, "Active","Expired")
-                            Width: =65
-                            X: |-
-                                =//241
-                                Parent.TemplateWidth - Self.Width - 23
-                            Y: |-
-                                =//180
-                                Parent.TemplateHeight - Self.Height - 27
-                            ZIndex: =10
-
                     StartedLabelGroup As group:
                         Height: =5
                         Width: =5
@@ -630,7 +562,7 @@
                             Text: =DateValue(ThisItem.dateCreated)
                             Width: |-
                                 =//143
-                                Parent.TemplateWidth - StaratedLabelText.Width - StatusLabel_1.Width - StatusColor_1.Width - 47
+                                Parent.TemplateWidth - StaratedLabelText.Width - 47
                             Wrap: =false
                             X: |-
                                 =//89
@@ -638,8 +570,7 @@
                             Y: |
                                 =//If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
                                 //If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
-                                
-                                If(userData.role = "admin" || userData.role = "tech", ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel_1.Y + StatusLabel_1.Height - Self.Height)
+                                ((Parent.TemplateHeight - Self.Height) / 2) + 20
                             ZIndex: =11
 
                         StaratedLabelText As label:
@@ -654,8 +585,7 @@
                             Y: |
                                 =//If(is_admin, 147, (StatusLabel.Y + StatusLabel.Height - Self.Height))
                                 //If(is_admin, ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel.Y + StatusLabel.Height - Self.Height)
-                                
-                                If(userData.role = "admin" || userData.role = "tech", ((Parent.TemplateHeight - Self.Height) / 2) + 20, StatusLabel_1.Y + StatusLabel_1.Height - Self.Height)
+                                ((Parent.TemplateHeight - Self.Height) / 2) + 20
                             ZIndex: =12
 
         AlertManagerFooter As groupContainer.verticalAutoLayoutContainer:
