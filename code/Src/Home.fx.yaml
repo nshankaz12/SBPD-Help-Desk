@@ -137,7 +137,7 @@ Home As screen:
                                     Parent.TemplateHeight-50
                                 OnSelect: =Select(Parent)
                                 Text: =""
-                                Width: =If('Home'.Size = 1, Parent.Width/3, Parent.Width/5)
+                                Width: =If(Home.Size = 1, Parent.Width/3, Parent.Width/5)
                                 X: =(Parent.TemplateWidth - Self.Width)/2
                                 Y: =(Parent.TemplateHeight - Self.Height)/2
                                 ZIndex: =2

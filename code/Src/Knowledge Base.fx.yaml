@@ -44,7 +44,7 @@
         KnowledgeBaseSearchContainer As groupContainer.manualLayoutContainer:
             Fill: =ColorScheme.secondaryPressedColor
             FillPortions: =
-            Height: =If('Knowledge Base'.Size>=2 || SearchVisible, 150,300)
+            Height: =Parent.Height/5//150
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             Visible: =!ResetScreen
