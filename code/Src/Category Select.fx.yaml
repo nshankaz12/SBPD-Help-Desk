@@ -145,9 +145,7 @@
                             Color: =RGBA(0, 0, 0,0)
                             DisabledFill: =RGBA(0, 0, 0, 0)
                             Fill: =RGBA(0, 0, 0,0)
-                            Height: |-
-                                =//Parent.TemplateHeight - 20
-                                If('Category Select'.Size > 1, Parent.TemplateHeight *.8, Parent.TemplateHeight - 50)
+                            Height: =ButtonGalleryBackgroundButton_3.Height
                             HoverColor: =RGBA(0, 0, 0,0)
                             HoverFill: =ColorFade(RGBA(105,105,105,.35),-10%)
                             OnSelect: |-
@@ -155,11 +153,9 @@
                             PressedColor: =RGBA(0, 0, 0,0)
                             PressedFill: =
                             Text: =""
-                            Width: |-
-                                =//Parent.TemplateWidth - 20
-                                If('Category Select'.Size > 1, Parent.TemplateWidth *.8, Parent.TemplateWidth - 50)
-                            X: =(Parent.TemplateWidth - Self.Width)/2
-                            Y: =(Parent.TemplateHeight - Self.Height)/2
+                            Width: =ButtonGalleryBackgroundButton_3.Width
+                            X: =ButtonGalleryBackgroundButton_3.X
+                            Y: =ButtonGalleryBackgroundButton_3.Y
                             ZIndex: =4
 
             CategorySelectFooter As groupContainer.verticalAutoLayoutContainer:
