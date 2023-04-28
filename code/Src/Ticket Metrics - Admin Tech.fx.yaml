@@ -274,19 +274,19 @@
                 LayoutMinWidth: =640
                 Width: =Parent.Width
 
-    compWebMenu_12 As compWebMenu:
-        Height: =If(showMenu, Parent.Height, 80)
-        Visible: ='Ticket Metrics - Admin Tech'.Size > 1
-        Width: =If(showMenu, Parent.Width, 80)
-        ZIndex: =2
-
     Icon1_26 As icon.BackArrow:
         Color: =ColorScheme.secondary
-        Height: =TagName_2.Height/1.05
+        Height: =Label26_1.Height/1.05
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
         Width: =49
         X: =Self.Width/5 
-        Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
+        Y: =(HeaderContainer_1.Height-Label26_1.Height)/1.05
+        ZIndex: =2
+
+    compWebMenu_12 As compWebMenu:
+        Height: =If(showMenu, Parent.Height, 80)
+        Visible: ='Ticket Metrics - Admin Tech'.Size > 1
+        Width: =If(showMenu, Parent.Width, 80)
         ZIndex: =3
 

@@ -614,14 +614,14 @@
         Color: |-
             =ColorScheme.secondary
             //RGBA(232, 244, 217, 1)
-        Height: =TagName_2.Height/1.05
+        Height: =Label15_1.Height/1.05
         Icon: =Icon.BackArrow
         OnSelect: |-
             =//ResetForm(Form3); Navigate('Create Alert Admin (Redesign)', ScreenTransition.Fade)
             ResetForm(Form3_1); Back(ScreenTransition.Fade)
         Width: =49
         X: =Self.Width/5 
-        Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
+        Y: =(Alert_Manager_Header_Container.Height-Label15_1.Height)/1.05
         ZIndex: =3
 
     compWebMenu_20 As compWebMenu:

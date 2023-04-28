@@ -483,16 +483,14 @@
 
     "'Back Scroll_5' As icon.BackArrow":
         Color: =ColorScheme.secondary
-        Height: =TagName_2.Height/1.05
+        Height: =HeaderLabel.Height/1.05
         HoverColor: =ColorScheme.secondaryPressedColor
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
         Width: |
             =49
         X: =Self.Width/5 
-        Y: |-
-            =
-            (AllTicketsHeaderContainer.Height-TagName_2.Height)
+        Y: =(MyTicketsHeaderContainer.Height-HeaderLabel.Height)/1.05
         ZIndex: =2
 
     NewTicketButton As button:

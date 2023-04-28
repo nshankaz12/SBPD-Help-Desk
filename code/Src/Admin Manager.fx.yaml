@@ -168,12 +168,12 @@
 
     Icon1_31 As icon.BackArrow:
         Color: =ColorScheme.secondary
-        Height: =TagName_2.Height/1.05
+        Height: =Label26.Height/1.05
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
         Width: =49
         X: =Self.Width/5 
-        Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
+        Y: =(HeaderContainer.Height-Label26.Height)/1.05
         ZIndex: =2
 
     compWebMenu_8 As compWebMenu:

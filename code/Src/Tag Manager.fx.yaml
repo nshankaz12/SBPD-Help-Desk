@@ -22,7 +22,7 @@
             Width: =Parent.Width
             ZIndex: =2
 
-            TagMangerHeaderContainer As groupContainer.verticalAutoLayoutContainer:
+            TagManagerHeaderContainer As groupContainer.verticalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
                 Height: |-
@@ -44,7 +44,7 @@
                     LayoutMinWidth: =640
                     ZIndex: =1
 
-                tagMangerTitleHeader As label:
+                tagManagerTitleHeader As label:
                     Align: =Align.Center
                     Color: =RGBA(255, 255, 255, 1)
                     Fill: =ColorScheme.primary
@@ -304,12 +304,12 @@
 
     Icon1_29 As icon.BackArrow:
         Color: =ColorScheme.secondary
-        Height: =TagName_2.Height/1.05
+        Height: =tagManagerTitleHeader.Height/1.05
         Icon: =Icon.BackArrow
         OnSelect: =Back(ScreenTransition.Fade)
         Width: =49
         X: =Self.Width/5 
-        Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
+        Y: =(TagManagerHeaderContainer.Height-tagManagerTitleHeader.Height)/1.05
         ZIndex: =3
 
     compWebMenu_6 As compWebMenu:

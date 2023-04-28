@@ -342,7 +342,7 @@
             Visible: ='Knowledge Base'.Size>1
             Width: =49
             X: =Self.Width/5 
-            Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
+            Y: =(KBScreenTitle.Height-KBScreenTitle.Height)
             ZIndex: =4
 
         compWebHeader_14 As compWebHeader:
@@ -354,13 +354,15 @@
 
         MobileBackButton As icon.BackArrow:
             Color: =ColorScheme.secondary
-            Height: =40
+            Height: =KBScreenTitle.Height/1.05
             Icon: =Icon.BackArrow
             OnSelect: =Navigate(Home, ScreenTransition.Fade)//Back(ScreenTransition.Fade)
-            Visible: ='Knowledge Base'.Size=1
-            Width: =40
-            X: =40
-            Y: =KBScreenTitle.Y/1.27
+            Visible: |-
+                =//'Knowledge Base'.Size=1
+                true
+            Width: =49
+            X: =Self.Width/5
+            Y: =compWebHeader_14.Height/1.05
             ZIndex: =7
 
         SearchEffectTimer As timer:

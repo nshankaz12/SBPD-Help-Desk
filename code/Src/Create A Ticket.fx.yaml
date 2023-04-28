@@ -612,12 +612,12 @@
 
     Icon1_30 As icon.BackArrow:
         Color: =ColorScheme.secondary
-        Height: =TagName_2.Height/1.05
+        Height: =CreateATicketDesktopHeaderLabel_2.Height/1.05
         Icon: =Icon.BackArrow
         OnSelect: =ResetForm(CreateATicketForm); Back(ScreenTransition.Fade)
         Width: =49
         X: =Self.Width/5 
-        Y: =(AllTicketsHeaderContainer.Height-TagName_2.Height)
+        Y: =(HomeHeaderContainer1_3.Height-CreateATicketDesktopHeaderLabel_2.Height)/1.05
         ZIndex: =3
 
     compWebMenu_7 As compWebMenu:
