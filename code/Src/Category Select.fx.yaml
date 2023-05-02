@@ -101,7 +101,7 @@
                             Color: =ColorScheme.secondary
                             DisabledFill: =RGBA(0, 0, 0, 0)
                             Fill: =ColorScheme.secondary
-                            Height: =If('Category Select'.Size = 1, Parent.Height/2.5, Parent.Height/4)
+                            Height: =Parent.Height/4
                             HoverColor: =RGBA(0, 0, 0,0)
                             OnSelect: |-
                                 =Navigate('Create A Ticket', ScreenTransition.Fade, {FirstCategory: ThisItem.ID})

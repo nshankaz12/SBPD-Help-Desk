@@ -3,3 +3,10 @@ App As appinfo:
     OnStart: =
     StartScreen: ='Splash Screen'
 
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+
